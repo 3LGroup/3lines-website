@@ -1,0 +1,550 @@
+/* ============================================================================
+   3Lines theme layer
+   Applied on top of each clone's own stylesheet. Re-skins the structure into
+   the 3Lines Design System without touching the information architecture.
+
+   Rules enforced from the system:
+     · DM Sans / JetBrains Mono only — no substitutions
+     · One accent: --primary #2E6FA8. No second brand colour.
+     · No gradients on backgrounds, buttons or borders
+     · No inline SVG illustration — imagery slots become neutral surfaces
+       awaiting real assets
+     · Sentence case; ALL CAPS only for tiny section labels
+     · Radii limited to --radius-sm / --radius / --radius-lg
+     · Borders always var(--border); no left-coloured card accents
+     · No emoji
+   ============================================================================ */
+
+/* Fonts were @imported from Google here. An @import inside a stylesheet cannot
+   start downloading until this file has itself downloaded and parsed, so it was
+   render-blocking on every page. They are now self-hosted and linked directly
+   from the layout: public/assets/fonts/google-local.css (see
+   scripts/fetch-fonts.mjs). IBM Plex Sans Arabic is dropped — Tajawal covers
+   Arabic. */
+
+/* ---------- Tokens (from colors_and_type.css) ---------- */
+:root{
+  --radius: 0.625rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.549 0.113 243.962);      /* #2E6FA8 */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+
+  --font-sans:'DM Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --font-arabic:'IBM Plex Sans Arabic',var(--font-sans);
+
+  /* Brand assets — paths are relative to THIS file (assets/css/) so they
+     resolve identically at every route depth and on any host. */
+  --logo-wordmark:url("../brand/logo-wordmark.png");
+  --logo-mark:url("../brand/logo-mark.png");
+
+  --shadow-xs:0 1px 2px 0 rgb(0 0 0 / .05);
+  --shadow-sm:0 1px 2px 0 rgb(0 0 0 / .05),0 1px 3px 0 rgb(0 0 0 / .05);
+  --shadow-md:0 4px 6px -1px rgb(0 0 0 / .08),0 2px 4px -2px rgb(0 0 0 / .04);
+  --shadow-lg:0 10px 15px -3px rgb(0 0 0 / .08),0 4px 6px -4px rgb(0 0 0 / .04);
+}
+
+html.dark{
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.649 0.113 243.962);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+}
+
+/* ============================================================================
+   1. Reset every clone's own palette onto the 3Lines tokens
+   ============================================================================ */
+html,body{
+  background:var(--background)!important;
+  color:var(--foreground)!important;
+  font-family:var(--font-sans)!important;
+  font-size:16px;
+  line-height:1.6;
+}
+html[dir="rtl"] body{font-family:var(--font-arabic)!important}
+
+h1,h2,h3,h4,h5,
+.h1,.h2,.h3,.display,.hero h1,.hero__title,.hero__copy h1,
+.phead h1,.pagehead h1,.band h2,.careers h2,.cta h2{
+  font-family:var(--font-sans)!important;
+  color:var(--foreground)!important;
+  text-transform:none!important;      /* sentence case */
+  letter-spacing:-.02em!important;
+  font-weight:700!important;
+}
+h2,.h2{font-weight:600!important}
+h3,h4,.h3{font-weight:600!important}
+
+p,li,dd,address,figcaption,.lede,.sub,.excerpt,
+.card__excerpt,.footer__mission,.ftr__mission{
+  color:var(--muted-foreground)!important;
+  font-family:var(--font-sans)!important;
+}
+
+/* the mono/eyebrow/label slots across all seven clones */
+.mono,.eyebrow,.kick,.lab,.tag,.cls,.crumbs,.plat__n,.domain__n,
+.usecase__n,.stat__lab,.fig__l,.figure__lab,.storypanel__cat,
+.ncard__meta,.counter__t,.dots__n,.dot__n,.ticker__item b{
+  font-family:var(--font-mono)!important;
+  font-size:11px!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase!important;
+  color:var(--muted-foreground)!important;
+  font-weight:500!important;
+}
+
+/* numbers are always tabular */
+.stat__num,.fig__n,.figure__num,.counter__n,.plat__n,
+[data-count],[data-flights]{font-variant-numeric:tabular-nums!important}
+
+/* ============================================================================
+   2. Kill every gradient and second accent
+   ============================================================================ */
+.hero::after,.careers::after,.cta::after,.prod::after,.tile::after,
+.hero__slide::after,.pagehead::after,.phead::after,.hero::before,
+.hero__bg::after,.storypanel__media::after{
+  background:none!important;
+  display:none!important;
+}
+.hero,.careers,.cta,.band,.mission,.ctacell,.ctarow,.counter,
+.section--maroon,.section--navy,.section--blue,.sec--dark,.sec--panel,
+.sec--warm,.whowe,.stories,.phead,.pagehead,.hero__slide{
+  background:var(--background)!important;
+  color:var(--foreground)!important;
+}
+.section--tan,.section--mist,.sec--smoke,.sec--paper,.section--white,
+.sec--line,.sec--flush{background:var(--background)!important}
+.regdata,.linkcard,.loc,.card,.hwcard,.ncard,.prod,.pcard,.tile,
+.story,.fig,.stat,.path,.domain,.frame,.platstage,.impact__media,
+.usecase__media,.card__media,.prod__media,.story__media,.pcard__media{
+  background:var(--card)!important;
+  color:var(--card-foreground)!important;
+  border-color:var(--border)!important;
+}
+
+/* ============================================================================
+   3. Imagery slots -> neutral surfaces (system forbids inline illustration)
+   ============================================================================ */
+.hero__bg,.hero__media,.hero__bgs,.careers__bgs,.hero__slide > svg,
+.cta > svg.bg,.careers > svg.bg,.ctacell > svg.bg,.hero > svg.bg,
+.card__media svg,.hwcard__media svg,.prod > svg,.prod__media svg,
+.tile > svg,.pcard__media svg,.ncard__media svg,.story__media svg,
+.usecase__media svg,.impact__media svg,.frame svg,.platstage svg,
+.storypanel__media svg,.domain > svg,.platpanel svg,.hero__bg svg{
+  display:none!important;
+}
+/* ---- Structural normalisation -------------------------------------------
+   The originals build their heroes out of absolutely-positioned layers over
+   a full-bleed image. With the image gone those layers collapse, leaving
+   overlap and dead space. Re-flow them as grid stacks: panels share one cell
+   so height follows content, and the switcher still works via opacity. */
+
+.hero,.careers{
+  display:grid!important;
+  grid-template-columns:1fr;
+  min-height:0!important;height:auto!important;
+  padding-block:clamp(40px,5vw,72px)!important;
+  border-bottom:1px solid var(--border)!important;
+  align-items:start!important;
+}
+.cta{
+  min-height:0!important;height:auto!important;
+  padding-block:clamp(40px,5vw,72px)!important;
+  border-bottom:1px solid var(--border)!important;
+}
+/* slide stacks: every panel occupies the same cell */
+.hero > .hero__slide{grid-column:1;grid-row:1;position:relative!important}
+.hero > .dots{grid-column:1;grid-row:2;position:static!important;margin-top:22px}
+.heroslides,.storystage,.platstage{display:grid!important;min-height:0!important}
+.heroslides > .heroslide,.storystage > .storypanel,.platstage > .platpanel{
+  grid-column:1;grid-row:1;position:relative!important;
+}
+.heroslide:not(.is-on),.hero__slide:not(.is-on),
+.storypanel:not(.is-on),.platpanel:not(.is-on){
+  opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+}
+.heroslide.is-on,.hero__slide.is-on,.storypanel.is-on,.platpanel.is-on{
+  opacity:1!important;visibility:visible!important;transform:none!important;
+}
+.hero__inner,.hero__copy,.careers__head,.careers__bottom,.hero__top,.hero__bottom{
+  position:static!important;padding-bottom:0!important;padding-top:0!important;
+  flex:none!important;width:auto!important;
+}
+.hero__top{display:block!important}
+.careers{gap:clamp(28px,4vw,48px)}
+.careers__head{margin-bottom:0!important}
+
+/* a .wrap that becomes a grid/flex item shrinks to its content and centres —
+   force it back to the container width so the gutter stays consistent */
+.hero > .wrap,.careers > .wrap,.cta > .wrap,.hero__slide > .wrap,
+.hero__top > .wrap,.hero__bottom > .wrap,.careers__head > .wrap,
+.careers__bottom > .wrap,.mission > .wrap,.hero__inner,.hero__copy{
+  width:100%!important;
+}
+
+/* restraint: the originals shout at 90–124px. The system is calm. */
+.hero h1,.hero__title,.hero__copy h1,.phead h1,.pagehead h1{
+  font-size:clamp(30px,4.4vw,54px)!important;line-height:1.08!important;
+  max-width:22ch!important;margin-bottom:14px!important;
+}
+.band h2,.careers h2,.cta h2,.h2,.mission p{
+  font-size:clamp(24px,3.2vw,40px)!important;line-height:1.12!important;
+}
+.heroslide h2,.hero__copy p{
+  font-size:clamp(18px,2.1vw,26px)!important;line-height:1.2!important;
+}
+.heroslides{margin-top:clamp(18px,2.4vw,30px)!important}
+.hero .hero__row,.hero__copy .btn,.heroslide .lnk{margin-top:18px!important}
+.plat__name{font-size:clamp(20px,2.4vw,30px)!important}
+.stat__n,.fig__n,.figure__num,.counter__n{font-size:clamp(24px,2.8vw,36px)!important}
+
+/* ticker rows keep the page gutter instead of bleeding off the edge */
+.ticker__track{padding-inline:var(--pad,32px);gap:0}
+.ticker__item{padding-inline:0 26px}
+.ticker__item:last-child{border-right:0!important}
+
+/* scroll affordances belong to a full-bleed hero; drop them */
+.scrollcue,.scrollhint,.hero .scroll,.hero__scroll{display:none!important}
+
+/* the originals lean on text-shadow to sit on photography — never on a token surface */
+*,*::before,*::after{text-shadow:none!important}
+
+/* anything the originals painted white for a dark hero */
+.hero h1,.hero h2,.hero p,.hero span,.hero a,.hero__copy h1,.hero__copy p,
+.hero__title,.hero__sub,.heroslide h2,.band h2,.band .sub,.careers h2,
+.cta h2,.cta p,.whowe__head,.whowe__links a,.rail__btn,.searchform input,
+.mission p,.counter__n,.counter__l,.prod h3,.prod p,.tile__body h3,
+.tile__body .go,.storypanel__body h3,.storypanel__body p,.hero .lede{
+  color:var(--foreground)!important;
+}
+.hero p,.hero__sub,.hero__copy p,.band .sub,.cta p,.mission p,
+.counter__l,.prod p,.storypanel__body p,.hero .lede{color:var(--muted-foreground)!important}
+.mission p{font-size:clamp(20px,2.4vw,30px)!important;color:var(--foreground)!important}
+.searchform{border-bottom:1px solid var(--border)!important}
+.searchform input::placeholder{color:var(--muted-foreground)!important}
+.searchform button svg{fill:var(--foreground)!important}
+.rail{border-top:1px solid var(--border)!important}
+.rail__btn{border-top:2px solid transparent!important;padding-block:14px!important}
+.rail__btn[aria-selected="true"]{border-top-color:var(--primary)!important}
+.card__media,.hwcard__media,.prod__media,.tile,.pcard__media,.ncard__media,
+.story__media,.usecase__media,.impact__media,.frame,.platstage,
+.storypanel__media,.domain,.feature__media{
+  position:relative!important;
+  background:var(--muted)!important;
+  border:1px solid var(--border)!important;
+  border-radius:var(--radius)!important;
+  overflow:hidden;
+  min-height:150px;
+}
+/* Photography. Each slot receives --img from the build step; slots without
+   one fall back to the 3Lines mark on a muted surface. */
+.card__media,.hwcard__media,.prod__media,.pcard__media,.ncard__media,
+.story__media,.usecase__media,.impact__media,.frame,.platstage,
+.storypanel__media,.feature__media,.tile,.domain{
+  background-image:var(--img,var(--logo-mark))!important;
+  background-size:cover!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+}
+/* no --img yet -> centre the mark instead of stretching it */
+.card__media:not([style*="--img"]),.hwcard__media:not([style*="--img"]),
+.prod__media:not([style*="--img"]),.pcard__media:not([style*="--img"]),
+.ncard__media:not([style*="--img"]),.story__media:not([style*="--img"]),
+.usecase__media:not([style*="--img"]),.impact__media:not([style*="--img"]),
+.frame:not([style*="--img"]),.platstage:not([style*="--img"]),
+.storypanel__media:not([style*="--img"]),.feature__media:not([style*="--img"]),
+.tile:not([style*="--img"]),.domain:not([style*="--img"]){
+  background-size:64px!important;opacity:1;
+}
+
+/* Hero / band imagery sits BELOW the copy as its own panel. The system bans
+   gradients, so text is never laid over a photograph. */
+.hero[style*="--img"]::after,.careers[style*="--img"]::after,
+.cta[style*="--img"]::after{
+  content:"";display:block!important;position:static!important;
+  height:clamp(200px,24vw,360px);
+  margin:clamp(26px,3.4vw,44px) clamp(18px,3.2vw,48px) 0;
+  background-image:var(--img)!important;
+  background-size:cover;background-position:center;
+  border-radius:var(--radius);border:1px solid var(--border);
+}
+.hero[style*="--img"],.careers[style*="--img"],.cta[style*="--img"]{
+  grid-template-rows:auto auto auto;
+}
+.hero[style*="--img"]::after{grid-column:1}
+
+/* ---- Text must never sit on a photograph -------------------------------
+   .tile (Thales), .prod (Shield AI) and .domain (Anduril) originally laid
+   copy over a full-bleed image and relied on a gradient scrim for contrast.
+   Gradients are banned, so the photo becomes a band and the copy drops onto
+   the card surface underneath it. */
+.tile,.prod,.domain{
+  background-image:none!important;
+  display:flex!important;flex-direction:column!important;
+  justify-content:flex-start!important;align-items:stretch!important;
+  aspect-ratio:auto!important;min-height:0!important;padding:0!important;
+  overflow:hidden;isolation:auto!important;
+}
+.tile::before,.prod::before,.domain::before{
+  content:"";display:block;width:100%;flex:none;
+  aspect-ratio:16/10;
+  background-image:var(--img,var(--logo-mark));
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  border-bottom:1px solid var(--border);
+}
+.tile:not([style*="--img"])::before,.prod:not([style*="--img"])::before,
+.domain:not([style*="--img"])::before{background-size:64px;background-color:var(--muted)}
+/* Skydio nests its own .prod__media — suppress the band so we never stack two */
+.prod:has(.prod__media)::before{content:none!important}
+/* re-pad the copy now that the container padding is gone */
+.tile > .tile__body{padding:clamp(16px,1.8vw,24px)!important;width:auto!important}
+.prod > h3,.prod > p,.prod > .btn,.prod > span,
+.domain > *:not(svg){
+  padding-inline:clamp(16px,1.8vw,24px)!important;
+}
+.prod > h3,.domain > .domain__n{padding-top:clamp(16px,1.8vw,22px)!important;margin-bottom:6px!important}
+.prod > .btn,.domain > p:last-child{margin-bottom:clamp(16px,1.8vw,24px)!important}
+.prod > .btn{align-self:flex-start;margin-inline:clamp(16px,1.8vw,24px)!important;padding-inline:18px!important}
+.domain__n{margin-bottom:4px!important}
+.tile__body h3,.prod h3,.domain h3{color:var(--foreground)!important}
+.tile__body .go,.prod p,.domain p{color:var(--muted-foreground)!important}
+.tile__body .go{color:var(--primary)!important;border-bottom-color:var(--primary)!important}
+.corner::before,.corner::after{border-color:var(--border)!important}
+
+/* hide the Anduril boot splash — marketing flash, not the 3Lines aesthetic */
+.boot{display:none!important}
+/* hide the Palantir marquee — motion for its own sake */
+.ticker{background:var(--card)!important;border-block:1px solid var(--border)!important}
+.ticker__track{animation:none!important;flex-wrap:wrap;width:auto!important}
+.ticker__item{border-right:1px solid var(--border)!important;padding-block:6px}
+.ticker__item span{color:var(--muted-foreground)!important;font-size:14px!important}
+
+/* ============================================================================
+   4. Chrome — header, nav, footer
+   ============================================================================ */
+.utility,.banner{
+  background:var(--card)!important;color:var(--muted-foreground)!important;
+  border-bottom:1px solid var(--border)!important;
+}
+.banner .tag{border-color:var(--border)!important;color:var(--muted-foreground)!important}
+.masthead,.hdr{
+  background:var(--background)!important;
+  border-bottom:1px solid var(--border)!important;
+  backdrop-filter:none!important;box-shadow:none!important;
+  position:sticky!important;top:0;height:auto!important;
+}
+.masthead__inner,.hdr__inner{min-height:64px!important}
+.hdr__nav > a,.hdr__nav > button,.hdr__nav a,.menu-toggle,.utility a,
+.hdr__util a,.megatab,.storytab,.rail__btn,.plattab{
+  color:var(--foreground)!important;
+  text-transform:none!important;
+  letter-spacing:normal!important;
+  font-family:var(--font-sans)!important;
+  font-size:14px!important;font-weight:500!important;
+}
+.hdr__nav > a::after,.hdr__nav > button::after{background:var(--primary)!important}
+.brand__name,.brand__sub{color:var(--foreground)!important;text-transform:none!important}
+.brand__sub{color:var(--muted-foreground)!important}
+
+/* 3Lines wordmark replaces every clone's own mark */
+.brand,.ng-logo,.hdr__logo,.ftr__logo{
+  display:inline-flex!important;align-items:center;gap:10px;
+}
+.brand > svg,.ng-logo > svg,.hdr__logo > svg,.ftr__logo > svg,
+.brand__mark,.brand__txt{display:none!important}
+.brand::before,.ng-logo::before,.hdr__logo::before,.ftr__logo::before{
+  content:"";display:block;
+  width:132px;height:46px;
+  background:var(--logo-wordmark) left center/contain no-repeat;
+}
+html.dark .brand::before,html.dark .ng-logo::before,
+html.dark .hdr__logo::before,html.dark .ftr__logo::before{filter:brightness(0) invert(1)}
+.ftr .ftr__logo::before,.footer svg{filter:brightness(0) invert(1)}
+
+.navpanel,.drop,.mega,.subnav,.mobnav,.drawer,.mnav{
+  background:var(--background)!important;
+  border-color:var(--border)!important;
+  backdrop-filter:none!important;
+}
+.navcol > a,.navcol__title,.drop h4,.mega h4,.subnav h4,.drawer h4{
+  color:var(--foreground)!important;text-transform:none!important;
+  border-bottom-color:var(--border)!important;font-size:13px!important;
+  letter-spacing:normal!important;
+}
+.navcol li a,.drop li a,.mega li a,.subnav li a,.mobnav a,.drawer a,.mnav a{
+  color:var(--muted-foreground)!important;text-transform:none!important;
+  font-size:15px!important;letter-spacing:normal!important;
+}
+.navcol li a:hover,.drop li a:hover,.mega li a:hover,.subnav li a:hover,
+.mobnav a:hover,.drawer a:hover,.mnav a:hover{color:var(--primary)!important}
+
+.footer,.ftr{
+  background:var(--card)!important;color:var(--muted-foreground)!important;
+  border-top:1px solid var(--border)!important;
+}
+.footer h4,.ftr h4{color:var(--foreground)!important;text-transform:uppercase!important;
+  font-family:var(--font-mono)!important;font-size:10.5px!important;letter-spacing:.1em!important}
+.footer a,.ftr a,.footer li a,.ftr li a{color:var(--muted-foreground)!important;text-transform:none!important}
+.footer a:hover,.ftr a:hover,.footer li a:hover,.ftr li a:hover{color:var(--primary)!important}
+.footer__bar,.ftr__bar,.ftr__social svg,.utility__social svg{color:var(--muted-foreground)!important}
+.ftr__social svg,.utility__social svg{fill:var(--muted-foreground)!important}
+.ftr__social a:hover svg,.utility__social a:hover svg{fill:var(--primary)!important}
+.tribal svg,.tribal em{color:var(--muted-foreground)!important}
+
+/* ============================================================================
+   5. Controls — one accent, radius scale, no gradients
+   ============================================================================ */
+.btn,.pill,.lnk,.arrowlink,.btn-careers,.card__more,.hwcard .go,
+.prod .go,.ncard__more,.storytab,.go{
+  font-family:var(--font-sans)!important;
+  text-transform:none!important;
+  letter-spacing:normal!important;
+  border-radius:var(--radius)!important;
+  font-size:14px!important;font-weight:500!important;
+}
+.btn,.pill,.btn-careers{
+  background:var(--primary)!important;color:var(--primary-foreground)!important;
+  border:1px solid var(--primary)!important;
+  padding:10px 18px!important;
+  box-shadow:none!important;transform:none!important;
+}
+.btn:hover,.pill:hover,.btn-careers:hover{
+  background:color-mix(in oklab,var(--primary) 88%,black)!important;
+  border-color:color-mix(in oklab,var(--primary) 88%,black)!important;
+  color:var(--primary-foreground)!important;transform:none!important;
+}
+.btn--ghost,.btn--outline,.btn--wire,.btn--onDark,.pill:not(.pill--solid),
+.btn--dark,.btn--secondary{
+  background:transparent!important;color:var(--foreground)!important;
+  border:1px solid var(--border)!important;
+}
+.btn--ghost:hover,.btn--outline:hover,.btn--wire:hover,.btn--onDark:hover,
+.pill:not(.pill--solid):hover,.btn--dark:hover{
+  background:var(--muted)!important;color:var(--foreground)!important;
+  border-color:var(--border)!important;
+}
+.lnk,.arrowlink,.card__more,.ncard__more,.go,.hwcard .go,.prod .go{
+  background:none!important;border:0!important;border-bottom:1px solid var(--primary)!important;
+  color:var(--primary)!important;padding:0 0 2px!important;border-radius:0!important;
+}
+.lnk:hover,.arrowlink:hover,.card__more:hover,.ncard__more:hover{color:var(--primary)!important}
+.btn svg,.pill svg,.lnk svg,.arrowlink svg,.go svg{fill:currentColor!important}
+
+/* cards: no coloured left borders, single radius, hairline borders */
+.card,.hwcard,.ncard,.pcard,.prod,.story,.fig,.stat,.path,.linkcard,
+.loc,.regdata,.domain,.tile,.plat,.certs li{
+  border:1px solid var(--border)!important;
+  border-left-width:1px!important;
+  border-top-width:1px!important;
+  border-radius:var(--radius)!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+.card:hover,.hwcard:hover,.ncard:hover,.prod:hover,.story:hover,
+.pcard:hover,.path:hover,.tile:hover,.domain:hover{
+  background:var(--muted)!important;transform:none!important;box-shadow:none!important;
+}
+.certs li{border-left:1px solid var(--border)!important}
+.certs .seal{fill:var(--primary)!important}
+.acc__icon{border-color:var(--border)!important;border-radius:var(--radius-sm)!important}
+.acc__icon::before,.acc__icon::after{background:var(--primary)!important}
+.acc__btn{color:var(--foreground)!important;font-size:18px!important;font-weight:600!important}
+.acc__btn:hover{color:var(--primary)!important}
+.ticks li::before{border-color:var(--primary)!important}
+.prose ul li::before{background:var(--primary)!important;color:var(--primary)!important}
+
+/* section rules and dividers */
+.h2--rule::after,.kicker::after,.kick::after,.lab::after,.rule::after,
+.sec__head::after{background:var(--border)!important}
+.h2--rule::after{background:var(--primary)!important;height:2px!important;width:40px!important}
+.stat__num,.fig__n,.figure__num,.counter__n{color:var(--primary)!important;font-weight:700!important}
+
+/* forms */
+.field input,.field textarea,.field select{
+  background:var(--background)!important;color:var(--foreground)!important;
+  border:1px solid var(--input)!important;border-radius:var(--radius)!important;
+  font-family:var(--font-sans)!important;
+}
+.field input:focus,.field textarea:focus,.field select:focus{
+  border-color:var(--primary)!important;box-shadow:0 0 0 3px color-mix(in oklab,var(--primary) 22%,transparent)!important;
+}
+.field label{color:var(--muted-foreground)!important;font-family:var(--font-mono)!important;
+  font-size:10.5px!important;letter-spacing:.08em!important}
+.form-success,.ok{background:var(--muted)!important;color:var(--foreground)!important;
+  border:1px solid var(--border)!important;border-radius:var(--radius)!important}
+.modal__box{background:var(--card)!important;border:1px solid var(--border)!important;
+  border-radius:var(--radius-lg)!important}
+.modal{background:oklch(0 0 0 / .45)!important}
+
+/* misc component resets */
+.totop{background:var(--primary)!important;border-radius:var(--radius)!important;box-shadow:var(--shadow-md)!important}
+.dot span,.dot[aria-selected="true"] span{background:var(--primary)!important}
+.dot{background:var(--border)!important}
+.rail__btn[aria-selected="true"],.plattab[aria-selected="true"],
+.megatab[aria-selected="true"],.storytab[aria-selected="true"]{color:var(--primary)!important;border-top-color:var(--primary)!important}
+.storytab span.bar,.plattab i,.megatab svg{background:var(--primary)!important}
+.rail,.plattabs,.storytabs li + li,.plats,.speclist div{border-color:var(--border)!important}
+.logos div{color:var(--foreground)!important}
+.quote{font-family:var(--font-sans)!important;font-style:normal!important}
+/* skip links: off-canvas until focused (some clones wrap them in a sized box) */
+.skip,.skips a{
+  position:absolute!important;left:12px!important;top:-80px!important;
+  background:var(--primary)!important;color:var(--primary-foreground)!important;
+  border-radius:var(--radius)!important;padding:10px 18px!important;z-index:999!important;
+}
+.skip:focus,.skips a:focus{top:12px!important}
+.skips{position:absolute!important;width:0;height:0;overflow:visible}
+
+/* ============================================================================
+   6. Theme toggle (system ships light + dark; give the user the switch)
+   ============================================================================ */
+.tl-theme{
+  position:fixed;right:16px;bottom:16px;z-index:500;
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--card);color:var(--foreground);
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:9px 14px;font-family:var(--font-sans);font-size:13px;font-weight:500;
+  box-shadow:var(--shadow-md);cursor:pointer;
+}
+.tl-theme:hover{background:var(--muted)}
+.tl-theme svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.75}
+
+/* banner strip identifying the build */
+.tl-note{
+  background:var(--muted);border-bottom:1px solid var(--border);
+  color:var(--muted-foreground);font-family:var(--font-mono);
+  font-size:11px;letter-spacing:.06em;padding:7px 0;text-align:center;
+}
+.tl-note b{color:var(--foreground);font-weight:600}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}

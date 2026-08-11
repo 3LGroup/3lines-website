@@ -1,0 +1,68 @@
+{
+  "route": "/news/advancing-radar-sensor-support",
+  "locale": "ar",
+  "slug": "news--advancing-radar-sensor-support",
+  "source": [
+    "posts.json"
+  ],
+  "title": "تطوير استدامة الرادار وأنظمة C4I والاتصالات التكتيكية",
+  "description": "توسيع قدراتنا في تركيب ومعايرة وصيانة أنظمة الرادار وأجهزة الاستشعار لتطبيقات المراقبة والحركة الجوية.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "الرئيسية",
+          "href": "/"
+        },
+        {
+          "label": "مستجدات",
+          "href": "/news"
+        },
+        {
+          "label": "تطوير استدامة الرادار وأنظمة C4I والاتصالات التكتيكية"
+        }
+      ],
+      "heading": "تطوير استدامة الرادار وأنظمة C4I والاتصالات التكتيكية"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "التكنولوجيا"
+      },
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/news/advancing-radar-sensor-support.jpg')",
+            "art": null
+          },
+          "lede": "توسيع قدراتنا في تركيب ومعايرة وصيانة أنظمة الرادار وأجهزة الاستشعار لتطبيقات المراقبة والحركة الجوية."
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "ابدأ محادثة",
+      "cta": {
+        "label": "تواصل معنا",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "ثريلاينز آدفانسد تكنولجيز",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

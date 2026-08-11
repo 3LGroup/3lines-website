@@ -1,0 +1,145 @@
+{
+  "route": "/services/training-and-capability-enablement",
+  "locale": "en",
+  "slug": "services--training-and-capability-enablement",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "Training, Simulation & Capability Enablement",
+  "description": "Military and civilian training delivery, knowledge transfer, and operational capability development.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Services",
+          "href": "/services"
+        },
+        {
+          "label": "Training, Simulation & Capability Enablement"
+        }
+      ],
+      "heading": "Training, Simulation & Capability Enablement"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Overview"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "Building national capability, not just delivering training",
+          "lede": "Military and civilian training delivery, knowledge transfer and operational capability development — including advanced English language training from highly experienced trainers. Through NARS, the National Academy for Radar and Space Communications, and partnerships with national universities, we qualify Saudi talent in radar and communications systems, fiber optics, data centres, navigation systems and electronic protection.",
+          "glanceTitle": "At a glance",
+          "glance": [
+            "Military and civilian training",
+            "English language training",
+            "NARS Academy · +500 trainees",
+            "Knowledge transfer and localization"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-xr-lab.jpg')",
+            "art": null
+          },
+          "heading": "How we deliver it",
+          "checklist": [
+            {
+              "title": "Technical training",
+              "text": "Hands-on programs in radar, communications, fiber optics and data centres."
+            },
+            {
+              "title": "English language training",
+              "text": "Advanced English instruction delivered by highly experienced trainers."
+            },
+            {
+              "title": "Simulation-based training",
+              "text": "Practical training built on simulation and hands-on application."
+            },
+            {
+              "title": "Knowledge transfer",
+              "text": "Skills transfer that leaves lasting capability inside the Kingdom."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Capabilities"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Technical training",
+              "text": "Hands-on programs in radar, communications, fiber optics and data centres."
+            },
+            {
+              "title": "English language training",
+              "text": "Advanced English instruction delivered by highly experienced trainers."
+            },
+            {
+              "title": "Simulation-based training",
+              "text": "Practical training built on simulation and hands-on application."
+            },
+            {
+              "title": "Knowledge transfer",
+              "text": "Skills transfer that leaves lasting capability inside the Kingdom."
+            },
+            {
+              "title": "University partnerships",
+              "text": "Joint programs with King Saud, Princess Nourah, Prince Sattam and Qassim."
+            },
+            {
+              "title": "NARS Academy",
+              "text": "A non-profit academy bridging the skills gap in technical and defense sectors."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

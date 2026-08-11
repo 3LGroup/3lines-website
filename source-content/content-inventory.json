@@ -1,0 +1,2807 @@
+{
+  "$comment": "DERIVED FILE — regenerate with `node docs/build-content-inventory.js`. Edit the sources listed in _sources, never this file.",
+  "generated": {
+    "services": 10,
+    "pages": 15,
+    "posts": 4,
+    "partners": 39,
+    "tags": 3
+  },
+  "_sources": {
+    "content/*.json": "CMS-editable at /cms — services, pages, posts, partners, siteInfo, constants, tags",
+    "assets/service-details.json": "capability detail pages (oh/op/glance/caps)",
+    "assets/enhance.js": "copy with no CMS home — Why-3Lines slider, certifications, section eyebrows",
+    "{lang}/about.html": "About pillars, vision, core values (prerendered)",
+    "build/assets/hero-*.js": "hero rotating words (compiled bundle)"
+  },
+  "siteWide": {
+    "siteInfo": {
+      "companyDescription": {
+        "en": "3Lines Advanced Technologies Group was established in 2019 in alignment with Saudi Vision 2030 to localize military and civilian services within the Kingdom. The Group delivers integrated supply chain and technical services — procurement, logistics, maintenance, repair and manufacturing — supporting operational readiness across the defense and advanced technology sectors, locally and internationally.",
+        "ar": "تأسست مجموعة 3LINES ADVANCED TECHNOLOGIES في عام 2019 تماشيًا مع رؤية السعودية 2030 بهدف توطين الخدمات العسكرية والمدنية داخل المملكة. تقدم المجموعة خدمات متكاملة في سلاسل الإمداد والخدمات الفنية — المشتريات والخدمات اللوجستية والصيانة والإصلاح والتصنيع — دعمًا للجاهزية التشغيلية في قطاعي الدفاع والتقنيات المتقدمة محليًا ودوليًا.",
+        "ko": "3Lines Advanced Technologies Group은 사우디 비전 2030에 맞춰 2019년 설립되었습니다. 조달, 물류, 정비, 수리, 제조를 아우르는 통합 공급망 및 기술 서비스를 통해 방위 및 첨단 기술 분야의 운영 준비태세를 지원합니다.",
+        "ja": "3Lines Advanced Technologies Groupは、サウジ・ビジョン2030に沿い2019年に設立されました。調達・物流・保守・修理・製造を包含する統合サプライチェーンおよび技術サービスを提供し、防衛および先端技術分野の運用即応性を支えます。"
+      },
+      "address": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
+      "commercialRegNo": "1010589885",
+      "vatRegNo": "310407303200003",
+      "linkedIn": "https://www.linkedin.com/company/3lines",
+      "copyrightYear": 2026
+    },
+    "constants": {
+      "behance": null,
+      "description_ar": "تأسست مجموعة 3LINES ADVANCED TECHNOLOGIES في عام 2019 تماشيًا مع رؤية السعودية 2030 بهدف توطين الخدمات العسكرية والمدنية داخل المملكة. تقدم المجموعة خدمات متكاملة في سلاسل الإمداد والخدمات الفنية — المشتريات والخدمات اللوجستية والصيانة والإصلاح والتصنيع — دعمًا للجاهزية التشغيلية في قطاعي الدفاع والتقنيات المتقدمة محليًا ودوليًا.",
+      "description_en": "3Lines Advanced Technologies Group was established in 2019 in alignment with Saudi Vision 2030 to localize military and civilian services within the Kingdom. The Group delivers integrated supply chain and technical services — procurement, logistics, maintenance, repair and manufacturing — supporting operational readiness across the defense and advanced technology sectors, locally and internationally.",
+      "email": "info@3lines.com.sa",
+      "facebook": null,
+      "favicon_uri": "/assets/logos/favicon.png",
+      "github": null,
+      "instagram": null,
+      "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
+      "linkedin": "https://www.linkedin.com/company/3lines",
+      "logo_uri": "assets/logos/logo.png",
+      "meta": "",
+      "name_ar": "ثريلاينز آدفانسد تكنولجيز",
+      "name_en": "3Lines Advanced Technologies Company",
+      "phone": "+966112252433",
+      "pinterest": null,
+      "skype": null,
+      "snapchat": null,
+      "telegram": null,
+      "tiktok": null,
+      "twitter": null,
+      "website": "https://3lines.com.sa",
+      "whatsapp": null,
+      "youtube": null,
+      "name_ko": "쓰리라인즈 어드밴스드 테크놀로지스",
+      "name_ja": "スリーラインズ アドバンスト テクノロジーズ"
+    }
+  },
+  "homepage": {
+    "heroRotatingWords": {
+      "en": [
+        "Advanced Technologies",
+        "Extended Reality",
+        "MRO",
+        "Logistics"
+      ],
+      "ar": [
+        "التقنيات المتقدمة",
+        "الواقع الممتد/المعزز",
+        "الصيانة والإصلاح والتشغيل",
+        "خدمات لوجيستية"
+      ],
+      "ko": [
+        "첨단 기술",
+        "확장 현실（XR）",
+        "유지보수, 수리 및 운영(MRO)",
+        "물류"
+      ],
+      "ja": [
+        "先端技術",
+        "拡張現実（XR）",
+        "保守・修理・運用（MRO）",
+        "物流"
+      ]
+    },
+    "whyThreeLinesSlider": [
+      {
+        "heading": {
+          "en": "Built to sustain, trusted to operate",
+          "ar": "مصممة للاستدامة، موثوقة في التشغيل",
+          "ja": "持続を支え、運用で信頼される",
+          "ko": "지속을 위해 설계되고 운영에서 신뢰받는"
+        },
+        "sub": {
+          "en": "Localizing defense and advanced technology in the Kingdom since 2019.",
+          "ar": "توطين الدفاع والتقنيات المتقدمة داخل المملكة منذ 2019.",
+          "ja": "2019年以来、王国内で防衛と先端技術の国産化を進めています。",
+          "ko": "2019년부터 왕국 내 방위 및 첨단 기술의 현지화를 추진합니다."
+        }
+      },
+      {
+        "heading": {
+          "en": "Radar and C4I sustained in-Kingdom",
+          "ar": "استدامة الرادار وأنظمة C4I داخل المملكة",
+          "ja": "王国内でのレーダーとC4Iの維持",
+          "ko": "왕국 내 레이더 및 C4I 유지"
+        },
+        "sub": {
+          "en": "4th-line maintenance under an MLA with Northrop Grumman.",
+          "ar": "صيانة حتى المستوى الرابع بموجب اتفاقية MLA مع نورثروب جرومان.",
+          "ja": "ノースロップ・グラマンとのMLAに基づく第4次レベル整備。",
+          "ko": "노스롭 그럼먼과의 MLA에 따른 4차 정비."
+        }
+      },
+      {
+        "heading": {
+          "en": "Three core operational pillars",
+          "ar": "ثلاث ركائز تشغيلية أساسية",
+          "ja": "3つの中核的な運用の柱",
+          "ko": "3개의 핵심 운영 축"
+        },
+        "sub": {
+          "en": "Supply chain management, maintenance, and repair and manufacturing.",
+          "ar": "إدارة سلسلة الإمداد، والصيانة، والإصلاح والتصنيع.",
+          "ja": "サプライチェーンマネジメント、保守、修理・製造。",
+          "ko": "공급망 관리, 정비, 수리 및 제조."
+        }
+      },
+      {
+        "heading": {
+          "en": "+30 strategic partners",
+          "ar": "أكثر من 30 شريكًا استراتيجيًا",
+          "ja": "30以上の戦略的パートナー",
+          "ko": "30개 이상의 전략적 파트너"
+        },
+        "sub": {
+          "en": "Delivering across Saudi Arabia, the USA, Mexico, Poland and the Czech Republic.",
+          "ar": "ننفّذ في السعودية والولايات المتحدة والمكسيك وبولندا وجمهورية التشيك.",
+          "ja": "サウジアラビア、米国、メキシコ、ポーランド、チェコで展開。",
+          "ko": "사우디아라비아, 미국, 멕시코, 폴란드, 체코에서 수행."
+        }
+      }
+    ]
+  },
+  "about": {
+    "en": {
+      "pillars": [
+        {
+          "title": "Supply Chain Management",
+          "body": "End-to-end supply chain — strategic sourcing, procurement, secure warehousing, inventory management and delivery to military and civilian platforms."
+        },
+        {
+          "title": "Maintenance",
+          "body": "Sustainment of radar, surveillance, C2/C3/C4I command and control systems, ground support and defense systems through in-country capabilities."
+        },
+        {
+          "title": "Repair & Manufacturing",
+          "body": "Localized diagnostic and repair workshops, plus reverse engineering and manufacturing of components for advanced systems."
+        }
+      ],
+      "vision": [
+        "To be the leading supply chain and advanced technology company in Saudi Arabia — sustaining defense and security systems at high availability, alongside Tier One global partners, with localization built into everything we deliver.",
+        "That work already spans five countries — Saudi Arabia, the United States, Mexico, Poland and the Czech Republic — turning international partnerships into transferred knowledge, national capability and scalable solutions inside the Kingdom."
+      ],
+      "values": [
+        {
+          "title": "Trusted Partnerships",
+          "body": "We build long-term relationships with Tier One global and local partners based on transparency, integrity, and mutual success."
+        },
+        {
+          "title": "Operational Excellence",
+          "body": "We deliver reliable, high-availability solutions through disciplined execution, quality-driven processes, and end-to-end supply chain mastery."
+        },
+        {
+          "title": "National Commitment",
+          "body": "We are committed to Saudi Vision 2030, localization, capability development, and strengthening national sovereignty across defense and civilian sectors."
+        },
+        {
+          "title": "Accountability & Integrity",
+          "body": "We operate with the highest ethical standards, taking full ownership of our commitments, performance, and results."
+        },
+        {
+          "title": "Innovation & Technology Enablement",
+          "body": "We continuously evolve through advanced technologies, digital transformation, and XR-driven solutions to meet future defense and security needs."
+        },
+        {
+          "title": "Knowledge Transfer & Localization",
+          "body": "We prioritize workforce development, skills transfer, and sustainable local manufacturing to create lasting national impact."
+        }
+      ]
+    },
+    "ar": {
+      "pillars": [
+        {
+          "title": "إدارة سلسلة الإمداد",
+          "body": "سلسلة إمداد متكاملة — التوريد الاستراتيجي والمشتريات والتخزين الآمن وإدارة المخزون والتسليم للمنصات العسكرية والمدنية."
+        },
+        {
+          "title": "الصيانة",
+          "body": "استدامة أنظمة الرادار والمراقبة وأنظمة القيادة والسيطرة C2/C3/C4I ومعدات الدعم الأرضي والأنظمة الدفاعية عبر قدرات محلية."
+        },
+        {
+          "title": "الإصلاح والتصنيع",
+          "body": "ورش تشخيص وإصلاح موطّنة، إضافة إلى الهندسة العكسية وتصنيع المكوّنات للأنظمة المتقدمة."
+        }
+      ],
+      "vision": [
+        "أن نكون الشركة الرائدة في سلاسل الإمداد والتقنيات المتقدمة في المملكة العربية السعودية — باستدامة أنظمة الدفاع والأمن بجاهزية عالية، بالشراكة مع شركات الفئة الأولى عالمياً، مع التوطين في صميم كل ما نقدمه.",
+        "ويمتد هذا العمل اليوم إلى خمس دول — المملكة العربية السعودية، والولايات المتحدة الأمريكية، والمكسيك، وبولندا، وجمهورية التشيك — محوّلين الشراكات الدولية إلى نقل للمعرفة وقدرات وطنية وحلول قابلة للتوسع داخل المملكة."
+      ],
+      "values": [
+        {
+          "title": "الشراكات الموثوقة",
+          "body": "نبني علاقات طويلة الأمد مع الشركاء العالميين والمحليين من الفئة الأولى على أساس الشفافية والنزاهة والنجاح المشترك."
+        },
+        {
+          "title": "التميّز التشغيلي",
+          "body": "نقدّم حلولاً موثوقة وعالية الجاهزية من خلال التنفيذ المنضبط والعمليات القائمة على الجودة وإتقان سلسلة الإمداد من طرف إلى طرف."
+        },
+        {
+          "title": "الالتزام الوطني",
+          "body": "نلتزم برؤية السعودية 2030 والتوطين وتطوير القدرات وتعزيز السيادة الوطنية في القطاعين الدفاعي والمدني."
+        },
+        {
+          "title": "المساءلة والنزاهة",
+          "body": "نعمل وفق أعلى المعايير الأخلاقية، ونتحمّل المسؤولية الكاملة عن التزاماتنا وأدائنا ونتائجنا."
+        },
+        {
+          "title": "الابتكار وتمكين التقنية",
+          "body": "نتطوّر باستمرار عبر التقنيات المتقدمة والتحول الرقمي وحلول الواقع الممتد لتلبية احتياجات الدفاع والأمن المستقبلية."
+        },
+        {
+          "title": "نقل المعرفة والتوطين",
+          "body": "نعطي الأولوية لتطوير الكوادر ونقل المهارات والتصنيع المحلي المستدام لتحقيق أثر وطني دائم."
+        }
+      ]
+    },
+    "ja": {
+      "pillars": [],
+      "vision": [],
+      "values": []
+    },
+    "ko": {
+      "pillars": [],
+      "vision": [],
+      "values": []
+    }
+  },
+  "services": [
+    {
+      "slug": "radar-electronics-communications-sustainment",
+      "legacySlug": "radar-system",
+      "icon": "radar",
+      "hue": "#5cc0ff",
+      "title": {
+        "en": "Radar Maintenance, Electronics & Tactical Communications Sustainment",
+        "ar": "صيانة الرادارات والإلكترونيات واستدامة الاتصالات التكتيكية",
+        "ko": "레이더 정비, 전자 및 전술 통신 유지",
+        "ja": "レーダー整備、電子機器および戦術通信の維持"
+      },
+      "description": {
+        "en": "Sustainment, diagnostics, and repair of radar, surveillance, C4I, and secure communication systems through in-country capabilities.",
+        "ar": "استدامة وتشخيص وإصلاح أنظمة الرادار والمراقبة والقيادة والسيطرة (C4I) والاتصالات الآمنة عبر قدرات محلية داخل المملكة.",
+        "ko": "국내 역량을 통한 레이더, 감시, C4I 및 보안 통신 시스템의 유지, 진단 및 수리.",
+        "ja": "国内能力によるレーダー、監視、C4I、セキュア通信システムの維持・診断・修理。"
+      },
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      },
+      "detail": {
+        "en": {
+          "oh": "Radar and C4I sustainment, inside the Kingdom",
+          "op": "3Lines maintains radar systems to 4th-line level inside Saudi Arabia, including the AN/TPS-78 for the Royal Saudi Air Force. We hold a Maintenance Level Agreement (MLA) with Northrop Grumman, the radar’s manufacturer, enabling in-country sustainment that raises operational readiness and localizes advanced technical capability. Our teams cover radar, surveillance, C4I and secure tactical communications end to end — diagnostics, repair, calibration and return to service.",
+          "glance": [
+            "4th-line radar maintenance in-Kingdom",
+            "MLA with Northrop Grumman",
+            "FPS-117 · GM-200 · TPS-78 · TPQ-53",
+            "Radar, C4I and secure communications"
+          ],
+          "caps": [
+            {
+              "t": "Radar sustainment",
+              "d": "Scheduled and corrective maintenance for surveillance and air-defense radars."
+            },
+            {
+              "t": "Fault isolation and repair",
+              "d": "Diagnostics down to module and component level in local workshops."
+            },
+            {
+              "t": "C4I systems support",
+              "d": "Command, control, communications and intelligence systems kept mission-ready."
+            },
+            {
+              "t": "Secure communications",
+              "d": "Sustainment of tactical and encrypted communication systems."
+            },
+            {
+              "t": "Calibration and validation",
+              "d": "Test, alignment and verification before return to service."
+            },
+            {
+              "t": "Field service teams",
+              "d": "On-site support at operating locations across the Kingdom."
+            }
+          ]
+        },
+        "ar": {
+          "oh": "استدامة الرادارات وأنظمة C4I داخل المملكة",
+          "op": "تقوم 3Lines بصيانة منظومات الرادارات حتى المستوى الرابع داخل المملكة العربية السعودية، بما في ذلك رادار AN/TPS-78 لصالح القوات الجوية الملكية السعودية. وقد حصلت الشركة على اتفاقية مستوى الصيانة (MLA) من شركة NORTHROP GRUMMAN المصنّعة للرادار، بما يعزز الجاهزية التشغيلية ويدعم توطين القدرات الفنية المتقدمة.",
+          "glance": [
+            "صيانة رادار حتى المستوى الرابع داخل المملكة",
+            "اتفاقية MLA مع NORTHROP GRUMMAN",
+            "FPS-117 · GM-200 · TPS-78 · TPQ-53",
+            "الرادار وأنظمة C4I والاتصالات الآمنة"
+          ],
+          "caps": [
+            {
+              "t": "استدامة الرادارات",
+              "d": "صيانة دورية وتصحيحية لرادارات المراقبة والدفاع الجوي."
+            },
+            {
+              "t": "عزل الأعطال والإصلاح",
+              "d": "تشخيص حتى مستوى الوحدات والمكوّنات في ورش محلية."
+            },
+            {
+              "t": "دعم أنظمة C4I",
+              "d": "إبقاء أنظمة القيادة والسيطرة والاتصالات جاهزة للمهمة."
+            },
+            {
+              "t": "الاتصالات الآمنة",
+              "d": "استدامة أنظمة الاتصال التكتيكية والمشفّرة."
+            },
+            {
+              "t": "المعايرة والتحقق",
+              "d": "اختبار ومحاذاة وتحقق قبل الإعادة للخدمة."
+            },
+            {
+              "t": "فرق الخدمة الميدانية",
+              "d": "دعم موقعي في مواقع التشغيل في جميع أنحاء المملكة."
+            }
+          ]
+        },
+        "ja": {
+          "oh": "Radar and C4I sustainment, inside the Kingdom",
+          "op": "3Lines maintains radar systems to 4th-line level inside Saudi Arabia, including the AN/TPS-78 for the Royal Saudi Air Force. We hold a Maintenance Level Agreement (MLA) with Northrop Grumman, the radar’s manufacturer, enabling in-country sustainment that raises operational readiness and localizes advanced technical capability. Our teams cover radar, surveillance, C4I and secure tactical communications end to end — diagnostics, repair, calibration and return to service.",
+          "glance": [
+            "4th-line radar maintenance in-Kingdom",
+            "MLA with Northrop Grumman",
+            "FPS-117 · GM-200 · TPS-78 · TPQ-53",
+            "Radar, C4I and secure communications"
+          ],
+          "caps": [
+            {
+              "t": "Radar sustainment",
+              "d": "Scheduled and corrective maintenance for surveillance and air-defense radars."
+            },
+            {
+              "t": "Fault isolation and repair",
+              "d": "Diagnostics down to module and component level in local workshops."
+            },
+            {
+              "t": "C4I systems support",
+              "d": "Command, control, communications and intelligence systems kept mission-ready."
+            },
+            {
+              "t": "Secure communications",
+              "d": "Sustainment of tactical and encrypted communication systems."
+            },
+            {
+              "t": "Calibration and validation",
+              "d": "Test, alignment and verification before return to service."
+            },
+            {
+              "t": "Field service teams",
+              "d": "On-site support at operating locations across the Kingdom."
+            }
+          ]
+        },
+        "ko": {
+          "oh": "Radar and C4I sustainment, inside the Kingdom",
+          "op": "3Lines maintains radar systems to 4th-line level inside Saudi Arabia, including the AN/TPS-78 for the Royal Saudi Air Force. We hold a Maintenance Level Agreement (MLA) with Northrop Grumman, the radar’s manufacturer, enabling in-country sustainment that raises operational readiness and localizes advanced technical capability. Our teams cover radar, surveillance, C4I and secure tactical communications end to end — diagnostics, repair, calibration and return to service.",
+          "glance": [
+            "4th-line radar maintenance in-Kingdom",
+            "MLA with Northrop Grumman",
+            "FPS-117 · GM-200 · TPS-78 · TPQ-53",
+            "Radar, C4I and secure communications"
+          ],
+          "caps": [
+            {
+              "t": "Radar sustainment",
+              "d": "Scheduled and corrective maintenance for surveillance and air-defense radars."
+            },
+            {
+              "t": "Fault isolation and repair",
+              "d": "Diagnostics down to module and component level in local workshops."
+            },
+            {
+              "t": "C4I systems support",
+              "d": "Command, control, communications and intelligence systems kept mission-ready."
+            },
+            {
+              "t": "Secure communications",
+              "d": "Sustainment of tactical and encrypted communication systems."
+            },
+            {
+              "t": "Calibration and validation",
+              "d": "Test, alignment and verification before return to service."
+            },
+            {
+              "t": "Field service teams",
+              "d": "On-site support at operating locations across the Kingdom."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "government-relations-and-life-support",
+      "legacySlug": "us-government-support-services",
+      "icon": "shield",
+      "hue": "#4f8cff",
+      "title": {
+        "en": "Government Relations, Personnel Consulting & Life Support Services",
+        "ar": "العلاقات الحكومية واستشارات الكوادر وخدمات الإعاشة المتكاملة",
+        "ko": "정부 관계, 인력 컨설팅 및 생활 지원 서비스",
+        "ja": "政府渉外、人材コンサルティングおよびライフサポートサービス"
+      },
+      "description": {
+        "en": "Regulatory coordination, manpower consulting, and integrated life support services.",
+        "ar": "التنسيق التنظيمي واستشارات القوى العاملة وخدمات الإعاشة المتكاملة.",
+        "ko": "규제 조정, 인력 컨설팅 및 통합 생활 지원 서비스.",
+        "ja": "規制対応の調整、人材コンサルティング、統合ライフサポートサービス。"
+      },
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      },
+      "detail": {
+        "en": {
+          "oh": "Regulatory coordination and life support, handled",
+          "op": "We manage the government-facing side of complex programs — regulatory coordination, permits and approvals — alongside manpower consulting and integrated life support services. This lets Tier One primes and international partners operate in the Kingdom without carrying the administrative and logistical overhead themselves.",
+          "glance": [
+            "Regulatory coordination and approvals",
+            "Manpower consulting",
+            "Integrated life support",
+            "US Government support services"
+          ],
+          "caps": [
+            {
+              "t": "Government relations",
+              "d": "Coordination with Saudi authorities on permits, approvals and compliance."
+            },
+            {
+              "t": "Personnel consulting",
+              "d": "Sourcing, qualifying and managing specialised technical manpower."
+            },
+            {
+              "t": "Life support services",
+              "d": "Accommodation, catering, transport and site services for deployed teams."
+            },
+            {
+              "t": "US Government support",
+              "d": "World-class support services delivered to US Government programs."
+            },
+            {
+              "t": "Program compliance",
+              "d": "Documentation and reporting aligned with contractual obligations."
+            },
+            {
+              "t": "In-country presence",
+              "d": "A local team that resolves issues on the ground, quickly."
+            }
+          ]
+        },
+        "ar": {
+          "oh": "التنسيق التنظيمي وخدمات الإعاشة المتكاملة",
+          "op": "نتولّى الجانب الحكومي من البرامج المعقدة — من التنسيق التنظيمي والتصاريح والموافقات — إلى جانب استشارات القوى العاملة وخدمات الإعاشة المتكاملة، بما يمكّن الشركاء الدوليين من العمل داخل المملكة بكفاءة.",
+          "glance": [
+            "التنسيق التنظيمي والموافقات",
+            "استشارات القوى العاملة",
+            "خدمات إعاشة متكاملة",
+            "خدمات دعم الحكومة الأمريكية"
+          ],
+          "caps": [
+            {
+              "t": "العلاقات الحكومية",
+              "d": "التنسيق مع الجهات السعودية بشأن التصاريح والموافقات والامتثال."
+            },
+            {
+              "t": "استشارات الكوادر",
+              "d": "استقطاب وتأهيل وإدارة الكوادر الفنية المتخصصة."
+            },
+            {
+              "t": "خدمات الإعاشة",
+              "d": "السكن والإعاشة والنقل وخدمات المواقع للفرق الميدانية."
+            },
+            {
+              "t": "دعم الحكومة الأمريكية",
+              "d": "خدمات دعم بمستوى عالمي لبرامج الحكومة الأمريكية."
+            },
+            {
+              "t": "امتثال البرامج",
+              "d": "توثيق وتقارير متوافقة مع الالتزامات التعاقدية."
+            },
+            {
+              "t": "حضور محلي",
+              "d": "فريق محلي يعالج المسائل ميدانيًا وبسرعة."
+            }
+          ]
+        },
+        "ja": {
+          "oh": "Regulatory coordination and life support, handled",
+          "op": "We manage the government-facing side of complex programs — regulatory coordination, permits and approvals — alongside manpower consulting and integrated life support services. This lets Tier One primes and international partners operate in the Kingdom without carrying the administrative and logistical overhead themselves.",
+          "glance": [
+            "Regulatory coordination and approvals",
+            "Manpower consulting",
+            "Integrated life support",
+            "US Government support services"
+          ],
+          "caps": [
+            {
+              "t": "Government relations",
+              "d": "Coordination with Saudi authorities on permits, approvals and compliance."
+            },
+            {
+              "t": "Personnel consulting",
+              "d": "Sourcing, qualifying and managing specialised technical manpower."
+            },
+            {
+              "t": "Life support services",
+              "d": "Accommodation, catering, transport and site services for deployed teams."
+            },
+            {
+              "t": "US Government support",
+              "d": "World-class support services delivered to US Government programs."
+            },
+            {
+              "t": "Program compliance",
+              "d": "Documentation and reporting aligned with contractual obligations."
+            },
+            {
+              "t": "In-country presence",
+              "d": "A local team that resolves issues on the ground, quickly."
+            }
+          ]
+        },
+        "ko": {
+          "oh": "Regulatory coordination and life support, handled",
+          "op": "We manage the government-facing side of complex programs — regulatory coordination, permits and approvals — alongside manpower consulting and integrated life support services. This lets Tier One primes and international partners operate in the Kingdom without carrying the administrative and logistical overhead themselves.",
+          "glance": [
+            "Regulatory coordination and approvals",
+            "Manpower consulting",
+            "Integrated life support",
+            "US Government support services"
+          ],
+          "caps": [
+            {
+              "t": "Government relations",
+              "d": "Coordination with Saudi authorities on permits, approvals and compliance."
+            },
+            {
+              "t": "Personnel consulting",
+              "d": "Sourcing, qualifying and managing specialised technical manpower."
+            },
+            {
+              "t": "Life support services",
+              "d": "Accommodation, catering, transport and site services for deployed teams."
+            },
+            {
+              "t": "US Government support",
+              "d": "World-class support services delivered to US Government programs."
+            },
+            {
+              "t": "Program compliance",
+              "d": "Documentation and reporting aligned with contractual obligations."
+            },
+            {
+              "t": "In-country presence",
+              "d": "A local team that resolves issues on the ground, quickly."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "power-systems-support",
+      "legacySlug": "generators-and-ups",
+      "icon": "zap",
+      "hue": "#38b6ff",
+      "title": {
+        "en": "Power Systems Support (Generators & UPS)",
+        "ar": "دعم أنظمة الطاقة (المولدات وأنظمة الطاقة غير المنقطعة)",
+        "ko": "전력 시스템 지원 (발전기 및 UPS)",
+        "ja": "電源システム支援（発電機・UPS）"
+      },
+      "description": {
+        "en": "Installation, maintenance, and lifecycle support for critical power and backup systems.",
+        "ar": "تركيب وصيانة ودعم دورة الحياة لأنظمة الطاقة الحرجة وأنظمة الطاقة الاحتياطية.",
+        "ko": "중요 전력 및 백업 시스템의 설치, 정비 및 수명주기 지원.",
+        "ja": "重要電源およびバックアップシステムの設置、保守、ライフサイクル支援。"
+      },
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      },
+      "detail": {
+        "en": {
+          "oh": "Power that does not fail",
+          "op": "Installation, maintenance and lifecycle support for generators, UPS and critical backup power. We keep continuous power behind radar sites, operations centres, workshops and infrastructure — with scheduled maintenance, accurate diagnosis, professional repair and the spare parts to back it up.",
+          "glance": [
+            "Generators and UPS systems",
+            "Installation through lifecycle support",
+            "Scheduled and corrective maintenance",
+            "Spare parts availability"
+          ],
+          "caps": [
+            {
+              "t": "Installation and commissioning",
+              "d": "Specification, installation and handover of power and backup systems."
+            },
+            {
+              "t": "Preventive maintenance",
+              "d": "Scheduled servicing that keeps power continuity uninterrupted."
+            },
+            {
+              "t": "Fault diagnosis and repair",
+              "d": "Accurate diagnosis and professional repair to minimize downtime."
+            },
+            {
+              "t": "Battery and UPS support",
+              "d": "Battery health, replacement and uninterruptible supply sustainment."
+            },
+            {
+              "t": "Load testing",
+              "d": "Verification under load so systems perform when they are needed."
+            },
+            {
+              "t": "Spare parts supply",
+              "d": "Provision of the components required to keep systems running."
+            }
+          ]
+        },
+        "ar": {
+          "oh": "طاقة لا تتوقف",
+          "op": "تركيب وصيانة ودعم دورة الحياة للمولدات وأنظمة الطاقة غير المنقطعة والطاقة الاحتياطية الحرجة، لضمان استمرارية التغذية الكهربائية خلف مواقع الرادار ومراكز العمليات والورش والبنى التحتية.",
+          "glance": [
+            "المولدات وأنظمة UPS",
+            "من التركيب إلى دعم دورة الحياة",
+            "صيانة دورية وتصحيحية",
+            "توفر قطع الغيار"
+          ],
+          "caps": [
+            {
+              "t": "التركيب والتشغيل",
+              "d": "تحديد المواصفات والتركيب والتسليم لأنظمة الطاقة."
+            },
+            {
+              "t": "الصيانة الوقائية",
+              "d": "صيانة مجدولة تحافظ على استمرارية الطاقة."
+            },
+            {
+              "t": "تشخيص الأعطال والإصلاح",
+              "d": "تشخيص دقيق وإصلاح احترافي لتقليل فترات التوقف."
+            },
+            {
+              "t": "دعم البطاريات وأنظمة UPS",
+              "d": "متابعة حالة البطاريات واستبدالها واستدامة التغذية المستمرة."
+            },
+            {
+              "t": "اختبار الأحمال",
+              "d": "التحقق تحت الحمل لضمان الأداء عند الحاجة."
+            },
+            {
+              "t": "توريد قطع الغيار",
+              "d": "توفير المكوّنات اللازمة لاستمرار التشغيل."
+            }
+          ]
+        },
+        "ja": {
+          "oh": "Power that does not fail",
+          "op": "Installation, maintenance and lifecycle support for generators, UPS and critical backup power. We keep continuous power behind radar sites, operations centres, workshops and infrastructure — with scheduled maintenance, accurate diagnosis, professional repair and the spare parts to back it up.",
+          "glance": [
+            "Generators and UPS systems",
+            "Installation through lifecycle support",
+            "Scheduled and corrective maintenance",
+            "Spare parts availability"
+          ],
+          "caps": [
+            {
+              "t": "Installation and commissioning",
+              "d": "Specification, installation and handover of power and backup systems."
+            },
+            {
+              "t": "Preventive maintenance",
+              "d": "Scheduled servicing that keeps power continuity uninterrupted."
+            },
+            {
+              "t": "Fault diagnosis and repair",
+              "d": "Accurate diagnosis and professional repair to minimize downtime."
+            },
+            {
+              "t": "Battery and UPS support",
+              "d": "Battery health, replacement and uninterruptible supply sustainment."
+            },
+            {
+              "t": "Load testing",
+              "d": "Verification under load so systems perform when they are needed."
+            },
+            {
+              "t": "Spare parts supply",
+              "d": "Provision of the components required to keep systems running."
+            }
+          ]
+        },
+        "ko": {
+          "oh": "Power that does not fail",
+          "op": "Installation, maintenance and lifecycle support for generators, UPS and critical backup power. We keep continuous power behind radar sites, operations centres, workshops and infrastructure — with scheduled maintenance, accurate diagnosis, professional repair and the spare parts to back it up.",
+          "glance": [
+            "Generators and UPS systems",
+            "Installation through lifecycle support",
+            "Scheduled and corrective maintenance",
+            "Spare parts availability"
+          ],
+          "caps": [
+            {
+              "t": "Installation and commissioning",
+              "d": "Specification, installation and handover of power and backup systems."
+            },
+            {
+              "t": "Preventive maintenance",
+              "d": "Scheduled servicing that keeps power continuity uninterrupted."
+            },
+            {
+              "t": "Fault diagnosis and repair",
+              "d": "Accurate diagnosis and professional repair to minimize downtime."
+            },
+            {
+              "t": "Battery and UPS support",
+              "d": "Battery health, replacement and uninterruptible supply sustainment."
+            },
+            {
+              "t": "Load testing",
+              "d": "Verification under load so systems perform when they are needed."
+            },
+            {
+              "t": "Spare parts supply",
+              "d": "Provision of the components required to keep systems running."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "electronics-diagnostic-and-repair-workshops",
+      "legacySlug": "structure-and-frame",
+      "icon": "gauge",
+      "hue": "#36c2cf",
+      "title": {
+        "en": "Electronics Diagnostic & Repair Workshops",
+        "ar": "ورش تشخيص وإصلاح الإلكترونيات",
+        "ko": "전자 진단 및 수리 워크숍",
+        "ja": "電子機器の診断・修理ワークショップ"
+      },
+      "description": {
+        "en": "Localized facilities providing fault isolation, testing, repair, and validation for mission-critical electronic systems.",
+        "ar": "منشآت موطّنة داخل المملكة توفّر عزل الأعطال والاختبار والإصلاح والتحقق للأنظمة الإلكترونية الحرجة.",
+        "ko": "미션 크리티컬 전자 시스템의 결함 격리, 테스트, 수리 및 검증을 제공하는 현지화된 시설.",
+        "ja": "ミッションクリティカルな電子システムの故障切り分け、試験、修理、検証を行う国内拠点。"
+      },
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      },
+      "detail": {
+        "en": {
+          "oh": "Localized workshops for mission-critical electronics",
+          "op": "Our electronics workshops inside the Kingdom provide fault isolation, testing, repair and validation for mission-critical systems. Equipped for component-level work — RF test benches, signal generators, power meters and calibrated instrumentation — they return assemblies to service locally instead of shipping them abroad, cutting turnaround and reducing dependence on external sources.",
+          "glance": [
+            "Component-level repair",
+            "RF and signal test capability",
+            "Calibrated instrumentation",
+            "In-Kingdom turnaround"
+          ],
+          "caps": [
+            {
+              "t": "Fault isolation",
+              "d": "Systematic diagnosis to identify the failed assembly or component."
+            },
+            {
+              "t": "Component-level repair",
+              "d": "Board and component repair rather than whole-unit replacement."
+            },
+            {
+              "t": "RF and microwave testing",
+              "d": "Signal generation and power measurement across radar frequency bands."
+            },
+            {
+              "t": "Functional validation",
+              "d": "Full functional test before an item is certified back to service."
+            },
+            {
+              "t": "Calibration",
+              "d": "Alignment and calibration against traceable reference standards."
+            },
+            {
+              "t": "Reverse engineering",
+              "d": "Recreating obsolete components to sustain ageing systems."
+            }
+          ]
+        },
+        "ar": {
+          "oh": "ورش موطّنة للإلكترونيات الحرجة",
+          "op": "توفر ورشنا الإلكترونية داخل المملكة عزل الأعطال والاختبار والإصلاح والتحقق للأنظمة الحرجة، وهي مجهزة للعمل على مستوى المكوّنات بمنصات اختبار الترددات الراديوية وأجهزة معايرة دقيقة.",
+          "glance": [
+            "إصلاح على مستوى المكوّنات",
+            "قدرات اختبار الترددات والإشارات",
+            "أجهزة قياس معايرة",
+            "إنجاز داخل المملكة"
+          ],
+          "caps": [
+            {
+              "t": "عزل الأعطال",
+              "d": "تشخيص ممنهج لتحديد الوحدة أو المكوّن المعطل."
+            },
+            {
+              "t": "الإصلاح على مستوى المكوّن",
+              "d": "إصلاح اللوحات والمكوّنات بدلاً من استبدال الوحدة كاملة."
+            },
+            {
+              "t": "اختبار الترددات والموجات الدقيقة",
+              "d": "توليد الإشارات وقياس القدرة عبر نطاقات تردد الرادار."
+            },
+            {
+              "t": "التحقق الوظيفي",
+              "d": "اختبار وظيفي كامل قبل اعتماد العودة للخدمة."
+            },
+            {
+              "t": "المعايرة",
+              "d": "المحاذاة والمعايرة وفق مراجع قياسية معتمدة."
+            },
+            {
+              "t": "الهندسة العكسية",
+              "d": "إعادة تصنيع المكوّنات المتقادمة لإدامة الأنظمة."
+            }
+          ]
+        },
+        "ja": {
+          "oh": "Localized workshops for mission-critical electronics",
+          "op": "Our electronics workshops inside the Kingdom provide fault isolation, testing, repair and validation for mission-critical systems. Equipped for component-level work — RF test benches, signal generators, power meters and calibrated instrumentation — they return assemblies to service locally instead of shipping them abroad, cutting turnaround and reducing dependence on external sources.",
+          "glance": [
+            "Component-level repair",
+            "RF and signal test capability",
+            "Calibrated instrumentation",
+            "In-Kingdom turnaround"
+          ],
+          "caps": [
+            {
+              "t": "Fault isolation",
+              "d": "Systematic diagnosis to identify the failed assembly or component."
+            },
+            {
+              "t": "Component-level repair",
+              "d": "Board and component repair rather than whole-unit replacement."
+            },
+            {
+              "t": "RF and microwave testing",
+              "d": "Signal generation and power measurement across radar frequency bands."
+            },
+            {
+              "t": "Functional validation",
+              "d": "Full functional test before an item is certified back to service."
+            },
+            {
+              "t": "Calibration",
+              "d": "Alignment and calibration against traceable reference standards."
+            },
+            {
+              "t": "Reverse engineering",
+              "d": "Recreating obsolete components to sustain ageing systems."
+            }
+          ]
+        },
+        "ko": {
+          "oh": "Localized workshops for mission-critical electronics",
+          "op": "Our electronics workshops inside the Kingdom provide fault isolation, testing, repair and validation for mission-critical systems. Equipped for component-level work — RF test benches, signal generators, power meters and calibrated instrumentation — they return assemblies to service locally instead of shipping them abroad, cutting turnaround and reducing dependence on external sources.",
+          "glance": [
+            "Component-level repair",
+            "RF and signal test capability",
+            "Calibrated instrumentation",
+            "In-Kingdom turnaround"
+          ],
+          "caps": [
+            {
+              "t": "Fault isolation",
+              "d": "Systematic diagnosis to identify the failed assembly or component."
+            },
+            {
+              "t": "Component-level repair",
+              "d": "Board and component repair rather than whole-unit replacement."
+            },
+            {
+              "t": "RF and microwave testing",
+              "d": "Signal generation and power measurement across radar frequency bands."
+            },
+            {
+              "t": "Functional validation",
+              "d": "Full functional test before an item is certified back to service."
+            },
+            {
+              "t": "Calibration",
+              "d": "Alignment and calibration against traceable reference standards."
+            },
+            {
+              "t": "Reverse engineering",
+              "d": "Recreating obsolete components to sustain ageing systems."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "ground-support-equipment-sustainment",
+      "legacySlug": "supporting-ground-equipment",
+      "icon": "truck",
+      "hue": "#4f8cff",
+      "title": {
+        "en": "Ground Support Equipment (GSE) Sustainment",
+        "ar": "استدامة معدات الدعم الأرضي",
+        "ko": "지상 지원 장비(GSE) 유지",
+        "ja": "地上支援機材（GSE）の維持"
+      },
+      "description": {
+        "en": "Maintenance and availability support for aviation and land-based ground support assets.",
+        "ar": "الصيانة ودعم الجاهزية لأصول الدعم الأرضي في القطاعين الجوي والبري.",
+        "ko": "항공 및 지상 기반 지원 자산의 정비와 가용성 지원.",
+        "ja": "航空および陸上の地上支援資産に対する整備と可用性支援。"
+      },
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      },
+      "detail": {
+        "en": {
+          "oh": "Ground support assets, kept available",
+          "op": "Maintenance and availability support for aviation and land-based ground support equipment. We cover regular inspection, repair and rehabilitation across GSE fleets, with the spare parts needed to keep flight lines and land operations moving — applying strict safety and quality standards so equipment operates efficiently and reliably.",
+          "glance": [
+            "Aviation and land-based GSE",
+            "Inspection, repair, rehabilitation",
+            "Availability-driven support",
+            "Spare parts provisioning"
+          ],
+          "caps": [
+            {
+              "t": "Preventive maintenance",
+              "d": "Regular inspection and servicing across all types of ground equipment."
+            },
+            {
+              "t": "Corrective repair",
+              "d": "Rapid response repair that minimizes downtime on the line."
+            },
+            {
+              "t": "Overhaul and rehabilitation",
+              "d": "Restoring ageing ground support assets to full operational condition."
+            },
+            {
+              "t": "Spare parts supply",
+              "d": "All necessary spare parts available and supplied when needed."
+            },
+            {
+              "t": "Availability reporting",
+              "d": "Visibility of fleet status so readiness can be planned, not guessed."
+            },
+            {
+              "t": "On-site support",
+              "d": "Technicians deployed to the operating location when it matters."
+            }
+          ]
+        },
+        "ar": {
+          "oh": "جاهزية مستمرة لمعدات الدعم الأرضي",
+          "op": "صيانة ودعم جاهزية معدات الدعم الأرضي في القطاعين الجوي والبري، وتشمل الفحص الدوري والإصلاح والتأهيل، مع توفير قطع الغيار اللازمة لضمان استمرارية العمليات.",
+          "glance": [
+            "معدات دعم جوية وبرية",
+            "فحص وإصلاح وتأهيل",
+            "دعم قائم على الجاهزية",
+            "توفير قطع الغيار"
+          ],
+          "caps": [
+            {
+              "t": "الصيانة الوقائية",
+              "d": "فحص وصيانة دورية لجميع أنواع المعدات الأرضية."
+            },
+            {
+              "t": "الإصلاح التصحيحي",
+              "d": "استجابة سريعة تقلل فترات التوقف."
+            },
+            {
+              "t": "العمرة والتأهيل",
+              "d": "إعادة المعدات إلى كامل جاهزيتها التشغيلية."
+            },
+            {
+              "t": "توريد قطع الغيار",
+              "d": "توفير جميع قطع الغيار اللازمة عند الحاجة."
+            },
+            {
+              "t": "تقارير الجاهزية",
+              "d": "وضوح حالة الأسطول لتخطيط الجاهزية."
+            },
+            {
+              "t": "الدعم الموقعي",
+              "d": "فنيون في موقع التشغيل عند الحاجة."
+            }
+          ]
+        },
+        "ja": {
+          "oh": "Ground support assets, kept available",
+          "op": "Maintenance and availability support for aviation and land-based ground support equipment. We cover regular inspection, repair and rehabilitation across GSE fleets, with the spare parts needed to keep flight lines and land operations moving — applying strict safety and quality standards so equipment operates efficiently and reliably.",
+          "glance": [
+            "Aviation and land-based GSE",
+            "Inspection, repair, rehabilitation",
+            "Availability-driven support",
+            "Spare parts provisioning"
+          ],
+          "caps": [
+            {
+              "t": "Preventive maintenance",
+              "d": "Regular inspection and servicing across all types of ground equipment."
+            },
+            {
+              "t": "Corrective repair",
+              "d": "Rapid response repair that minimizes downtime on the line."
+            },
+            {
+              "t": "Overhaul and rehabilitation",
+              "d": "Restoring ageing ground support assets to full operational condition."
+            },
+            {
+              "t": "Spare parts supply",
+              "d": "All necessary spare parts available and supplied when needed."
+            },
+            {
+              "t": "Availability reporting",
+              "d": "Visibility of fleet status so readiness can be planned, not guessed."
+            },
+            {
+              "t": "On-site support",
+              "d": "Technicians deployed to the operating location when it matters."
+            }
+          ]
+        },
+        "ko": {
+          "oh": "Ground support assets, kept available",
+          "op": "Maintenance and availability support for aviation and land-based ground support equipment. We cover regular inspection, repair and rehabilitation across GSE fleets, with the spare parts needed to keep flight lines and land operations moving — applying strict safety and quality standards so equipment operates efficiently and reliably.",
+          "glance": [
+            "Aviation and land-based GSE",
+            "Inspection, repair, rehabilitation",
+            "Availability-driven support",
+            "Spare parts provisioning"
+          ],
+          "caps": [
+            {
+              "t": "Preventive maintenance",
+              "d": "Regular inspection and servicing across all types of ground equipment."
+            },
+            {
+              "t": "Corrective repair",
+              "d": "Rapid response repair that minimizes downtime on the line."
+            },
+            {
+              "t": "Overhaul and rehabilitation",
+              "d": "Restoring ageing ground support assets to full operational condition."
+            },
+            {
+              "t": "Spare parts supply",
+              "d": "All necessary spare parts available and supplied when needed."
+            },
+            {
+              "t": "Availability reporting",
+              "d": "Visibility of fleet status so readiness can be planned, not guessed."
+            },
+            {
+              "t": "On-site support",
+              "d": "Technicians deployed to the operating location when it matters."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "spare-parts-logistics-and-warehousing",
+      "legacySlug": "provide-spare-parts",
+      "icon": "package",
+      "hue": "#3aa0ff",
+      "title": {
+        "en": "Aviation & Land Systems Spare Parts, Logistics, and Warehousing",
+        "ar": "قطع غيار الأنظمة الجوية والبرية والخدمات اللوجستية والتخزين",
+        "ko": "항공·지상 시스템 예비 부품, 물류 및 창고 운영",
+        "ja": "航空・陸上システムのスペアパーツ、物流および倉庫管理"
+      },
+      "description": {
+        "en": "End-to-end procurement, secure warehousing, inventory management, and distribution for military and civilian platforms.",
+        "ar": "مشتريات متكاملة وتخزين آمن وإدارة للمخزون وتوزيع للمنصات العسكرية والمدنية.",
+        "ko": "군용 및 민간 플랫폼을 위한 종합 조달, 보안 창고, 재고 관리 및 배송.",
+        "ja": "軍用・民生プラットフォーム向けの一貫調達、セキュア倉庫、在庫管理、配送。"
+      },
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      },
+      "detail": {
+        "en": {
+          "oh": "End-to-end supply, from RFQ to the flight line",
+          "op": "3Lines was registered as the first licensed Saudi company to provide spare parts, and supply remains one of its three core pillars. We source genuine parts for aviation and land systems from OEMs and authorised distributors across the United States and worldwide, then manage secure warehousing, inventory management and distribution to military and civilian platforms — with transparent pricing, verified authenticity and dependable lead times.",
+          "glance": [
+            "OEM and authorised distributors",
+            "United States and worldwide sourcing",
+            "Secure warehousing and inventory",
+            "Certificates and full traceability"
+          ],
+          "caps": [
+            {
+              "t": "Strategic sourcing",
+              "d": "Qualifying the right suppliers for every part and program."
+            },
+            {
+              "t": "Vendor management",
+              "d": "Long-term relationships with OEMs and authorised distributors."
+            },
+            {
+              "t": "Quotations and negotiation",
+              "d": "Competitive RFQs with clear pricing and delivery terms."
+            },
+            {
+              "t": "Logistics and expediting",
+              "d": "Export handling, shipping and priority AOG expediting."
+            },
+            {
+              "t": "Secure warehousing",
+              "d": "Controlled storage for military and civilian platform inventory."
+            },
+            {
+              "t": "Inventory planning",
+              "d": "Forecasting and stock planning so critical parts are on hand."
+            }
+          ]
+        },
+        "ar": {
+          "oh": "إمداد متكامل من الطلب إلى التسليم",
+          "op": "سُجّلت 3Lines كأول شركة سعودية مرخّصة لتوريد قطع الغيار، ولا يزال الإمداد أحد ركائزها الثلاث. نورّد قطع الغيار الأصلية للأنظمة الجوية والبرية من المصنّعين الأصليين والموزّعين المعتمدين من الولايات المتحدة وحول العالم، مع تخزين آمن وإدارة للمخزون وتوزيع.",
+          "glance": [
+            "مصنّعون أصليون وموزّعون معتمدون",
+            "توريد من الولايات المتحدة وحول العالم",
+            "تخزين آمن وإدارة مخزون",
+            "شهادات وتتبّع كامل"
+          ],
+          "caps": [
+            {
+              "t": "التوريد الاستراتيجي",
+              "d": "تأهيل المورّدين المناسبين لكل قطعة وبرنامج."
+            },
+            {
+              "t": "إدارة المورّدين",
+              "d": "علاقات طويلة الأمد مع المصنّعين والموزّعين المعتمدين."
+            },
+            {
+              "t": "عروض الأسعار والتفاوض",
+              "d": "عروض تنافسية بأسعار ومهل تسليم واضحة."
+            },
+            {
+              "t": "الخدمات اللوجستية",
+              "d": "إجراءات التصدير والشحن والتسريع للحالات العاجلة."
+            },
+            {
+              "t": "التخزين الآمن",
+              "d": "تخزين منضبط لمخزون المنصات العسكرية والمدنية."
+            },
+            {
+              "t": "تخطيط المخزون",
+              "d": "التنبؤ وتخطيط المخزون لتوفر القطع الحرجة."
+            }
+          ]
+        },
+        "ja": {
+          "oh": "End-to-end supply, from RFQ to the flight line",
+          "op": "3Lines was registered as the first licensed Saudi company to provide spare parts, and supply remains one of its three core pillars. We source genuine parts for aviation and land systems from OEMs and authorised distributors across the United States and worldwide, then manage secure warehousing, inventory management and distribution to military and civilian platforms — with transparent pricing, verified authenticity and dependable lead times.",
+          "glance": [
+            "OEM and authorised distributors",
+            "United States and worldwide sourcing",
+            "Secure warehousing and inventory",
+            "Certificates and full traceability"
+          ],
+          "caps": [
+            {
+              "t": "Strategic sourcing",
+              "d": "Qualifying the right suppliers for every part and program."
+            },
+            {
+              "t": "Vendor management",
+              "d": "Long-term relationships with OEMs and authorised distributors."
+            },
+            {
+              "t": "Quotations and negotiation",
+              "d": "Competitive RFQs with clear pricing and delivery terms."
+            },
+            {
+              "t": "Logistics and expediting",
+              "d": "Export handling, shipping and priority AOG expediting."
+            },
+            {
+              "t": "Secure warehousing",
+              "d": "Controlled storage for military and civilian platform inventory."
+            },
+            {
+              "t": "Inventory planning",
+              "d": "Forecasting and stock planning so critical parts are on hand."
+            }
+          ]
+        },
+        "ko": {
+          "oh": "End-to-end supply, from RFQ to the flight line",
+          "op": "3Lines was registered as the first licensed Saudi company to provide spare parts, and supply remains one of its three core pillars. We source genuine parts for aviation and land systems from OEMs and authorised distributors across the United States and worldwide, then manage secure warehousing, inventory management and distribution to military and civilian platforms — with transparent pricing, verified authenticity and dependable lead times.",
+          "glance": [
+            "OEM and authorised distributors",
+            "United States and worldwide sourcing",
+            "Secure warehousing and inventory",
+            "Certificates and full traceability"
+          ],
+          "caps": [
+            {
+              "t": "Strategic sourcing",
+              "d": "Qualifying the right suppliers for every part and program."
+            },
+            {
+              "t": "Vendor management",
+              "d": "Long-term relationships with OEMs and authorised distributors."
+            },
+            {
+              "t": "Quotations and negotiation",
+              "d": "Competitive RFQs with clear pricing and delivery terms."
+            },
+            {
+              "t": "Logistics and expediting",
+              "d": "Export handling, shipping and priority AOG expediting."
+            },
+            {
+              "t": "Secure warehousing",
+              "d": "Controlled storage for military and civilian platform inventory."
+            },
+            {
+              "t": "Inventory planning",
+              "d": "Forecasting and stock planning so critical parts are on hand."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "simulation-systems",
+      "legacySlug": "supporting-the-simulator-system",
+      "icon": "monitor",
+      "hue": "#7a7bff",
+      "title": {
+        "en": "Simulation Systems (Full Motion & Static)",
+        "ar": "أنظمة المحاكاة (كاملة الحركة والثابتة)",
+        "ko": "시뮬레이션 시스템 (풀 모션 및 고정형)",
+        "ja": "シミュレーションシステム（フルモーション・固定式）"
+      },
+      "description": {
+        "en": "Supply, operations, maintenance, and training support for advanced simulation and readiness platforms.",
+        "ar": "التوريد والتشغيل والصيانة ودعم التدريب لمنصات المحاكاة والجاهزية المتقدمة.",
+        "ko": "첨단 시뮬레이션 및 준비태세 플랫폼의 공급, 운영, 정비 및 교육 지원.",
+        "ja": "先進シミュレーション・即応プラットフォームの供給、運用、保守、訓練支援。"
+      },
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      },
+      "detail": {
+        "en": {
+          "oh": "Full-motion and static simulation, supported",
+          "op": "Supply, operations, maintenance and training support for advanced simulation and readiness platforms — full motion and static. We sustain flight and maintenance simulators so training throughput and operational readiness are never limited by equipment availability, backed by a partnership with Princess Nourah bint Abdulrahman University covering autonomous systems and simulation technologies.",
+          "glance": [
+            "Full motion and static platforms",
+            "Supply and installation",
+            "Operations and maintenance",
+            "Training support"
+          ],
+          "caps": [
+            {
+              "t": "Simulator supply",
+              "d": "Sourcing and delivery of simulation and readiness platforms."
+            },
+            {
+              "t": "Installation and integration",
+              "d": "Commissioning and integration into the training environment."
+            },
+            {
+              "t": "Preventive maintenance",
+              "d": "Scheduled servicing to sustain simulator availability."
+            },
+            {
+              "t": "Fault resolution",
+              "d": "Specialised diagnosis and repair of simulation subsystems."
+            },
+            {
+              "t": "Operations support",
+              "d": "Day-to-day operational support for training establishments."
+            },
+            {
+              "t": "Instructor and user training",
+              "d": "Enabling teams to get full value from the platform."
+            }
+          ]
+        },
+        "ar": {
+          "oh": "دعم أنظمة المحاكاة كاملة الحركة والثابتة",
+          "op": "التوريد والتشغيل والصيانة ودعم التدريب لمنصات المحاكاة والجاهزية المتقدمة، كاملة الحركة والثابتة، بما يضمن ألا تتقيد الجاهزية التشغيلية بتوفر المعدات.",
+          "glance": [
+            "منصات كاملة الحركة وثابتة",
+            "التوريد والتركيب",
+            "التشغيل والصيانة",
+            "دعم التدريب"
+          ],
+          "caps": [
+            {
+              "t": "توريد أجهزة المحاكاة",
+              "d": "توريد وتسليم منصات المحاكاة والجاهزية."
+            },
+            {
+              "t": "التركيب والتكامل",
+              "d": "التشغيل والتكامل مع بيئة التدريب."
+            },
+            {
+              "t": "الصيانة الوقائية",
+              "d": "صيانة مجدولة لإدامة جاهزية المحاكيات."
+            },
+            {
+              "t": "معالجة الأعطال",
+              "d": "تشخيص وإصلاح متخصص لأنظمة المحاكاة الفرعية."
+            },
+            {
+              "t": "دعم التشغيل",
+              "d": "دعم تشغيلي يومي لمنشآت التدريب."
+            },
+            {
+              "t": "تدريب المدربين والمستخدمين",
+              "d": "تمكين الفرق من الاستفادة الكاملة من المنصة."
+            }
+          ]
+        },
+        "ja": {
+          "oh": "Full-motion and static simulation, supported",
+          "op": "Supply, operations, maintenance and training support for advanced simulation and readiness platforms — full motion and static. We sustain flight and maintenance simulators so training throughput and operational readiness are never limited by equipment availability, backed by a partnership with Princess Nourah bint Abdulrahman University covering autonomous systems and simulation technologies.",
+          "glance": [
+            "Full motion and static platforms",
+            "Supply and installation",
+            "Operations and maintenance",
+            "Training support"
+          ],
+          "caps": [
+            {
+              "t": "Simulator supply",
+              "d": "Sourcing and delivery of simulation and readiness platforms."
+            },
+            {
+              "t": "Installation and integration",
+              "d": "Commissioning and integration into the training environment."
+            },
+            {
+              "t": "Preventive maintenance",
+              "d": "Scheduled servicing to sustain simulator availability."
+            },
+            {
+              "t": "Fault resolution",
+              "d": "Specialised diagnosis and repair of simulation subsystems."
+            },
+            {
+              "t": "Operations support",
+              "d": "Day-to-day operational support for training establishments."
+            },
+            {
+              "t": "Instructor and user training",
+              "d": "Enabling teams to get full value from the platform."
+            }
+          ]
+        },
+        "ko": {
+          "oh": "Full-motion and static simulation, supported",
+          "op": "Supply, operations, maintenance and training support for advanced simulation and readiness platforms — full motion and static. We sustain flight and maintenance simulators so training throughput and operational readiness are never limited by equipment availability, backed by a partnership with Princess Nourah bint Abdulrahman University covering autonomous systems and simulation technologies.",
+          "glance": [
+            "Full motion and static platforms",
+            "Supply and installation",
+            "Operations and maintenance",
+            "Training support"
+          ],
+          "caps": [
+            {
+              "t": "Simulator supply",
+              "d": "Sourcing and delivery of simulation and readiness platforms."
+            },
+            {
+              "t": "Installation and integration",
+              "d": "Commissioning and integration into the training environment."
+            },
+            {
+              "t": "Preventive maintenance",
+              "d": "Scheduled servicing to sustain simulator availability."
+            },
+            {
+              "t": "Fault resolution",
+              "d": "Specialised diagnosis and repair of simulation subsystems."
+            },
+            {
+              "t": "Operations support",
+              "d": "Day-to-day operational support for training establishments."
+            },
+            {
+              "t": "Instructor and user training",
+              "d": "Enabling teams to get full value from the platform."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "training-and-capability-enablement",
+      "legacySlug": "english-language-training",
+      "icon": "cap",
+      "hue": "#36c2cf",
+      "title": {
+        "en": "Training, Simulation & Capability Enablement",
+        "ar": "التدريب والمحاكاة وتمكين القدرات",
+        "ko": "교육, 시뮬레이션 및 역량 강화",
+        "ja": "訓練、シミュレーションおよび能力構築"
+      },
+      "description": {
+        "en": "Military and civilian training delivery, knowledge transfer, and operational capability development.",
+        "ar": "تقديم التدريب العسكري والمدني ونقل المعرفة وتطوير القدرات التشغيلية.",
+        "ko": "군·민간 교육 제공, 지식 이전 및 운영 역량 개발.",
+        "ja": "軍・民間向け訓練の提供、知識移転、運用能力の開発。"
+      },
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      },
+      "detail": {
+        "en": {
+          "oh": "Building national capability, not just delivering training",
+          "op": "Military and civilian training delivery, knowledge transfer and operational capability development — including advanced English language training from highly experienced trainers. Through NARS, the National Academy for Radar and Space Communications, and partnerships with national universities, we qualify Saudi talent in radar and communications systems, fiber optics, data centres, navigation systems and electronic protection.",
+          "glance": [
+            "Military and civilian training",
+            "English language training",
+            "NARS Academy · +500 trainees",
+            "Knowledge transfer and localization"
+          ],
+          "caps": [
+            {
+              "t": "Technical training",
+              "d": "Hands-on programs in radar, communications, fiber optics and data centres."
+            },
+            {
+              "t": "English language training",
+              "d": "Advanced English instruction delivered by highly experienced trainers."
+            },
+            {
+              "t": "Simulation-based training",
+              "d": "Practical training built on simulation and hands-on application."
+            },
+            {
+              "t": "Knowledge transfer",
+              "d": "Skills transfer that leaves lasting capability inside the Kingdom."
+            },
+            {
+              "t": "University partnerships",
+              "d": "Joint programs with King Saud, Princess Nourah, Prince Sattam and Qassim."
+            },
+            {
+              "t": "NARS Academy",
+              "d": "A non-profit academy bridging the skills gap in technical and defense sectors."
+            }
+          ]
+        },
+        "ar": {
+          "oh": "بناء القدرات الوطنية لا مجرد تقديم التدريب",
+          "op": "تقديم التدريب العسكري والمدني ونقل المعرفة وتطوير القدرات التشغيلية، ومن خلال الأكاديمية الوطنية للرادارات والاتصالات الفضائية (NARS) والشراكات مع الجامعات الوطنية نؤهل الكفاءات السعودية.",
+          "glance": [
+            "تدريب عسكري ومدني",
+            "تدريب اللغة الإنجليزية",
+            "أكاديمية NARS · أكثر من 500 متدرب",
+            "نقل المعرفة والتوطين"
+          ],
+          "caps": [
+            {
+              "t": "التدريب التقني",
+              "d": "برامج تطبيقية في الرادار والاتصالات والألياف البصرية ومراكز البيانات."
+            },
+            {
+              "t": "تدريب اللغة الإنجليزية",
+              "d": "تدريب متقدم على يد مدربين ذوي خبرة عالية."
+            },
+            {
+              "t": "التدريب بالمحاكاة",
+              "d": "تدريب عملي قائم على المحاكاة والتطبيق."
+            },
+            {
+              "t": "نقل المعرفة",
+              "d": "نقل مهارات يترك قدرة مستدامة داخل المملكة."
+            },
+            {
+              "t": "الشراكات الجامعية",
+              "d": "برامج مشتركة مع جامعات الملك سعود ونورة وسطام والقصيم."
+            },
+            {
+              "t": "أكاديمية NARS",
+              "d": "أكاديمية غير ربحية تسد فجوة المهارات في القطاعات التقنية والدفاعية."
+            }
+          ]
+        },
+        "ja": {
+          "oh": "Building national capability, not just delivering training",
+          "op": "Military and civilian training delivery, knowledge transfer and operational capability development — including advanced English language training from highly experienced trainers. Through NARS, the National Academy for Radar and Space Communications, and partnerships with national universities, we qualify Saudi talent in radar and communications systems, fiber optics, data centres, navigation systems and electronic protection.",
+          "glance": [
+            "Military and civilian training",
+            "English language training",
+            "NARS Academy · +500 trainees",
+            "Knowledge transfer and localization"
+          ],
+          "caps": [
+            {
+              "t": "Technical training",
+              "d": "Hands-on programs in radar, communications, fiber optics and data centres."
+            },
+            {
+              "t": "English language training",
+              "d": "Advanced English instruction delivered by highly experienced trainers."
+            },
+            {
+              "t": "Simulation-based training",
+              "d": "Practical training built on simulation and hands-on application."
+            },
+            {
+              "t": "Knowledge transfer",
+              "d": "Skills transfer that leaves lasting capability inside the Kingdom."
+            },
+            {
+              "t": "University partnerships",
+              "d": "Joint programs with King Saud, Princess Nourah, Prince Sattam and Qassim."
+            },
+            {
+              "t": "NARS Academy",
+              "d": "A non-profit academy bridging the skills gap in technical and defense sectors."
+            }
+          ]
+        },
+        "ko": {
+          "oh": "Building national capability, not just delivering training",
+          "op": "Military and civilian training delivery, knowledge transfer and operational capability development — including advanced English language training from highly experienced trainers. Through NARS, the National Academy for Radar and Space Communications, and partnerships with national universities, we qualify Saudi talent in radar and communications systems, fiber optics, data centres, navigation systems and electronic protection.",
+          "glance": [
+            "Military and civilian training",
+            "English language training",
+            "NARS Academy · +500 trainees",
+            "Knowledge transfer and localization"
+          ],
+          "caps": [
+            {
+              "t": "Technical training",
+              "d": "Hands-on programs in radar, communications, fiber optics and data centres."
+            },
+            {
+              "t": "English language training",
+              "d": "Advanced English instruction delivered by highly experienced trainers."
+            },
+            {
+              "t": "Simulation-based training",
+              "d": "Practical training built on simulation and hands-on application."
+            },
+            {
+              "t": "Knowledge transfer",
+              "d": "Skills transfer that leaves lasting capability inside the Kingdom."
+            },
+            {
+              "t": "University partnerships",
+              "d": "Joint programs with King Saud, Princess Nourah, Prince Sattam and Qassim."
+            },
+            {
+              "t": "NARS Academy",
+              "d": "A non-profit academy bridging the skills gap in technical and defense sectors."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "defense-systems-sustainment-mro",
+      "legacySlug": "maintaining-and-repairing-of-spare-parts",
+      "icon": "wrench",
+      "hue": "#5cc0ff",
+      "title": {
+        "en": "Defense Systems Sustainment (MRO)",
+        "ar": "استدامة الأنظمة الدفاعية (الصيانة والإصلاح والعمرة)",
+        "ko": "방산 시스템 유지 (MRO)",
+        "ja": "防衛システムの維持（MRO）"
+      },
+      "description": {
+        "en": "Comprehensive maintenance, repair, and overhaul services supporting operational readiness across defense systems.",
+        "ar": "خدمات شاملة للصيانة والإصلاح والعمرة تدعم الجاهزية التشغيلية عبر الأنظمة الدفاعية.",
+        "ko": "방산 시스템 전반의 운영 준비태세를 지원하는 종합 정비·수리·오버홀 서비스.",
+        "ja": "防衛システム全体の運用即応性を支える包括的な整備・修理・オーバーホールサービス。"
+      },
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      },
+      "detail": {
+        "en": {
+          "oh": "Maintenance, repair and overhaul across defense systems",
+          "op": "Comprehensive MRO supporting operational readiness across defense systems. An experienced, professional team of engineers and technicians delivers scheduled and corrective maintenance, repair and overhaul to the highest standards of quality and precision — minimizing breakdowns, extending operational life and keeping platforms available. Our capability extends to reverse engineering and manufacturing components for advanced systems, reducing reliance on external sources.",
+          "glance": [
+            "Scheduled and corrective MRO",
+            "Engineers and technicians in-house",
+            "Quality-driven processes",
+            "Reverse engineering and manufacturing"
+          ],
+          "caps": [
+            {
+              "t": "Scheduled maintenance",
+              "d": "Planned servicing that keeps defense systems mission-capable."
+            },
+            {
+              "t": "Corrective repair",
+              "d": "Rapid fault resolution to return systems to service."
+            },
+            {
+              "t": "Overhaul",
+              "d": "Deep restoration of assemblies to extend operational life."
+            },
+            {
+              "t": "Structural and mechanical repair",
+              "d": "Repair of structures and mechanical assemblies to safety standards."
+            },
+            {
+              "t": "Hydraulic and pneumatic systems",
+              "d": "Efficient, reliable maintenance of hydraulic and pneumatic components."
+            },
+            {
+              "t": "Component manufacturing",
+              "d": "Reverse engineering and manufacture of parts for advanced systems."
+            }
+          ]
+        },
+        "ar": {
+          "oh": "الصيانة والإصلاح والعمرة للأنظمة الدفاعية",
+          "op": "خدمات شاملة للصيانة والإصلاح والعمرة تدعم الجاهزية التشغيلية عبر الأنظمة الدفاعية، يقدمها فريق محترف من المهندسين والفنيين وفق أعلى معايير الجودة والدقة، مع قدرة على الهندسة العكسية وتصنيع المكوّنات.",
+          "glance": [
+            "صيانة دورية وتصحيحية",
+            "مهندسون وفنيون داخل الشركة",
+            "عمليات قائمة على الجودة",
+            "هندسة عكسية وتصنيع"
+          ],
+          "caps": [
+            {
+              "t": "الصيانة المجدولة",
+              "d": "صيانة مخططة تحافظ على جاهزية الأنظمة الدفاعية."
+            },
+            {
+              "t": "الإصلاح التصحيحي",
+              "d": "معالجة سريعة للأعطال وإعادة الأنظمة للخدمة."
+            },
+            {
+              "t": "العمرة",
+              "d": "تجديد عميق للوحدات لإطالة العمر التشغيلي."
+            },
+            {
+              "t": "الإصلاح الهيكلي والميكانيكي",
+              "d": "إصلاح الهياكل والمجموعات الميكانيكية وفق معايير السلامة."
+            },
+            {
+              "t": "الأنظمة الهيدروليكية والهوائية",
+              "d": "صيانة كفؤة وموثوقة للمكوّنات الهيدروليكية والهوائية."
+            },
+            {
+              "t": "تصنيع المكوّنات",
+              "d": "هندسة عكسية وتصنيع قطع للأنظمة المتقدمة."
+            }
+          ]
+        },
+        "ja": {
+          "oh": "Maintenance, repair and overhaul across defense systems",
+          "op": "Comprehensive MRO supporting operational readiness across defense systems. An experienced, professional team of engineers and technicians delivers scheduled and corrective maintenance, repair and overhaul to the highest standards of quality and precision — minimizing breakdowns, extending operational life and keeping platforms available. Our capability extends to reverse engineering and manufacturing components for advanced systems, reducing reliance on external sources.",
+          "glance": [
+            "Scheduled and corrective MRO",
+            "Engineers and technicians in-house",
+            "Quality-driven processes",
+            "Reverse engineering and manufacturing"
+          ],
+          "caps": [
+            {
+              "t": "Scheduled maintenance",
+              "d": "Planned servicing that keeps defense systems mission-capable."
+            },
+            {
+              "t": "Corrective repair",
+              "d": "Rapid fault resolution to return systems to service."
+            },
+            {
+              "t": "Overhaul",
+              "d": "Deep restoration of assemblies to extend operational life."
+            },
+            {
+              "t": "Structural and mechanical repair",
+              "d": "Repair of structures and mechanical assemblies to safety standards."
+            },
+            {
+              "t": "Hydraulic and pneumatic systems",
+              "d": "Efficient, reliable maintenance of hydraulic and pneumatic components."
+            },
+            {
+              "t": "Component manufacturing",
+              "d": "Reverse engineering and manufacture of parts for advanced systems."
+            }
+          ]
+        },
+        "ko": {
+          "oh": "Maintenance, repair and overhaul across defense systems",
+          "op": "Comprehensive MRO supporting operational readiness across defense systems. An experienced, professional team of engineers and technicians delivers scheduled and corrective maintenance, repair and overhaul to the highest standards of quality and precision — minimizing breakdowns, extending operational life and keeping platforms available. Our capability extends to reverse engineering and manufacturing components for advanced systems, reducing reliance on external sources.",
+          "glance": [
+            "Scheduled and corrective MRO",
+            "Engineers and technicians in-house",
+            "Quality-driven processes",
+            "Reverse engineering and manufacturing"
+          ],
+          "caps": [
+            {
+              "t": "Scheduled maintenance",
+              "d": "Planned servicing that keeps defense systems mission-capable."
+            },
+            {
+              "t": "Corrective repair",
+              "d": "Rapid fault resolution to return systems to service."
+            },
+            {
+              "t": "Overhaul",
+              "d": "Deep restoration of assemblies to extend operational life."
+            },
+            {
+              "t": "Structural and mechanical repair",
+              "d": "Repair of structures and mechanical assemblies to safety standards."
+            },
+            {
+              "t": "Hydraulic and pneumatic systems",
+              "d": "Efficient, reliable maintenance of hydraulic and pneumatic components."
+            },
+            {
+              "t": "Component manufacturing",
+              "d": "Reverse engineering and manufacture of parts for advanced systems."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "program-management-and-localization",
+      "legacySlug": "hydraulic-pneumatic-equipment-and-components",
+      "icon": "target",
+      "hue": "#7a7bff",
+      "title": {
+        "en": "Program Management & Localization Enablement",
+        "ar": "إدارة البرامج وتمكين التوطين",
+        "ko": "프로그램 관리 및 현지화 지원",
+        "ja": "プログラム管理およびローカライゼーション推進"
+      },
+      "description": {
+        "en": "End-to-end program execution, localization, and national capability development aligned with Saudi Vision 2030.",
+        "ar": "تنفيذ متكامل للبرامج والتوطين وتطوير القدرات الوطنية بما يتماشى مع رؤية السعودية 2030.",
+        "ko": "사우디 비전 2030에 부합하는 전 과정 프로그램 실행, 현지화 및 국가 역량 개발.",
+        "ja": "サウジ・ビジョン2030に沿った一貫したプログラム遂行、国産化、国家能力の育成。"
+      },
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      },
+      "detail": {
+        "en": {
+          "oh": "Programs delivered, capability localized",
+          "op": "End-to-end program execution, localization and national capability development aligned with Saudi Vision 2030. We run advanced defense programs from award through delivery, and structure them so capability, knowledge and manufacturing stay in the Kingdom — contributing to the localization of over 50% of military spending by 2030 through knowledge transfer and the development of national capabilities.",
+          "glance": [
+            "End-to-end program execution",
+            "Localization and offset delivery",
+            "Aligned with Saudi Vision 2030",
+            "Tier One partnerships"
+          ],
+          "caps": [
+            {
+              "t": "Program management",
+              "d": "Execution from contract award through delivery and sustainment."
+            },
+            {
+              "t": "Localization planning",
+              "d": "Structuring programs so capability remains inside the Kingdom."
+            },
+            {
+              "t": "Technology transfer",
+              "d": "Moving know-how and manufacturing capability to national teams."
+            },
+            {
+              "t": "Supply chain integration",
+              "d": "Connecting local suppliers into international program supply chains."
+            },
+            {
+              "t": "Partner and OEM coordination",
+              "d": "Managing Tier One partners and original equipment manufacturers."
+            },
+            {
+              "t": "Reporting and governance",
+              "d": "Transparent progress, risk and compliance reporting throughout."
+            }
+          ]
+        },
+        "ar": {
+          "oh": "تنفيذ البرامج وتوطين القدرات",
+          "op": "تنفيذ متكامل للبرامج والتوطين وتطوير القدرات الوطنية بما يتوافق مع رؤية السعودية 2030، والإسهام في توطين أكثر من 50% من الإنفاق العسكري بحلول عام 2030 عبر نقل المعرفة وبناء القدرات الوطنية.",
+          "glance": [
+            "تنفيذ متكامل للبرامج",
+            "التوطين وبرامج الإوفست",
+            "متوافق مع رؤية 2030",
+            "شراكات مع الفئة الأولى"
+          ],
+          "caps": [
+            {
+              "t": "إدارة البرامج",
+              "d": "التنفيذ من الترسية حتى التسليم والاستدامة."
+            },
+            {
+              "t": "تخطيط التوطين",
+              "d": "هيكلة البرامج لإبقاء القدرة داخل المملكة."
+            },
+            {
+              "t": "نقل التقنية",
+              "d": "نقل المعرفة والقدرة التصنيعية إلى الفرق الوطنية."
+            },
+            {
+              "t": "تكامل سلسلة الإمداد",
+              "d": "ربط المورّدين المحليين بسلاسل الإمداد الدولية."
+            },
+            {
+              "t": "تنسيق الشركاء والمصنّعين",
+              "d": "إدارة شركاء الفئة الأولى والمصنّعين الأصليين."
+            },
+            {
+              "t": "التقارير والحوكمة",
+              "d": "تقارير شفافة للتقدم والمخاطر والامتثال."
+            }
+          ]
+        },
+        "ja": {
+          "oh": "Programs delivered, capability localized",
+          "op": "End-to-end program execution, localization and national capability development aligned with Saudi Vision 2030. We run advanced defense programs from award through delivery, and structure them so capability, knowledge and manufacturing stay in the Kingdom — contributing to the localization of over 50% of military spending by 2030 through knowledge transfer and the development of national capabilities.",
+          "glance": [
+            "End-to-end program execution",
+            "Localization and offset delivery",
+            "Aligned with Saudi Vision 2030",
+            "Tier One partnerships"
+          ],
+          "caps": [
+            {
+              "t": "Program management",
+              "d": "Execution from contract award through delivery and sustainment."
+            },
+            {
+              "t": "Localization planning",
+              "d": "Structuring programs so capability remains inside the Kingdom."
+            },
+            {
+              "t": "Technology transfer",
+              "d": "Moving know-how and manufacturing capability to national teams."
+            },
+            {
+              "t": "Supply chain integration",
+              "d": "Connecting local suppliers into international program supply chains."
+            },
+            {
+              "t": "Partner and OEM coordination",
+              "d": "Managing Tier One partners and original equipment manufacturers."
+            },
+            {
+              "t": "Reporting and governance",
+              "d": "Transparent progress, risk and compliance reporting throughout."
+            }
+          ]
+        },
+        "ko": {
+          "oh": "Programs delivered, capability localized",
+          "op": "End-to-end program execution, localization and national capability development aligned with Saudi Vision 2030. We run advanced defense programs from award through delivery, and structure them so capability, knowledge and manufacturing stay in the Kingdom — contributing to the localization of over 50% of military spending by 2030 through knowledge transfer and the development of national capabilities.",
+          "glance": [
+            "End-to-end program execution",
+            "Localization and offset delivery",
+            "Aligned with Saudi Vision 2030",
+            "Tier One partnerships"
+          ],
+          "caps": [
+            {
+              "t": "Program management",
+              "d": "Execution from contract award through delivery and sustainment."
+            },
+            {
+              "t": "Localization planning",
+              "d": "Structuring programs so capability remains inside the Kingdom."
+            },
+            {
+              "t": "Technology transfer",
+              "d": "Moving know-how and manufacturing capability to national teams."
+            },
+            {
+              "t": "Supply chain integration",
+              "d": "Connecting local suppliers into international program supply chains."
+            },
+            {
+              "t": "Partner and OEM coordination",
+              "d": "Managing Tier One partners and original equipment manufacturers."
+            },
+            {
+              "t": "Reporting and governance",
+              "d": "Transparent progress, risk and compliance reporting throughout."
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "pages": [
+    {
+      "slug": "about",
+      "type": "information",
+      "order": null,
+      "title": {
+        "ar": "من نحن",
+        "en": "About"
+      },
+      "description": [],
+      "body": {
+        "en": "3Lines Advanced Technologies Group was established in 2019 in alignment with Saudi Arabia’s Vision 2030, with the objective of localizing military and civilian services within the Kingdom of Saudi Arabia.\n\nThe company has evolved from a spare parts provider into an integrated partner in supply chain and technical services, delivering comprehensive solutions encompassing procurement, logistics, maintenance, repair, and manufacturing.\n\nToday, the Group focuses on supporting operational readiness, enhancing sustainability, and executing projects across the defense and advanced technology sectors, both locally and internationally — delivered by a professional Saudi team with over 30 years of combined experience.\n\nThe name 3Lines represents an integrated operational model built on three core pillars — Supply Chain Management, Maintenance, and Repair and Manufacturing — enabling us to execute advanced defense projects, operate C4I repair facilities, and deliver integrated logistical and technical solutions that support readiness and sustainability, in alignment with localization goals and Saudi Vision 2030.\n\nOur Vision: to be the leading supply chain and advanced technology company in Saudi Arabia — sustaining defense and security systems at high availability, alongside Tier One global partners, with localization built into everything we deliver. That work already spans five countries — Saudi Arabia, the United States, Mexico, Poland and the Czech Republic — turning international partnerships into transferred knowledge, national capability and scalable solutions inside the Kingdom.",
+        "ar": "تأسست مجموعة 3LINES ADVANCED TECHNOLOGIES في عام 2019 تماشيًا مع رؤية المملكة العربية السعودية 2030، بهدف توطين الخدمات العسكرية والمدنية داخل المملكة.\n\nوقد تطورت الشركة من مزود لقطع الغيار إلى شريك متكامل في سلاسل الإمداد والخدمات الفنية، حيث تقدم حلولاً شاملة تشمل المشتريات والخدمات اللوجستية والصيانة والإصلاح والتصنيع.\n\nاليوم تركز المجموعة على دعم الجاهزية التشغيلية، وتعزيز الاستدامة، وتنفيذ المشاريع في قطاعي الدفاع والتقنيات المتقدمة، على الصعيدين المحلي والدولي.\n\nيمثل اسم 3Lines نموذجاً تشغيلياً متكاملاً قائماً على ثلاث ركائز أساسية — إدارة سلسلة الإمداد، والصيانة، والإصلاح والتصنيع.\n\nرؤيتنا: أن نكون الشركة الرائدة في سلاسل الإمداد والتقنيات المتقدمة في المملكة العربية السعودية — باستدامة أنظمة الدفاع والأمن بجاهزية عالية، بالشراكة مع شركات الفئة الأولى عالمياً، مع التوطين في صميم كل ما نقدمه. ويمتد هذا العمل اليوم إلى خمس دول — المملكة العربية السعودية، والولايات المتحدة الأمريكية، والمكسيك، وبولندا، وجمهورية التشيك — محوّلين الشراكات الدولية إلى نقل للمعرفة وقدرات وطنية وحلول قابلة للتوسع داخل المملكة.",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "contact",
+      "type": "information",
+      "order": null,
+      "title": {
+        "ar": "التواصل",
+        "en": "Contact"
+      },
+      "description": [],
+      "body": {
+        "en": "Contact Us Content",
+        "ar": "محتوى تواصل معنا",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "privacy-policy",
+      "type": "legal",
+      "order": null,
+      "title": {
+        "ar": "سياسة الخصوصية",
+        "en": "Privacy Policy"
+      },
+      "description": [],
+      "body": {
+        "en": "Privacy Policy Content",
+        "ar": "محتوى سياسة الخصوصية",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "terms-and-conditions",
+      "type": "legal",
+      "order": null,
+      "title": {
+        "ar": "الشروط والأحكام",
+        "en": "Terms & Conditions"
+      },
+      "description": [],
+      "body": {
+        "en": "Terms &amp; Conditions Content",
+        "ar": "محتوى الشروط والأحكام",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "cookie-policy",
+      "type": "legal",
+      "order": null,
+      "title": {
+        "ar": "سياسة ملفات تعريف الارتباط (الكوكيز)",
+        "en": "Cookie Policy"
+      },
+      "description": [],
+      "body": {
+        "en": "Cookie Policy Content",
+        "ar": "محتوى سياسة ملفات تعريف الارتباط (الكوكيز)",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "radar-electronics-communications-sustainment",
+      "type": "services",
+      "order": 1,
+      "title": {
+        "en": "Radar Maintenance, Electronics & Tactical Communications Sustainment",
+        "ar": "صيانة الرادارات والإلكترونيات واستدامة الاتصالات التكتيكية"
+      },
+      "description": [],
+      "body": {
+        "en": "Radar and C4I sustainment, inside the Kingdom\n\n3Lines maintains radar systems to 4th-line level inside Saudi Arabia, including the AN/TPS-78 for the Royal Saudi Air Force. We hold a Maintenance Level Agreement (MLA) with Northrop Grumman, the radar’s manufacturer, enabling in-country sustainment that raises operational readiness and localizes advanced technical capability. Our teams cover radar, surveillance, C4I and secure tactical communications end to end — diagnostics, repair, calibration and return to service.\n\nRadar sustainment — Scheduled and corrective maintenance for surveillance and air-defense radars.\nFault isolation and repair — Diagnostics down to module and component level in local workshops.\nC4I systems support — Command, control, communications and intelligence systems kept mission-ready.\nSecure communications — Sustainment of tactical and encrypted communication systems.\nCalibration and validation — Test, alignment and verification before return to service.\nField service teams — On-site support at operating locations across the Kingdom.",
+        "ar": "استدامة الرادارات وأنظمة C4I داخل المملكة\n\nتقوم 3Lines بصيانة منظومات الرادارات حتى المستوى الرابع داخل المملكة العربية السعودية، بما في ذلك رادار AN/TPS-78 لصالح القوات الجوية الملكية السعودية. وقد حصلت الشركة على اتفاقية مستوى الصيانة (MLA) من شركة NORTHROP GRUMMAN المصنّعة للرادار، بما يعزز الجاهزية التشغيلية ويدعم توطين القدرات الفنية المتقدمة.\n\nاستدامة الرادارات — صيانة دورية وتصحيحية لرادارات المراقبة والدفاع الجوي.\nعزل الأعطال والإصلاح — تشخيص حتى مستوى الوحدات والمكوّنات في ورش محلية.\nدعم أنظمة C4I — إبقاء أنظمة القيادة والسيطرة والاتصالات جاهزة للمهمة.\nالاتصالات الآمنة — استدامة أنظمة الاتصال التكتيكية والمشفّرة.\nالمعايرة والتحقق — اختبار ومحاذاة وتحقق قبل الإعادة للخدمة.\nفرق الخدمة الميدانية — دعم موقعي في مواقع التشغيل في جميع أنحاء المملكة.",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "government-relations-and-life-support",
+      "type": "services",
+      "order": 2,
+      "title": {
+        "en": "Government Relations, Personnel Consulting & Life Support Services",
+        "ar": "العلاقات الحكومية واستشارات الكوادر وخدمات الإعاشة المتكاملة"
+      },
+      "description": [],
+      "body": {
+        "en": "Regulatory coordination and life support, handled\n\nWe manage the government-facing side of complex programs — regulatory coordination, permits and approvals — alongside manpower consulting and integrated life support services. This lets Tier One primes and international partners operate in the Kingdom without carrying the administrative and logistical overhead themselves.\n\nGovernment relations — Coordination with Saudi authorities on permits, approvals and compliance.\nPersonnel consulting — Sourcing, qualifying and managing specialised technical manpower.\nLife support services — Accommodation, catering, transport and site services for deployed teams.\nUS Government support — World-class support services delivered to US Government programs.\nProgram compliance — Documentation and reporting aligned with contractual obligations.\nIn-country presence — A local team that resolves issues on the ground, quickly.",
+        "ar": "التنسيق التنظيمي وخدمات الإعاشة المتكاملة\n\nنتولّى الجانب الحكومي من البرامج المعقدة — من التنسيق التنظيمي والتصاريح والموافقات — إلى جانب استشارات القوى العاملة وخدمات الإعاشة المتكاملة، بما يمكّن الشركاء الدوليين من العمل داخل المملكة بكفاءة.\n\nالعلاقات الحكومية — التنسيق مع الجهات السعودية بشأن التصاريح والموافقات والامتثال.\nاستشارات الكوادر — استقطاب وتأهيل وإدارة الكوادر الفنية المتخصصة.\nخدمات الإعاشة — السكن والإعاشة والنقل وخدمات المواقع للفرق الميدانية.\nدعم الحكومة الأمريكية — خدمات دعم بمستوى عالمي لبرامج الحكومة الأمريكية.\nامتثال البرامج — توثيق وتقارير متوافقة مع الالتزامات التعاقدية.\nحضور محلي — فريق محلي يعالج المسائل ميدانيًا وبسرعة.",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "power-systems-support",
+      "type": "services",
+      "order": 3,
+      "title": {
+        "en": "Power Systems Support (Generators & UPS)",
+        "ar": "دعم أنظمة الطاقة (المولدات وأنظمة الطاقة غير المنقطعة)"
+      },
+      "description": [],
+      "body": {
+        "en": "Power that does not fail\n\nInstallation, maintenance and lifecycle support for generators, UPS and critical backup power. We keep continuous power behind radar sites, operations centres, workshops and infrastructure — with scheduled maintenance, accurate diagnosis, professional repair and the spare parts to back it up.\n\nInstallation and commissioning — Specification, installation and handover of power and backup systems.\nPreventive maintenance — Scheduled servicing that keeps power continuity uninterrupted.\nFault diagnosis and repair — Accurate diagnosis and professional repair to minimize downtime.\nBattery and UPS support — Battery health, replacement and uninterruptible supply sustainment.\nLoad testing — Verification under load so systems perform when they are needed.\nSpare parts supply — Provision of the components required to keep systems running.",
+        "ar": "طاقة لا تتوقف\n\nتركيب وصيانة ودعم دورة الحياة للمولدات وأنظمة الطاقة غير المنقطعة والطاقة الاحتياطية الحرجة، لضمان استمرارية التغذية الكهربائية خلف مواقع الرادار ومراكز العمليات والورش والبنى التحتية.\n\nالتركيب والتشغيل — تحديد المواصفات والتركيب والتسليم لأنظمة الطاقة.\nالصيانة الوقائية — صيانة مجدولة تحافظ على استمرارية الطاقة.\nتشخيص الأعطال والإصلاح — تشخيص دقيق وإصلاح احترافي لتقليل فترات التوقف.\nدعم البطاريات وأنظمة UPS — متابعة حالة البطاريات واستبدالها واستدامة التغذية المستمرة.\nاختبار الأحمال — التحقق تحت الحمل لضمان الأداء عند الحاجة.\nتوريد قطع الغيار — توفير المكوّنات اللازمة لاستمرار التشغيل.",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "electronics-diagnostic-and-repair-workshops",
+      "type": "services",
+      "order": 4,
+      "title": {
+        "en": "Electronics Diagnostic & Repair Workshops",
+        "ar": "ورش تشخيص وإصلاح الإلكترونيات"
+      },
+      "description": [],
+      "body": {
+        "en": "Localized workshops for mission-critical electronics\n\nOur electronics workshops inside the Kingdom provide fault isolation, testing, repair and validation for mission-critical systems. Equipped for component-level work — RF test benches, signal generators, power meters and calibrated instrumentation — they return assemblies to service locally instead of shipping them abroad, cutting turnaround and reducing dependence on external sources.\n\nFault isolation — Systematic diagnosis to identify the failed assembly or component.\nComponent-level repair — Board and component repair rather than whole-unit replacement.\nRF and microwave testing — Signal generation and power measurement across radar frequency bands.\nFunctional validation — Full functional test before an item is certified back to service.\nCalibration — Alignment and calibration against traceable reference standards.\nReverse engineering — Recreating obsolete components to sustain ageing systems.",
+        "ar": "ورش موطّنة للإلكترونيات الحرجة\n\nتوفر ورشنا الإلكترونية داخل المملكة عزل الأعطال والاختبار والإصلاح والتحقق للأنظمة الحرجة، وهي مجهزة للعمل على مستوى المكوّنات بمنصات اختبار الترددات الراديوية وأجهزة معايرة دقيقة.\n\nعزل الأعطال — تشخيص ممنهج لتحديد الوحدة أو المكوّن المعطل.\nالإصلاح على مستوى المكوّن — إصلاح اللوحات والمكوّنات بدلاً من استبدال الوحدة كاملة.\nاختبار الترددات والموجات الدقيقة — توليد الإشارات وقياس القدرة عبر نطاقات تردد الرادار.\nالتحقق الوظيفي — اختبار وظيفي كامل قبل اعتماد العودة للخدمة.\nالمعايرة — المحاذاة والمعايرة وفق مراجع قياسية معتمدة.\nالهندسة العكسية — إعادة تصنيع المكوّنات المتقادمة لإدامة الأنظمة.",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "ground-support-equipment-sustainment",
+      "type": "services",
+      "order": 5,
+      "title": {
+        "en": "Ground Support Equipment (GSE) Sustainment",
+        "ar": "استدامة معدات الدعم الأرضي"
+      },
+      "description": [],
+      "body": {
+        "en": "Ground support assets, kept available\n\nMaintenance and availability support for aviation and land-based ground support equipment. We cover regular inspection, repair and rehabilitation across GSE fleets, with the spare parts needed to keep flight lines and land operations moving — applying strict safety and quality standards so equipment operates efficiently and reliably.\n\nPreventive maintenance — Regular inspection and servicing across all types of ground equipment.\nCorrective repair — Rapid response repair that minimizes downtime on the line.\nOverhaul and rehabilitation — Restoring ageing ground support assets to full operational condition.\nSpare parts supply — All necessary spare parts available and supplied when needed.\nAvailability reporting — Visibility of fleet status so readiness can be planned, not guessed.\nOn-site support — Technicians deployed to the operating location when it matters.",
+        "ar": "جاهزية مستمرة لمعدات الدعم الأرضي\n\nصيانة ودعم جاهزية معدات الدعم الأرضي في القطاعين الجوي والبري، وتشمل الفحص الدوري والإصلاح والتأهيل، مع توفير قطع الغيار اللازمة لضمان استمرارية العمليات.\n\nالصيانة الوقائية — فحص وصيانة دورية لجميع أنواع المعدات الأرضية.\nالإصلاح التصحيحي — استجابة سريعة تقلل فترات التوقف.\nالعمرة والتأهيل — إعادة المعدات إلى كامل جاهزيتها التشغيلية.\nتوريد قطع الغيار — توفير جميع قطع الغيار اللازمة عند الحاجة.\nتقارير الجاهزية — وضوح حالة الأسطول لتخطيط الجاهزية.\nالدعم الموقعي — فنيون في موقع التشغيل عند الحاجة.",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "spare-parts-logistics-and-warehousing",
+      "type": "services",
+      "order": 6,
+      "title": {
+        "en": "Aviation & Land Systems Spare Parts, Logistics, and Warehousing",
+        "ar": "قطع غيار الأنظمة الجوية والبرية والخدمات اللوجستية والتخزين"
+      },
+      "description": [],
+      "body": {
+        "en": "End-to-end supply, from RFQ to the flight line\n\n3Lines was registered as the first licensed Saudi company to provide spare parts, and supply remains one of its three core pillars. We source genuine parts for aviation and land systems from OEMs and authorised distributors across the United States and worldwide, then manage secure warehousing, inventory management and distribution to military and civilian platforms — with transparent pricing, verified authenticity and dependable lead times.\n\nStrategic sourcing — Qualifying the right suppliers for every part and program.\nVendor management — Long-term relationships with OEMs and authorised distributors.\nQuotations and negotiation — Competitive RFQs with clear pricing and delivery terms.\nLogistics and expediting — Export handling, shipping and priority AOG expediting.\nSecure warehousing — Controlled storage for military and civilian platform inventory.\nInventory planning — Forecasting and stock planning so critical parts are on hand.",
+        "ar": "إمداد متكامل من الطلب إلى التسليم\n\nسُجّلت 3Lines كأول شركة سعودية مرخّصة لتوريد قطع الغيار، ولا يزال الإمداد أحد ركائزها الثلاث. نورّد قطع الغيار الأصلية للأنظمة الجوية والبرية من المصنّعين الأصليين والموزّعين المعتمدين من الولايات المتحدة وحول العالم، مع تخزين آمن وإدارة للمخزون وتوزيع.\n\nالتوريد الاستراتيجي — تأهيل المورّدين المناسبين لكل قطعة وبرنامج.\nإدارة المورّدين — علاقات طويلة الأمد مع المصنّعين والموزّعين المعتمدين.\nعروض الأسعار والتفاوض — عروض تنافسية بأسعار ومهل تسليم واضحة.\nالخدمات اللوجستية — إجراءات التصدير والشحن والتسريع للحالات العاجلة.\nالتخزين الآمن — تخزين منضبط لمخزون المنصات العسكرية والمدنية.\nتخطيط المخزون — التنبؤ وتخطيط المخزون لتوفر القطع الحرجة.",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "simulation-systems",
+      "type": "services",
+      "order": 7,
+      "title": {
+        "en": "Simulation Systems (Full Motion & Static)",
+        "ar": "أنظمة المحاكاة (كاملة الحركة والثابتة)"
+      },
+      "description": [],
+      "body": {
+        "en": "Full-motion and static simulation, supported\n\nSupply, operations, maintenance and training support for advanced simulation and readiness platforms — full motion and static. We sustain flight and maintenance simulators so training throughput and operational readiness are never limited by equipment availability, backed by a partnership with Princess Nourah bint Abdulrahman University covering autonomous systems and simulation technologies.\n\nSimulator supply — Sourcing and delivery of simulation and readiness platforms.\nInstallation and integration — Commissioning and integration into the training environment.\nPreventive maintenance — Scheduled servicing to sustain simulator availability.\nFault resolution — Specialised diagnosis and repair of simulation subsystems.\nOperations support — Day-to-day operational support for training establishments.\nInstructor and user training — Enabling teams to get full value from the platform.",
+        "ar": "دعم أنظمة المحاكاة كاملة الحركة والثابتة\n\nالتوريد والتشغيل والصيانة ودعم التدريب لمنصات المحاكاة والجاهزية المتقدمة، كاملة الحركة والثابتة، بما يضمن ألا تتقيد الجاهزية التشغيلية بتوفر المعدات.\n\nتوريد أجهزة المحاكاة — توريد وتسليم منصات المحاكاة والجاهزية.\nالتركيب والتكامل — التشغيل والتكامل مع بيئة التدريب.\nالصيانة الوقائية — صيانة مجدولة لإدامة جاهزية المحاكيات.\nمعالجة الأعطال — تشخيص وإصلاح متخصص لأنظمة المحاكاة الفرعية.\nدعم التشغيل — دعم تشغيلي يومي لمنشآت التدريب.\nتدريب المدربين والمستخدمين — تمكين الفرق من الاستفادة الكاملة من المنصة.",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "training-and-capability-enablement",
+      "type": "services",
+      "order": 8,
+      "title": {
+        "en": "Training, Simulation & Capability Enablement",
+        "ar": "التدريب والمحاكاة وتمكين القدرات"
+      },
+      "description": [],
+      "body": {
+        "en": "Building national capability, not just delivering training\n\nMilitary and civilian training delivery, knowledge transfer and operational capability development — including advanced English language training from highly experienced trainers. Through NARS, the National Academy for Radar and Space Communications, and partnerships with national universities, we qualify Saudi talent in radar and communications systems, fiber optics, data centres, navigation systems and electronic protection.\n\nTechnical training — Hands-on programs in radar, communications, fiber optics and data centres.\nEnglish language training — Advanced English instruction delivered by highly experienced trainers.\nSimulation-based training — Practical training built on simulation and hands-on application.\nKnowledge transfer — Skills transfer that leaves lasting capability inside the Kingdom.\nUniversity partnerships — Joint programs with King Saud, Princess Nourah, Prince Sattam and Qassim.\nNARS Academy — A non-profit academy bridging the skills gap in technical and defense sectors.",
+        "ar": "بناء القدرات الوطنية لا مجرد تقديم التدريب\n\nتقديم التدريب العسكري والمدني ونقل المعرفة وتطوير القدرات التشغيلية، ومن خلال الأكاديمية الوطنية للرادارات والاتصالات الفضائية (NARS) والشراكات مع الجامعات الوطنية نؤهل الكفاءات السعودية.\n\nالتدريب التقني — برامج تطبيقية في الرادار والاتصالات والألياف البصرية ومراكز البيانات.\nتدريب اللغة الإنجليزية — تدريب متقدم على يد مدربين ذوي خبرة عالية.\nالتدريب بالمحاكاة — تدريب عملي قائم على المحاكاة والتطبيق.\nنقل المعرفة — نقل مهارات يترك قدرة مستدامة داخل المملكة.\nالشراكات الجامعية — برامج مشتركة مع جامعات الملك سعود ونورة وسطام والقصيم.\nأكاديمية NARS — أكاديمية غير ربحية تسد فجوة المهارات في القطاعات التقنية والدفاعية.",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "defense-systems-sustainment-mro",
+      "type": "services",
+      "order": 9,
+      "title": {
+        "en": "Defense Systems Sustainment (MRO)",
+        "ar": "استدامة الأنظمة الدفاعية (الصيانة والإصلاح والعمرة)"
+      },
+      "description": [],
+      "body": {
+        "en": "Maintenance, repair and overhaul across defense systems\n\nComprehensive MRO supporting operational readiness across defense systems. An experienced, professional team of engineers and technicians delivers scheduled and corrective maintenance, repair and overhaul to the highest standards of quality and precision — minimizing breakdowns, extending operational life and keeping platforms available. Our capability extends to reverse engineering and manufacturing components for advanced systems, reducing reliance on external sources.\n\nScheduled maintenance — Planned servicing that keeps defense systems mission-capable.\nCorrective repair — Rapid fault resolution to return systems to service.\nOverhaul — Deep restoration of assemblies to extend operational life.\nStructural and mechanical repair — Repair of structures and mechanical assemblies to safety standards.\nHydraulic and pneumatic systems — Efficient, reliable maintenance of hydraulic and pneumatic components.\nComponent manufacturing — Reverse engineering and manufacture of parts for advanced systems.",
+        "ar": "الصيانة والإصلاح والعمرة للأنظمة الدفاعية\n\nخدمات شاملة للصيانة والإصلاح والعمرة تدعم الجاهزية التشغيلية عبر الأنظمة الدفاعية، يقدمها فريق محترف من المهندسين والفنيين وفق أعلى معايير الجودة والدقة، مع قدرة على الهندسة العكسية وتصنيع المكوّنات.\n\nالصيانة المجدولة — صيانة مخططة تحافظ على جاهزية الأنظمة الدفاعية.\nالإصلاح التصحيحي — معالجة سريعة للأعطال وإعادة الأنظمة للخدمة.\nالعمرة — تجديد عميق للوحدات لإطالة العمر التشغيلي.\nالإصلاح الهيكلي والميكانيكي — إصلاح الهياكل والمجموعات الميكانيكية وفق معايير السلامة.\nالأنظمة الهيدروليكية والهوائية — صيانة كفؤة وموثوقة للمكوّنات الهيدروليكية والهوائية.\nتصنيع المكوّنات — هندسة عكسية وتصنيع قطع للأنظمة المتقدمة.",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    },
+    {
+      "slug": "program-management-and-localization",
+      "type": "services",
+      "order": 10,
+      "title": {
+        "en": "Program Management & Localization Enablement",
+        "ar": "إدارة البرامج وتمكين التوطين"
+      },
+      "description": [],
+      "body": {
+        "en": "Programs delivered, capability localized\n\nEnd-to-end program execution, localization and national capability development aligned with Saudi Vision 2030. We run advanced defense programs from award through delivery, and structure them so capability, knowledge and manufacturing stay in the Kingdom — contributing to the localization of over 50% of military spending by 2030 through knowledge transfer and the development of national capabilities.\n\nProgram management — Execution from contract award through delivery and sustainment.\nLocalization planning — Structuring programs so capability remains inside the Kingdom.\nTechnology transfer — Moving know-how and manufacturing capability to national teams.\nSupply chain integration — Connecting local suppliers into international program supply chains.\nPartner and OEM coordination — Managing Tier One partners and original equipment manufacturers.\nReporting and governance — Transparent progress, risk and compliance reporting throughout.",
+        "ar": "تنفيذ البرامج وتوطين القدرات\n\nتنفيذ متكامل للبرامج والتوطين وتطوير القدرات الوطنية بما يتوافق مع رؤية السعودية 2030، والإسهام في توطين أكثر من 50% من الإنفاق العسكري بحلول عام 2030 عبر نقل المعرفة وبناء القدرات الوطنية.\n\nإدارة البرامج — التنفيذ من الترسية حتى التسليم والاستدامة.\nتخطيط التوطين — هيكلة البرامج لإبقاء القدرة داخل المملكة.\nنقل التقنية — نقل المعرفة والقدرة التصنيعية إلى الفرق الوطنية.\nتكامل سلسلة الإمداد — ربط المورّدين المحليين بسلاسل الإمداد الدولية.\nتنسيق الشركاء والمصنّعين — إدارة شركاء الفئة الأولى والمصنّعين الأصليين.\nالتقارير والحوكمة — تقارير شفافة للتقدم والمخاطر والامتثال.",
+        "ko": "",
+        "ja": ""
+      },
+      "translationCoverage": {
+        "title": "en ar",
+        "body": "en ar"
+      }
+    }
+  ],
+  "news": [
+    {
+      "slug": "expanding-spare-parts-capabilities",
+      "publishDate": "2026-05-12T09:00:00.000000Z",
+      "title": {
+        "en": "Expanding Our Spare Parts, Logistics and Warehousing Capabilities",
+        "ar": "توسيع قدراتنا في قطع الغيار والخدمات اللوجستية والتخزين",
+        "ko": "항공기 예비 부품 역량 확대",
+        "ja": "航空機スペアパーツ能力の拡大"
+      },
+      "description": {
+        "en": "Growing end-to-end procurement, secure warehousing and inventory management for military and civilian platforms — sourced from the United States and worldwide.",
+        "ar": "نظرة على كيفية تنمية مخزوننا وشبكة التوريد العالمية لدينا لقطع غيار الطائرات المدنية والعسكرية.",
+        "ko": "민간 및 군용 항공기 예비 부품을 위한 재고와 글로벌 소싱 네트워크를 어떻게 성장시키고 있는지 살펴봅니다.",
+        "ja": "民間および軍用航空機スペアパーツの在庫とグローバル調達ネットワークをどのように成長させているかをご紹介します。"
+      },
+      "tags": [
+        "procurement",
+        "manifacturing"
+      ],
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      }
+    },
+    {
+      "slug": "advanced-simulator-support",
+      "publishDate": "2026-04-28T09:00:00.000000Z",
+      "title": {
+        "en": "Investing in Simulation and XR-Based Training",
+        "ar": "الاستثمار في المحاكاة والتدريب القائم على الواقع الممتد",
+        "ko": "고급 시뮬레이터 지원에 대한 투자",
+        "ja": "高度なシミュレーター支援への投資"
+      },
+      "description": {
+        "en": "Full-motion and static simulation platforms supported end to end, extended through 3Lines XR into immersive training for the defense and aviation sectors.",
+        "ar": "خدماتنا المتخصصة تُبقي أجهزة محاكاة الطيران والصيانة في جاهزية تشغيلية عالية.",
+        "ko": "저희의 전문 서비스는 비행 및 정비 시뮬레이터가 최상의 준비 상태로 작동하도록 유지합니다.",
+        "ja": "当社の専門サービスは、飛行および整備シミュレーターを最高の準備状態で稼働させ続けます。"
+      },
+      "tags": [
+        "technology"
+      ],
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      }
+    },
+    {
+      "slug": "ground-support-equipment-services",
+      "publishDate": "2026-03-15T09:00:00.000000Z",
+      "title": {
+        "en": "Strengthening Ground Support Equipment Sustainment",
+        "ar": "تعزيز استدامة معدات الدعم الأرضي",
+        "ko": "지상 지원 장비 서비스 강화",
+        "ja": "地上支援機器サービスの強化"
+      },
+      "description": {
+        "en": "Maintenance and availability support for aviation and land-based ground support assets, backed by in-Kingdom workshops and spare parts provisioning.",
+        "ar": "صيانة شاملة وقطع غيار لضمان الجاهزية التشغيلية على الأرض.",
+        "ko": "지상에서의 운영 준비 태세를 보장하기 위한 포괄적인 정비 및 예비 부품.",
+        "ja": "地上での運用準備態勢を確保するための包括的な整備とスペアパーツ。"
+      },
+      "tags": [
+        "manifacturing",
+        "technology"
+      ],
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      }
+    },
+    {
+      "slug": "advancing-radar-sensor-support",
+      "publishDate": "2026-02-25T09:00:00.000000Z",
+      "title": {
+        "en": "Advancing Radar, C4I and Tactical Communications Sustainment",
+        "ar": "تطوير استدامة الرادار وأنظمة C4I والاتصالات التكتيكية",
+        "ko": "레이더 및 센서 시스템 지원 강화",
+        "ja": "レーダーおよびセンサーシステム支援の強化"
+      },
+      "description": {
+        "en": "Radar maintenance to 4th-line level inside the Kingdom — including the AN/TPS-78 — under a Maintenance Level Agreement with Northrop Grumman.",
+        "ar": "توسيع قدراتنا في تركيب ومعايرة وصيانة أنظمة الرادار وأجهزة الاستشعار لتطبيقات المراقبة والحركة الجوية.",
+        "ko": "감시 및 항공 교통 운영을 위한 레이더 및 센서 시스템의 설치, 보정, 유지보수 역량을 확장하고 있습니다.",
+        "ja": "監視および航空交通の運用に向けて、レーダーおよびセンサーシステムの設置・校正・整備の能力を拡大しています。"
+      },
+      "tags": [
+        "technology"
+      ],
+      "translationCoverage": {
+        "title": "en ar ja ko",
+        "description": "en ar ja ko"
+      }
+    }
+  ],
+  "partnersAndClients": [
+    {
+      "name": {
+        "ar": "SAMI",
+        "en": "SAMI"
+      },
+      "description": {
+        "ar": "الشركة السعودية للصناعات العسكرية",
+        "en": "Saudi Arabian Military Industries"
+      },
+      "link": "https://www.sami.com.sa/",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "AirBus",
+        "en": "AirBus"
+      },
+      "description": [],
+      "link": "https://www.airbus.com/en",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "BAE Systems",
+        "en": "BAE Systems"
+      },
+      "description": [],
+      "link": "https://www.baesystems.com/en/home",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "ARMITE Lubricants",
+        "en": "ARMITE Lubricants"
+      },
+      "description": [],
+      "link": "https://armitelabs.com/",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "SAMI AEC",
+        "en": "SAMI AEC"
+      },
+      "description": {
+        "ar": "شركة الإلكترونيات المتقدمة",
+        "en": "SAMI Advanced Electronics"
+      },
+      "link": "https://www.aecl.com/",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "SMSCMC",
+        "en": "SMSCMC"
+      },
+      "description": {
+        "ar": "الشركة السعودية للصيانة وإدارة خطوط الإمداد المحدودة",
+        "en": "Saudi Maintenance & Supply Chain Management Co"
+      },
+      "link": "https://www.smscmc.com/",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "MAC Aerospace Corp.",
+        "en": "MAC Aerospace Corp."
+      },
+      "description": [],
+      "link": "https://macaerospace.com/",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "Amentum",
+        "en": "Amentum"
+      },
+      "description": [],
+      "link": "https://www.amentum.com/",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "SAMI Aerospace",
+        "en": "SAMI Aerospace"
+      },
+      "description": {
+        "ar": "شركة سامي السلام لصناعة الطيران",
+        "en": "SAMI Alsalam Aerospace Industries"
+      },
+      "link": "https://samialsalam.com.sa",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "NPCO",
+        "en": "NPCO"
+      },
+      "description": {
+        "ar": "شركة التعدات الوطنية التجارية",
+        "en": "National Commercial Pledges Company"
+      },
+      "link": "https://npco.sa/",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "شركة الوعلان للتجارة",
+        "en": "Wallan Group"
+      },
+      "description": [],
+      "link": "https://www.wallan.com/",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "شركة فينيل العربية",
+        "en": "Vinnell Arabia"
+      },
+      "description": [],
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "أي سي أس العربية",
+        "en": "ICS ARABIA"
+      },
+      "description": [],
+      "link": "https://icsarabia.com",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "AACC",
+        "en": "AACC"
+      },
+      "description": {
+        "ar": "شركة المعدات المكملة للطائرات المحدودة",
+        "en": "Aircraft Accessories & Components Co. Ltd."
+      },
+      "link": "https://www.aacc-ltd.com/",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "OPTOKON Middle East",
+        "en": "OPTOKON Middle East"
+      },
+      "description": [],
+      "link": "https://www.optokon.com.sa/",
+      "order": null
+    },
+    {
+      "name": {
+        "ar": "TAM",
+        "en": "TAM"
+      },
+      "description": [],
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Royal Saudi Air Force",
+        "ar": "القوات الجوية الملكية السعودية"
+      },
+      "description": {
+        "en": "Radar sustainment including the AN/TPS-78, and aviation support.",
+        "ar": "استدامة الرادارات والدعم الجوي."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Royal Saudi Air Defense Forces",
+        "ar": "قوات الدفاع الجوي الملكي السعودي"
+      },
+      "description": {
+        "en": "Air defense systems sustainment and technical support.",
+        "ar": "استدامة أنظمة الدفاع الجوي والدعم الفني."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Ministry of National Guard",
+        "ar": "وزارة الحرس الوطني"
+      },
+      "description": {
+        "en": "ELT, AMSP and COUNS School programs delivered with the U.S. Government.",
+        "ar": "برامج ELT وAMSP ومدرسة COUNS بالتعاون مع الحكومة الأمريكية."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Ministry of Defense",
+        "ar": "وزارة الدفاع"
+      },
+      "description": {
+        "en": "Defense sustainment and localization programs.",
+        "ar": "برامج الاستدامة الدفاعية والتوطين."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Special Security Forces",
+        "ar": "قوات الأمن الخاصة"
+      },
+      "description": {
+        "en": "Technical and equipment support for special security operations.",
+        "ar": "الدعم الفني والمعدات لعمليات الأمن الخاص."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Strategic Missile Force",
+        "ar": "قوة الصواريخ الاستراتيجية"
+      },
+      "description": {
+        "en": "Specialised technical and sustainment support.",
+        "ar": "دعم فني واستدامة متخصص."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Royal Saudi Naval Forces",
+        "ar": "القوات البحرية الملكية السعودية"
+      },
+      "description": {
+        "en": "Naval helicopter spare parts under the SAMI Aerospace framework contract.",
+        "ar": "قطع غيار المروحيات البحرية ضمن العقد الإطاري مع SAMI."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Royal Saudi Land Forces",
+        "ar": "القوات البرية الملكية السعودية"
+      },
+      "description": {
+        "en": "Land systems spare parts, communications and sustainment.",
+        "ar": "قطع غيار الأنظمة البرية والاتصالات والاستدامة."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Saudi Border Guard",
+        "ar": "حرس الحدود السعودي"
+      },
+      "description": {
+        "en": "Surveillance, communications and equipment support.",
+        "ar": "دعم المراقبة والاتصالات والمعدات."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "SEDENA — Secretaría de la Defensa Nacional",
+        "ar": "وزارة الدفاع الوطني المكسيكية (SEDENA)"
+      },
+      "description": {
+        "en": "Defense projects delivered with the Mexican Government through SEDENA.",
+        "ar": "مشاريع دفاعية مع الحكومة المكسيكية."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "ABI",
+        "ar": "ABI"
+      },
+      "description": {
+        "en": "Strategic partnership established 2024.",
+        "ar": "شراكة استراتيجية منذ 2024."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Princess Nourah bint Abdulrahman University",
+        "ar": "جامعة الأميرة نورة بنت عبدالرحمن"
+      },
+      "description": {
+        "en": "Autonomous systems and simulation technologies.",
+        "ar": "الأنظمة الذاتية وتقنيات المحاكاة."
+      },
+      "link": "https://www.pnu.edu.sa/",
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Prince Sattam bin Abdulaziz University",
+        "ar": "جامعة الأمير سطام بن عبدالعزيز"
+      },
+      "description": {
+        "en": "R&D and manufacturing in jamming and electronic warfare systems.",
+        "ar": "البحث والتطوير والتصنيع في أنظمة التشويش والحرب الإلكترونية."
+      },
+      "link": "https://www.psau.edu.sa/",
+      "order": null
+    },
+    {
+      "name": {
+        "en": "NARS — National Academy for Radar and Space Communications",
+        "ar": "الأكاديمية الوطنية للرادارات والاتصالات الفضائية"
+      },
+      "description": {
+        "en": "Non-profit academy qualifying national talent — 5 core specializations, +500 trainees.",
+        "ar": "أكاديمية غير ربحية لتأهيل الكفاءات الوطنية — 5 تخصصات وأكثر من 500 متدرب."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Saudi Electricity Company",
+        "ar": "الشركة السعودية للكهرباء"
+      },
+      "description": {
+        "en": "Power systems and critical infrastructure support.",
+        "ar": "دعم أنظمة الطاقة والبنى التحتية الحرجة."
+      },
+      "link": "https://www.se.com.sa/",
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Mobily",
+        "ar": "موبايلي"
+      },
+      "description": {
+        "en": "Communications and IT infrastructure collaboration.",
+        "ar": "التعاون في الاتصالات والبنية التقنية."
+      },
+      "link": "https://www.mobily.com.sa/",
+      "order": null
+    },
+    {
+      "name": {
+        "en": "SITECH",
+        "ar": "SITECH"
+      },
+      "description": {
+        "en": "Industrial and technical services collaboration.",
+        "ar": "التعاون في الخدمات الصناعية والفنية."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "SAMI ALSALAM Aerospace Industries",
+        "ar": "شركة السلام لصناعة الطيران"
+      },
+      "description": {
+        "en": "Aerospace industries partnership.",
+        "ar": "شراكة في صناعة الطيران."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Technical and Vocational Training Corporation",
+        "ar": "المؤسسة العامة للتدريب التقني والمهني"
+      },
+      "description": {
+        "en": "National technical and vocational training partnership.",
+        "ar": "شراكة في التدريب التقني والمهني."
+      },
+      "link": "https://www.tvtc.gov.sa/",
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Karachi Shipyard & Engineering Works",
+        "ar": "حوض كراتشي لبناء السفن"
+      },
+      "description": {
+        "en": "Naval engineering and shipbuilding collaboration.",
+        "ar": "التعاون في الهندسة البحرية وبناء السفن."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Raytheon",
+        "ar": "ريثيون"
+      },
+      "description": {
+        "en": "Defense systems collaboration.",
+        "ar": "التعاون في الأنظمة الدفاعية."
+      },
+      "link": "https://www.rtx.com/",
+      "order": null
+    },
+    {
+      "name": {
+        "en": "USASAC",
+        "ar": "USASAC"
+      },
+      "description": {
+        "en": "U.S. Army Security Assistance Command programs.",
+        "ar": "برامج قيادة المساعدة الأمنية للجيش الأمريكي."
+      },
+      "link": null,
+      "order": null
+    },
+    {
+      "name": {
+        "en": "Redstone Systems",
+        "ar": "Redstone Systems"
+      },
+      "description": {
+        "en": "Defense technology partnership.",
+        "ar": "شراكة في تقنيات الدفاع."
+      },
+      "link": null,
+      "order": null
+    }
+  ],
+  "newsTags": [
+    {
+      "slug": "procurement",
+      "name": {
+        "ar": "المشتريات",
+        "en": "Procurement"
+      },
+      "description": {
+        "ar": "أخبار مرتبطة بمجال المشتريات.",
+        "en": "News related to Procurement."
+      }
+    },
+    {
+      "slug": "manifacturing",
+      "name": {
+        "ar": "الصناعة",
+        "en": "Manufacturing"
+      },
+      "description": {
+        "ar": "أخبار مرتبطة بمجال الصناعة.",
+        "en": "News related to Manufacturing."
+      }
+    },
+    {
+      "slug": "technology",
+      "name": {
+        "ar": "التكنولوجيا",
+        "en": "Technology",
+        "ko": "기술",
+        "ja": "テクノロジー"
+      },
+      "description": {
+        "ar": "أخبار مرتبطة بمجال التكنولوجيا.",
+        "en": "News related to Technology."
+      }
+    }
+  ]
+}

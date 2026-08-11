@@ -1,0 +1,532 @@
+/* ============================================================
+   Thales Group — UI/UX clone
+   Tokens captured from thalesgroup.com/en
+   ============================================================ */
+
+:root{
+  --blue:        #0816A1;   /* Thales primary blue */
+  --navy:        #00005C;   /* deep navy */
+  --navy-2:      #02023F;
+  --cyan:        #87EDFF;   /* signature accent */
+  --ink:         #252526;
+  --ink-70:      rgba(28,28,28,.7);
+  --paper:       #FFFFFF;
+  --mist:        #F4F9FB;   /* light section bg */
+  --mist-2:      #FBFDFE;
+  --lilac:       #D9D9E7;   /* hairlines */
+  --green:       #468254;
+
+  --font: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --font-alt: "Saira","Inter",Arial,sans-serif;
+
+  --hdr-xs: 4.1875rem;
+  --hdr-lg: 7.5rem;
+
+  --wrap: 1440px;
+  --pad: clamp(16px, 3.4vw, 60px);
+  --ease: cubic-bezier(.2,.8,.2,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--font);font-size:17px;line-height:1.6;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
+h1,h2,h3,h4{margin:0;font-weight:600;line-height:1.05;letter-spacing:-.02em}
+p{margin:0 0 1em}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skips{position:absolute;z-index:999}
+.skips a{position:absolute;left:12px;top:-70px;background:var(--blue);color:#fff;padding:12px 20px;font-weight:600;white-space:nowrap;transition:top .2s}
+.skips a:focus{top:12px}
+
+/* ============================================================
+   Utility strip
+   ============================================================ */
+.utility{border-bottom:1px solid var(--lilac);background:#fff;font-size:13.5px}
+.utility__inner{max-width:var(--wrap);margin-inline:auto;padding:0 var(--pad);display:flex;align-items:center;gap:26px;min-height:40px;justify-content:flex-end}
+.utility a{color:var(--ink-70);font-weight:500;transition:color .2s}
+.utility a:hover{color:var(--blue)}
+.utility .ext svg{width:11px;height:11px;fill:currentColor;margin-left:5px;vertical-align:-1px}
+.utility__lang{display:flex;gap:8px;align-items:center;padding-left:22px;border-left:1px solid var(--lilac)}
+.utility__lang a[aria-current="true"]{color:var(--blue);font-weight:700}
+@media (max-width:900px){.utility{display:none}}
+
+/* ============================================================
+   Header — burger | centered logo | search
+   ============================================================ */
+.hdr{position:sticky;top:0;z-index:150;background:#fff;border-bottom:1px solid var(--lilac)}
+.hdr__inner{display:grid;grid-template-columns:var(--hdr-xs) 1fr var(--hdr-xs);min-height:var(--hdr-xs)}
+@media (min-width:1024px){
+  .hdr__inner{grid-template-columns:var(--hdr-lg) 1fr var(--hdr-lg);min-height:var(--hdr-lg)}
+}
+.hdr__burger,.hdr__search{
+  display:grid;place-items:center;
+  border-inline:1px solid var(--lilac);
+  transition:background .22s,color .22s;
+}
+.hdr__burger{border-left:0;border-right:1px solid var(--lilac)}
+.hdr__search{border-right:0;border-left:1px solid var(--lilac)}
+.hdr__burger:hover,.hdr__search:hover{background:var(--mist);color:var(--blue)}
+.hdr__burger svg,.hdr__search svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2}
+.hdr__logo{display:grid;place-items:center;padding:10px}
+.hdr__logo svg{height:clamp(22px,2.6vw,34px);width:auto}
+
+/* thales wordmark */
+.tw-text{fill:var(--navy)}
+.tw-drop{fill:var(--cyan)}
+
+/* ---- Mega menu ---- */
+.mega{
+  position:fixed;inset:0;z-index:140;background:#fff;
+  transform:translateY(-6px);opacity:0;visibility:hidden;
+  transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s;
+  overflow-y:auto;
+}
+.mega.is-open{opacity:1;visibility:visible;transform:none}
+.mega__bar{
+  position:sticky;top:0;background:#fff;border-bottom:1px solid var(--lilac);
+  display:flex;align-items:center;gap:16px;padding:0 var(--pad);min-height:var(--hdr-xs);z-index:2;
+}
+@media (min-width:1024px){.mega__bar{min-height:var(--hdr-lg)}}
+.mega__close{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.mega__close svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;fill:none}
+.mega__body{max-width:var(--wrap);margin-inline:auto;padding:clamp(26px,4vw,54px) var(--pad) 70px;display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(24px,4vw,60px)}
+@media (max-width:900px){.mega__body{grid-template-columns:1fr}}
+
+.megatabs li + li{border-top:1px solid var(--lilac)}
+.megatab{
+  width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:16px 0;font-size:clamp(18px,2vw,24px);font-weight:600;color:var(--navy);
+  transition:color .2s,padding-left .28s var(--ease);
+}
+.megatab:hover{color:var(--blue);padding-left:8px}
+.megatab[aria-selected="true"]{color:var(--blue)}
+.megatab svg{width:18px;height:18px;fill:currentColor;opacity:.4;transition:opacity .2s,transform .2s}
+.megatab[aria-selected="true"] svg,.megatab:hover svg{opacity:1;transform:translateX(4px)}
+
+.megapanel{display:none}
+.megapanel.is-on{display:block;animation:fade .35s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.megapanel h3{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-70);margin-bottom:20px;font-weight:600}
+.megapanel__links{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px 30px}
+.megapanel__links a{
+  display:flex;align-items:center;gap:9px;padding:9px 0;font-size:16.5px;color:var(--navy);
+  border-bottom:1px solid transparent;transition:color .2s,border-color .2s;
+}
+.megapanel__links a:hover{color:var(--blue);border-bottom-color:var(--cyan)}
+.megapanel__links a::before{content:"";width:6px;height:6px;background:var(--cyan);flex:none;border-radius:50%}
+.megapanel__cta{margin-top:30px}
+
+/* ---- search overlay ---- */
+.searchlayer{
+  position:fixed;inset:0;z-index:145;background:rgba(255,255,255,.98);
+  display:grid;place-items:center;padding:var(--pad);
+  opacity:0;visibility:hidden;transition:opacity .28s,visibility .28s;
+}
+.searchlayer.is-open{opacity:1;visibility:visible}
+.searchlayer form{width:min(760px,100%);border-bottom:3px solid var(--blue);display:flex;gap:14px;align-items:center;padding-bottom:14px}
+.searchlayer input{flex:1;border:0;font-family:inherit;font-size:clamp(22px,4vw,40px);font-weight:600;color:var(--navy);background:none}
+.searchlayer input::placeholder{color:#a9a9c0}
+.searchlayer input:focus{outline:none}
+.searchlayer button svg{width:30px;height:30px;stroke:var(--blue);stroke-width:2;fill:none}
+.searchlayer .close{position:absolute;top:24px;right:24px;font-size:15px;font-weight:600;color:var(--blue)}
+
+/* ============================================================
+   Buttons / links
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:15px 30px;border-radius:999px;font-size:15.5px;font-weight:600;
+  transition:background .25s var(--ease),color .25s,transform .25s,box-shadow .25s;
+}
+.btn--blue{background:var(--blue);color:#fff}
+.btn--blue:hover{background:var(--navy);transform:translateY(-2px);box-shadow:0 10px 26px rgba(8,22,161,.25)}
+.btn--wire{border:1.5px solid var(--blue);color:var(--blue)}
+.btn--wire:hover{background:var(--blue);color:#fff;transform:translateY(-2px)}
+.btn--onDark{background:#fff;color:var(--navy)}
+.btn--onDark:hover{background:var(--cyan);transform:translateY(-2px)}
+.btn svg{width:15px;height:15px;fill:currentColor;transition:transform .25s}
+.btn:hover svg{transform:translateX(4px)}
+
+.arrowlink{
+  display:inline-flex;align-items:center;gap:11px;font-weight:600;color:var(--blue);
+  font-size:16.5px;padding-bottom:3px;border-bottom:2px solid var(--cyan);
+  transition:gap .25s var(--ease),color .2s;
+}
+.arrowlink:hover{gap:17px;color:var(--navy)}
+.arrowlink svg{width:15px;height:15px;fill:currentColor}
+.on-dark .arrowlink{color:#fff;border-bottom-color:var(--cyan)}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{background:var(--mist);padding:clamp(48px,8vw,110px) 0 clamp(44px,6vw,86px);position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;right:-6%;top:-30%;width:46%;height:160%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(135,237,255,.55),transparent 72%);
+}
+.hero__inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,4vw,70px);align-items:end}
+@media (max-width:980px){.hero__inner{grid-template-columns:1fr;align-items:start}}
+.hero h1{
+  font-size:clamp(40px,7.4vw,90px);line-height:1;letter-spacing:-.022em;
+  color:var(--blue);font-weight:600;
+}
+.hero p{font-size:clamp(16.5px,1.3vw,19px);color:var(--ink);max-width:56ch;margin:0}
+
+/* ============================================================
+   Section scaffolding
+   ============================================================ */
+/* 6rem is the rhythm the brand's own token file documents. 104px top and bottom
+   stacked to a 208px gap between bands, which is what made the pages read as
+   mostly empty. */
+.section{padding:clamp(48px,6vw,96px) 0}
+.section--mist{background:var(--mist)}
+.section--navy{background:var(--navy);color:#fff}
+.section--blue{background:var(--blue);color:#fff}
+.on-dark, .section--navy, .section--blue{color:#fff}
+.section--navy h2,.section--blue h2,.section--navy h3,.section--blue h3{color:#fff}
+
+.kicker{
+  font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:18px;display:flex;align-items:center;gap:12px;
+}
+.kicker::after{content:"";flex:1;height:1px;background:var(--lilac);max-width:120px}
+.section--navy .kicker,.section--blue .kicker{color:var(--cyan)}
+.section--navy .kicker::after,.section--blue .kicker::after{background:rgba(255,255,255,.25)}
+
+.h2{font-size:clamp(28px,4vw,52px);letter-spacing:-.022em;max-width:20ch}
+.h3{font-size:clamp(21px,2.2vw,28px)}
+.lede{font-size:clamp(16.5px,1.3vw,19px);color:var(--ink-70);max-width:70ch}
+.section--navy .lede,.section--blue .lede{color:rgba(255,255,255,.8)}
+
+.sec-head{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(26px,3.5vw,46px)}
+
+/* ============================================================
+   Expertise tiles
+   ============================================================ */
+.tiles3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.6vw,24px)}
+@media (max-width:860px){.tiles3{grid-template-columns:1fr}}
+.tile{
+  position:relative;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:flex-end;
+  color:#fff;isolation:isolate;
+}
+@media (max-width:860px){.tile{aspect-ratio:16/10}}
+.tile svg{position:absolute;inset:0;width:100%;height:100%;z-index:-2;transition:transform 1s var(--ease)}
+.tile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,92,.05) 40%,rgba(0,0,92,.86) 100%)}
+.tile:hover svg{transform:scale(1.06)}
+.tile__body{padding:clamp(20px,2.4vw,34px);width:100%}
+.tile__body h3{font-size:clamp(22px,2.6vw,32px);margin-bottom:12px}
+.tile__body .go{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15.5px;border-bottom:2px solid var(--cyan);padding-bottom:3px;transition:gap .25s var(--ease)}
+.tile:hover .go{gap:16px}
+.tile__body .go svg{position:static;width:14px;height:14px;fill:currentColor;z-index:1}
+
+/* ============================================================
+   Feature (research & innovation)
+   ============================================================ */
+.feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+@media (max-width:900px){.feature{grid-template-columns:1fr}}
+.feature__media{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--navy)}
+@media (max-width:900px){.feature__media{aspect-ratio:16/10}}
+.feature__media svg{width:100%;height:100%}
+
+.figures{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,30px);margin-top:clamp(30px,4vw,52px);padding-top:clamp(24px,3vw,40px);border-top:1px solid var(--lilac)}
+@media (max-width:640px){.figures{grid-template-columns:1fr;gap:20px}}
+.figure__num{font-family:var(--font-alt);font-size:clamp(32px,4.4vw,54px);font-weight:600;color:var(--blue);line-height:1;letter-spacing:-.02em}
+.figure__lab{font-size:15px;color:var(--ink-70);margin-top:8px;max-width:22ch}
+.section--navy .figures,.section--blue .figures{border-top-color:rgba(255,255,255,.22)}
+.section--navy .figure__num,.section--blue .figure__num{color:var(--cyan)}
+.section--navy .figure__lab,.section--blue .figure__lab{color:rgba(255,255,255,.75)}
+
+/* ============================================================
+   Three-up cards (Protect / Worldwide)
+   ============================================================ */
+.cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,34px)}
+@media (max-width:900px){.cards3{grid-template-columns:1fr}}
+.pcard{display:flex;flex-direction:column;gap:18px;background:transparent}
+.pcard__media{aspect-ratio:16/11;overflow:hidden;background:var(--mist)}
+.pcard__media svg{width:100%;height:100%;transition:transform .9s var(--ease)}
+.pcard:hover .pcard__media svg{transform:scale(1.05)}
+.pcard h3{font-size:clamp(20px,2.1vw,26px)}
+.pcard p{color:var(--ink-70);margin:0;flex:1}
+.section--navy .pcard p,.section--blue .pcard p{color:rgba(255,255,255,.78)}
+
+/* ============================================================
+   Careers band
+   ============================================================ */
+.careers{position:relative;min-height:clamp(360px,44vw,560px);display:flex;align-items:center;color:#fff;overflow:hidden;isolation:isolate}
+.careers svg.bg{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.careers::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,0,92,.85),rgba(0,0,92,.35))}
+.careers > .wrap{width:100%}
+.careers h2{font-size:clamp(26px,3.6vw,46px);max-width:18ch;margin-bottom:28px}
+
+/* ============================================================
+   News grid
+   ============================================================ */
+.newsgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.2vw,32px)}
+@media (max-width:980px){.newsgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.newsgrid{grid-template-columns:1fr}}
+.ncard{
+  display:flex;flex-direction:column;background:#fff;border:1px solid var(--lilac);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;
+}
+.ncard:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,92,.12);border-color:var(--cyan)}
+.ncard__media{aspect-ratio:16/9;overflow:hidden;background:var(--mist)}
+.ncard__media svg{width:100%;height:100%}
+.ncard__body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1;gap:12px}
+.tag{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);background:var(--mist);border:1px solid var(--lilac);padding:5px 12px;border-radius:999px}
+.ncard h3{font-size:19px;line-height:1.28;letter-spacing:-.01em;flex:1}
+.ncard__meta{display:flex;gap:10px;align-items:center;font-size:13.5px;color:var(--ink-70)}
+.ncard__meta .dot{width:4px;height:4px;border-radius:50%;background:var(--lilac)}
+.ncard__more{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;color:var(--blue)}
+.ncard__more svg{width:13px;height:13px;fill:currentColor;transition:transform .25s}
+.ncard:hover .ncard__more svg{transform:translateX(4px)}
+
+/* social strip */
+.socialstrip{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center;padding:clamp(30px,4vw,54px) 0;border-top:1px solid var(--lilac);border-bottom:1px solid var(--lilac)}
+.socialstrip span{font-weight:600;color:var(--navy)}
+.socialstrip a{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--lilac);border-radius:50%;color:var(--blue);transition:background .22s,color .22s,transform .22s}
+.socialstrip a:hover{background:var(--blue);color:#fff;transform:translateY(-3px)}
+.socialstrip svg{width:19px;height:19px;fill:currentColor}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.ftr{background:var(--navy);color:rgba(255,255,255,.82);padding:clamp(46px,6vw,78px) 0 0}
+.ftr__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(26px,4vw,60px)}
+@media (max-width:820px){.ftr__grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.ftr__grid{grid-template-columns:1fr}}
+.ftr h4{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:20px;font-weight:700}
+.ftr ul{display:grid;gap:11px}
+.ftr li a{font-size:15.5px;transition:color .2s}
+.ftr li a:hover{color:var(--cyan)}
+.ftr__logo svg{height:30px;width:auto;margin-bottom:26px}
+.ftr__logo .tw-text{fill:#fff}
+.ftr__bar{
+  margin-top:clamp(36px,4.5vw,60px);border-top:1px solid rgba(255,255,255,.18);
+  padding:22px 0 36px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;font-size:14px;
+}
+.ftr__bar a:hover{color:var(--cyan)}
+.ftr__bar .right{margin-left:auto;color:rgba(255,255,255,.6)}
+.a11y{display:inline-flex;align-items:center;gap:8px}
+.a11y .pill{background:var(--green);color:#fff;border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:700}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* interior pages */
+.pagehead{background:var(--mist);padding:clamp(40px,6vw,84px) 0;position:relative;overflow:hidden}
+.pagehead::after{content:"";position:absolute;right:-8%;top:-40%;width:46%;height:180%;background:radial-gradient(closest-side,rgba(135,237,255,.5),transparent 72%)}
+.pagehead .crumbs{position:relative;z-index:1;display:flex;gap:10px;font-size:13.5px;color:var(--ink-70);margin-bottom:20px}
+.pagehead .crumbs a:hover{color:var(--blue)}
+.pagehead h1{position:relative;z-index:1;font-size:clamp(34px,6vw,72px);color:var(--blue);line-height:1.02}
+.prose{max-width:74ch;font-size:17.5px}
+.prose h2{font-size:clamp(24px,3vw,36px);margin:1.8em 0 .6em;color:var(--navy)}
+.prose ul{list-style:disc;padding-left:22px;margin:0 0 1.2em}
+.prose li{margin-bottom:.5em}
+
+/* ============================================================
+   3Lines content components
+   Layout only. 3lines.css already themes these class names
+   (.heroslides/.speclist/.logos/.certs/.field), so colour comes
+   from the theme layer and nothing here needs !important.
+   ============================================================ */
+
+/* --- hero rotating words ------------------------------------
+   No reserved min-width: sizing the box from the longest word's character
+   count blew an ~800px hole in the headline, because 21ch at display size is
+   enormous. The words swap in place instead; the line reflows, which is what
+   the reference does too. */
+.rotator{display:inline;position:relative}
+.rotator span{display:none}
+.rotator span.is-on{display:inline}
+
+/* The hero CTA is a grid child and was stretching to the full column. */
+.hero__inner .btn{justify-self:start;width:fit-content}
+
+/* --- "Why 3Lines" slider ------------------------------------ */
+.heroslides{display:grid;position:relative;min-height:clamp(150px,16vw,210px)}
+.heroslide{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .5s var(--ease)}
+.heroslide.is-on{opacity:1;visibility:visible}
+.heroslide h3{font-size:clamp(22px,2.8vw,34px);margin-bottom:12px}
+.heroslide p{color:var(--ink-70);max-width:60ch;margin:0}
+.dots{display:flex;gap:10px;margin-top:clamp(18px,2.4vw,28px)}
+.dot{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:var(--lilac);cursor:pointer;
+     transition:background .2s var(--ease),transform .2s var(--ease)}
+.dot[aria-current="true"]{background:var(--blue);transform:scale(1.25)}
+
+/* --- definition cards (pillars, values, capabilities, facts) -- */
+.defs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.2vw,30px)}
+.defs[data-cols="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:900px){.defs,.defs[data-cols="2"]{grid-template-columns:1fr}}
+.defcard{display:flex;flex-direction:column;gap:10px;padding:clamp(20px,2.2vw,30px);
+         background:var(--paper);border:1px solid var(--lilac)}
+.defcard h3{font-size:clamp(18px,1.7vw,21px)}
+.defcard p{color:var(--ink-70);margin:0}
+.defcard__meta{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:auto;padding-top:14px;
+               border-top:1px solid var(--lilac);font-size:13.5px;color:var(--ink-70)}
+.defcard__meta b{color:var(--ink);font-weight:600}
+.section--navy .defcard{background:transparent;border-color:rgba(255,255,255,.22)}
+.section--navy .defcard p,.section--navy .defcard__meta{color:rgba(255,255,255,.78)}
+
+/* --- "at a glance" spec strip -------------------------------- */
+.speclist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--lilac)}
+@media (max-width:640px){.speclist{grid-template-columns:1fr}}
+.speclist div{display:flex;align-items:center;gap:12px;padding:clamp(18px,2vw,26px);font-size:16px;
+              border-inline-end:1px solid var(--lilac);border-block-end:1px solid var(--lilac)}
+.speclist div::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--cyan)}
+.speclist div:nth-child(2n){border-inline-end:0}
+.speclist div:nth-last-child(-n+2){border-block-end:0}
+
+/* --- service overview: prose beside an "at a glance" card ----
+   One band, mirroring the reference. Rendering these as two stacked
+   full-width sections is what made the detail pages feel stretched. */
+.ovsplit{display:grid;grid-template-columns:1fr;gap:clamp(20px,2.6vw,34px);align-items:start}
+@media (min-width:900px){.ovsplit{grid-template-columns:2fr 1fr;gap:clamp(28px,3.4vw,48px)}}
+.ovsplit__main .h3{margin-bottom:14px}
+.ovsplit__main .lede{margin:0;color:var(--ink-70)}
+.ovsplit__aside{padding:clamp(20px,2.2vw,28px);border:1px solid var(--lilac);background:var(--paper)}
+.ovsplit__aside .kicker{margin-bottom:12px}
+
+/* Ticked fact list. 3lines.css already themes `.ticks li::before`. */
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ticks li{position:relative;padding-inline-start:26px;font-size:15.5px;line-height:1.5;color:var(--ink-70)}
+.ticks li::before{content:"";position:absolute;inset-inline-start:0;top:.5em;
+  width:12px;height:12px;border-radius:50%;background:var(--cyan)}
+.ticks--lg{margin-top:22px;gap:14px}
+.ticks--lg li{font-size:16px}
+.ticks--lg b{color:var(--ink);font-weight:600}
+.section--navy .ticks li{color:rgba(255,255,255,.82)}
+
+/* --- partner / client logos ----------------------------------
+   The reference presents partners as a horizontal marquee with edge fades
+   (#mini-slider-partners), not a static wall. `.logos` is the grid used on the
+   full /partners page; `.logos--marquee` is the scrolling teaser. */
+.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1px;
+       background:var(--lilac);border:1px solid var(--lilac)}
+.logos div{display:grid;place-items:center;aspect-ratio:3/2;padding:clamp(14px,1.6vw,24px);
+           background:var(--paper);transition:background .22s var(--ease)}
+.logos div:hover{background:var(--mist)}
+/* Several partner marks are SVGs with a viewBox but NO intrinsic width, which
+   lay out at 0x0 and silently disappear. Giving the image a definite box makes
+   those fill the cell instead of collapsing. */
+.logos img{width:100%;height:100%;max-height:72px;object-fit:contain;object-position:center}
+/* Marks drawn fill="white" for a dark theme would vanish here. Flagged at
+   ingest by reading the file, not guessed from the filename. */
+.logos img[data-invert="1"]{filter:invert(1) brightness(.35)}
+
+.logos--marquee{display:block;border:0;background:none;overflow:hidden;
+  /* edge fades, as the reference strip has */
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+/* Two-class selectors throughout: the base cell rule `.logos div` is (0,1,1)
+   and outranks a lone `.logos__track` (0,1,0), which silently forced the strip
+   back to display:grid and stacked every logo vertically. */
+/* aspect-ratio:auto is load-bearing: the base `.logos div` rule gives every div
+   inside .logos a 3/2 ratio, and the track is a div — at 8336px wide that made
+   it 5557px tall. */
+.logos--marquee .logos__track{display:flex;flex-direction:row;flex-wrap:nowrap;
+  align-items:center;gap:clamp(18px,2.6vw,40px);width:max-content;aspect-ratio:auto;
+  animation:logos-scroll 46s linear infinite}
+.logos--marquee:hover .logos__track,
+.logos--marquee:focus-within .logos__track{animation-play-state:paused}
+/* ~8 marks visible across a desktop container, matching the reference strip. */
+.logos--marquee .logos__track > div{background:none;aspect-ratio:auto;padding:0;
+  flex:0 0 auto;width:clamp(88px,8.4vw,126px);height:clamp(48px,5.4vw,64px)}
+.logos--marquee .logos__track > div:hover{background:none}
+.logos--marquee .logos__track > div > a{display:block;width:100%;height:100%}
+.logos--marquee .logos__track img{width:100%;height:100%;max-height:none;object-fit:contain}
+@keyframes logos-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.logos__track{animation:none}}
+
+/* --- partners catalogue (the dedicated page) ------------------
+   The homepage strip is anonymous; here every partner is named,
+   described and attributed to a country, as the reference does. */
+.logos--catalogue{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.logos--catalogue div{position:relative;aspect-ratio:auto;place-items:stretch;
+  padding:clamp(18px,2vw,26px);text-align:center}
+.logos--catalogue div > a{display:block;color:inherit;text-decoration:none}
+.logos__tag{position:absolute;inset-block-start:10px;inset-inline-start:10px;
+  font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 8px;border-radius:999px;border:1px solid var(--lilac);color:var(--ink-70)}
+.logos--catalogue div:hover .logos__tag{background:var(--blue);border-color:var(--blue);color:#fff}
+.logos__mark{display:grid;place-items:center;height:80px;margin-top:18px}
+.logos__mark img{width:100%;height:100%;object-fit:contain}
+.logos__meta{display:flex;flex-direction:column;align-items:center;gap:3px;margin-top:14px;
+  opacity:.45;transition:opacity .22s var(--ease)}
+.logos--catalogue div:hover .logos__meta{opacity:1}
+.logos__meta strong{font-size:15px;font-weight:600}
+.logos__meta span{font-size:13px;line-height:1.45;color:var(--ink-70)}
+.logos__flag{font-size:15px}
+
+/* --- certification plates ------------------------------------ */
+.certs{display:grid;grid-template-columns:1fr;gap:clamp(12px,1.6vw,20px);margin:0;padding:0;list-style:none}
+@media (min-width:820px){.certs{grid-template-columns:auto 1fr 1fr;align-items:stretch}}
+.certs li{display:grid;place-items:center;padding:clamp(16px,2vw,26px);
+          background:var(--paper);border:1px solid var(--lilac)}
+.certs img{max-width:100%;height:auto;object-fit:contain}
+/* The first plate is a square badge; the other two are wide strips. Left
+   uncapped its natural 460px width blows out the `auto` grid column and
+   dwarfs the strips beside it. The reference caps it the same way. */
+.certs li:first-child img{max-width:168px}
+
+/* --- contact form -------------------------------------------- */
+.form{max-width:34rem}
+.form__row{display:grid;gap:clamp(14px,1.6vw,20px)}
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-70)}
+.field input,.field textarea{font:inherit;font-size:16.5px;padding:13px 16px;
+                             background:var(--paper);color:var(--ink);border:1px solid var(--lilac)}
+.field textarea{min-height:9rem;resize:vertical}
+.field input:focus-visible,.field textarea:focus-visible{outline:2px solid var(--blue);outline-offset:1px}
+/* Visually hidden without display:none — a focusable element hidden that way
+   is a screen-reader trap. */
+.field--hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.form .btn{margin-top:clamp(16px,2vw,24px)}
+.form__status{min-height:1.4em;margin-top:12px;font-size:15px}
+.form__status[data-state="ok"]{color:var(--green)}
+.form__status[data-state="bad"],.form__status[data-state="err"]{color:#b3261e}
+
+/* --- misc ---------------------------------------------------- */
+.figure__pre{font-family:var(--font-alt);opacity:.85}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.hdr__spacer{flex:none;width:44px}
+
+/* No .hdr__logo img rule: the brand mark comes from the theme layer's
+   ::before, and an <img> here would stack a second logo beside it. */
+
+/* The stat row is a fixed 3-column grid, so a 4-figure row orphaned the last
+   one onto its own line. Let it fit the count it is given. */
+.figures{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+
+/* Centred body copy caps at the reference's 46rem; 889px ran too wide to read.
+   margin-inline:auto is the important half — capped but left-aligned inside a
+   1440px wrap left ~700px of dead space down the right of every prose page. */
+.prose{max-width:46rem;margin-inline:auto}
+.prose p{margin-bottom:1.1em}
+
+/* Card padding.
+   style.css styles .pcard as a transparent block with no padding, but the theme
+   layer then gives it a border and a card background — border plus zero padding
+   put the text flush against the edge. The image stays full-bleed at the top of
+   the card; everything else is inset. */
+.pcard{padding-bottom:clamp(18px,1.8vw,24px)}
+.pcard > :not(.pcard__media){margin-inline:clamp(18px,1.8vw,24px)}
+.pcard__media{margin:0}
+
+/* Same anatomy for the news cards. */
+.ncard__body{padding:clamp(16px,1.6vw,22px)}

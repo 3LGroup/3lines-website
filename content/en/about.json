@@ -1,0 +1,256 @@
+{
+  "route": "/about",
+  "locale": "en",
+  "slug": "about",
+  "source": [
+    "pages.json#about",
+    "non-cms.json"
+  ],
+  "title": "About",
+  "description": "3Lines Advanced Technologies Group was established in 2019 in alignment with Saudi Vision 2030 to localize military and civilian services within the Kingdom. The Group delivers integrated supply chain and technical services — procurement, logistics, maintenance, repair and manufacturing — supporting operational readiness across the defense and advanced technology sectors, locally and internationally.",
+  "keywords": "about,3lines,advanced technologies,defense,localization,vision 2030,supply chain,MRO,C4I",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "About"
+        }
+      ],
+      "heading": "About"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "3Lines Advanced Technologies Group was established in 2019 in alignment with Saudi Arabia’s Vision 2030, with the objective of localizing military and civilian services within the Kingdom of Saudi Arabia."
+            },
+            {
+              "text": "The company has evolved from a spare parts provider into an integrated partner in supply chain and technical services, delivering comprehensive solutions encompassing procurement, logistics, maintenance, repair, and manufacturing."
+            },
+            {
+              "text": "Today, the Group focuses on supporting operational readiness, enhancing sustainability, and executing projects across the defense and advanced technology sectors, both locally and internationally — delivered by a professional Saudi team with over 30 years of combined experience."
+            },
+            {
+              "text": "The name 3Lines represents an integrated operational model built on three core pillars — Supply Chain Management, Maintenance, and Repair and Manufacturing — enabling us to execute advanced defense projects, operate C4I repair facilities, and deliver integrated logistical and technical solutions that support readiness and sustainability, in alignment with localization goals and Saudi Vision 2030."
+            },
+            {
+              "text": "Our Vision: to be the leading supply chain and advanced technology company in Saudi Arabia — sustaining defense and security systems at high availability, alongside Tier One global partners, with localization built into everything we deliver. That work already spans five countries — Saudi Arabia, the United States, Mexico, Poland and the Czech Republic — turning international partnerships into transferred knowledge, national capability and scalable solutions inside the Kingdom."
+            }
+          ]
+        },
+        {
+          "kind": "figures",
+          "items": [
+            {
+              "count": 7,
+              "prefix": "+",
+              "label": "Years serving defense & advanced technology, since 2019"
+            },
+            {
+              "count": 3,
+              "label": "Core operational pillars"
+            },
+            {
+              "count": 120,
+              "prefix": "+",
+              "label": "Multidisciplinary professional team"
+            },
+            {
+              "count": 30,
+              "prefix": "+",
+              "label": "Strategic partners locally & internationally"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "head": {
+        "layout": "stacked",
+        "kicker": "What we do",
+        "heading": "How we deliver it"
+      },
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-hq-building.jpg')",
+            "art": null
+          },
+          "lede": "End-to-end supply chain — strategic sourcing, procurement, secure warehousing, inventory management and delivery to military and civilian platforms."
+        },
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Supply Chain Management",
+              "text": "End-to-end supply chain — strategic sourcing, procurement, secure warehousing, inventory management and delivery to military and civilian platforms."
+            },
+            {
+              "title": "Maintenance",
+              "text": "Sustainment of radar, surveillance, C2/C3/C4I command and control systems, ground support and defense systems through in-country capabilities."
+            },
+            {
+              "title": "Repair & Manufacturing",
+              "text": "Localized diagnostic and repair workshops, plus reverse engineering and manufacturing of components for advanced systems."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "navy",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Our Vision"
+      },
+      "bodies": [
+        {
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "To be the leading supply chain and advanced technology company in Saudi Arabia — sustaining defense and security systems at high availability, alongside Tier One global partners, with localization built into everything we deliver."
+            },
+            {
+              "text": "That work already spans five countries — Saudi Arabia, the United States, Mexico, Poland and the Czech Republic — turning international partnerships into transferred knowledge, national capability and scalable solutions inside the Kingdom."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Trusted Partnerships",
+              "text": "We build long-term relationships with Tier One global and local partners based on transparency, integrity, and mutual success."
+            },
+            {
+              "title": "Operational Excellence",
+              "text": "We deliver reliable, high-availability solutions through disciplined execution, quality-driven processes, and end-to-end supply chain mastery."
+            },
+            {
+              "title": "National Commitment",
+              "text": "We are committed to Saudi Vision 2030, localization, capability development, and strengthening national sovereignty across defense and civilian sectors."
+            },
+            {
+              "title": "Accountability & Integrity",
+              "text": "We operate with the highest ethical standards, taking full ownership of our commitments, performance, and results."
+            },
+            {
+              "title": "Innovation & Technology Enablement",
+              "text": "We continuously evolve through advanced technologies, digital transformation, and XR-driven solutions to meet future defense and security needs."
+            },
+            {
+              "title": "Knowledge Transfer & Localization",
+              "text": "We prioritize workforce development, skills transfer, and sustainable local manufacturing to create lasting national impact."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "id": "certifications",
+      "head": {
+        "layout": "stacked",
+        "kicker": "ACCREDITED",
+        "heading": "Certifications & Licences",
+        "lede": "Independently audited against international aviation, quality, environmental, safety and business-continuity standards, and licensed by the General Authority for Military Industries."
+      },
+      "bodies": [
+        {
+          "kind": "certs",
+          "items": [
+            {
+              "src": "/assets/certs/cert-asa100-badge.png",
+              "alt": "ASA-100 certified company, accredited by the European Accreditation Council"
+            },
+            {
+              "src": "/assets/certs/cert-euac-strip.png",
+              "alt": "ISO Cert International and EUAC accreditation: ISO 56001, ISO 42001, AS9110, ASA100, AS9120B"
+            },
+            {
+              "src": "/assets/certs/cert-saac-strip.png",
+              "alt": "Saudi Accreditation Center integrated management system: ISO 9001, 45001, 14001, 50001, 22301"
+            }
+          ]
+        },
+        {
+          "kind": "defs",
+          "columns": 2,
+          "items": [
+            {
+              "title": "ISO 9001:2015 — Quality Management System",
+              "text": "Scope: provision of aircraft, simulator, and command and intelligence control systems, spare parts, and maintenance, repair and overhaul.",
+              "meta": [
+                {
+                  "label": "Certificate",
+                  "value": "26EQQN67"
+                },
+                {
+                  "label": "Valid to",
+                  "value": "30 March 2029"
+                },
+                {
+                  "label": "Accreditation",
+                  "value": "EGAC / IAF"
+                }
+              ]
+            },
+            {
+              "title": "General Authority for Military Industries (GAMI)",
+              "text": "Establishment permit for providing military services (technical activities), and a licence for the trading of military articles.",
+              "meta": [
+                {
+                  "label": "Standards held",
+                  "value": "ISO 9001 · 45001 · 14001 · 50001 · 22301  ·  ISO 56001 · 42001 · AS9110 · AS9120B · ASA-100"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

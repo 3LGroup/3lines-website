@@ -1,0 +1,116 @@
+/* ============================================================
+   Section tone restoration
+
+   3lines.css flattens every band to one background:
+     .hero,.careers,.section--navy,… { background:var(--background)!important }
+   The result is an undifferentiated white scroll with no vertical rhythm —
+   which is what made the pages read as a content dump. This restores the
+   design system's alternating tones. Loaded after 3lines.css and at matching
+   weight, because that layer is written almost entirely with !important.
+   ============================================================ */
+
+.section--mist { background: var(--mist) !important; }
+
+.section--navy { background: var(--navy) !important; color: #fff !important; }
+.section--navy h2,
+.section--navy h3,
+.section--navy .h2,
+.section--navy .h3 { color: #fff !important; }
+.section--navy p,
+.section--navy .lede { color: rgba(255, 255, 255, .82) !important; }
+.section--navy .kicker { color: var(--cyan) !important; }
+.section--navy .arrowlink { color: #fff !important; }
+
+/* The CTA band is a full-bleed image panel, not a flat surface. */
+.careers { background: var(--navy) !important; color: #fff !important; }
+.careers h2 { color: #fff !important; }
+
+/* ============================================================
+   RTL + Arabic typography
+
+   Everything here is scoped to [dir="rtl"] or :lang(ar), so the
+   English tree is untouched by construction — which is what lets
+   the committed LTR visual baseline stay valid.
+
+   Loaded AFTER 3lines.css so it can out-specify that layer,
+   which is written almost entirely with !important.
+   ============================================================ */
+
+/* --- Arabic face --------------------------------------------
+   Latin families stay FIRST so Latin runs (3Lines, MRO, C4I,
+   product names) keep their original face; font fallback is
+   codepoint-driven, so only Arabic glyphs resolve to Tajawal.
+   That satisfies "Arabic face without changing the Latin look"
+   per-glyph rather than by swapping families wholesale. */
+html[lang="ar"] {
+  --font: "Inter", "Tajawal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-alt: "Saira", "Tajawal", "Inter", Arial, sans-serif;
+  --font-sans: "Inter", "Tajawal", system-ui, sans-serif !important;
+  --font-mono: "JetBrains Mono", "Tajawal", ui-monospace, monospace !important;
+}
+
+/* Arabic must never be letter-spaced: it is cursive, so positive
+   tracking breaks the joins and negative tracking crushes them.
+   The rules being overridden are themselves !important, so a
+   normal-weight reset would lose. Scoped by :lang so an Arabic
+   run inside an English page is handled too. */
+:lang(ar),
+:lang(ar) * {
+  letter-spacing: normal !important;
+}
+
+/* Tajawal ships no 600 weight (200/300/400/500/700/800/900) and the
+   stylesheet asks for 600 in a dozen places. Pin to 700 and disable
+   synthesis so faux-bold is not a variable in audits. */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] .h2,
+html[lang="ar"] .h3 {
+  font-weight: 700;
+}
+html[lang="ar"] {
+  font-synthesis-weight: none;
+}
+
+/* --- direction ----------------------------------------------- */
+
+/* Arrow glyphs point "forward", which is leftward in RTL. */
+[dir="rtl"] .arrowlink svg,
+[dir="rtl"] .btn svg,
+[dir="rtl"] .go svg,
+[dir="rtl"] .ncard__more svg,
+[dir="rtl"] .megatab svg,
+[dir="rtl"] .megapanel__cta svg {
+  transform: scaleX(-1);
+}
+
+/* Hover nudges follow reading direction. */
+[dir="rtl"] .arrowlink:hover svg,
+[dir="rtl"] .ncard:hover .ncard__more svg {
+  transform: scaleX(-1) translateX(4px);
+}
+
+/* Physical offsets that logical properties do not cover in the
+   base stylesheet. */
+[dir="rtl"] .skips a { left: auto; right: 12px; }
+[dir="rtl"] .searchlayer .close { right: auto; left: 24px; }
+[dir="rtl"] .ftr__bar .right { margin-left: 0; margin-right: auto; }
+[dir="rtl"] .mega__close { margin-left: 0; margin-right: auto; }
+[dir="rtl"] .utility__lang { padding-left: 0; padding-right: 22px; border-left: 0; border-right: 1px solid var(--lilac); }
+[dir="rtl"] .megatab { text-align: right; }
+[dir="rtl"] .megatab:hover { padding-left: 0; padding-right: 8px; }
+[dir="rtl"] .prose ul { padding-left: 0; padding-right: 22px; }
+[dir="rtl"] .hero::after,
+[dir="rtl"] .pagehead::after { right: auto; left: -6%; }
+
+/* The floating theme button stays bottom-right in RTL by brand
+   decision — it is a persistent utility affordance, not part of
+   the reading flow. Deliberately NOT mirrored. */
+[dir="rtl"] .tl-theme { right: 16px; left: auto; }
+
+/* Skip links, by contrast, SHOULD mirror: they are the first thing
+   a keyboard user reaches, so they belong at the reading origin. */
+
+[dir="rtl"] .rotator { text-align: right; }

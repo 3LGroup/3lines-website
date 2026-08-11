@@ -1,0 +1,234 @@
+{
+  "note": "ثريلاينز آدفانسد تكنولجيز",
+  "skip": {
+    "label": "تخطَّ إلى المحتوى",
+    "href": "#main"
+  },
+  "logoImg": {
+    "src": "/assets/logos/3Lines_logo.png",
+    "alt": "ثريلاينز آدفانسد تكنولجيز"
+  },
+  "footerLogoImg": {
+    "src": "/assets/logos/logo.png",
+    "alt": "ثريلاينز آدفانسد تكنولجيز"
+  },
+  "utility": {
+    "links": [
+      {
+        "label": "الرئيسية",
+        "href": "/"
+      },
+      {
+        "label": "من نحن",
+        "href": "/about"
+      },
+      {
+        "label": "الخدمات",
+        "href": "/services"
+      },
+      {
+        "label": "مستجدات",
+        "href": "/news"
+      },
+      {
+        "label": "تواصل معنا",
+        "href": "/contact"
+      }
+    ],
+    "lang": [
+      {
+        "label": "EN",
+        "locale": "en"
+      },
+      {
+        "label": "AR",
+        "locale": "ar",
+        "current": true
+      }
+    ]
+  },
+  "mega": {
+    "tabs": [
+      {
+        "key": "services",
+        "label": "الخدمات"
+      },
+      {
+        "key": "company",
+        "label": "الشركة"
+      }
+    ],
+    "panels": [
+      {
+        "key": "services",
+        "title": "الخدمات",
+        "links": [
+          {
+            "label": "صيانة الرادارات والإلكترونيات واستدامة الاتصالات التكتيكية",
+            "href": "/services/radar-electronics-communications-sustainment"
+          },
+          {
+            "label": "العلاقات الحكومية واستشارات الكوادر وخدمات الإعاشة المتكاملة",
+            "href": "/services/government-relations-and-life-support"
+          },
+          {
+            "label": "دعم أنظمة الطاقة (المولدات وأنظمة الطاقة غير المنقطعة)",
+            "href": "/services/power-systems-support"
+          },
+          {
+            "label": "ورش تشخيص وإصلاح الإلكترونيات",
+            "href": "/services/electronics-diagnostic-and-repair-workshops"
+          },
+          {
+            "label": "استدامة معدات الدعم الأرضي",
+            "href": "/services/ground-support-equipment-sustainment"
+          },
+          {
+            "label": "قطع غيار الأنظمة الجوية والبرية والخدمات اللوجستية والتخزين",
+            "href": "/services/spare-parts-logistics-and-warehousing"
+          },
+          {
+            "label": "أنظمة المحاكاة (كاملة الحركة والثابتة)",
+            "href": "/services/simulation-systems"
+          },
+          {
+            "label": "التدريب والمحاكاة وتمكين القدرات",
+            "href": "/services/training-and-capability-enablement"
+          },
+          {
+            "label": "استدامة الأنظمة الدفاعية (الصيانة والإصلاح والعمرة)",
+            "href": "/services/defense-systems-sustainment-mro"
+          },
+          {
+            "label": "إدارة البرامج وتمكين التوطين",
+            "href": "/services/program-management-and-localization"
+          }
+        ],
+        "cta": {
+          "label": "الخدمات",
+          "href": "/services"
+        }
+      },
+      {
+        "key": "company",
+        "title": "الشركة",
+        "links": [
+          {
+            "label": "من نحن",
+            "href": "/about"
+          },
+          {
+            "label": "مستجدات",
+            "href": "/news"
+          },
+          {
+            "label": "الشركاء",
+            "href": "/partners"
+          },
+          {
+            "label": "تواصل معنا",
+            "href": "/contact"
+          }
+        ],
+        "cta": {
+          "label": "من نحن",
+          "href": "/about"
+        }
+      }
+    ]
+  },
+  "footer": {
+    "columns": [
+      {
+        "logo": true,
+        "title": "ثريلاينز آدفانسد تكنولجيز",
+        "links": [
+          {
+            "label": "من نحن",
+            "href": "/about"
+          },
+          {
+            "label": "مستجدات",
+            "href": "/news"
+          },
+          {
+            "label": "الشركاء",
+            "href": "/partners"
+          },
+          {
+            "label": "تواصل معنا",
+            "href": "/contact"
+          }
+        ]
+      },
+      {
+        "title": "الخدمات",
+        "links": [
+          {
+            "label": "صيانة الرادارات والإلكترونيات واستدامة الاتصالات التكتيكية",
+            "href": "/services/radar-electronics-communications-sustainment"
+          },
+          {
+            "label": "العلاقات الحكومية واستشارات الكوادر وخدمات الإعاشة المتكاملة",
+            "href": "/services/government-relations-and-life-support"
+          },
+          {
+            "label": "دعم أنظمة الطاقة (المولدات وأنظمة الطاقة غير المنقطعة)",
+            "href": "/services/power-systems-support"
+          },
+          {
+            "label": "ورش تشخيص وإصلاح الإلكترونيات",
+            "href": "/services/electronics-diagnostic-and-repair-workshops"
+          },
+          {
+            "label": "استدامة معدات الدعم الأرضي",
+            "href": "/services/ground-support-equipment-sustainment"
+          },
+          {
+            "label": "قطع غيار الأنظمة الجوية والبرية والخدمات اللوجستية والتخزين",
+            "href": "/services/spare-parts-logistics-and-warehousing"
+          },
+          {
+            "label": "أنظمة المحاكاة (كاملة الحركة والثابتة)",
+            "href": "/services/simulation-systems"
+          },
+          {
+            "label": "التدريب والمحاكاة وتمكين القدرات",
+            "href": "/services/training-and-capability-enablement"
+          },
+          {
+            "label": "استدامة الأنظمة الدفاعية (الصيانة والإصلاح والعمرة)",
+            "href": "/services/defense-systems-sustainment-mro"
+          },
+          {
+            "label": "إدارة البرامج وتمكين التوطين",
+            "href": "/services/program-management-and-localization"
+          }
+        ]
+      },
+      {
+        "title": "قانوني",
+        "links": [
+          {
+            "label": "سياسة الخصوصية",
+            "href": "/privacy-policy"
+          },
+          {
+            "label": "الشروط والأحكام",
+            "href": "/terms-and-conditions"
+          },
+          {
+            "label": "سياسة ملفات تعريف الارتباط (الكوكيز)",
+            "href": "/cookie-policy"
+          }
+        ]
+      }
+    ],
+    "bar": {
+      "links": [],
+      "a11yLabel": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
+      "a11yPill": "CR 1010589885 · VAT 310407303200003",
+      "copyright": "© 2026 ثريلاينز آدفانسد تكنولجيز"
+    }
+  }
+}

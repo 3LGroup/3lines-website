@@ -1,0 +1,68 @@
+{
+  "route": "/news/ground-support-equipment-services",
+  "locale": "en",
+  "slug": "news--ground-support-equipment-services",
+  "source": [
+    "posts.json"
+  ],
+  "title": "Strengthening Ground Support Equipment Sustainment",
+  "description": "Maintenance and availability support for aviation and land-based ground support assets, backed by in-Kingdom workshops and spare parts provisioning.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Newsroom",
+          "href": "/news"
+        },
+        {
+          "label": "Strengthening Ground Support Equipment Sustainment"
+        }
+      ],
+      "heading": "Strengthening Ground Support Equipment Sustainment"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Manufacturing · Technology"
+      },
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/news/ground-support-equipment-services.jpg')",
+            "art": null
+          },
+          "lede": "Maintenance and availability support for aviation and land-based ground support assets, backed by in-Kingdom workshops and spare parts provisioning."
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

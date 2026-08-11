@@ -1,0 +1,145 @@
+{
+  "route": "/services/ground-support-equipment-sustainment",
+  "locale": "en",
+  "slug": "services--ground-support-equipment-sustainment",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "Ground Support Equipment (GSE) Sustainment",
+  "description": "Maintenance and availability support for aviation and land-based ground support assets.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Services",
+          "href": "/services"
+        },
+        {
+          "label": "Ground Support Equipment (GSE) Sustainment"
+        }
+      ],
+      "heading": "Ground Support Equipment (GSE) Sustainment"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Overview"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "Ground support assets, kept available",
+          "lede": "Maintenance and availability support for aviation and land-based ground support equipment. We cover regular inspection, repair and rehabilitation across GSE fleets, with the spare parts needed to keep flight lines and land operations moving — applying strict safety and quality standards so equipment operates efficiently and reliably.",
+          "glanceTitle": "At a glance",
+          "glance": [
+            "Aviation and land-based GSE",
+            "Inspection, repair, rehabilitation",
+            "Availability-driven support",
+            "Spare parts provisioning"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-mro-tech.jpg')",
+            "art": null
+          },
+          "heading": "How we deliver it",
+          "checklist": [
+            {
+              "title": "Preventive maintenance",
+              "text": "Regular inspection and servicing across all types of ground equipment."
+            },
+            {
+              "title": "Corrective repair",
+              "text": "Rapid response repair that minimizes downtime on the line."
+            },
+            {
+              "title": "Overhaul and rehabilitation",
+              "text": "Restoring ageing ground support assets to full operational condition."
+            },
+            {
+              "title": "Spare parts supply",
+              "text": "All necessary spare parts available and supplied when needed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Capabilities"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Preventive maintenance",
+              "text": "Regular inspection and servicing across all types of ground equipment."
+            },
+            {
+              "title": "Corrective repair",
+              "text": "Rapid response repair that minimizes downtime on the line."
+            },
+            {
+              "title": "Overhaul and rehabilitation",
+              "text": "Restoring ageing ground support assets to full operational condition."
+            },
+            {
+              "title": "Spare parts supply",
+              "text": "All necessary spare parts available and supplied when needed."
+            },
+            {
+              "title": "Availability reporting",
+              "text": "Visibility of fleet status so readiness can be planned, not guessed."
+            },
+            {
+              "title": "On-site support",
+              "text": "Technicians deployed to the operating location when it matters."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

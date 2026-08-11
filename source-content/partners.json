@@ -1,0 +1,1807 @@
+{
+  "data": [
+    {
+      "id": "a1795770-463e-4991-bdc2-d3d7936b4ef5",
+      "order": null,
+      "name": {
+        "ar": "SAMI",
+        "en": "SAMI"
+      },
+      "description": {
+        "ar": "الشركة السعودية للصناعات العسكرية",
+        "en": "Saudi Arabian Military Industries"
+      },
+      "link": "https://www.sami.com.sa/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-42c3-474a-9de7-6842540ddf94",
+      "type": {
+        "id": "a1795770-42c3-474a-9de7-6842540ddf94",
+        "name": {
+          "ar": "إتفاقية",
+          "en": "Agreement",
+          "ko": "협약",
+          "ja": "協定"
+        }
+      },
+      "logo": {
+        "id": "a1795770-47d0-46e3-90e1-30f88ea3368b",
+        "original_name": "sami-logo.svg",
+        "file_name": "sami-logo.svg",
+        "uri": "assets/logos/sami-logo.svg",
+        "location": "assets/logos/sami-logo.svg",
+        "mime_type": "image/svg",
+        "extension": "svg",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "a1795770-48a5-4f79-8b63-c6d478edb2e9",
+      "order": null,
+      "name": {
+        "ar": "AirBus",
+        "en": "AirBus"
+      },
+      "description": [],
+      "link": "https://www.airbus.com/en",
+      "country_id": "a179576f-32a2-4900-abab-62023d63beff",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "a1795770-4970-4696-98b6-1fc4e4abe8a0",
+        "original_name": "airbus-logo.svg",
+        "file_name": "airbus-logo.svg",
+        "uri": "assets/logos/airbus-logo.svg",
+        "location": "assets/logos/airbus-logo.svg",
+        "mime_type": "image/svg",
+        "extension": "svg",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-32a2-4900-abab-62023d63beff",
+        "name": {
+          "ar": "فرنسا",
+          "en": "France",
+          "ko": "프랑스",
+          "ja": "フランス"
+        },
+        "code": "FR"
+      }
+    },
+    {
+      "id": "a1795770-4acd-48fc-84ef-bf23d6f559a2",
+      "order": null,
+      "name": {
+        "ar": "BAE Systems",
+        "en": "BAE Systems"
+      },
+      "description": [],
+      "link": "https://www.baesystems.com/en/home",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "a1795770-4ba2-4182-a355-17cc92ffc37a",
+        "original_name": "bae-systems-logo.svg",
+        "file_name": "bae-systems-logo.svg",
+        "uri": "assets/logos/bae-systems-logo.svg",
+        "location": "assets/logos/bae-systems-logo.svg",
+        "mime_type": "image/svg",
+        "extension": "svg",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "a1795770-4d07-4f32-8ca4-32ec3908653d",
+      "order": null,
+      "name": {
+        "ar": "ARMITE Lubricants",
+        "en": "ARMITE Lubricants"
+      },
+      "description": [],
+      "link": "https://armitelabs.com/",
+      "country_id": "a179576f-3365-4140-ad7e-71f8fb4bd64b",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "a1795770-4df6-42f7-9b91-82098b294171",
+        "original_name": "armite-lubricants-logo.jpg",
+        "file_name": "armite-lubricants-logo.jpg",
+        "uri": "assets/logos/armite-lubricants-logo.jpg",
+        "location": "assets/logos/armite-lubricants-logo.jpg",
+        "mime_type": "image/jpg",
+        "extension": "jpg",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3365-4140-ad7e-71f8fb4bd64b",
+        "name": {
+          "ar": "الولايات المتحدة",
+          "en": "United States",
+          "ko": "미국",
+          "ja": "米国"
+        },
+        "code": "US"
+      }
+    },
+    {
+      "id": "a1795770-4ed0-4316-9cfc-f96bc41ab2ed",
+      "order": null,
+      "name": {
+        "ar": "SAMI AEC",
+        "en": "SAMI AEC"
+      },
+      "description": {
+        "ar": "شركة الإلكترونيات المتقدمة",
+        "en": "SAMI Advanced Electronics"
+      },
+      "link": "https://www.aecl.com/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-42c3-474a-9de7-6842540ddf94",
+      "type": {
+        "id": "a1795770-42c3-474a-9de7-6842540ddf94",
+        "name": {
+          "ar": "إتفاقية",
+          "en": "Agreement",
+          "ko": "협약",
+          "ja": "協定"
+        }
+      },
+      "logo": {
+        "id": "a1795770-4f7f-48e2-b385-f02cc7c00650",
+        "original_name": "sami-aec-logo.png",
+        "file_name": "sami-aec-logo.png",
+        "uri": "assets/logos/sami-aec-logo.png",
+        "location": "assets/logos/sami-aec-logo.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "a1795770-5037-432a-86b2-c88951a349cf",
+      "order": null,
+      "name": {
+        "ar": "SMSCMC",
+        "en": "SMSCMC"
+      },
+      "description": {
+        "ar": "الشركة السعودية للصيانة وإدارة خطوط الإمداد المحدودة",
+        "en": "Saudi Maintenance & Supply Chain Management Co"
+      },
+      "link": "https://www.smscmc.com/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-42c3-474a-9de7-6842540ddf94",
+      "type": {
+        "id": "a1795770-42c3-474a-9de7-6842540ddf94",
+        "name": {
+          "ar": "إتفاقية",
+          "en": "Agreement",
+          "ko": "협약",
+          "ja": "協定"
+        }
+      },
+      "logo": {
+        "id": "a1795770-50ec-4513-af88-8e2f1489760a",
+        "original_name": "smscmc-logo.svg",
+        "file_name": "smscmc-logo.svg",
+        "uri": "assets/logos/smscmc-logo.svg",
+        "location": "assets/logos/smscmc-logo.svg",
+        "mime_type": "image/svg",
+        "extension": "svg",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "a1795770-51a3-40df-9494-687600b46b1e",
+      "order": null,
+      "name": {
+        "ar": "MAC Aerospace Corp.",
+        "en": "MAC Aerospace Corp."
+      },
+      "description": [],
+      "link": "https://macaerospace.com/",
+      "country_id": "a179576f-3365-4140-ad7e-71f8fb4bd64b",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "a1795770-52c3-4d00-9b3a-73b2989a17bb",
+        "original_name": "mac-aerospace-corp-logo.png",
+        "file_name": "mac-aerospace-corp-logo.png",
+        "uri": "assets/logos/mac-aerospace-corp-logo.png",
+        "location": "assets/logos/mac-aerospace-corp-logo.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3365-4140-ad7e-71f8fb4bd64b",
+        "name": {
+          "ar": "الولايات المتحدة",
+          "en": "United States",
+          "ko": "미국",
+          "ja": "米国"
+        },
+        "code": "US"
+      }
+    },
+    {
+      "id": "a1795770-53a1-470b-8185-42d46cb907df",
+      "order": null,
+      "name": {
+        "ar": "Amentum",
+        "en": "Amentum"
+      },
+      "description": [],
+      "link": "https://www.amentum.com/",
+      "country_id": "a179576f-3365-4140-ad7e-71f8fb4bd64b",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "a1795770-545e-4b3b-8590-6be98912da8b",
+        "original_name": "amentum-logo.webp",
+        "file_name": "amentum-logo.webp",
+        "uri": "assets/logos/amentum-logo.webp",
+        "location": "assets/logos/amentum-logo.webp",
+        "mime_type": "image/webp",
+        "extension": "webp",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3365-4140-ad7e-71f8fb4bd64b",
+        "name": {
+          "ar": "الولايات المتحدة",
+          "en": "United States",
+          "ko": "미국",
+          "ja": "米国"
+        },
+        "code": "US"
+      }
+    },
+    {
+      "id": "a1795770-5527-4d6b-983d-6f8b8edab330",
+      "order": null,
+      "name": {
+        "ar": "SAMI Aerospace",
+        "en": "SAMI Aerospace"
+      },
+      "description": {
+        "ar": "شركة سامي السلام لصناعة الطيران",
+        "en": "SAMI Alsalam Aerospace Industries"
+      },
+      "link": "https://samialsalam.com.sa",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "a1795770-55d6-4e91-9f67-cebe586defc4",
+        "original_name": "sami-aerospace-logo.svg",
+        "file_name": "sami-aerospace-logo.svg",
+        "uri": "assets/logos/sami-aerospace-logo.svg",
+        "location": "assets/logos/sami-aerospace-logo.svg",
+        "mime_type": "image/svg",
+        "extension": "svg",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "a1795770-5708-492f-bdaf-3f61e1941f1f",
+      "order": null,
+      "name": {
+        "ar": "NPCO",
+        "en": "NPCO"
+      },
+      "description": {
+        "ar": "شركة التعدات الوطنية التجارية",
+        "en": "National Commercial Pledges Company"
+      },
+      "link": "https://npco.sa/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "a1795770-57b2-4adc-adf7-644d548a9f6a",
+        "original_name": "npco-logo.png",
+        "file_name": "npco-logo.png",
+        "uri": "assets/logos/npco-logo.png",
+        "location": "assets/logos/npco-logo.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "a1795770-5878-4e16-a060-7c21d6b5cebb",
+      "order": null,
+      "name": {
+        "ar": "شركة الوعلان للتجارة",
+        "en": "Wallan Group"
+      },
+      "description": [],
+      "link": "https://www.wallan.com/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "a1795770-5955-4cc3-a61c-205638f6222f",
+        "original_name": "wallan-group-logo.png",
+        "file_name": "wallan-group-logo.png",
+        "uri": "assets/logos/wallan-group-logo.png",
+        "location": "assets/logos/wallan-group-logo.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "a1795770-5a41-4613-9e18-b1b632fda4d6",
+      "order": null,
+      "name": {
+        "ar": "شركة فينيل العربية",
+        "en": "Vinnell Arabia"
+      },
+      "description": [],
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "a1795770-5b06-4379-a56a-c74d541c588a",
+        "original_name": "vinnell-arabia-logo.png",
+        "file_name": "vinnell-arabia-logo.png",
+        "uri": "assets/logos/vinnell-arabia-logo.png",
+        "location": "assets/logos/vinnell-arabia-logo.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "a1795770-5bca-4594-92e5-7d96e8016a75",
+      "order": null,
+      "name": {
+        "ar": "أي سي أس العربية",
+        "en": "ICS ARABIA"
+      },
+      "description": [],
+      "link": "https://icsarabia.com",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "a1795770-5c84-407b-aaff-db0172e84fc1",
+        "original_name": "ics-arabia-logo.png",
+        "file_name": "ics-arabia-logo.png",
+        "uri": "assets/logos/ics-arabia-logo.png",
+        "location": "assets/logos/ics-arabia-logo.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "a1795770-5d5a-4037-9a2d-d25727fe94d6",
+      "order": null,
+      "name": {
+        "ar": "AACC",
+        "en": "AACC"
+      },
+      "description": {
+        "ar": "شركة المعدات المكملة للطائرات المحدودة",
+        "en": "Aircraft Accessories & Components Co. Ltd."
+      },
+      "link": "https://www.aacc-ltd.com/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "a1795770-5e0b-455e-88d0-c565f61a31fe",
+        "original_name": "aacc-logo.png",
+        "file_name": "aacc-logo.png",
+        "uri": "assets/logos/aacc-logo.png",
+        "location": "assets/logos/aacc-logo.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "a1795770-5f0c-46c4-86ca-a4bbe7c51f8d",
+      "order": null,
+      "name": {
+        "ar": "OPTOKON Middle East",
+        "en": "OPTOKON Middle East"
+      },
+      "description": [],
+      "link": "https://www.optokon.com.sa/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "a2795770-6000-4f00-9500-600000000000",
+        "original_name": "optokon-middle-east-logo.png",
+        "file_name": "optokon-middle-east-logo.png",
+        "uri": "assets/logos/optokon-middle-east-logo.png",
+        "location": "assets/logos/optokon-middle-east-logo.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "6868",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "a1795770-60e7-41dd-82cc-a63210221352",
+      "order": null,
+      "name": {
+        "ar": "TAM",
+        "en": "TAM"
+      },
+      "description": [],
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "a1795770-618e-47f3-afb6-1f184d9f1eca",
+        "original_name": "tam-logo.png",
+        "file_name": "tam-logo.png",
+        "uri": "assets/logos/tam-logo.png",
+        "location": "assets/logos/tam-logo.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "204",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2000-4b00-9100-200000000000",
+      "order": null,
+      "name": {
+        "en": "Royal Saudi Air Force",
+        "ar": "القوات الجوية الملكية السعودية"
+      },
+      "description": {
+        "en": "Radar sustainment including the AN/TPS-78, and aviation support.",
+        "ar": "استدامة الرادارات والدعم الجوي."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": null,
+        "original_name": "cust-rsaf.png",
+        "file_name": "cust-rsaf.png",
+        "uri": "assets/logos/cust-rsaf.png",
+        "location": "assets/logos/cust-rsaf.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": null,
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2001-4b00-9100-200000000001",
+      "order": null,
+      "name": {
+        "en": "Royal Saudi Air Defense Forces",
+        "ar": "قوات الدفاع الجوي الملكي السعودي"
+      },
+      "description": {
+        "en": "Air defense systems sustainment and technical support.",
+        "ar": "استدامة أنظمة الدفاع الجوي والدعم الفني."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": null,
+        "original_name": "cust-rsadf.png",
+        "file_name": "cust-rsadf.png",
+        "uri": "assets/logos/cust-rsadf.png",
+        "location": "assets/logos/cust-rsadf.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": null,
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2002-4b00-9100-200000000002",
+      "order": null,
+      "name": {
+        "en": "Ministry of National Guard",
+        "ar": "وزارة الحرس الوطني"
+      },
+      "description": {
+        "en": "ELT, AMSP and COUNS School programs delivered with the U.S. Government.",
+        "ar": "برامج ELT وAMSP ومدرسة COUNS بالتعاون مع الحكومة الأمريكية."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": null,
+        "original_name": "cust-mng.png",
+        "file_name": "cust-mng.png",
+        "uri": "assets/logos/cust-mng.png",
+        "location": "assets/logos/cust-mng.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": null,
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2003-4b00-9100-200000000003",
+      "order": null,
+      "name": {
+        "en": "Ministry of Defense",
+        "ar": "وزارة الدفاع"
+      },
+      "description": {
+        "en": "Defense sustainment and localization programs.",
+        "ar": "برامج الاستدامة الدفاعية والتوطين."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": null,
+        "original_name": "cust-mod.png",
+        "file_name": "cust-mod.png",
+        "uri": "assets/logos/cust-mod.png",
+        "location": "assets/logos/cust-mod.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": null,
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2004-4b00-9100-200000000004",
+      "order": null,
+      "name": {
+        "en": "Special Security Forces",
+        "ar": "قوات الأمن الخاصة"
+      },
+      "description": {
+        "en": "Technical and equipment support for special security operations.",
+        "ar": "الدعم الفني والمعدات لعمليات الأمن الخاص."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": null,
+        "original_name": "cust-ssf.png",
+        "file_name": "cust-ssf.png",
+        "uri": "assets/logos/cust-ssf.png",
+        "location": "assets/logos/cust-ssf.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": null,
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2005-4b00-9100-200000000005",
+      "order": null,
+      "name": {
+        "en": "Strategic Missile Force",
+        "ar": "قوة الصواريخ الاستراتيجية"
+      },
+      "description": {
+        "en": "Specialised technical and sustainment support.",
+        "ar": "دعم فني واستدامة متخصص."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": null,
+        "original_name": "cust-smf.png",
+        "file_name": "cust-smf.png",
+        "uri": "assets/logos/cust-smf.png",
+        "location": "assets/logos/cust-smf.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": null,
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2006-4b00-9100-200000000006",
+      "order": null,
+      "name": {
+        "en": "Royal Saudi Naval Forces",
+        "ar": "القوات البحرية الملكية السعودية"
+      },
+      "description": {
+        "en": "Naval helicopter spare parts under the SAMI Aerospace framework contract.",
+        "ar": "قطع غيار المروحيات البحرية ضمن العقد الإطاري مع SAMI."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "a2795770-6001-4f00-9500-600000000001",
+        "original_name": "cust-rsnf.png",
+        "file_name": "cust-rsnf.png",
+        "uri": "assets/logos/cust-rsnf.png",
+        "location": "assets/logos/cust-rsnf.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "31461",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2007-4b00-9100-200000000007",
+      "order": null,
+      "name": {
+        "en": "Royal Saudi Land Forces",
+        "ar": "القوات البرية الملكية السعودية"
+      },
+      "description": {
+        "en": "Land systems spare parts, communications and sustainment.",
+        "ar": "قطع غيار الأنظمة البرية والاتصالات والاستدامة."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "a2795770-6002-4f00-9500-600000000002",
+        "original_name": "cust-rslf.png",
+        "file_name": "cust-rslf.png",
+        "uri": "assets/logos/cust-rslf.png",
+        "location": "assets/logos/cust-rslf.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "26827",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2008-4b00-9100-200000000008",
+      "order": null,
+      "name": {
+        "en": "Saudi Border Guard",
+        "ar": "حرس الحدود السعودي"
+      },
+      "description": {
+        "en": "Surveillance, communications and equipment support.",
+        "ar": "دعم المراقبة والاتصالات والمعدات."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "e1795770-4000-4d00-9300-400000000000",
+        "original_name": "cust-border-guard.png",
+        "file_name": "cust-border-guard.png",
+        "uri": "assets/logos/cust-border-guard.png",
+        "location": "assets/logos/cust-border-guard.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "53038",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2009-4b00-9100-200000000009",
+      "order": null,
+      "name": {
+        "en": "SEDENA — Secretaría de la Defensa Nacional",
+        "ar": "وزارة الدفاع الوطني المكسيكية (SEDENA)"
+      },
+      "description": {
+        "en": "Defense projects delivered with the Mexican Government through SEDENA.",
+        "ar": "مشاريع دفاعية مع الحكومة المكسيكية."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "a2795770-6004-4f00-9500-600000000004",
+        "original_name": "cust-sedena.png",
+        "file_name": "cust-sedena.png",
+        "uri": "assets/logos/cust-sedena.png",
+        "location": "assets/logos/cust-sedena.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "21883",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2015-4b00-9100-200000000015",
+      "order": null,
+      "name": {
+        "en": "ABI",
+        "ar": "ABI"
+      },
+      "description": {
+        "en": "Strategic partnership established 2024.",
+        "ar": "شراكة استراتيجية منذ 2024."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "a2795770-6003-4f00-9500-600000000003",
+        "original_name": "partner-abi.png",
+        "file_name": "partner-abi.png",
+        "uri": "assets/logos/partner-abi.png",
+        "location": "assets/logos/partner-abi.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "19266",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2018-4b00-9100-200000000018",
+      "order": null,
+      "name": {
+        "en": "Princess Nourah bint Abdulrahman University",
+        "ar": "جامعة الأميرة نورة بنت عبدالرحمن"
+      },
+      "description": {
+        "en": "Autonomous systems and simulation technologies.",
+        "ar": "الأنظمة الذاتية وتقنيات المحاكاة."
+      },
+      "link": "https://www.pnu.edu.sa/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": null,
+        "original_name": "org-pnu.png",
+        "file_name": "org-pnu.png",
+        "uri": "assets/logos/org-pnu.png",
+        "location": "assets/logos/org-pnu.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": null,
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2019-4b00-9100-200000000019",
+      "order": null,
+      "name": {
+        "en": "Prince Sattam bin Abdulaziz University",
+        "ar": "جامعة الأمير سطام بن عبدالعزيز"
+      },
+      "description": {
+        "en": "R&D and manufacturing in jamming and electronic warfare systems.",
+        "ar": "البحث والتطوير والتصنيع في أنظمة التشويش والحرب الإلكترونية."
+      },
+      "link": "https://www.psau.edu.sa/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "e1795770-4001-4d00-9300-400000000001",
+        "original_name": "org-psau.png",
+        "file_name": "org-psau.png",
+        "uri": "assets/logos/org-psau.png",
+        "location": "assets/logos/org-psau.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "30252",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "c1795770-2021-4b00-9100-200000000021",
+      "order": null,
+      "name": {
+        "en": "NARS — National Academy for Radar and Space Communications",
+        "ar": "الأكاديمية الوطنية للرادارات والاتصالات الفضائية"
+      },
+      "description": {
+        "en": "Non-profit academy qualifying national talent — 5 core specializations, +500 trainees.",
+        "ar": "أكاديمية غير ربحية لتأهيل الكفاءات الوطنية — 5 تخصصات وأكثر من 500 متدرب."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": null,
+        "original_name": "org-nars.png",
+        "file_name": "org-nars.png",
+        "uri": "assets/logos/org-nars.png",
+        "location": "assets/logos/org-nars.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": null,
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "f1795770-5002-4e00-9400-500000000002",
+      "order": null,
+      "name": {
+        "en": "Saudi Electricity Company",
+        "ar": "الشركة السعودية للكهرباء"
+      },
+      "description": {
+        "en": "Power systems and critical infrastructure support.",
+        "ar": "دعم أنظمة الطاقة والبنى التحتية الحرجة."
+      },
+      "link": "https://www.se.com.sa/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "e1795770-4002-4d00-9300-400000000002",
+        "original_name": "cust-saudi-electricity.png",
+        "file_name": "cust-saudi-electricity.png",
+        "uri": "assets/logos/cust-saudi-electricity.png",
+        "location": "assets/logos/cust-saudi-electricity.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "19940",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "f1795770-5003-4e00-9400-500000000003",
+      "order": null,
+      "name": {
+        "en": "Mobily",
+        "ar": "موبايلي"
+      },
+      "description": {
+        "en": "Communications and IT infrastructure collaboration.",
+        "ar": "التعاون في الاتصالات والبنية التقنية."
+      },
+      "link": "https://www.mobily.com.sa/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "e1795770-4003-4d00-9300-400000000003",
+        "original_name": "cust-mobily.png",
+        "file_name": "cust-mobily.png",
+        "uri": "assets/logos/cust-mobily.png",
+        "location": "assets/logos/cust-mobily.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "15723",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "f1795770-5004-4e00-9400-500000000004",
+      "order": null,
+      "name": {
+        "en": "SITECH",
+        "ar": "SITECH"
+      },
+      "description": {
+        "en": "Industrial and technical services collaboration.",
+        "ar": "التعاون في الخدمات الصناعية والفنية."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+      "type": {
+        "id": "a1795770-4114-4ded-994a-0f9dbdbc0c0e",
+        "name": {
+          "ar": "عميل",
+          "en": "Client",
+          "ko": "고객",
+          "ja": "クライアント"
+        }
+      },
+      "logo": {
+        "id": "e1795770-4004-4d00-9300-400000000004",
+        "original_name": "cust-sitech.png",
+        "file_name": "cust-sitech.png",
+        "uri": "assets/logos/cust-sitech.png",
+        "location": "assets/logos/cust-sitech.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "19877",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "f1795770-5005-4e00-9400-500000000005",
+      "order": null,
+      "name": {
+        "en": "SAMI ALSALAM Aerospace Industries",
+        "ar": "شركة السلام لصناعة الطيران"
+      },
+      "description": {
+        "en": "Aerospace industries partnership.",
+        "ar": "شراكة في صناعة الطيران."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "e1795770-4005-4d00-9300-400000000005",
+        "original_name": "partner-sami-alsalam.png",
+        "file_name": "partner-sami-alsalam.png",
+        "uri": "assets/logos/partner-sami-alsalam.png",
+        "location": "assets/logos/partner-sami-alsalam.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "22274",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "f1795770-5006-4e00-9400-500000000006",
+      "order": null,
+      "name": {
+        "en": "Technical and Vocational Training Corporation",
+        "ar": "المؤسسة العامة للتدريب التقني والمهني"
+      },
+      "description": {
+        "en": "National technical and vocational training partnership.",
+        "ar": "شراكة في التدريب التقني والمهني."
+      },
+      "link": "https://www.tvtc.gov.sa/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "e1795770-4006-4d00-9300-400000000006",
+        "original_name": "partner-tvtc.png",
+        "file_name": "partner-tvtc.png",
+        "uri": "assets/logos/partner-tvtc.png",
+        "location": "assets/logos/partner-tvtc.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "55014",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "f1795770-5007-4e00-9400-500000000007",
+      "order": null,
+      "name": {
+        "en": "Karachi Shipyard & Engineering Works",
+        "ar": "حوض كراتشي لبناء السفن"
+      },
+      "description": {
+        "en": "Naval engineering and shipbuilding collaboration.",
+        "ar": "التعاون في الهندسة البحرية وبناء السفن."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "e1795770-4007-4d00-9300-400000000007",
+        "original_name": "partner-karachi-shipyard.png",
+        "file_name": "partner-karachi-shipyard.png",
+        "uri": "assets/logos/partner-karachi-shipyard.png",
+        "location": "assets/logos/partner-karachi-shipyard.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "38764",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "b2795770-7005-5000-9600-700000000005",
+      "order": null,
+      "name": {
+        "en": "Raytheon",
+        "ar": "ريثيون"
+      },
+      "description": {
+        "en": "Defense systems collaboration.",
+        "ar": "التعاون في الأنظمة الدفاعية."
+      },
+      "link": "https://www.rtx.com/",
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "a2795770-6005-4f00-9500-600000000005",
+        "original_name": "partner-raytheon.png",
+        "file_name": "partner-raytheon.png",
+        "uri": "assets/logos/partner-raytheon.png",
+        "location": "assets/logos/partner-raytheon.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "27696",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "b2795770-7006-5000-9600-700000000006",
+      "order": null,
+      "name": {
+        "en": "USASAC",
+        "ar": "USASAC"
+      },
+      "description": {
+        "en": "U.S. Army Security Assistance Command programs.",
+        "ar": "برامج قيادة المساعدة الأمنية للجيش الأمريكي."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "a2795770-6006-4f00-9500-600000000006",
+        "original_name": "partner-usasac.png",
+        "file_name": "partner-usasac.png",
+        "uri": "assets/logos/partner-usasac.png",
+        "location": "assets/logos/partner-usasac.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "32491",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    },
+    {
+      "id": "b2795770-7007-5000-9600-700000000007",
+      "order": null,
+      "name": {
+        "en": "Redstone Systems",
+        "ar": "Redstone Systems"
+      },
+      "description": {
+        "en": "Defense technology partnership.",
+        "ar": "شراكة في تقنيات الدفاع."
+      },
+      "link": null,
+      "country_id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+      "type_id": "a1795770-41fe-472f-be98-a898753cb1dc",
+      "type": {
+        "id": "a1795770-41fe-472f-be98-a898753cb1dc",
+        "name": {
+          "ar": "شريك",
+          "en": "Partner",
+          "ko": "파트너",
+          "ja": "パートナー"
+        }
+      },
+      "logo": {
+        "id": "a2795770-6007-4f00-9500-600000000007",
+        "original_name": "partner-redstone.png",
+        "file_name": "partner-redstone.png",
+        "uri": "assets/logos/partner-redstone.png",
+        "location": "assets/logos/partner-redstone.png",
+        "mime_type": "image/png",
+        "extension": "png",
+        "size": "17973",
+        "width": null,
+        "height": null,
+        "type": "logo"
+      },
+      "country": {
+        "id": "a179576f-3329-4ff4-b8b2-682b7df16e4d",
+        "name": {
+          "ar": "المملكة العربية السعودية",
+          "en": "Saudi Arabia",
+          "ko": "사우디아라비아",
+          "ja": "サウジアラビア"
+        },
+        "code": "SA"
+      }
+    }
+  ]
+}

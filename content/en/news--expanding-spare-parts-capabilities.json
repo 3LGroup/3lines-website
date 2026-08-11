@@ -1,0 +1,68 @@
+{
+  "route": "/news/expanding-spare-parts-capabilities",
+  "locale": "en",
+  "slug": "news--expanding-spare-parts-capabilities",
+  "source": [
+    "posts.json"
+  ],
+  "title": "Expanding Our Spare Parts, Logistics and Warehousing Capabilities",
+  "description": "Growing end-to-end procurement, secure warehousing and inventory management for military and civilian platforms — sourced from the United States and worldwide.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Newsroom",
+          "href": "/news"
+        },
+        {
+          "label": "Expanding Our Spare Parts, Logistics and Warehousing Capabilities"
+        }
+      ],
+      "heading": "Expanding Our Spare Parts, Logistics and Warehousing Capabilities"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Procurement · Manufacturing"
+      },
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/news/expanding-spare-parts-capabilities.jpg')",
+            "art": null
+          },
+          "lede": "Growing end-to-end procurement, secure warehousing and inventory management for military and civilian platforms — sourced from the United States and worldwide."
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

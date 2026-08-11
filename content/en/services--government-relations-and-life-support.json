@@ -1,0 +1,145 @@
+{
+  "route": "/services/government-relations-and-life-support",
+  "locale": "en",
+  "slug": "services--government-relations-and-life-support",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "Government Relations, Personnel Consulting & Life Support Services",
+  "description": "Regulatory coordination, manpower consulting, and integrated life support services.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Services",
+          "href": "/services"
+        },
+        {
+          "label": "Government Relations, Personnel Consulting & Life Support Services"
+        }
+      ],
+      "heading": "Government Relations, Personnel Consulting & Life Support Services"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Overview"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "Regulatory coordination and life support, handled",
+          "lede": "We manage the government-facing side of complex programs — regulatory coordination, permits and approvals — alongside manpower consulting and integrated life support services. This lets Tier One primes and international partners operate in the Kingdom without carrying the administrative and logistical overhead themselves.",
+          "glanceTitle": "At a glance",
+          "glance": [
+            "Regulatory coordination and approvals",
+            "Manpower consulting",
+            "Integrated life support",
+            "US Government support services"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-hq-building.jpg')",
+            "art": null
+          },
+          "heading": "How we deliver it",
+          "checklist": [
+            {
+              "title": "Government relations",
+              "text": "Coordination with Saudi authorities on permits, approvals and compliance."
+            },
+            {
+              "title": "Personnel consulting",
+              "text": "Sourcing, qualifying and managing specialised technical manpower."
+            },
+            {
+              "title": "Life support services",
+              "text": "Accommodation, catering, transport and site services for deployed teams."
+            },
+            {
+              "title": "US Government support",
+              "text": "World-class support services delivered to US Government programs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Capabilities"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Government relations",
+              "text": "Coordination with Saudi authorities on permits, approvals and compliance."
+            },
+            {
+              "title": "Personnel consulting",
+              "text": "Sourcing, qualifying and managing specialised technical manpower."
+            },
+            {
+              "title": "Life support services",
+              "text": "Accommodation, catering, transport and site services for deployed teams."
+            },
+            {
+              "title": "US Government support",
+              "text": "World-class support services delivered to US Government programs."
+            },
+            {
+              "title": "Program compliance",
+              "text": "Documentation and reporting aligned with contractual obligations."
+            },
+            {
+              "title": "In-country presence",
+              "text": "A local team that resolves issues on the ground, quickly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

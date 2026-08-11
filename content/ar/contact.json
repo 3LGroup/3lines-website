@@ -1,0 +1,110 @@
+{
+  "route": "/contact",
+  "locale": "ar",
+  "slug": "contact",
+  "source": [
+    "pages.json#contact",
+    "siteInfo.json",
+    "constants.json",
+    "non-cms.json"
+  ],
+  "title": "التواصل",
+  "description": "تأسست مجموعة 3LINES ADVANCED TECHNOLOGIES في عام 2019 تماشيًا مع رؤية السعودية 2030 بهدف توطين الخدمات العسكرية والمدنية داخل المملكة. تقدم المجموعة خدمات متكاملة في سلاسل الإمداد والخدمات الفنية — المشتريات والخدمات اللوجستية والصيانة والإصلاح والتصنيع — دعمًا للجاهزية التشغيلية في قطاعي الدفاع والتقنيات المتقدمة محليًا ودوليًا.",
+  "keywords": "contact,us,contact us,تواصل,معنا",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "الرئيسية",
+          "href": "/"
+        },
+        {
+          "label": "التواصل"
+        }
+      ],
+      "heading": "التواصل"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 2,
+          "items": [
+            {
+              "title": "البريد الإلكتروني",
+              "text": "info@3lines.com.sa"
+            },
+            {
+              "title": "الهاتف",
+              "text": "+966112252433"
+            },
+            {
+              "title": "العنوان",
+              "text": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215"
+            },
+            {
+              "title": "السجل التجاري",
+              "text": "",
+              "meta": [
+                {
+                  "label": "CR",
+                  "value": "1010589885"
+                },
+                {
+                  "label": "VAT",
+                  "value": "310407303200003"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "form",
+          "action": "/api/contact",
+          "honeypot": "company",
+          "submit": "إرسال الرسالة",
+          "fields": [
+            {
+              "name": "name",
+              "type": "text",
+              "label": "الاسم",
+              "required": true
+            },
+            {
+              "name": "email",
+              "type": "email",
+              "label": "البريد الإلكتروني",
+              "required": true
+            },
+            {
+              "name": "message",
+              "type": "textarea",
+              "label": "كيف يمكننا مساعدتك؟",
+              "required": true
+            }
+          ],
+          "status": {
+            "sending": "جارٍ الإرسال…",
+            "ok": "شكراً — سنعاود التواصل معك قريباً.",
+            "bad": "يرجى إدخال الاسم وبريد إلكتروني صحيح ورسالة.",
+            "err": "حدث خطأ ما. حاول مرة أخرى."
+          }
+        }
+      ]
+    },
+    {
+      "type": "socialStrip",
+      "label": "ثريلاينز آدفانسد تكنولجيز",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

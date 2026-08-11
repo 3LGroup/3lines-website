@@ -1,0 +1,145 @@
+{
+  "route": "/services/power-systems-support",
+  "locale": "en",
+  "slug": "services--power-systems-support",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "Power Systems Support (Generators & UPS)",
+  "description": "Installation, maintenance, and lifecycle support for critical power and backup systems.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Services",
+          "href": "/services"
+        },
+        {
+          "label": "Power Systems Support (Generators & UPS)"
+        }
+      ],
+      "heading": "Power Systems Support (Generators & UPS)"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Overview"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "Power that does not fail",
+          "lede": "Installation, maintenance and lifecycle support for generators, UPS and critical backup power. We keep continuous power behind radar sites, operations centres, workshops and infrastructure — with scheduled maintenance, accurate diagnosis, professional repair and the spare parts to back it up.",
+          "glanceTitle": "At a glance",
+          "glance": [
+            "Generators and UPS systems",
+            "Installation through lifecycle support",
+            "Scheduled and corrective maintenance",
+            "Spare parts availability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-mro-rf-test.jpg')",
+            "art": null
+          },
+          "heading": "How we deliver it",
+          "checklist": [
+            {
+              "title": "Installation and commissioning",
+              "text": "Specification, installation and handover of power and backup systems."
+            },
+            {
+              "title": "Preventive maintenance",
+              "text": "Scheduled servicing that keeps power continuity uninterrupted."
+            },
+            {
+              "title": "Fault diagnosis and repair",
+              "text": "Accurate diagnosis and professional repair to minimize downtime."
+            },
+            {
+              "title": "Battery and UPS support",
+              "text": "Battery health, replacement and uninterruptible supply sustainment."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Capabilities"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Installation and commissioning",
+              "text": "Specification, installation and handover of power and backup systems."
+            },
+            {
+              "title": "Preventive maintenance",
+              "text": "Scheduled servicing that keeps power continuity uninterrupted."
+            },
+            {
+              "title": "Fault diagnosis and repair",
+              "text": "Accurate diagnosis and professional repair to minimize downtime."
+            },
+            {
+              "title": "Battery and UPS support",
+              "text": "Battery health, replacement and uninterruptible supply sustainment."
+            },
+            {
+              "title": "Load testing",
+              "text": "Verification under load so systems perform when they are needed."
+            },
+            {
+              "title": "Spare parts supply",
+              "text": "Provision of the components required to keep systems running."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

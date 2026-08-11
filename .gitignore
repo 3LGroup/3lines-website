@@ -1,0 +1,14 @@
+node_modules/
+.next/
+audit-runs/
+.server.log
+next-env.d.ts
+*.tsbuildinfo
+
+# Real secrets never get committed; .env.example is the documented template.
+.env
+.env.local
+.env.*.local
+
+# baseline/ is deliberately NOT ignored — the committed geometry snapshot is the
+# visual audit's reference, and updating it is meant to be a reviewable diff.

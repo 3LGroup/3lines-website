@@ -1,0 +1,54 @@
+[
+  {
+    "slug": "expanding-spare-parts-capabilities",
+    "route": "/news/expanding-spare-parts-capabilities",
+    "tag": "Procurement",
+    "type": "News",
+    "date": "2026-05-12",
+    "title": "Expanding Our Spare Parts, Logistics and Warehousing Capabilities",
+    "media": {
+      "src": "/assets/news/expanding-spare-parts-capabilities.jpg",
+      "alt": "Expanding Our Spare Parts, Logistics and Warehousing Capabilities"
+    },
+    "art": null
+  },
+  {
+    "slug": "advanced-simulator-support",
+    "route": "/news/advanced-simulator-support",
+    "tag": "Technology",
+    "type": "News",
+    "date": "2026-04-28",
+    "title": "Investing in Simulation and XR-Based Training",
+    "media": {
+      "src": "/assets/news/advanced-simulator-support.jpg",
+      "alt": "Investing in Simulation and XR-Based Training"
+    },
+    "art": null
+  },
+  {
+    "slug": "ground-support-equipment-services",
+    "route": "/news/ground-support-equipment-services",
+    "tag": "Manufacturing",
+    "type": "News",
+    "date": "2026-03-15",
+    "title": "Strengthening Ground Support Equipment Sustainment",
+    "media": {
+      "src": "/assets/news/ground-support-equipment-services.jpg",
+      "alt": "Strengthening Ground Support Equipment Sustainment"
+    },
+    "art": null
+  },
+  {
+    "slug": "advancing-radar-sensor-support",
+    "route": "/news/advancing-radar-sensor-support",
+    "tag": "Technology",
+    "type": "News",
+    "date": "2026-02-25",
+    "title": "Advancing Radar, C4I and Tactical Communications Sustainment",
+    "media": {
+      "src": "/assets/news/advancing-radar-sensor-support.jpg",
+      "alt": "Advancing Radar, C4I and Tactical Communications Sustainment"
+    },
+    "art": null
+  }
+]

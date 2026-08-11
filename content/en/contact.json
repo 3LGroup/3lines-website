@@ -1,0 +1,110 @@
+{
+  "route": "/contact",
+  "locale": "en",
+  "slug": "contact",
+  "source": [
+    "pages.json#contact",
+    "siteInfo.json",
+    "constants.json",
+    "non-cms.json"
+  ],
+  "title": "Contact",
+  "description": "3Lines Advanced Technologies Group was established in 2019 in alignment with Saudi Vision 2030 to localize military and civilian services within the Kingdom. The Group delivers integrated supply chain and technical services — procurement, logistics, maintenance, repair and manufacturing — supporting operational readiness across the defense and advanced technology sectors, locally and internationally.",
+  "keywords": "contact,us,contact us,تواصل,معنا",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Contact"
+        }
+      ],
+      "heading": "Contact"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 2,
+          "items": [
+            {
+              "title": "Email",
+              "text": "info@3lines.com.sa"
+            },
+            {
+              "title": "Phone",
+              "text": "+966112252433"
+            },
+            {
+              "title": "Address",
+              "text": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215"
+            },
+            {
+              "title": "Registration",
+              "text": "",
+              "meta": [
+                {
+                  "label": "CR",
+                  "value": "1010589885"
+                },
+                {
+                  "label": "VAT",
+                  "value": "310407303200003"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "form",
+          "action": "/api/contact",
+          "honeypot": "company",
+          "submit": "Send message",
+          "fields": [
+            {
+              "name": "name",
+              "type": "text",
+              "label": "Your name",
+              "required": true
+            },
+            {
+              "name": "email",
+              "type": "email",
+              "label": "Email address",
+              "required": true
+            },
+            {
+              "name": "message",
+              "type": "textarea",
+              "label": "How can we help?",
+              "required": true
+            }
+          ],
+          "status": {
+            "sending": "Sending…",
+            "ok": "Thanks — we'll get back to you shortly.",
+            "bad": "Please add your name, a valid email, and a message.",
+            "err": "Something went wrong. Please try again."
+          }
+        }
+      ]
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

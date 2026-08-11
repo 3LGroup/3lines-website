@@ -1,0 +1,52 @@
+{
+  "route": "/terms-and-conditions",
+  "locale": "ar",
+  "slug": "terms-and-conditions",
+  "source": [
+    "pages.json#terms-and-conditions"
+  ],
+  "title": "الشروط والأحكام",
+  "description": "محتوى الشروط والأحكام",
+  "keywords": "terms,conditions,terms and conditions,الشروط,الأحكام",
+  "placeholder": true,
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "الرئيسية",
+          "href": "/"
+        },
+        {
+          "label": "الشروط والأحكام"
+        }
+      ],
+      "heading": "الشروط والأحكام"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "محتوى الشروط والأحكام"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "socialStrip",
+      "label": "ثريلاينز آدفانسد تكنولجيز",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

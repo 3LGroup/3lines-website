@@ -1,0 +1,498 @@
+{
+  "route": "/partners",
+  "locale": "ar",
+  "slug": "partners",
+  "source": [
+    "partners.json"
+  ],
+  "title": "الشركاء",
+  "description": "تأسست مجموعة 3LINES ADVANCED TECHNOLOGIES في عام 2019 تماشيًا مع رؤية السعودية 2030 بهدف توطين الخدمات العسكرية والمدنية داخل المملكة. تقدم المجموعة خدمات متكاملة في سلاسل الإمداد والخدمات الفنية — المشتريات والخدمات اللوجستية والصيانة والإصلاح والتصنيع — دعمًا للجاهزية التشغيلية في قطاعي الدفاع والتقنيات المتقدمة محليًا ودوليًا.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "الرئيسية",
+          "href": "/"
+        },
+        {
+          "label": "الشركاء"
+        }
+      ],
+      "heading": "الشركاء"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "logos",
+          "items": [
+            {
+              "name": "SAMI",
+              "media": {
+                "src": "/assets/logos/sami-logo.svg",
+                "alt": "SAMI"
+              },
+              "href": "https://www.sami.com.sa/",
+              "caption": "الشركة السعودية للصناعات العسكرية",
+              "type": "إتفاقية",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "AirBus",
+              "media": {
+                "src": "/assets/logos/airbus-logo.svg",
+                "alt": "AirBus"
+              },
+              "href": "https://www.airbus.com/en",
+              "type": "عميل",
+              "country": "فرنسا",
+              "flag": "🇫🇷"
+            },
+            {
+              "name": "BAE Systems",
+              "media": {
+                "src": "/assets/logos/bae-systems-logo.svg",
+                "alt": "BAE Systems"
+              },
+              "href": "https://www.baesystems.com/en/home",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "ARMITE Lubricants",
+              "media": {
+                "src": "/assets/logos/armite-lubricants-logo.jpg",
+                "alt": "ARMITE Lubricants"
+              },
+              "href": "https://armitelabs.com/",
+              "type": "شريك",
+              "country": "الولايات المتحدة",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "SAMI AEC",
+              "media": {
+                "src": "/assets/logos/sami-aec-logo.png",
+                "alt": "SAMI AEC"
+              },
+              "href": "https://www.aecl.com/",
+              "caption": "شركة الإلكترونيات المتقدمة",
+              "type": "إتفاقية",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "SMSCMC",
+              "media": {
+                "src": "/assets/logos/smscmc-logo.svg",
+                "alt": "SMSCMC"
+              },
+              "href": "https://www.smscmc.com/",
+              "caption": "الشركة السعودية للصيانة وإدارة خطوط الإمداد المحدودة",
+              "type": "إتفاقية",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "MAC Aerospace Corp.",
+              "media": {
+                "src": "/assets/logos/mac-aerospace-corp-logo.png",
+                "alt": "MAC Aerospace Corp."
+              },
+              "href": "https://macaerospace.com/",
+              "type": "شريك",
+              "country": "الولايات المتحدة",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "Amentum",
+              "media": {
+                "src": "/assets/logos/amentum-logo.webp",
+                "alt": "Amentum"
+              },
+              "href": "https://www.amentum.com/",
+              "type": "عميل",
+              "country": "الولايات المتحدة",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "SAMI Aerospace",
+              "media": {
+                "src": "/assets/logos/sami-aerospace-logo.svg",
+                "alt": "SAMI Aerospace"
+              },
+              "href": "https://samialsalam.com.sa",
+              "caption": "شركة سامي السلام لصناعة الطيران",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "NPCO",
+              "media": {
+                "src": "/assets/logos/npco-logo.png",
+                "alt": "NPCO"
+              },
+              "href": "https://npco.sa/",
+              "caption": "شركة التعدات الوطنية التجارية",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "شركة الوعلان للتجارة",
+              "media": {
+                "src": "/assets/logos/wallan-group-logo.png",
+                "alt": "شركة الوعلان للتجارة"
+              },
+              "href": "https://www.wallan.com/",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "شركة فينيل العربية",
+              "media": {
+                "src": "/assets/logos/vinnell-arabia-logo.png",
+                "alt": "شركة فينيل العربية"
+              },
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "أي سي أس العربية",
+              "media": {
+                "src": "/assets/logos/ics-arabia-logo.png",
+                "alt": "أي سي أس العربية"
+              },
+              "href": "https://icsarabia.com",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "AACC",
+              "media": {
+                "src": "/assets/logos/aacc-logo.png",
+                "alt": "AACC"
+              },
+              "href": "https://www.aacc-ltd.com/",
+              "caption": "شركة المعدات المكملة للطائرات المحدودة",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "OPTOKON Middle East",
+              "media": {
+                "src": "/assets/logos/optokon-middle-east-logo.png",
+                "alt": "OPTOKON Middle East"
+              },
+              "href": "https://www.optokon.com.sa/",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "TAM",
+              "media": {
+                "src": "/assets/logos/tam-logo.png",
+                "alt": "TAM"
+              },
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "القوات الجوية الملكية السعودية",
+              "media": {
+                "src": "/assets/logos/cust-rsaf.png",
+                "alt": "القوات الجوية الملكية السعودية"
+              },
+              "caption": "استدامة الرادارات والدعم الجوي.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "قوات الدفاع الجوي الملكي السعودي",
+              "media": {
+                "src": "/assets/logos/cust-rsadf.png",
+                "alt": "قوات الدفاع الجوي الملكي السعودي"
+              },
+              "caption": "استدامة أنظمة الدفاع الجوي والدعم الفني.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "وزارة الحرس الوطني",
+              "media": {
+                "src": "/assets/logos/cust-mng.png",
+                "alt": "وزارة الحرس الوطني"
+              },
+              "caption": "برامج ELT وAMSP ومدرسة COUNS بالتعاون مع الحكومة الأمريكية.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "وزارة الدفاع",
+              "media": {
+                "src": "/assets/logos/cust-mod.png",
+                "alt": "وزارة الدفاع"
+              },
+              "caption": "برامج الاستدامة الدفاعية والتوطين.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "قوات الأمن الخاصة",
+              "media": {
+                "src": "/assets/logos/cust-ssf.png",
+                "alt": "قوات الأمن الخاصة"
+              },
+              "caption": "الدعم الفني والمعدات لعمليات الأمن الخاص.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "قوة الصواريخ الاستراتيجية",
+              "media": {
+                "src": "/assets/logos/cust-smf.png",
+                "alt": "قوة الصواريخ الاستراتيجية"
+              },
+              "caption": "دعم فني واستدامة متخصص.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "القوات البحرية الملكية السعودية",
+              "media": {
+                "src": "/assets/logos/cust-rsnf.png",
+                "alt": "القوات البحرية الملكية السعودية"
+              },
+              "caption": "قطع غيار المروحيات البحرية ضمن العقد الإطاري مع SAMI.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "القوات البرية الملكية السعودية",
+              "media": {
+                "src": "/assets/logos/cust-rslf.png",
+                "alt": "القوات البرية الملكية السعودية"
+              },
+              "caption": "قطع غيار الأنظمة البرية والاتصالات والاستدامة.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "حرس الحدود السعودي",
+              "media": {
+                "src": "/assets/logos/cust-border-guard.png",
+                "alt": "حرس الحدود السعودي"
+              },
+              "caption": "دعم المراقبة والاتصالات والمعدات.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "وزارة الدفاع الوطني المكسيكية (SEDENA)",
+              "media": {
+                "src": "/assets/logos/cust-sedena.png",
+                "alt": "وزارة الدفاع الوطني المكسيكية (SEDENA)"
+              },
+              "caption": "مشاريع دفاعية مع الحكومة المكسيكية.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "ABI",
+              "media": {
+                "src": "/assets/logos/partner-abi.png",
+                "alt": "ABI"
+              },
+              "caption": "شراكة استراتيجية منذ 2024.",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "جامعة الأميرة نورة بنت عبدالرحمن",
+              "media": {
+                "src": "/assets/logos/org-pnu.png",
+                "alt": "جامعة الأميرة نورة بنت عبدالرحمن"
+              },
+              "href": "https://www.pnu.edu.sa/",
+              "caption": "الأنظمة الذاتية وتقنيات المحاكاة.",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "جامعة الأمير سطام بن عبدالعزيز",
+              "media": {
+                "src": "/assets/logos/org-psau.png",
+                "alt": "جامعة الأمير سطام بن عبدالعزيز"
+              },
+              "href": "https://www.psau.edu.sa/",
+              "caption": "البحث والتطوير والتصنيع في أنظمة التشويش والحرب الإلكترونية.",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "الأكاديمية الوطنية للرادارات والاتصالات الفضائية",
+              "media": {
+                "src": "/assets/logos/org-nars.png",
+                "alt": "الأكاديمية الوطنية للرادارات والاتصالات الفضائية"
+              },
+              "caption": "أكاديمية غير ربحية لتأهيل الكفاءات الوطنية — 5 تخصصات وأكثر من 500 متدرب.",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "الشركة السعودية للكهرباء",
+              "media": {
+                "src": "/assets/logos/cust-saudi-electricity.png",
+                "alt": "الشركة السعودية للكهرباء"
+              },
+              "href": "https://www.se.com.sa/",
+              "caption": "دعم أنظمة الطاقة والبنى التحتية الحرجة.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "موبايلي",
+              "media": {
+                "src": "/assets/logos/cust-mobily.png",
+                "alt": "موبايلي"
+              },
+              "href": "https://www.mobily.com.sa/",
+              "caption": "التعاون في الاتصالات والبنية التقنية.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "SITECH",
+              "media": {
+                "src": "/assets/logos/cust-sitech.png",
+                "alt": "SITECH"
+              },
+              "caption": "التعاون في الخدمات الصناعية والفنية.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "شركة السلام لصناعة الطيران",
+              "media": {
+                "src": "/assets/logos/partner-sami-alsalam.png",
+                "alt": "شركة السلام لصناعة الطيران"
+              },
+              "caption": "شراكة في صناعة الطيران.",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "المؤسسة العامة للتدريب التقني والمهني",
+              "media": {
+                "src": "/assets/logos/partner-tvtc.png",
+                "alt": "المؤسسة العامة للتدريب التقني والمهني"
+              },
+              "href": "https://www.tvtc.gov.sa/",
+              "caption": "شراكة في التدريب التقني والمهني.",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "حوض كراتشي لبناء السفن",
+              "media": {
+                "src": "/assets/logos/partner-karachi-shipyard.png",
+                "alt": "حوض كراتشي لبناء السفن"
+              },
+              "caption": "التعاون في الهندسة البحرية وبناء السفن.",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "ريثيون",
+              "media": {
+                "src": "/assets/logos/partner-raytheon.png",
+                "alt": "ريثيون"
+              },
+              "href": "https://www.rtx.com/",
+              "caption": "التعاون في الأنظمة الدفاعية.",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "USASAC",
+              "media": {
+                "src": "/assets/logos/partner-usasac.png",
+                "alt": "USASAC"
+              },
+              "caption": "برامج قيادة المساعدة الأمنية للجيش الأمريكي.",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Redstone Systems",
+              "media": {
+                "src": "/assets/logos/partner-redstone.png",
+                "alt": "Redstone Systems"
+              },
+              "caption": "شراكة في تقنيات الدفاع.",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            }
+          ],
+          "variant": "grid",
+          "total": 39
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "ابدأ محادثة",
+      "cta": {
+        "label": "تواصل معنا",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "ثريلاينز آدفانسد تكنولجيز",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

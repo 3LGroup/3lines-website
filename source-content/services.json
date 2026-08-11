@@ -1,0 +1,182 @@
+[
+  {
+    "slug": "radar-electronics-communications-sustainment",
+    "legacy": "radar-system",
+    "hue": "#5cc0ff",
+    "icon": "radar",
+    "title": {
+      "en": "Radar Maintenance, Electronics & Tactical Communications Sustainment",
+      "ar": "صيانة الرادارات والإلكترونيات واستدامة الاتصالات التكتيكية",
+      "ko": "레이더 정비, 전자 및 전술 통신 유지",
+      "ja": "レーダー整備、電子機器および戦術通信の維持"
+    },
+    "description": {
+      "en": "Sustainment, diagnostics, and repair of radar, surveillance, C4I, and secure communication systems through in-country capabilities.",
+      "ar": "استدامة وتشخيص وإصلاح أنظمة الرادار والمراقبة والقيادة والسيطرة (C4I) والاتصالات الآمنة عبر قدرات محلية داخل المملكة.",
+      "ko": "국내 역량을 통한 레이더, 감시, C4I 및 보안 통신 시스템의 유지, 진단 및 수리.",
+      "ja": "国内能力によるレーダー、監視、C4I、セキュア通信システムの維持・診断・修理。"
+    }
+  },
+  {
+    "slug": "government-relations-and-life-support",
+    "legacy": "us-government-support-services",
+    "hue": "#4f8cff",
+    "icon": "shield",
+    "title": {
+      "en": "Government Relations, Personnel Consulting & Life Support Services",
+      "ar": "العلاقات الحكومية واستشارات الكوادر وخدمات الإعاشة المتكاملة",
+      "ko": "정부 관계, 인력 컨설팅 및 생활 지원 서비스",
+      "ja": "政府渉外、人材コンサルティングおよびライフサポートサービス"
+    },
+    "description": {
+      "en": "Regulatory coordination, manpower consulting, and integrated life support services.",
+      "ar": "التنسيق التنظيمي واستشارات القوى العاملة وخدمات الإعاشة المتكاملة.",
+      "ko": "규제 조정, 인력 컨설팅 및 통합 생활 지원 서비스.",
+      "ja": "規制対応の調整、人材コンサルティング、統合ライフサポートサービス。"
+    }
+  },
+  {
+    "slug": "power-systems-support",
+    "legacy": "generators-and-ups",
+    "hue": "#38b6ff",
+    "icon": "zap",
+    "title": {
+      "en": "Power Systems Support (Generators & UPS)",
+      "ar": "دعم أنظمة الطاقة (المولدات وأنظمة الطاقة غير المنقطعة)",
+      "ko": "전력 시스템 지원 (발전기 및 UPS)",
+      "ja": "電源システム支援（発電機・UPS）"
+    },
+    "description": {
+      "en": "Installation, maintenance, and lifecycle support for critical power and backup systems.",
+      "ar": "تركيب وصيانة ودعم دورة الحياة لأنظمة الطاقة الحرجة وأنظمة الطاقة الاحتياطية.",
+      "ko": "중요 전력 및 백업 시스템의 설치, 정비 및 수명주기 지원.",
+      "ja": "重要電源およびバックアップシステムの設置、保守、ライフサイクル支援。"
+    }
+  },
+  {
+    "slug": "electronics-diagnostic-and-repair-workshops",
+    "legacy": "structure-and-frame",
+    "hue": "#36c2cf",
+    "icon": "gauge",
+    "title": {
+      "en": "Electronics Diagnostic & Repair Workshops",
+      "ar": "ورش تشخيص وإصلاح الإلكترونيات",
+      "ko": "전자 진단 및 수리 워크숍",
+      "ja": "電子機器の診断・修理ワークショップ"
+    },
+    "description": {
+      "en": "Localized facilities providing fault isolation, testing, repair, and validation for mission-critical electronic systems.",
+      "ar": "منشآت موطّنة داخل المملكة توفّر عزل الأعطال والاختبار والإصلاح والتحقق للأنظمة الإلكترونية الحرجة.",
+      "ko": "미션 크리티컬 전자 시스템의 결함 격리, 테스트, 수리 및 검증을 제공하는 현지화된 시설.",
+      "ja": "ミッションクリティカルな電子システムの故障切り分け、試験、修理、検証を行う国内拠点。"
+    }
+  },
+  {
+    "slug": "ground-support-equipment-sustainment",
+    "legacy": "supporting-ground-equipment",
+    "hue": "#4f8cff",
+    "icon": "truck",
+    "title": {
+      "en": "Ground Support Equipment (GSE) Sustainment",
+      "ar": "استدامة معدات الدعم الأرضي",
+      "ko": "지상 지원 장비(GSE) 유지",
+      "ja": "地上支援機材（GSE）の維持"
+    },
+    "description": {
+      "en": "Maintenance and availability support for aviation and land-based ground support assets.",
+      "ar": "الصيانة ودعم الجاهزية لأصول الدعم الأرضي في القطاعين الجوي والبري.",
+      "ko": "항공 및 지상 기반 지원 자산의 정비와 가용성 지원.",
+      "ja": "航空および陸上の地上支援資産に対する整備と可用性支援。"
+    }
+  },
+  {
+    "slug": "spare-parts-logistics-and-warehousing",
+    "legacy": "provide-spare-parts",
+    "hue": "#3aa0ff",
+    "icon": "package",
+    "title": {
+      "en": "Aviation & Land Systems Spare Parts, Logistics, and Warehousing",
+      "ar": "قطع غيار الأنظمة الجوية والبرية والخدمات اللوجستية والتخزين",
+      "ko": "항공·지상 시스템 예비 부품, 물류 및 창고 운영",
+      "ja": "航空・陸上システムのスペアパーツ、物流および倉庫管理"
+    },
+    "description": {
+      "en": "End-to-end procurement, secure warehousing, inventory management, and distribution for military and civilian platforms.",
+      "ar": "مشتريات متكاملة وتخزين آمن وإدارة للمخزون وتوزيع للمنصات العسكرية والمدنية.",
+      "ko": "군용 및 민간 플랫폼을 위한 종합 조달, 보안 창고, 재고 관리 및 배송.",
+      "ja": "軍用・民生プラットフォーム向けの一貫調達、セキュア倉庫、在庫管理、配送。"
+    }
+  },
+  {
+    "slug": "simulation-systems",
+    "legacy": "supporting-the-simulator-system",
+    "hue": "#7a7bff",
+    "icon": "monitor",
+    "title": {
+      "en": "Simulation Systems (Full Motion & Static)",
+      "ar": "أنظمة المحاكاة (كاملة الحركة والثابتة)",
+      "ko": "시뮬레이션 시스템 (풀 모션 및 고정형)",
+      "ja": "シミュレーションシステム（フルモーション・固定式）"
+    },
+    "description": {
+      "en": "Supply, operations, maintenance, and training support for advanced simulation and readiness platforms.",
+      "ar": "التوريد والتشغيل والصيانة ودعم التدريب لمنصات المحاكاة والجاهزية المتقدمة.",
+      "ko": "첨단 시뮬레이션 및 준비태세 플랫폼의 공급, 운영, 정비 및 교육 지원.",
+      "ja": "先進シミュレーション・即応プラットフォームの供給、運用、保守、訓練支援。"
+    }
+  },
+  {
+    "slug": "training-and-capability-enablement",
+    "legacy": "english-language-training",
+    "hue": "#36c2cf",
+    "icon": "cap",
+    "title": {
+      "en": "Training, Simulation & Capability Enablement",
+      "ar": "التدريب والمحاكاة وتمكين القدرات",
+      "ko": "교육, 시뮬레이션 및 역량 강화",
+      "ja": "訓練、シミュレーションおよび能力構築"
+    },
+    "description": {
+      "en": "Military and civilian training delivery, knowledge transfer, and operational capability development.",
+      "ar": "تقديم التدريب العسكري والمدني ونقل المعرفة وتطوير القدرات التشغيلية.",
+      "ko": "군·민간 교육 제공, 지식 이전 및 운영 역량 개발.",
+      "ja": "軍・民間向け訓練の提供、知識移転、運用能力の開発。"
+    }
+  },
+  {
+    "slug": "defense-systems-sustainment-mro",
+    "legacy": "maintaining-and-repairing-of-spare-parts",
+    "hue": "#5cc0ff",
+    "icon": "wrench",
+    "title": {
+      "en": "Defense Systems Sustainment (MRO)",
+      "ar": "استدامة الأنظمة الدفاعية (الصيانة والإصلاح والعمرة)",
+      "ko": "방산 시스템 유지 (MRO)",
+      "ja": "防衛システムの維持（MRO）"
+    },
+    "description": {
+      "en": "Comprehensive maintenance, repair, and overhaul services supporting operational readiness across defense systems.",
+      "ar": "خدمات شاملة للصيانة والإصلاح والعمرة تدعم الجاهزية التشغيلية عبر الأنظمة الدفاعية.",
+      "ko": "방산 시스템 전반의 운영 준비태세를 지원하는 종합 정비·수리·오버홀 서비스.",
+      "ja": "防衛システム全体の運用即応性を支える包括的な整備・修理・オーバーホールサービス。"
+    }
+  },
+  {
+    "slug": "program-management-and-localization",
+    "legacy": "hydraulic-pneumatic-equipment-and-components",
+    "hue": "#7a7bff",
+    "icon": "target",
+    "title": {
+      "en": "Program Management & Localization Enablement",
+      "ar": "إدارة البرامج وتمكين التوطين",
+      "ko": "프로그램 관리 및 현지화 지원",
+      "ja": "プログラム管理およびローカライゼーション推進"
+    },
+    "description": {
+      "en": "End-to-end program execution, localization, and national capability development aligned with Saudi Vision 2030.",
+      "ar": "تنفيذ متكامل للبرامج والتوطين وتطوير القدرات الوطنية بما يتماشى مع رؤية السعودية 2030.",
+      "ko": "사우디 비전 2030에 부합하는 전 과정 프로그램 실행, 현지화 및 국가 역량 개발.",
+      "ja": "サウジ・ビジョン2030に沿った一貫したプログラム遂行、国産化、国家能力の育成。"
+    }
+  }
+]

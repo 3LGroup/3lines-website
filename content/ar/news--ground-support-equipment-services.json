@@ -1,0 +1,68 @@
+{
+  "route": "/news/ground-support-equipment-services",
+  "locale": "ar",
+  "slug": "news--ground-support-equipment-services",
+  "source": [
+    "posts.json"
+  ],
+  "title": "تعزيز استدامة معدات الدعم الأرضي",
+  "description": "صيانة شاملة وقطع غيار لضمان الجاهزية التشغيلية على الأرض.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "الرئيسية",
+          "href": "/"
+        },
+        {
+          "label": "مستجدات",
+          "href": "/news"
+        },
+        {
+          "label": "تعزيز استدامة معدات الدعم الأرضي"
+        }
+      ],
+      "heading": "تعزيز استدامة معدات الدعم الأرضي"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "الصناعة · التكنولوجيا"
+      },
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/news/ground-support-equipment-services.jpg')",
+            "art": null
+          },
+          "lede": "صيانة شاملة وقطع غيار لضمان الجاهزية التشغيلية على الأرض."
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "ابدأ محادثة",
+      "cta": {
+        "label": "تواصل معنا",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "ثريلاينز آدفانسد تكنولجيز",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,515 @@
+{
+  "route": "/",
+  "locale": "en",
+  "slug": "index",
+  "source": [
+    "constants.json",
+    "siteInfo.json",
+    "services.json",
+    "posts.json",
+    "non-cms.json"
+  ],
+  "title": "3Lines Advanced Technologies Company",
+  "description": "3Lines Advanced Technologies Group was established in 2019 in alignment with Saudi Vision 2030 to localize military and civilian services within the Kingdom. The Group delivers integrated supply chain and technical services — procurement, logistics, maintenance, repair and manufacturing — supporting operational readiness across the defense and advanced technology sectors, locally and internationally.",
+  "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
+  "blocks": [
+    {
+      "type": "hero",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "headingLines": [
+        "We provide",
+        "Globally"
+      ],
+      "rotate": [
+        "Advanced Technologies",
+        "Extended Reality",
+        "MRO",
+        "Logistics"
+      ],
+      "body": "3Lines Advanced Technologies Group was established in 2019 in alignment with Saudi Vision 2030 to localize military and civilian services within the Kingdom. The Group delivers integrated supply chain and technical services — procurement, logistics, maintenance, repair and manufacturing — supporting operational readiness across the defense and advanced technology sectors, locally and internationally.",
+      "cta": {
+        "label": "Who we are",
+        "href": "/about"
+      }
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "figures",
+          "items": [
+            {
+              "count": 7,
+              "prefix": "+",
+              "label": "Years serving defense & advanced technology, since 2019"
+            },
+            {
+              "count": 3,
+              "label": "Core operational pillars"
+            },
+            {
+              "count": 120,
+              "prefix": "+",
+              "label": "Multidisciplinary professional team"
+            },
+            {
+              "count": 30,
+              "prefix": "+",
+              "label": "Strategic partners locally & internationally"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "head": {
+        "layout": "split",
+        "kicker": "What we do",
+        "heading": "How we deliver it",
+        "link": {
+          "label": "About",
+          "href": "/about"
+        }
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Supply Chain Management",
+              "text": "End-to-end supply chain — strategic sourcing, procurement, secure warehousing, inventory management and delivery to military and civilian platforms."
+            },
+            {
+              "title": "Maintenance",
+              "text": "Sustainment of radar, surveillance, C2/C3/C4I command and control systems, ground support and defense systems through in-country capabilities."
+            },
+            {
+              "title": "Repair & Manufacturing",
+              "text": "Localized diagnostic and repair workshops, plus reverse engineering and manufacturing of components for advanced systems."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "navy",
+      "head": {
+        "layout": "stacked",
+        "kicker": "WHY 3LINES"
+      },
+      "bodies": [
+        {
+          "kind": "slider",
+          "items": [
+            {
+              "heading": "Built to sustain, trusted to operate",
+              "sub": "Localizing defense and advanced technology in the Kingdom since 2019."
+            },
+            {
+              "heading": "Radar and C4I sustained in-Kingdom",
+              "sub": "4th-line maintenance under an MLA with Northrop Grumman."
+            },
+            {
+              "heading": "Three core operational pillars",
+              "sub": "Supply chain management, maintenance, and repair and manufacturing."
+            },
+            {
+              "heading": "+30 strategic partners",
+              "sub": "Delivering across Saudi Arabia, the USA, Mexico, Poland and the Czech Republic."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "id": "services",
+      "head": {
+        "layout": "split",
+        "kicker": "What we do",
+        "heading": "What we do",
+        "link": {
+          "label": "Services",
+          "href": "/services"
+        }
+      },
+      "bodies": [
+        {
+          "kind": "cards",
+          "items": [
+            {
+              "title": "Radar Maintenance, Electronics & Tactical Communications Sustainment",
+              "text": "Sustainment, diagnostics, and repair of radar, surveillance, C4I, and secure communication systems through in-country capabilities.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/radar-electronics-communications-sustainment"
+              },
+              "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+              "art": null
+            },
+            {
+              "title": "Government Relations, Personnel Consulting & Life Support Services",
+              "text": "Regulatory coordination, manpower consulting, and integrated life support services.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/government-relations-and-life-support"
+              },
+              "imgVar": "url('/assets/photos/3l-hq-building.jpg')",
+              "art": null
+            },
+            {
+              "title": "Power Systems Support (Generators & UPS)",
+              "text": "Installation, maintenance, and lifecycle support for critical power and backup systems.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/power-systems-support"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-rf-test.jpg')",
+              "art": null
+            },
+            {
+              "title": "Electronics Diagnostic & Repair Workshops",
+              "text": "Localized facilities providing fault isolation, testing, repair, and validation for mission-critical electronic systems.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/electronics-diagnostic-and-repair-workshops"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-bench.jpg')",
+              "art": null
+            },
+            {
+              "title": "Ground Support Equipment (GSE) Sustainment",
+              "text": "Maintenance and availability support for aviation and land-based ground support assets.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/ground-support-equipment-sustainment"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-tech.jpg')",
+              "art": null
+            },
+            {
+              "title": "Aviation & Land Systems Spare Parts, Logistics, and Warehousing",
+              "text": "End-to-end procurement, secure warehousing, inventory management, and distribution for military and civilian platforms.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/spare-parts-logistics-and-warehousing"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-lab.jpg')",
+              "art": null
+            },
+            {
+              "title": "Simulation Systems (Full Motion & Static)",
+              "text": "Supply, operations, maintenance, and training support for advanced simulation and readiness platforms.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/simulation-systems"
+              },
+              "imgVar": "url('/assets/photos/3l-xr-simulator.jpg')",
+              "art": null
+            },
+            {
+              "title": "Training, Simulation & Capability Enablement",
+              "text": "Military and civilian training delivery, knowledge transfer, and operational capability development.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/training-and-capability-enablement"
+              },
+              "imgVar": "url('/assets/photos/3l-xr-lab.jpg')",
+              "art": null
+            },
+            {
+              "title": "Defense Systems Sustainment (MRO)",
+              "text": "Comprehensive maintenance, repair, and overhaul services supporting operational readiness across defense systems.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/defense-systems-sustainment-mro"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-component.jpg')",
+              "art": null
+            },
+            {
+              "title": "Program Management & Localization Enablement",
+              "text": "End-to-end program execution, localization, and national capability development aligned with Saudi Vision 2030.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/program-management-and-localization"
+              },
+              "imgVar": "url('/assets/photos/3l-command-center.jpg')",
+              "art": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "head": {
+        "layout": "split",
+        "kicker": "Newsroom",
+        "heading": "",
+        "link": {
+          "label": "Newsroom",
+          "href": "/news"
+        }
+      },
+      "bodies": [
+        {
+          "kind": "newsGrid",
+          "limit": 3
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "split",
+        "kicker": "Trusted by",
+        "heading": "",
+        "link": {
+          "label": "Trusted by",
+          "href": "/partners"
+        }
+      },
+      "bodies": [
+        {
+          "kind": "logos",
+          "items": [
+            {
+              "name": "SAMI",
+              "media": {
+                "src": "/assets/logos/sami-logo.svg",
+                "alt": "SAMI"
+              },
+              "href": "https://www.sami.com.sa/",
+              "caption": "Saudi Arabian Military Industries",
+              "type": "Agreement",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "AirBus",
+              "media": {
+                "src": "/assets/logos/airbus-logo.svg",
+                "alt": "AirBus"
+              },
+              "href": "https://www.airbus.com/en",
+              "type": "Client",
+              "country": "France",
+              "flag": "🇫🇷"
+            },
+            {
+              "name": "BAE Systems",
+              "media": {
+                "src": "/assets/logos/bae-systems-logo.svg",
+                "alt": "BAE Systems"
+              },
+              "href": "https://www.baesystems.com/en/home",
+              "type": "Client",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "ARMITE Lubricants",
+              "media": {
+                "src": "/assets/logos/armite-lubricants-logo.jpg",
+                "alt": "ARMITE Lubricants"
+              },
+              "href": "https://armitelabs.com/",
+              "type": "Partner",
+              "country": "United States",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "SAMI AEC",
+              "media": {
+                "src": "/assets/logos/sami-aec-logo.png",
+                "alt": "SAMI AEC"
+              },
+              "href": "https://www.aecl.com/",
+              "caption": "SAMI Advanced Electronics",
+              "type": "Agreement",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "SMSCMC",
+              "media": {
+                "src": "/assets/logos/smscmc-logo.svg",
+                "alt": "SMSCMC"
+              },
+              "href": "https://www.smscmc.com/",
+              "caption": "Saudi Maintenance & Supply Chain Management Co",
+              "type": "Agreement",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "MAC Aerospace Corp.",
+              "media": {
+                "src": "/assets/logos/mac-aerospace-corp-logo.png",
+                "alt": "MAC Aerospace Corp."
+              },
+              "href": "https://macaerospace.com/",
+              "type": "Partner",
+              "country": "United States",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "Amentum",
+              "media": {
+                "src": "/assets/logos/amentum-logo.webp",
+                "alt": "Amentum"
+              },
+              "href": "https://www.amentum.com/",
+              "type": "Client",
+              "country": "United States",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "SAMI Aerospace",
+              "media": {
+                "src": "/assets/logos/sami-aerospace-logo.svg",
+                "alt": "SAMI Aerospace"
+              },
+              "href": "https://samialsalam.com.sa",
+              "caption": "SAMI Alsalam Aerospace Industries",
+              "type": "Client",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "NPCO",
+              "media": {
+                "src": "/assets/logos/npco-logo.png",
+                "alt": "NPCO"
+              },
+              "href": "https://npco.sa/",
+              "caption": "National Commercial Pledges Company",
+              "type": "Client",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Wallan Group",
+              "media": {
+                "src": "/assets/logos/wallan-group-logo.png",
+                "alt": "Wallan Group"
+              },
+              "href": "https://www.wallan.com/",
+              "type": "Client",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Vinnell Arabia",
+              "media": {
+                "src": "/assets/logos/vinnell-arabia-logo.png",
+                "alt": "Vinnell Arabia"
+              },
+              "type": "Client",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "ICS ARABIA",
+              "media": {
+                "src": "/assets/logos/ics-arabia-logo.png",
+                "alt": "ICS ARABIA"
+              },
+              "href": "https://icsarabia.com",
+              "type": "Partner",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "AACC",
+              "media": {
+                "src": "/assets/logos/aacc-logo.png",
+                "alt": "AACC"
+              },
+              "href": "https://www.aacc-ltd.com/",
+              "caption": "Aircraft Accessories & Components Co. Ltd.",
+              "type": "Client",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "OPTOKON Middle East",
+              "media": {
+                "src": "/assets/logos/optokon-middle-east-logo.png",
+                "alt": "OPTOKON Middle East"
+              },
+              "href": "https://www.optokon.com.sa/",
+              "type": "Partner",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "TAM",
+              "media": {
+                "src": "/assets/logos/tam-logo.png",
+                "alt": "TAM"
+              },
+              "type": "Partner",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Royal Saudi Air Force",
+              "media": {
+                "src": "/assets/logos/cust-rsaf.png",
+                "alt": "Royal Saudi Air Force"
+              },
+              "caption": "Radar sustainment including the AN/TPS-78, and aviation support.",
+              "type": "Client",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Royal Saudi Air Defense Forces",
+              "media": {
+                "src": "/assets/logos/cust-rsadf.png",
+                "alt": "Royal Saudi Air Defense Forces"
+              },
+              "caption": "Air defense systems sustainment and technical support.",
+              "type": "Client",
+              "country": "Saudi Arabia",
+              "flag": "🇸🇦"
+            }
+          ],
+          "variant": "marquee",
+          "total": 39
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

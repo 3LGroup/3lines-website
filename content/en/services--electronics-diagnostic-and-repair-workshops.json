@@ -1,0 +1,145 @@
+{
+  "route": "/services/electronics-diagnostic-and-repair-workshops",
+  "locale": "en",
+  "slug": "services--electronics-diagnostic-and-repair-workshops",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "Electronics Diagnostic & Repair Workshops",
+  "description": "Localized facilities providing fault isolation, testing, repair, and validation for mission-critical electronic systems.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Services",
+          "href": "/services"
+        },
+        {
+          "label": "Electronics Diagnostic & Repair Workshops"
+        }
+      ],
+      "heading": "Electronics Diagnostic & Repair Workshops"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Overview"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "Localized workshops for mission-critical electronics",
+          "lede": "Our electronics workshops inside the Kingdom provide fault isolation, testing, repair and validation for mission-critical systems. Equipped for component-level work — RF test benches, signal generators, power meters and calibrated instrumentation — they return assemblies to service locally instead of shipping them abroad, cutting turnaround and reducing dependence on external sources.",
+          "glanceTitle": "At a glance",
+          "glance": [
+            "Component-level repair",
+            "RF and signal test capability",
+            "Calibrated instrumentation",
+            "In-Kingdom turnaround"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-mro-bench.jpg')",
+            "art": null
+          },
+          "heading": "How we deliver it",
+          "checklist": [
+            {
+              "title": "Fault isolation",
+              "text": "Systematic diagnosis to identify the failed assembly or component."
+            },
+            {
+              "title": "Component-level repair",
+              "text": "Board and component repair rather than whole-unit replacement."
+            },
+            {
+              "title": "RF and microwave testing",
+              "text": "Signal generation and power measurement across radar frequency bands."
+            },
+            {
+              "title": "Functional validation",
+              "text": "Full functional test before an item is certified back to service."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Capabilities"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Fault isolation",
+              "text": "Systematic diagnosis to identify the failed assembly or component."
+            },
+            {
+              "title": "Component-level repair",
+              "text": "Board and component repair rather than whole-unit replacement."
+            },
+            {
+              "title": "RF and microwave testing",
+              "text": "Signal generation and power measurement across radar frequency bands."
+            },
+            {
+              "title": "Functional validation",
+              "text": "Full functional test before an item is certified back to service."
+            },
+            {
+              "title": "Calibration",
+              "text": "Alignment and calibration against traceable reference standards."
+            },
+            {
+              "title": "Reverse engineering",
+              "text": "Recreating obsolete components to sustain ageing systems."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

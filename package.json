@@ -1,0 +1,34 @@
+{
+  "name": "thales-group-clone",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "extract": "node scripts/extract-non-cms.mjs",
+    "ingest": "node scripts/ingest-3lines.mjs",
+    "audit:content": "node scripts/audit-content.mjs",
+    "audit:links": "node scripts/audit-links.mjs",
+    "audit:console": "node scripts/audit-console.mjs",
+    "audit:visual": "node scripts/audit-visual.mjs",
+    "dev": "next dev -p 3200",
+    "build": "next build",
+    "start": "next start -p 3200",
+    "typecheck": "tsc --noEmit",
+    "verify": "node scripts/pipeline.mjs",
+    "baseline:update": "node scripts/visual-baseline.mjs",
+    "audit:assets": "node scripts/audit-assets.mjs"
+  },
+  "dependencies": {
+    "next": "^15.5.7",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "cheerio": "1.0.0",
+    "puppeteer-core": "23.11.1",
+    "typescript": "5.7.2"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "route": "/services/simulation-systems",
+  "locale": "en",
+  "slug": "services--simulation-systems",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "Simulation Systems (Full Motion & Static)",
+  "description": "Supply, operations, maintenance, and training support for advanced simulation and readiness platforms.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Services",
+          "href": "/services"
+        },
+        {
+          "label": "Simulation Systems (Full Motion & Static)"
+        }
+      ],
+      "heading": "Simulation Systems (Full Motion & Static)"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Overview"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "Full-motion and static simulation, supported",
+          "lede": "Supply, operations, maintenance and training support for advanced simulation and readiness platforms — full motion and static. We sustain flight and maintenance simulators so training throughput and operational readiness are never limited by equipment availability, backed by a partnership with Princess Nourah bint Abdulrahman University covering autonomous systems and simulation technologies.",
+          "glanceTitle": "At a glance",
+          "glance": [
+            "Full motion and static platforms",
+            "Supply and installation",
+            "Operations and maintenance",
+            "Training support"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-xr-simulator.jpg')",
+            "art": null
+          },
+          "heading": "How we deliver it",
+          "checklist": [
+            {
+              "title": "Simulator supply",
+              "text": "Sourcing and delivery of simulation and readiness platforms."
+            },
+            {
+              "title": "Installation and integration",
+              "text": "Commissioning and integration into the training environment."
+            },
+            {
+              "title": "Preventive maintenance",
+              "text": "Scheduled servicing to sustain simulator availability."
+            },
+            {
+              "title": "Fault resolution",
+              "text": "Specialised diagnosis and repair of simulation subsystems."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Capabilities"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Simulator supply",
+              "text": "Sourcing and delivery of simulation and readiness platforms."
+            },
+            {
+              "title": "Installation and integration",
+              "text": "Commissioning and integration into the training environment."
+            },
+            {
+              "title": "Preventive maintenance",
+              "text": "Scheduled servicing to sustain simulator availability."
+            },
+            {
+              "title": "Fault resolution",
+              "text": "Specialised diagnosis and repair of simulation subsystems."
+            },
+            {
+              "title": "Operations support",
+              "text": "Day-to-day operational support for training establishments."
+            },
+            {
+              "title": "Instructor and user training",
+              "text": "Enabling teams to get full value from the platform."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

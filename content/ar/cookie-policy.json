@@ -1,0 +1,52 @@
+{
+  "route": "/cookie-policy",
+  "locale": "ar",
+  "slug": "cookie-policy",
+  "source": [
+    "pages.json#cookie-policy"
+  ],
+  "title": "سياسة ملفات تعريف الارتباط (الكوكيز)",
+  "description": "محتوى سياسة ملفات تعريف الارتباط (الكوكيز)",
+  "keywords": "cookie,policy,cookie policy,سياسة,ملفات,تعريف,الارتباط,الكوكيز",
+  "placeholder": true,
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "الرئيسية",
+          "href": "/"
+        },
+        {
+          "label": "سياسة ملفات تعريف الارتباط (الكوكيز)"
+        }
+      ],
+      "heading": "سياسة ملفات تعريف الارتباط (الكوكيز)"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "محتوى سياسة ملفات تعريف الارتباط (الكوكيز)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "socialStrip",
+      "label": "ثريلاينز آدفانسد تكنولجيز",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

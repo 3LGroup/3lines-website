@@ -1,0 +1,68 @@
+{
+  "route": "/news/advanced-simulator-support",
+  "locale": "ar",
+  "slug": "news--advanced-simulator-support",
+  "source": [
+    "posts.json"
+  ],
+  "title": "الاستثمار في المحاكاة والتدريب القائم على الواقع الممتد",
+  "description": "خدماتنا المتخصصة تُبقي أجهزة محاكاة الطيران والصيانة في جاهزية تشغيلية عالية.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "الرئيسية",
+          "href": "/"
+        },
+        {
+          "label": "مستجدات",
+          "href": "/news"
+        },
+        {
+          "label": "الاستثمار في المحاكاة والتدريب القائم على الواقع الممتد"
+        }
+      ],
+      "heading": "الاستثمار في المحاكاة والتدريب القائم على الواقع الممتد"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "التكنولوجيا"
+      },
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/news/advanced-simulator-support.jpg')",
+            "art": null
+          },
+          "lede": "خدماتنا المتخصصة تُبقي أجهزة محاكاة الطيران والصيانة في جاهزية تشغيلية عالية."
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "ابدأ محادثة",
+      "cta": {
+        "label": "تواصل معنا",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "ثريلاينز آدفانسد تكنولجيز",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "route": "/privacy-policy",
+  "locale": "en",
+  "slug": "privacy-policy",
+  "source": [
+    "pages.json#privacy-policy"
+  ],
+  "title": "Privacy Policy",
+  "description": "Privacy Policy Content",
+  "keywords": "privacy,policy,privacy policy,سياسة,خصوصية",
+  "placeholder": true,
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Privacy Policy"
+        }
+      ],
+      "heading": "Privacy Policy"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "Privacy Policy Content"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "data": [
+    {
+      "id": "a1795770-37ea-4ea7-83a1-0a1b774c20b9",
+      "name": {
+        "ar": "المشتريات",
+        "en": "Procurement"
+      },
+      "slug": "procurement",
+      "description": {
+        "ar": "أخبار مرتبطة بمجال المشتريات.",
+        "en": "News related to Procurement."
+      }
+    },
+    {
+      "id": "a1795770-3998-434a-9170-a891135b6559",
+      "name": {
+        "ar": "الصناعة",
+        "en": "Manufacturing"
+      },
+      "slug": "manifacturing",
+      "description": {
+        "ar": "أخبار مرتبطة بمجال الصناعة.",
+        "en": "News related to Manufacturing."
+      }
+    },
+    {
+      "id": "a1795770-3a5f-4c45-aae1-3552a85ac66b",
+      "name": {
+        "ar": "التكنولوجيا",
+        "en": "Technology",
+        "ko": "기술",
+        "ja": "テクノロジー"
+      },
+      "slug": "technology",
+      "description": {
+        "ar": "أخبار مرتبطة بمجال التكنولوجيا.",
+        "en": "News related to Technology."
+      }
+    }
+  ],
+  "links": {
+    "first": "https://3lines.com.sa/api/v1/tags?per_page=100&page=1",
+    "last": "https://3lines.com.sa/api/v1/tags?per_page=100&page=1",
+    "prev": null,
+    "next": null
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 1,
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "https://3lines.com.sa/api/v1/tags?per_page=100&page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": null,
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "path": "https://3lines.com.sa/api/v1/tags",
+    "per_page": 100,
+    "to": 3,
+    "total": 3
+  }
+}

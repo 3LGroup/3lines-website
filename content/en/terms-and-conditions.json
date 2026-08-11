@@ -1,0 +1,52 @@
+{
+  "route": "/terms-and-conditions",
+  "locale": "en",
+  "slug": "terms-and-conditions",
+  "source": [
+    "pages.json#terms-and-conditions"
+  ],
+  "title": "Terms & Conditions",
+  "description": "Terms &amp; Conditions Content",
+  "keywords": "terms,conditions,terms and conditions,الشروط,الأحكام",
+  "placeholder": true,
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Terms & Conditions"
+        }
+      ],
+      "heading": "Terms & Conditions"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "Terms &amp; Conditions Content"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

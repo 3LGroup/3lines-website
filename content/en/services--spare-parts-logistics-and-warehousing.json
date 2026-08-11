@@ -1,0 +1,145 @@
+{
+  "route": "/services/spare-parts-logistics-and-warehousing",
+  "locale": "en",
+  "slug": "services--spare-parts-logistics-and-warehousing",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "Aviation & Land Systems Spare Parts, Logistics, and Warehousing",
+  "description": "End-to-end procurement, secure warehousing, inventory management, and distribution for military and civilian platforms.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Services",
+          "href": "/services"
+        },
+        {
+          "label": "Aviation & Land Systems Spare Parts, Logistics, and Warehousing"
+        }
+      ],
+      "heading": "Aviation & Land Systems Spare Parts, Logistics, and Warehousing"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Overview"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "End-to-end supply, from RFQ to the flight line",
+          "lede": "3Lines was registered as the first licensed Saudi company to provide spare parts, and supply remains one of its three core pillars. We source genuine parts for aviation and land systems from OEMs and authorised distributors across the United States and worldwide, then manage secure warehousing, inventory management and distribution to military and civilian platforms — with transparent pricing, verified authenticity and dependable lead times.",
+          "glanceTitle": "At a glance",
+          "glance": [
+            "OEM and authorised distributors",
+            "United States and worldwide sourcing",
+            "Secure warehousing and inventory",
+            "Certificates and full traceability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-mro-lab.jpg')",
+            "art": null
+          },
+          "heading": "How we deliver it",
+          "checklist": [
+            {
+              "title": "Strategic sourcing",
+              "text": "Qualifying the right suppliers for every part and program."
+            },
+            {
+              "title": "Vendor management",
+              "text": "Long-term relationships with OEMs and authorised distributors."
+            },
+            {
+              "title": "Quotations and negotiation",
+              "text": "Competitive RFQs with clear pricing and delivery terms."
+            },
+            {
+              "title": "Logistics and expediting",
+              "text": "Export handling, shipping and priority AOG expediting."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Capabilities"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Strategic sourcing",
+              "text": "Qualifying the right suppliers for every part and program."
+            },
+            {
+              "title": "Vendor management",
+              "text": "Long-term relationships with OEMs and authorised distributors."
+            },
+            {
+              "title": "Quotations and negotiation",
+              "text": "Competitive RFQs with clear pricing and delivery terms."
+            },
+            {
+              "title": "Logistics and expediting",
+              "text": "Export handling, shipping and priority AOG expediting."
+            },
+            {
+              "title": "Secure warehousing",
+              "text": "Controlled storage for military and civilian platform inventory."
+            },
+            {
+              "title": "Inventory planning",
+              "text": "Forecasting and stock planning so critical parts are on hand."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

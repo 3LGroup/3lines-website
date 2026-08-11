@@ -1,0 +1,234 @@
+{
+  "note": "3Lines Advanced Technologies",
+  "skip": {
+    "label": "Skip to main content",
+    "href": "#main"
+  },
+  "logoImg": {
+    "src": "/assets/logos/3Lines_logo.png",
+    "alt": "3Lines Advanced Technologies Company"
+  },
+  "footerLogoImg": {
+    "src": "/assets/logos/logo.png",
+    "alt": "3Lines Advanced Technologies Company"
+  },
+  "utility": {
+    "links": [
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Services",
+        "href": "/services"
+      },
+      {
+        "label": "Newsroom",
+        "href": "/news"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ],
+    "lang": [
+      {
+        "label": "EN",
+        "locale": "en",
+        "current": true
+      },
+      {
+        "label": "AR",
+        "locale": "ar"
+      }
+    ]
+  },
+  "mega": {
+    "tabs": [
+      {
+        "key": "services",
+        "label": "Services"
+      },
+      {
+        "key": "company",
+        "label": "Company"
+      }
+    ],
+    "panels": [
+      {
+        "key": "services",
+        "title": "Services",
+        "links": [
+          {
+            "label": "Radar Maintenance, Electronics & Tactical Communications Sustainment",
+            "href": "/services/radar-electronics-communications-sustainment"
+          },
+          {
+            "label": "Government Relations, Personnel Consulting & Life Support Services",
+            "href": "/services/government-relations-and-life-support"
+          },
+          {
+            "label": "Power Systems Support (Generators & UPS)",
+            "href": "/services/power-systems-support"
+          },
+          {
+            "label": "Electronics Diagnostic & Repair Workshops",
+            "href": "/services/electronics-diagnostic-and-repair-workshops"
+          },
+          {
+            "label": "Ground Support Equipment (GSE) Sustainment",
+            "href": "/services/ground-support-equipment-sustainment"
+          },
+          {
+            "label": "Aviation & Land Systems Spare Parts, Logistics, and Warehousing",
+            "href": "/services/spare-parts-logistics-and-warehousing"
+          },
+          {
+            "label": "Simulation Systems (Full Motion & Static)",
+            "href": "/services/simulation-systems"
+          },
+          {
+            "label": "Training, Simulation & Capability Enablement",
+            "href": "/services/training-and-capability-enablement"
+          },
+          {
+            "label": "Defense Systems Sustainment (MRO)",
+            "href": "/services/defense-systems-sustainment-mro"
+          },
+          {
+            "label": "Program Management & Localization Enablement",
+            "href": "/services/program-management-and-localization"
+          }
+        ],
+        "cta": {
+          "label": "Services",
+          "href": "/services"
+        }
+      },
+      {
+        "key": "company",
+        "title": "Company",
+        "links": [
+          {
+            "label": "About",
+            "href": "/about"
+          },
+          {
+            "label": "Newsroom",
+            "href": "/news"
+          },
+          {
+            "label": "Partners",
+            "href": "/partners"
+          },
+          {
+            "label": "Contact",
+            "href": "/contact"
+          }
+        ],
+        "cta": {
+          "label": "About",
+          "href": "/about"
+        }
+      }
+    ]
+  },
+  "footer": {
+    "columns": [
+      {
+        "logo": true,
+        "title": "3Lines Advanced Technologies Company",
+        "links": [
+          {
+            "label": "About",
+            "href": "/about"
+          },
+          {
+            "label": "Newsroom",
+            "href": "/news"
+          },
+          {
+            "label": "Partners",
+            "href": "/partners"
+          },
+          {
+            "label": "Contact",
+            "href": "/contact"
+          }
+        ]
+      },
+      {
+        "title": "Services",
+        "links": [
+          {
+            "label": "Radar Maintenance, Electronics & Tactical Communications Sustainment",
+            "href": "/services/radar-electronics-communications-sustainment"
+          },
+          {
+            "label": "Government Relations, Personnel Consulting & Life Support Services",
+            "href": "/services/government-relations-and-life-support"
+          },
+          {
+            "label": "Power Systems Support (Generators & UPS)",
+            "href": "/services/power-systems-support"
+          },
+          {
+            "label": "Electronics Diagnostic & Repair Workshops",
+            "href": "/services/electronics-diagnostic-and-repair-workshops"
+          },
+          {
+            "label": "Ground Support Equipment (GSE) Sustainment",
+            "href": "/services/ground-support-equipment-sustainment"
+          },
+          {
+            "label": "Aviation & Land Systems Spare Parts, Logistics, and Warehousing",
+            "href": "/services/spare-parts-logistics-and-warehousing"
+          },
+          {
+            "label": "Simulation Systems (Full Motion & Static)",
+            "href": "/services/simulation-systems"
+          },
+          {
+            "label": "Training, Simulation & Capability Enablement",
+            "href": "/services/training-and-capability-enablement"
+          },
+          {
+            "label": "Defense Systems Sustainment (MRO)",
+            "href": "/services/defense-systems-sustainment-mro"
+          },
+          {
+            "label": "Program Management & Localization Enablement",
+            "href": "/services/program-management-and-localization"
+          }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          {
+            "label": "Privacy Policy",
+            "href": "/privacy-policy"
+          },
+          {
+            "label": "Terms & Conditions",
+            "href": "/terms-and-conditions"
+          },
+          {
+            "label": "Cookie Policy",
+            "href": "/cookie-policy"
+          }
+        ]
+      }
+    ],
+    "bar": {
+      "links": [],
+      "a11yLabel": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
+      "a11yPill": "CR 1010589885 · VAT 310407303200003",
+      "copyright": "© 2026 3Lines Advanced Technologies Company"
+    }
+  }
+}

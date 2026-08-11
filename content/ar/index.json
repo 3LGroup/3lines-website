@@ -1,0 +1,515 @@
+{
+  "route": "/",
+  "locale": "ar",
+  "slug": "index",
+  "source": [
+    "constants.json",
+    "siteInfo.json",
+    "services.json",
+    "posts.json",
+    "non-cms.json"
+  ],
+  "title": "ثريلاينز آدفانسد تكنولجيز",
+  "description": "تأسست مجموعة 3LINES ADVANCED TECHNOLOGIES في عام 2019 تماشيًا مع رؤية السعودية 2030 بهدف توطين الخدمات العسكرية والمدنية داخل المملكة. تقدم المجموعة خدمات متكاملة في سلاسل الإمداد والخدمات الفنية — المشتريات والخدمات اللوجستية والصيانة والإصلاح والتصنيع — دعمًا للجاهزية التشغيلية في قطاعي الدفاع والتقنيات المتقدمة محليًا ودوليًا.",
+  "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
+  "blocks": [
+    {
+      "type": "hero",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "headingLines": [
+        "نقدم",
+        "عالمياً"
+      ],
+      "rotate": [
+        "التقنيات المتقدمة",
+        "الواقع الممتد/المعزز",
+        "الصيانة والإصلاح والتشغيل",
+        "خدمات لوجيستية"
+      ],
+      "body": "تأسست مجموعة 3LINES ADVANCED TECHNOLOGIES في عام 2019 تماشيًا مع رؤية السعودية 2030 بهدف توطين الخدمات العسكرية والمدنية داخل المملكة. تقدم المجموعة خدمات متكاملة في سلاسل الإمداد والخدمات الفنية — المشتريات والخدمات اللوجستية والصيانة والإصلاح والتصنيع — دعمًا للجاهزية التشغيلية في قطاعي الدفاع والتقنيات المتقدمة محليًا ودوليًا.",
+      "cta": {
+        "label": "من نحن",
+        "href": "/about"
+      }
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "figures",
+          "items": [
+            {
+              "count": 7,
+              "prefix": "+",
+              "label": "سنوات في خدمة الدفاع والتقنيات المتقدمة، منذ 2019"
+            },
+            {
+              "count": 3,
+              "label": "ركائز تشغيلية أساسية"
+            },
+            {
+              "count": 120,
+              "prefix": "+",
+              "label": "فريق محترف متعدد التخصصات"
+            },
+            {
+              "count": 30,
+              "prefix": "+",
+              "label": "شريك استراتيجي محلياً ودولياً"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "head": {
+        "layout": "split",
+        "kicker": "ما نقدمه",
+        "heading": "كيف ننفّذها",
+        "link": {
+          "label": "من نحن",
+          "href": "/about"
+        }
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "إدارة سلسلة الإمداد",
+              "text": "سلسلة إمداد متكاملة — التوريد الاستراتيجي والمشتريات والتخزين الآمن وإدارة المخزون والتسليم للمنصات العسكرية والمدنية."
+            },
+            {
+              "title": "الصيانة",
+              "text": "استدامة أنظمة الرادار والمراقبة وأنظمة القيادة والسيطرة C2/C3/C4I ومعدات الدعم الأرضي والأنظمة الدفاعية عبر قدرات محلية."
+            },
+            {
+              "title": "الإصلاح والتصنيع",
+              "text": "ورش تشخيص وإصلاح موطّنة، إضافة إلى الهندسة العكسية وتصنيع المكوّنات للأنظمة المتقدمة."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "navy",
+      "head": {
+        "layout": "stacked",
+        "kicker": "لماذا ثري لاينز"
+      },
+      "bodies": [
+        {
+          "kind": "slider",
+          "items": [
+            {
+              "heading": "مصممة للاستدامة، موثوقة في التشغيل",
+              "sub": "توطين الدفاع والتقنيات المتقدمة داخل المملكة منذ 2019."
+            },
+            {
+              "heading": "استدامة الرادار وأنظمة C4I داخل المملكة",
+              "sub": "صيانة حتى المستوى الرابع بموجب اتفاقية MLA مع نورثروب جرومان."
+            },
+            {
+              "heading": "ثلاث ركائز تشغيلية أساسية",
+              "sub": "إدارة سلسلة الإمداد، والصيانة، والإصلاح والتصنيع."
+            },
+            {
+              "heading": "أكثر من 30 شريكًا استراتيجيًا",
+              "sub": "ننفّذ في السعودية والولايات المتحدة والمكسيك وبولندا وجمهورية التشيك."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "id": "services",
+      "head": {
+        "layout": "split",
+        "kicker": "ما نقدمه",
+        "heading": "ما نقدمه",
+        "link": {
+          "label": "الخدمات",
+          "href": "/services"
+        }
+      },
+      "bodies": [
+        {
+          "kind": "cards",
+          "items": [
+            {
+              "title": "صيانة الرادارات والإلكترونيات واستدامة الاتصالات التكتيكية",
+              "text": "استدامة وتشخيص وإصلاح أنظمة الرادار والمراقبة والقيادة والسيطرة (C4I) والاتصالات الآمنة عبر قدرات محلية داخل المملكة.",
+              "link": {
+                "label": "نظرة عامة",
+                "href": "/services/radar-electronics-communications-sustainment"
+              },
+              "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+              "art": null
+            },
+            {
+              "title": "العلاقات الحكومية واستشارات الكوادر وخدمات الإعاشة المتكاملة",
+              "text": "التنسيق التنظيمي واستشارات القوى العاملة وخدمات الإعاشة المتكاملة.",
+              "link": {
+                "label": "نظرة عامة",
+                "href": "/services/government-relations-and-life-support"
+              },
+              "imgVar": "url('/assets/photos/3l-hq-building.jpg')",
+              "art": null
+            },
+            {
+              "title": "دعم أنظمة الطاقة (المولدات وأنظمة الطاقة غير المنقطعة)",
+              "text": "تركيب وصيانة ودعم دورة الحياة لأنظمة الطاقة الحرجة وأنظمة الطاقة الاحتياطية.",
+              "link": {
+                "label": "نظرة عامة",
+                "href": "/services/power-systems-support"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-rf-test.jpg')",
+              "art": null
+            },
+            {
+              "title": "ورش تشخيص وإصلاح الإلكترونيات",
+              "text": "منشآت موطّنة داخل المملكة توفّر عزل الأعطال والاختبار والإصلاح والتحقق للأنظمة الإلكترونية الحرجة.",
+              "link": {
+                "label": "نظرة عامة",
+                "href": "/services/electronics-diagnostic-and-repair-workshops"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-bench.jpg')",
+              "art": null
+            },
+            {
+              "title": "استدامة معدات الدعم الأرضي",
+              "text": "الصيانة ودعم الجاهزية لأصول الدعم الأرضي في القطاعين الجوي والبري.",
+              "link": {
+                "label": "نظرة عامة",
+                "href": "/services/ground-support-equipment-sustainment"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-tech.jpg')",
+              "art": null
+            },
+            {
+              "title": "قطع غيار الأنظمة الجوية والبرية والخدمات اللوجستية والتخزين",
+              "text": "مشتريات متكاملة وتخزين آمن وإدارة للمخزون وتوزيع للمنصات العسكرية والمدنية.",
+              "link": {
+                "label": "نظرة عامة",
+                "href": "/services/spare-parts-logistics-and-warehousing"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-lab.jpg')",
+              "art": null
+            },
+            {
+              "title": "أنظمة المحاكاة (كاملة الحركة والثابتة)",
+              "text": "التوريد والتشغيل والصيانة ودعم التدريب لمنصات المحاكاة والجاهزية المتقدمة.",
+              "link": {
+                "label": "نظرة عامة",
+                "href": "/services/simulation-systems"
+              },
+              "imgVar": "url('/assets/photos/3l-xr-simulator.jpg')",
+              "art": null
+            },
+            {
+              "title": "التدريب والمحاكاة وتمكين القدرات",
+              "text": "تقديم التدريب العسكري والمدني ونقل المعرفة وتطوير القدرات التشغيلية.",
+              "link": {
+                "label": "نظرة عامة",
+                "href": "/services/training-and-capability-enablement"
+              },
+              "imgVar": "url('/assets/photos/3l-xr-lab.jpg')",
+              "art": null
+            },
+            {
+              "title": "استدامة الأنظمة الدفاعية (الصيانة والإصلاح والعمرة)",
+              "text": "خدمات شاملة للصيانة والإصلاح والعمرة تدعم الجاهزية التشغيلية عبر الأنظمة الدفاعية.",
+              "link": {
+                "label": "نظرة عامة",
+                "href": "/services/defense-systems-sustainment-mro"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-component.jpg')",
+              "art": null
+            },
+            {
+              "title": "إدارة البرامج وتمكين التوطين",
+              "text": "تنفيذ متكامل للبرامج والتوطين وتطوير القدرات الوطنية بما يتماشى مع رؤية السعودية 2030.",
+              "link": {
+                "label": "نظرة عامة",
+                "href": "/services/program-management-and-localization"
+              },
+              "imgVar": "url('/assets/photos/3l-command-center.jpg')",
+              "art": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "head": {
+        "layout": "split",
+        "kicker": "مستجدات",
+        "heading": "",
+        "link": {
+          "label": "مستجدات",
+          "href": "/news"
+        }
+      },
+      "bodies": [
+        {
+          "kind": "newsGrid",
+          "limit": 3
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "split",
+        "kicker": "يثقون بنا",
+        "heading": "",
+        "link": {
+          "label": "يثقون بنا",
+          "href": "/partners"
+        }
+      },
+      "bodies": [
+        {
+          "kind": "logos",
+          "items": [
+            {
+              "name": "SAMI",
+              "media": {
+                "src": "/assets/logos/sami-logo.svg",
+                "alt": "SAMI"
+              },
+              "href": "https://www.sami.com.sa/",
+              "caption": "الشركة السعودية للصناعات العسكرية",
+              "type": "إتفاقية",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "AirBus",
+              "media": {
+                "src": "/assets/logos/airbus-logo.svg",
+                "alt": "AirBus"
+              },
+              "href": "https://www.airbus.com/en",
+              "type": "عميل",
+              "country": "فرنسا",
+              "flag": "🇫🇷"
+            },
+            {
+              "name": "BAE Systems",
+              "media": {
+                "src": "/assets/logos/bae-systems-logo.svg",
+                "alt": "BAE Systems"
+              },
+              "href": "https://www.baesystems.com/en/home",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "ARMITE Lubricants",
+              "media": {
+                "src": "/assets/logos/armite-lubricants-logo.jpg",
+                "alt": "ARMITE Lubricants"
+              },
+              "href": "https://armitelabs.com/",
+              "type": "شريك",
+              "country": "الولايات المتحدة",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "SAMI AEC",
+              "media": {
+                "src": "/assets/logos/sami-aec-logo.png",
+                "alt": "SAMI AEC"
+              },
+              "href": "https://www.aecl.com/",
+              "caption": "شركة الإلكترونيات المتقدمة",
+              "type": "إتفاقية",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "SMSCMC",
+              "media": {
+                "src": "/assets/logos/smscmc-logo.svg",
+                "alt": "SMSCMC"
+              },
+              "href": "https://www.smscmc.com/",
+              "caption": "الشركة السعودية للصيانة وإدارة خطوط الإمداد المحدودة",
+              "type": "إتفاقية",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "MAC Aerospace Corp.",
+              "media": {
+                "src": "/assets/logos/mac-aerospace-corp-logo.png",
+                "alt": "MAC Aerospace Corp."
+              },
+              "href": "https://macaerospace.com/",
+              "type": "شريك",
+              "country": "الولايات المتحدة",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "Amentum",
+              "media": {
+                "src": "/assets/logos/amentum-logo.webp",
+                "alt": "Amentum"
+              },
+              "href": "https://www.amentum.com/",
+              "type": "عميل",
+              "country": "الولايات المتحدة",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "SAMI Aerospace",
+              "media": {
+                "src": "/assets/logos/sami-aerospace-logo.svg",
+                "alt": "SAMI Aerospace"
+              },
+              "href": "https://samialsalam.com.sa",
+              "caption": "شركة سامي السلام لصناعة الطيران",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "NPCO",
+              "media": {
+                "src": "/assets/logos/npco-logo.png",
+                "alt": "NPCO"
+              },
+              "href": "https://npco.sa/",
+              "caption": "شركة التعدات الوطنية التجارية",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "شركة الوعلان للتجارة",
+              "media": {
+                "src": "/assets/logos/wallan-group-logo.png",
+                "alt": "شركة الوعلان للتجارة"
+              },
+              "href": "https://www.wallan.com/",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "شركة فينيل العربية",
+              "media": {
+                "src": "/assets/logos/vinnell-arabia-logo.png",
+                "alt": "شركة فينيل العربية"
+              },
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "أي سي أس العربية",
+              "media": {
+                "src": "/assets/logos/ics-arabia-logo.png",
+                "alt": "أي سي أس العربية"
+              },
+              "href": "https://icsarabia.com",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "AACC",
+              "media": {
+                "src": "/assets/logos/aacc-logo.png",
+                "alt": "AACC"
+              },
+              "href": "https://www.aacc-ltd.com/",
+              "caption": "شركة المعدات المكملة للطائرات المحدودة",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "OPTOKON Middle East",
+              "media": {
+                "src": "/assets/logos/optokon-middle-east-logo.png",
+                "alt": "OPTOKON Middle East"
+              },
+              "href": "https://www.optokon.com.sa/",
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "TAM",
+              "media": {
+                "src": "/assets/logos/tam-logo.png",
+                "alt": "TAM"
+              },
+              "type": "شريك",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "القوات الجوية الملكية السعودية",
+              "media": {
+                "src": "/assets/logos/cust-rsaf.png",
+                "alt": "القوات الجوية الملكية السعودية"
+              },
+              "caption": "استدامة الرادارات والدعم الجوي.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "قوات الدفاع الجوي الملكي السعودي",
+              "media": {
+                "src": "/assets/logos/cust-rsadf.png",
+                "alt": "قوات الدفاع الجوي الملكي السعودي"
+              },
+              "caption": "استدامة أنظمة الدفاع الجوي والدعم الفني.",
+              "type": "عميل",
+              "country": "المملكة العربية السعودية",
+              "flag": "🇸🇦"
+            }
+          ],
+          "variant": "marquee",
+          "total": 39
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "ابدأ محادثة",
+      "cta": {
+        "label": "تواصل معنا",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "ثريلاينز آدفانسد تكنولجيز",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

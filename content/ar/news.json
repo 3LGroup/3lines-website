@@ -1,0 +1,55 @@
+{
+  "route": "/news",
+  "locale": "ar",
+  "slug": "news",
+  "source": [
+    "posts.json"
+  ],
+  "title": "مستجدات",
+  "description": "تأسست مجموعة 3LINES ADVANCED TECHNOLOGIES في عام 2019 تماشيًا مع رؤية السعودية 2030 بهدف توطين الخدمات العسكرية والمدنية داخل المملكة. تقدم المجموعة خدمات متكاملة في سلاسل الإمداد والخدمات الفنية — المشتريات والخدمات اللوجستية والصيانة والإصلاح والتصنيع — دعمًا للجاهزية التشغيلية في قطاعي الدفاع والتقنيات المتقدمة محليًا ودوليًا.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "الرئيسية",
+          "href": "/"
+        },
+        {
+          "label": "مستجدات"
+        }
+      ],
+      "heading": "مستجدات"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "newsGrid"
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "ابدأ محادثة",
+      "cta": {
+        "label": "تواصل معنا",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "ثريلاينز آدفانسد تكنولجيز",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

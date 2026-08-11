@@ -1,0 +1,68 @@
+{
+  "route": "/news/advancing-radar-sensor-support",
+  "locale": "en",
+  "slug": "news--advancing-radar-sensor-support",
+  "source": [
+    "posts.json"
+  ],
+  "title": "Advancing Radar, C4I and Tactical Communications Sustainment",
+  "description": "Radar maintenance to 4th-line level inside the Kingdom — including the AN/TPS-78 — under a Maintenance Level Agreement with Northrop Grumman.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Newsroom",
+          "href": "/news"
+        },
+        {
+          "label": "Advancing Radar, C4I and Tactical Communications Sustainment"
+        }
+      ],
+      "heading": "Advancing Radar, C4I and Tactical Communications Sustainment"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Technology"
+      },
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/news/advancing-radar-sensor-support.jpg')",
+            "art": null
+          },
+          "lede": "Radar maintenance to 4th-line level inside the Kingdom — including the AN/TPS-78 — under a Maintenance Level Agreement with Northrop Grumman."
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

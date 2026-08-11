@@ -1,0 +1,145 @@
+{
+  "route": "/services/defense-systems-sustainment-mro",
+  "locale": "en",
+  "slug": "services--defense-systems-sustainment-mro",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "Defense Systems Sustainment (MRO)",
+  "description": "Comprehensive maintenance, repair, and overhaul services supporting operational readiness across defense systems.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Services",
+          "href": "/services"
+        },
+        {
+          "label": "Defense Systems Sustainment (MRO)"
+        }
+      ],
+      "heading": "Defense Systems Sustainment (MRO)"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Overview"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "Maintenance, repair and overhaul across defense systems",
+          "lede": "Comprehensive MRO supporting operational readiness across defense systems. An experienced, professional team of engineers and technicians delivers scheduled and corrective maintenance, repair and overhaul to the highest standards of quality and precision — minimizing breakdowns, extending operational life and keeping platforms available. Our capability extends to reverse engineering and manufacturing components for advanced systems, reducing reliance on external sources.",
+          "glanceTitle": "At a glance",
+          "glance": [
+            "Scheduled and corrective MRO",
+            "Engineers and technicians in-house",
+            "Quality-driven processes",
+            "Reverse engineering and manufacturing"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-mro-component.jpg')",
+            "art": null
+          },
+          "heading": "How we deliver it",
+          "checklist": [
+            {
+              "title": "Scheduled maintenance",
+              "text": "Planned servicing that keeps defense systems mission-capable."
+            },
+            {
+              "title": "Corrective repair",
+              "text": "Rapid fault resolution to return systems to service."
+            },
+            {
+              "title": "Overhaul",
+              "text": "Deep restoration of assemblies to extend operational life."
+            },
+            {
+              "title": "Structural and mechanical repair",
+              "text": "Repair of structures and mechanical assemblies to safety standards."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Capabilities"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Scheduled maintenance",
+              "text": "Planned servicing that keeps defense systems mission-capable."
+            },
+            {
+              "title": "Corrective repair",
+              "text": "Rapid fault resolution to return systems to service."
+            },
+            {
+              "title": "Overhaul",
+              "text": "Deep restoration of assemblies to extend operational life."
+            },
+            {
+              "title": "Structural and mechanical repair",
+              "text": "Repair of structures and mechanical assemblies to safety standards."
+            },
+            {
+              "title": "Hydraulic and pneumatic systems",
+              "text": "Efficient, reliable maintenance of hydraulic and pneumatic components."
+            },
+            {
+              "title": "Component manufacturing",
+              "text": "Reverse engineering and manufacture of parts for advanced systems."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

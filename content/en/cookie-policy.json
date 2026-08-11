@@ -1,0 +1,52 @@
+{
+  "route": "/cookie-policy",
+  "locale": "en",
+  "slug": "cookie-policy",
+  "source": [
+    "pages.json#cookie-policy"
+  ],
+  "title": "Cookie Policy",
+  "description": "Cookie Policy Content",
+  "keywords": "cookie,policy,cookie policy,سياسة,ملفات,تعريف,الارتباط,الكوكيز",
+  "placeholder": true,
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Cookie Policy"
+        }
+      ],
+      "heading": "Cookie Policy"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "Cookie Policy Content"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

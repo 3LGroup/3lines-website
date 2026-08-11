@@ -1,0 +1,54 @@
+[
+  {
+    "slug": "expanding-spare-parts-capabilities",
+    "route": "/news/expanding-spare-parts-capabilities",
+    "tag": "المشتريات",
+    "type": "News",
+    "date": "2026-05-12",
+    "title": "توسيع قدراتنا في قطع الغيار والخدمات اللوجستية والتخزين",
+    "media": {
+      "src": "/assets/news/expanding-spare-parts-capabilities.jpg",
+      "alt": "توسيع قدراتنا في قطع الغيار والخدمات اللوجستية والتخزين"
+    },
+    "art": null
+  },
+  {
+    "slug": "advanced-simulator-support",
+    "route": "/news/advanced-simulator-support",
+    "tag": "التكنولوجيا",
+    "type": "News",
+    "date": "2026-04-28",
+    "title": "الاستثمار في المحاكاة والتدريب القائم على الواقع الممتد",
+    "media": {
+      "src": "/assets/news/advanced-simulator-support.jpg",
+      "alt": "الاستثمار في المحاكاة والتدريب القائم على الواقع الممتد"
+    },
+    "art": null
+  },
+  {
+    "slug": "ground-support-equipment-services",
+    "route": "/news/ground-support-equipment-services",
+    "tag": "الصناعة",
+    "type": "News",
+    "date": "2026-03-15",
+    "title": "تعزيز استدامة معدات الدعم الأرضي",
+    "media": {
+      "src": "/assets/news/ground-support-equipment-services.jpg",
+      "alt": "تعزيز استدامة معدات الدعم الأرضي"
+    },
+    "art": null
+  },
+  {
+    "slug": "advancing-radar-sensor-support",
+    "route": "/news/advancing-radar-sensor-support",
+    "tag": "التكنولوجيا",
+    "type": "News",
+    "date": "2026-02-25",
+    "title": "تطوير استدامة الرادار وأنظمة C4I والاتصالات التكتيكية",
+    "media": {
+      "src": "/assets/news/advancing-radar-sensor-support.jpg",
+      "alt": "تطوير استدامة الرادار وأنظمة C4I والاتصالات التكتيكية"
+    },
+    "art": null
+  }
+]

@@ -1,0 +1,68 @@
+{
+  "route": "/news/expanding-spare-parts-capabilities",
+  "locale": "ar",
+  "slug": "news--expanding-spare-parts-capabilities",
+  "source": [
+    "posts.json"
+  ],
+  "title": "توسيع قدراتنا في قطع الغيار والخدمات اللوجستية والتخزين",
+  "description": "نظرة على كيفية تنمية مخزوننا وشبكة التوريد العالمية لدينا لقطع غيار الطائرات المدنية والعسكرية.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "الرئيسية",
+          "href": "/"
+        },
+        {
+          "label": "مستجدات",
+          "href": "/news"
+        },
+        {
+          "label": "توسيع قدراتنا في قطع الغيار والخدمات اللوجستية والتخزين"
+        }
+      ],
+      "heading": "توسيع قدراتنا في قطع الغيار والخدمات اللوجستية والتخزين"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "المشتريات · الصناعة"
+      },
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/news/expanding-spare-parts-capabilities.jpg')",
+            "art": null
+          },
+          "lede": "نظرة على كيفية تنمية مخزوننا وشبكة التوريد العالمية لدينا لقطع غيار الطائرات المدنية والعسكرية."
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "ابدأ محادثة",
+      "cta": {
+        "label": "تواصل معنا",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "ثريلاينز آدفانسد تكنولجيز",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

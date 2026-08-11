@@ -1,0 +1,145 @@
+{
+  "route": "/services/radar-electronics-communications-sustainment",
+  "locale": "en",
+  "slug": "services--radar-electronics-communications-sustainment",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "Radar Maintenance, Electronics & Tactical Communications Sustainment",
+  "description": "Sustainment, diagnostics, and repair of radar, surveillance, C4I, and secure communication systems through in-country capabilities.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Services",
+          "href": "/services"
+        },
+        {
+          "label": "Radar Maintenance, Electronics & Tactical Communications Sustainment"
+        }
+      ],
+      "heading": "Radar Maintenance, Electronics & Tactical Communications Sustainment"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Overview"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "Radar and C4I sustainment, inside the Kingdom",
+          "lede": "3Lines maintains radar systems to 4th-line level inside Saudi Arabia, including the AN/TPS-78 for the Royal Saudi Air Force. We hold a Maintenance Level Agreement (MLA) with Northrop Grumman, the radar’s manufacturer, enabling in-country sustainment that raises operational readiness and localizes advanced technical capability. Our teams cover radar, surveillance, C4I and secure tactical communications end to end — diagnostics, repair, calibration and return to service.",
+          "glanceTitle": "At a glance",
+          "glance": [
+            "4th-line radar maintenance in-Kingdom",
+            "MLA with Northrop Grumman",
+            "FPS-117 · GM-200 · TPS-78 · TPQ-53",
+            "Radar, C4I and secure communications"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+            "art": null
+          },
+          "heading": "How we deliver it",
+          "checklist": [
+            {
+              "title": "Radar sustainment",
+              "text": "Scheduled and corrective maintenance for surveillance and air-defense radars."
+            },
+            {
+              "title": "Fault isolation and repair",
+              "text": "Diagnostics down to module and component level in local workshops."
+            },
+            {
+              "title": "C4I systems support",
+              "text": "Command, control, communications and intelligence systems kept mission-ready."
+            },
+            {
+              "title": "Secure communications",
+              "text": "Sustainment of tactical and encrypted communication systems."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Capabilities"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Radar sustainment",
+              "text": "Scheduled and corrective maintenance for surveillance and air-defense radars."
+            },
+            {
+              "title": "Fault isolation and repair",
+              "text": "Diagnostics down to module and component level in local workshops."
+            },
+            {
+              "title": "C4I systems support",
+              "text": "Command, control, communications and intelligence systems kept mission-ready."
+            },
+            {
+              "title": "Secure communications",
+              "text": "Sustainment of tactical and encrypted communication systems."
+            },
+            {
+              "title": "Calibration and validation",
+              "text": "Test, alignment and verification before return to service."
+            },
+            {
+              "title": "Field service teams",
+              "text": "On-site support at operating locations across the Kingdom."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

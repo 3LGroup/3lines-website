@@ -1,0 +1,94 @@
+[
+  {
+    "route": "/",
+    "slug": "index"
+  },
+  {
+    "route": "/about",
+    "slug": "about"
+  },
+  {
+    "route": "/services",
+    "slug": "services"
+  },
+  {
+    "route": "/services/radar-electronics-communications-sustainment",
+    "slug": "services--radar-electronics-communications-sustainment"
+  },
+  {
+    "route": "/services/government-relations-and-life-support",
+    "slug": "services--government-relations-and-life-support"
+  },
+  {
+    "route": "/services/power-systems-support",
+    "slug": "services--power-systems-support"
+  },
+  {
+    "route": "/services/electronics-diagnostic-and-repair-workshops",
+    "slug": "services--electronics-diagnostic-and-repair-workshops"
+  },
+  {
+    "route": "/services/ground-support-equipment-sustainment",
+    "slug": "services--ground-support-equipment-sustainment"
+  },
+  {
+    "route": "/services/spare-parts-logistics-and-warehousing",
+    "slug": "services--spare-parts-logistics-and-warehousing"
+  },
+  {
+    "route": "/services/simulation-systems",
+    "slug": "services--simulation-systems"
+  },
+  {
+    "route": "/services/training-and-capability-enablement",
+    "slug": "services--training-and-capability-enablement"
+  },
+  {
+    "route": "/services/defense-systems-sustainment-mro",
+    "slug": "services--defense-systems-sustainment-mro"
+  },
+  {
+    "route": "/services/program-management-and-localization",
+    "slug": "services--program-management-and-localization"
+  },
+  {
+    "route": "/news",
+    "slug": "news"
+  },
+  {
+    "route": "/news/expanding-spare-parts-capabilities",
+    "slug": "news--expanding-spare-parts-capabilities"
+  },
+  {
+    "route": "/news/advanced-simulator-support",
+    "slug": "news--advanced-simulator-support"
+  },
+  {
+    "route": "/news/ground-support-equipment-services",
+    "slug": "news--ground-support-equipment-services"
+  },
+  {
+    "route": "/news/advancing-radar-sensor-support",
+    "slug": "news--advancing-radar-sensor-support"
+  },
+  {
+    "route": "/partners",
+    "slug": "partners"
+  },
+  {
+    "route": "/contact",
+    "slug": "contact"
+  },
+  {
+    "route": "/privacy-policy",
+    "slug": "privacy-policy"
+  },
+  {
+    "route": "/terms-and-conditions",
+    "slug": "terms-and-conditions"
+  },
+  {
+    "route": "/cookie-policy",
+    "slug": "cookie-policy"
+  }
+]

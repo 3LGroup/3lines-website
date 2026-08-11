@@ -1,0 +1,52 @@
+{
+  "route": "/privacy-policy",
+  "locale": "ar",
+  "slug": "privacy-policy",
+  "source": [
+    "pages.json#privacy-policy"
+  ],
+  "title": "سياسة الخصوصية",
+  "description": "محتوى سياسة الخصوصية",
+  "keywords": "privacy,policy,privacy policy,سياسة,خصوصية",
+  "placeholder": true,
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "الرئيسية",
+          "href": "/"
+        },
+        {
+          "label": "سياسة الخصوصية"
+        }
+      ],
+      "heading": "سياسة الخصوصية"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "محتوى سياسة الخصوصية"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "socialStrip",
+      "label": "ثريلاينز آدفانسد تكنولجيز",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

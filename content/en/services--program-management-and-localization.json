@@ -1,0 +1,145 @@
+{
+  "route": "/services/program-management-and-localization",
+  "locale": "en",
+  "slug": "services--program-management-and-localization",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "Program Management & Localization Enablement",
+  "description": "End-to-end program execution, localization, and national capability development aligned with Saudi Vision 2030.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Services",
+          "href": "/services"
+        },
+        {
+          "label": "Program Management & Localization Enablement"
+        }
+      ],
+      "heading": "Program Management & Localization Enablement"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Overview"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "Programs delivered, capability localized",
+          "lede": "End-to-end program execution, localization and national capability development aligned with Saudi Vision 2030. We run advanced defense programs from award through delivery, and structure them so capability, knowledge and manufacturing stay in the Kingdom — contributing to the localization of over 50% of military spending by 2030 through knowledge transfer and the development of national capabilities.",
+          "glanceTitle": "At a glance",
+          "glance": [
+            "End-to-end program execution",
+            "Localization and offset delivery",
+            "Aligned with Saudi Vision 2030",
+            "Tier One partnerships"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-command-center.jpg')",
+            "art": null
+          },
+          "heading": "How we deliver it",
+          "checklist": [
+            {
+              "title": "Program management",
+              "text": "Execution from contract award through delivery and sustainment."
+            },
+            {
+              "title": "Localization planning",
+              "text": "Structuring programs so capability remains inside the Kingdom."
+            },
+            {
+              "title": "Technology transfer",
+              "text": "Moving know-how and manufacturing capability to national teams."
+            },
+            {
+              "title": "Supply chain integration",
+              "text": "Connecting local suppliers into international program supply chains."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "Capabilities"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "Program management",
+              "text": "Execution from contract award through delivery and sustainment."
+            },
+            {
+              "title": "Localization planning",
+              "text": "Structuring programs so capability remains inside the Kingdom."
+            },
+            {
+              "title": "Technology transfer",
+              "text": "Moving know-how and manufacturing capability to national teams."
+            },
+            {
+              "title": "Supply chain integration",
+              "text": "Connecting local suppliers into international program supply chains."
+            },
+            {
+              "title": "Partner and OEM coordination",
+              "text": "Managing Tier One partners and original equipment manufacturers."
+            },
+            {
+              "title": "Reporting and governance",
+              "text": "Transparent progress, risk and compliance reporting throughout."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

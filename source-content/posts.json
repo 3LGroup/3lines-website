@@ -1,0 +1,182 @@
+{
+  "data": [
+    {
+      "id": "expanding-spare-parts-capabilities",
+      "slug": "expanding-spare-parts-capabilities",
+      "title": {
+        "en": "Expanding Our Spare Parts, Logistics and Warehousing Capabilities",
+        "ar": "توسيع قدراتنا في قطع الغيار والخدمات اللوجستية والتخزين",
+        "ko": "항공기 예비 부품 역량 확대",
+        "ja": "航空機スペアパーツ能力の拡大"
+      },
+      "description": {
+        "en": "Growing end-to-end procurement, secure warehousing and inventory management for military and civilian platforms — sourced from the United States and worldwide.",
+        "ar": "نظرة على كيفية تنمية مخزوننا وشبكة التوريد العالمية لدينا لقطع غيار الطائرات المدنية والعسكرية.",
+        "ko": "민간 및 군용 항공기 예비 부품을 위한 재고와 글로벌 소싱 네트워크를 어떻게 성장시키고 있는지 살펴봅니다.",
+        "ja": "民間および軍用航空機スペアパーツの在庫とグローバル調達ネットワークをどのように成長させているかをご紹介します。"
+      },
+      "cover": {
+        "uri": "assets/news/expanding-spare-parts-capabilities.jpg"
+      },
+      "publish_date": "2026-05-12T09:00:00.000000Z",
+      "tags": [
+        {
+          "id": "a1795770-37ea-4ea7-83a1-0a1b774c20b9",
+          "name": {
+            "ar": "المشتريات",
+            "en": "Procurement",
+            "ko": "제조",
+            "ja": "製造"
+          },
+          "slug": "procurement",
+          "description": {
+            "ar": "أخبار مرتبطة بمجال المشتريات.",
+            "en": "News related to Procurement."
+          }
+        },
+        {
+          "id": "a1795770-3998-434a-9170-a891135b6559",
+          "name": {
+            "ar": "الصناعة",
+            "en": "Manufacturing",
+            "ko": "제조",
+            "ja": "製造"
+          },
+          "slug": "manifacturing",
+          "description": {
+            "ar": "أخبار مرتبطة بمجال الصناعة.",
+            "en": "News related to Manufacturing."
+          }
+        }
+      ]
+    },
+    {
+      "id": "advanced-simulator-support",
+      "slug": "advanced-simulator-support",
+      "title": {
+        "en": "Investing in Simulation and XR-Based Training",
+        "ar": "الاستثمار في المحاكاة والتدريب القائم على الواقع الممتد",
+        "ko": "고급 시뮬레이터 지원에 대한 투자",
+        "ja": "高度なシミュレーター支援への投資"
+      },
+      "description": {
+        "en": "Full-motion and static simulation platforms supported end to end, extended through 3Lines XR into immersive training for the defense and aviation sectors.",
+        "ar": "خدماتنا المتخصصة تُبقي أجهزة محاكاة الطيران والصيانة في جاهزية تشغيلية عالية.",
+        "ko": "저희의 전문 서비스는 비행 및 정비 시뮬레이터가 최상의 준비 상태로 작동하도록 유지합니다.",
+        "ja": "当社の専門サービスは、飛行および整備シミュレーターを最高の準備状態で稼働させ続けます。"
+      },
+      "cover": {
+        "uri": "assets/news/advanced-simulator-support.jpg"
+      },
+      "publish_date": "2026-04-28T09:00:00.000000Z",
+      "tags": [
+        {
+          "id": "a1795770-3a5f-4c45-aae1-3552a85ac66b",
+          "name": {
+            "ar": "التكنولوجيا",
+            "en": "Technology",
+            "ko": "기술",
+            "ja": "テクノロジー"
+          },
+          "slug": "technology",
+          "description": {
+            "ar": "أخبار مرتبطة بمجال التكنولوجيا.",
+            "en": "News related to Technology."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ground-support-equipment-services",
+      "slug": "ground-support-equipment-services",
+      "title": {
+        "en": "Strengthening Ground Support Equipment Sustainment",
+        "ar": "تعزيز استدامة معدات الدعم الأرضي",
+        "ko": "지상 지원 장비 서비스 강화",
+        "ja": "地上支援機器サービスの強化"
+      },
+      "description": {
+        "en": "Maintenance and availability support for aviation and land-based ground support assets, backed by in-Kingdom workshops and spare parts provisioning.",
+        "ar": "صيانة شاملة وقطع غيار لضمان الجاهزية التشغيلية على الأرض.",
+        "ko": "지상에서의 운영 준비 태세를 보장하기 위한 포괄적인 정비 및 예비 부품.",
+        "ja": "地上での運用準備態勢を確保するための包括的な整備とスペアパーツ。"
+      },
+      "cover": {
+        "uri": "assets/news/ground-support-equipment-services.jpg"
+      },
+      "publish_date": "2026-03-15T09:00:00.000000Z",
+      "tags": [
+        {
+          "id": "a1795770-3998-434a-9170-a891135b6559",
+          "name": {
+            "ar": "الصناعة",
+            "en": "Manufacturing",
+            "ko": "제조",
+            "ja": "製造"
+          },
+          "slug": "manifacturing",
+          "description": {
+            "ar": "أخبار مرتبطة بمجال الصناعة.",
+            "en": "News related to Manufacturing."
+          }
+        },
+        {
+          "id": "a1795770-3a5f-4c45-aae1-3552a85ac66b",
+          "name": {
+            "ar": "التكنولوجيا",
+            "en": "Technology",
+            "ko": "기술",
+            "ja": "テクノロジー"
+          },
+          "slug": "technology",
+          "description": {
+            "ar": "أخبار مرتبطة بمجال التكنولوجيا.",
+            "en": "News related to Technology."
+          }
+        }
+      ]
+    },
+    {
+      "id": "advancing-radar-sensor-support",
+      "slug": "advancing-radar-sensor-support",
+      "title": {
+        "en": "Advancing Radar, C4I and Tactical Communications Sustainment",
+        "ar": "تطوير استدامة الرادار وأنظمة C4I والاتصالات التكتيكية",
+        "ko": "레이더 및 센서 시스템 지원 강화",
+        "ja": "レーダーおよびセンサーシステム支援の強化"
+      },
+      "description": {
+        "en": "Radar maintenance to 4th-line level inside the Kingdom — including the AN/TPS-78 — under a Maintenance Level Agreement with Northrop Grumman.",
+        "ar": "توسيع قدراتنا في تركيب ومعايرة وصيانة أنظمة الرادار وأجهزة الاستشعار لتطبيقات المراقبة والحركة الجوية.",
+        "ko": "감시 및 항공 교통 운영을 위한 레이더 및 센서 시스템의 설치, 보정, 유지보수 역량을 확장하고 있습니다.",
+        "ja": "監視および航空交通の運用に向けて、レーダーおよびセンサーシステムの設置・校正・整備の能力を拡大しています。"
+      },
+      "cover": {
+        "uri": "assets/news/advancing-radar-sensor-support.jpg"
+      },
+      "publish_date": "2026-02-25T09:00:00.000000Z",
+      "tags": [
+        {
+          "id": "a1795770-3a5f-4c45-aae1-3552a85ac66b",
+          "name": {
+            "ar": "التكنولوجيا",
+            "en": "Technology",
+            "ko": "기술",
+            "ja": "テクノロジー"
+          },
+          "slug": "technology",
+          "description": {
+            "ar": "أخبار مرتبطة بمجال التكنولوجيا.",
+            "en": "News related to Technology."
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "current_page": 1,
+    "last_page": 1,
+    "per_page": 4,
+    "total": 4
+  }
+}

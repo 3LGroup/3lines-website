@@ -1,0 +1,157 @@
+{
+  "route": "/services",
+  "locale": "en",
+  "slug": "services",
+  "source": [
+    "services.json"
+  ],
+  "title": "Services",
+  "description": "3Lines Advanced Technologies Group was established in 2019 in alignment with Saudi Vision 2030 to localize military and civilian services within the Kingdom. The Group delivers integrated supply chain and technical services — procurement, logistics, maintenance, repair and manufacturing — supporting operational readiness across the defense and advanced technology sectors, locally and internationally.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Services"
+        }
+      ],
+      "heading": "Services"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "cards",
+          "items": [
+            {
+              "title": "Radar Maintenance, Electronics & Tactical Communications Sustainment",
+              "text": "Sustainment, diagnostics, and repair of radar, surveillance, C4I, and secure communication systems through in-country capabilities.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/radar-electronics-communications-sustainment"
+              },
+              "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+              "art": null
+            },
+            {
+              "title": "Government Relations, Personnel Consulting & Life Support Services",
+              "text": "Regulatory coordination, manpower consulting, and integrated life support services.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/government-relations-and-life-support"
+              },
+              "imgVar": "url('/assets/photos/3l-hq-building.jpg')",
+              "art": null
+            },
+            {
+              "title": "Power Systems Support (Generators & UPS)",
+              "text": "Installation, maintenance, and lifecycle support for critical power and backup systems.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/power-systems-support"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-rf-test.jpg')",
+              "art": null
+            },
+            {
+              "title": "Electronics Diagnostic & Repair Workshops",
+              "text": "Localized facilities providing fault isolation, testing, repair, and validation for mission-critical electronic systems.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/electronics-diagnostic-and-repair-workshops"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-bench.jpg')",
+              "art": null
+            },
+            {
+              "title": "Ground Support Equipment (GSE) Sustainment",
+              "text": "Maintenance and availability support for aviation and land-based ground support assets.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/ground-support-equipment-sustainment"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-tech.jpg')",
+              "art": null
+            },
+            {
+              "title": "Aviation & Land Systems Spare Parts, Logistics, and Warehousing",
+              "text": "End-to-end procurement, secure warehousing, inventory management, and distribution for military and civilian platforms.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/spare-parts-logistics-and-warehousing"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-lab.jpg')",
+              "art": null
+            },
+            {
+              "title": "Simulation Systems (Full Motion & Static)",
+              "text": "Supply, operations, maintenance, and training support for advanced simulation and readiness platforms.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/simulation-systems"
+              },
+              "imgVar": "url('/assets/photos/3l-xr-simulator.jpg')",
+              "art": null
+            },
+            {
+              "title": "Training, Simulation & Capability Enablement",
+              "text": "Military and civilian training delivery, knowledge transfer, and operational capability development.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/training-and-capability-enablement"
+              },
+              "imgVar": "url('/assets/photos/3l-xr-lab.jpg')",
+              "art": null
+            },
+            {
+              "title": "Defense Systems Sustainment (MRO)",
+              "text": "Comprehensive maintenance, repair, and overhaul services supporting operational readiness across defense systems.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/defense-systems-sustainment-mro"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-component.jpg')",
+              "art": null
+            },
+            {
+              "title": "Program Management & Localization Enablement",
+              "text": "End-to-end program execution, localization, and national capability development aligned with Saudi Vision 2030.",
+              "link": {
+                "label": "Overview",
+                "href": "/services/program-management-and-localization"
+              },
+              "imgVar": "url('/assets/photos/3l-command-center.jpg')",
+              "art": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "Begin a conversation",
+      "cta": {
+        "label": "Get in touch",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

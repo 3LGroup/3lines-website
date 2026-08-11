@@ -1,0 +1,145 @@
+{
+  "route": "/services/ground-support-equipment-sustainment",
+  "locale": "ar",
+  "slug": "services--ground-support-equipment-sustainment",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "استدامة معدات الدعم الأرضي",
+  "description": "الصيانة ودعم الجاهزية لأصول الدعم الأرضي في القطاعين الجوي والبري.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "الرئيسية",
+          "href": "/"
+        },
+        {
+          "label": "الخدمات",
+          "href": "/services"
+        },
+        {
+          "label": "استدامة معدات الدعم الأرضي"
+        }
+      ],
+      "heading": "استدامة معدات الدعم الأرضي"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "نظرة عامة"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "جاهزية مستمرة لمعدات الدعم الأرضي",
+          "lede": "صيانة ودعم جاهزية معدات الدعم الأرضي في القطاعين الجوي والبري، وتشمل الفحص الدوري والإصلاح والتأهيل، مع توفير قطع الغيار اللازمة لضمان استمرارية العمليات.",
+          "glanceTitle": "لمحة سريعة",
+          "glance": [
+            "معدات دعم جوية وبرية",
+            "فحص وإصلاح وتأهيل",
+            "دعم قائم على الجاهزية",
+            "توفير قطع الغيار"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-mro-tech.jpg')",
+            "art": null
+          },
+          "heading": "كيف ننفّذها",
+          "checklist": [
+            {
+              "title": "الصيانة الوقائية",
+              "text": "فحص وصيانة دورية لجميع أنواع المعدات الأرضية."
+            },
+            {
+              "title": "الإصلاح التصحيحي",
+              "text": "استجابة سريعة تقلل فترات التوقف."
+            },
+            {
+              "title": "العمرة والتأهيل",
+              "text": "إعادة المعدات إلى كامل جاهزيتها التشغيلية."
+            },
+            {
+              "title": "توريد قطع الغيار",
+              "text": "توفير جميع قطع الغيار اللازمة عند الحاجة."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "القدرات"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "الصيانة الوقائية",
+              "text": "فحص وصيانة دورية لجميع أنواع المعدات الأرضية."
+            },
+            {
+              "title": "الإصلاح التصحيحي",
+              "text": "استجابة سريعة تقلل فترات التوقف."
+            },
+            {
+              "title": "العمرة والتأهيل",
+              "text": "إعادة المعدات إلى كامل جاهزيتها التشغيلية."
+            },
+            {
+              "title": "توريد قطع الغيار",
+              "text": "توفير جميع قطع الغيار اللازمة عند الحاجة."
+            },
+            {
+              "title": "تقارير الجاهزية",
+              "text": "وضوح حالة الأسطول لتخطيط الجاهزية."
+            },
+            {
+              "title": "الدعم الموقعي",
+              "text": "فنيون في موقع التشغيل عند الحاجة."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "art": null,
+      "heading": "ابدأ محادثة",
+      "cta": {
+        "label": "تواصل معنا",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "ثريلاينز آدفانسد تكنولجيز",
+      "items": [
+        {
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}
