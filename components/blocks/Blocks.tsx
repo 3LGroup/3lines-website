@@ -3,6 +3,7 @@ import Arrow from '../Arrow';
 import Svg from '../Svg';
 import BodyRenderer, { parseStyle } from '../bodies/Bodies';
 import { localePath, type Locale } from '@/lib/i18n';
+import { ui } from '@/lib/ui';
 import { assertNever, TONE_CLASS } from '@/lib/blocks';
 import type {
   Block,
@@ -63,7 +64,7 @@ function PageTitle({ block, locale }: { block: PageTitleBlock; locale: Locale })
   return (
     <section className="pagehead">
       <div className="wrap">
-        <nav className="crumbs" aria-label="Breadcrumb">
+        <nav className="crumbs" aria-label={ui(locale).breadcrumb}>
           {block.crumbs.map((c, i) => (
             <React.Fragment key={i}>
               {i > 0 ? <span>/</span> : null}

@@ -1,0 +1,94 @@
+import { ImageResponse } from 'next/og';
+import { LOCALES } from '@/lib/i18n';
+import { getPage } from '@/lib/content';
+
+/**
+ * Share card.
+ *
+ * Links to this site previously unfurled bare — no image — anywhere a preview is
+ * rendered, which for a defence contractor whose traffic arrives through
+ * LinkedIn is most of the first impression.
+ *
+ * Drawn rather than photographed, for two reasons: there is no 1200x630 asset in
+ * the repo to crop without wrecking the composition, and a generated card stays
+ * correct when the brand palette moves, since it reads the same tokens the site
+ * does. Both locales share one Latin card on purpose — Satori needs an embedded
+ * font per script, and the Arabic face here is shipped as .woff2, which it
+ * cannot parse. The company name is Latin in both trees anyway.
+ */
+
+export const size = { width: 1200, height: 630 };
+export const contentType = 'image/png';
+export const alt = '3Lines Advanced Technologies';
+
+export function generateStaticParams() {
+  return LOCALES.map((locale) => ({ locale }));
+}
+
+const BLUE = '#0816A1';
+const NAVY = '#00005C';
+const CYAN = '#87EDFF';
+
+/** Cut at a word boundary and strip the punctuation the cut left dangling. */
+function clamp(text: string, max: number): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const at = cut.lastIndexOf(' ');
+  return `${(at > max * 0.6 ? cut.slice(0, at) : cut).replace(/[\s.,;:—-]+$/, '')}…`;
+}
+
+export default async function Image() {
+  /* Always the English strapline, including on /ar. The card is Latin (see
+     above) and Satori cannot shape the Arabic face — feeding it the Arabic
+     document's description throws
+     "lookupType: 5 - substFormat: 3 is not yet supported" and the route 500s,
+     which is a broken image on every Arabic share rather than a fallback. */
+  const tagline = clamp(getPage('en', '/')?.description ?? '', 160);
+
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          padding: '80px',
+          background: `linear-gradient(135deg, ${NAVY} 0%, ${BLUE} 100%)`,
+          color: '#FFFFFF',
+          fontFamily: 'sans-serif',
+        }}
+      >
+        {/* Three lines. The mark is the name. */}
+        <div style={{ display: 'flex', gap: '18px' }}>
+          {[220, 150, 90].map((w) => (
+            <div key={w} style={{ width: w, height: 10, background: CYAN, borderRadius: 5 }} />
+          ))}
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ fontSize: 82, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.02em' }}>
+            3Lines
+          </div>
+          <div style={{ fontSize: 44, fontWeight: 400, color: CYAN, marginTop: 8 }}>
+            Advanced Technologies
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
+            fontSize: 26,
+            lineHeight: 1.4,
+            color: 'rgba(255,255,255,0.82)',
+            maxWidth: 900,
+          }}
+        >
+          {tagline}
+        </div>
+      </div>
+    ),
+    size
+  );
+}

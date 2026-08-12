@@ -394,7 +394,7 @@ export default function BodyRenderer({ body, locale }: { body: SectionBody; loca
     case 'certs':
       return <Certs body={body} />;
     case 'form':
-      return <ContactForm body={body} />;
+      return <ContactForm body={body} locale={locale} />;
     default:
       return assertNever(body);
   }
