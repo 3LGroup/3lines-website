@@ -7,17 +7,20 @@ import { getChrome } from '@/lib/content';
 import { organizationSchema } from '@/lib/schema';
 import { asset } from '@/lib/assets';
 import { DIR, LOCALES, isLocale, type Locale } from '@/lib/i18n';
+import { ui } from '@/lib/ui';
+import { SITE_NAME, SITE_ORIGIN, openGraph } from '@/lib/seo';
 
 /* This is the root layout. It lives under [locale] because <html lang> and
    <dir> have to come from the route, and only a segment layout receives params.
    Reading headers() instead would opt the whole tree out of static generation. */
 
-const SITE_ORIGIN = process.env.SITE_ORIGIN ?? 'https://www.3lines.com.sa';
-
-const THEME_INIT = `(function(){
-  var K='tl-theme';
+/* The toggle labels the theme you would switch *to*, so they have to be
+   localized alongside everything else in lib/ui.ts. They are injected as JSON
+   literals rather than baked in, which is why this is a function. */
+const themeInit = (dark: string, light: string) => `(function(){
+  var K='tl-theme', DARK=${JSON.stringify(dark)}, LIGHT=${JSON.stringify(light)};
   var root=document.documentElement, b=document.getElementById('tl-theme'), l=document.getElementById('tl-theme-label');
-  function set(d){ root.classList.toggle('dark',d); if(l) l.textContent=d?'Light':'Dark'; try{localStorage.setItem(K,d?'dark':'light')}catch(e){} }
+  function set(d){ root.classList.toggle('dark',d); if(l) l.textContent=d?LIGHT:DARK; try{localStorage.setItem(K,d?'dark':'light')}catch(e){} }
   var saved=null; try{saved=localStorage.getItem(K)}catch(e){}
   set(saved ? saved==='dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
   if(b) b.addEventListener('click',function(){ set(!root.classList.contains('dark')); });
@@ -34,16 +37,18 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale: raw } = await params;
+  const locale: Locale = isLocale(raw) ? raw : 'en';
   return {
     metadataBase: new URL(SITE_ORIGIN),
-    title: { default: '3Lines Advanced Technologies', template: '%s | 3Lines' },
-    openGraph: {
-      siteName: '3Lines Advanced Technologies',
-      locale: locale === 'ar' ? 'ar_SA' : 'en_US',
-      alternateLocale: locale === 'ar' ? 'en_US' : 'ar_SA',
-      type: 'website',
-    },
+    title: { default: SITE_NAME, template: '%s | 3Lines' },
+    /* Pages return their own `openGraph`, which replaces this one wholesale
+       rather than extending it — hence the shared builder. This value is what
+       routes without their own metadata (not-found) fall back to. */
+    openGraph: openGraph(locale, { title: SITE_NAME, path: `/${locale}` }),
+    /* The generated card is 1200x630, so ask for the large-image treatment
+       rather than letting it be cropped to a thumbnail. */
+    twitter: { card: 'summary_large_image' },
   };
 }
 
@@ -58,6 +63,7 @@ export default async function LocaleLayout({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const chrome = getChrome(locale);
+  const t = ui(locale);
 
   return (
     <html lang={locale} dir={DIR[locale]}>
@@ -93,15 +99,15 @@ export default async function LocaleLayout({
 
         <Script src={asset('/assets/js/main.js')} strategy="afterInteractive" />
 
-        <button className="tl-theme" type="button" id="tl-theme" aria-label="Toggle colour scheme">
+        <button className="tl-theme" type="button" id="tl-theme" aria-label={t.themeToggle}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="4" />
             <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
           </svg>
-          <span id="tl-theme-label">Dark</span>
+          <span id="tl-theme-label">{t.themeDark}</span>
         </button>
 
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
+        <script dangerouslySetInnerHTML={{ __html: themeInit(t.themeDark, t.themeLight) }} />
 
         {/* Built from the same source records the pages render from, so the
             structured data cannot drift from the visible content. */}

@@ -3,10 +3,9 @@ import { notFound } from 'next/navigation';
 import BlockRenderer from '@/components/blocks/Blocks';
 import { getPage, getRoutes } from '@/lib/content';
 import { LOCALES, altPaths, isLocale, type Locale } from '@/lib/i18n';
+import { SITE_ORIGIN, openGraph } from '@/lib/seo';
 
 type Params = { params: Promise<{ locale: string; slug?: string[] }> };
-
-const SITE_ORIGIN = process.env.SITE_ORIGIN ?? 'https://www.3lines.com.sa';
 
 /** Every ingested route becomes a real static page in every locale. */
 export function generateStaticParams() {
@@ -39,6 +38,13 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: doc.title,
     description: doc.description,
     keywords: doc.keywords,
+    /* The three legal pages still carry placeholder source copy ("Privacy
+       Policy Content"). The ingest already marks them; honouring that mark here
+       means the worst case is a page nobody can find via search, rather than
+       "Privacy Policy Content" ranking as this company's privacy policy.
+       `follow` stays on so the links out of them still carry. The flag clears
+       itself the moment real copy lands — nothing to remember to undo. */
+    robots: doc.placeholder ? { index: false, follow: true } : undefined,
     alternates: {
       canonical: `${SITE_ORIGIN}${alts[locale]}`,
       languages: {
@@ -47,11 +53,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
         'x-default': `${SITE_ORIGIN}${alts.en}`,
       },
     },
-    openGraph: {
+    openGraph: openGraph(locale, {
       title: doc.title,
       description: doc.description,
-      url: `${SITE_ORIGIN}${alts[locale]}`,
-    },
+      path: alts[locale],
+    }),
   };
 }
 

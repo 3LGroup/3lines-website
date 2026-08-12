@@ -1,5 +1,7 @@
 import Arrow from './Arrow';
+import LangSwitch from './LangSwitch';
 import { localePath, type Locale } from '@/lib/i18n';
+import { ui } from '@/lib/ui';
 import type { Chrome, Media } from '@/lib/content';
 
 /* Every element mirrors the original chrome markup one-for-one — the class
@@ -18,21 +20,9 @@ export function UtilityBar({ chrome, locale }: WithLocale) {
             {l.label}
           </a>
         ))}
-        <span className="utility__lang">
-          {chrome.utility.lang.map((l, i) => (
-            // The language switch points at the *same* page in the other
-            // locale, not at its home page — losing your place when switching
-            // language is the classic bilingual-site annoyance.
-            <a
-              key={i}
-              href={localePath(l.locale, '/')}
-              lang={l.locale}
-              aria-current={l.current ? 'true' : undefined}
-            >
-              {l.label}
-            </a>
-          ))}
-        </span>
+        {/* Keeps you on the current page across the language switch — see
+            LangSwitch for why that needs a client component. */}
+        <LangSwitch links={chrome.utility.lang} locale={locale} />
       </div>
     </div>
   );
@@ -70,7 +60,7 @@ export function Header({ chrome, locale }: WithLocale) {
           type="button"
           aria-expanded="false"
           aria-controls="mega"
-          aria-label="Open main menu"
+          aria-label={ui(locale).openMenu}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M3 6h18M3 12h18M3 18h18" strokeLinecap="round" />
@@ -87,11 +77,11 @@ export function Header({ chrome, locale }: WithLocale) {
 
 export function MegaMenu({ chrome, locale }: WithLocale) {
   return (
-    <div className="mega" id="mega" role="dialog" aria-modal="true" aria-label="Main menu">
+    <div className="mega" id="mega" role="dialog" aria-modal="true" aria-label={ui(locale).mainMenu}>
       <div className="mega__bar">
         <Logo img={chrome.logoImg} locale={locale} className="hdr__logo" style={{ padding: 0 }} />
         <button className="mega__close" type="button">
-          Close{' '}
+          {ui(locale).close}{' '}
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" />
           </svg>

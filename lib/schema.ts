@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { Locale } from './blocks';
+import { SITE_ORIGIN } from './seo';
 
 /**
  * JSON-LD, built from the same source records the pages render from, so the
@@ -9,8 +10,6 @@ import type { Locale } from './blocks';
  * Next's metadata API has no JSON-LD slot, so this is rendered as a script tag
  * by the layout.
  */
-
-const SITE_ORIGIN = process.env.SITE_ORIGIN ?? 'https://www.3lines.com.sa';
 
 const readSource = <T,>(file: string): T =>
   JSON.parse(fs.readFileSync(path.join(process.cwd(), 'source-content', file), 'utf8')) as T;

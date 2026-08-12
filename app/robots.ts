@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
-
-const SITE_ORIGIN = process.env.SITE_ORIGIN ?? 'https://www.3lines.com.sa';
+import { SITE_ORIGIN } from '@/lib/seo';
 
 export default function robots(): MetadataRoute.Robots {
   return {

@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { ui } from '@/lib/ui';
+import type { Locale } from '@/lib/i18n';
 import type { FormBody } from '@/lib/blocks';
 
 type State = 'idle' | 'sending' | 'ok' | 'bad' | 'err';
@@ -16,7 +18,7 @@ type State = 'idle' | 'sending' | 'ok' | 'bad' | 'err';
  *
  * All user-facing strings arrive as data so the component carries no English.
  */
-export default function ContactForm({ body }: { body: FormBody }) {
+export default function ContactForm({ body, locale }: { body: FormBody; locale: Locale }) {
   const [state, setState] = useState<State>('idle');
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -31,7 +33,10 @@ export default function ContactForm({ body }: { body: FormBody }) {
       const res = await fetch(body.action, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(data),
+        // The proxy forwards `lang` so the team replies in the language the
+        // enquiry was written in. Without it every Arabic message arrived
+        // upstream tagged `en`, which is the proxy's default.
+        body: JSON.stringify({ ...data, lang: locale }),
       });
       if (res.ok) {
         setState('ok');
@@ -77,7 +82,7 @@ export default function ContactForm({ body }: { body: FormBody }) {
         {/* Honeypot: hidden from people, tempting to bots. Not display:none — a
             focusable element hidden that way is a screen-reader trap. */}
         <div className="field field--hp" aria-hidden="true">
-          <label htmlFor={`f-${body.honeypot}`}>Leave this field empty</label>
+          <label htmlFor={`f-${body.honeypot}`}>{ui(locale).honeypot}</label>
           <input id={`f-${body.honeypot}`} name={body.honeypot} tabIndex={-1} autoComplete="off" />
         </div>
       </div>
