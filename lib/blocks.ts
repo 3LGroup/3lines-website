@@ -265,12 +265,6 @@ export interface CompanyCard {
   external?: boolean;
   /** Pre-launch marker, e.g. "Soon!". Such a company has no link. */
   status?: string;
-  /**
-   * Bento emphasis, mirroring the source grid: one wide card, one tall, the
-   * rest standard. Carried as data because it is editorial weighting, not a
-   * property of the company.
-   */
-  span?: 'wide' | 'tall' | 'standard';
 }
 
 export interface CompaniesBody {

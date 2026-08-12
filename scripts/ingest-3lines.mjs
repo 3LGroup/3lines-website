@@ -205,7 +205,6 @@ function companiesBody(locale) {
         link: linked ? { label: learnMore, href: c.href } : undefined,
         external: c.external || undefined,
         status: c.status ? L(c.status, locale, `company ${c.id} status`) : undefined,
-        span: c.span ?? 'standard',
       };
     }),
   };
@@ -273,7 +272,7 @@ function buildHome(locale) {
         head: {
           layout: 'split',
           kicker: L(companiesSrc.head?.kicker, locale, 'companies.head.kicker'),
-          heading: '',
+          heading: L(companiesSrc.head?.heading, locale, 'companies.head.heading'),
         },
         bodies: [companiesBody(locale)],
       },

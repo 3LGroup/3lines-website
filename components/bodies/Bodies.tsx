@@ -262,11 +262,11 @@ function OverviewSplit({ body }: { body: OverviewSplitBody }) {
 }
 
 /**
- * The group's operating companies.
+ * The group's operating companies — four equal cards in one row.
  *
- * `data-span` carries the source grid's editorial weighting (one wide card, one
- * tall) to CSS, so the bento proportions live in the stylesheet's media queries
- * rather than in hardcoded per-card classes here.
+ * `data-plate` is the only presentational hint carried, and it is derived, not
+ * authored: which of the three media treatments a card gets follows from
+ * whether it has a brand mark, a photograph, or neither.
  */
 function Companies({ body, locale }: { body: CompaniesBody; locale: Locale }) {
   return (
@@ -276,7 +276,6 @@ function Companies({ body, locale }: { body: CompaniesBody; locale: Locale }) {
           className="ccard reveal"
           key={c.id ?? i}
           id={c.id}
-          data-span={c.span ?? 'standard'}
           data-plate={c.logo ? 'logo' : c.imgVar ? 'photo' : 'bare'}
         >
           <div className="ccard__media" style={imgStyle(c.imgVar)}>

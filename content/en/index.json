@@ -102,8 +102,8 @@
       "id": "companies",
       "head": {
         "layout": "split",
-        "kicker": "Our companies",
-        "heading": ""
+        "kicker": "The Group",
+        "heading": "Our companies"
       },
       "bodies": [
         {
@@ -117,8 +117,7 @@
               "link": {
                 "label": "Learn more",
                 "href": "/services"
-              },
-              "span": "wide"
+              }
             },
             {
               "id": "xr",
@@ -129,8 +128,7 @@
                 "label": "Learn more",
                 "href": "https://xr.3lines.com.sa/"
               },
-              "external": true,
-              "span": "tall"
+              "external": true
             },
             {
               "id": "optokon-middle-east",
@@ -144,8 +142,7 @@
                 "label": "Learn more",
                 "href": "https://optokon.com.sa/"
               },
-              "external": true,
-              "span": "standard"
+              "external": true
             },
             {
               "id": "ai3lines",
@@ -156,8 +153,7 @@
                 "label": "Learn more",
                 "href": "https://ai3lines.com/"
               },
-              "external": true,
-              "span": "standard"
+              "external": true
             }
           ]
         }

@@ -3,7 +3,8 @@
   "locales": ["en", "ar"],
 
   "head": {
-    "kicker": { "en": "Our companies", "ar": "شركاتنا" }
+    "kicker": { "en": "The Group", "ar": "المجموعة" },
+    "heading": { "en": "Our companies", "ar": "شركاتنا" }
   },
 
   "$comment_learnMore": "One CTA label for every card, as on the source. Carried as data so it reaches `link.label` like every other block's CTA, rather than becoming an authored UI string in lib/ui.ts.",
@@ -22,8 +23,7 @@
       },
       "photo": "assets/photos/3l-radar-field.jpg",
       "$comment_href": "The source card's 'Learn more' is JS-driven and carries no href in the DOM. Pointed at this site's own services index, which is what the card describes.",
-      "href": "/services",
-      "span": "wide"
+      "href": "/services"
     },
     {
       "id": "xr",
@@ -34,8 +34,7 @@
       },
       "photo": "assets/photos/3l-xr-lab.jpg",
       "href": "https://xr.3lines.com.sa/",
-      "external": true,
-      "span": "tall"
+      "external": true
     },
     {
       "id": "optokon-middle-east",
@@ -48,8 +47,7 @@
       "logo": "assets/logos/optokon-middle-east-logo.png",
       "alt": { "en": "Optokon Middle East", "ar": "Optokon Middle East" },
       "href": "https://optokon.com.sa/",
-      "external": true,
-      "span": "standard"
+      "external": true
     },
     {
       "id": "ai3lines",
@@ -63,8 +61,7 @@
       "$comment_photo": "The AI division's own site leads on AI command centres; this is the closest matching photograph already in the repo.",
       "photo": "assets/photos/3l-command-center.jpg",
       "href": "https://ai3lines.com/",
-      "external": true,
-      "span": "standard"
+      "external": true
     }
   ]
 }
