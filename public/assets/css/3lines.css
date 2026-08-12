@@ -55,6 +55,10 @@
      resolve identically at every route depth and on any host. */
   --logo-wordmark:url("../brand/logo-wordmark.png");
   --logo-mark:url("../brand/logo-mark.png");
+  /* The two marks the reference site actually ships: the circular monogram in
+     its header, and the stacked lockup in its footer. */
+  --logo-mark-circle:url("../logos/3Lines_logo.png");
+  --logo-lockup:url("../logos/logo.png");
 
   --shadow-xs:0 1px 2px 0 rgb(0 0 0 / .05);
   --shadow-sm:0 1px 2px 0 rgb(0 0 0 / .05),0 1px 3px 0 rgb(0 0 0 / .05);
@@ -109,8 +113,12 @@ p,li,dd,address,figcaption,.lede,.sub,.excerpt,
   font-family:var(--font-sans)!important;
 }
 
-/* the mono/eyebrow/label slots across all seven clones */
-.mono,.eyebrow,.kick,.lab,.tag,.cls,.crumbs,.plat__n,.domain__n,
+/* the mono/eyebrow/label slots across all seven clones.
+   .crumbs is deliberately NOT in this list: it is the only way back from a
+   service or news detail page, and styling navigation as an 11px mono label in
+   --muted-foreground is why it stopped reading as navigation. Its own rule in
+   style.css sizes and colours it. */
+.mono,.eyebrow,.kick,.lab,.cls,.tag,.plat__n,.domain__n,
 .usecase__n,.stat__lab,.fig__l,.figure__lab,.storypanel__cat,
 .ncard__meta,.counter__t,.dots__n,.dot__n,.ticker__item b{
   font-family:var(--font-mono)!important;
@@ -293,7 +301,14 @@ p,li,dd,address,figcaption,.lede,.sub,.excerpt,
   height:clamp(200px,24vw,360px);
   margin:clamp(26px,3.4vw,44px) clamp(18px,3.2vw,48px) 0;
   background-image:var(--img)!important;
-  background-size:cover;background-position:center;
+  /* All three need !important. The gradient-killer above uses the `background`
+     SHORTHAND with !important, which resets size/position/repeat to their
+     initial values at that same priority — so an unweighted `cover` here loses
+     and every hero, careers and CTA photo rendered at natural pixel size
+     anchored top-left. The hangar shot showed only its ceiling trusses. */
+  background-size:cover!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
   border-radius:var(--radius);border:1px solid var(--border);
 }
 .hero[style*="--img"],.careers[style*="--img"],.cta[style*="--img"]{
@@ -385,9 +400,46 @@ p,li,dd,address,figcaption,.lede,.sub,.excerpt,
   width:132px;height:46px;
   background:var(--logo-wordmark) left center/contain no-repeat;
 }
+
+/* Header carries the compact circular mark, the footer the full stacked
+   lockup — the same split the reference site uses (its #logo is the 56px
+   3Lines_logo.png; its footer is the taller logo.png). */
+.hdr__logo::before{
+  width:56px;height:56px;
+  background-image:var(--logo-mark-circle);
+  background-position:center;
+}
+.ftr__logo::before{
+  width:clamp(88px,9vw,108px);height:auto;aspect-ratio:1004/1414;
+  background-image:var(--logo-lockup);
+  background-position:left top;
+}
+.ftr__logo{margin-bottom:18px}
+
+/* Header wordmark beside the mark, ported from the reference's own injected
+   lockup (3lines-website/assets/enhance.js §18b) — same text, weights, sizes
+   and letter-spacing. Desktop only, as there, so the mobile header stays
+   compact. Horizontal spacing comes from .hdr__logo's existing flex `gap`
+   rather than the reference's margin, which would stack on top of it.
+   Its `.ml-light` colours are this theme's default; its dark ones sit under
+   html.dark. */
+.hdr__wordmark{
+  display:none;flex-direction:column;justify-content:center;
+  line-height:1.02;white-space:nowrap;
+}
+@media (min-width:768px){.hdr__wordmark{display:flex}}
+.hdr__wordmark-name{font-size:1.32rem;font-weight:500;letter-spacing:.27em;color:#5c6675}
+.hdr__wordmark-tag{font-size:.5rem;font-weight:700;letter-spacing:.05em;color:#0a73d4;margin-top:.2rem}
+html.dark .hdr__wordmark-name{color:#cbd3df}
+html.dark .hdr__wordmark-tag{color:#3aa0ff}
+
 html.dark .brand::before,html.dark .ng-logo::before,
 html.dark .hdr__logo::before,html.dark .ftr__logo::before{filter:brightness(0) invert(1)}
-.ftr .ftr__logo::before,.footer svg{filter:brightness(0) invert(1)}
+/* Dark theme only. This inversion used to be unconditional, which painted the
+   footer mark pure white on the light theme's white footer — an invisible
+   logo. The lockup's "Advanced Technologies Company" line is dark blue, so it
+   still needs the flip once the surface actually goes dark. */
+html.dark .ftr .ftr__logo::before,html.dark .footer svg{filter:brightness(0) invert(1)}
 
 .navpanel,.drop,.mega,.subnav,.mobnav,.drawer,.mnav{
   background:var(--background)!important;
@@ -510,7 +562,11 @@ html.dark .hdr__logo::before,html.dark .ftr__logo::before{filter:brightness(0) i
 .dot{background:var(--border)!important}
 .rail__btn[aria-selected="true"],.plattab[aria-selected="true"],
 .megatab[aria-selected="true"],.storytab[aria-selected="true"]{color:var(--primary)!important;border-top-color:var(--primary)!important}
-.storytab span.bar,.plattab i,.megatab svg{background:var(--primary)!important}
+/* `.storytab span.bar` and `.plattab i` are decorative blocks that are meant to
+   be filled. `.megatab svg` is an arrow glyph, and painting a background behind
+   it turned every mega-menu tab marker into a solid blue square. It already
+   takes the accent through `fill:currentColor` from style.css. */
+.storytab span.bar,.plattab i{background:var(--primary)!important}
 .rail,.plattabs,.storytabs li + li,.plats,.speclist div{border-color:var(--border)!important}
 .logos div{color:var(--foreground)!important}
 .quote{font-family:var(--font-sans)!important;font-style:normal!important}

@@ -7,6 +7,7 @@ import { assertNever } from '@/lib/blocks';
 import type {
   CardsBody,
   CertsBody,
+  CompaniesBody,
   DefsBody,
   FeatureBody,
   Figure,
@@ -260,6 +261,70 @@ function OverviewSplit({ body }: { body: OverviewSplitBody }) {
   );
 }
 
+/**
+ * The group's operating companies.
+ *
+ * `data-span` carries the source grid's editorial weighting (one wide card, one
+ * tall) to CSS, so the bento proportions live in the stylesheet's media queries
+ * rather than in hardcoded per-card classes here.
+ */
+function Companies({ body, locale }: { body: CompaniesBody; locale: Locale }) {
+  return (
+    <div className="companies">
+      {body.items.map((c, i) => (
+        <article
+          className="ccard reveal"
+          key={c.id ?? i}
+          id={c.id}
+          data-span={c.span ?? 'standard'}
+          data-plate={c.logo ? 'logo' : c.imgVar ? 'photo' : 'bare'}
+        >
+          <div className="ccard__media" style={imgStyle(c.imgVar)}>
+            {c.logo ? (
+              <img
+                className="ccard__logo"
+                src={c.logo.src}
+                alt={c.logo.alt}
+                loading="lazy"
+                decoding="async"
+                data-invert={c.logo.invert ? '1' : undefined}
+              />
+            ) : null}
+            {/* Pre-launch marker. aria-hidden because it repeats the visible
+                status word already announced with the company name below. */}
+            {/* dir="ltr": the status stays Latin in both locales, and its
+                trailing "!" is bidi-neutral — without this it flips to the
+                left of the word under RTL and renders "!Soon". */}
+            {c.status ? (
+              <span className="ccard__status" dir="ltr" aria-hidden="true">
+                {c.status}
+              </span>
+            ) : null}
+          </div>
+          <div className="ccard__body">
+            <h3>
+              {c.name}
+              {c.status ? <span className="sr-only"> — {c.status}</span> : null}
+            </h3>
+            <p>{c.tagline}</p>
+            {c.link ? (
+              c.external ? (
+                <a className="arrowlink" href={c.link.href} target="_blank" rel="noreferrer noopener">
+                  {c.link.label} <Arrow />
+                </a>
+              ) : (
+                <a className="arrowlink" href={localePath(locale, c.link.href)}>
+                  {c.link.label} <Arrow />
+                </a>
+              )
+            ) : null}
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 function Logos({ body, locale }: { body: LogosBody; locale: Locale }) {
   const marquee = body.variant === 'marquee';
 
@@ -393,6 +458,8 @@ export default function BodyRenderer({ body, locale }: { body: SectionBody; loca
       return <Logos body={body} locale={locale} />;
     case 'certs':
       return <Certs body={body} />;
+    case 'companies':
+      return <Companies body={body} locale={locale} />;
     case 'form':
       return <ContactForm body={body} locale={locale} />;
     default:

@@ -42,13 +42,31 @@ function Logo({
   locale,
   className,
   style,
+  wordmark,
 }: {
   img: Media;
   locale: Locale;
   className: string;
   style?: React.CSSProperties;
+  /**
+   * Sets the "LINES / Advanced Technologies Company" lockup beside the mark, as
+   * the reference header does (assets/enhance.js §18b). The mark alone is only
+   * half the reference's branding. aria-hidden because the link already carries
+   * its accessible name on aria-label, and the reference keeps it decorative
+   * for the same reason.
+   */
+  wordmark?: boolean;
 }) {
-  return <a className={className} href={localePath(locale, '/')} aria-label={img.alt} style={style} />;
+  return (
+    <a className={className} href={localePath(locale, '/')} aria-label={img.alt} style={style}>
+      {wordmark ? (
+        <span className="hdr__wordmark" aria-hidden="true">
+          <span className="hdr__wordmark-name">LINES</span>
+          <span className="hdr__wordmark-tag">Advanced Technologies Company</span>
+        </span>
+      ) : null}
+    </a>
+  );
 }
 
 export function Header({ chrome, locale }: WithLocale) {
@@ -67,7 +85,7 @@ export function Header({ chrome, locale }: WithLocale) {
           </svg>
         </button>
 
-        <Logo img={chrome.logoImg} locale={locale} className="hdr__logo" />
+        <Logo img={chrome.logoImg} locale={locale} className="hdr__logo" wordmark />
 
         <span className="hdr__spacer" />
       </div>
@@ -79,7 +97,9 @@ export function MegaMenu({ chrome, locale }: WithLocale) {
   return (
     <div className="mega" id="mega" role="dialog" aria-modal="true" aria-label={ui(locale).mainMenu}>
       <div className="mega__bar">
-        <Logo img={chrome.logoImg} locale={locale} className="hdr__logo" style={{ padding: 0 }} />
+        {/* Same lockup as the header: this bar stands in for the header while
+            the menu is open, so the brand must not change shape on open. */}
+        <Logo img={chrome.logoImg} locale={locale} className="hdr__logo" style={{ padding: 0 }} wordmark />
         <button className="mega__close" type="button">
           {ui(locale).close}{' '}
           <svg viewBox="0 0 24 24" aria-hidden="true">

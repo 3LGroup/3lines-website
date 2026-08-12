@@ -7,7 +7,8 @@
     "siteInfo.json",
     "services.json",
     "posts.json",
-    "non-cms.json"
+    "non-cms.json",
+    "companies.json"
   ],
   "title": "3Lines Advanced Technologies Company",
   "description": "3Lines Advanced Technologies Group was established in 2019 in alignment with Saudi Vision 2030 to localize military and civilian services within the Kingdom. The Group delivers integrated supply chain and technical services — procurement, logistics, maintenance, repair and manufacturing — supporting operational readiness across the defense and advanced technology sectors, locally and internationally.",
@@ -90,6 +91,73 @@
             {
               "title": "Repair & Manufacturing",
               "text": "Localized diagnostic and repair workshops, plus reverse engineering and manufacturing of components for advanced systems."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "id": "companies",
+      "head": {
+        "layout": "split",
+        "kicker": "Our companies",
+        "heading": ""
+      },
+      "bodies": [
+        {
+          "kind": "companies",
+          "items": [
+            {
+              "id": "advanced-technology",
+              "name": "Advanced Technology",
+              "tagline": "Providing advanced technologies solutions and services",
+              "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+              "link": {
+                "label": "Learn more",
+                "href": "/services"
+              },
+              "span": "wide"
+            },
+            {
+              "id": "xr",
+              "name": "XR",
+              "tagline": "Extended Reality through AR/VR",
+              "imgVar": "url('/assets/photos/3l-xr-lab.jpg')",
+              "link": {
+                "label": "Learn more",
+                "href": "https://xr.3lines.com.sa/"
+              },
+              "external": true,
+              "span": "tall"
+            },
+            {
+              "id": "optokon-middle-east",
+              "name": "Optokon Middle East",
+              "tagline": "Optical and IT Infrastructure Solutions",
+              "logo": {
+                "src": "/assets/logos/optokon-middle-east-logo.png",
+                "alt": "Optokon Middle East"
+              },
+              "link": {
+                "label": "Learn more",
+                "href": "https://optokon.com.sa/"
+              },
+              "external": true,
+              "span": "standard"
+            },
+            {
+              "id": "ai3lines",
+              "name": "3Lines AI",
+              "tagline": "AI agents that run your business operations",
+              "imgVar": "url('/assets/photos/3l-command-center.jpg')",
+              "link": {
+                "label": "Learn more",
+                "href": "https://ai3lines.com/"
+              },
+              "external": true,
+              "span": "standard"
             }
           ]
         }

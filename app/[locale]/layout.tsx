@@ -65,8 +65,12 @@ export default async function LocaleLayout({
   const chrome = getChrome(locale);
   const t = ui(locale);
 
+  /* suppressHydrationWarning on <html>: themeInit below runs before hydration
+     and puts `dark` on that element. Without it React treats the class it did
+     not render as a mismatch, reverts it, and the saved theme silently fails
+     to stick on reload. */
   return (
-    <html lang={locale} dir={DIR[locale]}>
+    <html lang={locale} dir={DIR[locale]} suppressHydrationWarning>
       <head>
         {/* All Latin faces are self-hosted, so there are no third-party font
             requests and no render-blocking @import. This also removes the last
@@ -104,7 +108,12 @@ export default async function LocaleLayout({
             <circle cx="12" cy="12" r="4" />
             <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
           </svg>
-          <span id="tl-theme-label">{t.themeDark}</span>
+          {/* Same reason as <html>: themeInit rewrites this label to the theme
+              you would switch *to* before React hydrates, so the text it finds
+              is deliberately not the text it rendered. */}
+          <span id="tl-theme-label" suppressHydrationWarning>
+            {t.themeDark}
+          </span>
         </button>
 
         <script dangerouslySetInnerHTML={{ __html: themeInit(t.themeDark, t.themeLight) }} />

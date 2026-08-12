@@ -10,6 +10,12 @@
    ============================================================ */
 
 .section--mist { background: var(--mist) !important; }
+/* --mist is a fixed #F4F9FB, so restoring it unconditionally painted a
+   near-white band in dark mode while its headings kept the dark theme's
+   near-white foreground: "How we deliver it" measured a 0.012 luminance delta
+   against its own background — invisible. Dark gets the token instead, one
+   elevation step above the page so the band still reads as a band. */
+html.dark .section--mist { background: var(--card) !important; }
 
 .section--navy { background: var(--navy) !important; color: #fff !important; }
 .section--navy h2,

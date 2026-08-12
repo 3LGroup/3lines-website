@@ -147,6 +147,25 @@ function Careers({ block, locale }: { block: CareersBlock; locale: Locale }) {
   );
 }
 
+/**
+ * Network glyphs for social links the source carries as a bare href.
+ *
+ * The ingest records `icon: null` for these because the reference markup has no
+ * inline SVG to lift — which left `.socialstrip a` as an empty 44px circle
+ * above every footer. Authored chrome, like the theme toggle and the mega
+ * menu's close button, so it belongs here; carried data still wins when a
+ * document actually has an icon.
+ */
+const SOCIAL_GLYPHS: Record<string, React.ReactElement> = {
+  linkedin: (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.44-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z" />
+    </svg>
+  ),
+};
+
+const socialGlyph = (label: string) => SOCIAL_GLYPHS[label.trim().toLowerCase()] ?? null;
+
 function SocialStrip({ block, locale }: { block: SocialStripBlock; locale: Locale }) {
   return (
     <div className="wrap">
@@ -154,7 +173,7 @@ function SocialStrip({ block, locale }: { block: SocialStripBlock; locale: Local
         <span>{block.label}</span>
         {block.items.map((s, i) => (
           <a key={i} href={localePath(locale, s.href)} aria-label={s.label}>
-            <Svg node={s.icon} />
+            {s.icon ? <Svg node={s.icon} /> : socialGlyph(s.label)}
           </a>
         ))}
       </div>

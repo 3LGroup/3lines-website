@@ -1,0 +1,70 @@
+{
+  "$comment": "The four 3Lines Group companies. AUTHORED, not generated — unlike non-cms.json, no script writes this file, so it is safe to hand-edit and survives `npm run ingest`. Names and taglines are transcribed verbatim, both locales, from the bento on the live site (3lines.com.sa/{en,ar}), which is the only place this content exists: it has no CMS record and no entry in content-inventory.json.",
+  "locales": ["en", "ar"],
+
+  "head": {
+    "kicker": { "en": "Our companies", "ar": "شركاتنا" }
+  },
+
+  "$comment_learnMore": "One CTA label for every card, as on the source. Carried as data so it reaches `link.label` like every other block's CTA, rather than becoming an authored UI string in lib/ui.ts.",
+  "learnMore": { "en": "Learn more", "ar": "اعرف المزيد" },
+
+  "$comment_span": "Bento emphasis, mirroring the proportions the source grid gives each card: Defense Technology is the wide one, XR the tall one, the other two standard.",
+
+  "items": [
+    {
+      "id": "advanced-technology",
+      "$comment_name": "Renamed from the source's 'Defense Technology'. The tagline follows the name so the card does not introduce itself as one thing and describe another; the Arabic reuses the site's own wording for 'advanced technologies' (see non-cms.json heroRotatingWords).",
+      "name": { "en": "Advanced Technology", "ar": "التقنيات المتقدمة" },
+      "tagline": {
+        "en": "Providing advanced technologies solutions and services",
+        "ar": "توفير حلول وخدمات التقنيات المتقدمة"
+      },
+      "photo": "assets/photos/3l-radar-field.jpg",
+      "$comment_href": "The source card's 'Learn more' is JS-driven and carries no href in the DOM. Pointed at this site's own services index, which is what the card describes.",
+      "href": "/services",
+      "span": "wide"
+    },
+    {
+      "id": "xr",
+      "name": { "en": "XR", "ar": "XR" },
+      "tagline": {
+        "en": "Extended Reality through AR/VR",
+        "ar": "الواقع الممتد عن طريق الواقع المعزز و الواقع الافتراضي"
+      },
+      "photo": "assets/photos/3l-xr-lab.jpg",
+      "href": "https://xr.3lines.com.sa/",
+      "external": true,
+      "span": "tall"
+    },
+    {
+      "id": "optokon-middle-east",
+      "name": { "en": "Optokon Middle East", "ar": "Optokon Middle East" },
+      "tagline": {
+        "en": "Optical and IT Infrastructure Solutions",
+        "ar": "حلول البنية التحتية للبصريات وتكنولوجيا المعلومات"
+      },
+      "$comment_logo": "The only one of the four with a brand mark in this repo; it is already carried as a partner logo.",
+      "logo": "assets/logos/optokon-middle-east-logo.png",
+      "alt": { "en": "Optokon Middle East", "ar": "Optokon Middle East" },
+      "href": "https://optokon.com.sa/",
+      "external": true,
+      "span": "standard"
+    },
+    {
+      "id": "ai3lines",
+      "$comment": "Replaces the source's pre-launch ATV card. This division is live, so it carries a link and no 'Soon!' status. English tagline is the site's own og:description; ai3lines.com has no Arabic route (/ar 404s), so the Arabic here is AUTHORED rather than transcribed.",
+      "$comment_name": "Displayed as a company name alongside its siblings rather than as the ai3lines.com domain. Latin in both locales, as XR and Optokon Middle East are.",
+      "name": { "en": "3Lines AI", "ar": "3Lines AI" },
+      "tagline": {
+        "en": "AI agents that run your business operations",
+        "ar": "وكلاء ذكاء اصطناعي يديرون عمليات أعمالك"
+      },
+      "$comment_photo": "The AI division's own site leads on AI command centres; this is the closest matching photograph already in the repo.",
+      "photo": "assets/photos/3l-command-center.jpg",
+      "href": "https://ai3lines.com/",
+      "external": true,
+      "span": "standard"
+    }
+  ]
+}

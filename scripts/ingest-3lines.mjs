@@ -29,6 +29,7 @@ const siteInfo = read('siteInfo.json');
 const constants = read('constants.json').data;
 const details = read('service-details.json');
 const nonCms = read('non-cms.json');
+const companiesSrc = read('companies.json');
 
 /* ------------------------------------------------------------- helpers -- */
 
@@ -174,6 +175,42 @@ function serviceCards(locale, limit) {
   };
 }
 
+/**
+ * The group's four operating companies.
+ *
+ * Asserted at four rather than mapped blindly: this is a fixed corporate fact,
+ * so a source file that silently gains or loses one should stop the build the
+ * same way a missing service detail does.
+ */
+function companiesBody(locale) {
+  const items = companiesSrc.items ?? [];
+  if (items.length !== 4) fail(`companies.json: expected 4 companies, found ${items.length}`);
+
+  const learnMore = L(companiesSrc.learnMore, locale, 'companies.learnMore');
+
+  return {
+    kind: 'companies',
+    items: items.map((c) => {
+      const name = L(c.name, locale, `company ${c.id} name`);
+      // A pre-launch company has no destination; every other one must have one.
+      const linked = Boolean(c.href);
+      if (!linked && !c.status) fail(`company ${c.id}: no href and no status`);
+
+      return {
+        id: c.id,
+        name,
+        tagline: L(c.tagline, locale, `company ${c.id} tagline`),
+        logo: c.logo ? media(c.logo, L(c.alt, locale) || name, `company ${c.id} logo`) : undefined,
+        imgVar: imgVar(c.photo ? media(c.photo, name, `company ${c.id} photo`) : null),
+        link: linked ? { label: learnMore, href: c.href } : undefined,
+        external: c.external || undefined,
+        status: c.status ? L(c.status, locale, `company ${c.id} status`) : undefined,
+        span: c.span ?? 'standard',
+      };
+    }),
+  };
+}
+
 function buildHome(locale) {
   const frame = nonCms.heroFrame?.copy?.[locale] ?? {};
   const rotate = nonCms.heroRotatingWords?.[locale] ?? [];
@@ -182,7 +219,7 @@ function buildHome(locale) {
     route: '/',
     locale,
     slug: 'index',
-    source: ['constants.json', 'siteInfo.json', 'services.json', 'posts.json', 'non-cms.json'],
+    source: ['constants.json', 'siteInfo.json', 'services.json', 'posts.json', 'non-cms.json', 'companies.json'],
     title: L({ en: constants.name_en, ar: constants.name_ar }, locale),
     description: L(siteInfo.companyDescription, locale, 'siteInfo.companyDescription'),
     keywords: constants.keywords,
@@ -225,6 +262,20 @@ function buildHome(locale) {
             items: (nonCms.about?.[locale]?.pillars ?? []).map((p) => ({ title: p.title, text: p.body })),
           },
         ],
+      },
+      // The group's companies, directly below the About band — the position the
+      // source site gives them. `plain` because the band above is mist and the
+      // slider below is navy; anything else puts two like tones side by side.
+      {
+        type: 'section',
+        tone: 'plain',
+        id: 'companies',
+        head: {
+          layout: 'split',
+          kicker: L(companiesSrc.head?.kicker, locale, 'companies.head.kicker'),
+          heading: '',
+        },
+        bodies: [companiesBody(locale)],
       },
       {
         type: 'section',

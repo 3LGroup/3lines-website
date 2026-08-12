@@ -240,6 +240,44 @@ export interface CertsBody {
   items: Media[];
 }
 
+/**
+ * One of the group's operating companies.
+ *
+ * Deliberately not a PCard: a company carries a brand mark, an off-site
+ * destination and a pre-launch status that PCard has no slot for, and PCard
+ * always paints a `.pcard__media` plate — the same reason DefCard exists
+ * separately above.
+ */
+export interface CompanyCard {
+  id?: string;
+  name: string;
+  tagline: string;
+  /** Brand mark, shown in place of photography when the company has one. */
+  logo?: Media;
+  /**
+   * Representative photography, as the `--img` custom property. Painted as a
+   * background and left undescribed on purpose: the company name sits in the
+   * heading beside it, so the image is decorative.
+   */
+  imgVar?: string;
+  link?: Link;
+  /** Off-site destination: rendered target=_blank with a noopener rel. */
+  external?: boolean;
+  /** Pre-launch marker, e.g. "Soon!". Such a company has no link. */
+  status?: string;
+  /**
+   * Bento emphasis, mirroring the source grid: one wide card, one tall, the
+   * rest standard. Carried as data because it is editorial weighting, not a
+   * property of the company.
+   */
+  span?: 'wide' | 'tall' | 'standard';
+}
+
+export interface CompaniesBody {
+  kind: 'companies';
+  items: CompanyCard[];
+}
+
 export interface FormField {
   name: string;
   type: 'text' | 'email' | 'tel' | 'textarea';
@@ -272,6 +310,7 @@ export type SectionBody =
   | OverviewSplitBody
   | LogosBody
   | CertsBody
+  | CompaniesBody
   | FormBody;
 
 export type SectionBodyKind = SectionBody['kind'];
@@ -289,6 +328,7 @@ export const SECTION_BODY_KINDS: SectionBodyKind[] = [
   'overviewSplit',
   'logos',
   'certs',
+  'companies',
   'form',
 ];
 

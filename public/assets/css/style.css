@@ -76,6 +76,10 @@ ul{margin:0;padding:0;list-style:none}
 .hdr__burger{border-left:0;border-right:1px solid var(--lilac)}
 .hdr__search{border-right:0;border-left:1px solid var(--lilac)}
 .hdr__burger:hover,.hdr__search:hover{background:var(--mist);color:var(--blue)}
+/* Hover state was a fixed --mist wash, which flashes a white box across the
+   header the moment you reach for the menu in dark mode. Same fixed-light-
+   colour problem as the bands and cards; the tokens follow the theme. */
+html.dark .hdr__burger:hover,html.dark .hdr__search:hover{background:var(--secondary);color:var(--foreground)}
 .hdr__burger svg,.hdr__search svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2}
 .hdr__logo{display:grid;place-items:center;padding:10px}
 .hdr__logo svg{height:clamp(22px,2.6vw,34px);width:auto}
@@ -85,8 +89,13 @@ ul{margin:0;padding:0;list-style:none}
 .tw-drop{fill:var(--cyan)}
 
 /* ---- Mega menu ---- */
+/* Above .hdr (150), not below it. This is aria-modal, and it carries its own
+   bar with the brand and a Close button — that bar is meant to REPLACE the
+   header while the menu is open. At 140 the sticky header painted straight
+   through the modal, and the mega's own logo surfaced in the strip above the
+   header as a clipped second mark. */
 .mega{
-  position:fixed;inset:0;z-index:140;background:#fff;
+  position:fixed;inset:0;z-index:160;background:#fff;
   transform:translateY(-6px);opacity:0;visibility:hidden;
   transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s;
   overflow-y:auto;
@@ -124,6 +133,18 @@ ul{margin:0;padding:0;list-style:none}
 }
 .megapanel__links a:hover{color:var(--blue);border-bottom-color:var(--cyan)}
 .megapanel__links a::before{content:"";width:6px;height:6px;background:var(--cyan);flex:none;border-radius:50%}
+
+/* Dark theme. The theme layer repaints `.mega` itself but claims none of its
+   internals, so the bar kept a hardcoded white while the panel behind it went
+   near-black — which also swallowed the brand mark, since that is inverted to
+   white for dark surfaces. The navy tab and link text had the same problem. */
+html.dark .mega__bar{background:var(--background);border-bottom-color:var(--border)}
+html.dark .megatabs li + li{border-top-color:var(--border)}
+html.dark .megatab{color:var(--foreground)}
+html.dark .megatab:hover,html.dark .megatab[aria-selected="true"]{color:var(--primary)}
+html.dark .megapanel__links a{color:var(--foreground)}
+html.dark .megapanel__links a:hover{color:var(--primary)}
+html.dark .mega__close{color:var(--foreground)}
 .megapanel__cta{margin-top:30px}
 
 /* ---- search overlay ---- */
@@ -250,14 +271,106 @@ ul{margin:0;padding:0;list-style:none}
    Three-up cards (Protect / Worldwide)
    ============================================================ */
 .cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,34px)}
-@media (max-width:900px){.cards3{grid-template-columns:1fr}}
+/* Same 3 -> 2 -> 1 ladder, on the same breakpoints, as .newsgrid and .defs.
+   Dropping straight from three columns to one at 900px left the whole tablet
+   range showing one enormous card per row while the news grid beside it was
+   still two-up. */
+@media (max-width:980px){.cards3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.cards3{grid-template-columns:1fr}}
 .pcard{display:flex;flex-direction:column;gap:18px;background:transparent}
 .pcard__media{aspect-ratio:16/11;overflow:hidden;background:var(--mist)}
 .pcard__media svg{width:100%;height:100%;transition:transform .9s var(--ease)}
 .pcard:hover .pcard__media svg{transform:scale(1.05)}
-.pcard h3{font-size:clamp(20px,2.1vw,26px)}
+/* Same 1.28 as every other card title. At the global 1.05 the long service
+   names ("Radar Maintenance, Electronics & Tactical Communications
+   Sustainment") wrapped to three almost-touching lines. */
+.pcard h3{font-size:clamp(20px,2.1vw,26px);line-height:1.28}
 .pcard p{color:var(--ink-70);margin:0;flex:1}
 .section--navy .pcard p,.section--blue .pcard p{color:rgba(255,255,255,.78)}
+
+/* ============================================================
+   Company bento — the group's four operating companies
+
+   Proportions mirror the source grid: one wide card, one tall, two standard.
+   The weighting arrives as data-span rather than per-card classes, so the
+   breakpoints below own the layout and the content stays presentation-free.
+   ============================================================ */
+.companies{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(196px,1fr);gap:clamp(16px,2.2vw,32px)}
+.ccard[data-span="wide"]{grid-column:span 2}
+.ccard[data-span="tall"]{grid-row:span 2}
+/* Themed through the token layer rather than by adding .ccard to the long
+   override lists in 3lines.css: nothing there targets this component, so the
+   tokens win on their own and the dark theme follows for free. The fallbacks
+   keep this sheet standalone if the theme layer is ever dropped. */
+.ccard{
+  position:relative;display:flex;flex-direction:column;overflow:hidden;
+  background:var(--card,#fff);color:var(--card-foreground,var(--ink));
+  border:1px solid var(--border,var(--lilac));
+  /* Matches every other card surface. overflow:hidden above means the media
+     plate inherits the rounding, so it is set once, here. */
+  border-radius:var(--radius,10px);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;
+}
+.ccard:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,92,.12);border-color:var(--cyan)}
+
+/* In the bento tier the media absorbs whatever height the card's grid area
+   leaves over, so the floor scales with the viewport — a fixed 132px left the
+   standard cards close to 2.7:1 on a wide screen. */
+.ccard__media{position:relative;flex:1;min-height:clamp(140px,13vw,188px);overflow:hidden;background-color:var(--muted,var(--mist));background-image:var(--img,none);background-size:cover;background-position:center}
+.ccard[data-plate="photo"] .ccard__media{transition:transform .9s var(--ease)}
+.ccard[data-plate="photo"]:hover .ccard__media{transform:scale(1.04)}
+
+/* The only brand mark shipped for these four is drawn white on transparent, so
+   its plate is navy rather than mist — which is also how the source shows it.
+   Detected by opening the file, not assumed. */
+.ccard[data-plate="logo"] .ccard__media{display:grid;place-items:center;padding:clamp(18px,2.4vw,30px);background-color:var(--navy)}
+.ccard__logo{max-width:min(76%,210px);max-height:74px;width:auto;height:auto;object-fit:contain}
+
+/* Pre-launch watermark, as the source paints it: oversized, set back, and
+   never competing with the company name below. */
+.ccard[data-plate="bare"] .ccard__media{display:grid;place-items:center}
+/* currentColor, not --navy: this sits on the card's own surface, so it has to
+   stay legible when the dark theme flips that surface. */
+.ccard__status{
+  font-family:var(--font-alt);font-weight:600;letter-spacing:-.02em;
+  font-size:clamp(40px,5.4vw,68px);line-height:1;color:currentColor;opacity:.14;
+  user-select:none;
+}
+
+.ccard__body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px}
+/* Same ramp as .defcard: these are the same weight of card, and a 22px cap
+   beside its 21px was an off-scale value with no reason behind it. */
+.ccard h3{font-size:clamp(18px,1.7vw,21px);line-height:1.28;letter-spacing:-.01em}
+/* No font-size: body copy is 16px everywhere on the site, and the 15.5px here
+   was the only exception. Same for the CTA, which now matches every other
+   .arrowlink rather than running a size of its own. */
+.ccard p{color:var(--muted-foreground,var(--ink-70));margin:0}
+/* margin-top:auto pins the CTA to the card's foot, so a one-line tagline and a
+   two-line one still line their "Learn more" up across a row. */
+.ccard .arrowlink{align-self:flex-start;margin-top:auto;padding-top:4px}
+.section--navy .ccard p,.section--blue .ccard p{color:rgba(255,255,255,.78)}
+
+/* Breakpoints last: media queries carry no extra specificity, so these have to
+   sit after the base rules above or `flex:1` on the media silently wins and the
+   aspect-ratio below never takes effect.
+
+   Below the widest tier the bento would strand a lone card on its own row, so
+   the spans collapse to an even 2x2 and then to a single column. Once the spans
+   are gone every card is the same shape, and letting the media absorb leftover
+   height letterboxes it to ~3.4:1 — nothing like the 16/9 the site's other
+   cards use. So here the media takes a real ratio and the row follows content. */
+@media (max-width:1100px){
+  .companies{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto}
+  .ccard[data-span="wide"],.ccard[data-span="tall"]{grid-column:auto;grid-row:auto}
+  .ccard__media{flex:0 0 auto;aspect-ratio:16/9;min-height:0}
+  .ccard__body{flex:1}
+}
+/* Final step at 640 like every other card grid, so the bento is never the only
+   single-column section on a tablet. The 1100 step above is its own, because
+   the wide/tall spans need the room. */
+@media (max-width:640px){
+  .companies{grid-template-columns:1fr}
+}
 
 /* ============================================================
    Careers band
@@ -283,6 +396,11 @@ ul{margin:0;padding:0;list-style:none}
 .ncard__media svg{width:100%;height:100%}
 .ncard__body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1;gap:12px}
 .tag{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);background:var(--mist);border:1px solid var(--lilac);padding:5px 12px;border-radius:999px}
+/* Third instance of the fixed-light-background problem: a --mist pill left the
+   news tags as a pale chip on a dark card. Only the surface needs correcting —
+   the label layer already colours the text --muted-foreground, which reads
+   cleanly once the pill behind it is dark. */
+html.dark .tag{background:var(--muted);border-color:var(--border)}
 .ncard h3{font-size:19px;line-height:1.28;letter-spacing:-.01em;flex:1}
 .ncard__meta{display:flex;gap:10px;align-items:center;font-size:13.5px;color:var(--ink-70)}
 .ncard__meta .dot{width:4px;height:4px;border-radius:50%;background:var(--lilac)}
@@ -296,6 +414,13 @@ ul{margin:0;padding:0;list-style:none}
 .socialstrip a{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--lilac);border-radius:50%;color:var(--blue);transition:background .22s,color .22s,transform .22s}
 .socialstrip a:hover{background:var(--blue);color:#fff;transform:translateY(-3px)}
 .socialstrip svg{width:19px;height:19px;fill:currentColor}
+/* The navy label and blue glyph are near-invisible once the theme layer flips
+   the surface to near-black, and nothing in that layer claims .socialstrip —
+   so the dark case is handled here. Light is left exactly as it was. */
+html.dark .socialstrip{border-top-color:var(--border);border-bottom-color:var(--border)}
+html.dark .socialstrip span{color:var(--foreground)}
+html.dark .socialstrip a{color:var(--foreground);border-color:var(--border)}
+html.dark .socialstrip a:hover{background:var(--foreground);color:var(--background)}
 
 /* ============================================================
    Footer
@@ -331,8 +456,15 @@ ul{margin:0;padding:0;list-style:none}
 /* interior pages */
 .pagehead{background:var(--mist);padding:clamp(40px,6vw,84px) 0;position:relative;overflow:hidden}
 .pagehead::after{content:"";position:absolute;right:-8%;top:-40%;width:46%;height:180%;background:radial-gradient(closest-side,rgba(135,237,255,.5),transparent 72%)}
-.pagehead .crumbs{position:relative;z-index:1;display:flex;gap:10px;font-size:13.5px;color:var(--ink-70);margin-bottom:20px}
-.pagehead .crumbs a:hover{color:var(--blue)}
+.pagehead .crumbs{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px;font-size:13.5px;color:var(--ink-70);margin-bottom:20px}
+/* The crumb links are the only route back from a detail page, so they carry the
+   site's link colour and underline on hover rather than sitting inert in the
+   same grey as the current-page label. */
+.pagehead .crumbs a{color:var(--blue);font-weight:500;text-underline-offset:3px}
+.pagehead .crumbs a:hover{color:var(--navy);text-decoration:underline}
+html.dark .pagehead .crumbs{color:var(--muted-foreground)}
+html.dark .pagehead .crumbs a{color:var(--primary)}
+html.dark .pagehead .crumbs a:hover{color:var(--foreground)}
 .pagehead h1{position:relative;z-index:1;font-size:clamp(34px,6vw,72px);color:var(--blue);line-height:1.02}
 .prose{max-width:74ch;font-size:17.5px}
 .prose h2{font-size:clamp(24px,3vw,36px);margin:1.8em 0 .6em;color:var(--navy)}
@@ -372,11 +504,26 @@ ul{margin:0;padding:0;list-style:none}
 /* --- definition cards (pillars, values, capabilities, facts) -- */
 .defs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.2vw,30px)}
 .defs[data-cols="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media (max-width:900px){.defs,.defs[data-cols="2"]{grid-template-columns:1fr}}
+@media (max-width:980px){.defs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.defs,.defs[data-cols="2"]{grid-template-columns:1fr}}
+/* var(--radius): the theme layer already rounds .ncard, .pcard, .btn and every
+   media plate to 10px. This card and .ccard were the only bordered surfaces
+   left with square corners, which is what made the set look unfinished. */
 .defcard{display:flex;flex-direction:column;gap:10px;padding:clamp(20px,2.2vw,30px);
-         background:var(--paper);border:1px solid var(--lilac)}
-.defcard h3{font-size:clamp(18px,1.7vw,21px)}
+         background:var(--paper);border:1px solid var(--lilac);border-radius:var(--radius,10px)}
+/* 1.28 to match .ncard and .ccard. These titles inherit the global
+   h1–h4 line-height of 1.05, which is meant for large display headings and
+   leaves a wrapped three-line card title with its lines nearly touching. */
+.defcard h3{font-size:clamp(18px,1.7vw,21px);line-height:1.28}
 .defcard p{color:var(--ink-70);margin:0}
+/* --paper is a fixed #FFFFFF and nothing in the theme layer claims .defcard, so
+   these stayed white in dark mode with near-white titles on top — "Supply Chain
+   Management" measured a 0.015 luminance delta. --secondary sits one step above
+   the mist band's --card, so the card still reads as raised. */
+html.dark .defcard{background:var(--secondary);border-color:var(--border);color:var(--card-foreground)}
+html.dark .defcard p{color:var(--muted-foreground)}
+html.dark .defcard__meta{border-top-color:var(--border);color:var(--muted-foreground)}
+html.dark .defcard__meta b{color:var(--card-foreground)}
 .defcard__meta{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:auto;padding-top:14px;
                border-top:1px solid var(--lilac);font-size:13.5px;color:var(--ink-70)}
 .defcard__meta b{color:var(--ink);font-weight:600}
@@ -399,8 +546,12 @@ ul{margin:0;padding:0;list-style:none}
 @media (min-width:900px){.ovsplit{grid-template-columns:2fr 1fr;gap:clamp(28px,3.4vw,48px)}}
 .ovsplit__main .h3{margin-bottom:14px}
 .ovsplit__main .lede{margin:0;color:var(--ink-70)}
-.ovsplit__aside{padding:clamp(20px,2.2vw,28px);border:1px solid var(--lilac);background:var(--paper)}
+.ovsplit__aside{padding:clamp(20px,2.2vw,28px);border:1px solid var(--lilac);background:var(--paper);border-radius:var(--radius,10px)}
 .ovsplit__aside .kicker{margin-bottom:12px}
+/* Same fixed --paper problem as .defcard: the "AT A GLANCE" panel on all ten
+   service detail pages rendered white with near-white text in dark mode. */
+html.dark .ovsplit__aside{background:var(--secondary);border-color:var(--border);color:var(--card-foreground)}
+html.dark .ticks li{color:var(--muted-foreground)}
 
 /* Ticked fact list. 3lines.css already themes `.ticks li::before`. */
 .ticks{list-style:none;margin:0;padding:0;display:grid;gap:10px}
@@ -410,6 +561,11 @@ ul{margin:0;padding:0;list-style:none}
 .ticks--lg{margin-top:22px;gap:14px}
 .ticks--lg li{font-size:16px}
 .ticks--lg b{color:var(--ink);font-weight:600}
+/* The lead-in label on each tick is a fixed --ink, which sits at 0.145 against
+   the themed band's 0.205 in dark — a 0.06 delta, so "Technical training",
+   "Knowledge transfer" and the rest read as blank space before their own
+   description. Covers both .ticks and .ticks--lg. */
+html.dark .ticks b{color:var(--card-foreground)}
 .section--navy .ticks li{color:rgba(255,255,255,.82)}
 
 /* --- partner / client logos ----------------------------------
@@ -421,6 +577,14 @@ ul{margin:0;padding:0;list-style:none}
 .logos div{display:grid;place-items:center;aspect-ratio:3/2;padding:clamp(14px,1.6vw,24px);
            background:var(--paper);transition:background .22s var(--ease)}
 .logos div:hover{background:var(--mist)}
+/* These plates stay white in BOTH themes on purpose — partner marks are drawn
+   for a light ground and many are dark. So the text on them must be dark in
+   both themes too, but the theme layer forces `color:var(--foreground)`, which
+   flips to near-white in dark and made every partner name vanish against its
+   own plate (59 elements on /partners at a 0.015 delta). The caption and tag
+   already carry their own fixed ink and were unaffected. */
+html.dark .logos div{color:var(--ink)!important}
+html.dark .logos div:hover{background:var(--mist)}
 /* Several partner marks are SVGs with a viewBox but NO intrinsic width, which
    lay out at 0x0 and silently disappear. Giving the image a definite box makes
    those fill the cell instead of collapsing. */
@@ -428,6 +592,11 @@ ul{margin:0;padding:0;list-style:none}
 /* Marks drawn fill="white" for a dark theme would vanish here. Flagged at
    ingest by reading the file, not guessed from the filename. */
 .logos img[data-invert="1"]{filter:invert(1) brightness(.35)}
+/* The marquee has no plate of its own — it sits directly on the section
+   background, which the dark theme flips to near-black. A white mark reads
+   perfectly there, so inverting it would paint it black on black. The catalogue
+   plates stay white in both themes, so those keep the inversion. */
+html.dark .logos--marquee img[data-invert="1"]{filter:none}
 
 .logos--marquee{display:block;border:0;background:none;overflow:hidden;
   /* edge fades, as the reference strip has */
@@ -518,6 +687,30 @@ ul{margin:0;padding:0;list-style:none}
    1440px wrap left ~700px of dead space down the right of every prose page. */
 .prose{max-width:46rem;margin-inline:auto}
 .prose p{margin-bottom:1.1em}
+/* ...but only when the prose IS the page. That reasoning holds for the legal
+   pages, where prose is the section's sole child. On /about it shares a section
+   with a kicker and a figures strip, both of which start at the gutter, so a
+   centred column left the copy floating ~300px right of its own heading. */
+.section > .wrap > .prose:not(:only-child){margin-inline:0}
+
+/* Section children need separation from one another.
+   A `split` head is wrapped in .sec-head, which carries the head/body gap. A
+   `stacked` head is emitted as bare siblings and consecutive bodies are plain
+   siblings, so neither got one: on /about the "How we deliver it" heading sat
+   flush on top of its image, and certs/defs touched. .wrap is display:block, so
+   this collapses with .sec-head's own margin instead of stacking with it, and
+   the token is .sec-head's — one head/body rhythm for both layouts. */
+.section > .wrap > * + *:not(.kicker):not(.h2):not(.lede){margin-top:clamp(26px,3.5vw,46px)}
+/* A lede belongs to the heading above it, but the two boxes were touching. */
+.h2 + .lede{margin-top:14px}
+
+/* .pagehead is designed above as a tinted mist band, which is what earns it a
+   full 84px of bottom padding. The theme layer deliberately flattens it to the
+   page background, so that padding stops reading as part of a band and instead
+   stacks with the next section's own 87px — 171px of blank white between a page
+   title and its first line of copy. The band is gone, so only one of the two
+   paddings is doing any work. */
+.pagehead + .section{padding-top:clamp(24px,3vw,44px)}
 
 /* Card padding.
    style.css styles .pcard as a transparent block with no padding, but the theme

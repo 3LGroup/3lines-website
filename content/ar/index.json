@@ -7,7 +7,8 @@
     "siteInfo.json",
     "services.json",
     "posts.json",
-    "non-cms.json"
+    "non-cms.json",
+    "companies.json"
   ],
   "title": "ثريلاينز آدفانسد تكنولجيز",
   "description": "تأسست مجموعة 3LINES ADVANCED TECHNOLOGIES في عام 2019 تماشيًا مع رؤية السعودية 2030 بهدف توطين الخدمات العسكرية والمدنية داخل المملكة. تقدم المجموعة خدمات متكاملة في سلاسل الإمداد والخدمات الفنية — المشتريات والخدمات اللوجستية والصيانة والإصلاح والتصنيع — دعمًا للجاهزية التشغيلية في قطاعي الدفاع والتقنيات المتقدمة محليًا ودوليًا.",
@@ -90,6 +91,73 @@
             {
               "title": "الإصلاح والتصنيع",
               "text": "ورش تشخيص وإصلاح موطّنة، إضافة إلى الهندسة العكسية وتصنيع المكوّنات للأنظمة المتقدمة."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "id": "companies",
+      "head": {
+        "layout": "split",
+        "kicker": "شركاتنا",
+        "heading": ""
+      },
+      "bodies": [
+        {
+          "kind": "companies",
+          "items": [
+            {
+              "id": "advanced-technology",
+              "name": "التقنيات المتقدمة",
+              "tagline": "توفير حلول وخدمات التقنيات المتقدمة",
+              "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+              "link": {
+                "label": "اعرف المزيد",
+                "href": "/services"
+              },
+              "span": "wide"
+            },
+            {
+              "id": "xr",
+              "name": "XR",
+              "tagline": "الواقع الممتد عن طريق الواقع المعزز و الواقع الافتراضي",
+              "imgVar": "url('/assets/photos/3l-xr-lab.jpg')",
+              "link": {
+                "label": "اعرف المزيد",
+                "href": "https://xr.3lines.com.sa/"
+              },
+              "external": true,
+              "span": "tall"
+            },
+            {
+              "id": "optokon-middle-east",
+              "name": "Optokon Middle East",
+              "tagline": "حلول البنية التحتية للبصريات وتكنولوجيا المعلومات",
+              "logo": {
+                "src": "/assets/logos/optokon-middle-east-logo.png",
+                "alt": "Optokon Middle East"
+              },
+              "link": {
+                "label": "اعرف المزيد",
+                "href": "https://optokon.com.sa/"
+              },
+              "external": true,
+              "span": "standard"
+            },
+            {
+              "id": "ai3lines",
+              "name": "3Lines AI",
+              "tagline": "وكلاء ذكاء اصطناعي يديرون عمليات أعمالك",
+              "imgVar": "url('/assets/photos/3l-command-center.jpg')",
+              "link": {
+                "label": "اعرف المزيد",
+                "href": "https://ai3lines.com/"
+              },
+              "external": true,
+              "span": "standard"
             }
           ]
         }
