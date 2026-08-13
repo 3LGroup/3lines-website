@@ -25,8 +25,13 @@ export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
 
-const BLUE = '#0816A1';
-const NAVY = '#00005C';
+/* The one place the band colour is not tokenised — Satori cannot read the
+   stylesheet, so these are kept in step with --navy in style.css by hand. Both
+   stops sit in the logo's blue family: the deep band colour ramping to the mark's
+   own #2271AA. The old pair ran #00005C -> #0816A1, two Thales colours unrelated
+   to the logo and to each other. */
+const NAVY = '#123E5E';
+const LOGO_BLUE = '#2271AA';
 const CYAN = '#87EDFF';
 
 /** Cut at a word boundary and strip the punctuation the cut left dangling. */
@@ -55,7 +60,7 @@ export default async function Image() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '80px',
-          background: `linear-gradient(135deg, ${NAVY} 0%, ${BLUE} 100%)`,
+          background: `linear-gradient(135deg, ${NAVY} 0%, ${LOGO_BLUE} 100%)`,
           color: '#FFFFFF',
           fontFamily: 'sans-serif',
         }}

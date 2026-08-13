@@ -5,7 +5,15 @@
 
 :root{
   --blue:        #0816A1;   /* Thales primary blue */
-  --navy:        #00005C;   /* deep navy */
+  --navy:        #123E5E;   /* dark bands — the logo's own hue, taken deep.
+                               Was #00005C, a Thales colour inherited with this
+                               template and unrelated to the 3Lines mark, which
+                               samples at #2271AA. Using that mid blue directly
+                               dropped the cyan kicker to 3.89:1; this keeps the
+                               family and the depth — white 11.2:1, cyan 8.3:1.
+                               Intentionally theme-independent: these bands stay
+                               blue in dark mode, and this reads as a band there,
+                               where #00005C was nearly the page background. */
   --navy-2:      #02023F;
   --cyan:        #87EDFF;   /* signature accent */
   --ink:         #252526;
