@@ -14,6 +14,7 @@ import type {
   FiguresBody,
   Link,
   LogosBody,
+  MapBody,
   OverviewSplitBody,
   ProseBody,
   SectionBody,
@@ -324,6 +325,38 @@ function Companies({ body, locale }: { body: CompaniesBody; locale: Locale }) {
   );
 }
 
+/**
+ * Click-to-load map.
+ *
+ * Deliberately renders NO iframe. Everything else on this site is self-hosted
+ * — the fonts especially — so a map that called Google on every page view
+ * would be the one third-party request in the whole build. The coordinates ride
+ * on data attributes and main.js swaps in the embed after a click, which keeps
+ * that promise while still giving a real map to anyone who wants one. `note`
+ * says what the button does, so it is an informed choice rather than a
+ * surprise connection.
+ */
+function MapEmbed({ body }: { body: MapBody }) {
+  return (
+    <div
+      className="mapembed reveal"
+      data-lat={body.lat}
+      data-lng={body.lng}
+      data-zoom={body.zoom ?? 16}
+      data-title={body.placeName}
+    >
+      <div className="mapembed__panel">
+        <p className="mapembed__place">{body.placeName}</p>
+        <p className="mapembed__addr">{body.address}</p>
+        <button className="btn btn--wire mapembed__load" type="button">
+          {body.ctaLabel} <Arrow />
+        </button>
+        <p className="mapembed__note">{body.note}</p>
+      </div>
+    </div>
+  );
+}
+
 function Logos({ body, locale }: { body: LogosBody; locale: Locale }) {
   const marquee = body.variant === 'marquee';
 
@@ -459,6 +492,8 @@ export default function BodyRenderer({ body, locale }: { body: SectionBody; loca
       return <Certs body={body} />;
     case 'companies':
       return <Companies body={body} locale={locale} />;
+    case 'map':
+      return <MapEmbed body={body} />;
     case 'form':
       return <ContactForm body={body} locale={locale} />;
     default:

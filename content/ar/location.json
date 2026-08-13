@@ -1,14 +1,14 @@
 {
-  "route": "/cookie-policy",
+  "route": "/location",
   "locale": "ar",
-  "slug": "cookie-policy",
+  "slug": "location",
   "source": [
-    "pages.json#cookie-policy"
+    "location.json",
+    "siteInfo.json"
   ],
-  "title": "سياسة ملفات تعريف الارتباط (الكوكيز)",
-  "description": "محتوى سياسة ملفات تعريف الارتباط (الكوكيز)",
-  "keywords": "cookie,policy,cookie policy,سياسة,ملفات,تعريف,الارتباط,الكوكيز",
-  "placeholder": true,
+  "title": "الموقع",
+  "description": "يقع مكتبنا في حي الملك فيصل بالرياض، على طريق الملك عبدالله الفرعي.",
+  "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
   "blocks": [
     {
       "type": "pageTitle",
@@ -18,22 +18,30 @@
           "href": "/"
         },
         {
-          "label": "سياسة ملفات تعريف الارتباط (الكوكيز)"
+          "label": "الموقع"
         }
       ],
-      "heading": "سياسة ملفات تعريف الارتباط (الكوكيز)"
+      "heading": "الموقع"
     },
     {
       "type": "section",
       "tone": "plain",
+      "head": {
+        "layout": "split",
+        "kicker": "الموقع",
+        "heading": "",
+        "lede": "يقع مكتبنا في حي الملك فيصل بالرياض، على طريق الملك عبدالله الفرعي."
+      },
       "bodies": [
         {
-          "kind": "prose",
-          "paragraphs": [
-            {
-              "text": "محتوى سياسة ملفات تعريف الارتباط (الكوكيز)"
-            }
-          ]
+          "kind": "map",
+          "lat": 24.7676823,
+          "lng": 46.7608157,
+          "zoom": 17,
+          "placeName": "ثريلاينز آدفانسد تكنولجيز",
+          "address": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
+          "ctaLabel": "عرض الخريطة",
+          "note": "يحمّل خرائط Google"
         }
       ]
     },

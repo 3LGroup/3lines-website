@@ -101,6 +101,34 @@
     figs.forEach(function (f) { fio.observe(f); });
   }
 
+  /* ---------- click-to-load map ----------
+     The server renders only a placeholder and the coordinates. Nothing else on
+     this site fetches third-party code — the fonts are self-hosted precisely so
+     there are no external requests — so the Google embed is built here, on
+     click, and never before. The button's own note says that is what it does. */
+  Array.prototype.forEach.call(document.querySelectorAll('.mapembed'), function (box) {
+    var btn = box.querySelector('.mapembed__load');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var lat = box.getAttribute('data-lat');
+      var lng = box.getAttribute('data-lng');
+      if (!lat || !lng) return;
+      var zoom = box.getAttribute('data-zoom') || 16;
+      // Locale so the map's own labels match the page it sits on.
+      var lang = (document.documentElement.lang || 'en').slice(0, 2);
+      var frame = document.createElement('iframe');
+      frame.src = 'https://www.google.com/maps?q=' + encodeURIComponent(lat + ',' + lng) +
+                  '&z=' + encodeURIComponent(zoom) + '&hl=' + encodeURIComponent(lang) + '&output=embed';
+      frame.title = box.getAttribute('data-title') || 'Map';
+      frame.loading = 'lazy';
+      frame.referrerPolicy = 'no-referrer-when-downgrade';
+      frame.setAttribute('allowfullscreen', '');
+      box.classList.add('is-loaded');
+      box.innerHTML = '';
+      box.appendChild(frame);
+    });
+  });
+
   /* ---------- light logo detection ----------
      Seven partner marks are drawn white-on-transparent (Airbus, NPCO, OPTOKON,
      SAMI, SAMI AEC, SAMI Aerospace, TAM — three of them pure #fff), so they

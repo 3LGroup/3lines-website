@@ -73,12 +73,22 @@ export interface Chrome {
   footerLogoImg: Media;
   utility: { links: ChromeLink[]; lang: LangLink[] };
   mega: {
-    tabs: { key: string; label: string }[];
+    /**
+     * An item with an `href` is a direct link — a destination with nothing
+     * beneath it, so it navigates rather than opening a panel. Items without
+     * one are tabs and must have a matching entry in `panels`.
+     */
+    tabs: { key: string; label: string; href?: string }[];
     panels: { key: string; title: string; links: ChromeLink[]; cta: ChromeLink }[];
   };
   footer: {
     columns: { logo?: boolean; title: string; links: ChromeLink[] }[];
-    bar: { links: ChromeLink[]; a11yLabel: string; a11yPill: string; copyright: string };
+    /**
+     * `note` and `badge` were `a11yLabel` / `a11yPill`, names inherited from the
+     * source design where that slot held an accessibility statement. They carry
+     * the address and a short badge, so the old names described neither.
+     */
+    bar: { links: ChromeLink[]; note: string; badge: string; copyright: string };
   };
 }
 

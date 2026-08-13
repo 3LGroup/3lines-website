@@ -1,0 +1,31 @@
+{
+  "$comment": "The Riyadh office location. AUTHORED, not generated — like companies.json and careers.json, no script writes this file, so it survives `npm run ingest`.",
+  "$comment_coords": "Resolved by putting siteInfo.address through Google Maps, which lands on the company's own business listing, '3 Lines Advanced Technologies Company LLC'. Pinning the coordinates is stable where an address-string search is not: the search result can drift if Google reindexes the string, the pin cannot.",
+  "locales": ["en", "ar"],
+
+  "nav": {
+    "label": { "en": "Location", "ar": "الموقع" }
+  },
+
+  "title": { "en": "Location", "ar": "الموقع" },
+
+  "lede": {
+    "en": "Our office is in the King Faisal district of Riyadh, on King Abdullah Branch Road.",
+    "ar": "يقع مكتبنا في حي الملك فيصل بالرياض، على طريق الملك عبدالله الفرعي."
+  },
+
+  "placeName": { "en": "3 Lines Advanced Technologies Company", "ar": "ثريلاينز آدفانسد تكنولجيز" },
+
+  "map": {
+    "lat": 24.7676823,
+    "lng": 46.7608157,
+    "zoom": 17
+  },
+
+  "$comment_cta": "The button text says what pressing it does. This site loads no third-party code anywhere else, so the map is not fetched until someone asks for it, and the note makes that choice an informed one rather than a surprise.",
+  "cta": { "en": "View map", "ar": "عرض الخريطة" },
+  "note": {
+    "en": "Loads Google Maps",
+    "ar": "يحمّل خرائط Google"
+  }
+}

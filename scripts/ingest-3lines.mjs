@@ -30,6 +30,19 @@ const constants = read('constants.json').data;
 const details = read('service-details.json');
 const nonCms = read('non-cms.json');
 const companiesSrc = read('companies.json');
+const careersSrc = read('careers.json');
+const locationSrc = read('location.json');
+
+/**
+ * The group's founding year, shown as a badge in the footer bar.
+ *
+ * The CMS export has no field for it — the year only appears inside prose — and
+ * regex-parsing a number out of marketing copy is the kind of guess that breaks
+ * silently. So it is stated once here and checked against the company's own
+ * description: if that copy ever stops saying 2019, this run fails rather than
+ * the footer of all 48 pages quietly claiming the wrong year.
+ */
+const FOUNDED = 2019;
 
 /* ------------------------------------------------------------- helpers -- */
 
@@ -143,17 +156,61 @@ const ctaBand = (locale) => ({
   cta: { label: lbl('cta', locale), href: '/contact' },
 });
 
-const socialStrip = (locale) => ({
-  type: 'socialStrip',
-  label: L(constants.name_en ? { en: constants.name_en, ar: constants.name_ar } : null, locale),
-  items: [
-    {
-      label: 'LinkedIn',
-      href: siteInfo.linkedIn || constants.linkedin || '#',
-      icon: null,
+/**
+ * Contact row above the footer.
+ *
+ * Every entry is built from a real field and dropped when that field is empty,
+ * so a detail the company has not supplied simply has no icon rather than a
+ * dead link. `network` is the stable identifier the renderer picks its glyph
+ * by; `label` is the accessible name and is localized, which is why the two
+ * cannot be the same string.
+ *
+ * WhatsApp is written in but currently yields nothing: constants.json carries
+ * a `whatsapp` field and it is null, and the source site gates its own
+ * WhatsApp icon on that same field. Populating it makes the icon appear here
+ * with no code change — which is the point of gating rather than hardcoding.
+ */
+const socialStrip = (locale) => {
+  const digits = (s) => String(s || '').replace(/[^\d+]/g, '');
+
+  const items = [
+    constants.email && {
+      network: 'email',
+      label: L({ en: 'Email', ar: 'البريد الإلكتروني' }, locale),
+      href: `mailto:${constants.email}`,
     },
-  ],
-});
+    constants.phone && {
+      network: 'phone',
+      label: L({ en: 'Phone', ar: 'الهاتف' }, locale),
+      href: `tel:${digits(constants.phone)}`,
+    },
+    constants.whatsapp && {
+      network: 'whatsapp',
+      label: 'WhatsApp',
+      // wa.me takes the number without a leading +.
+      href: `https://wa.me/${digits(constants.whatsapp).replace(/^\+/, '')}`,
+    },
+    (siteInfo.linkedIn || constants.linkedin) && {
+      network: 'linkedin',
+      label: 'LinkedIn',
+      href: siteInfo.linkedIn || constants.linkedin,
+    },
+    siteInfo.address && {
+      network: 'maps',
+      label: L({ en: 'Address', ar: 'العنوان' }, locale),
+      // Built from the address exactly as the source site builds its own.
+      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteInfo.address)}`,
+    },
+  ].filter(Boolean);
+
+  if (!items.length) fail('socialStrip: no contact details in the source at all');
+
+  return {
+    type: 'socialStrip',
+    label: L(constants.name_en ? { en: constants.name_en, ar: constants.name_ar } : null, locale),
+    items: items.map((i) => ({ ...i, icon: null })),
+  };
+};
 
 /* ------------------------------------------------------------- builders -- */
 
@@ -710,6 +767,101 @@ function buildLegal(page, locale) {
   };
 }
 
+/**
+ * Careers.
+ *
+ * Awaiting HR copy, so it carries the same `placeholder` flag the legal pages
+ * use: `noindex, follow`, out of the sitemap, and reported by this script as
+ * unfit to publish. The flag is derived from the body's length, exactly as
+ * buildLegal does it, so it clears itself the moment real copy lands rather
+ * than needing someone to remember to unset it.
+ */
+function buildCareers(locale) {
+  const body = L(careersSrc.body, locale, 'careers.body');
+  const title = L(careersSrc.title, locale, 'careers.title');
+
+  return {
+    route: '/careers',
+    locale,
+    slug: 'careers',
+    source: ['careers.json'],
+    title,
+    description: clean(body).slice(0, 160),
+    keywords: constants.keywords,
+    placeholder: clean(body).length < 400 || undefined,
+    blocks: [
+      {
+        type: 'pageTitle',
+        crumbs: [{ label: home(locale), href: '/' }, { label: title }],
+        heading: title,
+      },
+      {
+        type: 'section',
+        tone: 'plain',
+        bodies: [{ kind: 'prose', paragraphs: paragraphs(body).map((text) => ({ text })) }],
+      },
+      {
+        type: 'careers',
+        imgVar: imgVar({ src: '/assets/photos/3l-mro-tech.jpg' }),
+        art: null,
+        heading: title,
+        cta: { label: L(careersSrc.cta, locale, 'careers.cta'), href: '/contact' },
+      },
+      socialStrip(locale),
+    ],
+  };
+}
+
+/**
+ * Location.
+ *
+ * Unlike /careers this is real content, so it is NOT placeholder-flagged: it
+ * belongs in the sitemap and should be indexable. The address comes from
+ * siteInfo rather than being restated in location.json, so there is one copy of
+ * it on the site.
+ */
+function buildLocation(locale) {
+  const title = L(locationSrc.title, locale, 'location.title');
+  const m = locationSrc.map || {};
+  if (typeof m.lat !== 'number' || typeof m.lng !== 'number')
+    fail('location.json: map.lat and map.lng must be numbers');
+
+  return {
+    route: '/location',
+    locale,
+    slug: 'location',
+    source: ['location.json', 'siteInfo.json'],
+    title,
+    description: clean(L(locationSrc.lede, locale)).slice(0, 160),
+    keywords: constants.keywords,
+    blocks: [
+      {
+        type: 'pageTitle',
+        crumbs: [{ label: home(locale), href: '/' }, { label: title }],
+        heading: title,
+      },
+      {
+        type: 'section',
+        tone: 'plain',
+        head: { layout: 'split', kicker: title, heading: '', lede: L(locationSrc.lede, locale) },
+        bodies: [
+          {
+            kind: 'map',
+            lat: m.lat,
+            lng: m.lng,
+            zoom: m.zoom ?? 16,
+            placeName: L(locationSrc.placeName, locale, 'location.placeName'),
+            address: siteInfo.address,
+            ctaLabel: L(locationSrc.cta, locale, 'location.cta'),
+            note: L(locationSrc.note, locale, 'location.note'),
+          },
+        ],
+      },
+      socialStrip(locale),
+    ],
+  };
+}
+
 /* -------------------------------------------------------------- chrome -- */
 
 /**
@@ -735,6 +887,11 @@ function buildChrome(locale) {
   const partnersNav = partnersLabel(locale);
   const aboutLabel = L(NAV.about, locale);
   const contactLabel = L(NAV.contact, locale);
+  // Authored, not lifted: the source site has no careers page, so its label has
+  // no entry in any of the label tables and lives in careers.json instead.
+  const careersNav = L(careersSrc.nav?.label, locale, 'careers.nav.label');
+  const companyLabel = L({ en: 'Company', ar: 'الشركة' }, locale);
+  const locationNav = L(locationSrc.nav?.label, locale, 'location.nav.label');
 
   const serviceLinks = services.map((s) => ({
     label: L(s.title, locale),
@@ -745,6 +902,7 @@ function buildChrome(locale) {
     { label: aboutLabel, href: '/about' },
     { label: newsLabel, href: '/news' },
     { label: partnersNav, href: '/partners' },
+    { label: locationNav, href: '/location' },
     { label: contactLabel, href: '/contact' },
   ];
 
@@ -787,10 +945,19 @@ function buildChrome(locale) {
         { label: 'AR', locale: 'ar', current: locale === 'ar' || undefined },
       ],
     },
+    /**
+     * Five items. Services, Careers and Company open panels; Newsroom and
+     * Contact carry an `href` and simply navigate, because they are single
+     * pages with nothing beneath them and a panel holding one link is a wasted
+     * click. The renderer keys off `href` to decide which it is.
+     */
     mega: {
       tabs: [
         { key: 'services', label: servicesNav },
-        { key: 'company', label: L({ en: 'Company', ar: 'الشركة' }, locale) },
+        { key: 'careers', label: careersNav },
+        { key: 'news', label: newsLabel, href: '/news' },
+        { key: 'contact', label: contactLabel, href: '/contact' },
+        { key: 'company', label: companyLabel },
       ],
       panels: [
         {
@@ -800,9 +967,19 @@ function buildChrome(locale) {
           cta: { label: servicesNav, href: '/services' },
         },
         {
+          key: 'careers',
+          title: careersNav,
+          links: [{ label: careersNav, href: '/careers' }],
+          cta: { label: careersNav, href: '/careers' },
+        },
+        {
           key: 'company',
-          title: L({ en: 'Company', ar: 'الشركة' }, locale),
-          links: companyLinks,
+          title: companyLabel,
+          links: [
+            { label: aboutLabel, href: '/about' },
+            { label: partnersNav, href: '/partners' },
+            { label: locationNav, href: '/location' },
+          ],
           cta: { label: aboutLabel, href: '/about' },
         },
       ],
@@ -817,8 +994,12 @@ function buildChrome(locale) {
         // Deliberately empty: the Legal column above already carries these, and
         // rendering both printed every legal link twice in the footer.
         links: [],
-        a11yLabel: `${siteInfo.address}`,
-        a11yPill: `CR ${siteInfo.commercialRegNo} · VAT ${siteInfo.vatRegNo}`,
+        note: `${siteInfo.address}`,
+        /* Was the CR and VAT numbers. Those are a compliance disclosure rather
+           than something worth repeating on all 48 pages, so they now live only
+           on /contact under "Registration" — removed from the footer, not from
+           the site. Wording follows the company's own ("تأسست … في عام 2019"). */
+        badge: L({ en: `Established ${FOUNDED}`, ar: `تأسست عام ${FOUNDED}` }, locale),
         copyright: `© ${siteInfo.copyrightYear} ${L({ en: constants.name_en, ar: constants.name_ar }, locale)}`,
       },
     },
@@ -860,6 +1041,8 @@ for (const locale of LOCALES) {
   docs.push(buildNewsIndex(locale));
   for (const p of posts) docs.push(buildPost(p, locale));
   docs.push(buildPartners(locale));
+  docs.push(buildCareers(locale));
+  docs.push(buildLocation(locale));
   docs.push(buildContact(locale));
   for (const slug of LEGAL_SLUGS) {
     const page = pages.find((p) => p.slug === slug);
@@ -870,9 +1053,13 @@ for (const locale of LOCALES) {
 
 /* ------------------------------------------------------------ validate -- */
 
-const EXPECTED_ROUTES = 3 + services.length + 1 + posts.length + 1 + 1 + LEGAL_SLUGS.length;
+// home, about, services index | services | news index | posts | partners
+// | careers | location | contact | legal
+const EXPECTED_ROUTES = 3 + services.length + 1 + posts.length + 1 + 1 + 1 + 1 + LEGAL_SLUGS.length;
 const perLocale = LOCALES.map((l) => docs.filter((d) => d.locale === l).length);
 
+if (!String(L(siteInfo.companyDescription, 'en')).includes(String(FOUNDED)))
+  fail(`founding year ${FOUNDED} no longer appears in companyDescription — the footer badge would be wrong`);
 if (services.length !== 10) fail(`expected 10 services, got ${services.length}`);
 if (posts.length !== 4) fail(`expected 4 posts, got ${posts.length}`);
 if (partners.length !== 39) fail(`expected 39 partners, got ${partners.length}`);

@@ -135,8 +135,27 @@
       "label": "3Lines Advanced Technologies Company",
       "items": [
         {
+          "network": "email",
+          "label": "Email",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "Phone",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
           "label": "LinkedIn",
           "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "Address",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
           "icon": null
         }
       ]

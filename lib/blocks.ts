@@ -272,6 +272,27 @@ export interface CompaniesBody {
   items: CompanyCard[];
 }
 
+/**
+ * A map of a physical location, rendered click-to-load.
+ *
+ * The server output carries only these coordinates and a button — never an
+ * iframe. Nothing else on this site loads third-party code (even the fonts are
+ * self-hosted for that reason), so the embed is fetched from Google only once
+ * a visitor asks for it, and `note` tells them that is what the button does.
+ */
+export interface MapBody {
+  kind: 'map';
+  lat: number;
+  lng: number;
+  zoom?: number;
+  /** Shown above the address on the placeholder. */
+  placeName: string;
+  address: string;
+  ctaLabel: string;
+  /** Short disclosure rendered under the button. */
+  note: string;
+}
+
 export interface FormField {
   name: string;
   type: 'text' | 'email' | 'tel' | 'textarea';
@@ -305,6 +326,7 @@ export type SectionBody =
   | LogosBody
   | CertsBody
   | CompaniesBody
+  | MapBody
   | FormBody;
 
 export type SectionBodyKind = SectionBody['kind'];
@@ -323,6 +345,7 @@ export const SECTION_BODY_KINDS: SectionBodyKind[] = [
   'logos',
   'certs',
   'companies',
+  'map',
   'form',
 ];
 
@@ -370,7 +393,18 @@ export interface CareersBlock {
 export interface SocialStripBlock {
   type: 'socialStrip';
   label: string;
-  items: { label: string; href: string; icon: SvgNode | null }[];
+  items: {
+    /**
+     * Stable identifier the renderer picks its glyph by — `email`, `phone`,
+     * `linkedin`, `maps`, `whatsapp`. Separate from `label` because the label
+     * is the localized accessible name: keying the icon off it would lose
+     * every glyph the moment the page renders in Arabic.
+     */
+    network?: string;
+    label: string;
+    href: string;
+    icon: SvgNode | null;
+  }[];
 }
 
 export type Block =

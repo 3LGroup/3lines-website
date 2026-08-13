@@ -94,6 +94,7 @@ export function Header({ chrome, locale }: WithLocale) {
 }
 
 export function MegaMenu({ chrome, locale }: WithLocale) {
+  const firstTabKey = chrome.mega.tabs.find((t) => !t.href)?.key;
   return (
     <div className="mega" id="mega" role="dialog" aria-modal="true" aria-label={ui(locale).mainMenu}>
       <div className="mega__bar">
@@ -109,17 +110,34 @@ export function MegaMenu({ chrome, locale }: WithLocale) {
       </div>
 
       <div className="mega__body">
+        {/* Mixed list. Items carrying an href are destinations and render as
+            plain links; the rest are tabs that swap the panel beside them.
+            The link class is deliberately NOT `megatab` — main.js drives the
+            tabs by querying that class and toggling the panel named in
+            data-target, so a link wearing it would try to open a panel that
+            does not exist, on top of navigating. Keeping the classes distinct
+            means the tab script needs no knowledge of links at all, and its
+            arrow-key cycling stays over the real tabs only. */}
         <ul className="megatabs" role="tablist">
-          {chrome.mega.tabs.map((t, i) => (
+          {chrome.mega.tabs.map((t) => (
             <li key={t.key}>
-              <button
-                className="megatab"
-                role="tab"
-                data-target={t.key}
-                aria-selected={i === 0 ? 'true' : 'false'}
-              >
-                {t.label} <Arrow />
-              </button>
+              {t.href ? (
+                <a className="megalink" href={localePath(locale, t.href)}>
+                  {t.label} <Arrow />
+                </a>
+              ) : (
+                <button
+                  className="megatab"
+                  role="tab"
+                  data-target={t.key}
+                  /* The first TAB, not the first item — a link carries no
+                     selected state, so indexing the whole list would leave no
+                     tab selected if the order ever put a link first. */
+                  aria-selected={t.key === firstTabKey ? 'true' : 'false'}
+                >
+                  {t.label} <Arrow />
+                </button>
+              )}
             </li>
           ))}
         </ul>
@@ -189,8 +207,10 @@ export function Footer({ chrome, locale }: WithLocale) {
               {l.label}
             </a>
           ))}
+          {/* Class names stay .a11y/.pill — they carry the green pill styling
+              in style.css; only the data behind them changed. */}
           <span className="a11y">
-            {bar.a11yLabel} <span className="pill">{bar.a11yPill}</span>
+            {bar.note} <span className="pill">{bar.badge}</span>
           </span>
           <span className="right">{bar.copyright}</span>
         </div>

@@ -112,15 +112,19 @@ html.dark .hdr__burger:hover,html.dark .hdr__search:hover{background:var(--secon
 @media (max-width:900px){.mega__body{grid-template-columns:1fr}}
 
 .megatabs li + li{border-top:1px solid var(--lilac)}
-.megatab{
+/* .megalink is the direct-link variant of a menu item. It gets a separate
+   class so the tabs script never picks it up (see MegaMenu), but shares every
+   visual rule here so the column reads as one list. The [aria-selected] rules
+   stay tab-only — a link has no selected state to show. */
+.megatab,.megalink{
   width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:14px;
   padding:16px 0;font-size:clamp(18px,2vw,24px);font-weight:600;color:var(--navy);
   transition:color .2s,padding-left .28s var(--ease);
 }
-.megatab:hover{color:var(--blue);padding-left:8px}
+.megatab:hover,.megalink:hover{color:var(--blue);padding-left:8px}
 .megatab[aria-selected="true"]{color:var(--blue)}
-.megatab svg{width:18px;height:18px;fill:currentColor;opacity:.4;transition:opacity .2s,transform .2s}
-.megatab[aria-selected="true"] svg,.megatab:hover svg{opacity:1;transform:translateX(4px)}
+.megatab svg,.megalink svg{width:18px;height:18px;fill:currentColor;opacity:.4;transition:opacity .2s,transform .2s}
+.megatab[aria-selected="true"] svg,.megatab:hover svg,.megalink:hover svg{opacity:1;transform:translateX(4px)}
 
 .megapanel{display:none}
 .megapanel.is-on{display:block;animation:fade .35s var(--ease)}
@@ -140,8 +144,8 @@ html.dark .hdr__burger:hover,html.dark .hdr__search:hover{background:var(--secon
    white for dark surfaces. The navy tab and link text had the same problem. */
 html.dark .mega__bar{background:var(--background);border-bottom-color:var(--border)}
 html.dark .megatabs li + li{border-top-color:var(--border)}
-html.dark .megatab{color:var(--foreground)}
-html.dark .megatab:hover,html.dark .megatab[aria-selected="true"]{color:var(--primary)}
+html.dark .megatab,html.dark .megalink{color:var(--foreground)}
+html.dark .megatab:hover,html.dark .megalink:hover,html.dark .megatab[aria-selected="true"]{color:var(--primary)}
 html.dark .megapanel__links a{color:var(--foreground)}
 html.dark .megapanel__links a:hover{color:var(--primary)}
 html.dark .mega__close{color:var(--foreground)}
@@ -363,6 +367,31 @@ html.dark .mega__close{color:var(--foreground)}
 @media (max-width:640px){
   .companies{grid-template-columns:1fr}
 }
+
+/* ============================================================
+   Click-to-load map
+
+   Placeholder until asked for, then the same box holds the iframe. Tokens
+   throughout so the dark rule below is the only theme work needed — a fixed
+   light ground here would repeat the white-on-white fault corrected across
+   the rest of this sheet.
+   ============================================================ */
+.mapembed{
+  position:relative;aspect-ratio:16/9;overflow:hidden;display:grid;place-items:center;
+  background:var(--muted,var(--mist));border:1px solid var(--border,var(--lilac));
+  border-radius:var(--radius,10px);
+}
+@media (max-width:640px){.mapembed{aspect-ratio:4/3}}
+.mapembed__panel{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:clamp(20px,3vw,36px);max-width:46ch}
+.mapembed__place{font-weight:600;font-size:clamp(17px,1.7vw,20px);margin:0}
+.mapembed__addr{color:var(--muted-foreground,var(--ink-70));margin:0;font-size:15px}
+.mapembed__load{margin-top:6px}
+/* The disclosure, deliberately quiet but present: it explains the one
+   third-party request this site will ever make. */
+.mapembed__note{margin:0;font-size:12.5px;color:var(--muted-foreground,var(--ink-70))}
+/* Once loaded the iframe IS the box — drop the padding grid and let it fill. */
+.mapembed.is-loaded{display:block;background:none}
+.mapembed iframe{width:100%;height:100%;border:0;display:block}
 
 /* ============================================================
    Careers band

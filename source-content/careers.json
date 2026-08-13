@@ -1,0 +1,19 @@
+{
+  "$comment": "The Careers page and its navigation labels. AUTHORED, not generated — like companies.json, no script writes this file, so it survives `npm run ingest` and is safe to hand-edit.",
+  "$comment_placeholder": "HR has not supplied copy yet. The body below is deliberately minimal, factual scaffolding — NOT proposed employer-brand wording — and the page is emitted with placeholder:true, so it renders `noindex, follow`, stays out of sitemap.xml, and keeps appearing in the ingest's 'must not go live as-is' list until real copy replaces it. Replace `body` and drop nothing else; the flag clears itself once the copy is long enough to be real.",
+  "locales": ["en", "ar"],
+
+  "nav": {
+    "label": { "en": "Careers", "ar": "الوظائف" }
+  },
+
+  "title": { "en": "Careers", "ar": "الوظائف" },
+
+  "body": {
+    "en": "3Lines Advanced Technologies Company employs a multidisciplinary team across supply chain, maintenance, repair and manufacturing, supporting defense and advanced technology programmes in the Kingdom.\n\nRole listings and application details will be published here.",
+    "ar": "توظّف شركة ثريلاينز آدفانسد تكنولجيز فريقًا متعدد التخصصات في مجالات سلاسل الإمداد والصيانة والإصلاح والتصنيع، دعمًا لبرامج الدفاع والتقنيات المتقدمة داخل المملكة.\n\nسيتم نشر الوظائف الشاغرة وتفاصيل التقديم هنا."
+  },
+
+  "$comment_cta": "Until there is an application route, the page points at the existing contact form rather than inventing one.",
+  "cta": { "en": "Get in touch", "ar": "تواصل معنا" }
+}

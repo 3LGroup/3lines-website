@@ -76,6 +76,14 @@
     "slug": "partners"
   },
   {
+    "route": "/careers",
+    "slug": "careers"
+  },
+  {
+    "route": "/location",
+    "slug": "location"
+  },
+  {
     "route": "/contact",
     "slug": "contact"
   },

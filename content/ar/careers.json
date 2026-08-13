@@ -1,12 +1,14 @@
 {
-  "route": "/news",
+  "route": "/careers",
   "locale": "ar",
-  "slug": "news",
+  "slug": "careers",
   "source": [
-    "posts.json"
+    "careers.json"
   ],
-  "title": "مستجدات",
-  "description": "تأسست مجموعة 3LINES ADVANCED TECHNOLOGIES في عام 2019 تماشيًا مع رؤية السعودية 2030 بهدف توطين الخدمات العسكرية والمدنية داخل المملكة. تقدم المجموعة خدمات متكاملة في سلاسل الإمداد والخدمات الفنية — المشتريات والخدمات اللوجستية والصيانة والإصلاح والتصنيع — دعمًا للجاهزية التشغيلية في قطاعي الدفاع والتقنيات المتقدمة محليًا ودوليًا.",
+  "title": "الوظائف",
+  "description": "توظّف شركة ثريلاينز آدفانسد تكنولجيز فريقًا متعدد التخصصات في مجالات سلاسل الإمداد والصيانة والإصلاح والتصنيع، دعمًا لبرامج الدفاع والتقنيات المتقدمة داخل الممل",
+  "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
+  "placeholder": true,
   "blocks": [
     {
       "type": "pageTitle",
@@ -16,25 +18,33 @@
           "href": "/"
         },
         {
-          "label": "مستجدات"
+          "label": "الوظائف"
         }
       ],
-      "heading": "مستجدات"
+      "heading": "الوظائف"
     },
     {
       "type": "section",
       "tone": "plain",
       "bodies": [
         {
-          "kind": "newsGrid"
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "توظّف شركة ثريلاينز آدفانسد تكنولجيز فريقًا متعدد التخصصات في مجالات سلاسل الإمداد والصيانة والإصلاح والتصنيع، دعمًا لبرامج الدفاع والتقنيات المتقدمة داخل المملكة."
+            },
+            {
+              "text": "سيتم نشر الوظائف الشاغرة وتفاصيل التقديم هنا."
+            }
+          ]
         }
       ]
     },
     {
       "type": "careers",
-      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "imgVar": "url('/assets/photos/3l-mro-tech.jpg')",
       "art": null,
-      "heading": "ابدأ محادثة",
+      "heading": "الوظائف",
       "cta": {
         "label": "تواصل معنا",
         "href": "/contact"

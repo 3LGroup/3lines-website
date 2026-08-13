@@ -1,12 +1,14 @@
 {
-  "route": "/news/advanced-simulator-support",
+  "route": "/careers",
   "locale": "en",
-  "slug": "news--advanced-simulator-support",
+  "slug": "careers",
   "source": [
-    "posts.json"
+    "careers.json"
   ],
-  "title": "Investing in Simulation and XR-Based Training",
-  "description": "Full-motion and static simulation platforms supported end to end, extended through 3Lines XR into immersive training for the defense and aviation sectors.",
+  "title": "Careers",
+  "description": "3Lines Advanced Technologies Company employs a multidisciplinary team across supply chain, maintenance, repair and manufacturing, supporting defense and advance",
+  "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
+  "placeholder": true,
   "blocks": [
     {
       "type": "pageTitle",
@@ -16,38 +18,33 @@
           "href": "/"
         },
         {
-          "label": "Newsroom",
-          "href": "/news"
-        },
-        {
-          "label": "Investing in Simulation and XR-Based Training"
+          "label": "Careers"
         }
       ],
-      "heading": "Investing in Simulation and XR-Based Training"
+      "heading": "Careers"
     },
     {
       "type": "section",
       "tone": "plain",
-      "head": {
-        "layout": "stacked",
-        "kicker": "Technology"
-      },
       "bodies": [
         {
-          "kind": "feature",
-          "media": {
-            "imgVar": "url('/assets/news/advanced-simulator-support.jpg')",
-            "art": null
-          },
-          "lede": "Full-motion and static simulation platforms supported end to end, extended through 3Lines XR into immersive training for the defense and aviation sectors."
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "3Lines Advanced Technologies Company employs a multidisciplinary team across supply chain, maintenance, repair and manufacturing, supporting defense and advanced technology programmes in the Kingdom."
+            },
+            {
+              "text": "Role listings and application details will be published here."
+            }
+          ]
         }
       ]
     },
     {
       "type": "careers",
-      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "imgVar": "url('/assets/photos/3l-mro-tech.jpg')",
       "art": null,
-      "heading": "Begin a conversation",
+      "heading": "Careers",
       "cta": {
         "label": "Get in touch",
         "href": "/contact"

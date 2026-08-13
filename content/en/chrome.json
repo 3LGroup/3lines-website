@@ -54,6 +54,20 @@
         "label": "Services"
       },
       {
+        "key": "careers",
+        "label": "Careers"
+      },
+      {
+        "key": "news",
+        "label": "Newsroom",
+        "href": "/news"
+      },
+      {
+        "key": "contact",
+        "label": "Contact",
+        "href": "/contact"
+      },
+      {
         "key": "company",
         "label": "Company"
       }
@@ -110,6 +124,20 @@
         }
       },
       {
+        "key": "careers",
+        "title": "Careers",
+        "links": [
+          {
+            "label": "Careers",
+            "href": "/careers"
+          }
+        ],
+        "cta": {
+          "label": "Careers",
+          "href": "/careers"
+        }
+      },
+      {
         "key": "company",
         "title": "Company",
         "links": [
@@ -118,16 +146,12 @@
             "href": "/about"
           },
           {
-            "label": "Newsroom",
-            "href": "/news"
-          },
-          {
             "label": "Partners",
             "href": "/partners"
           },
           {
-            "label": "Contact",
-            "href": "/contact"
+            "label": "Location",
+            "href": "/location"
           }
         ],
         "cta": {
@@ -154,6 +178,10 @@
           {
             "label": "Partners",
             "href": "/partners"
+          },
+          {
+            "label": "Location",
+            "href": "/location"
           },
           {
             "label": "Contact",
@@ -226,8 +254,8 @@
     ],
     "bar": {
       "links": [],
-      "a11yLabel": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
-      "a11yPill": "CR 1010589885 · VAT 310407303200003",
+      "note": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
+      "badge": "Established 2019",
       "copyright": "© 2026 3Lines Advanced Technologies Company"
     }
   }

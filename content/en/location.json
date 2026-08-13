@@ -1,12 +1,14 @@
 {
-  "route": "/news/advanced-simulator-support",
+  "route": "/location",
   "locale": "en",
-  "slug": "news--advanced-simulator-support",
+  "slug": "location",
   "source": [
-    "posts.json"
+    "location.json",
+    "siteInfo.json"
   ],
-  "title": "Investing in Simulation and XR-Based Training",
-  "description": "Full-motion and static simulation platforms supported end to end, extended through 3Lines XR into immersive training for the defense and aviation sectors.",
+  "title": "Location",
+  "description": "Our office is in the King Faisal district of Riyadh, on King Abdullah Branch Road.",
+  "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
   "blocks": [
     {
       "type": "pageTitle",
@@ -16,42 +18,32 @@
           "href": "/"
         },
         {
-          "label": "Newsroom",
-          "href": "/news"
-        },
-        {
-          "label": "Investing in Simulation and XR-Based Training"
+          "label": "Location"
         }
       ],
-      "heading": "Investing in Simulation and XR-Based Training"
+      "heading": "Location"
     },
     {
       "type": "section",
       "tone": "plain",
       "head": {
-        "layout": "stacked",
-        "kicker": "Technology"
+        "layout": "split",
+        "kicker": "Location",
+        "heading": "",
+        "lede": "Our office is in the King Faisal district of Riyadh, on King Abdullah Branch Road."
       },
       "bodies": [
         {
-          "kind": "feature",
-          "media": {
-            "imgVar": "url('/assets/news/advanced-simulator-support.jpg')",
-            "art": null
-          },
-          "lede": "Full-motion and static simulation platforms supported end to end, extended through 3Lines XR into immersive training for the defense and aviation sectors."
+          "kind": "map",
+          "lat": 24.7676823,
+          "lng": 46.7608157,
+          "zoom": 17,
+          "placeName": "3 Lines Advanced Technologies Company",
+          "address": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
+          "ctaLabel": "View map",
+          "note": "Loads Google Maps"
         }
       ]
-    },
-    {
-      "type": "careers",
-      "imgVar": "url('/assets/photos/hero-mro.jpg')",
-      "art": null,
-      "heading": "Begin a conversation",
-      "cta": {
-        "label": "Get in touch",
-        "href": "/contact"
-      }
     },
     {
       "type": "socialStrip",
