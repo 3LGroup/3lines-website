@@ -5,12 +5,25 @@
 
 :root{
   --blue:        #0816A1;   /* Thales primary blue */
-  --navy:        #123E5E;   /* dark bands — the logo's own hue, taken deep.
-                               Was #00005C, a Thales colour inherited with this
-                               template and unrelated to the 3Lines mark, which
-                               samples at #2271AA. Using that mid blue directly
-                               dropped the cyan kicker to 3.89:1; this keeps the
-                               family and the depth — white 11.2:1, cyan 8.3:1.
+  --navy:        #123E5E;   /* dark bands, from the FOOTER lockup's blue taken
+                               deep — assets/logos/logo.png, which samples at
+                               #2271AA (hue 205).
+
+                               There are two brand marks and they disagree. The
+                               HEADER uses assets/logos/3Lines_logo.png, a
+                               different blue: #006BA7, hue 201 and far more
+                               saturated. Deriving from it gives #004870, which
+                               was built and compared side by side and looks the
+                               closer match to the mark; this duller value was
+                               kept on preference. Say which file you mean before
+                               changing this, and fix the assets if one is wrong.
+
+                               Replaced #00005C, a Thales colour inherited with
+                               this template and unrelated to either mark. The
+                               logo blue itself is too light for a full band — it
+                               drops the cyan kicker to 3.89:1. Here white is
+                               11.2:1 and cyan 8.3:1.
+
                                Intentionally theme-independent: these bands stay
                                blue in dark mode, and this reads as a band there,
                                where #00005C was nearly the page background. */
