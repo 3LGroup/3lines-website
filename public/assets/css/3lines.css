@@ -378,7 +378,10 @@ p,li,dd,address,figcaption,.lede,.sub,.excerpt,
 }
 .masthead__inner,.hdr__inner{min-height:64px!important}
 .hdr__nav > a,.hdr__nav > button,.hdr__nav a,.menu-toggle,.utility a,
-.hdr__util a,.megatab,.storytab,.rail__btn,.plattab{
+/* .megalink sits in the same column as .megatab and must be normalised with it
+   — left out, the two direct-link items rendered a size, weight and colour
+   apart from the tabs beside them. */
+.hdr__util a,.megatab,.megalink,.storytab,.rail__btn,.plattab{
   color:var(--foreground)!important;
   text-transform:none!important;
   letter-spacing:normal!important;
@@ -457,6 +460,13 @@ html.dark .ftr .ftr__logo::before,html.dark .footer svg{filter:brightness(0) inv
 }
 .navcol li a:hover,.drop li a:hover,.mega li a:hover,.subnav li a:hover,
 .mobnav a:hover,.drawer a:hover,.mnav a:hover{color:var(--primary)!important}
+/* The rule above is for the link LISTS inside a panel, but `.mega li a` also
+   catches the direct-link items in the tab column, which are anchors in list
+   items too — it was rendering Newsroom and Contact a size and a shade apart
+   from the tabs beside them. Two classes (0,2,0) outrank `.mega li a` (0,1,2),
+   so this holds regardless of order. */
+.megatabs .megalink{color:var(--foreground)!important;font-size:14px!important}
+.megatabs .megalink:hover{color:var(--primary)!important}
 
 .footer,.ftr{
   background:var(--card)!important;color:var(--muted-foreground)!important;
@@ -466,7 +476,13 @@ html.dark .ftr .ftr__logo::before,html.dark .footer svg{filter:brightness(0) inv
   font-family:var(--font-mono)!important;font-size:10.5px!important;letter-spacing:.1em!important}
 .footer a,.ftr a,.footer li a,.ftr li a{color:var(--muted-foreground)!important;text-transform:none!important}
 .footer a:hover,.ftr a:hover,.footer li a:hover,.ftr li a:hover{color:var(--primary)!important}
-.footer__bar,.ftr__bar,.ftr__social svg,.utility__social svg{color:var(--muted-foreground)!important}
+/* .right carries its own colour:rgba(255,255,255,.6) from the Thales base, meant
+   for that navy footer bar. This theme's footer is --card (white in light mode),
+   so the copyright rendered white-on-white and vanished. Listing it here rather
+   than relying on the .ftr__bar rule above: that one colours the PARENT, and a
+   colour declared directly on the child beats one inherited from it, !important
+   or not. */
+.footer__bar,.ftr__bar,.ftr__bar .right,.ftr__social svg,.utility__social svg{color:var(--muted-foreground)!important}
 .ftr__social svg,.utility__social svg{fill:var(--muted-foreground)!important}
 .ftr__social a:hover svg,.utility__social a:hover svg{fill:var(--primary)!important}
 .tribal svg,.tribal em{color:var(--muted-foreground)!important}
@@ -502,6 +518,18 @@ html.dark .ftr .ftr__logo::before,html.dark .footer svg{filter:brightness(0) inv
 .pill:not(.pill--solid):hover,.btn--dark:hover{
   background:var(--muted)!important;color:var(--foreground)!important;
   border-color:var(--border)!important;
+}
+/* --onDark is the variant for dark grounds — it sits on the navy CTA band, which
+   stays navy in BOTH themes. The group above gives every wire button
+   var(--foreground): near-white in dark mode, near-black in light, so in the
+   default theme "Get in touch" rendered near-black on navy at 1.09:1 while the
+   heading beside it stayed white. This button follows its ground, not the page
+   theme, so its colours are fixed. Placed after the group to win on order at
+   equal specificity. */
+.btn--onDark{color:#fff!important;border-color:rgba(255,255,255,.45)!important}
+.btn--onDark:hover{
+  background:rgba(255,255,255,.12)!important;color:#fff!important;
+  border-color:#fff!important;
 }
 .lnk,.arrowlink,.card__more,.ncard__more,.go,.hwcard .go,.prod .go{
   background:none!important;border:0!important;border-bottom:1px solid var(--primary)!important;
@@ -573,7 +601,12 @@ html.dark .ftr .ftr__logo::before,html.dark .footer svg{filter:brightness(0) inv
 /* skip links: off-canvas until focused (some clones wrap them in a sized box) */
 .skip,.skips a{
   position:absolute!important;left:12px!important;top:-80px!important;
-  background:var(--primary)!important;color:var(--primary-foreground)!important;
+  /* --primary is a mid-blue here, and white on it is 3.2:1 — under the 4.5
+     normal-text minimum, on the one control a keyboard user meets first. The
+     base stylesheet used the brand --blue (#0816A1, 12.8:1) and that is what
+     this should have kept. --blue is a fixed brand token, so it holds in both
+     themes. */
+  background:var(--blue)!important;color:#fff!important;
   border-radius:var(--radius)!important;padding:10px 18px!important;z-index:999!important;
 }
 .skip:focus,.skips a:focus{top:12px!important}
