@@ -482,9 +482,9 @@ html.dark .ftr .ftr__logo::before,html.dark .footer svg{filter:brightness(0) inv
    than relying on the .ftr__bar rule above: that one colours the PARENT, and a
    colour declared directly on the child beats one inherited from it, !important
    or not. */
-.footer__bar,.ftr__bar,.ftr__bar .right,.ftr__social svg,.utility__social svg{color:var(--muted-foreground)!important}
-.ftr__social svg,.utility__social svg{fill:var(--muted-foreground)!important}
-.ftr__social a:hover svg,.utility__social a:hover svg{fill:var(--primary)!important}
+/* .ftr__social and .utility__social matched nothing — the contact icons render
+   as .socialstrip, which styles itself in style.css. Three rules dropped. */
+.footer__bar,.ftr__bar,.ftr__bar .right{color:var(--muted-foreground)!important}
 .tribal svg,.tribal em{color:var(--muted-foreground)!important}
 
 /* ============================================================================

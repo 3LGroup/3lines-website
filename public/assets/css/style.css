@@ -453,15 +453,28 @@ html.dark .tag{background:var(--muted);border-color:var(--border)}
 /* social strip */
 .socialstrip{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center;padding:clamp(30px,4vw,54px) 0;border-top:1px solid var(--lilac);border-bottom:1px solid var(--lilac)}
 .socialstrip span{font-weight:600;color:var(--navy)}
-.socialstrip a{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--lilac);border-radius:50%;color:var(--blue);transition:background .22s,color .22s,transform .22s}
-.socialstrip a:hover{background:var(--blue);color:#fff;transform:translateY(-3px)}
+/* --primary, not --blue. --blue is the Thales colour; every other accent on the
+   page — .lnk, .arrowlink, .card__more — is --primary, so these four icons were
+   the only thing wearing a second, unrelated blue.
+   The ring was --lilac, 1.4:1 on white, well under the 3:1 a control's boundary
+   needs — the circles read as ghosts rather than buttons. Deriving it from
+   currentColor instead ties the ring to the glyph and makes it track the theme:
+   currentColor is --primary in light and --foreground in dark, so one
+   declaration covers both. */
+.socialstrip a{width:44px;height:44px;display:grid;place-items:center;border:1px solid color-mix(in srgb,currentColor 78%,transparent);border-radius:50%;color:var(--primary);transition:background .22s,color .22s,border-color .22s,transform .22s}
+.socialstrip a:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:translateY(-3px)}
 .socialstrip svg{width:19px;height:19px;fill:currentColor}
 /* The navy label and blue glyph are near-invisible once the theme layer flips
    the surface to near-black, and nothing in that layer claims .socialstrip —
    so the dark case is handled here. Light is left exactly as it was. */
 html.dark .socialstrip{border-top-color:var(--border);border-bottom-color:var(--border)}
 html.dark .socialstrip span{color:var(--foreground)}
-html.dark .socialstrip a{color:var(--foreground);border-color:var(--border)}
+/* No dark rule for the links at all now. The white override dates from when the
+   glyphs were --blue, a dark indigo that vanished on a near-black surface; they
+   are --primary now, and --primary is itself theme-aware — #2A77AE in light,
+   #4B96CF in dark, 6.19:1 there. The base rule serves both themes, and the ring
+   follows it through currentColor, so overriding either here would only let them
+   drift apart again. */
 html.dark .socialstrip a:hover{background:var(--foreground);color:var(--background)}
 
 /* ============================================================
