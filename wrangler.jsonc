@@ -30,21 +30,35 @@
 
   "observability": {
     "enabled": true
-  }
+  },
+
+  // The CMS database. `database_id` is a placeholder until someone runs
+  //
+  //   npx wrangler login
+  //   npx wrangler d1 create 3lines-cms
+  //
+  // and pastes the real id here. Local development does NOT need it: wrangler
+  // keys its local SQLite file off the binding name and ignores the id entirely,
+  // so `wrangler d1 migrations apply --local` and `next dev` both work offline.
+  // Only --remote resolves the id, and it fails with a clear "database not
+  // found" rather than anything cryptic.
+  //
+  // migrations_dir points at drizzle/ because drizzle-kit generates there;
+  // wrangler's default is ./migrations, which would silently apply nothing.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "3lines-cms",
+      "database_id": "PLACEHOLDER-run-wrangler-d1-create-3lines-cms",
+      "migrations_dir": "drizzle"
+    }
+  ]
 
   // ---------------------------------------------------------------------
-  // Added in M2, once the resources exist. Left out rather than stubbed:
-  // a binding with a placeholder id fails `wrangler dev` with an error that
-  // looks like a bug rather than a to-do.
+  // R2, added in M5 when uploads land:
   //
-  //   npx wrangler d1 create 3lines-cms
   //   npx wrangler r2 bucket create 3lines-media
   //
-  // then paste the returned database_id in:
-  //
-  // "d1_databases": [
-  //   { "binding": "DB", "database_name": "3lines-cms", "database_id": "<id>" }
-  // ],
   // "r2_buckets": [
   //   { "binding": "MEDIA", "bucket_name": "3lines-media" }
   // ],

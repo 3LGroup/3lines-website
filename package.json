@@ -20,12 +20,16 @@
     "cf:preview": "npm run cf:build && opennextjs-cloudflare preview",
     "cf:deploy": "npm run cf:build && opennextjs-cloudflare deploy",
     "cf:typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply 3lines-cms --local",
+    "db:migrate:remote": "wrangler d1 migrations apply 3lines-cms --remote",
     "verify": "node scripts/pipeline.mjs",
     "baseline:update": "node scripts/visual-baseline.mjs",
     "audit:assets": "node scripts/audit-assets.mjs"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.20.2",
+    "drizzle-orm": "^0.45.2",
     "next": "15.5.23",
     "react": "19.1.1",
     "react-dom": "19.1.1"
@@ -35,6 +39,7 @@
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "cheerio": "1.0.0",
+    "drizzle-kit": "^0.31.10",
     "puppeteer-core": "23.11.1",
     "typescript": "5.7.2",
     "wrangler": "^4.123.0"
