@@ -37,6 +37,20 @@ function die(stage, reason, detail) {
   process.exit(1);
 }
 
+/**
+ * Record a stage that was deliberately not run.
+ *
+ * Distinct from `ok` in stages.json on purpose: a skipped stage is not a passed
+ * one, and a run that skipped something must not read as fully green either to
+ * a person scanning the log or to anything parsing the artifact.
+ */
+function skip(name, why) {
+  stageNo++;
+  log(`\n── stage ${stageNo}: ${name} ──`);
+  log(`  ⊘ SKIPPED — ${why}`);
+  results.push({ stage: stageNo, name, status: 'skipped', reason: why });
+}
+
 function run(name, cmd, args, env = {}) {
   stageNo++;
   log(`\n── stage ${stageNo}: ${name} ──`);
@@ -85,7 +99,29 @@ results.push({ stage: stageNo, name: 'process safety', status: 'ok' });
 
 /* --------------------------------------------------------- 2..4 content -- */
 
-run('extract non-CMS copy', 'node', ['scripts/extract-non-cms.mjs']);
+/**
+ * The extract stage reads the sibling checkout (`../3lines-website`) for the copy
+ * that lives only in its compiled JS and prerendered HTML. Its output,
+ * source-content/non-cms.json, is committed precisely so the build never depends
+ * on that checkout being present — extract-non-cms.mjs says as much in its own
+ * docblock. Without the sibling it exits 1, which used to abort the whole
+ * pipeline before the build, on a machine where nothing was actually wrong.
+ *
+ * So: run it when the sibling is there (re-deriving is how we catch drift), and
+ * skip it loudly when it is not. What it produces is already on disk either way.
+ * The ingest stage below reads only source-content/ and is unaffected.
+ */
+const SIBLING = path.resolve(import.meta.dirname, '..', '..', '3lines-website');
+if (fs.existsSync(SIBLING)) {
+  run('extract non-CMS copy', 'node', ['scripts/extract-non-cms.mjs']);
+} else {
+  skip(
+    'extract non-CMS copy',
+    `sibling checkout not found at ${SIBLING} — using the committed source-content/non-cms.json. ` +
+      'Clone 3lines-website beside this repo to re-derive it.'
+  );
+}
+
 run('content ingestion', 'node', ['scripts/ingest-3lines.mjs']);
 run('content ↔ schema ↔ renderer parity (both locales)', 'node', ['scripts/audit-content.mjs']);
 
@@ -232,7 +268,10 @@ results.push({ stage: stageNo, name: 'artifact validation', status: 'ok' });
 
 fs.writeFileSync(path.join(RUN_DIR, 'stages.json'), JSON.stringify(results, null, 2));
 
-log(`\n✓ PIPELINE PASSED — ${results.length} stages, run dir: ${RUN_DIR}`);
+const skipped = results.filter((r) => r.status === 'skipped');
+log(`\n✓ PIPELINE PASSED — ${results.length - skipped.length}/${results.length} stages ran, run dir: ${RUN_DIR}`);
+// Named, not just counted: "1 skipped" tells you nothing about whether the gap matters.
+for (const s of skipped) log(`  ⊘ stage ${s.stage} skipped: ${s.name}`);
 log(`  authoritative report: ${reportPath}`);
 
 server.kill();
