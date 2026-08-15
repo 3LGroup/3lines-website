@@ -1,0 +1,892 @@
+/* ============================================================================
+   3Lines CMS — admin stylesheet
+
+   Deliberately NOT the public site's CSS. app/[locale]/layout.tsx links
+   style.css + 3lines.css + rtl.css; this tree links none of them. That is not a
+   preference: 3lines.css re-skins global element selectors with !important,
+   including `html,body{background:var(--background)!important}`, and would eat
+   any admin laid on top of it.
+
+   What IS shared is the token vocabulary. The :root and html.dark blocks below
+   are copied verbatim from public/assets/css/3lines.css so the two surfaces
+   cannot drift apart on brand colour, radius or type. scripts/audit-admin.mjs
+   parses both files and fails the build if any shared token disagrees.
+
+   Rules inherited from the design system (3lines.css lines 1-16):
+     · DM Sans / JetBrains Mono only
+     · One accent: --primary. No second brand colour.
+     · No gradients on backgrounds, buttons or borders
+     · Sentence case; ALL CAPS only for tiny labels
+     · Radii limited to the --radius-* scale
+     · Borders always var(--border)
+     · No emoji
+
+   Admin-only additions are prefixed --adm-. Every class is prefixed .adm- so a
+   leak in either direction is greppable, and so adopting a utility framework
+   later would be a mechanical change rather than a rewrite.
+   ============================================================================ */
+
+/* --- shared tokens: keep byte-identical to 3lines.css ---------------------- */
+
+:root {
+  --radius: 0.625rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.549 0.113 243.962); /* #2E6FA8 */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05), 0 1px 3px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+}
+
+html.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.649 0.113 243.962);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+}
+
+/* --- admin-only tokens ---------------------------------------------------- */
+
+:root {
+  /* One spacing scale. Every margin, padding and gap below comes from it —
+     that consistency is most of what makes an interface read as designed. */
+  --adm-1: 4px;
+  --adm-2: 8px;
+  --adm-3: 12px;
+  --adm-4: 16px;
+  --adm-5: 24px;
+  --adm-6: 32px;
+  --adm-7: 48px;
+  --adm-8: 64px;
+
+  /* Type ramp. Denser than the public site's on purpose: this is a tool that
+     gets read all day at arm's length, not a page that has to arrest someone
+     mid-scroll. Nothing here is above 28px. */
+  --adm-text-xs: 11px;
+  --adm-text-sm: 12px;
+  --adm-text-base: 13px;
+  --adm-text-md: 14px;
+  --adm-text-lg: 16px;
+  --adm-text-xl: 20px;
+  --adm-text-2xl: 28px;
+
+  --adm-sidebar-w: 232px;
+  --adm-topbar-h: 56px;
+
+  /* 3lines.css defines --destructive but never redefines it for dark, and has
+     no success/warning at all. Admin needs the full set for save/error states,
+     so they live here rather than being back-ported into the shared block. */
+  --adm-success: oklch(0.55 0.13 155);
+  --adm-warning: oklch(0.68 0.15 75);
+  --adm-danger: var(--destructive);
+
+  /* Tinted surfaces for status rows, derived from the status colour rather than
+     picked separately, so they stay in step if the colour is retuned. */
+  --adm-success-bg: color-mix(in oklch, var(--adm-success) 12%, transparent);
+  --adm-warning-bg: color-mix(in oklch, var(--adm-warning) 14%, transparent);
+  --adm-danger-bg: color-mix(in oklch, var(--adm-danger) 10%, transparent);
+
+  /* The shared --ring is a mid grey that scores ~1.6:1 on white — fine as a
+     decorative outline, far below the 3:1 a focus indicator owes a keyboard
+     user. Admin focus is drawn with the accent instead. */
+  --adm-focus: var(--primary);
+}
+
+html.dark {
+  --adm-success: oklch(0.68 0.13 155);
+  --adm-warning: oklch(0.78 0.14 75);
+  --adm-danger: oklch(0.68 0.2 27);
+}
+
+/* --- reset ---------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* 13px base, so the ramp above is absolute rather than compounding with a
+     user's browser default in ways the layout was never checked against. */
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: var(--adm-text-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+code,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+/* One focus treatment for everything. Drawn with an outline rather than a
+   box-shadow so it is never clipped by an ancestor's overflow, and offset so it
+   reads as a ring around the control rather than a border on it. */
+:focus-visible {
+  outline: 2px solid var(--adm-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Motion is feedback here, not choreography — an admin that animates on every
+   navigation is exhausting to use. Transitions are short and only on
+   interactive affordances. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.adm-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- app shell ------------------------------------------------------------ */
+
+.adm-shell {
+  display: grid;
+  grid-template-columns: var(--adm-sidebar-w) minmax(0, 1fr);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.adm-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--adm-5);
+  padding: var(--adm-4);
+  border-inline-end: 1px solid var(--border);
+  background: var(--card);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+}
+
+.adm-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--adm-2);
+  padding: var(--adm-2);
+  font-weight: 600;
+  font-size: var(--adm-text-md);
+  letter-spacing: -0.01em;
+}
+
+.adm-brand__mark {
+  display: grid;
+  place-items: center;
+  inline-size: 26px;
+  block-size: 26px;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-size: var(--adm-text-sm);
+  font-weight: 700;
+  flex: none;
+}
+
+.adm-brand__sub {
+  display: block;
+  font-size: var(--adm-text-xs);
+  font-weight: 400;
+  color: var(--muted-foreground);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.adm-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.adm-nav__label {
+  padding: var(--adm-2) var(--adm-2) var(--adm-1);
+  font-size: var(--adm-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.adm-nav__item {
+  display: flex;
+  align-items: center;
+  gap: var(--adm-3);
+  padding: var(--adm-2) var(--adm-3);
+  border-radius: var(--radius-md);
+  color: var(--muted-foreground);
+  font-size: var(--adm-text-md);
+  transition: background 0.12s, color 0.12s;
+}
+
+.adm-nav__item:hover {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+/* The accent earns its keep by being rare: exactly one nav item wears it at a
+   time, which is what makes "where am I" answerable at a glance. */
+.adm-nav__item[aria-current='page'] {
+  background: color-mix(in oklch, var(--primary) 12%, transparent);
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.adm-nav__item svg {
+  inline-size: 16px;
+  block-size: 16px;
+  flex: none;
+}
+
+.adm-sidebar__foot {
+  margin-block-start: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--adm-2);
+  padding-block-start: var(--adm-4);
+  border-block-start: 1px solid var(--border);
+}
+
+.adm-main {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+}
+
+.adm-topbar {
+  display: flex;
+  align-items: center;
+  gap: var(--adm-4);
+  block-size: var(--adm-topbar-h);
+  padding-inline: var(--adm-5);
+  border-block-end: 1px solid var(--border);
+  background: color-mix(in oklch, var(--background) 88%, transparent);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.adm-topbar__title {
+  font-size: var(--adm-text-md);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.adm-topbar__actions {
+  margin-inline-start: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--adm-2);
+}
+
+.adm-page {
+  padding: var(--adm-6) var(--adm-5);
+  /* Wide enough for a data table, capped so long-form text never runs to a
+     40-word line on a 27" display. */
+  max-inline-size: 1280px;
+  inline-size: 100%;
+}
+
+.adm-page__head {
+  margin-block-end: var(--adm-6);
+}
+
+.adm-page__title {
+  font-size: var(--adm-text-2xl);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.adm-page__lede {
+  margin-block-start: var(--adm-2);
+  color: var(--muted-foreground);
+  font-size: var(--adm-text-md);
+  max-inline-size: 68ch;
+}
+
+/* --- buttons -------------------------------------------------------------- */
+
+.adm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--adm-2);
+  padding: 0 var(--adm-4);
+  block-size: 34px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  font-size: var(--adm-text-md);
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s, border-color 0.12s, opacity 0.12s;
+}
+
+.adm-btn:hover:not(:disabled) {
+  background: color-mix(in oklch, var(--secondary) 80%, var(--foreground) 8%);
+}
+
+.adm-btn:disabled,
+.adm-btn[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.adm-btn--primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.adm-btn--primary:hover:not(:disabled) {
+  background: color-mix(in oklch, var(--primary) 88%, black);
+}
+
+.adm-btn--ghost {
+  background: transparent;
+  color: var(--muted-foreground);
+}
+
+.adm-btn--ghost:hover:not(:disabled) {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+.adm-btn--outline {
+  background: transparent;
+  border-color: var(--border);
+}
+
+.adm-btn--outline:hover:not(:disabled) {
+  background: var(--muted);
+}
+
+.adm-btn--danger {
+  background: var(--adm-danger);
+  color: oklch(1 0 0);
+}
+
+.adm-btn--sm {
+  block-size: 28px;
+  padding: 0 var(--adm-3);
+  font-size: var(--adm-text-sm);
+}
+
+.adm-btn--icon {
+  padding: 0;
+  inline-size: 34px;
+  block-size: 34px;
+}
+
+.adm-btn svg {
+  inline-size: 15px;
+  block-size: 15px;
+  flex: none;
+}
+
+/* --- fields --------------------------------------------------------------- */
+
+.adm-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--adm-2);
+}
+
+.adm-label {
+  font-size: var(--adm-text-md);
+  font-weight: 500;
+}
+
+.adm-hint {
+  display: flex;
+  align-items: center;
+  gap: var(--adm-2);
+  font-size: var(--adm-text-sm);
+  color: var(--muted-foreground);
+}
+
+.adm-input,
+.adm-textarea,
+.adm-select {
+  inline-size: 100%;
+  padding: var(--adm-2) var(--adm-3);
+  min-block-size: 34px;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-md);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: var(--adm-text-md);
+  transition: border-color 0.12s;
+}
+
+.adm-input::placeholder,
+.adm-textarea::placeholder {
+  color: var(--muted-foreground);
+}
+
+.adm-input:hover,
+.adm-textarea:hover,
+.adm-select:hover {
+  border-color: color-mix(in oklch, var(--input) 60%, var(--foreground) 20%);
+}
+
+.adm-textarea {
+  min-block-size: 84px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.adm-field[data-invalid='true'] .adm-input,
+.adm-field[data-invalid='true'] .adm-textarea {
+  border-color: var(--adm-danger);
+}
+
+.adm-error {
+  display: flex;
+  align-items: center;
+  gap: var(--adm-2);
+  margin-block-start: var(--adm-3);
+  font-size: var(--adm-text-sm);
+  color: var(--adm-danger);
+}
+
+.adm-error svg {
+  inline-size: 14px;
+  block-size: 14px;
+  flex: none;
+}
+
+/* --- card ----------------------------------------------------------------- */
+
+.adm-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  color: var(--card-foreground);
+}
+
+/* A border OR a shadow, never both heavy — doubling them is the single most
+   common way a card starts looking like a 2013 admin template. */
+.adm-card--raised {
+  box-shadow: var(--shadow-sm);
+}
+
+.adm-card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--adm-3);
+  padding: var(--adm-4) var(--adm-5);
+  border-block-end: 1px solid var(--border);
+}
+
+.adm-card__title {
+  font-size: var(--adm-text-md);
+  font-weight: 600;
+}
+
+.adm-card__body {
+  padding: var(--adm-5);
+}
+
+/* --- stat tiles ----------------------------------------------------------- */
+
+.adm-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+  gap: var(--adm-4);
+}
+
+.adm-stat {
+  padding: var(--adm-4) var(--adm-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+
+.adm-stat__value {
+  font-size: var(--adm-text-2xl);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.adm-stat__label {
+  margin-block-start: var(--adm-1);
+  font-size: var(--adm-text-sm);
+  color: var(--muted-foreground);
+}
+
+/* --- table ---------------------------------------------------------------- */
+
+.adm-tablewrap {
+  /* Wide tables scroll inside their own container; the page body never does. */
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+}
+
+.adm-table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-size: var(--adm-text-md);
+}
+
+.adm-table th {
+  text-align: start;
+  font-size: var(--adm-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  padding: var(--adm-3) var(--adm-4);
+  border-block-end: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.adm-table td {
+  padding: var(--adm-3) var(--adm-4);
+  border-block-end: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.adm-table tbody tr:last-child td {
+  border-block-end: 0;
+}
+
+.adm-table tbody tr:hover {
+  background: var(--muted);
+}
+
+.adm-table__num {
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+
+/* --- badge ---------------------------------------------------------------- */
+
+.adm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--adm-1);
+  padding: 2px var(--adm-2);
+  border-radius: var(--radius-sm);
+  background: var(--muted);
+  color: var(--muted-foreground);
+  font-size: var(--adm-text-xs);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.adm-badge--ok {
+  background: var(--adm-success-bg);
+  color: var(--adm-success);
+}
+
+.adm-badge--warn {
+  background: var(--adm-warning-bg);
+  color: var(--adm-warning);
+}
+
+.adm-badge--danger {
+  background: var(--adm-danger-bg);
+  color: var(--adm-danger);
+}
+
+/* --- empty / loading / error states --------------------------------------- */
+
+/* These are first-class, not afterthoughts. An admin spends a real proportion
+   of its life with nothing to show, and a blank rectangle at that moment reads
+   as a bug rather than as an empty list. */
+.adm-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--adm-3);
+  padding: var(--adm-8) var(--adm-5);
+  text-align: center;
+}
+
+.adm-empty__icon {
+  display: grid;
+  place-items: center;
+  inline-size: 40px;
+  block-size: 40px;
+  border-radius: var(--radius-lg);
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.adm-empty__title {
+  font-size: var(--adm-text-lg);
+  font-weight: 600;
+}
+
+.adm-empty__body {
+  color: var(--muted-foreground);
+  max-inline-size: 44ch;
+}
+
+.adm-skeleton {
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--muted) 25%,
+    color-mix(in oklch, var(--muted) 60%, var(--background)) 37%,
+    var(--muted) 63%
+  );
+  background-size: 400% 100%;
+  animation: adm-shimmer 1.4s ease infinite;
+}
+
+@keyframes adm-shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.adm-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--adm-3);
+  padding: var(--adm-3) var(--adm-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: var(--adm-text-md);
+}
+
+.adm-alert--danger {
+  border-color: color-mix(in oklch, var(--adm-danger) 40%, transparent);
+  background: var(--adm-danger-bg);
+  color: var(--adm-danger);
+}
+
+.adm-alert--warn {
+  border-color: color-mix(in oklch, var(--adm-warning) 40%, transparent);
+  background: var(--adm-warning-bg);
+}
+
+.adm-alert svg {
+  inline-size: 16px;
+  block-size: 16px;
+  flex: none;
+  margin-block-start: 2px;
+}
+
+/* --- toast ---------------------------------------------------------------- */
+
+.adm-toasts {
+  position: fixed;
+  inset-block-end: var(--adm-5);
+  inset-inline-end: var(--adm-5);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: var(--adm-2);
+  pointer-events: none;
+}
+
+.adm-toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--adm-3);
+  min-inline-size: 260px;
+  padding: var(--adm-3) var(--adm-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  box-shadow: var(--shadow-lg);
+  font-size: var(--adm-text-md);
+  animation: adm-toast-in 0.18s ease-out;
+}
+
+@keyframes adm-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* --- login ---------------------------------------------------------------- */
+
+.adm-login {
+  min-block-size: 100vh;
+  min-block-size: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: var(--adm-5);
+}
+
+.adm-login__card {
+  inline-size: 100%;
+  max-inline-size: 360px;
+  padding: var(--adm-6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--card);
+  box-shadow: var(--shadow-md);
+}
+
+.adm-login__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--adm-3);
+  margin-block-end: var(--adm-6);
+}
+
+.adm-login form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--adm-4);
+}
+
+/* --- responsive ----------------------------------------------------------- */
+
+/* Tablet: the sidebar becomes a top strip. The brief scopes the admin to
+   desktop/laptop/tablet, and a 232px rail on a 768px screen costs a third of
+   the width for navigation that is six links long. */
+@media (max-width: 900px) {
+  .adm-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .adm-sidebar {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--adm-4);
+    overflow-x: auto;
+    border-inline-end: 0;
+    border-block-end: 1px solid var(--border);
+  }
+
+  .adm-nav {
+    flex-direction: row;
+    gap: var(--adm-1);
+  }
+
+  .adm-nav__label,
+  .adm-sidebar__foot {
+    display: none;
+  }
+
+  .adm-page {
+    padding: var(--adm-5) var(--adm-4);
+  }
+}
+
+@media (max-width: 560px) {
+  .adm-topbar {
+    padding-inline: var(--adm-4);
+  }
+
+  .adm-page__title {
+    font-size: var(--adm-text-xl);
+  }
+}

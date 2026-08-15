@@ -11,7 +11,11 @@ export default function robots(): MetadataRoute.Robots {
   }
 
   return {
-    rules: { userAgent: '*', allow: '/', disallow: '/api/' },
+    // /admin is also noindexed by its own metadata and by an X-Robots-Tag in
+    // public/_headers. This entry is the cheapest of the three and the only one
+    // a crawler reads before requesting anything, so it saves the request rather
+    // than just the indexing.
+    rules: { userAgent: '*', allow: '/', disallow: ['/api/', '/admin'] },
     sitemap: `${SITE_ORIGIN}/sitemap.xml`,
   };
 }

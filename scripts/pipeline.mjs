@@ -195,6 +195,15 @@ run('asset cache-busting audit', 'node', ['scripts/audit-assets.mjs'], { AUDIT_B
 
 run('internal link + reachability audit', 'node', ['scripts/audit-links.mjs'], { AUDIT_BASE: BASE });
 
+/* ----------------------------------------------------------- admin audit -- */
+
+// Runs against the same server as every other audit, so it checks the built
+// output rather than the source: whether /admin actually redirects, what the
+// pages actually link, and whether the duplicated design tokens still agree.
+run('admin isolation + token drift audit', 'node', ['scripts/audit-admin.mjs'], {
+  AUDIT_BASE: BASE,
+});
+
 /* ------------------------------------------------- harness negative control -- */
 
 run('visual harness self-test (negative control)', 'node', ['scripts/audit-visual.mjs'], {
