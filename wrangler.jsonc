@@ -1,0 +1,56 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "3lines-website",
+  "main": ".open-next/worker.js",
+
+  // Matches the compatibility date the @opennextjs/cloudflare examples are
+  // tested against for 1.20.x. It is late enough for everything this project
+  // needs: node:fs wants >= 2025-09-01 and FinalizationRegistry (which Next
+  // pulls in) wants >= 2025-05-05. Do not move it forward casually — the date
+  // is a behaviour switch for the runtime, not a version number.
+  "compatibility_date": "2026-04-15",
+
+  // nodejs_compat: required by the adapter, which runs Next's Node runtime
+  //   rather than the Edge runtime.
+  // global_fetch_strictly_public: present in every example config the adapter
+  //   ships. It makes fetch() to your own hostname go back out through the
+  //   public internet instead of looping inside the Worker, which is what Next
+  //   assumes when it fetches its own routes.
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+
+  // The prerendered pages and everything in public/ are uploaded here. Note
+  // that only sub-resources (CSS/JS/fonts/images) are served without invoking
+  // the Worker; prerendered HTML is stored under a worker-only cdn-cgi/ prefix
+  // and read back through this binding, so a page view is still one (cheap,
+  // edge-local) Worker invocation. Budget accordingly.
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+
+  // ---------------------------------------------------------------------
+  // Added in M2, once the resources exist. Left out rather than stubbed:
+  // a binding with a placeholder id fails `wrangler dev` with an error that
+  // looks like a bug rather than a to-do.
+  //
+  //   npx wrangler d1 create 3lines-cms
+  //   npx wrangler r2 bucket create 3lines-media
+  //
+  // then paste the returned database_id in:
+  //
+  // "d1_databases": [
+  //   { "binding": "DB", "database_name": "3lines-cms", "database_id": "<id>" }
+  // ],
+  // "r2_buckets": [
+  //   { "binding": "MEDIA", "bucket_name": "3lines-media" }
+  // ],
+  //
+  // Cron Triggers (M8) additionally need a custom worker entrypoint, because
+  // the generated .open-next/worker.js only exports `fetch`. See
+  // https://opennext.js.org/cloudflare/howtos/custom-worker
+  // ---------------------------------------------------------------------
+}

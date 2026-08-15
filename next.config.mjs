@@ -1,3 +1,14 @@
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
+
+/**
+ * Makes the Cloudflare bindings declared in wrangler.jsonc available during
+ * `next dev`, so local development keeps Next's HMR instead of moving to
+ * `wrangler dev`. Without this, `getCloudflareContext()` has nothing to return
+ * and every D1/R2 call fails locally while working in production — the worst
+ * possible split. No effect on `next build`.
+ */
+initOpenNextCloudflareForDev();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,

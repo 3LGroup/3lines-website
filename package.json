@@ -11,15 +11,22 @@
     "audit:console": "node scripts/audit-console.mjs",
     "audit:visual": "node scripts/audit-visual.mjs",
     "dev": "next dev -p 3200",
+    "assets:manifest": "node scripts/build-asset-manifest.mjs",
+    "prebuild": "node scripts/build-asset-manifest.mjs",
     "build": "next build",
     "start": "next start -p 3200",
     "typecheck": "tsc --noEmit",
+    "cf:build": "npm run assets:manifest && opennextjs-cloudflare build",
+    "cf:preview": "npm run cf:build && opennextjs-cloudflare preview",
+    "cf:deploy": "npm run cf:build && opennextjs-cloudflare deploy",
+    "cf:typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "verify": "node scripts/pipeline.mjs",
     "baseline:update": "node scripts/visual-baseline.mjs",
     "audit:assets": "node scripts/audit-assets.mjs"
   },
   "dependencies": {
-    "next": "^15.5.7",
+    "@opennextjs/cloudflare": "^1.20.2",
+    "next": "15.5.23",
     "react": "19.1.1",
     "react-dom": "19.1.1"
   },
@@ -29,6 +36,7 @@
     "@types/react-dom": "19.1.6",
     "cheerio": "1.0.0",
     "puppeteer-core": "23.11.1",
-    "typescript": "5.7.2"
+    "typescript": "5.7.2",
+    "wrangler": "^4.123.0"
   }
 }

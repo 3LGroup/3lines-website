@@ -13,6 +13,15 @@ next-env.d.ts
 # Written by `vercel link` — carries the project and org IDs, not shared config.
 .vercel
 
+# Cloudflare. `.open-next/` is the adapter's build output, `.wrangler/` holds
+# local D1/R2 state, and `.dev.vars` is the local secret file — the Workers
+# equivalent of .env.local, and just as much a thing that must never be pushed.
+.open-next/
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
 # Real enquiries, with real email addresses. Nothing in this app reads or writes
 # them — they are residue from running the legacy JSON-backed site in this same
 # working directory, and they have never been tracked in any branch. Ignored

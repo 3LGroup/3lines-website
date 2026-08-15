@@ -1,0 +1,11 @@
+# Template for .dev.vars (which is gitignored). Copy it:
+#
+#   cp .dev.vars.example .dev.vars
+#
+# Deliberately minimal. .dev.vars values are NOT visible to `next dev` — only to
+# `wrangler dev` and `opennextjs-cloudflare preview`. Everything the app actually
+# reads lives in .env.local instead; see .env.example.
+#
+# NEXTJS_ENV selects which .env.* file the adapter loads. Unset means
+# "production", which loads the wrong file locally without saying so.
+NEXTJS_ENV=development

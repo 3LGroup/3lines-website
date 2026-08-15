@@ -1,0 +1,19 @@
+# Cloudflare Workers Static Assets header rules.
+#
+# Next content-hashes everything under /_next/static/, so those URLs are immutable
+# by construction and can be cached for a year.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# The hand-authored assets are versioned a different way: lib/assets.ts appends
+# ?v=<sha1 of the file's bytes>, so editing one changes its URL. Same immutability
+# guarantee, so the same policy applies. scripts/audit-assets.mjs is what enforces
+# that the served HTML advertises the current hash.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Belt to the braces of the noindex meta the admin renders, and of robots.txt.
+# A header covers every response including any asset served from under /admin,
+# which a meta tag cannot.
+/admin/*
+  X-Robots-Tag: noindex, nofollow
