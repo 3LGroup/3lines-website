@@ -278,6 +278,56 @@ export const uiStrings = sqliteTable(
   (t) => [primaryKey({ columns: [t.key, t.locale] })]
 );
 
+/* --------------------------------------------------------------- news items -- */
+
+/**
+ * The newsroom index — content/{locale}/news-items.json.
+ *
+ * Its own table rather than a block, because it is not on a page: NewsGrid reads
+ * it wherever a `newsGrid` body appears, so the same four records feed both the
+ * homepage teaser and /news. Modelling it as a block would mean storing it twice
+ * and keeping the copies in step.
+ *
+ * `date` also lives ONLY here — the article page carries no publish date at all,
+ * which is why the newsroom can sort but an article cannot show when it ran.
+ */
+export const newsItems = sqliteTable(
+  'news_items',
+  {
+    id: text('id').primaryKey(),
+    slug: text('slug').notNull().unique(),
+    /** Locale-less route, e.g. "/news/advanced-simulator-support". */
+    route: text('route').notNull(),
+    /** ISO date, e.g. "2026-05-12". Drives the newsroom's ordering. */
+    date: text('date').notNull(),
+    mediaSrc: text('media_src'),
+    position: integer('position').notNull().default(0),
+    createdAt: integer('created_at').notNull().default(now),
+    updatedAt: integer('updated_at').notNull().default(now),
+  },
+  (t) => [index('news_items_date_idx').on(t.date)]
+);
+
+export const newsItemTranslations = sqliteTable(
+  'news_item_translations',
+  {
+    itemId: text('item_id')
+      .notNull()
+      .references(() => newsItems.id, { onDelete: 'cascade' }),
+    locale: text('locale')
+      .notNull()
+      .references(() => locales.code),
+    title: text('title').notNull(),
+    /** Category shown on the card, e.g. "Technology". Localized. */
+    tag: text('tag').notNull(),
+    /** "News" / "خبر" — the kind label above the card. */
+    type: text('type').notNull(),
+    mediaAlt: text('media_alt'),
+    updatedAt: integer('updated_at').notNull().default(now),
+  },
+  (t) => [primaryKey({ columns: [t.itemId, t.locale] })]
+);
+
 /* ------------------------------------------------------------ migration ops -- */
 
 /**

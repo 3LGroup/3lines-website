@@ -44,15 +44,15 @@ const NAV: { group: string; items: NavItem[] }[] = [
       { href: '/admin/c/companies', label: 'Companies', icon: 'companies' },
       { href: '/admin/c/services', label: 'Services', icon: 'services' },
       { href: '/admin/c/partners', label: 'Partners', icon: 'media' },
-      { href: '/admin/news', label: 'News', icon: 'news', pending: 'next' },
+      { href: '/admin/news', label: 'News', icon: 'news' },
     ],
   },
   {
     group: 'Everything else',
     items: [
+      { href: '/admin/site', label: 'Site info', icon: 'settings' },
       { href: '/admin/pages', label: 'Pages & SEO', icon: 'pages' },
       { href: '/admin', label: 'Dashboard', icon: 'dashboard' },
-      { href: '/admin/settings', label: 'Site info', icon: 'settings', pending: 'next' },
     ],
   },
 ];

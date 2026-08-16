@@ -142,6 +142,61 @@ for (const page of pages) {
   }
 }
 
+/* -------------------------------------------------------- news + settings -- */
+
+/**
+ * news-items.json, per locale.
+ *
+ * Key order and shape must match what the ingest emitted, for the same reason
+ * everything else here does: the gate compares bytes. `art` is always null in
+ * the shipped content but the key is emitted, because dropping it would remove
+ * the inline-SVG capability from the schema rather than just its value.
+ */
+const newsRows = query('SELECT id, slug, route, date, media_src, position FROM news_items ORDER BY position');
+const newsTr = query('SELECT item_id, locale, title, tag, type, media_alt FROM news_item_translations');
+const newsTrOf = new Map(newsTr.map((t) => [`${t.item_id}:${t.locale}`, t]));
+
+for (const locale of LOCALES) {
+  const items = newsRows.map((r) => {
+    const t = newsTrOf.get(`${r.id}:${locale}`);
+    return {
+      slug: r.slug,
+      route: r.route,
+      tag: t?.tag ?? '',
+      type: t?.type ?? '',
+      date: r.date,
+      title: t?.title ?? '',
+      media: r.media_src ? { src: r.media_src, alt: t?.media_alt ?? '' } : null,
+      art: null,
+    };
+  });
+  fs.writeFileSync(
+    path.join(CONTENT, locale, 'news-items.json'),
+    JSON.stringify(items, null, 2) + '\n'
+  );
+}
+
+/**
+ * content/settings.json — the site-wide values lib/schema.ts needs for JSON-LD.
+ *
+ * New file rather than rewriting source-content/siteInfo.json: source-content/
+ * is the archived migration input and must stop being read at runtime, which is
+ * the whole point of moving these into the database.
+ */
+const settingRows = query('SELECT key, value FROM settings');
+const settingTr = query('SELECT key, locale, value FROM settings_translations');
+
+const settings = {};
+for (const r of settingRows) settings[r.key] = r.value;
+for (const r of settingTr) {
+  if (!settings[r.key] || typeof settings[r.key] !== 'object') settings[r.key] = {};
+  settings[r.key][r.locale] = r.value;
+}
+fs.writeFileSync(
+  path.join(CONTENT, 'settings.json'),
+  JSON.stringify(settings, null, 2) + '\n'
+);
+
 // routes.json is derived from the same rows, so a page added in the CMS appears
 // in the manifest that drives generateStaticParams without a second step.
 fs.writeFileSync(
