@@ -121,11 +121,39 @@ for (const r of routes) {
       }
     }
 
+    // 3. structural — the discriminator must live on the locale-free row.
+    //
+    // Checks 1 and 2 are both blind to this. `type: "hero"` is identical in
+    // Arabic, so classifying it as copy round-trips perfectly AND keeps the two
+    // shared halves equal — while quietly storing the identity of every block
+    // twice, in rows that are free to diverge. Found by building the editor and
+    // seeing `type` offered as a text field.
+    for (const [locale, node] of [
+      ['en', en.node],
+      ['ar', ar.node],
+    ]) {
+      const { shared } = splitProps(node);
+      const disc = en.node.type !== undefined ? 'type' : 'kind';
+      if (shared?.[disc] !== node[disc]) {
+        fail(
+          `${locale}${r.route} ${en.trail}: discriminator "${disc}" is not in the shared half ` +
+            `(got ${S(shared?.[disc])}, expected ${S(node[disc])}) — it would be stored per locale`
+        );
+      }
+    }
+
     // 2. useful — the shared half carries no locale-varying copy
     compared++;
     const se = splitProps(en.node);
     const sa = splitProps(ar.node);
-    localizedLeaves += countLeaves(se.localized);
+    // Count a section's OWN copy only. Its bodies are walked as separate nodes,
+    // and splitProps on a section returns their text too, so counting the whole
+    // tree tallies every body twice — which inflated this figure from the true
+    // 1,021 editable fields to 1,735 and sent me hunting for 714 missing rows
+    // that were never missing.
+    localizedLeaves += countLeaves(
+      en.kind === 'section' && se.localized ? { ...se.localized, bodies: undefined } : se.localized
+    );
     if (S(se.shared) !== S(sa.shared)) {
       const d = firstDiff(se.shared, sa.shared);
       fail(

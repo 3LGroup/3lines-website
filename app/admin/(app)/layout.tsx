@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { redirect } from 'next/navigation';
 import Icon, { type IconName } from '@/components/admin/Icon';
+import NavItem from '@/components/admin/NavItem';
 import { readSession, refreshIfStale } from '@/lib/admin/session';
 import { logoutAction } from '../actions';
 
@@ -31,7 +32,7 @@ const NAV: { group: string; items: NavItem[] }[] = [
     group: 'Content',
     items: [
       { href: '/admin', label: 'Dashboard', icon: 'dashboard' },
-      { href: '/admin/pages', label: 'Pages', icon: 'pages', pending: 'M3' },
+      { href: '/admin/pages', label: 'Pages', icon: 'pages' },
       { href: '/admin/companies', label: 'Companies', icon: 'companies', pending: 'M4' },
       { href: '/admin/services', label: 'Services', icon: 'services', pending: 'M4' },
       { href: '/admin/news', label: 'News', icon: 'news', pending: 'M4' },
@@ -89,10 +90,7 @@ export default async function AdminShell({ children }: { children: ReactNode }) 
                     </span>
                   </span>
                 ) : (
-                  <a className="adm-nav__item" key={item.href} href={item.href} aria-current="page">
-                    <Icon name={item.icon} />
-                    {item.label}
-                  </a>
+                  <NavItem key={item.href} href={item.href} label={item.label} icon={item.icon} />
                 )
               )}
             </div>
