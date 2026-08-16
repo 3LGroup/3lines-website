@@ -126,7 +126,7 @@ run('content ingestion', 'node', ['scripts/ingest-3lines.mjs']);
 run('content ↔ schema ↔ renderer parity (both locales)', 'node', ['scripts/audit-content.mjs']);
 
 // Needs no server and no database — it is a property of the classification in
-// scripts/lib/localization.mjs, so it runs here, before the build, and fails in
+// lib/localization.mjs, so it runs here, before the build, and fails in
 // milliseconds rather than after a twenty-minute pipeline.
 run('localization split (lossless + locale-invariant)', 'node', ['scripts/audit-localization.mjs']);
 

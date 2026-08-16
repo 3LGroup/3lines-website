@@ -21,7 +21,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { mergeProps } from './lib/localization.mjs';
+import { mergeProps } from '../lib/localization.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const CONTENT = path.join(ROOT, 'content');

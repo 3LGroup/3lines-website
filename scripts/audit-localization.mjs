@@ -23,7 +23,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { splitProps, mergeProps } from './lib/localization.mjs';
+import { splitProps, mergeProps } from '../lib/localization.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const CONTENT = path.join(ROOT, 'content');
@@ -132,7 +132,7 @@ for (const r of routes) {
         `${r.route} ${en.trail} (${en.kind}): locale-varying value classified as SHARED at ${d?.path}\n` +
           `      en: ${S(d?.a)?.slice(0, 120)}\n` +
           `      ar: ${S(d?.b)?.slice(0, 120)}\n` +
-          `      -> add that key to LOCALIZED_KEYS in scripts/lib/localization.mjs`
+          `      -> add that key to LOCALIZED_KEYS in lib/localization.mjs`
       );
     }
   }
