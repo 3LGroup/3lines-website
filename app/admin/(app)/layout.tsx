@@ -28,22 +28,31 @@ interface NavItem {
   pending?: string;
 }
 
+/**
+ * Entities first, structure second.
+ *
+ * Matches the CMS already running at 3lines.com.sa/cms, which offers four things
+ * you can point at — and is far easier to use than a tree of pages and sections
+ * even though it can do less. Companies, Services and Partners are what someone
+ * actually sits down to change; Pages is kept below them for the copy that lives
+ * nowhere else, like the About page's prose or a page's search description.
+ */
 const NAV: { group: string; items: NavItem[] }[] = [
   {
     group: 'Content',
     items: [
-      { href: '/admin', label: 'Dashboard', icon: 'dashboard' },
-      { href: '/admin/pages', label: 'Pages', icon: 'pages' },
-      { href: '/admin/companies', label: 'Companies', icon: 'companies', pending: 'M4' },
-      { href: '/admin/services', label: 'Services', icon: 'services', pending: 'M4' },
-      { href: '/admin/news', label: 'News', icon: 'news', pending: 'M4' },
+      { href: '/admin/c/companies', label: 'Companies', icon: 'companies' },
+      { href: '/admin/c/services', label: 'Services', icon: 'services' },
+      { href: '/admin/c/partners', label: 'Partners', icon: 'media' },
+      { href: '/admin/news', label: 'News', icon: 'news', pending: 'next' },
     ],
   },
   {
-    group: 'Library',
+    group: 'Everything else',
     items: [
-      { href: '/admin/media', label: 'Media', icon: 'media', pending: 'M5' },
-      { href: '/admin/settings', label: 'Settings', icon: 'settings', pending: 'M5' },
+      { href: '/admin/pages', label: 'Pages & SEO', icon: 'pages' },
+      { href: '/admin', label: 'Dashboard', icon: 'dashboard' },
+      { href: '/admin/settings', label: 'Site info', icon: 'settings', pending: 'next' },
     ],
   },
 ];
