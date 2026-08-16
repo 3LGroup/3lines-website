@@ -18,6 +18,10 @@ next-env.d.ts
 # equivalent of .env.local, and just as much a thing that must never be pushed.
 .open-next/
 .wrangler/
+# Regenerated deterministically from content/ by scripts/import-to-cms.mjs.
+# Half a megabyte of INSERT statements is an application step, not a reviewable
+# artifact — the reviewable things are the script and content/, both committed.
+drizzle/seed/
 .dev.vars
 .dev.vars.*
 !.dev.vars.example
