@@ -13,15 +13,34 @@ import { saveEdits, type SaveState } from './actions';
  * the English, forget the Arabic, and nothing on screen ever says so. Stacked,
  * the gap is visible while you are typing.
  */
+const META_FIELDS = [
+  { key: 'title', label: 'Search engine title', hint: 'Shown as the headline of a Google result.' },
+  {
+    key: 'description',
+    label: 'Search engine description',
+    hint: 'The grey text under the headline. Around 150 characters reads best.',
+  },
+  {
+    key: 'keywords',
+    label: 'Keywords',
+    hint: 'Comma separated. Leave empty to omit the tag entirely.',
+  },
+] as const;
+
 export default function PageEditor({
   slug,
   route,
+  meta,
   blocks,
 }: {
   slug: string;
   route: string;
+  meta: Record<string, { title: string; description: string; keywords: string }>;
   blocks: EditableBlock[];
 }) {
+  // Keyed "<slug>:<locale>:<field>". Separate from block edits because it lands
+  // in a different table, but submitted together so one Save covers the screen.
+  const [metaEdits, setMetaEdits] = useState<Record<string, string>>({});
   // Keyed "<blockId>:<locale>" -> { path: value }. Only touched paths land here,
   // so an untouched block is never rewritten and never shows up in the publish
   // diff.
@@ -30,8 +49,10 @@ export default function PageEditor({
   const [open, setOpen] = useState<string | null>(blocks[0]?.id ?? null);
 
   const dirtyCount = useMemo(
-    () => Object.values(edits).reduce((n, e) => n + Object.keys(e).length, 0),
-    [edits]
+    () =>
+      Object.values(edits).reduce((n, e) => n + Object.keys(e).length, 0) +
+      Object.keys(metaEdits).length,
+    [edits, metaEdits]
   );
 
   /**
@@ -51,8 +72,21 @@ export default function PageEditor({
     if (state.ok && state !== lastHandled.current) {
       lastHandled.current = state;
       setEdits({});
+      setMetaEdits({});
     }
   }, [state]);
+
+  const setMeta = (locale: string, field: string, value: string, original: string) =>
+    setMetaEdits((prev) => {
+      const key = `${slug}:${locale}:${field}`;
+      const next = { ...prev };
+      if (value === original) delete next[key];
+      else next[key] = value;
+      return next;
+    });
+
+  const metaValue = (locale: string, field: string, original: string) =>
+    metaEdits[`${slug}:${locale}:${field}`] ?? original;
 
   const setField = (blockId: string, locale: string, path: string, value: string, original: string) =>
     setEdits((prev) => {
@@ -73,6 +107,7 @@ export default function PageEditor({
   return (
     <form action={formAction}>
       <input type="hidden" name="edits" value={JSON.stringify(edits)} />
+      <input type="hidden" name="meta" value={JSON.stringify(metaEdits)} />
 
       <div
         style={{
@@ -119,6 +154,45 @@ export default function PageEditor({
           </button>
         </div>
       </div>
+
+      {/* Page metadata first: it is not part of any block, so a block-only
+          editor would hide the two strings that decide what a Google result
+          looks like. */}
+      <section className="adm-card" style={{ marginBlockEnd: 'var(--adm-5)' }}>
+        <div className="adm-card__head">
+          <h2 className="adm-card__title">Search &amp; sharing</h2>
+          <span className="adm-badge" style={{ marginInlineStart: 'auto' }}>
+            page metadata
+          </span>
+        </div>
+        <div className="adm-card__body" style={{ display: 'grid', gap: 'var(--adm-5)' }}>
+          {META_FIELDS.map((f) => (
+            <div className="adm-field" key={f.key}>
+              <label className="adm-label" htmlFor={`meta-${f.key}`}>
+                {f.label}
+              </label>
+              <p className="adm-hint">{f.hint}</p>
+              <input
+                className="adm-input"
+                id={`meta-${f.key}`}
+                lang="en"
+                dir="ltr"
+                value={metaValue('en', f.key, meta.en?.[f.key] ?? '')}
+                onChange={(e) => setMeta('en', f.key, e.target.value, meta.en?.[f.key] ?? '')}
+              />
+              <input
+                className="adm-input"
+                aria-label={`${f.label} (Arabic)`}
+                lang="ar"
+                dir="rtl"
+                style={{ fontFamily: "'Tajawal', var(--font-sans)" }}
+                value={metaValue('ar', f.key, meta.ar?.[f.key] ?? '')}
+                onChange={(e) => setMeta('ar', f.key, e.target.value, meta.ar?.[f.key] ?? '')}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
 
       {blocks.map((block) => {
         const isOpen = open === block.id;

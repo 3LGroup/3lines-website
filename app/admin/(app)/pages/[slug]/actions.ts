@@ -2,7 +2,13 @@
 
 import { revalidatePath } from 'next/cache';
 import { readSession } from '@/lib/admin/session';
-import { saveBlockEdits, type BlockEdit, type Locale } from '@/lib/admin/content';
+import {
+  saveBlockEdits,
+  savePageMeta,
+  type BlockEdit,
+  type Locale,
+  type MetaEdit,
+} from '@/lib/admin/content';
 
 export interface SaveState {
   ok?: boolean;
@@ -42,10 +48,29 @@ export async function saveEdits(_prev: SaveState, form: FormData): Promise<SaveS
     patches.push({ blockId, locale, edits });
   }
 
-  if (!patches.length) return { ok: true, written: 0 };
+  // Page metadata rides in the same submit so one Save does everything the
+  // screen shows. Shape: { "<slug>:<locale>:<field>": "<value>" }.
+  const metaRaw = form.get('meta');
+  const metaEdits: MetaEdit[] = [];
+  if (typeof metaRaw === 'string' && metaRaw !== '{}') {
+    try {
+      for (const [key, value] of Object.entries(JSON.parse(metaRaw) as Record<string, string>)) {
+        const [slug, locale, field] = key.split(':');
+        if (locale !== 'en' && locale !== 'ar') return { error: `Unknown locale "${locale}".` };
+        if (field !== 'title' && field !== 'description' && field !== 'keywords') {
+          return { error: `Unknown metadata field "${field}".` };
+        }
+        metaEdits.push({ slug: slug!, locale, field, value });
+      }
+    } catch {
+      return { error: 'The metadata payload was malformed.' };
+    }
+  }
+
+  if (!patches.length && !metaEdits.length) return { ok: true, written: 0 };
 
   try {
-    const written = await saveBlockEdits(patches);
+    const written = (await saveBlockEdits(patches)) + (await savePageMeta(metaEdits));
     // The admin reads through the same request cache; without this a save looks
     // like it did nothing until a hard reload.
     revalidatePath('/admin/pages', 'layout');

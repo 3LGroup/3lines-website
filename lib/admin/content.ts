@@ -39,11 +39,25 @@ export interface EditableBlock {
   fields: Record<Locale, Field[]>;
 }
 
+/**
+ * The page's own metadata: what search engines and social cards show.
+ *
+ * Not part of any block, so it would be invisible in a block-only editor — and
+ * it is some of the most consequential copy on the site, since `title` and
+ * `description` are what appear in a Google result.
+ */
+export interface PageMeta {
+  title: string;
+  description: string;
+  keywords: string;
+}
+
 export interface EditablePage {
   slug: string;
   route: string;
   status: string;
   titles: Record<Locale, string>;
+  meta: Record<Locale, PageMeta>;
   blocks: EditableBlock[];
 }
 
@@ -179,6 +193,24 @@ export async function getPageForEdit(slug: string): Promise<EditablePage | null>
     titles: Object.fromEntries(
       LOCALES.map((l) => [l, translations.find((t) => t.locale === l)?.title ?? ''])
     ) as Record<Locale, string>,
+    meta: Object.fromEntries(
+      LOCALES.map((l) => {
+        const t = translations.find((x) => x.locale === l);
+        return [
+          l,
+          {
+            title: t?.title ?? '',
+            description: t?.description ?? '',
+            // Null and empty string are different here: 34 of 50 documents have
+            // no `keywords` key at all, and the exporter omits the key entirely
+            // when it is null. Coercing to '' on read and back to null on write
+            // keeps that distinction rather than adding `"keywords": ""` to 34
+            // files.
+            keywords: t?.keywords ?? '',
+          },
+        ];
+      })
+    ) as Record<Locale, PageMeta>,
     blocks: nest(all)
       .map(({ row, depth }) => ({
         id: row.id,
@@ -242,6 +274,50 @@ export async function saveBlockEdits(patches: BlockEdit[]): Promise<number> {
         and(
           eq(schema.blockTranslations.blockId, patch.blockId),
           eq(schema.blockTranslations.locale, patch.locale)
+        )
+      );
+    written++;
+  }
+  return written;
+}
+
+export interface MetaEdit {
+  slug: string;
+  locale: Locale;
+  field: keyof PageMeta;
+  value: string;
+}
+
+/** Write page title / description / keywords. */
+export async function savePageMeta(edits: MetaEdit[]): Promise<number> {
+  if (!edits.length) return 0;
+  const db = await getDb();
+
+  const slugs = [...new Set(edits.map((e) => e.slug))];
+  const pages = await db.select().from(schema.pages).where(inArray(schema.pages.slug, slugs));
+  const idOf = new Map(pages.map((p) => [p.slug, p.id]));
+
+  let written = 0;
+  for (const e of edits) {
+    const pageId = idOf.get(e.slug);
+    if (!pageId) throw new Error(`no page with slug "${e.slug}"`);
+
+    // Empty keywords means "omit the key", not "emit an empty string" — see the
+    // note in getPageForEdit. title and description are NOT NULL, so an empty
+    // one is rejected rather than silently written: a page with no <title> is a
+    // worse outcome than a refused save.
+    if ((e.field === 'title' || e.field === 'description') && !e.value.trim()) {
+      throw new Error(`${e.field} cannot be empty (${e.slug}, ${e.locale})`);
+    }
+    const value = e.field === 'keywords' && !e.value.trim() ? null : e.value;
+
+    await db
+      .update(schema.pageTranslations)
+      .set({ [e.field]: value, updatedAt: Math.floor(Date.now() / 1000) })
+      .where(
+        and(
+          eq(schema.pageTranslations.pageId, pageId),
+          eq(schema.pageTranslations.locale, e.locale)
         )
       );
     written++;

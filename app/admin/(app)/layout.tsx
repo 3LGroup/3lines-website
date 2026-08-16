@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { redirect } from 'next/navigation';
 import Icon, { type IconName } from '@/components/admin/Icon';
 import NavItem from '@/components/admin/NavItem';
+import PublishButton from '@/components/admin/PublishButton';
 import { readSession, refreshIfStale } from '@/lib/admin/session';
 import { logoutAction } from '../actions';
 
@@ -115,6 +116,7 @@ export default async function AdminShell({ children }: { children: ReactNode }) 
         <header className="adm-topbar">
           <span className="adm-topbar__title">3Lines Advanced Technologies</span>
           <div className="adm-topbar__actions">
+            <PublishButton />
             <span className="adm-badge">{session.sub}</span>
           </div>
         </header>

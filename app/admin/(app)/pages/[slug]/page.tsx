@@ -35,7 +35,7 @@ export default async function EditPage({ params }: Params) {
         </p>
       </div>
 
-      <PageEditor slug={page.slug} route={page.route} blocks={page.blocks} />
+      <PageEditor slug={page.slug} route={page.route} meta={page.meta} blocks={page.blocks} />
     </div>
   );
 }
