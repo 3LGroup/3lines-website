@@ -586,8 +586,14 @@ html.dark .ftr .ftr__logo::before,html.dark .footer svg{filter:brightness(0) inv
 
 /* misc component resets */
 .totop{background:var(--primary)!important;border-radius:var(--radius)!important;box-shadow:var(--shadow-md)!important}
-.dot span,.dot[aria-selected="true"] span{background:var(--primary)!important}
-.dot{background:var(--border)!important}
+/* `.dot` used to mean one thing — a 10px circle — so painting a background on
+   it, and on any span inside it, was safe. It now means two different things:
+   the 4px separator between news card meta items, which is still a circle, and
+   the "Why 3Lines" slider list, whose buttons now carry a visible label.
+   Unscoped, these rules painted a grey panel behind the list and a solid blue
+   bar behind every heading in it.
+   Scoped to the separator, which is the only one that is still a dot. */
+.ncard__meta .dot{background:var(--border)!important}
 .rail__btn[aria-selected="true"],.plattab[aria-selected="true"],
 .megatab[aria-selected="true"],.storytab[aria-selected="true"]{color:var(--primary)!important;border-top-color:var(--primary)!important}
 /* `.storytab span.bar` and `.plattab i` are decorative blocks that are meant to

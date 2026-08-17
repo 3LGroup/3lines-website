@@ -220,8 +220,39 @@ html.dark .mega__close{color:var(--foreground)}
   content:"";position:absolute;right:-6%;top:-30%;width:46%;height:160%;pointer-events:none;
   background:radial-gradient(closest-side,rgba(135,237,255,.55),transparent 72%);
 }
-.hero__inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,4vw,70px);align-items:end}
-@media (max-width:980px){.hero__inner{grid-template-columns:1fr;align-items:start}}
+/* The hero is a two-column grid with THREE children — heading, paragraph, CTA —
+   so the paragraph lands beside the heading and the button wraps to a second
+   row underneath it.
+
+   That layout used to be `align-items:end`, which bottom-aligned the heading
+   inside a row the PARAGRAPH made tall: six lines of 19px body text against two
+   lines of 54px display type. The heading sank to the foot of that row and the
+   paragraph floated at the top, 79px above it at 1440, 126px at 1024, and 107px
+   in Arabic where the heading wraps differently. The two read as unrelated
+   rather than as one composition.
+
+   `align-items:start` alone fixes the heading and breaks the button: the row is
+   still paragraph-height, so the CTA stays put and ends up stranded ~150px
+   below a heading that has moved up.
+
+   Spanning the paragraph across both rows is what actually resolves it. Row 1
+   is then sized by the heading, so the heading rises to meet the paragraph AND
+   the button follows it up — measured 0px offset at every viewport, in both
+   locales, with the heading-to-button gap preserved.
+
+   Grid line numbers are writing-direction relative, so column 1 is the right
+   column under RTL and the whole thing mirrors without a separate rule. */
+.hero__inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,4vw,70px);align-items:start}
+.hero__inner>h1{grid-column:1;grid-row:1}
+.hero__inner>p{grid-column:2;grid-row:1/span 2}
+.hero__inner>.btn{grid-column:1;grid-row:2}
+/* Single column below 980px: the explicit placement above would force the
+   paragraph to span rows that no longer exist side by side, so it is reset and
+   the three children simply stack in source order. */
+@media (max-width:980px){
+  .hero__inner{grid-template-columns:1fr}
+  .hero__inner>h1,.hero__inner>p,.hero__inner>.btn{grid-column:auto;grid-row:auto}
+}
 .hero h1{
   font-size:clamp(40px,7.4vw,90px);line-height:1;letter-spacing:-.022em;
   color:var(--blue);font-weight:600;
@@ -236,8 +267,40 @@ html.dark .mega__close{color:var(--foreground)}
    mostly empty. */
 .section{padding:clamp(48px,6vw,96px) 0}
 .section--mist{background:var(--mist)}
-.section--navy{background:var(--navy);color:#fff}
+.section--navy{background:var(--navy);color:#fff;position:relative;overflow:hidden}
 .section--blue{background:var(--blue);color:#fff}
+
+/* Three lines, drifting.
+   ---------------------------------------------------------------
+   The band is the only full-bleed colour field on the page and it read as a
+   flat empty rectangle. This gives it depth without breaking the design
+   contract in 3lines.css: no gradient wash, no second accent, no imagery —
+   just three hairlines at 7% white, which is the company's own name used as a
+   motif rather than decoration bolted on.
+
+   Drawn with repeating-linear-gradient because hard colour stops produce a
+   crisp 1px rule, not a blur: `rgba(...) 0 1px` then transparent to the next
+   repeat. The spacing is set so roughly three cross the band at desktop width.
+
+   Behind everything (z-index:0 against the content's 1) and pointer-events
+   none, so it can never intercept a click on the slider list. */
+.section--navy::before{
+  content:"";position:absolute;inset:-20% -10%;pointer-events:none;z-index:0;
+  background-image:repeating-linear-gradient(112deg,
+    rgba(255,255,255,.07) 0 1px, transparent 1px clamp(180px,20vw,300px));
+  animation:threelines 34s linear infinite;
+}
+/* The wrap has no stacking context of its own, so lift the content above the
+   motif explicitly rather than relying on source order. */
+.section--navy > .wrap{position:relative;z-index:1}
+
+@keyframes threelines{to{transform:translate3d(clamp(180px,20vw,300px),0,0)}}
+
+/* Motion is ornament here; the lines still read as texture when static, so the
+   reduced-motion case keeps them and simply stops them moving. */
+@media (prefers-reduced-motion:reduce){
+  .section--navy::before{animation:none}
+}
 .on-dark, .section--navy, .section--blue{color:#fff}
 .section--navy h2,.section--blue h2,.section--navy h3,.section--blue h3{color:#fff}
 
@@ -546,15 +609,71 @@ html.dark .pagehead .crumbs a:hover{color:var(--foreground)}
 .hero__inner .btn{justify-self:start;width:fit-content}
 
 /* --- "Why 3Lines" slider ------------------------------------ */
-.heroslides{display:grid;position:relative;min-height:clamp(150px,16vw,210px)}
+
+/* Two columns: the rotating message on the left, the full list of messages on
+   the right.
+
+   It was one column with four 10px dots underneath, which meant three of the
+   four "Why 3Lines" statements were invisible — a band 335px tall, 172px of it
+   padding, with a heading line 63% empty, showing a quarter of its own content.
+   The dots carried the headings as aria-labels, so assistive tech could already
+   reach all four; only sighted readers could not.
+
+   The slides still stack in one grid cell and still cross-fade. Only the dots
+   moved and grew labels. */
+.heroslides{display:grid;position:relative;min-height:clamp(150px,16vw,210px);
+  grid-template-columns:minmax(0,1fr) minmax(0,clamp(240px,26vw,340px));
+  column-gap:clamp(32px,5vw,80px);align-items:start}
 .heroslide{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .5s var(--ease)}
 .heroslide.is-on{opacity:1;visibility:visible}
 .heroslide h3{font-size:clamp(22px,2.8vw,34px);margin-bottom:12px}
 .heroslide p{color:var(--ink-70);max-width:60ch;margin:0}
-.dots{display:flex;gap:10px;margin-top:clamp(18px,2.4vw,28px)}
-.dot{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:var(--lilac);cursor:pointer;
-     transition:background .2s var(--ease),transform .2s var(--ease)}
-.dot[aria-current="true"]{background:var(--blue);transform:scale(1.25)}
+
+/* The list sits in column two, row one — beside the slides rather than under
+   them. Counter-reset here, incremented per item, gives the 01–04 numbering
+   without putting presentational digits in the markup. */
+/* EVERY rule below is scoped `.dots .dot`, never bare `.dot`.
+   `.dot` means two different things in this codebase: these slider buttons, and
+   the 4px separator between news card meta items (NewsGrid renders a bare
+   <span class="dot">). An unscoped `.dot{padding:12px 0}` here made that
+   separator 24px tall and grew every news card by 13px — on /news and on the
+   homepage teaser, nowhere near the band being redesigned. */
+.dots{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:0;margin:0;counter-reset:slide}
+.dots .dot{counter-increment:slide;display:grid;grid-template-columns:auto minmax(0,1fr);
+  align-items:baseline;column-gap:14px;width:100%;padding:12px 0;border:0;background:none;
+  text-align:start;cursor:pointer;color:inherit;font:inherit;
+  transition:color .2s var(--ease),opacity .2s var(--ease)}
+.dots .dot::before{content:counter(slide,decimal-leading-zero);font-family:var(--font-mono,inherit);
+  font-size:11px;letter-spacing:.08em;opacity:.55}
+
+/* Hairlines BETWEEN items only, so four messages are separated by exactly three
+   lines. The brand is called 3Lines; this is the nearest thing to a motif that
+   is also doing a job, rather than decoration bolted on. */
+.dots .dot + .dot{border-top:1px solid rgba(255,255,255,.18)}
+
+.dot__label{font-size:clamp(13.5px,1.05vw,15px);line-height:1.35}
+
+/* One accent, used once: the active item. Everything else recedes rather than
+   competing, which is what makes the active one readable at a glance. */
+.section--navy .dots .dot,.section--blue .dots .dot{color:rgba(255,255,255,.55)}
+.section--navy .dots .dot:hover,.section--blue .dots .dot:hover{color:rgba(255,255,255,.85)}
+.section--navy .dots .dot[aria-current="true"],
+.section--blue .dots .dot[aria-current="true"]{color:var(--cyan)}
+.section--navy .dots .dot[aria-current="true"]::before,
+.section--blue .dots .dot[aria-current="true"]::before{opacity:1}
+
+/* Light-surface fallback: the slider is only used on the navy band today, but
+   the kind is available to any section, and a white-on-white list would be
+   invisible if one were ever placed on a plain tone. */
+.dots .dot{color:var(--ink-70)}
+.dots .dot[aria-current="true"]{color:var(--blue)}
+
+/* Stack below the two-column breakpoint the rest of the page uses. The list
+   keeps its labels — they are the content, not an enhancement. */
+@media (max-width:860px){
+  .heroslides{grid-template-columns:1fr;row-gap:clamp(20px,3vw,32px)}
+  .dots{grid-column:1;grid-row:2}
+}
 
 /* --- definition cards (pillars, values, capabilities, facts) -- */
 .defs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.2vw,30px)}
@@ -653,6 +772,40 @@ html.dark .logos div:hover{background:var(--mist)}
    plates stay white in both themes, so those keep the inversion. */
 html.dark .logos--marquee img[data-invert="1"]{filter:none}
 
+/* ...except the marquee DID have a plate, by accident, and it was a white slab
+   across a near-black page.
+   -----------------------------------------------------------------
+   `.logos div{background:var(--paper)}` matches the track as well as the cells:
+   the track is a div inside `.logos`. `.logos--marquee` cleared the container
+   and `.logos--marquee .logos__track > div` cleared the cells, but nothing
+   cleared the track between them. Invisible in light mode — a white bar on a
+   white page — and in dark mode a bright band straight through the section.
+
+   Clearing it alone is not enough. Only 14 of the 36 marks are flagged
+   invertible; the other 22 are dark artwork that the accidental plate had been
+   rescuing, and on a transparent track they would vanish into the background.
+
+   Forcing the whole strip monochrome (`brightness(0) invert(1)`) was tried and
+   is wrong for THIS set: several marks carry a baked-in solid panel rather than
+   transparency — SMSCMC is white type on a green block — and crushing those to
+   white turns them into featureless white rectangles. A filter can only serve a
+   logo set that is uniformly transparent, and this one is not.
+
+   So each mark gets its own tile instead of the strip getting one slab. The
+   artwork is left completely untouched, which is also what a partner's brand
+   guidelines generally require, and the row reads as a deliberate set of chips
+   rather than a bar someone forgot to style. */
+html.dark .logos--marquee .logos__track{background:none}
+html.dark .logos--marquee .logos__track > div{
+  background:oklch(0.97 0 0);border-radius:var(--radius-md,8px);
+  padding:clamp(8px,0.9vw,14px);width:clamp(104px,9.6vw,148px);
+  transition:background .22s var(--ease)}
+html.dark .logos--marquee .logos__track > div:hover{background:#fff}
+/* The tile supplies the light ground these marks were drawn for, so the
+   inversion that exists for the dark page must not also apply — it would paint
+   a white-drawn mark black on its own white tile. */
+html.dark .logos--marquee img[data-invert="1"]{filter:invert(1) brightness(.35)}
+
 .logos--marquee{display:block;border:0;background:none;overflow:hidden;
   /* edge fades, as the reference strip has */
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
@@ -670,10 +823,28 @@ html.dark .logos--marquee img[data-invert="1"]{filter:none}
 .logos--marquee:focus-within .logos__track{animation-play-state:paused}
 /* ~8 marks visible across a desktop container, matching the reference strip. */
 .logos--marquee .logos__track > div{background:none;aspect-ratio:auto;padding:0;
-  flex:0 0 auto;width:clamp(88px,8.4vw,126px);height:clamp(48px,5.4vw,64px)}
+  flex:0 0 auto;width:clamp(104px,9.6vw,148px);height:clamp(58px,6.2vw,78px)}
 .logos--marquee .logos__track > div:hover{background:none}
-.logos--marquee .logos__track > div > a{display:block;width:100%;height:100%}
-.logos--marquee .logos__track img{width:100%;height:100%;max-height:none;object-fit:contain}
+.logos--marquee .logos__track > div > a{display:grid;place-items:center;width:100%;height:100%}
+
+/* Sized by max-* in absolute units, NOT by width/height:100%.
+   -----------------------------------------------------------------
+   The percentage version resolved for some marks and not others, so tall ones
+   overflowed their tile and were clipped: sami-aerospace-logo.svg is 253x150
+   and rendered 112x67 inside a 64px tile, cut off at the bottom. The chain
+   `img{height:100%}` -> `a{height:100%}` -> grid item only resolves when every
+   link has a definite height, and an SVG carrying a viewBox but no intrinsic
+   width breaks it — so the image silently fell back to its own aspect ratio and
+   grew past the box.
+
+   `width:auto;height:auto` with max-width and an absolute max-height cannot
+   fail that way: the mark keeps its own proportions, is never upscaled past its
+   natural size, and is guaranteed to fit whatever its shape. A wide wordmark
+   and a square crest both render whole. */
+.logos--marquee .logos__track img{
+  width:auto;height:auto;
+  max-width:100%;max-height:clamp(38px,4vw,52px);
+  object-fit:contain}
 @keyframes logos-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.logos__track{animation:none}}
 

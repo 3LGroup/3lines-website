@@ -342,7 +342,7 @@
       "fw": "400",
       "radius": 0,
       "display": "block",
-      "position": "static",
+      "position": "relative",
       "fit": "fill",
       "bgSize": "auto",
       "hasBg": false
@@ -459,7 +459,7 @@
       "fw": "400",
       "radius": 0,
       "display": "block",
-      "position": "static",
+      "position": "relative",
       "fit": "fill",
       "bgSize": "auto",
       "hasBg": false

@@ -47,6 +47,47 @@ const BASELINE_DIR = process.env.AUDIT_BASELINE_DIR || 'baseline';
 
 const baselinePath = (vp, route) => path.join(BASELINE_DIR, vp, `${routeKey(route)}.json`);
 
+/**
+ * Refuse to audit against a baseline that is not whole.
+ *
+ * visual-baseline.mjs deletes the directory and then rewrites it viewport by
+ * viewport, writing provenance.json last. Interrupt it and what is left is a
+ * mixture: the viewports it reached hold the NEW geometry, the rest hold the
+ * old, and provenance is gone. Auditing a single viewport out of that compares
+ * new against new and reports a clean pass — which is exactly what happened
+ * here, and it looked like proof that three deliberate design changes had
+ * changed nothing.
+ *
+ * Per-file existence was already checked, and it was not enough: the files were
+ * all present, they were just not all from the same capture. Provenance is the
+ * only thing that can tell, because it is written once, at the end.
+ */
+function assertBaselineIntact() {
+  if (MODE !== 'baseline') return;
+
+  const p = path.join(BASELINE_DIR, 'provenance.json');
+  if (!fs.existsSync(p)) {
+    throw new Error(
+      `${BASELINE_DIR}/provenance.json is missing. It is written last, so the baseline is ` +
+        'either absent or half-regenerated from an interrupted run. Re-run "npm run baseline:update".'
+    );
+  }
+
+  const prov = JSON.parse(fs.readFileSync(p, 'utf8'));
+  const onDisk = fs
+    .readdirSync(BASELINE_DIR, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .reduce((n, d) => n + fs.readdirSync(path.join(BASELINE_DIR, d.name)).length, 0);
+
+  if (onDisk !== prov.files) {
+    throw new Error(
+      `${BASELINE_DIR} holds ${onDisk} files but provenance records ${prov.files}. ` +
+        'The snapshot is not from one capture. Re-run "npm run baseline:update".'
+    );
+  }
+  console.log(`  baseline: ${prov.files} files, captured ${prov.capturedAt} at ${String(prov.commit).slice(0, 8)}`);
+}
+
 function readBaseline(vp, route) {
   const p = baselinePath(vp, route);
   if (!fs.existsSync(p))
@@ -125,6 +166,10 @@ async function measure(browser, url, viewport, perturb = false) {
 }
 
 fs.mkdirSync(RUN_DIR, { recursive: true });
+
+// Before a browser is launched, not after: an unusable reference should cost a
+// second, not the twenty minutes of a full sweep that then reports nonsense.
+assertBaselineIntact();
 
 const browser = await launch();
 const comparisons = [];

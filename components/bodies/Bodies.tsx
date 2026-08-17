@@ -192,6 +192,16 @@ function Slider({ body }: { body: SliderBody }) {
           <p>{s.sub}</p>
         </div>
       ))}
+      {/* The headings are rendered INSIDE the buttons rather than only as
+          aria-labels. They were already announced to screen readers, so three
+          of the four messages were reachable with assistive tech and invisible
+          to everyone else — four anonymous 10px circles beside a band that was
+          63% empty. Showing them fills the space with the content that was
+          already there.
+
+          Class names, data-goto and aria-current are untouched, so the slider
+          in main.js keeps working with no change: it only toggles classes and
+          the current flag. */}
       <div className="dots" role="tablist">
         {body.items.map((s, i) => (
           <button
@@ -201,8 +211,12 @@ function Slider({ body }: { body: SliderBody }) {
             role="tab"
             data-goto={i}
             aria-current={i === 0 ? 'true' : 'false'}
-            aria-label={s.heading}
-          />
+          >
+            {/* No aria-label now the text is visible: an aria-label overrides
+                the accessible name, and duplicating visible text is the setup
+                for the two drifting apart later. */}
+            <span className="dot__label">{s.heading}</span>
+          </button>
         ))}
       </div>
     </div>
