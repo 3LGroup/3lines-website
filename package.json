@@ -8,6 +8,7 @@
     "ingest": "node scripts/ingest-3lines.mjs",
     "audit:content": "node scripts/audit-content.mjs",
     "audit:localization": "node scripts/audit-localization.mjs",
+    "audit:manifest": "node scripts/audit-manifest.mjs",
     "audit:admin": "node scripts/audit-admin.mjs",
     "audit:links": "node scripts/audit-links.mjs",
     "audit:console": "node scripts/audit-console.mjs",

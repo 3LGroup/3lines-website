@@ -130,6 +130,12 @@ run('content ↔ schema ↔ renderer parity (both locales)', 'node', ['scripts/a
 // milliseconds rather than after a twenty-minute pipeline.
 run('localization split (lossless + locale-invariant)', 'node', ['scripts/audit-localization.mjs']);
 
+// Also offline, and deliberately BEFORE the build. audit-assets.mjs already
+// checks cache-busting, but from served HTML, so it needs a build and a running
+// server and lands twenty minutes in. A stale manifest is knowable from the
+// files alone, and it has already shipped once — caught here it costs a second.
+run('asset manifest freshness', 'node', ['scripts/audit-manifest.mjs']);
+
 stageNo++;
 log(`\n── stage ${stageNo}: clean build artifacts ──`);
 fs.rmSync('.next', { recursive: true, force: true });
