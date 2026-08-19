@@ -50,6 +50,7 @@ const NAV: { group: string; items: NavItem[] }[] = [
   {
     group: 'Everything else',
     items: [
+      { href: '/admin/media', label: 'Images', icon: 'media' },
       { href: '/admin/site', label: 'Site info', icon: 'settings' },
       { href: '/admin/pages', label: 'Pages & SEO', icon: 'pages' },
       { href: '/admin', label: 'Dashboard', icon: 'dashboard' },

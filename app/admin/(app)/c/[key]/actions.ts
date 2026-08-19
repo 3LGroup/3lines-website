@@ -5,9 +5,11 @@ import { readSession } from '@/lib/admin/session';
 import {
   applyStructural,
   saveCollectionEdits,
+  setCollectionImage,
   type ItemEdit,
   type StructuralOp,
 } from '@/lib/admin/collections';
+import type { ImageShape } from '@/lib/admin/media';
 import type { Locale } from '@/lib/admin/content';
 
 export interface CollectionState {
@@ -54,6 +56,45 @@ export async function saveItems(_prev: CollectionState, form: FormData): Promise
     return { ok: true, detail: `Saved ${n} item${n === 1 ? '' : 's'}.` };
   } catch (err) {
     return { error: err instanceof Error ? err.message : 'Save failed.' };
+  }
+}
+
+/**
+ * Change which image a card uses.
+ *
+ * Its own action rather than part of the copy save, because it writes the
+ * structural row. Keeping them separate is what makes "editing text cannot
+ * break the layout" true of the save button rather than merely likely.
+ */
+export async function setImageAction(
+  _prev: CollectionState,
+  form: FormData
+): Promise<CollectionState> {
+  const denied = await guard();
+  if (denied) return { error: denied };
+
+  const key = String(form.get('key') ?? '');
+
+  // One field carrying "<shape>|<path>|<src>", set by the clicked button. See
+  // the note in ImagePicker: hidden inputs would collide across open pickers.
+  const raw = String(form.get('pick') ?? '');
+  const sep1 = raw.indexOf('|');
+  const sep2 = raw.indexOf('|', sep1 + 1);
+  if (sep1 < 1 || sep2 < 0) return { error: 'Nothing to change.' };
+
+  const shape = raw.slice(0, sep1) as ImageShape;
+  const path = raw.slice(sep1 + 1, sep2);
+  const src = raw.slice(sep2 + 1);
+
+  if (shape !== 'imgVar' && shape !== 'src') return { error: `Unknown image shape "${shape}".` };
+  if (!path || !src) return { error: 'Nothing to change.' };
+
+  try {
+    await setCollectionImage(key, path, src, shape);
+    revalidatePath('/admin', 'layout');
+    return { ok: true, detail: 'Image changed. Publish to put it live.' };
+  } catch (err) {
+    return { error: err instanceof Error ? err.message : 'Could not change the image.' };
   }
 }
 

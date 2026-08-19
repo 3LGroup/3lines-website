@@ -2,8 +2,10 @@
 
 import { useActionState, useEffect, useMemo, useRef, useState } from 'react';
 import Icon from '@/components/admin/Icon';
+import ImagePicker from '@/components/admin/ImagePicker';
 import type { Collection } from '@/lib/admin/collections';
-import { saveItems, structural, type CollectionState } from './actions';
+import type { MediaItem } from '@/lib/admin/media';
+import { saveItems, structural, setImageAction, type CollectionState } from './actions';
 
 /**
  * A grid of cards; click one to edit it.
@@ -13,7 +15,13 @@ import { saveItems, structural, type CollectionState } from './actions';
  * mentioned anywhere on screen, because nobody sits down wanting to edit "the
  * cards body of the section on /services" — they want to change a service.
  */
-export default function CollectionEditor({ collection }: { collection: Collection }) {
+export default function CollectionEditor({
+  collection,
+  library,
+}: {
+  collection: Collection;
+  library: MediaItem[];
+}) {
   const { def, items } = collection;
 
   const [edits, setEdits] = useState<Record<string, Record<string, string>>>({});
@@ -23,6 +31,10 @@ export default function CollectionEditor({ collection }: { collection: Collectio
   const [saveState, saveAction, saving] = useActionState<CollectionState, FormData>(saveItems, {});
   const [structState, structAction, working] = useActionState<CollectionState, FormData>(
     structural,
+    {}
+  );
+  const [imgState, imgAction, imgWorking] = useActionState<CollectionState, FormData>(
+    setImageAction,
     {}
   );
 
@@ -54,14 +66,22 @@ export default function CollectionEditor({ collection }: { collection: Collectio
     edits[`${index}:${locale}`]?.[path] ?? original;
 
   const overRecommended = def.recommended !== undefined && items.length > def.recommended;
-  const message = structState.error || saveState.error || structState.detail || saveState.detail;
-  const isError = Boolean(structState.error || saveState.error);
+  const message =
+    imgState.error || structState.error || saveState.error ||
+    imgState.detail || structState.detail || saveState.detail;
+  const isError = Boolean(imgState.error || structState.error || saveState.error);
 
   return (
     <>
       {/* Structural operations post separately from copy edits, because they
           rewrite the shared row as well and must not be half-applied. */}
       <form action={structAction} id="struct">
+        <input type="hidden" name="key" value={def.key} />
+      </form>
+
+      {/* Images post to their own action: they write the structural row, which
+          the copy save is deliberately incapable of reaching. */}
+      <form action={imgAction} id="img">
         <input type="hidden" name="key" value={def.key} />
       </form>
 
@@ -185,6 +205,19 @@ export default function CollectionEditor({ collection }: { collection: Collectio
 
                 {isOpen ? (
                   <div className="adm-card__body" style={{ display: 'grid', gap: 'var(--adm-5)' }}>
+                    {/* Images first: it is the thing most people open a card to
+                        change, and it is the only field here that is not text. */}
+                    {item.images.map((img) => (
+                      <ImagePicker
+                        key={img.path}
+                        label={img.label}
+                        current={img.value}
+                        library={library}
+                        name={{ path: img.path, shape: img.shape }}
+                        formId="img"
+                      />
+                    ))}
+
                     {item.fields.en.map((f) => {
                       const ar = arByPath.get(f.path) ?? '';
                       const Input = f.multiline ? 'textarea' : 'input';

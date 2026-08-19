@@ -2,6 +2,7 @@ import { and, eq } from 'drizzle-orm';
 import { getDb, schema } from '@/lib/db/client';
 import { splitProps, mergeProps, L10N, type Json } from '@/lib/localization';
 import { flatten, applyEdits, type Field } from './fields';
+import { findImageFields, setImage, isKnownAsset, type ImageField, type ImageShape } from './media';
 import type { Locale } from './content';
 
 /**
@@ -79,6 +80,14 @@ export interface CollectionItem {
   sub: string;
   /** Editable fields for this item alone, per locale, paths relative to the item. */
   fields: Record<Locale, Field[]>;
+  /**
+   * Image references on this item, from the SHARED half.
+   *
+   * Images are not copy — the same photograph serves both locales — so they live
+   * beside `tone` and `href` in the structural row, and changing one is a
+   * structural write rather than a translation write.
+   */
+  images: ImageField[];
 }
 
 export interface Collection {
@@ -141,11 +150,20 @@ export async function getCollection(key: string): Promise<Collection | null> {
 
   const count = Math.max(...LOCALES.map((l) => perLocale[l].length), 0);
 
+  const sharedItems = itemsOf(found.shared);
+
   const items: CollectionItem[] = [];
   for (let i = 0; i < count; i++) {
     const fields = Object.fromEntries(
       LOCALES.map((l) => [l, flatten(perLocale[l][i] ?? null)])
     ) as Record<Locale, Field[]>;
+
+    // Paths are rebased onto the collection root so a save can address the item
+    // inside the block's props without the editor needing to know its index.
+    const images = findImageFields(sharedItems[i] ?? null).map((f) => ({
+      ...f,
+      path: `items[${i}].${f.path}`,
+    }));
 
     const pick = (name: string) => fields.en.find((f) => f.path === name)?.value ?? '';
     items.push({
@@ -153,6 +171,7 @@ export async function getCollection(key: string): Promise<Collection | null> {
       title: pick(def.titleField) || `Item ${i + 1}`,
       sub: def.subField ? pick(def.subField) : '',
       fields,
+      images,
     });
   }
 
@@ -213,6 +232,43 @@ export async function saveCollectionEdits(key: string, patches: ItemEdit[]): Pro
     written++;
   }
   return written;
+}
+
+/**
+ * Point one image field at a different file.
+ *
+ * Writes `blocks.props` — the shared, locale-free row — because an image is not
+ * copy. That also means it must NOT go through saveCollectionEdits, which only
+ * ever touches block_translations and is deliberately unable to reach structure.
+ *
+ * The new path is checked against the asset manifest rather than trusted. That
+ * is what stops `../` traversal, a typo silently producing a broken image, and
+ * anything outside public/ being referenced at all — the manifest is the closed
+ * set of files the site actually ships.
+ */
+export async function setCollectionImage(
+  key: string,
+  path: string,
+  newPath: string,
+  shape: ImageShape
+): Promise<void> {
+  const def = collectionByKey(key);
+  if (!def) throw new Error(`unknown collection "${key}"`);
+
+  if (!isKnownAsset(newPath)) {
+    throw new Error(`"${newPath}" is not a known image in public/assets.`);
+  }
+
+  const found = await locate(def);
+  if (!found) throw new Error(`no ${def.kind} block on ${def.route}`);
+
+  const next = setImage(found.shared, path, newPath, shape);
+
+  const db = await getDb();
+  await db
+    .update(schema.blocks)
+    .set({ props: next as Record<string, unknown>, updatedAt: Math.floor(Date.now() / 1000) })
+    .where(eq(schema.blocks.id, found.block.id));
 }
 
 /**
