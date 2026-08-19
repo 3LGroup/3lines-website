@@ -350,8 +350,45 @@ function Companies({ body, locale }: { body: CompaniesBody; locale: Locale }) {
  * says what the button does, so it is an informed choice rather than a
  * surprise connection.
  */
-function MapEmbed({ body }: { body: MapBody }) {
+/**
+ * Abstract street grid drawn behind the facade panel, so the placeholder reads
+ * as "a map that has not been fetched yet" rather than an empty box. Decorative
+ * only — the loader clears the facade wholesale when the real embed arrives.
+ */
+function MapArt() {
   return (
+    <svg className="mapembed__art" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g stroke="var(--border, #D9D9E7)" strokeWidth="1.5" fill="none">
+        <path d="M-20 96 H820 M-20 214 H820 M-20 332 H820" />
+        <path d="M118 -20 V470 M300 -20 V470 M486 -20 V470 M664 -20 V470" />
+      </g>
+      <g stroke="var(--border, #D9D9E7)" strokeWidth="4" fill="none" opacity=".8">
+        <path d="M-30 388 C 170 340, 330 420, 560 330 S 780 300, 830 250" />
+        <path d="M60 -30 C 140 120, 90 260, 210 470" />
+      </g>
+      <g fill="var(--border, #D9D9E7)" opacity=".45">
+        <rect x="136" y="112" width="70" height="44" rx="4" />
+        <rect x="318" y="230" width="92" height="52" rx="4" />
+        <rect x="524" y="120" width="60" height="60" rx="4" />
+        <rect x="600" y="348" width="84" height="40" rx="4" />
+        <rect x="180" y="288" width="52" height="52" rx="4" />
+      </g>
+      {/* Above the centred facade panel, close enough to the middle that the
+          slice-crop on narrow viewports keeps it in frame. */}
+      <g className="mapembed__pin">
+        <circle className="mapembed__pulse" cx="520" cy="48" r="30" fill="var(--cyan, #87EDFF)" />
+        <path
+          d="M520 12 c -15.5 0 -28 12.5 -28 28 0 20 28 48 28 48 s 28 -28 28 -48 c 0 -15.5 -12.5 -28 -28 -28 z"
+          fill="var(--primary, var(--navy, #123E5E))"
+        />
+        <circle cx="520" cy="40" r="10" fill="var(--card, #fff)" />
+      </g>
+    </svg>
+  );
+}
+
+function MapEmbed({ body }: { body: MapBody }) {
+  const facade = (
     <div
       className="mapembed reveal"
       data-lat={body.lat}
@@ -359,6 +396,7 @@ function MapEmbed({ body }: { body: MapBody }) {
       data-zoom={body.zoom ?? 16}
       data-title={body.placeName}
     >
+      <MapArt />
       <div className="mapembed__panel">
         <p className="mapembed__place">{body.placeName}</p>
         <p className="mapembed__addr">{body.address}</p>
@@ -367,6 +405,43 @@ function MapEmbed({ body }: { body: MapBody }) {
         </button>
         <p className="mapembed__note">{body.note}</p>
       </div>
+    </div>
+  );
+
+  if (!body.details?.length && !body.directions) return facade;
+
+  return (
+    <div className="maploc">
+      {facade}
+      <aside className="maploc__info reveal" aria-label={body.placeName}>
+        {body.details?.length ? (
+          <ul className="maploc__rows">
+            {body.details.map((d, i) => {
+              // Phone numbers are LTR strings; without an explicit direction the
+              // bidi algorithm scrambles "+966 11 …" on the Arabic page.
+              const dir = d.href?.startsWith('tel:') ? ('ltr' as const) : undefined;
+              return (
+                <li key={i}>
+                  <span className="maploc__label">{d.label}</span>
+                  <span className="maploc__value" dir={dir}>
+                    {d.href ? <a href={d.href}>{d.value}</a> : d.value}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        ) : null}
+        {body.directions ? (
+          <a
+            className="btn btn--blue maploc__cta"
+            href={body.directions.href}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            {body.directions.label} <Arrow />
+          </a>
+        ) : null}
+      </aside>
     </div>
   );
 }
