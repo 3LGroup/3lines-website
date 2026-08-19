@@ -5,9 +5,16 @@ import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
  * `next dev`, so local development keeps Next's HMR instead of moving to
  * `wrangler dev`. Without this, `getCloudflareContext()` has nothing to return
  * and every D1/R2 call fails locally while working in production — the worst
- * possible split. No effect on `next build`.
+ * possible split.
+ *
+ * Gated to `next dev`, which is the only command that needs it. Calling it
+ * unconditionally also started Miniflare during `next build`, and on Windows
+ * that workerd process dies with a 0xc0000005 access violation and takes the
+ * build with it — so the build was unrunnable on a Windows machine while
+ * passing on Linux CI. The old comment here claimed "no effect on next build";
+ * it had one, just not on the platform it was written on.
  */
-initOpenNextCloudflareForDev();
+if (process.argv.includes('dev')) initOpenNextCloudflareForDev();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
