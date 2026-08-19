@@ -56,9 +56,26 @@ const publicHtml = await (await fetch(`${BASE}/en`)).text();
 if (/\badm-/.test(publicHtml)) fail('/en contains an "adm-" class — admin styles leaked into the public tree');
 else ok('/en contains no admin markup');
 
+/* --------------------------------------------------------------- preview -- */
+
+// The preview route serves UNPUBLISHED content through the real public
+// renderer. That makes it the one place where a session leak would expose work
+// the company has not chosen to publish, so it is gated exactly like /admin and
+// checked here rather than trusted.
+const prev = await fetch(`${BASE}/preview/en/index`, { redirect: 'manual' });
+if (prev.status !== 307 && prev.status !== 302) {
+  fail(`GET /preview/en/index without a session returned ${prev.status}, expected a redirect`);
+} else {
+  const to = prev.headers.get('location') || '';
+  if (!to.includes('/admin/login')) fail(`unauthenticated /preview redirected to ${to}, expected /admin/login`);
+  else ok(`unauthenticated /preview -> ${prev.status} ${to}`);
+}
+
 /* ------------------------------------------------------------ noindexing -- */
 
 const robots = await (await fetch(`${BASE}/robots.txt`)).text();
+if (!/^Disallow:\s*\/preview/m.test(robots)) fail('robots.txt does not disallow /preview');
+else ok('robots.txt disallows /preview');
 if (!/^Disallow:\s*\/admin/m.test(robots)) fail('robots.txt does not disallow /admin');
 else ok('robots.txt disallows /admin');
 

@@ -2,7 +2,7 @@ import { and, eq } from 'drizzle-orm';
 import { getDb, schema } from '@/lib/db/client';
 import { splitProps, mergeProps, L10N, type Json } from '@/lib/localization';
 import { flatten, applyEdits, type Field } from './fields';
-import { findImageFields, setImage, isKnownAsset, type ImageField, type ImageShape } from './media';
+import { findImageFields, setImage, isAdmissibleAsset, type ImageField, type ImageShape } from './media';
 import type { Locale } from './content';
 
 /**
@@ -93,6 +93,15 @@ export interface CollectionItem {
 export interface Collection {
   def: CollectionDef;
   blockId: string;
+  /**
+   * Filesystem slug of the page this collection sits on, e.g. "index".
+   *
+   * Read from the page row rather than derived from `def.route`. The mapping
+   * ("/" -> "index", "/services/x" -> "services--x") is already recorded in the
+   * database and in routes.json, and encoding it a third time here would be a
+   * copy that can silently disagree with the other two.
+   */
+  slug: string;
   items: CollectionItem[];
 }
 
@@ -123,6 +132,7 @@ async function locate(def: CollectionDef) {
 
   return {
     block,
+    slug: page.slug,
     shared: block.props as Json,
     localized: Object.fromEntries(
       LOCALES.map((l) => [l, (tr.find((t) => t.locale === l)?.props ?? null) as Json])
@@ -175,7 +185,7 @@ export async function getCollection(key: string): Promise<Collection | null> {
     });
   }
 
-  return { def, blockId: found.block.id, items };
+  return { def, blockId: found.block.id, slug: found.slug, items };
 }
 
 /* ------------------------------------------------------------------- write -- */
@@ -255,8 +265,12 @@ export async function setCollectionImage(
   const def = collectionByKey(key);
   if (!def) throw new Error(`unknown collection "${key}"`);
 
-  if (!isKnownAsset(newPath)) {
-    throw new Error(`"${newPath}" is not a known image in public/assets.`);
+  // Uploads arrive after the build-time manifest is generated, so the manifest
+  // alone would reject every one of them. isAdmissibleAsset also accepts an
+  // upload, but only once the store confirms it holds that exact file — the
+  // allow-list stays an allow-list.
+  if (!(await isAdmissibleAsset(newPath))) {
+    throw new Error(`"${newPath}" is not an image this site holds.`);
   }
 
   const found = await locate(def);

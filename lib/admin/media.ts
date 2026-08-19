@@ -39,6 +39,30 @@ export function listMedia(): MediaItem[] {
     .sort((a, b) => a.folder.localeCompare(b.folder) || a.name.localeCompare(b.name));
 }
 
+/**
+ * The library as an editor sees it: what shipped with the repo, plus anything
+ * uploaded since.
+ *
+ * Async and separate from listMedia() because the uploads live outside the
+ * bundled manifest — in R2, or on local disk — and neither can be read
+ * synchronously. listMedia() stays sync for the callers that only need a count.
+ */
+export async function listAllMedia(): Promise<MediaItem[]> {
+  const { listUploads } = await import('./uploads');
+  const uploaded: MediaItem[] = (await listUploads()).map((u) => ({
+    path: u.path,
+    name: u.name,
+    // Its own group, so uploads are findable rather than scattered through
+    // folders named after how the original site happened to organise itself.
+    folder: 'uploads',
+    ext: (u.name.match(IMAGE_EXT)?.[1] ?? '').toLowerCase(),
+  }));
+
+  return [...listMedia(), ...uploaded].sort(
+    (a, b) => a.folder.localeCompare(b.folder) || a.name.localeCompare(b.name)
+  );
+}
+
 export function mediaFolders(items: MediaItem[]): string[] {
   return [...new Set(items.map((i) => i.folder))].sort();
 }
@@ -166,4 +190,22 @@ export function setImage(props: Json, path: string, newPath: string, shape: Imag
 /** Is this path one the manifest knows about? Guards against typos and traversal. */
 export function isKnownAsset(path: string): boolean {
   return Object.prototype.hasOwnProperty.call(manifest, path) && IMAGE_EXT.test(path);
+}
+
+/**
+ * The allow-list, extended to cover uploads.
+ *
+ * isKnownAsset() alone would reject every uploaded image, because the manifest
+ * is generated from public/ at build time and an upload arrives after it. This
+ * is the check a write must use: an upload is admissible only if it is under
+ * the uploads prefix AND the store actually holds it, so a crafted path cannot
+ * point the site at something that was never uploaded.
+ */
+export async function isAdmissibleAsset(path: string): Promise<boolean> {
+  if (isKnownAsset(path)) return true;
+
+  const { isUploadPath, listUploads } = await import('./uploads');
+  if (!isUploadPath(path) || !IMAGE_EXT.test(path)) return false;
+
+  return (await listUploads()).some((u) => u.path === path);
 }

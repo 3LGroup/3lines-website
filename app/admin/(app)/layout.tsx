@@ -43,7 +43,7 @@ const NAV: { group: string; items: NavItem[] }[] = [
     items: [
       { href: '/admin/c/companies', label: 'Companies', icon: 'companies' },
       { href: '/admin/c/services', label: 'Services', icon: 'services' },
-      { href: '/admin/c/partners', label: 'Partners', icon: 'media' },
+      { href: '/admin/c/partners', label: 'Partners', icon: 'partners' },
       { href: '/admin/news', label: 'News', icon: 'news' },
     ],
   },

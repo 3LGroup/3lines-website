@@ -57,11 +57,52 @@ export async function preparePage(page, viewport) {
  */
 const COUNTUP_MS = 1400;
 
+/** How long to wait for forced-eager images before giving up and measuring. */
+const IMAGE_LOAD_MS = 10000;
+
+/**
+ * Load every lazy image before measuring.
+ *
+ * Without this the harness is blind to images and non-deterministic about the
+ * layout around them. `pin()` below scrolls to the top and nothing ever scrolls
+ * back down, so an `img[loading="lazy"]` further down the page never enters the
+ * viewport, never loads, and is measured as 0x0. On /about that is all three
+ * certification images at every viewport in both locales — the audit could not
+ * have caught a broken image there if it tried.
+ *
+ * Worse, it was not even consistently blind. Chrome loads lazy images within a
+ * distance threshold of the viewport, so whether one loads depends on how far
+ * down the page it sits — which depends on the viewport and on how the text
+ * wraps. The committed baseline caught them loaded on /ar/about at exactly
+ * 1024x768 and 768x1024 and unloaded everywhere else, and that single race is
+ * the whole of the 54 "geometry findings" that a clean run kept reporting.
+ *
+ * Forcing eager is deterministic and viewport-independent. Scrolling to trigger
+ * loading is not the alternative it appears to be: the page grows as images
+ * arrive, so a scroll-to-bottom loop never terminates. That was tried.
+ */
+async function loadLazyImages(page) {
+  await page.evaluate(async (timeoutMs) => {
+    for (const img of document.querySelectorAll('img[loading="lazy"]')) {
+      img.loading = 'eager';
+    }
+    // decode() resolves once the image is fetched and painted, and rejects on a
+    // broken one — which is a finding for the audit to report, not a reason to
+    // abort the sweep. Bounded, so one unreachable asset cannot hang the run.
+    const all = Promise.all(
+      Array.from(document.images, (i) => i.decode().catch(() => {}))
+    );
+    await Promise.race([all, new Promise((r) => setTimeout(r, timeoutMs))]);
+  }, IMAGE_LOAD_MS);
+}
+
 export async function settle(page) {
   await page.addStyleTag({
     content: `*,*::before,*::after{animation:none!important;transition:none!important}
               .reveal{opacity:1!important;transform:none!important}`,
   });
+
+  await loadLazyImages(page);
 
   const pin = () =>
     page.evaluate(() => {

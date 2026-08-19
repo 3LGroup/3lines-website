@@ -19,6 +19,10 @@ const PATHS = {
   services: 'M12 2l2.4 5.2 5.6.7-4.2 3.9 1.1 5.6L12 14.8l-4.9 2.6 1.1-5.6L4 7.9l5.6-.7z',
   news: 'M4 4h16v16H4zM8 8h8M8 12h8M8 16h5',
   media: 'M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M8.5 9.5h.01',
+  /* Partners had to borrow `media`, which left the two sidebar entries that
+     mean the least alike wearing the same glyph. Two figures: the section is
+     about who the company works with, not about the logo files. */
+  partners: 'M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM22 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8',
   settings:
     'M12 15a3 3 0 100-6 3 3 0 000 6zM19.4 15a1.6 1.6 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.6 1.6 0 00-2.7 1.1V21a2 2 0 11-4 0v-.1A1.6 1.6 0 007 19.4a1.6 1.6 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.6 1.6 0 00-1.1-2.7H1a2 2 0 110-4h.1A1.6 1.6 0 002.6 7a1.6 1.6 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.6 1.6 0 001.8.3H7a1.6 1.6 0 001-1.5V1a2 2 0 114 0v.1a1.6 1.6 0 001 1.5 1.6 1.6 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.6 1.6 0 00-.3 1.8V7a1.6 1.6 0 001.5 1H23a2 2 0 110 4h-.1a1.6 1.6 0 00-1.5 1z',
   logout: 'M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9',

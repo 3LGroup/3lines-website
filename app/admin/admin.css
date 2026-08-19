@@ -93,18 +93,26 @@ html.dark {
   --adm-8: 64px;
 
   /* Type ramp. Denser than the public site's on purpose: this is a tool that
-     gets read all day at arm's length, not a page that has to arrest someone
-     mid-scroll. Nothing here is above 28px. */
-  --adm-text-xs: 11px;
-  --adm-text-sm: 12px;
-  --adm-text-base: 13px;
-  --adm-text-md: 14px;
-  --adm-text-lg: 16px;
-  --adm-text-xl: 20px;
-  --adm-text-2xl: 28px;
+     gets read all day, not a page that has to arrest someone mid-scroll.
+     Nothing here is above 30px.
 
-  --adm-sidebar-w: 232px;
-  --adm-topbar-h: 56px;
+     Raised one step across the board after reading it on a real screen — the
+     old ramp bottomed out at 11px, and the people who use this are editing
+     Arabic, where the diacritics that distinguish two words are the first
+     thing to disappear when the type gets small. 12px is the floor now, and
+     nothing may hardcode a size below it. */
+  --adm-text-xs: 12px;
+  --adm-text-sm: 13px;
+  --adm-text-base: 14px;
+  --adm-text-md: 15px;
+  --adm-text-lg: 17px;
+  --adm-text-xl: 21px;
+  --adm-text-2xl: 30px;
+
+  --adm-sidebar-w: 240px;
+  /* 40px controls plus a comfortable 12px above and below. Raised with the
+     button height — at 56px the Publish button nearly touched both edges. */
+  --adm-topbar-h: 64px;
 
   /* 3lines.css defines --destructive but never redefines it for dark, and has
      no success/warning at all. Admin needs the full set for save/error states,
@@ -292,7 +300,7 @@ samp {
 .adm-nav {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--adm-1);
 }
 
 .adm-nav__label {
@@ -308,7 +316,11 @@ samp {
   display: flex;
   align-items: center;
   gap: var(--adm-3);
-  padding: var(--adm-2) var(--adm-3);
+  padding: var(--adm-3);
+  /* A comfortable target rather than a tight one: this is the control used more
+     than any other in the interface, and 8px of vertical padding around 15px
+     text left the six sections reading as one block of text. */
+  min-block-size: 40px;
   border-radius: var(--radius-md);
   color: var(--muted-foreground);
   font-size: var(--adm-text-md);
@@ -377,11 +389,26 @@ samp {
 }
 
 .adm-page {
-  padding: var(--adm-6) var(--adm-5);
-  /* Wide enough for a data table, capped so long-form text never runs to a
-     40-word line on a 27" display. */
-  max-inline-size: 1280px;
+  padding: var(--adm-6);
+  /* Wide enough for a data table, capped so an input never becomes a 1600px
+     slot you lose the cursor in. */
+  max-inline-size: 1120px;
   inline-size: 100%;
+}
+
+/* Except where a preview sits beside the editor: those two need the extra room,
+   and only those two. Keyed on the split actually being present rather than on
+   a class the page has to remember to set, so a new editor that adopts the
+   preview gets the width automatically and one that drops it gives the width
+   back. */
+.adm-page:has(.adm-split) {
+  max-inline-size: 1660px;
+}
+
+@media (max-width: 700px) {
+  .adm-page {
+    padding: var(--adm-5) var(--adm-4);
+  }
 }
 
 .adm-page__head {
@@ -410,7 +437,9 @@ samp {
   justify-content: center;
   gap: var(--adm-2);
   padding: 0 var(--adm-4);
-  block-size: 34px;
+  /* Matches .adm-input, so a button beside a field lines up on both edges
+     rather than floating a few pixels short of it. */
+  block-size: 40px;
   border: 1px solid transparent;
   border-radius: var(--radius-md);
   background: var(--secondary);
@@ -466,7 +495,7 @@ samp {
 }
 
 .adm-btn--sm {
-  block-size: 28px;
+  block-size: 32px;
   padding: 0 var(--adm-3);
   font-size: var(--adm-text-sm);
 }
@@ -509,7 +538,10 @@ samp {
 .adm-select {
   inline-size: 100%;
   padding: var(--adm-2) var(--adm-3);
-  min-block-size: 34px;
+  /* Raised with the type ramp. At 34px a 15px line sat hard against the border,
+     and the Arabic inputs — which carry descenders the Latin ones do not — were
+     visibly clipping them. */
+  min-block-size: 40px;
   border: 1px solid var(--input);
   border-radius: var(--radius-md);
   background: var(--background);
@@ -888,5 +920,213 @@ samp {
 
   .adm-page__title {
     font-size: var(--adm-text-xl);
+  }
+}
+
+/* --- link cards ----------------------------------------------------------- */
+
+/* A card that is entirely a link. The whole surface is the target rather than
+   the title inside it — a 260px card with a 60px hit area is the sort of thing
+   that reads as fine to whoever built it and as broken to everyone else. */
+.adm-linkcards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--adm-3);
+  margin-block-end: var(--adm-6);
+}
+
+@media (max-width: 1100px) {
+  .adm-linkcards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .adm-linkcards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.adm-linkcard {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--adm-3);
+  padding: var(--adm-4);
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+
+.adm-linkcard:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.adm-linkcard__icon {
+  display: grid;
+  place-items: center;
+  inline-size: 32px;
+  block-size: 32px;
+  flex: none;
+  border-radius: var(--radius-md);
+  background: color-mix(in oklch, var(--primary) 12%, transparent);
+  color: var(--primary);
+}
+
+.adm-linkcard__icon svg {
+  inline-size: 17px;
+  block-size: 17px;
+}
+
+.adm-linkcard__title {
+  display: block;
+  font-size: var(--adm-text-md);
+  font-weight: 600;
+}
+
+.adm-linkcard__body {
+  display: block;
+  margin-block-start: 2px;
+  font-size: var(--adm-text-sm);
+  color: var(--muted-foreground);
+}
+
+/* --- images --------------------------------------------------------------- */
+
+/**
+ * One thumbnail treatment, used by the Images library and by the picker inside
+ * a card. They were two sets of inline styles that had drifted apart, and both
+ * carried the same bug: a fixed `block-size` with an `img { max-block-size:100% }`
+ * inside. The percentage resolves against the grid AREA, and a grid item's
+ * min-block-size is auto — so the row grew to the image's intrinsic height,
+ * "100%" grew with it, and a 400px logo rendered 127px tall in an 82px box,
+ * overlapping the filename underneath it.
+ *
+ * Fixed by making the image fill the frame exactly rather than be capped by it,
+ * and letting object-fit do the letterboxing. `overflow:hidden` is the belt to
+ * that braces: whatever the image reports as its intrinsic size, it is clipped
+ * to the frame.
+ */
+.adm-thumb {
+  /* Flex, not grid, and that distinction is the whole fix. In a grid the row is
+     auto-sized, so a percentage height on the image has no definite basis to
+     resolve against, falls back to auto, and the image renders at its intrinsic
+     size — 144px tall inside a 99px box, cropped by overflow rather than fitted
+     by object-fit. A flex container with a definite block-size (from the
+     aspect-ratio below, or an explicit height) gives max-block-size:100% a real
+     basis. The min-*:0 pair defeats the automatic minimum size that would
+     otherwise stop a flex item shrinking below its content. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--adm-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  /* Checkerboard: many partner marks are transparent PNGs, and a white logo on
+     a flat white surface is indistinguishable from a missing file. */
+  background-image:
+    linear-gradient(45deg, var(--muted) 25%, transparent 25%, transparent 75%, var(--muted) 75%),
+    linear-gradient(45deg, var(--muted) 25%, transparent 25%, transparent 75%, var(--muted) 75%);
+  background-size: 14px 14px;
+  background-position: 0 0, 7px 7px;
+}
+
+.adm-thumb > img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 0;
+  object-fit: contain;
+}
+
+/* A library grid. Tiles are deliberately large: these are mostly partner logos
+   that differ from each other by a word of small type, and at the old 82px they
+   were unidentifiable — which made the picker a lucky dip. */
+.adm-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--adm-4);
+}
+
+.adm-tile {
+  display: grid;
+  gap: var(--adm-2);
+  margin: 0;
+  min-inline-size: 0;
+}
+
+.adm-tile .adm-thumb {
+  aspect-ratio: 4 / 3;
+}
+
+.adm-tile__name {
+  font-size: var(--adm-text-xs);
+  color: var(--muted-foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* Left-aligned even in RTL: these are file paths, which are LTR regardless of
+     the interface language. */
+  direction: ltr;
+  text-align: start;
+}
+
+/* The same grid, as buttons, inside the picker. */
+.adm-tile--pick {
+  padding: var(--adm-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--background);
+  cursor: pointer;
+  text-align: start;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+
+.adm-tile--pick:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* The one already in use. A ring rather than a thicker border, so selecting
+   does not move the tile by a pixel and reflow the grid. */
+.adm-tile--pick[aria-current='true'] {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+/* --- editor + preview split ----------------------------------------------- */
+
+/* Editing surface left, live preview pinned right. The preview column is a fixed
+   540px rather than a fraction because it holds an iframe laid out at a real
+   1440px and scaled down — a percentage width would change the scale factor at
+   every viewport, and the preview would misreport which breakpoint the site is
+   actually in. */
+.adm-split{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 540px;
+  gap:var(--adm-5);
+  align-items:start;
+}
+
+/* The preview column itself. Sticky, so it stays beside the fields as the
+   editor scrolls past it. */
+.adm-preview{
+  position:sticky;
+  top:calc(var(--adm-topbar-h) + var(--adm-3));
+  display:flex;
+  flex-direction:column;
+  gap:var(--adm-2);
+  max-block-size:calc(100vh - var(--adm-topbar-h) - var(--adm-5));
+}
+
+/* Below this both panes are too narrow to be useful, so the preview moves under
+   the editor. Sticky is dropped there too: in a single column a sticky pane
+   just covers the thing being edited. The width cap keeps the pane the size of
+   the frame inside it, rather than a small preview adrift in a wide empty box. */
+@media (max-width:1180px){
+  .adm-split{grid-template-columns:minmax(0,1fr)}
+  .adm-preview{
+    position:static;
+    max-block-size:none;
+    max-inline-size:540px;
   }
 }

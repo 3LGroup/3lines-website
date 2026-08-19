@@ -271,6 +271,22 @@ const checks = [
     `min=${Math.min(...report.comparisons.map((c) => c.elementsCompared))}`,
   ],
   ['report is complete, not partial', report.comparisons.length === report.actualComparisons],
+  // The checks above prove the report is COMPLETE. These two prove it is CLEAN,
+  // and until now nothing did: the counts were printed below and never
+  // asserted, so nineteen stages of work could report a pass while the audit
+  // sitting underneath them held real geometry regressions. It did — a run
+  // passed with 54. Every green this project has had was green on
+  // completeness, not on correctness.
+  [
+    'structural count findings = 0',
+    report.totalCountFindings === 0,
+    String(report.totalCountFindings),
+  ],
+  [
+    'geometry findings = 0',
+    report.totalGeometryFindings === 0,
+    String(report.totalGeometryFindings),
+  ],
 ];
 
 let bad = 0;
@@ -278,7 +294,19 @@ for (const [name, ok, detail] of checks) {
   log(`  ${ok ? '✓' : '✗'} ${name}${detail ? ` (${detail})` : ''}`);
   if (!ok) bad++;
 }
-if (bad) die(stageNo, `${bad} artifact validation check(s) failed`);
+if (bad) {
+  // Name the routes. "54 geometry findings" sends someone into a 2MB JSON to
+  // work out where; the route and viewport is what actually starts the hunt.
+  const offenders = report.comparisons
+    .filter((c) => c.geometry.length || c.counts.length)
+    .map((c) => `    ${c.viewport.padEnd(10)} ${c.route}  counts=${c.counts.length} geom=${c.geometry.length}`);
+  if (offenders.length) {
+    log(`\n  routes with findings (${offenders.length}):`);
+    offenders.slice(0, 20).forEach((o) => log(o));
+    if (offenders.length > 20) log(`    … and ${offenders.length - 20} more, see the report`);
+  }
+  die(stageNo, `${bad} artifact validation check(s) failed`);
+}
 
 log(`\n  elements compared: ${report.totalElementsCompared}`);
 log(`  properties compared: ${report.totalPropsCompared}`);

@@ -32,7 +32,8 @@ Open **http://localhost:3200/admin** and enter the password.
 2. Click the card you want to change. (On **Pages & SEO**, click **Edit** on a row, then a section.)
 3. Type the **English** in the top box and the **Arabic** in the box directly underneath.
 4. Click **Save changes**.
-5. Click **Publish**, then **Confirm — publish live**.
+5. Check the **preview on the right** — it updates by itself after each save.
+6. Click **Publish**, then **Confirm — publish live**.
 
 Publish needs two clicks on purpose, so it can't happen by accident.
 
@@ -46,6 +47,12 @@ Publish needs two clicks on purpose, so it can't happen by accident.
 
 **Nothing is live until you press Publish.** Saving stores your change; publishing puts it on the website.
 
+**The preview shows what you have saved, not what is live.** It is the real website page, not a rough sketch of it — the same code that builds the public site builds what you see there. Use **EN / AR** to check both languages, and **Phone / Tablet / Desktop** to see how the page behaves on each. Arabic is worth checking on its own: the whole page mirrors, so a long headline can wrap differently from the English one.
+
+**To change a picture**, open the card and press **Change image**. You get every picture the site holds; search by name, or filter by folder. Click one and it is applied straight away — then Publish as usual.
+
+**To add a new picture**, go to **Images** and use **Upload an image** at the top. Pick the file and press Upload; it appears in the library within a second or two and is then available on every card. Photographs straight from a phone are fine — they are shrunk automatically before they are uploaded, so the website stays fast.
+
 **Arabic that matches the English is flagged.** If an Arabic field is identical to its English, the screen says so — usually meaning it hasn't been translated yet. Sometimes it's correct (a company name like *SAMI* is the same in both), so it's a prompt to look, not an error.
 
 ---
@@ -54,10 +61,9 @@ Publish needs two clicks on purpose, so it can't happen by accident.
 
 These need a developer for now:
 
-- Change or upload **photos and logos**
+- Upload an **SVG** logo — those still need a developer, for a security reason. JPG, PNG and WebP are fine
 - **Add, remove or reorder** whole sections on a page
 - Edit the **top menu or footer links**
-- **Preview** a change before publishing
 - **Undo** a published change, or see who changed what
 - Separate **logins per person** — there is one shared password today
 
@@ -66,5 +72,11 @@ These need a developer for now:
 ## If something looks wrong
 
 Nothing you do in here can damage the live website until you press Publish. If a change looks wrong after publishing, type the old wording back in and publish again.
+
+---
+
+## One thing to know about uploads
+
+Uploading works on the office machine the CMS runs on. It will not work from the CMS once the site is hosted online until the storage bucket is set up — that is a one-off setup step, not something an editor does. Until then, if you upload from a hosted CMS the upload will fail; everything else works normally.
 
 The published website is rebuilt from scratch each time, so it always matches exactly what these screens show.

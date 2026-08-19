@@ -171,6 +171,43 @@ fs.mkdirSync(RUN_DIR, { recursive: true });
 // second, not the twenty minutes of a full sweep that then reports nonsense.
 assertBaselineIntact();
 
+/**
+ * Did this error mean "that page is broken" or "there is no server"?
+ *
+ * Only the transport-level refusals count. A navigation timeout is deliberately
+ * NOT here: a page can time out because it is genuinely slow, and aborting a
+ * twenty-minute sweep over one slow route would trade a useful signal for a
+ * useless one.
+ */
+const CONNECTION_LEVEL = [
+  'ERR_CONNECTION_REFUSED',
+  'ERR_CONNECTION_RESET',
+  'ERR_CONNECTION_CLOSED',
+  'ERR_EMPTY_RESPONSE',
+  'ECONNREFUSED',
+  'ECONNRESET',
+  'ERR_SOCKET_NOT_CONNECTED',
+];
+
+const isConnectionLevel = (msg) => CONNECTION_LEVEL.some((c) => msg.includes(c));
+
+/**
+ * The backstop, because the check above cannot be trusted on its own.
+ *
+ * Chrome does not reliably report a dead port as a refusal. Pointed at a port
+ * with nothing on it, this machine's Chrome returns **HTTP 404** — which the
+ * classifier above quite correctly calls a per-page problem, and the sweep
+ * would carry on through fifty of them. The one real incident produced a mix:
+ * twelve ERR_CONNECTION_REFUSED and one HTTP 404, for the same dead server.
+ *
+ * So do not rely on naming the failure. Three different routes failing back to
+ * back is not "three broken pages" under any ordinary circumstance — it means
+ * the target is gone, or something is wrong enough that the rest of the sweep
+ * will not be worth reading. Either way, stop.
+ */
+const ABORT_AFTER_CONSECUTIVE = 3;
+let consecutiveErrors = 0;
+
 const browser = await launch();
 const comparisons = [];
 let errored = 0;
@@ -234,12 +271,54 @@ for (const vp of VIEWPORTS) {
     } catch (e) {
       entry.error = String(e.message || e);
       errored++;
+      // A page that times out, 404s or loses a selector is a finding about that
+      // page, and the sweep should carry on and collect the rest. The server
+      // disappearing is a different thing entirely: every remaining comparison
+      // measures whatever answers on that port next, which need not be the
+      // build under test.
+      //
+      // This is not hypothetical. A run was once killed halfway and a dev
+      // server started on the same port; the sweep kept going, produced a
+      // complete-looking 350-comparison report, and the 54 "geometry findings"
+      // it contained were captures from the wrong server. Confirming they were
+      // noise took longer than the sweep did. So: stop at the first sign the
+      // server is gone, and say so, rather than emit a report that reads as
+      // authoritative.
+      consecutiveErrors++;
     }
+    if (!entry.error) consecutiveErrors = 0;
     comparisons.push(entry);
     const tag = entry.error
       ? `ERROR ${entry.error}`
       : `els=${entry.elementsCompared} counts=${entry.counts.length} geom=${entry.geometry.length}`;
     console.log(`  ${vp.name.padEnd(10)} ${route.padEnd(16)} ${tag}`);
+
+    const why = !entry.error
+      ? null
+      : isConnectionLevel(entry.error)
+        ? `the server stopped answering (${entry.error})`
+        : consecutiveErrors >= ABORT_AFTER_CONSECUTIVE
+          ? `${consecutiveErrors} routes in a row failed`
+          : null;
+
+    if (why) {
+      await browser.close();
+      console.error(`\nVISUAL AUDIT ABORTED — ${why}.`);
+      console.error(`  stopped on: ${vp.name} ${route}`);
+      console.error(`  target:     ${LOCAL}`);
+      for (const e of comparisons.filter((c) => c.error).slice(-ABORT_AFTER_CONSECUTIVE)) {
+        console.error(`    · ${e.viewport} ${e.route} — ${e.error}`);
+      }
+      console.error('');
+      console.error('  No report is written. Every comparison after this point would measure');
+      console.error('  whatever is on that port next, which need not be the build under test.');
+      console.error('  Nothing here says the site is wrong — only that this run cannot tell');
+      console.error('  you either way.');
+      console.error('');
+      console.error('  Check the server is up and nothing else claimed the port, then re-run.');
+      console.error('  Do not start a dev server on it while a sweep is in flight.');
+      process.exit(1);
+    }
   }
 }
 

@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useMemo, useRef, useState } from 'react';
 import Icon from '@/components/admin/Icon';
 import ImagePicker from '@/components/admin/ImagePicker';
+import PreviewPane from '@/components/admin/PreviewPane';
 import type { Collection } from '@/lib/admin/collections';
 import type { MediaItem } from '@/lib/admin/media';
 import { saveItems, structural, setImageAction, type CollectionState } from './actions';
@@ -18,9 +19,12 @@ import { saveItems, structural, setImageAction, type CollectionState } from './a
 export default function CollectionEditor({
   collection,
   library,
+  preview,
 }: {
   collection: Collection;
   library: MediaItem[];
+  /** Which public page this collection appears on, for the preview pane. */
+  preview: { locale: string; slug: string };
 }) {
   const { def, items } = collection;
 
@@ -51,6 +55,17 @@ export default function CollectionEditor({
     }
   }, [saveState]);
 
+  /**
+   * Bumped whenever ANY of the three actions succeeds, which is what reloads the
+   * preview. Images and add/remove change the page just as much as copy does, so
+   * refreshing only on the copy save would leave the frame quietly wrong after
+   * the two operations most likely to alter what it shows.
+   */
+  const [refreshKey, setRefreshKey] = useState(0);
+  useEffect(() => {
+    if (saveState.ok || structState.ok || imgState.ok) setRefreshKey((n) => n + 1);
+  }, [saveState, structState, imgState]);
+
   const setField = (index: number, locale: string, path: string, value: string, original: string) =>
     setEdits((prev) => {
       const key = `${index}:${locale}`;
@@ -71,7 +86,7 @@ export default function CollectionEditor({
     imgState.detail || structState.detail || saveState.detail;
   const isError = Boolean(imgState.error || structState.error || saveState.error);
 
-  return (
+  const editor = (
     <>
       {/* Structural operations post separately from copy edits, because they
           rewrite the shared row as well and must not be half-applied. */}
@@ -85,12 +100,21 @@ export default function CollectionEditor({
         <input type="hidden" name="key" value={def.key} />
       </form>
 
+      {/* Sticky, because Partners is 39 cards long: without it the Save button
+          scrolls off and the only way back to it is to scroll all the way up,
+          which is how unsaved edits get abandoned. */}
       <div
         style={{
+          position: 'sticky',
+          top: 'var(--adm-topbar-h)',
+          zIndex: 10,
           display: 'flex',
           alignItems: 'center',
           gap: 'var(--adm-3)',
+          padding: 'var(--adm-3) 0',
           marginBlockEnd: 'var(--adm-4)',
+          background: 'var(--background)',
+          borderBlockEnd: '1px solid var(--border)',
         }}
       >
         <span className={dirty ? 'adm-badge adm-badge--warn' : 'adm-badge'}>
@@ -338,5 +362,12 @@ export default function CollectionEditor({
       <input type="hidden" name="index" form="struct" defaultValue="-1" />
       <input type="hidden" name="to" form="struct" defaultValue="-1" />
     </>
+  );
+
+  return (
+    <div className="adm-split">
+      <div style={{ minInlineSize: 0 }}>{editor}</div>
+      <PreviewPane locale={preview.locale} slug={preview.slug} refreshKey={refreshKey} />
+    </div>
   );
 }

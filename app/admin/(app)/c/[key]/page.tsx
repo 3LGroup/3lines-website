@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getCollection, collectionByKey } from '@/lib/admin/collections';
-import { listMedia } from '@/lib/admin/media';
+import { listAllMedia } from '@/lib/admin/media';
 import CollectionEditor from './CollectionEditor';
 
 type Params = { params: Promise<{ key: string }> };
@@ -23,7 +23,12 @@ export default async function CollectionPage({ params }: Params) {
         <p className="adm-page__lede">{collection.def.blurb}</p>
       </div>
 
-      <CollectionEditor collection={collection} library={listMedia()} />
+      <CollectionEditor
+        collection={collection}
+        library={await listAllMedia()}
+        // The collection lives inside a page; the preview shows that page.
+        preview={{ locale: 'en', slug: collection.slug }}
+      />
     </div>
   );
 }

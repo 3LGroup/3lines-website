@@ -519,17 +519,44 @@ html.dark .ftr .ftr__logo::before,html.dark .footer svg{filter:brightness(0) inv
   background:var(--muted)!important;color:var(--foreground)!important;
   border-color:var(--border)!important;
 }
-/* --onDark is the variant for dark grounds — it sits on the navy CTA band, which
-   stays navy in BOTH themes. The group above gives every wire button
-   var(--foreground): near-white in dark mode, near-black in light, so in the
-   default theme "Get in touch" rendered near-black on navy at 1.09:1 while the
-   heading beside it stayed white. This button follows its ground, not the page
-   theme, so its colours are fixed. Placed after the group to win on order at
-   equal specificity. */
-.btn--onDark{color:#fff!important;border-color:rgba(255,255,255,.45)!important}
-.btn--onDark:hover{
+/* --onDark is the variant for dark grounds. The group above gives every wire
+   button var(--foreground): near-white in dark mode, near-black in light, so on
+   the navy CTA band "Get in touch" rendered near-black on navy at 1.09:1 while
+   the heading beside it stayed white. Fixed white is the fix — but only where
+   the ground really is dark, and that is the part the previous version of this
+   rule got wrong.
+
+   Two different grounds wear this class, and they do not behave alike:
+
+     .careers / .cta / .section--navy   rgb(18,62,94) in BOTH themes  → dark
+     .hero                              white in light, near-black in dark
+
+   The hero follows the page theme, so forcing white text there put white on
+   white: the homepage "Who we are" button was legible at rest and vanished on
+   hover, because the hover rule set color:#fff over a 12%-white background on a
+   white hero. Reported from the live page and reproduced at 1440.
+
+   Scoped to the three genuinely-dark grounds. The hero's button now falls
+   through to the themed group above, which already gives it var(--foreground)
+   and a var(--muted) hover — readable in both themes without a special case. */
+.careers .btn--onDark,.cta .btn--onDark,.section--navy .btn--onDark{
+  color:#fff!important;border-color:rgba(255,255,255,.45)!important;
+}
+.careers .btn--onDark:hover,.cta .btn--onDark:hover,.section--navy .btn--onDark:hover{
   background:rgba(255,255,255,.12)!important;color:#fff!important;
   border-color:#fff!important;
+}
+/* Falling through to the group's hover leaves the hero's button with no hover
+   state whatever — measured identical colour, background and border in both
+   states — because that group rule is out-competed further down this file. So
+   state it here.
+   Border only: a background tint was tried and something in this file's
+   cascade beats it even at higher specificity and later position, while the
+   border from this same block applies. Not worth unpicking for a 9% wash. The
+   border is derived from var(--foreground) rather than from white or from the
+   ground, so one rule reads correctly in both themes. */
+.hero .btn--onDark:hover{
+  border-color:color-mix(in srgb,var(--foreground) 38%,transparent)!important;
 }
 .lnk,.arrowlink,.card__more,.ncard__more,.go,.hwcard .go,.prod .go{
   background:none!important;border:0!important;border-bottom:1px solid var(--primary)!important;

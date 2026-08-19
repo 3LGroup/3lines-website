@@ -15,7 +15,11 @@ export default function robots(): MetadataRoute.Robots {
     // public/_headers. This entry is the cheapest of the three and the only one
     // a crawler reads before requesting anything, so it saves the request rather
     // than just the indexing.
-    rules: { userAgent: '*', allow: '/', disallow: ['/api/', '/admin'] },
+    //
+    // /preview matters more than /admin here: it renders unpublished content
+    // through the real public renderer, so an indexed preview URL would be a
+    // draft of the live site sitting in search results.
+    rules: { userAgent: '*', allow: '/', disallow: ['/api/', '/admin', '/preview'] },
     sitemap: `${SITE_ORIGIN}/sitemap.xml`,
   };
 }

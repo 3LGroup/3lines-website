@@ -56,57 +56,37 @@ export default function ImagePicker({
     <div className="adm-field">
       <span className="adm-label">{label}</span>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--adm-3)' }}>
-        {/* Checkerboard behind the thumbnail: many partner marks are transparent
-            PNGs, and on a flat surface a white logo looks like an empty box. */}
-        <span
-          style={{
-            inlineSize: 92,
-            blockSize: 62,
-            display: 'grid',
-            placeItems: 'center',
-            border: '1px solid var(--border)',
-            borderRadius: 'var(--radius-md)',
-            padding: 6,
-            flex: 'none',
-            backgroundImage:
-              'linear-gradient(45deg,var(--muted) 25%,transparent 25%,transparent 75%,var(--muted) 75%),linear-gradient(45deg,var(--muted) 25%,transparent 25%,transparent 75%,var(--muted) 75%)',
-            backgroundSize: '12px 12px',
-            backgroundPosition: '0 0, 6px 6px',
-          }}
-        >
-          {current ? (
-            <img
-              src={current}
-              alt=""
-              style={{ maxInlineSize: '100%', maxBlockSize: '100%', objectFit: 'contain' }}
-            />
-          ) : (
-            <Icon name="media" />
-          )}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--adm-4)' }}>
+        <span className="adm-thumb" style={{ inlineSize: 132, blockSize: 88, flex: 'none' }}>
+          {current ? <img src={current} alt="" /> : <Icon name="media" size={24} />}
         </span>
 
         <span style={{ minInlineSize: 0 }}>
-          <code
-            style={{
-              display: 'block',
-              fontSize: 'var(--adm-text-sm)',
-              color: 'var(--muted-foreground)',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}
-          >
-            {current || 'none'}
-          </code>
+          {/* The button first and the path second. The path is for confirming
+              which file this is once you already care; the button is what
+              someone arrives at this row wanting, so it should not be the thing
+              they have to look past. */}
           <button
-            className="adm-btn adm-btn--sm adm-btn--outline"
+            className={`adm-btn adm-btn--sm ${open ? 'adm-btn--outline' : 'adm-btn--primary'}`}
             type="button"
             onClick={() => setOpen((v) => !v)}
-            style={{ marginBlockStart: 6 }}
             aria-expanded={open}
           >
             {open ? 'Cancel' : 'Change image'}
           </button>
+          <code
+            style={{
+              display: 'block',
+              marginBlockStart: 'var(--adm-2)',
+              fontSize: 'var(--adm-text-xs)',
+              color: 'var(--muted-foreground)',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              direction: 'ltr',
+            }}
+          >
+            {current || 'none'}
+          </code>
         </span>
       </div>
 
@@ -138,15 +118,17 @@ export default function ImagePicker({
             </select>
           </div>
 
+          {/* Says how much the filter removed. Without it a search that matches
+              three of a hundred and thirty-one looks like a library that only
+              ever had three in it. */}
+          <p className="adm-hint" style={{ marginBlockEnd: 'var(--adm-3)' }}>
+            Showing {shown.length} of {library.length}. Click one to use it.
+          </p>
+
           {shown.length ? (
             <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill,minmax(104px,1fr))',
-                gap: 'var(--adm-2)',
-                maxBlockSize: 320,
-                overflowY: 'auto',
-              }}
+              className="adm-tiles"
+              style={{ maxBlockSize: 420, overflowY: 'auto', padding: 2 }}
             >
               {shown.map((m) => (
                 <button
@@ -164,46 +146,12 @@ export default function ImagePicker({
                   value={`${name.shape}|${name.path}|${m.path}`}
                   title={m.path}
                   aria-current={m.path === current ? 'true' : undefined}
-                  style={{
-                    display: 'grid',
-                    gap: 4,
-                    padding: 6,
-                    border:
-                      m.path === current
-                        ? '2px solid var(--primary)'
-                        : '1px solid var(--border)',
-                    borderRadius: 'var(--radius-md)',
-                    background: 'var(--background)',
-                    cursor: 'pointer',
-                  }}
+                  className="adm-tile adm-tile--pick"
                 >
-                  <span
-                    style={{
-                      blockSize: 54,
-                      display: 'grid',
-                      placeItems: 'center',
-                      background: 'var(--muted)',
-                      borderRadius: 'var(--radius-sm)',
-                    }}
-                  >
-                    <img
-                      src={m.path}
-                      alt=""
-                      loading="lazy"
-                      style={{ maxInlineSize: '90%', maxBlockSize: '90%', objectFit: 'contain' }}
-                    />
+                  <span className="adm-thumb">
+                    <img src={m.path} alt="" loading="lazy" />
                   </span>
-                  <span
-                    style={{
-                      fontSize: 10,
-                      color: 'var(--muted-foreground)',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {m.name}
-                  </span>
+                  <span className="adm-tile__name">{m.name}</span>
                 </button>
               ))}
             </div>

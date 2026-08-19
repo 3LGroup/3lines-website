@@ -2,6 +2,7 @@
 
 import { useActionState, useEffect, useMemo, useRef, useState } from 'react';
 import Icon from '@/components/admin/Icon';
+import PreviewPane from '@/components/admin/PreviewPane';
 import type { EditableBlock } from '@/lib/admin/content';
 import { saveEdits, type SaveState } from './actions';
 
@@ -76,6 +77,12 @@ export default function PageEditor({
     }
   }, [state]);
 
+  /** Bumped on a successful save; that is what reloads the preview frame. */
+  const [refreshKey, setRefreshKey] = useState(0);
+  useEffect(() => {
+    if (state.ok) setRefreshKey((n) => n + 1);
+  }, [state]);
+
   const setMeta = (locale: string, field: string, value: string, original: string) =>
     setMetaEdits((prev) => {
       const key = `${slug}:${locale}:${field}`;
@@ -104,7 +111,7 @@ export default function PageEditor({
   const valueOf = (blockId: string, locale: string, path: string, original: string) =>
     edits[`${blockId}:${locale}`]?.[path] ?? original;
 
-  return (
+  const editor = (
     <form action={formAction}>
       <input type="hidden" name="edits" value={JSON.stringify(edits)} />
       <input type="hidden" name="meta" value={JSON.stringify(metaEdits)} />
@@ -295,5 +302,14 @@ export default function PageEditor({
         </div>
       ) : null}
     </form>
+  );
+
+  return (
+    <div className="adm-split">
+      {/* minInlineSize:0 or the editor column refuses to shrink below its
+          widest input and pushes the preview off screen. */}
+      <div style={{ minInlineSize: 0 }}>{editor}</div>
+      <PreviewPane locale="en" slug={slug} refreshKey={refreshKey} />
+    </div>
   );
 }

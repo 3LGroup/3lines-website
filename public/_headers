@@ -17,3 +17,10 @@
 # which a meta tag cannot.
 /admin/*
   X-Robots-Tag: noindex, nofollow
+
+# The preview route renders unpublished content through the real public
+# renderer, so an indexed preview URL would put a draft of the live site in
+# search results. Same three layers as /admin: this header, robots.txt, and the
+# route's own metadata.
+/preview/*
+  X-Robots-Tag: noindex, nofollow
