@@ -29,7 +29,7 @@
       "head": {
         "layout": "split",
         "kicker": "Location",
-        "heading": "",
+        "heading": "Our Riyadh office",
         "lede": "Our office is in the King Faisal district of Riyadh, on King Abdullah Branch Road."
       },
       "bodies": [
@@ -41,7 +41,27 @@
           "placeName": "3 Lines Advanced Technologies Company",
           "address": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
           "ctaLabel": "View map",
-          "note": "Loads Google Maps"
+          "note": "Loads Google Maps",
+          "details": [
+            {
+              "label": "Address",
+              "value": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215"
+            },
+            {
+              "label": "Phone",
+              "value": "+966 11 225 2433",
+              "href": "tel:+966112252433"
+            },
+            {
+              "label": "Email",
+              "value": "info@3lines.com.sa",
+              "href": "mailto:info@3lines.com.sa"
+            }
+          ],
+          "directions": {
+            "label": "Get directions",
+            "href": "https://www.google.com/maps/dir/?api=1&destination=24.7676823,46.7608157"
+          }
         }
       ]
     },

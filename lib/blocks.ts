@@ -291,6 +291,13 @@ export interface MapBody {
   ctaLabel: string;
   /** Short disclosure rendered under the button. */
   note: string;
+  /**
+   * Contact rows rendered in an info rail beside the map. Without them the
+   * facade renders alone, full-width, as before.
+   */
+  details?: { label: string; value: string; href?: string }[];
+  /** External directions link, rendered at the foot of the info rail. */
+  directions?: { label: string; href: string };
 }
 
 export interface FormField {
