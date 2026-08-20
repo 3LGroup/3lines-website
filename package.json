@@ -19,7 +19,7 @@
     "build": "next build",
     "start": "next start -p 3200",
     "typecheck": "tsc --noEmit",
-    "cf:build": "npm run assets:manifest && opennextjs-cloudflare build",
+    "cf:build": "npm run cf:prebuild && npm run assets:manifest && opennextjs-cloudflare build",
     "cf:preview": "npm run cf:build && opennextjs-cloudflare preview",
     "cf:deploy": "npm run cf:build && opennextjs-cloudflare deploy",
     "cf:typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
@@ -31,7 +31,10 @@
     "db:migrate:remote": "wrangler d1 migrations apply 3lines-cms --remote",
     "verify": "node scripts/pipeline.mjs",
     "baseline:update": "node scripts/visual-baseline.mjs",
-    "audit:assets": "node scripts/audit-assets.mjs"
+    "audit:assets": "node scripts/audit-assets.mjs",
+    "db:export": "node scripts/export-content.mjs",
+    "db:export:remote": "node scripts/export-content.mjs --remote",
+    "cf:prebuild": "node scripts/cf-prebuild.mjs"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.20.2",
