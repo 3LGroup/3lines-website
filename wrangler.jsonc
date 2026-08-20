@@ -49,7 +49,7 @@
     {
       "binding": "DB",
       "database_name": "3lines-cms",
-      "database_id": "PLACEHOLDER-run-wrangler-d1-create-3lines-cms",
+      "database_id": "ecc064da-0fd5-40a4-b1e7-a66312d43d1d",
       "migrations_dir": "drizzle"
     }
   ],

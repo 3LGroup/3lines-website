@@ -125,7 +125,13 @@ async function issue(sub: string): Promise<void> {
 export async function login(password: string): Promise<boolean> {
   const stored = process.env.CMS_PASSWORD_HASH;
   if (!stored) {
-    throw new Error('CMS_PASSWORD_HASH is unset. Generate one with `npm run admin:password`.');
+    /* Names the command that actually exists. This used to say
+       `npm run admin:password`, which is not a script in package.json — so the
+       one error a first-time operator is guaranteed to hit sent them to a
+       command that fails with "Missing script". */
+    throw new Error(
+      'CMS_PASSWORD_HASH is unset. Generate one with `node scripts/admin-credentials.mjs password "<password>"`.'
+    );
   }
 
   const ok = await verifyPassword(password, stored);
