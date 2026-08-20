@@ -52,17 +52,25 @@
       "database_id": "PLACEHOLDER-run-wrangler-d1-create-3lines-cms",
       "migrations_dir": "drizzle"
     }
-  ]
+  ],
 
-  // ---------------------------------------------------------------------
-  // R2, added in M5 when uploads land:
+  // Media uploads. lib/admin/uploads.ts looks for this binding and uses R2 when
+  // it is present, falling back to writing into public/assets/uploads/ on local
+  // disk when it is not — and that fallback cannot work in a deployed Worker,
+  // which has no writable filesystem. So without this block an upload appears to
+  // succeed locally and fails in production, which is the split the fallback
+  // comment warns about. Declared here so the deployed path is the real one.
+  //
+  // The bucket itself still has to exist:
   //
   //   npx wrangler r2 bucket create 3lines-media
   //
-  // "r2_buckets": [
-  //   { "binding": "MEDIA", "bucket_name": "3lines-media" }
-  // ],
-  //
+  // Unlike D1 there is no id to paste back — R2 bindings resolve by name.
+  "r2_buckets": [
+    { "binding": "MEDIA", "bucket_name": "3lines-media" }
+  ]
+
+  // ---------------------------------------------------------------------
   // Cron Triggers (M8) additionally need a custom worker entrypoint, because
   // the generated .open-next/worker.js only exports `fetch`. See
   // https://opennext.js.org/cloudflare/howtos/custom-worker
