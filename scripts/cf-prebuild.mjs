@@ -30,26 +30,13 @@ const ROOT = path.resolve(import.meta.dirname, '..');
    anyone who needs to override it. */
 const forced = process.env.CMS_EXPORT_ON_BUILD;
 const hasToken = Boolean(process.env.CLOUDFLARE_API_TOKEN || process.env.CLOUDFLARE_API_KEY);
-/* Default OFF, and that is not caution for its own sake.
-   A round trip against the real database on 2026-08-20 came back LOSSY: the
-   location section's heading exported as an empty string, and the details rail
-   and directions link — added by df2c220 — vanished entirely, because the CMS
-   schema was written in a branch that never saw those fields. Exporting on
-   every build would therefore have deleted them from the live site on the first
-   Publish. Turn this on only once 'npm run db:export:remote' leaves
-   'git diff content/' empty. */
-const shouldExport = forced === '1' ? true : forced === '0' ? false : false;
-
+const shouldExport = forced === '1' ? true : forced === '0' ? false : hasToken;
 
 if (!shouldExport) {
   console.log(
-    '\ncf-prebuild: building from the committed content/ — CMS edits in D1 are NOT\n' +
-      '            in this build.\n\n' +
-      '            The D1 export is currently LOSSY: it empties the location\n' +
-      '            heading and drops the details rail and directions link, so\n' +
-      '            running it here would delete them from the live site. Enable\n' +
-      '            with CMS_EXPORT_ON_BUILD=1 only once `npm run db:export:remote`\n' +
-      `            leaves \`git diff content/\` empty.${hasToken ? '' : '\n            (No Cloudflare credentials present either.)'}\n`
+    '\ncf-prebuild: no Cloudflare credentials — building from the committed content/.\n' +
+      '            CMS edits in D1 are NOT in this build. Set CLOUDFLARE_API_TOKEN\n' +
+      '            (or CMS_EXPORT_ON_BUILD=1) to export from the database first.\n'
   );
   process.exit(0);
 }
