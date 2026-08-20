@@ -54,17 +54,25 @@ export function timingSafeEqual(a: Uint8Array, b: Uint8Array): boolean {
 /* -------------------------------------------------------------- password -- */
 
 /**
- * OWASP's current floor for PBKDF2-HMAC-SHA256.
+ * Capped by the Workers runtime, not chosen.
  *
- * This is the reason the admin needs Workers Paid: 600k iterations will not fit
- * in the free tier's 10ms CPU budget per request. Paid allows 30s, and login is
- * a once-a-week action for a handful of editors, so the real cost is nil.
+ * OWASP's floor for PBKDF2-HMAC-SHA256 is 600k and this was set there, on the
+ * theory that the only obstacle was the free tier's CPU budget. That was wrong:
+ * Workers' WebCrypto rejects PBKDF2 above 100k iterations outright —
+ * "iteration counts above 100000 are not supported" — on every plan. So a 600k
+ * hash could be generated under Node and then never verified in the Worker, and
+ * login failed for everyone with a hash that was itself perfectly valid.
  *
- * Stored inside each hash rather than read from here at verify time, so raising
+ * 100k is below the OWASP floor and that is a genuine weakening. What carries
+ * the security here is password entropy rather than stretching: an offline
+ * attack against a randomly generated 144-bit password is infeasible at any
+ * iteration count. Do not pair this with a human-chosen password.
+ *
+ * Stored inside each hash rather than read from here at verify time, so changing
  * it does not invalidate existing passwords — old hashes keep verifying at their
  * own cost until they are next rewritten.
  */
-const PBKDF2_ITERATIONS = 600_000;
+const PBKDF2_ITERATIONS = 100_000;
 const SALT_BYTES = 16;
 const KEY_BITS = 256;
 

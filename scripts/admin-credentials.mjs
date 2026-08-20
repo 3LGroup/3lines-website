@@ -26,7 +26,10 @@ const enc = new TextEncoder();
 
 const b64u = (bytes) => Buffer.from(bytes).toString('base64url');
 
-const PBKDF2_ITERATIONS = 600_000; // must match lib/admin/crypto.ts
+// Must match lib/admin/crypto.ts. Capped at 100k by the Workers runtime, which
+// refuses PBKDF2 above that on every plan — a hash generated higher under Node
+// can never be verified in the deployed Worker. See the note in crypto.ts.
+const PBKDF2_ITERATIONS = 100_000;
 const SALT_BYTES = 16;
 const KEY_BITS = 256;
 
