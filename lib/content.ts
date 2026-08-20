@@ -2,7 +2,43 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { Block, Locale, PageDoc, SvgNode } from './blocks';
 
+import routesJson from '../content/routes.json';
+import chromeEn from '../content/en/chrome.json';
+import chromeAr from '../content/ar/chrome.json';
+import newsEn from '../content/en/news-items.json';
+import newsAr from '../content/ar/news-items.json';
+
 const DIR = path.join(process.cwd(), 'content');
+
+/**
+ * The documents that must survive without a filesystem.
+ *
+ * Every public route is prerendered, so `fs` below is answered at build time
+ * where content/ genuinely exists. The preview is not: it is force-dynamic and
+ * renders inside the Worker, where process.cwd() is `/bundle` and content/ was
+ * never uploaded — it is neither in the Worker bundle nor in Static Assets. So
+ * the newsGrid body called getNews(), the read failed, and the preview iframe
+ * died with "no such file or directory, readAll '/bundle/content/en/news-items.json'"
+ * while the CMS around it and the whole public site worked. That asymmetry is
+ * exactly why it took a Worker log to see.
+ *
+ * Importing these statically makes esbuild inline them, so the read cannot fail
+ * at runtime. lib/assets.ts already solved the same Worker-has-no-filesystem
+ * problem for the asset manifest, for the same reason and in the same way.
+ *
+ * Only the chrome, the route table and the news index are here — the three
+ * things a request-time render reaches for. The 50 per-page documents stay on
+ * `fs`: they are read by generateStaticParams at build time, and bundling the
+ * whole corpus would add it to every Worker invocation to serve a path that is
+ * never taken at runtime.
+ */
+const BUNDLED: Record<string, unknown> = {
+  'routes.json': routesJson,
+  'en/chrome.json': chromeEn,
+  'ar/chrome.json': chromeAr,
+  'en/news-items.json': newsEn,
+  'ar/news-items.json': newsAr,
+};
 
 /**
  * Parsed documents are memoized in production builds.
@@ -24,6 +60,13 @@ const docs = new Map<string, unknown>();
 const read = <T,>(...seg: string[]): T => {
   const key = seg.join('/');
   if (MEMOIZE && docs.has(key)) return docs.get(key) as T;
+
+  // Bundled copies win, and are checked before the cache is even consulted for
+  // them: they cost nothing to return and they are the only path that works
+  // when this runs in a Worker rather than during the build.
+  const bundled = BUNDLED[key];
+  if (bundled !== undefined) return bundled as T;
+
   const value = JSON.parse(fs.readFileSync(path.join(DIR, ...seg), 'utf8')) as T;
   if (MEMOIZE) docs.set(key, value);
   return value;
