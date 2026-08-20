@@ -30,6 +30,8 @@ const PATHS = {
   alert: 'M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z',
   check: 'M20 6L9 17l-5-5',
   lock: 'M5 11h14v10H5zM8 11V7a4 4 0 018 0v4',
+  /* Lucide trash-2, on the same 24 grid and stroke weight as the rest. */
+  trash: 'M3 6h18M8 6V4a1 1 0 011-1h6a1 1 0 011 1v2M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6M10 11v6M14 11v6',
 } as const;
 
 export type IconName = keyof typeof PATHS;

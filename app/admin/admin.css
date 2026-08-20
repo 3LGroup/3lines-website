@@ -1130,3 +1130,76 @@ samp {
     max-inline-size:540px;
   }
 }
+
+/* --- delete an uploaded image ------------------------------------------- */
+
+/* The tile becomes the positioning context so the delete control can sit on the
+   thumbnail. .adm-tile is a grid, so the control is taken out of flow rather
+   than being given a row of its own — otherwise every tile in the uploads
+   folder would grow taller than the tiles in every other folder and the grid
+   would stop lining up. */
+.adm-tile {
+  position: relative;
+}
+
+.adm-tile__del {
+  position: absolute;
+  inset-block-start: var(--adm-2);
+  inset-inline-end: var(--adm-2);
+  display: flex;
+  gap: var(--adm-1);
+  align-items: flex-start;
+}
+
+/* Hidden until the tile is hovered or something inside it has focus. Keyboard
+   users get it from :focus-within, which is why this is not a hover-only rule:
+   a control that only exists under a pointer does not exist for them. On touch,
+   where neither fires, the coarse-pointer block below keeps it visible. */
+.adm-tile__delbtn {
+  display: grid;
+  place-items: center;
+  inline-size: 28px;
+  block-size: 28px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--adm-radius-sm, 6px);
+  background: var(--background);
+  color: var(--muted-foreground);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .12s ease, color .12s ease, border-color .12s ease;
+}
+
+.adm-tile:hover .adm-tile__delbtn,
+.adm-tile:focus-within .adm-tile__delbtn {
+  opacity: 1;
+}
+
+.adm-tile__delbtn:hover,
+.adm-tile__delbtn:focus-visible {
+  opacity: 1;
+  color: var(--adm-danger);
+  border-color: color-mix(in oklch, var(--adm-danger) 40%, transparent);
+}
+
+.adm-tile__delbtn svg {
+  inline-size: 15px;
+  block-size: 15px;
+}
+
+/* No hover on touch, so the affordance would never appear. */
+@media (hover: none) {
+  .adm-tile__delbtn { opacity: 1; }
+}
+
+.adm-tile__delerr {
+  position: absolute;
+  inset-block-start: calc(100% + var(--adm-1));
+  inset-inline: 0;
+  margin: 0;
+  padding: var(--adm-1) var(--adm-2);
+  border-radius: var(--adm-radius-sm, 6px);
+  background: var(--adm-danger-bg);
+  color: var(--adm-danger);
+  font-size: var(--adm-text-xs);
+}

@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 import { readSession } from '@/lib/admin/session';
-import { putUpload } from '@/lib/admin/uploads';
+import { deleteUpload, putUpload } from '@/lib/admin/uploads';
 
 export interface UploadState {
   ok?: boolean;
@@ -91,4 +91,48 @@ function looksLikeImage(b: Uint8Array): boolean {
     b[8] === 0x57 && b[9] === 0x45 && b[10] === 0x42 && b[11] === 0x50
   ) return true;
   return false;
+}
+
+/**
+ * Delete one upload.
+ *
+ * Separate state type from UploadState so the two useActionState hooks on the
+ * media page cannot overwrite each other's message — a delete error appearing
+ * under the upload button would read as a failed upload.
+ */
+export interface DeleteState {
+  ok?: boolean;
+  error?: string;
+  detail?: string;
+}
+
+export async function deleteImage(_prev: DeleteState, form: FormData): Promise<DeleteState> {
+  if (!(await readSession())) return { error: 'Your session expired. Sign in again.' };
+
+  const name = String(form.get('name') ?? '');
+
+  /* Rejected here as well as inside deleteUpload(). The name arrives from a
+     form field, so it is caller input no matter which of our own pages posted
+     it, and a separator in it is a path traversal attempt rather than a typo. */
+  if (!name || name.includes('/') || name.includes('\\') || name.includes('..')) {
+    return { error: 'That is not a valid image name.' };
+  }
+
+  let removed;
+  try {
+    removed = await deleteUpload(name);
+  } catch (e) {
+    return { error: `Could not delete the image: ${e instanceof Error ? e.message : String(e)}` };
+  }
+
+  /* False means the object was already gone. Reported as a distinct outcome
+     rather than as success, because "deleted" and "there was nothing there"
+     mean different things when someone is trying to remove a file they can
+     still see in a stale tab. */
+  if (!removed) return { error: `${name} was not found — it may already have been deleted.` };
+
+  revalidatePath('/admin/media');
+  revalidatePath('/admin/c/[key]', 'page');
+
+  return { ok: true, detail: `Deleted ${name}.` };
 }

@@ -44,9 +44,24 @@ export async function publish(): Promise<PublishState> {
     }
   }
 
-  // Local. Guarded so this can never be attempted in a Worker, where
-  // node:child_process does not exist and the failure would be cryptic.
-  if (process.env.NEXT_RUNTIME === 'edge' || typeof process.versions?.node !== 'string') {
+  /* Local. Guarded so this is never attempted in a Worker, where
+     node:child_process does not exist.
+
+     The guard used to test `NEXT_RUNTIME === 'edge'` and `process.versions.node`,
+     and neither holds here: the adapter runs Next's *Node* runtime, not the edge
+     one, and nodejs_compat is precisely what supplies `process.versions.node`.
+     So both checks passed inside the deployed Worker, execution fell through to
+     execFile, and Publish failed with "The child_process.execFile method is not
+     implemented" — the cryptic failure this guard exists to prevent.
+
+     navigator.userAgent is Cloudflare's own documented runtime marker, and
+     WebSocketPair is a Workers global with no Node equivalent. Either one being
+     present means there is no filesystem and no subprocess to run. */
+  const g = globalThis as { navigator?: { userAgent?: string }; WebSocketPair?: unknown };
+  const inWorker =
+    g.navigator?.userAgent === 'Cloudflare-Workers' || typeof g.WebSocketPair !== 'undefined';
+
+  if (inWorker || process.env.NEXT_RUNTIME === 'edge' || typeof process.versions?.node !== 'string') {
     return {
       error:
         'CF_DEPLOY_HOOK_URL is not set, so there is nothing to publish to. ' +

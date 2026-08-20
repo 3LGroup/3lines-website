@@ -219,3 +219,70 @@ export async function readUpload(
 export function isUploadPath(path: string): boolean {
   return path.startsWith(`${UPLOAD_PREFIX}/`) && !path.includes('..');
 }
+
+/**
+ * Remove one stored upload.
+ *
+ * Uploading was one-way before this: a wrong file, a bad crop or something that
+ * should never have left the office stayed in the bucket and in the picker with
+ * no way to take it back, and R2 bills for it either way.
+ *
+ * Deliberately NOT a content-safety check — it does not refuse to delete an
+ * image a page still references. Doing that would mean scanning every block in
+ * D1 on each delete, and it would still race a concurrent edit. The renderer
+ * treats a missing image as a missing image, and a broken picture is a smaller
+ * problem than an undeletable one.
+ *
+ * Returns false when the object was not there, so the caller can tell "deleted"
+ * from "nothing to delete" instead of reporting success either way.
+ */
+export async function deleteUpload(name: string): Promise<boolean> {
+  // The caller passes a bare filename. Anything with a separator would let a
+  // crafted request reach outside the uploads directory, so it is rejected
+  // here as well as at the action, rather than trusted from one layer up.
+  if (!name || name.includes('/') || name.includes('\\') || name.includes('..')) return false;
+
+  const b = await bucket();
+
+  if (b) {
+    // R2 delete() resolves whether or not the key existed, so existence has to
+    // be established first for the return value to mean anything.
+    const head = await b.head(name);
+    if (!head) return false;
+    await b.delete(name);
+    return true;
+  }
+
+  try {
+    const fs = await import('node:fs/promises');
+    const { join } = await import('node:path');
+    await fs.unlink(join(await localDir(), name));
+  } catch {
+    return false;
+  }
+
+  // Local only: the manifest describes files in public/, so the entry has to go
+  // with the file or audit:manifest fails on an entry with nothing behind it —
+  // the mirror image of the staleness recordInManifest() exists to prevent.
+  await forgetInManifest(`${UPLOAD_PREFIX}/${name}`);
+  return true;
+}
+
+/** Drop a deleted local upload from lib/asset-manifest.json. */
+async function forgetInManifest(publicPath: string): Promise<void> {
+  try {
+    const fs = await import('node:fs/promises');
+    const { join } = await import('node:path');
+
+    const file = join(process.cwd(), 'lib', 'asset-manifest.json');
+    const manifest = JSON.parse(await fs.readFile(file, 'utf8')) as Record<string, string>;
+    if (!(publicPath in manifest)) return;
+    delete manifest[publicPath];
+
+    const sorted = Object.fromEntries(Object.entries(manifest).sort(([a], [c]) => a.localeCompare(c)));
+    await fs.writeFile(file, JSON.stringify(sorted, null, 2) + '\n');
+  } catch {
+    // Same reasoning as recordInManifest: not fatal, and the next build
+    // regenerates the manifest from public/ anyway.
+  }
+}
