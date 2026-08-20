@@ -1151,10 +1151,13 @@ samp {
   align-items: flex-start;
 }
 
-/* Hidden until the tile is hovered or something inside it has focus. Keyboard
-   users get it from :focus-within, which is why this is not a hover-only rule:
-   a control that only exists under a pointer does not exist for them. On touch,
-   where neither fires, the coarse-pointer block below keeps it visible. */
+/* Always visible on an uploaded tile, at reduced contrast until hovered.
+
+   This was opacity:0 until hover. That is the conventional treatment and it was
+   wrong here: the person using this CMS could not find the control at all, and
+   asked twice where it was. A destructive action should be discoverable — the
+   protection against a mistaken click is the two-step confirm on the button,
+   not hiding the button. */
 .adm-tile__delbtn {
   display: grid;
   place-items: center;
@@ -1166,7 +1169,7 @@ samp {
   background: var(--background);
   color: var(--muted-foreground);
   cursor: pointer;
-  opacity: 0;
+  opacity: .55;
   transition: opacity .12s ease, color .12s ease, border-color .12s ease;
 }
 
@@ -1185,11 +1188,6 @@ samp {
 .adm-tile__delbtn svg {
   inline-size: 15px;
   block-size: 15px;
-}
-
-/* No hover on touch, so the affordance would never appear. */
-@media (hover: none) {
-  .adm-tile__delbtn { opacity: 1; }
 }
 
 .adm-tile__delerr {
