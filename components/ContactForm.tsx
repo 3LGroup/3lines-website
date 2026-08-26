@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { ui } from '@/lib/ui';
 import type { Locale } from '@/lib/i18n';
 import type { FormBody } from '@/lib/blocks';
 
@@ -18,7 +17,17 @@ type State = 'idle' | 'sending' | 'ok' | 'bad' | 'err';
  *
  * All user-facing strings arrive as data so the component carries no English.
  */
-export default function ContactForm({ body, locale }: { body: FormBody; locale: Locale }) {
+export default function ContactForm({
+  body,
+  locale,
+  honeypotLabel,
+}: {
+  body: FormBody;
+  locale: Locale;
+  /* Passed in from the server side: lib/ui reads content off the filesystem,
+     which a client component's bundle cannot import. */
+  honeypotLabel: string;
+}) {
   const [state, setState] = useState<State>('idle');
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -82,7 +91,7 @@ export default function ContactForm({ body, locale }: { body: FormBody; locale: 
         {/* Honeypot: hidden from people, tempting to bots. Not display:none — a
             focusable element hidden that way is a screen-reader trap. */}
         <div className="field field--hp" aria-hidden="true">
-          <label htmlFor={`f-${body.honeypot}`}>{ui(locale).honeypot}</label>
+          <label htmlFor={`f-${body.honeypot}`}>{honeypotLabel}</label>
           <input id={`f-${body.honeypot}`} name={body.honeypot} tabIndex={-1} autoComplete="off" />
         </div>
       </div>

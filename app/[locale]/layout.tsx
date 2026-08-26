@@ -30,7 +30,13 @@ export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
 
-export const dynamicParams = false;
+/**
+ * Deliberately NOT `dynamicParams = false`: a layout's segment config applies
+ * to every route beneath it, so `false` here sent all unknown URLs to Next's
+ * bare default 404 — outside this layout, in English, with no navigation —
+ * instead of the localized not-found boundary. Unknown locales are still
+ * refused: the `isLocale` guard below throws notFound() before rendering.
+ */
 
 export async function generateMetadata({
   params,

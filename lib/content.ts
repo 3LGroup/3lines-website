@@ -8,6 +8,8 @@ import chromeAr from '../content/ar/chrome.json';
 import newsEn from '../content/en/news-items.json';
 import newsAr from '../content/ar/news-items.json';
 import settingsJson from '../content/settings.json';
+import uiEn from '../content/en/ui.json';
+import uiAr from '../content/ar/ui.json';
 
 const DIR = path.join(process.cwd(), 'content');
 
@@ -40,6 +42,8 @@ const BUNDLED: Record<string, unknown> = {
   'en/news-items.json': newsEn,
   'ar/news-items.json': newsAr,
   'settings.json': settingsJson,
+  'en/ui.json': uiEn,
+  'ar/ui.json': uiAr,
 };
 
 /**
@@ -179,6 +183,15 @@ export interface Settings {
 }
 
 export const getSettings = (): Settings => read<Settings>('settings.json');
+
+/**
+ * Interface microcopy — the strings that belong to the design rather than to
+ * any page: menu buttons, aria labels, the theme toggle, the 404 page. Edited
+ * under the CMS's "Interface text" and exported to content/{locale}/ui.json;
+ * lib/ui.ts overlays these onto its literal fallbacks.
+ */
+export const getUiStrings = (locale: Locale): Partial<Record<string, string>> =>
+  read<Partial<Record<string, string>>>(locale, 'ui.json');
 
 /** Every route id, locale-independent. The locale prefix is applied at render. */
 export const getRoutes = (): RouteEntry[] => read<RouteEntry[]>('routes.json');

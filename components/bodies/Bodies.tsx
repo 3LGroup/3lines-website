@@ -3,6 +3,7 @@ import Svg from '../Svg';
 import NewsGrid from '../NewsGrid';
 import ContactForm from '../ContactForm';
 import { localePath, type Locale } from '@/lib/i18n';
+import { ui } from '@/lib/ui';
 import { assertNever } from '@/lib/blocks';
 import type {
   CardsBody,
@@ -84,7 +85,7 @@ function Tiles({ body, locale }: { body: TilesBody; locale: Locale }) {
           <div className="tile__body">
             <h3>{t.title}</h3>
             <span className="go">
-              Discover <Arrow />
+              {ui(locale).discover} <Arrow />
             </span>
           </div>
         </a>
@@ -584,7 +585,7 @@ export default function BodyRenderer({ body, locale }: { body: SectionBody; loca
     case 'map':
       return <MapEmbed body={body} />;
     case 'form':
-      return <ContactForm body={body} locale={locale} />;
+      return <ContactForm body={body} locale={locale} honeypotLabel={ui(locale).honeypot} />;
     default:
       return assertNever(body);
   }

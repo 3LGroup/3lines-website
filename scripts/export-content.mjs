@@ -197,6 +197,20 @@ if (chromeRows.length) {
 }
 
 /**
+ * content/{locale}/ui.json — interface microcopy. Ordered by key so the file is
+ * byte-stable regardless of edit order. Skipped entirely against a database
+ * seeded before the ui_strings rows existed.
+ */
+const uiRows = query('SELECT key, locale, value FROM ui_strings ORDER BY key');
+for (const locale of LOCALES) {
+  const map = {};
+  for (const r of uiRows) if (r.locale === locale) map[r.key] = r.value;
+  if (Object.keys(map).length) {
+    fs.writeFileSync(path.join(CONTENT, locale, 'ui.json'), JSON.stringify(map, null, 2) + '\n');
+  }
+}
+
+/**
  * content/settings.json — the site-wide values lib/schema.ts needs for JSON-LD.
  *
  * New file rather than rewriting source-content/siteInfo.json: source-content/

@@ -1,30 +1,35 @@
-import { getRoutes } from '@/lib/content';
+import { getPage, getRoutes } from '@/lib/content';
+import { LOCALES, type Locale } from '@/lib/i18n';
+import { ui } from '@/lib/ui';
+import NotFoundBody from './NotFoundBody';
 
 /**
  * 404 for the locale tree.
  *
  * Without this, an unmatched path under the optional catch-all throws
  * `NoFallbackError` in the server log instead of rendering a page.
+ *
+ * A not-found boundary receives no params, so the locale cannot be known here
+ * on the server. Both languages' strings and links are prepared and a small
+ * client component picks the right set from the URL — the previous version
+ * rendered English text and `/en` links to Arabic readers.
  */
 export default function NotFound() {
   const routes = getRoutes().slice(0, 6);
 
-  return (
-    <section className="section">
-      <div className="wrap">
-        <p className="kicker">404</p>
-        <h1 className="h2">This page could not be found.</h1>
-        <p className="lede" style={{ marginBottom: 30 }}>
-          The address may be out of date, or the page may have moved.
-        </p>
-        <ul className="prose">
-          {routes.map((r) => (
-            <li key={r.slug}>
-              <a href={`/en${r.route === '/' ? '' : r.route}`}>{r.route}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+  const payload = Object.fromEntries(
+    LOCALES.map((locale: Locale) => [
+      locale,
+      {
+        strings: ui(locale),
+        links: routes.map((r) => ({
+          href: `/${locale}${r.route === '/' ? '' : r.route}`,
+          // The page's own title, not the raw route id the old page printed.
+          label: getPage(locale, r.route)?.title ?? r.route,
+        })),
+      },
+    ])
   );
+
+  return <NotFoundBody payload={payload} />;
 }

@@ -18,7 +18,19 @@ export function generateStaticParams() {
   );
 }
 
-export const dynamicParams = false;
+/**
+ * True, so an unknown slug under a KNOWN locale reaches Page(), whose
+ * `notFound()` renders the localized 404 inside the locale's own layout —
+ * with dynamicParams=false those URLs got Next's bare default 404 instead,
+ * outside any layout, in English, with no navigation.
+ *
+ * The locale layout keeps its own dynamicParams=false, so /xx/anything is
+ * still refused before any rendering. The dynamic render this allows is
+ * Worker-safe by construction: getPage resolves the route against the bundled
+ * routes.json first and returns null for anything unknown, so no filesystem
+ * read is ever attempted for a URL that is not a real page.
+ */
+export const dynamicParams = true;
 
 /** Rebuild the locale-less route id from the URL segments. */
 const routeOf = (slug?: string[]) => '/' + (slug ?? []).join('/');

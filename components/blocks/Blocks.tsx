@@ -240,7 +240,7 @@ function SocialStrip({ block, locale }: { block: SocialStripBlock; locale: Local
     const at = items.findIndex((s) => s.network === 'phone');
     items.splice(at === -1 ? items.length : at + 1, 0, {
       network: 'whatsapp',
-      label: 'WhatsApp',
+      label: ui(locale).whatsapp,
       href: `https://wa.me/${settings.whatsapp.replace(/\D/g, '')}`,
       icon: null,
     });
