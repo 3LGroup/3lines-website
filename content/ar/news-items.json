@@ -3,7 +3,7 @@
     "slug": "expanding-spare-parts-capabilities",
     "route": "/news/expanding-spare-parts-capabilities",
     "tag": "المشتريات",
-    "type": "News",
+    "type": "خبر",
     "date": "2026-05-12",
     "title": "توسيع قدراتنا في قطع الغيار والخدمات اللوجستية والتخزين",
     "media": {
@@ -16,7 +16,7 @@
     "slug": "advanced-simulator-support",
     "route": "/news/advanced-simulator-support",
     "tag": "التكنولوجيا",
-    "type": "News",
+    "type": "خبر",
     "date": "2026-04-28",
     "title": "الاستثمار في المحاكاة والتدريب القائم على الواقع الممتد",
     "media": {
@@ -29,7 +29,7 @@
     "slug": "ground-support-equipment-services",
     "route": "/news/ground-support-equipment-services",
     "tag": "الصناعة",
-    "type": "News",
+    "type": "خبر",
     "date": "2026-03-15",
     "title": "تعزيز استدامة معدات الدعم الأرضي",
     "media": {
@@ -42,7 +42,7 @@
     "slug": "advancing-radar-sensor-support",
     "route": "/news/advancing-radar-sensor-support",
     "tag": "التكنولوجيا",
-    "type": "News",
+    "type": "خبر",
     "date": "2026-02-25",
     "title": "تطوير استدامة الرادار وأنظمة C4I والاتصالات التكتيكية",
     "media": {

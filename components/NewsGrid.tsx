@@ -13,6 +13,22 @@ export default function NewsGrid({ limit, locale }: { limit?: number; locale: Lo
   const items = getNews(locale);
   const shown = typeof limit === 'number' ? items.slice(0, limit) : items;
 
+  /* The stored date is ISO (the sortable, editable form); the card shows it in
+     the reader's language — Arabic month names on the Arabic cards, which used
+     to render the raw "2026-05-12" in both trees. Latin digits in both, matching
+     the rest of the site's numerals. UTC pinning keeps prerender output
+     independent of the build machine's timezone. */
+  const dateFmt = new Intl.DateTimeFormat(locale === 'ar' ? 'ar-u-nu-latn' : 'en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+  const formatDate = (iso: string) => {
+    const d = new Date(`${iso}T00:00:00Z`);
+    return Number.isNaN(d.getTime()) ? iso : dateFmt.format(d);
+  };
+
   return (
     <div className="newsgrid" id="newsgrid">
       {shown.map((n) => (
@@ -27,7 +43,7 @@ export default function NewsGrid({ limit, locale }: { limit?: number; locale: Lo
             <div className="ncard__meta">
               <span>{n.type}</span>
               <span className="dot" />
-              <span>{n.date}</span>
+              <span>{formatDate(n.date)}</span>
             </div>
             <span className="ncard__more">
               <Arrow />

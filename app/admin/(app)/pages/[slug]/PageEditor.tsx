@@ -111,20 +111,55 @@ export default function PageEditor({
   );
 
   /**
-   * Clear the pending edits once the server confirms they landed. Keyed on the
-   * identity of the returned state rather than on `ok`, because two consecutive
-   * successful saves both report ok and the second must still clear.
+   * Clear the pending edits once the server confirms they landed — but only the
+   * edits that were actually SUBMITTED. Anything typed while the round trip was
+   * in flight stays marked unsaved instead of being silently absorbed into
+   * "No changes". Keyed on the identity of the returned state rather than on
+   * `ok`, because two consecutive successful saves both report ok and the
+   * second must still clear.
    */
+  const submitted = useRef<{
+    edits: Record<string, Record<string, string>>;
+    meta: Record<string, string>;
+    shared: Record<string, string>;
+    status: string;
+  } | null>(null);
   const lastHandled = useRef<SaveState | null>(null);
   useEffect(() => {
     if (state.ok && state !== lastHandled.current) {
       lastHandled.current = state;
-      setEdits({});
-      setMetaEdits({});
-      setSharedEdits({});
-      setStatusEdit('');
+      const sub = submitted.current;
+      const pruneFlat = (cur: Record<string, string>, sent: Record<string, string>) =>
+        Object.fromEntries(Object.entries(cur).filter(([k, v]) => sent[k] !== v));
+      setEdits((cur) => {
+        if (!sub) return {};
+        const next: Record<string, Record<string, string>> = {};
+        for (const [key, paths] of Object.entries(cur)) {
+          const kept = pruneFlat(paths, sub.edits[key] ?? {});
+          if (Object.keys(kept).length) next[key] = kept;
+        }
+        return next;
+      });
+      setMetaEdits((cur) => (sub ? pruneFlat(cur, sub.meta) : {}));
+      setSharedEdits((cur) => (sub ? pruneFlat(cur, sub.shared) : {}));
+      setStatusEdit((cur) => (sub && sub.status === cur ? '' : cur));
     }
   }, [state]);
+
+  /**
+   * A structural change shifts item indices, so pending text edits keyed on
+   * positional paths (`items[2].title`) may now point at a DIFFERENT item.
+   * They are dropped when a structural op succeeds; the buttons below are also
+   * disabled while anything is unsaved, so this only fires as a backstop.
+   */
+  const lastStruct = useRef<SaveState | null>(null);
+  useEffect(() => {
+    if (structState.ok && structState !== lastStruct.current) {
+      lastStruct.current = structState;
+      setEdits({});
+      setSharedEdits({});
+    }
+  }, [structState]);
 
   /** Bumped on any successful change; that is what reloads the preview frame. */
   const [refreshKey, setRefreshKey] = useState(0);
@@ -175,6 +210,11 @@ export default function PageEditor({
   const message = structState.error || imgState.error || state.error;
   const effectiveStatus = statusEdit || status;
 
+  /* Structural ops are blocked while text edits are pending: they shift the
+     positional paths those edits are keyed on, which would land saved text on
+     the wrong item. Save first, then rearrange. */
+  const structDisabled = structPending || dirtyCount > 0;
+
   /** Submit a structural op by filling the struct form's hidden fields. */
   const fillStruct = (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -207,7 +247,12 @@ export default function PageEditor({
         ))}
       </datalist>
 
-      <form action={formAction}>
+      <form
+        action={formAction}
+        onSubmit={() => {
+          submitted.current = { edits, meta: metaEdits, shared: sharedEdits, status: statusEdit };
+        }}
+      >
         <input type="hidden" name="slug" value={slug} />
         <input type="hidden" name="edits" value={JSON.stringify(edits)} />
         <input type="hidden" name="meta" value={JSON.stringify(metaEdits)} />
@@ -367,6 +412,11 @@ export default function PageEditor({
               {isOpen ? (
                 <div className="adm-card__body" style={{ display: 'grid', gap: 'var(--adm-5)' }}>
                   {/* Arrange / remove — instant, not part of Save. */}
+                  {dirtyCount ? (
+                    <p className="adm-hint" style={{ margin: 0 }}>
+                      Save your text changes first — rearranging is paused while edits are pending.
+                    </p>
+                  ) : null}
                   <div
                     style={{
                       display: 'flex',
@@ -379,7 +429,7 @@ export default function PageEditor({
                       className="adm-btn adm-btn--sm adm-btn--outline"
                       type="submit"
                       form="struct"
-                      disabled={structPending}
+                      disabled={structDisabled}
                       onClick={(e) => fillStruct(e, { op: 'moveUp', blockId: block.id })}
                     >
                       ↑ Earlier
@@ -388,7 +438,7 @@ export default function PageEditor({
                       className="adm-btn adm-btn--sm adm-btn--outline"
                       type="submit"
                       form="struct"
-                      disabled={structPending}
+                      disabled={structDisabled}
                       onClick={(e) => fillStruct(e, { op: 'moveDown', blockId: block.id })}
                     >
                       ↓ Later
@@ -413,7 +463,7 @@ export default function PageEditor({
                           className="adm-btn adm-btn--sm adm-btn--outline"
                           type="submit"
                           form="struct"
-                          disabled={structPending}
+                          disabled={structDisabled}
                           onClick={(e) =>
                             fillStruct(e, {
                               op: 'addBody',
@@ -435,7 +485,7 @@ export default function PageEditor({
                           className="adm-btn adm-btn--sm adm-btn--danger"
                           type="submit"
                           form="struct"
-                          disabled={structPending}
+                          disabled={structDisabled}
                           onClick={(e) => fillStruct(e, { op: 'remove', blockId: block.id })}
                         >
                           Confirm delete
@@ -491,7 +541,7 @@ export default function PageEditor({
                               type="submit"
                               form="struct"
                               aria-label={`Move ${arr.label} ${i + 1} earlier`}
-                              disabled={i === 0 || structPending}
+                              disabled={i === 0 || structDisabled}
                               onClick={(e) =>
                                 fillStruct(e, {
                                   op: 'moveItem',
@@ -509,7 +559,7 @@ export default function PageEditor({
                               type="submit"
                               form="struct"
                               aria-label={`Move ${arr.label} ${i + 1} later`}
-                              disabled={i === arr.count - 1 || structPending}
+                              disabled={i === arr.count - 1 || structDisabled}
                               onClick={(e) =>
                                 fillStruct(e, {
                                   op: 'moveItem',
@@ -527,7 +577,7 @@ export default function PageEditor({
                               type="submit"
                               form="struct"
                               aria-label={`Remove ${arr.label} ${i + 1}`}
-                              disabled={arr.count <= arr.min || structPending}
+                              disabled={arr.count <= arr.min || structDisabled}
                               onClick={(e) =>
                                 fillStruct(e, {
                                   op: 'removeItem',
@@ -545,7 +595,7 @@ export default function PageEditor({
                           className="adm-btn adm-btn--sm adm-btn--outline"
                           type="submit"
                           form="struct"
-                          disabled={structPending}
+                          disabled={structDisabled}
                           onClick={(e) =>
                             fillStruct(e, { op: 'addItem', blockId: block.id, path: arr.path })
                           }
@@ -649,7 +699,7 @@ export default function PageEditor({
             className="adm-btn adm-btn--outline"
             type="submit"
             form="struct"
-            disabled={structPending}
+            disabled={structDisabled}
             onClick={(e) => fillStruct(e, { op: 'addSection' })}
           >
             + Add section

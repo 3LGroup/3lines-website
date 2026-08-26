@@ -125,7 +125,10 @@ function Section({ block, locale }: { block: SectionBlock; locale: Locale }) {
           )
         ) : null}
 
-        {block.bodies.map((body, i) => (
+        {/* Defensive ?? []: the exporter omits `bodies` when a section has no
+            children, which cannot happen through the editor's guards but must
+            degrade to an empty band rather than a crashed page if it ever does. */}
+        {(block.bodies ?? []).map((body, i) => (
           <BodyRenderer body={body} locale={locale} key={i} />
         ))}
       </div>

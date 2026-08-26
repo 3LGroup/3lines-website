@@ -3,7 +3,7 @@ import { sql } from 'drizzle-orm';
 import { getDb, schema } from '@/lib/db/client';
 import type { Json } from '@/lib/localization';
 import { isAdmissibleAsset } from './media';
-import { addBody, deletePage, insertBlock } from './structure';
+import { addBody, assertPageDeletable, deletePage, idFor, insertBlock } from './structure';
 import type { Locale } from './content';
 
 const LOCALES: Locale[] = ['en', 'ar'];
@@ -96,8 +96,9 @@ export async function createNewsItem({
   const existingPage = await db.select().from(schema.pages).where(eq(schema.pages.route, route));
   if (existingPage.length) throw new Error(`A page already exists at ${route}.`);
 
-  /* The index row. Position at the top: news lists lead with the newest. */
-  const itemId = crypto.randomUUID();
+  /* The index row. Position at the top: news lists lead with the newest.
+     Deterministic ids matching the importer's scheme — see structure.ts idFor. */
+  const itemId = idFor(`news:${slug}`);
   const items = await db.select().from(schema.newsItems);
   for (const i of items) {
     await db
@@ -132,7 +133,7 @@ export async function createNewsItem({
   const [{ maxPos }] = await db
     .select({ maxPos: sql<number>`coalesce(max(${schema.pages.position}), -1)` })
     .from(schema.pages);
-  const pageId = crypto.randomUUID();
+  const pageId = idFor(`page:${route}`);
   await db.insert(schema.pages).values({
     id: pageId,
     route,
@@ -199,11 +200,14 @@ export async function deleteNewsItem(id: string): Promise<void> {
   const [item] = await db.select().from(schema.newsItems).where(eq(schema.newsItems.id, id)).limit(1);
   if (!item) throw new Error('That news item no longer exists.');
 
-  // The index row first — deletePage refuses while an item still points there.
-  await db.delete(schema.newsItems).where(eq(schema.newsItems.id, id));
+  // Guards FIRST, with the news self-reference excused. Running them after the
+  // index row was deleted meant a refusal left the card gone from the newsroom
+  // while its article page survived — a half-applied delete with no rollback.
+  const [pg] = await db.select().from(schema.pages).where(eq(schema.pages.route, item.route)).limit(1);
+  if (pg) await assertPageDeletable(item.route, pg.id, { ignoreNews: true });
 
-  const [page] = await db.select().from(schema.pages).where(eq(schema.pages.route, item.route)).limit(1);
-  if (page) await deletePage(page.slug);
+  await db.delete(schema.newsItems).where(eq(schema.newsItems.id, id));
+  if (pg) await deletePage(pg.slug);
 }
 
 export async function moveNewsItem(id: string, direction: 'up' | 'down'): Promise<void> {

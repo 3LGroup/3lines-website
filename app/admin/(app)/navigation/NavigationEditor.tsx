@@ -7,6 +7,157 @@ import type { MediaItem } from '@/lib/admin/media';
 import type { L10nText, NavChrome, NavLink } from '@/lib/admin/chrome';
 import { saveNav, setNavImage, type NavState } from './actions';
 
+/* Sub-editors at MODULE scope, deliberately. Defined inside the component they
+   get a fresh function identity every render, React treats the element type as
+   changed, and the whole subtree remounts — which destroyed the focused input
+   after every single keystroke. */
+
+function TextPair({
+  value,
+  label,
+  onChange,
+}: {
+  value: L10nText;
+  label: string;
+  onChange: (v: L10nText) => void;
+}) {
+  return (
+    <div className="adm-field">
+      <label className="adm-label">{label}</label>
+      <input
+        className="adm-input"
+        lang="en"
+        dir="ltr"
+        value={value.en}
+        onChange={(e) => onChange({ ...value, en: e.target.value })}
+      />
+      <input
+        className="adm-input"
+        aria-label={`${label} (Arabic)`}
+        lang="ar"
+        dir="rtl"
+        style={{ fontFamily: "'Tajawal', var(--font-sans)" }}
+        value={value.ar}
+        onChange={(e) => onChange({ ...value, ar: e.target.value })}
+      />
+    </div>
+  );
+}
+
+function LinkList({
+  links,
+  onChange,
+  addLabel,
+}: {
+  links: NavLink[];
+  onChange: (links: NavLink[]) => void;
+  addLabel: string;
+}) {
+  const [arm, setArm] = useState<number | null>(null);
+  const move = (i: number, to: number) => {
+    if (to < 0 || to >= links.length) return;
+    const next = [...links];
+    const [row] = next.splice(i, 1);
+    next.splice(to, 0, row);
+    onChange(next);
+  };
+  return (
+    <div style={{ display: 'grid', gap: 'var(--adm-3)' }}>
+      {links.map((l, i) => (
+        <div
+          key={i}
+          style={{
+            display: 'grid',
+            gap: 'var(--adm-2)',
+            gridTemplateColumns: '1fr 1fr minmax(140px, 0.9fr) auto',
+            alignItems: 'center',
+          }}
+        >
+          <input
+            className="adm-input"
+            lang="en"
+            dir="ltr"
+            aria-label={`Link ${i + 1} (English)`}
+            value={l.label.en}
+            onChange={(e) =>
+              onChange(links.map((x, j) => (j === i ? { ...x, label: { ...x.label, en: e.target.value } } : x)))
+            }
+          />
+          <input
+            className="adm-input"
+            lang="ar"
+            dir="rtl"
+            aria-label={`Link ${i + 1} (Arabic)`}
+            style={{ fontFamily: "'Tajawal', var(--font-sans)" }}
+            value={l.label.ar}
+            onChange={(e) =>
+              onChange(links.map((x, j) => (j === i ? { ...x, label: { ...x.label, ar: e.target.value } } : x)))
+            }
+          />
+          <input
+            className="adm-input"
+            dir="ltr"
+            aria-label={`Link ${i + 1} destination`}
+            list="nav-routes"
+            value={l.href}
+            onChange={(e) => onChange(links.map((x, j) => (j === i ? { ...x, href: e.target.value } : x)))}
+          />
+          <span style={{ display: 'flex', gap: 'var(--adm-1)' }}>
+            <button
+              className="adm-btn adm-btn--sm adm-btn--ghost"
+              type="button"
+              aria-label={`Move link ${i + 1} earlier`}
+              disabled={i === 0}
+              onClick={() => move(i, i - 1)}
+            >
+              ↑
+            </button>
+            <button
+              className="adm-btn adm-btn--sm adm-btn--ghost"
+              type="button"
+              aria-label={`Move link ${i + 1} later`}
+              disabled={i === links.length - 1}
+              onClick={() => move(i, i + 1)}
+            >
+              ↓
+            </button>
+            {arm === i ? (
+              <button
+                className="adm-btn adm-btn--sm adm-btn--danger"
+                type="button"
+                onClick={() => {
+                  setArm(null);
+                  onChange(links.filter((_, j) => j !== i));
+                }}
+              >
+                Confirm
+              </button>
+            ) : (
+              <button
+                className="adm-btn adm-btn--sm adm-btn--ghost"
+                type="button"
+                aria-label={`Remove link ${i + 1}`}
+                onClick={() => setArm(i)}
+              >
+                ✕
+              </button>
+            )}
+          </span>
+        </div>
+      ))}
+      <div>
+        <button
+          className="adm-btn adm-btn--sm adm-btn--outline"
+          type="button"
+          onClick={() => onChange([...links, { label: { en: '', ar: '' }, href: '/' }])}
+        >
+          + {addLabel}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 /**
  * One editor over the whole chrome document.
  *
@@ -31,13 +182,16 @@ export default function NavigationEditor({
   const [saveState, saveAction, saving] = useActionState<NavState, FormData>(saveNav, {});
   const [imgState, imgAction, imgWorking] = useActionState<NavState, FormData>(setNavImage, {});
 
+  /* The baseline moves to what was SUBMITTED, not to the current doc: an edit
+     typed while the save round-trip was in flight must stay marked unsaved
+     rather than being silently absorbed into "No changes". */
+  const submitted = useRef<string>('');
   const handled = useRef<NavState | null>(null);
   useEffect(() => {
     if (saveState.ok && saveState !== handled.current) {
       handled.current = saveState;
-      setBaseline(JSON.stringify(doc));
+      if (submitted.current) setBaseline(submitted.current);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [saveState]);
 
   /* Image picks write the database directly; the stored src arrives on the next
@@ -67,152 +221,6 @@ export default function NavigationEditor({
   const message = imgState.error || saveState.error || imgState.detail || saveState.detail;
   const isError = Boolean(imgState.error || saveState.error);
 
-  /* ---------------------------------------------------------- sub-editors -- */
-
-  const TextPair = ({
-    value,
-    label,
-    onChange,
-  }: {
-    value: L10nText;
-    label: string;
-    onChange: (v: L10nText) => void;
-  }) => (
-    <div className="adm-field">
-      <label className="adm-label">{label}</label>
-      <input
-        className="adm-input"
-        lang="en"
-        dir="ltr"
-        value={value.en}
-        onChange={(e) => onChange({ ...value, en: e.target.value })}
-      />
-      <input
-        className="adm-input"
-        aria-label={`${label} (Arabic)`}
-        lang="ar"
-        dir="rtl"
-        style={{ fontFamily: "'Tajawal', var(--font-sans)" }}
-        value={value.ar}
-        onChange={(e) => onChange({ ...value, ar: e.target.value })}
-      />
-    </div>
-  );
-
-  const LinkList = ({
-    links,
-    onChange,
-    addLabel,
-  }: {
-    links: NavLink[];
-    onChange: (links: NavLink[]) => void;
-    addLabel: string;
-  }) => {
-    const [arm, setArm] = useState<number | null>(null);
-    const move = (i: number, to: number) => {
-      if (to < 0 || to >= links.length) return;
-      const next = [...links];
-      const [row] = next.splice(i, 1);
-      next.splice(to, 0, row);
-      onChange(next);
-    };
-    return (
-      <div style={{ display: 'grid', gap: 'var(--adm-3)' }}>
-        {links.map((l, i) => (
-          <div
-            key={i}
-            style={{
-              display: 'grid',
-              gap: 'var(--adm-2)',
-              gridTemplateColumns: '1fr 1fr minmax(140px, 0.9fr) auto',
-              alignItems: 'center',
-            }}
-          >
-            <input
-              className="adm-input"
-              lang="en"
-              dir="ltr"
-              aria-label={`Link ${i + 1} (English)`}
-              value={l.label.en}
-              onChange={(e) =>
-                onChange(links.map((x, j) => (j === i ? { ...x, label: { ...x.label, en: e.target.value } } : x)))
-              }
-            />
-            <input
-              className="adm-input"
-              lang="ar"
-              dir="rtl"
-              aria-label={`Link ${i + 1} (Arabic)`}
-              style={{ fontFamily: "'Tajawal', var(--font-sans)" }}
-              value={l.label.ar}
-              onChange={(e) =>
-                onChange(links.map((x, j) => (j === i ? { ...x, label: { ...x.label, ar: e.target.value } } : x)))
-              }
-            />
-            <input
-              className="adm-input"
-              dir="ltr"
-              aria-label={`Link ${i + 1} destination`}
-              list="nav-routes"
-              value={l.href}
-              onChange={(e) => onChange(links.map((x, j) => (j === i ? { ...x, href: e.target.value } : x)))}
-            />
-            <span style={{ display: 'flex', gap: 'var(--adm-1)' }}>
-              <button
-                className="adm-btn adm-btn--sm adm-btn--ghost"
-                type="button"
-                aria-label={`Move link ${i + 1} earlier`}
-                disabled={i === 0}
-                onClick={() => move(i, i - 1)}
-              >
-                ↑
-              </button>
-              <button
-                className="adm-btn adm-btn--sm adm-btn--ghost"
-                type="button"
-                aria-label={`Move link ${i + 1} later`}
-                disabled={i === links.length - 1}
-                onClick={() => move(i, i + 1)}
-              >
-                ↓
-              </button>
-              {arm === i ? (
-                <button
-                  className="adm-btn adm-btn--sm adm-btn--danger"
-                  type="button"
-                  onClick={() => {
-                    setArm(null);
-                    onChange(links.filter((_, j) => j !== i));
-                  }}
-                >
-                  Confirm
-                </button>
-              ) : (
-                <button
-                  className="adm-btn adm-btn--sm adm-btn--ghost"
-                  type="button"
-                  aria-label={`Remove link ${i + 1}`}
-                  onClick={() => setArm(i)}
-                >
-                  ✕
-                </button>
-              )}
-            </span>
-          </div>
-        ))}
-        <div>
-          <button
-            className="adm-btn adm-btn--sm adm-btn--outline"
-            type="button"
-            onClick={() => onChange([...links, { label: { en: '', ar: '' }, href: '/' }])}
-          >
-            + {addLabel}
-          </button>
-        </div>
-      </div>
-    );
-  };
-
   /* ---------------------------------------------------------------- render -- */
 
   return (
@@ -226,7 +234,13 @@ export default function NavigationEditor({
 
       <form action={imgAction} id="navimg" />
 
-      <form action={saveAction} id="navsave">
+      <form
+        action={saveAction}
+        id="navsave"
+        onSubmit={() => {
+          submitted.current = JSON.stringify(doc);
+        }}
+      >
         <input type="hidden" name="doc" value={JSON.stringify(doc)} />
       </form>
 

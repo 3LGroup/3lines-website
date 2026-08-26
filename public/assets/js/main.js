@@ -5,9 +5,6 @@
   var mega = document.querySelector('.mega');
   var burger = document.querySelector('.hdr__burger');
   var megaClose = document.querySelector('.mega__close');
-  var layer = document.querySelector('.searchlayer');
-  var searchBtn = document.querySelector('.hdr__search');
-  var layerClose = document.querySelector('.searchlayer .close');
 
   function lock(on) { document.body.style.overflow = on ? 'hidden' : ''; }
 
@@ -26,27 +23,12 @@
   if (megaClose) megaClose.addEventListener('click', function () { setMega(false); });
   if (mega) mega.addEventListener('click', function (e) { if (e.target.closest('.megapanel__links a, .megapanel__cta a')) setMega(false); });
 
-  /* ---------- search overlay ---------- */
-  function setSearch(open) {
-    if (!layer || !searchBtn) return;
-    layer.classList.toggle('is-open', open);
-    searchBtn.setAttribute('aria-expanded', String(open));
-    lock(open);
-    if (open) { var i = layer.querySelector('input'); if (i) i.focus(); }
-    else searchBtn.focus();
-  }
-  if (searchBtn) searchBtn.addEventListener('click', function () { setSearch(!layer.classList.contains('is-open')); });
-  if (layerClose) layerClose.addEventListener('click', function () { setSearch(false); });
-  if (layer) layer.querySelector('form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var v = layer.querySelector('input').value.trim();
-    if (v) alert('Search is not wired up in this front-end clone.\n\nQuery: ' + v);
-  });
+  /* The clone's search overlay never ships (SearchLayer renders null), so the
+     bindings that drove it — and its English-only alert() — are gone with it. */
 
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
     if (mega && mega.classList.contains('is-open')) setMega(false);
-    if (layer && layer.classList.contains('is-open')) setSearch(false);
   });
 
   /* ---------- mega menu tabs ---------- */
@@ -75,6 +57,26 @@
     });
   });
   if (tabs.length) activate(tabs[0].dataset.target);
+
+  /* ---------- hero rotating words ---------- */
+  /* The renderer emits every word with `is-on` on the first; the stylesheet
+     shows only `.is-on`. Nothing ever cycled the class, so words 2..n were
+     authored, stored, exported — and never once rendered. Static under
+     prefers-reduced-motion, where the first word simply stays. */
+  var rotators = document.querySelectorAll('.rotator');
+  if (rotators.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    Array.prototype.forEach.call(rotators, function (rot) {
+      var words = rot.querySelectorAll('span');
+      if (words.length < 2) return;
+      var wi = 0;
+      setInterval(function () {
+        wi = (wi + 1) % words.length;
+        Array.prototype.forEach.call(words, function (w, k) {
+          w.classList.toggle('is-on', k === wi);
+        });
+      }, 2600);
+    });
+  }
 
   /* ---------- key figures count-up ---------- */
   /* Grouping follows the page language rather than a hardcoded en-GB, so the

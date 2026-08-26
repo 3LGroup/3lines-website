@@ -48,11 +48,18 @@ export default function SimpleForm({
 
   const dirty = useMemo(() => Object.keys(edits).length, [edits]);
 
+  /* Only the SUBMITTED edits clear on success — anything typed while the save
+     round trip was in flight stays marked unsaved instead of being silently
+     absorbed into "No changes". */
+  const submitted = useRef<Record<string, string>>({});
   const handled = useRef<SiteState | null>(null);
   useEffect(() => {
     if (state.ok && state !== handled.current) {
       handled.current = state;
-      setEdits({});
+      const sent = submitted.current;
+      setEdits((cur) =>
+        Object.fromEntries(Object.entries(cur).filter(([k, v]) => sent[k] !== v))
+      );
     }
   }, [state]);
 
@@ -77,7 +84,12 @@ export default function SimpleForm({
   }, [fields]);
 
   return (
-    <form action={formAction}>
+    <form
+      action={formAction}
+      onSubmit={() => {
+        submitted.current = edits;
+      }}
+    >
       <input type="hidden" name="edits" value={JSON.stringify(edits)} />
 
       <div

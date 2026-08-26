@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import { Footer, Header, MegaMenu, SearchLayer, UtilityBar } from '@/components/Chrome';
-import { getChrome } from '@/lib/content';
+import { getChrome, getSettings } from '@/lib/content';
 import { organizationSchema } from '@/lib/schema';
 import { asset } from '@/lib/assets';
 import { DIR, LOCALES, isLocale, type Locale } from '@/lib/i18n';
@@ -91,7 +91,7 @@ export default async function LocaleLayout({
         <link rel="stylesheet" href={asset('/assets/css/style.css')} />
         <link rel="stylesheet" href={asset('/assets/css/3lines.css')} />
         <link rel="stylesheet" href={asset('/assets/css/rtl.css')} />
-        <link rel="icon" href={asset('/assets/logos/favicon.png')} />
+        <link rel="icon" href={asset(getSettings().faviconUri ?? '/assets/logos/favicon.png')} />
       </head>
       <body>
         <div className="skips">

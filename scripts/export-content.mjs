@@ -38,6 +38,28 @@ const DB = '3lines-cms';
  */
 const WRANGLER = path.join(ROOT, 'node_modules', 'wrangler', 'bin', 'wrangler.js');
 
+/**
+ * writeFileSync with a short retry.
+ *
+ * On Windows the dev server's file watcher briefly holds content files while it
+ * recompiles the modules that import them, and a write landing in that window
+ * dies with an opaque UNKNOWN/EPERM. One transient collision must not abort a
+ * publish half-written, so each write gets three attempts a beat apart before
+ * the failure is real.
+ */
+function writeFile(file, data) {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      fs.writeFileSync(file, data);
+      return;
+    } catch (err) {
+      if (attempt >= 3) throw err;
+      const until = Date.now() + 150 * attempt;
+      while (Date.now() < until); // sync script; a busy-wait beat is fine here
+    }
+  }
+}
+
 /** One bulk query through wrangler, which works identically local and remote. */
 function query(sql) {
   const out = execFileSync(
@@ -137,7 +159,7 @@ for (const page of pages) {
     const file = path.join(CONTENT, locale, `${page.slug}.json`);
     fs.mkdirSync(path.dirname(file), { recursive: true });
     // Two-space indent and a trailing newline, matching what the ingest emits.
-    fs.writeFileSync(file, JSON.stringify(doc, null, 2) + '\n');
+    writeFile(file, JSON.stringify(doc, null, 2) + '\n');
     written++;
   }
 }
@@ -190,7 +212,7 @@ for (const locale of LOCALES) {
       art: null,
     };
   });
-  fs.writeFileSync(
+  writeFile(
     path.join(CONTENT, locale, 'news-items.json'),
     JSON.stringify(items, null, 2) + '\n'
   );
@@ -209,7 +231,7 @@ if (chromeRows.length) {
   const chromeTrOf = new Map(chromeTr.map((t) => [t.locale, parse(t.props)]));
   const chromeShared = parse(chromeRows[0].props);
   for (const locale of LOCALES) {
-    fs.writeFileSync(
+    writeFile(
       path.join(CONTENT, locale, 'chrome.json'),
       JSON.stringify(mergeProps(chromeShared, chromeTrOf.get(locale) ?? null), null, 2) + '\n'
     );
@@ -226,7 +248,7 @@ for (const locale of LOCALES) {
   const map = {};
   for (const r of uiRows) if (r.locale === locale) map[r.key] = r.value;
   if (Object.keys(map).length) {
-    fs.writeFileSync(path.join(CONTENT, locale, 'ui.json'), JSON.stringify(map, null, 2) + '\n');
+    writeFile(path.join(CONTENT, locale, 'ui.json'), JSON.stringify(map, null, 2) + '\n');
   }
 }
 
@@ -246,14 +268,14 @@ for (const r of settingTr) {
   if (!settings[r.key] || typeof settings[r.key] !== 'object') settings[r.key] = {};
   settings[r.key][r.locale] = r.value;
 }
-fs.writeFileSync(
+writeFile(
   path.join(CONTENT, 'settings.json'),
   JSON.stringify(settings, null, 2) + '\n'
 );
 
 // routes.json is derived from the same rows, so a page added in the CMS appears
 // in the manifest that drives generateStaticParams without a second step.
-fs.writeFileSync(
+writeFile(
   path.join(CONTENT, 'routes.json'),
   JSON.stringify(
     pages.map((p) => ({ route: p.route, slug: p.slug })),

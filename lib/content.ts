@@ -180,6 +180,8 @@ export interface Settings {
   country?: string | null;
   /** Public path of the logo used in structured data. */
   logoUri?: string | null;
+  /** Public path of the browser-tab icon. */
+  faviconUri?: string | null;
 }
 
 export const getSettings = (): Settings => read<Settings>('settings.json');

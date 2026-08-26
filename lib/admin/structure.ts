@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { and, asc, eq, inArray, isNull, sql } from 'drizzle-orm';
 import { getDb, schema } from '@/lib/db/client';
 import { L10N, mergeProps, splitProps, type Json } from '@/lib/localization';
@@ -8,6 +9,19 @@ import type { Locale } from './content';
 
 const LOCALES: Locale[] = ['en', 'ar'];
 const now = () => Math.floor(Date.now() / 1000);
+
+/**
+ * Deterministic id, IDENTICAL to scripts/import-to-cms.mjs `idFor`.
+ *
+ * CMS-created pages and news items must use the same id scheme as the importer:
+ * with random UUIDs, a later importer re-run would ON CONFLICT(route) keep the
+ * random id while every other statement referenced the derived one — a foreign
+ * key violation that failed the whole seed batch.
+ */
+export function idFor(seed: string): string {
+  const h = createHash('sha1').update(seed).digest('hex');
+  return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20, 32)}`;
+}
 
 /**
  * Structural operations on pages and blocks: reorder, add, remove, and the
@@ -195,6 +209,24 @@ async function scopeOf(row: Row): Promise<Row[]> {
     .orderBy(asc(schema.blocks.position));
 }
 
+/**
+ * Renumber a scope's rows to their given order, writing only rows whose stored
+ * position disagrees. Every structural mutation ends by calling this: sparse or
+ * duplicated positions are what made "↑ Earlier" silently do nothing (two rows
+ * tied on the same position swap into themselves) and what let the exporter's
+ * ORDER BY position become plan-dependent.
+ */
+async function renumber(rows: Row[]): Promise<void> {
+  const db = await getDb();
+  for (const [i, r] of rows.entries()) {
+    if (r.position === i) continue;
+    await db
+      .update(schema.blocks)
+      .set({ position: i, updatedAt: now() })
+      .where(eq(schema.blocks.id, r.id));
+  }
+}
+
 export async function moveBlock(blockId: string, direction: 'up' | 'down'): Promise<void> {
   const { row } = await readBlock(blockId);
   const siblings = await scopeOf(row);
@@ -202,17 +234,11 @@ export async function moveBlock(blockId: string, direction: 'up' | 'down'): Prom
   const j = direction === 'up' ? i - 1 : i + 1;
   if (j < 0 || j >= siblings.length) return;
 
-  const db = await getDb();
-  // Swap the two positions explicitly rather than renumbering the scope — two
-  // writes, and untouched rows stay untouched in the publish diff.
-  await db
-    .update(schema.blocks)
-    .set({ position: siblings[j].position, updatedAt: now() })
-    .where(eq(schema.blocks.id, siblings[i].id));
-  await db
-    .update(schema.blocks)
-    .set({ position: siblings[i].position, updatedAt: now() })
-    .where(eq(schema.blocks.id, siblings[j].id));
+  // Reorder by INDEX, then renumber the whole scope contiguously — index-based,
+  // so it stays correct even over rows whose stored positions are tied.
+  const next = [...siblings];
+  [next[i], next[j]] = [next[j]!, next[i]!];
+  await renumber(next);
 }
 
 export async function removeBlock(blockId: string): Promise<void> {
@@ -224,13 +250,24 @@ export async function removeBlock(blockId: string): Promise<void> {
       'A section cannot be left empty — delete the whole section instead of its last content.'
     );
   }
-  if (!row.parentId && siblings.length <= 1) {
-    throw new Error('A page needs at least one section.');
+  if (!row.parentId) {
+    // What must survive is a page that still shows something: refuse removing
+    // the last SECTION (the bands are trailing furniture, not content), and
+    // refuse emptying the page entirely.
+    const sections = siblings.filter((s) => s.kind === 'section');
+    if (row.kind === 'section' && sections.length <= 1) {
+      throw new Error('A page needs at least one section.');
+    }
+    if (siblings.length <= 1) {
+      throw new Error('A page cannot be left empty.');
+    }
   }
 
   const db = await getDb();
   // The child bodies and every translation row go with it via ON DELETE CASCADE.
   await db.delete(schema.blocks).where(eq(schema.blocks.id, blockId));
+  // Close the gap so later inserts and moves see contiguous positions.
+  await renumber(siblings.filter((s) => s.id !== blockId));
 }
 
 /* ------------------------------------------------------------------ adding -- */
@@ -326,12 +363,17 @@ export async function addSection(slug: string): Promise<void> {
   let at = sorted.length;
   while (at > 0 && ['careers', 'socialStrip'].includes(sorted[at - 1].kind)) at--;
 
-  // Renumber everything after the insertion point, then insert into the gap.
-  for (let i = sorted.length - 1; i >= at; i--) {
+  /* Renumber the WHOLE scope around the gap, not just the tail. Positions can
+     be sparse after deletions; renumbering only rows at index >= `at` left the
+     new row able to collide with an existing position, after which the tied
+     pair could never be reordered again. */
+  for (const [i, r] of sorted.entries()) {
+    const target = i < at ? i : i + 1;
+    if (r.position === target) continue;
     await db
       .update(schema.blocks)
-      .set({ position: i + 1, updatedAt: now() })
-      .where(eq(schema.blocks.id, sorted[i].id));
+      .set({ position: target, updatedAt: now() })
+      .where(eq(schema.blocks.id, r.id));
   }
   const sectionId = await insertBlock({
     pageId: page.id,
@@ -373,6 +415,22 @@ const ITEM_ARRAYS: Record<string, { path: string; label: string; min: number }[]
 
 export const itemArraysFor = (kind: string) => ITEM_ARRAYS[kind] ?? [];
 
+/**
+ * First-item templates for the lists that may be emptied (min: 0). Without one,
+ * an emptied checklist or contact rail was irreversible: adding clones the last
+ * item, and an empty list has nothing to clone.
+ */
+const ITEM_TEMPLATES: Record<string, Record<Locale, Json>> = {
+  'feature.checklist': {
+    en: { title: 'New point', text: 'Describe it here.' },
+    ar: { title: 'نقطة جديدة', text: 'أضف الوصف هنا.' },
+  },
+  'map.details': {
+    en: { label: 'New row', value: 'Value' },
+    ar: { label: 'صف جديد', value: 'القيمة' },
+  },
+};
+
 const getArray = (tree: Json, path: string): Json[] | null => {
   if (tree === null || typeof tree !== 'object' || Array.isArray(tree)) return null;
   const v = (tree as Record<string, Json>)[path];
@@ -394,17 +452,28 @@ export async function applyItemOp(blockId: string, op: ItemOp): Promise<void> {
   ) as Record<Locale, Json>;
 
   for (const l of LOCALES) {
-    const arr = getArray(merged[l], op.path);
+    let arr = getArray(merged[l], op.path);
     if (!arr) {
-      if (op.op === 'addItem') throw new Error(`This ${row.kind} has no ${op.path} list to add to.`);
-      throw new Error(`No ${op.path} list found.`);
+      // An emptied localized-only array collapses to no key at all; recreate it
+      // for an add so a min:0 list is not a one-way door.
+      if (op.op === 'addItem' && merged[l] && typeof merged[l] === 'object' && !Array.isArray(merged[l])) {
+        arr = [];
+        (merged[l] as Record<string, Json>)[op.path] = arr;
+      } else {
+        throw new Error(`No ${op.path} list found.`);
+      }
     }
 
     if (op.op === 'addItem') {
-      if (!arr.length) throw new Error('There is no existing item to model the new one on.');
-      // Cloned, not blanked: a visible duplicate is obviously "the one I just
-      // added", and blanking would also blank structural values like hrefs.
-      arr.push(structuredClone(arr[arr.length - 1]));
+      if (arr.length) {
+        // Cloned, not blanked: a visible duplicate is obviously "the one I just
+        // added", and blanking would also blank structural values like hrefs.
+        arr.push(structuredClone(arr[arr.length - 1]));
+      } else {
+        const template = ITEM_TEMPLATES[`${row.kind}.${op.path}`];
+        if (!template) throw new Error('There is no existing item to model the new one on.');
+        arr.push(structuredClone(template[l]));
+      }
     } else if (op.op === 'removeItem') {
       if (arr.length <= allowed.min) {
         throw new Error(`${allowed.label}: at least ${allowed.min} must remain.`);
@@ -596,7 +665,8 @@ export async function createPage({
     .select({ maxPos: sql<number>`coalesce(max(${schema.pages.position}), -1)` })
     .from(schema.pages);
 
-  const pageId = crypto.randomUUID();
+  // Deterministic, matching the importer's scheme — see idFor.
+  const pageId = idFor(`page:${route}`);
   await db.insert(schema.pages).values({
     id: pageId,
     route,
@@ -655,40 +725,78 @@ export async function createPage({
   return slug;
 }
 
+/**
+ * Refuse while anything still links to a page — a deleted page the header menu
+ * points at is a broken site, not a tidier one. Matches both the bare route and
+ * anchored forms ("/about" and "/about#team"): validateHref accepts anchored
+ * internal links, so the scan must too.
+ *
+ * Exported so deleteNewsItem can run the SAME guards BEFORE it removes the news
+ * row — checking after would leave the card deleted and the page stranded when
+ * the page turns out to be referenced.
+ */
+export async function assertPageDeletable(
+  route: string,
+  pageId: string,
+  opts: { ignoreNews?: boolean } = {}
+): Promise<void> {
+  const db = await getDb();
+
+  const linksTo = (props: unknown): boolean => {
+    const json = JSON.stringify(props);
+    return json.includes(`"${route}"`) || json.includes(`"${route}#`);
+  };
+
+  const [chromeRow] = await db
+    .select()
+    .from(schema.chromeDocs)
+    .where(eq(schema.chromeDocs.id, 'chrome'))
+    .limit(1);
+  if (chromeRow && linksTo(chromeRow.props)) {
+    throw new Error(
+      `The navigation or footer still links to ${route} — remove those links first (Navigation & footer).`
+    );
+  }
+  if (!opts.ignoreNews) {
+    const news = await db.select().from(schema.newsItems).where(eq(schema.newsItems.route, route));
+    if (news.length) {
+      throw new Error(`A news item still points at ${route} — delete it from News first.`);
+    }
+  }
+
+  const blocks = await db
+    .select({
+      id: schema.blocks.id,
+      props: schema.blocks.props,
+      pageId: schema.blocks.pageId,
+      parentId: schema.blocks.parentId,
+    })
+    .from(schema.blocks);
+  // A body carries no pageId of its own; resolve it through its parent so the
+  // page's own bodies do not read as "another page" linking here.
+  const pageOf = new Map<string, string>();
+  for (const b of blocks) if (b.pageId) pageOf.set(b.id, b.pageId);
+  for (const b of blocks) {
+    if (!b.pageId && b.parentId) {
+      const p = pageOf.get(b.parentId);
+      if (p) pageOf.set(b.id, p);
+    }
+  }
+  for (const b of blocks) {
+    if (pageOf.get(b.id) === pageId) continue;
+    if (linksTo(b.props)) {
+      throw new Error(`Another page still links to ${route} — remove that link first, then delete.`);
+    }
+  }
+}
+
 export async function deletePage(slug: string): Promise<void> {
   const db = await getDb();
   const [page] = await db.select().from(schema.pages).where(eq(schema.pages.slug, slug)).limit(1);
   if (!page) throw new Error(`No page with slug "${slug}".`);
   if (page.route === '/') throw new Error('The homepage cannot be deleted.');
 
-  // Refuse while anything still links to it — a deleted page that the header
-  // menu points at is a broken site, not a tidier one.
-  const [chromeRow] = await db
-    .select()
-    .from(schema.chromeDocs)
-    .where(eq(schema.chromeDocs.id, 'chrome'))
-    .limit(1);
-  if (chromeRow && JSON.stringify(chromeRow.props).includes(`"${page.route}"`)) {
-    throw new Error(
-      `The navigation or footer still links to ${page.route} — remove those links first (Navigation & footer).`
-    );
-  }
-  const news = await db.select().from(schema.newsItems).where(eq(schema.newsItems.route, page.route));
-  if (news.length) {
-    throw new Error(`A news item still points at ${page.route} — delete it from News first.`);
-  }
-  const blocks = await db
-    .select({ id: schema.blocks.id, props: schema.blocks.props, pageId: schema.blocks.pageId })
-    .from(schema.blocks);
-  const needle = `"${page.route}"`;
-  for (const b of blocks) {
-    if (b.pageId === page.id) continue;
-    if (JSON.stringify(b.props).includes(needle)) {
-      throw new Error(
-        `Another page still links to ${page.route} — remove that link first, then delete.`
-      );
-    }
-  }
+  await assertPageDeletable(page.route, page.id);
 
   // The page cascade removes top-level blocks, whose own cascade removes their
   // bodies and translations. The explicit delete is belt-and-braces so a

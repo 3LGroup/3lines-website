@@ -2,8 +2,20 @@ import type { Metadata } from 'next';
 import type { Locale } from './blocks';
 import { getSettings } from './content';
 
-/** Canonical origin for canonicals, hreflang, the sitemap and OG urls. */
-export const SITE_ORIGIN = process.env.SITE_ORIGIN ?? 'https://www.3lines.com.sa';
+/**
+ * Canonical origin for canonicals, hreflang, the sitemap and OG urls.
+ *
+ * Priority: explicit env override, then the CMS's "Website URL" (Site info) —
+ * which used to be stored, exported and read by nothing — then the literal
+ * fallback. Trailing slash stripped so path concatenation cannot double it.
+ */
+const settingsOrigin = (() => {
+  const raw = getSettings().website;
+  if (!raw || !/^https?:\/\//i.test(raw)) return undefined;
+  return raw.replace(/\/+$/, '');
+})();
+
+export const SITE_ORIGIN = process.env.SITE_ORIGIN ?? settingsOrigin ?? 'https://www.3lines.com.sa';
 
 /**
  * Short brand name, from Site info in the CMS. The literal fallback only fires
