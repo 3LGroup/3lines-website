@@ -55,7 +55,13 @@ export async function saveNewsAction(_prev: SiteState, form: FormData): Promise<
   const edits: NewsEdit[] = [];
   for (const [k, value] of Object.entries(parsed)) {
     const [id, field, locale] = k.split(':');
-    if (field !== 'date' && field !== 'title' && field !== 'tag') {
+    if (
+      field !== 'date' &&
+      field !== 'title' &&
+      field !== 'tag' &&
+      field !== 'type' &&
+      field !== 'mediaAlt'
+    ) {
       return { error: `Unknown field "${field}".` };
     }
     edits.push({ id: id!, field, locale: locale as Locale | undefined, value });

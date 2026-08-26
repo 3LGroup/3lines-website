@@ -40,8 +40,8 @@ export async function listNews(): Promise<NewsPost[]> {
 
 export interface NewsEdit {
   id: string;
-  /** `date` is shared; `title` and `tag` are per locale. */
-  field: 'date' | 'title' | 'tag';
+  /** `date` is shared; the rest are per locale. */
+  field: 'date' | 'title' | 'tag' | 'type' | 'mediaAlt';
   locale?: Locale;
   value: string;
 }
@@ -64,10 +64,15 @@ export async function saveNews(edits: NewsEdit[]): Promise<number> {
         .where(eq(schema.newsItems.id, e.id));
     } else {
       if (!e.locale) throw new Error(`${e.field} needs a locale`);
-      if (!e.value.trim()) throw new Error(`${e.field} cannot be empty.`);
+      // The image description may be blank (the card image is decorative when
+      // it is); everything else renders as visible text and must not be.
+      if (e.field !== 'mediaAlt' && !e.value.trim()) {
+        throw new Error(`${e.field} cannot be empty.`);
+      }
+      const value = e.field === 'mediaAlt' && !e.value.trim() ? null : e.value;
       await db
         .update(schema.newsItemTranslations)
-        .set({ [e.field]: e.value, updatedAt: Math.floor(Date.now() / 1000) })
+        .set({ [e.field]: value, updatedAt: Math.floor(Date.now() / 1000) })
         .where(
           and(
             eq(schema.newsItemTranslations.itemId, e.id),

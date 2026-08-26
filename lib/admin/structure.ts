@@ -235,7 +235,7 @@ export async function removeBlock(blockId: string): Promise<void> {
 
 /* ------------------------------------------------------------------ adding -- */
 
-async function insertBlock({
+export async function insertBlock({
   pageId,
   parentId,
   kind,

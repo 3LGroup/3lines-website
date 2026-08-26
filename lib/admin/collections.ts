@@ -36,6 +36,12 @@ export interface CollectionDef {
   /** Shown when a count is unusual for the layout, rather than blocking it. */
   recommended?: number;
   recommendedNote?: string;
+  /**
+   * Other blocks holding a byte-identical copy of the same items. Every write —
+   * copy, image, structural — is applied to these too, so editing the services
+   * here updates the homepage's copy of the grid instead of leaving it stale.
+   */
+  mirrors?: { route: string; kind: string }[];
 }
 
 export const COLLECTIONS: CollectionDef[] = [
@@ -53,11 +59,15 @@ export const COLLECTIONS: CollectionDef[] = [
   {
     key: 'services',
     label: 'Services',
-    blurb: 'The service cards shown on the home and services pages.',
+    blurb: 'The service cards shown on the home and services pages — one edit updates both.',
     route: '/services',
     kind: 'cards',
     titleField: 'title',
     subField: 'text',
+    // The homepage carries its own cards block with the same ten items. Without
+    // the mirror, editing a service updated /services and left the homepage
+    // stale — the exact drift the CMS guide wrongly claimed could not happen.
+    mirrors: [{ route: '/', kind: 'cards' }],
   },
   {
     key: 'partners',
@@ -108,10 +118,10 @@ export interface Collection {
 const LOCALES: Locale[] = ['en', 'ar'];
 
 /** Locate the block holding a collection, with both halves parsed. */
-async function locate(def: CollectionDef) {
+async function locate(route: string, kind: string) {
   const db = await getDb();
 
-  const [page] = await db.select().from(schema.pages).where(eq(schema.pages.route, def.route)).limit(1);
+  const [page] = await db.select().from(schema.pages).where(eq(schema.pages.route, route)).limit(1);
   if (!page) return null;
 
   const roots = await db.select().from(schema.blocks).where(eq(schema.blocks.pageId, page.id));
@@ -122,7 +132,7 @@ async function locate(def: CollectionDef) {
     all.push(...kids);
   }
 
-  const block = all.find((b) => b.kind === def.kind);
+  const block = all.find((b) => b.kind === kind);
   if (!block) return null;
 
   const tr = await db
@@ -147,11 +157,17 @@ const itemsOf = (tree: Json): Json[] => {
   return [];
 };
 
+/** The primary block plus every mirror, in declaration order. */
+const targetsOf = (def: CollectionDef) => [
+  { route: def.route, kind: def.kind },
+  ...(def.mirrors ?? []),
+];
+
 export async function getCollection(key: string): Promise<Collection | null> {
   const def = collectionByKey(key);
   if (!def) return null;
 
-  const found = await locate(def);
+  const found = await locate(def.route, def.kind);
   if (!found) return null;
 
   const perLocale = Object.fromEntries(
@@ -202,44 +218,54 @@ export async function saveCollectionEdits(key: string, patches: ItemEdit[]): Pro
   if (!def) throw new Error(`unknown collection "${key}"`);
   if (!patches.length) return 0;
 
-  const found = await locate(def);
-  if (!found) throw new Error(`no ${def.kind} block on ${def.route}`);
-
   const db = await getDb();
   let written = 0;
 
-  for (const locale of LOCALES) {
-    const mine = patches.filter((p) => p.locale === locale);
-    if (!mine.length) continue;
-
-    const tree = found.localized[locale];
-    const items = itemsOf(tree);
-    let changed = false;
-
-    for (const p of mine) {
-      const item = items[p.index];
-      if (item === undefined) throw new Error(`item ${p.index} does not exist in ${key}`);
-      const next = applyEdits(item, p.edits);
-      if (JSON.stringify(next) !== JSON.stringify(item)) {
-        items[p.index] = next;
-        changed = true;
-      }
+  for (const [t, target] of targetsOf(def).entries()) {
+    const found = await locate(target.route, target.kind);
+    if (!found) {
+      // The primary must exist; a missing mirror is tolerated so removing the
+      // homepage grid one day does not brick the Services screen.
+      if (t === 0) throw new Error(`no ${target.kind} block on ${target.route}`);
+      continue;
     }
-    if (!changed) continue;
 
-    await db
-      .update(schema.blockTranslations)
-      .set({
-        props: { ...(tree as object), items } as Record<string, unknown>,
-        updatedAt: Math.floor(Date.now() / 1000),
-      })
-      .where(
-        and(
-          eq(schema.blockTranslations.blockId, found.block.id),
-          eq(schema.blockTranslations.locale, locale)
-        )
-      );
-    written++;
+    for (const locale of LOCALES) {
+      const mine = patches.filter((p) => p.locale === locale);
+      if (!mine.length) continue;
+
+      const tree = found.localized[locale];
+      const items = itemsOf(tree);
+      let changed = false;
+
+      for (const p of mine) {
+        const item = items[p.index];
+        if (item === undefined) {
+          if (t === 0) throw new Error(`item ${p.index} does not exist in ${key}`);
+          continue;
+        }
+        const next = applyEdits(item, p.edits);
+        if (JSON.stringify(next) !== JSON.stringify(item)) {
+          items[p.index] = next;
+          changed = true;
+        }
+      }
+      if (!changed) continue;
+
+      await db
+        .update(schema.blockTranslations)
+        .set({
+          props: { ...(tree as object), items } as Record<string, unknown>,
+          updatedAt: Math.floor(Date.now() / 1000),
+        })
+        .where(
+          and(
+            eq(schema.blockTranslations.blockId, found.block.id),
+            eq(schema.blockTranslations.locale, locale)
+          )
+        );
+      if (t === 0) written++;
+    }
   }
   return written;
 }
@@ -273,16 +299,19 @@ export async function setCollectionImage(
     throw new Error(`"${newPath}" is not an image this site holds.`);
   }
 
-  const found = await locate(def);
-  if (!found) throw new Error(`no ${def.kind} block on ${def.route}`);
-
-  const next = setImage(found.shared, path, newPath, shape);
-
   const db = await getDb();
-  await db
-    .update(schema.blocks)
-    .set({ props: next as Record<string, unknown>, updatedAt: Math.floor(Date.now() / 1000) })
-    .where(eq(schema.blocks.id, found.block.id));
+  for (const [t, target] of targetsOf(def).entries()) {
+    const found = await locate(target.route, target.kind);
+    if (!found) {
+      if (t === 0) throw new Error(`no ${target.kind} block on ${target.route}`);
+      continue;
+    }
+    const next = setImage(found.shared, path, newPath, shape);
+    await db
+      .update(schema.blocks)
+      .set({ props: next as Record<string, unknown>, updatedAt: Math.floor(Date.now() / 1000) })
+      .where(eq(schema.blocks.id, found.block.id));
+  }
 }
 
 /**
@@ -316,60 +345,68 @@ export async function applyStructural(key: string, op: StructuralOp): Promise<vo
   const def = collectionByKey(key);
   if (!def) throw new Error(`unknown collection "${key}"`);
 
-  const found = await locate(def);
-  if (!found) throw new Error(`no ${def.kind} block on ${def.route}`);
-
   const db = await getDb();
 
-  const sharedItems = itemsOf(found.shared);
-  if (!sharedItems.length) throw new Error(`${key} has no items to work from`);
-
-  const localItems = Object.fromEntries(
-    LOCALES.map((l) => [l, itemsOf(found.localized[l])])
-  ) as Record<Locale, Json[]>;
-
-  const mutate = (arr: Json[], template: Json) => {
-    if (op.op === 'add') arr.push(template);
-    else if (op.op === 'remove') arr.splice(op.index, 1);
-    else if (op.op === 'move') {
-      const [x] = arr.splice(op.index, 1);
-      arr.splice(Math.max(0, Math.min(arr.length, op.to)), 0, x as Json);
+  for (const [t, target] of targetsOf(def).entries()) {
+    const found = await locate(target.route, target.kind);
+    if (!found) {
+      if (t === 0) throw new Error(`no ${target.kind} block on ${target.route}`);
+      continue;
     }
-  };
 
-  if (op.op === 'remove' && sharedItems.length <= 1) {
-    throw new Error('A collection must keep at least one item.');
-  }
+    const sharedItems = itemsOf(found.shared);
+    if (!sharedItems.length) {
+      if (t === 0) throw new Error(`${key} has no items to work from`);
+      continue;
+    }
 
-  // Structure is cloned verbatim from the last item; copy is blanked so the new
-  // card is obviously empty rather than a duplicate someone forgets to rename.
-  mutate(sharedItems, JSON.parse(JSON.stringify(sharedItems[sharedItems.length - 1])));
-  for (const l of LOCALES) {
-    const src = localItems[l];
-    mutate(src, blankCopy(JSON.parse(JSON.stringify(src[src.length - 1] ?? null))));
-  }
+    const localItems = Object.fromEntries(
+      LOCALES.map((l) => [l, itemsOf(found.localized[l])])
+    ) as Record<Locale, Json[]>;
 
-  await db
-    .update(schema.blocks)
-    .set({
-      props: { ...(found.shared as object), items: sharedItems } as Record<string, unknown>,
-      updatedAt: Math.floor(Date.now() / 1000),
-    })
-    .where(eq(schema.blocks.id, found.block.id));
+    const mutate = (arr: Json[], template: Json) => {
+      if (op.op === 'add') arr.push(template);
+      else if (op.op === 'remove') arr.splice(op.index, 1);
+      else if (op.op === 'move') {
+        const [x] = arr.splice(op.index, 1);
+        arr.splice(Math.max(0, Math.min(arr.length, op.to)), 0, x as Json);
+      }
+    };
 
-  for (const l of LOCALES) {
+    if (op.op === 'remove' && sharedItems.length <= 1) {
+      throw new Error('A collection must keep at least one item.');
+    }
+
+    // Structure is cloned verbatim from the last item; copy is blanked so the new
+    // card is obviously empty rather than a duplicate someone forgets to rename.
+    mutate(sharedItems, JSON.parse(JSON.stringify(sharedItems[sharedItems.length - 1])));
+    for (const l of LOCALES) {
+      const src = localItems[l];
+      mutate(src, blankCopy(JSON.parse(JSON.stringify(src[src.length - 1] ?? null))));
+    }
+
     await db
-      .update(schema.blockTranslations)
+      .update(schema.blocks)
       .set({
-        props: { ...(found.localized[l] as object), items: localItems[l] } as Record<string, unknown>,
+        props: { ...(found.shared as object), items: sharedItems } as Record<string, unknown>,
         updatedAt: Math.floor(Date.now() / 1000),
       })
-      .where(
-        and(
-          eq(schema.blockTranslations.blockId, found.block.id),
-          eq(schema.blockTranslations.locale, l)
-        )
-      );
+      .where(eq(schema.blocks.id, found.block.id));
+
+    for (const l of LOCALES) {
+      await db
+        .update(schema.blockTranslations)
+        .set({
+          props: { ...(found.localized[l] as object), items: localItems[l] } as Record<string, unknown>,
+          updatedAt: Math.floor(Date.now() / 1000),
+        })
+        .where(
+          and(
+            eq(schema.blockTranslations.blockId, found.block.id),
+            eq(schema.blockTranslations.locale, l)
+          )
+        );
+    }
   }
 }
 
