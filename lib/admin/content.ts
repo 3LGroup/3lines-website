@@ -2,6 +2,8 @@ import { and, asc, eq, inArray } from 'drizzle-orm';
 import { getDb, schema } from '@/lib/db/client';
 import { mergeProps, type Json } from '@/lib/localization';
 import { flatten, type Field } from './fields';
+import { findImageFields, type ImageField } from './media';
+import { itemArraysFor, sharedFields, type SharedField } from './structure';
 
 /**
  * Reads and writes for the content editor.
@@ -35,8 +37,16 @@ export interface EditableBlock {
   anchor: string | null;
   /** Nesting depth: 0 for a block, 1 for a body inside a section. */
   depth: number;
+  /** True for sections, which can hold added bodies. */
+  isSection: boolean;
   /** Field lists per locale, aligned by path. */
   fields: Record<Locale, Field[]>;
+  /** Image references in the shared half, editable via the library picker. */
+  images: ImageField[];
+  /** Non-image shared leaves an editor may change: links, numbers, tones. */
+  shared: SharedField[];
+  /** Item lists that support add / remove / reorder, with current counts. */
+  arrays: { path: string; label: string; count: number; min: number }[];
 }
 
 /**
@@ -211,19 +221,33 @@ export async function getPageForEdit(slug: string): Promise<EditablePage | null>
         ];
       })
     ) as Record<Locale, PageMeta>,
-    blocks: nest(all)
-      .map(({ row, depth }) => ({
+    // Every block appears — including copy-free ones like newsGrid, which the
+    // copy-only editor used to hide. They can be reordered and removed now, so
+    // an invisible block would be an unmovable one.
+    blocks: nest(all).map(({ row, depth }) => {
+      const mergedEn = mergeProps(row.props as Json, trOf.get(`${row.id}:en`) ?? null);
+      const arrays = itemArraysFor(row.kind).map((a) => {
+        const container =
+          mergedEn && typeof mergedEn === 'object' && !Array.isArray(mergedEn)
+            ? (mergedEn as Record<string, Json>)[a.path]
+            : null;
+        return { ...a, count: Array.isArray(container) ? container.length : 0 };
+      });
+
+      return {
         id: row.id,
         kind: row.kind,
         anchor: row.anchor,
         depth,
+        isSection: row.kind === 'section',
         fields: Object.fromEntries(
           LOCALES.map((l) => [l, flatten(trOf.get(`${row.id}:${l}`) ?? null)])
         ) as Record<Locale, Field[]>,
-      }))
-      // A block with nothing to edit (newsGrid carries no copy of its own) is
-      // noise in an editor whose only job is copy.
-      .filter((b) => b.fields.en.length > 0 || b.fields.ar.length > 0),
+        images: findImageFields(row.props as Json),
+        shared: sharedFields(row.props as Json, row.kind),
+        arrays: arrays.filter((a) => a.count > 0 || a.min === 0),
+      };
+    }),
   };
 }
 

@@ -142,6 +142,26 @@ for (const page of pages) {
   }
 }
 
+/**
+ * Remove page files for pages that no longer exist.
+ *
+ * The exporter never used to delete, so a page removed in the CMS dropped out
+ * of routes.json but its document lingered on disk — invisible to the build,
+ * confusing to every future diff. Only page documents are candidates: the
+ * chrome, microcopy and news index files are owned by their own sections above.
+ */
+const KEEP = new Set(['chrome.json', 'ui.json', 'news-items.json']);
+const liveSlugs = new Set(pages.map((p) => `${p.slug}.json`));
+for (const locale of LOCALES) {
+  const dir = path.join(CONTENT, locale);
+  if (!fs.existsSync(dir)) continue;
+  for (const file of fs.readdirSync(dir)) {
+    if (!file.endsWith('.json') || KEEP.has(file) || liveSlugs.has(file)) continue;
+    fs.unlinkSync(path.join(dir, file));
+    console.log(`  removed stale ${locale}/${file}`);
+  }
+}
+
 /* -------------------------------------------------------- news + settings -- */
 
 /**

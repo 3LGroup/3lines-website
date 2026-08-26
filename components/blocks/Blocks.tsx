@@ -204,29 +204,25 @@ const socialGlyph = (network: string | undefined, label: string) =>
  * Deriving them from settings at render makes "change the phone number once in
  * Site info" true everywhere at once. The stored href stays as the fallback for
  * an item whose network has no setting to derive from.
+ *
+ * A lookup map, not a switch: audit-content reads every quoted case label in
+ * this file as a block kind the renderer claims to handle.
  */
-function socialHref(
-  settings: ReturnType<typeof getSettings>,
-  network: string | undefined,
-  fallback: string
-): string {
-  switch (network) {
-    case 'email':
-      return settings.email ? `mailto:${settings.email}` : fallback;
-    case 'phone':
-      return settings.phone ? `tel:${settings.phone}` : fallback;
-    case 'whatsapp':
-      return settings.whatsapp ? `https://wa.me/${settings.whatsapp.replace(/\D/g, '')}` : fallback;
-    case 'linkedin':
-      return settings.linkedIn ?? fallback;
-    case 'maps':
-      return settings.address
-        ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(settings.address)}`
-        : fallback;
-    default:
-      return fallback;
-  }
-}
+type Settings = ReturnType<typeof getSettings>;
+
+const SOCIAL_HREFS: Record<string, (s: Settings) => string | null> = {
+  email: (s) => (s.email ? `mailto:${s.email}` : null),
+  phone: (s) => (s.phone ? `tel:${s.phone}` : null),
+  whatsapp: (s) => (s.whatsapp ? `https://wa.me/${s.whatsapp.replace(/\D/g, '')}` : null),
+  linkedin: (s) => s.linkedIn ?? null,
+  maps: (s) =>
+    s.address
+      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.address)}`
+      : null,
+};
+
+const socialHref = (settings: Settings, network: string | undefined, fallback: string): string =>
+  (network ? SOCIAL_HREFS[network]?.(settings) : null) ?? fallback;
 
 function SocialStrip({ block, locale }: { block: SocialStripBlock; locale: Locale }) {
   const settings = getSettings();

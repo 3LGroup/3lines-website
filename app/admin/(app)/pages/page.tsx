@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Icon from '@/components/admin/Icon';
 import { listPages } from '@/lib/admin/content';
+import { DeletePageButton, NewPageForm } from './PageTools';
 
 export const metadata: Metadata = { title: 'Pages' };
 
@@ -28,10 +29,12 @@ export default async function PagesList() {
       <div className="adm-page__head">
         <h1 className="adm-page__title">Pages</h1>
         <p className="adm-page__lede">
-          Every page on 3lines.com.sa. Editing here changes the words only — layout, images and
-          links are left exactly as they are.
+          Every page on 3lines.com.sa. Open one to edit its words, links and images, rearrange its
+          sections, or control whether search engines see it.
         </p>
       </div>
+
+      <NewPageForm />
 
       <div className="adm-stats" style={{ marginBlockEnd: 'var(--adm-6)' }}>
         <div className="adm-stat">
@@ -94,10 +97,13 @@ export default async function PagesList() {
                   )}
                 </td>
                 <td>
-                  <a className="adm-btn adm-btn--sm adm-btn--outline" href={`/admin/pages/${p.slug}`}>
-                    Edit
-                    <Icon name="pages" size={13} />
-                  </a>
+                  <span style={{ display: 'inline-flex', gap: 'var(--adm-2)', alignItems: 'center' }}>
+                    <a className="adm-btn adm-btn--sm adm-btn--outline" href={`/admin/pages/${p.slug}`}>
+                      Edit
+                      <Icon name="pages" size={13} />
+                    </a>
+                    {p.route !== '/' ? <DeletePageButton slug={p.slug} /> : null}
+                  </span>
                 </td>
               </tr>
             ))}

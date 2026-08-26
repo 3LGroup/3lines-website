@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
 
 /**
@@ -27,18 +28,16 @@ const nextConfig = {
       // redirect would already be cached in every visitor's browser.
       { source: '/', destination: '/en', permanent: false },
 
-      // Unprefixed paths land in English rather than 404ing.
+      // Unprefixed paths land in English rather than 404ing. Derived from
+      // routes.json — the same manifest the pages are generated from — so a
+      // page added in the CMS gets its bare-path redirect on the next build
+      // instead of silently missing from a hand-maintained list.
       ...[
-        'about',
-        'services',
-        'news',
-        'partners',
-        'contact',
-        'location',
-        'careers',
-        'privacy-policy',
-        'terms-and-conditions',
-        'cookie-policy',
+        ...new Set(
+          JSON.parse(fs.readFileSync(new URL('./content/routes.json', import.meta.url), 'utf8'))
+            .map((r) => r.route.split('/')[1])
+            .filter(Boolean)
+        ),
       ].flatMap((p) => [
         { source: `/${p}`, destination: `/en/${p}`, permanent: true },
         { source: `/${p}/:rest*`, destination: `/en/${p}/:rest*`, permanent: true },

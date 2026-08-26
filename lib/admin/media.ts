@@ -138,6 +138,12 @@ export function findImageFields(props: Json, trail = '', out: ImageField[] = [])
       });
       continue;
     }
+    // A bare `src` on the containing object itself — certs plates are Media
+    // objects sitting directly in the items array, with no `media` wrapper.
+    if (k === 'src' && typeof v === 'string' && v.startsWith('/assets/')) {
+      out.push({ path, shape: 'src', value: v, label: 'Image' });
+      continue;
+    }
     findImageFields(v, path, out);
   }
   return out;
