@@ -1,5 +1,4 @@
 {
-  "note": "ثريلاينز آدفانسد تكنولجيز",
   "skip": {
     "label": "تخطَّ إلى المحتوى",
     "href": "#main"
@@ -42,8 +41,7 @@
       },
       {
         "label": "AR",
-        "locale": "ar",
-        "current": true
+        "locale": "ar"
       }
     ]
   },
@@ -251,12 +249,6 @@
           }
         ]
       }
-    ],
-    "bar": {
-      "links": [],
-      "note": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
-      "badge": "تأسست عام 2019",
-      "copyright": "© 2026 ثريلاينز آدفانسد تكنولجيز"
-    }
+    ]
   }
 }

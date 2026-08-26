@@ -41,7 +41,9 @@ export default function LangSwitch({ links, locale }: { links: LangLink[]; local
           href={swap(l.locale)}
           lang={l.locale}
           hrefLang={l.locale}
-          aria-current={l.current ? 'true' : undefined}
+          /* Computed, not stored: the flag used to live in chrome.json, where it
+             was the only structural difference between the EN and AR documents. */
+          aria-current={l.locale === locale ? 'true' : undefined}
         >
           {l.label}
         </a>

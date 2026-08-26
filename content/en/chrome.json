@@ -1,5 +1,4 @@
 {
-  "note": "3Lines Advanced Technologies",
   "skip": {
     "label": "Skip to main content",
     "href": "#main"
@@ -38,8 +37,7 @@
     "lang": [
       {
         "label": "EN",
-        "locale": "en",
-        "current": true
+        "locale": "en"
       },
       {
         "label": "AR",
@@ -251,12 +249,6 @@
           }
         ]
       }
-    ],
-    "bar": {
-      "links": [],
-      "note": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
-      "badge": "Established 2019",
-      "copyright": "© 2026 3Lines Advanced Technologies Company"
-    }
+    ]
   }
 }

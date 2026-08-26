@@ -18,6 +18,7 @@ const PATHS = {
   companies: 'M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01',
   services: 'M12 2l2.4 5.2 5.6.7-4.2 3.9 1.1 5.6L12 14.8l-4.9 2.6 1.1-5.6L4 7.9l5.6-.7z',
   news: 'M4 4h16v16H4zM8 8h8M8 12h8M8 16h5',
+  menu: 'M3 6h18M3 12h18M3 18h12',
   media: 'M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M8.5 9.5h.01',
   /* Partners had to borrow `media`, which left the two sidebar entries that
      mean the least alike wearing the same glyph. Two figures: the section is

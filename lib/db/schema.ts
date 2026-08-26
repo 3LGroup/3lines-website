@@ -261,6 +261,44 @@ export const settingsTranslations = sqliteTable(
   (t) => [primaryKey({ columns: [t.key, t.locale] })]
 );
 
+/* ------------------------------------------------------------------- chrome -- */
+
+/**
+ * The header, mega menu and footer — content/{locale}/chrome.json.
+ *
+ * One document, stored with the same localized/structural split as blocks:
+ * `chrome_docs.props` holds the locale-free half (hrefs, image srcs, tab and
+ * panel keys, column shape) with L10N sentinels where copy goes, and each
+ * `chrome_translations` row holds one locale's labels. That reuses splitProps/
+ * mergeProps and their round-trip guarantee unchanged, and makes it impossible
+ * for the Arabic menu to grow a link the English one does not have.
+ *
+ * A single-row table rather than settings keys, because the value is a tree
+ * with ordered lists — flattening it into keyed rows would trade the split's
+ * proven byte-fidelity for a shape nothing else uses.
+ */
+export const chromeDocs = sqliteTable('chrome_docs', {
+  /** Always 'chrome' today; a keyed row so a second chrome (campaign shell) fits. */
+  id: text('id').primaryKey(),
+  props: text('props', { mode: 'json' }).$type<Record<string, unknown>>().notNull(),
+  updatedAt: integer('updated_at').notNull().default(now),
+});
+
+export const chromeTranslations = sqliteTable(
+  'chrome_translations',
+  {
+    id: text('id')
+      .notNull()
+      .references(() => chromeDocs.id, { onDelete: 'cascade' }),
+    locale: text('locale')
+      .notNull()
+      .references(() => locales.code),
+    props: text('props', { mode: 'json' }).$type<Record<string, unknown>>().notNull(),
+    updatedAt: integer('updated_at').notNull().default(now),
+  },
+  (t) => [primaryKey({ columns: [t.id, t.locale] })]
+);
+
 /**
  * The 8 chrome strings hardcoded in lib/ui.ts plus non-cms.json's label tables.
  * Held for all four locales even though two are disabled, for the same reason

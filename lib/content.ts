@@ -106,11 +106,19 @@ export interface ChromeLink {
 export interface LangLink {
   label: string;
   locale: Locale;
-  current?: boolean;
 }
 
+/**
+ * The header, mega menu and footer. CMS-owned: stored in D1 (chrome_docs /
+ * chrome_translations) and exported to content/{locale}/chrome.json.
+ *
+ * Two fields the file used to carry are gone on purpose: the footer bar's
+ * note/badge/copyright now render from Site info (settings.json) so editing
+ * the year or address changes the footer, and the language switcher's
+ * `current` flag is computed at render — storing it per locale was the one
+ * structural divergence between the two chrome documents.
+ */
 export interface Chrome {
-  note: string;
   skip: ChromeLink;
   /** Compact mark, used in the header. */
   logoImg: Media;
@@ -128,12 +136,6 @@ export interface Chrome {
   };
   footer: {
     columns: { logo?: boolean; title: string; links: ChromeLink[] }[];
-    /**
-     * `note` and `badge` were `a11yLabel` / `a11yPill`, names inherited from the
-     * source design where that slot held an accessibility statement. They carry
-     * the address and a short badge, so the old names described neither.
-     */
-    bar: { links: ChromeLink[]; note: string; badge: string; copyright: string };
   };
 }
 

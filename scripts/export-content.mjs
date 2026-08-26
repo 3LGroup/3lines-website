@@ -177,6 +177,26 @@ for (const locale of LOCALES) {
 }
 
 /**
+ * content/{locale}/chrome.json — header, mega menu and footer.
+ *
+ * Same merge as the page blocks: one structural document, one localized overlay
+ * per locale. Written only when the row exists so this exporter still runs
+ * against a database seeded before the chrome tables were added.
+ */
+const chromeRows = query(`SELECT id, props FROM chrome_docs WHERE id = 'chrome'`);
+if (chromeRows.length) {
+  const chromeTr = query(`SELECT locale, props FROM chrome_translations WHERE id = 'chrome'`);
+  const chromeTrOf = new Map(chromeTr.map((t) => [t.locale, parse(t.props)]));
+  const chromeShared = parse(chromeRows[0].props);
+  for (const locale of LOCALES) {
+    fs.writeFileSync(
+      path.join(CONTENT, locale, 'chrome.json'),
+      JSON.stringify(mergeProps(chromeShared, chromeTrOf.get(locale) ?? null), null, 2) + '\n'
+    );
+  }
+}
+
+/**
  * content/settings.json — the site-wide values lib/schema.ts needs for JSON-LD.
  *
  * New file rather than rewriting source-content/siteInfo.json: source-content/

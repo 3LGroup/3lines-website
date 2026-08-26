@@ -197,20 +197,18 @@ export function SearchLayer() {
 }
 
 export function Footer({ chrome, locale }: WithLocale) {
-  const { columns, bar } = chrome.footer;
+  const { columns } = chrome.footer;
 
-  /* The bar's address, badge and copyright come from Site info in the CMS.
-     chrome.json still carries frozen ingest-time copies of the same values; the
-     settings win so that editing "Copyright year" in the admin actually changes
-     the footer, which the frozen copies never could. The chrome values remain
-     as fallback for a settings file that predates these keys. */
+  /* The bar's address, badge and copyright come from Site info in the CMS —
+     chrome.json no longer carries them, so editing "Copyright year" or the
+     address in the admin is the only source and actually changes the footer. */
   const s = getSettings();
-  const note = s.address ?? bar.note;
-  const badge = s.establishedBadge?.[locale] ?? bar.badge;
+  const note = s.address ?? '';
+  const badge = s.establishedBadge?.[locale] ?? '';
   const copyright =
     s.copyrightYear && s.companyName?.[locale]
       ? `© ${s.copyrightYear} ${s.companyName[locale]}`
-      : bar.copyright;
+      : '';
 
   return (
     <footer className="ftr">
@@ -242,11 +240,6 @@ export function Footer({ chrome, locale }: WithLocale) {
         </div>
 
         <div className="ftr__bar">
-          {bar.links.map((l, i) => (
-            <a key={i} href={localePath(locale, l.href)}>
-              {l.label}
-            </a>
-          ))}
           {/* Class names stay .a11y/.pill — they carry the green pill styling
               in style.css; only the data behind them changed. */}
           <span className="a11y">
