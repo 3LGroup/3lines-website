@@ -77,9 +77,13 @@
   if (tabs.length) activate(tabs[0].dataset.target);
 
   /* ---------- key figures count-up ---------- */
+  /* Grouping follows the page language rather than a hardcoded en-GB, so the
+     Arabic page is not the only place on the site with English digit grouping.
+     Latin digits either way — the site renders Latin numerals in both trees. */
+  var numLocale = (document.documentElement.lang || 'en') === 'ar' ? 'ar-SA-u-nu-latn' : 'en-GB';
   var figs = document.querySelectorAll('[data-count]');
   figs.forEach(function (el) {
-    el.textContent = parseFloat(el.getAttribute('data-count')).toLocaleString('en-GB') +
+    el.textContent = parseFloat(el.getAttribute('data-count')).toLocaleString(numLocale) +
       (el.getAttribute('data-suffix') || '');
   });
   if ('IntersectionObserver' in window && figs.length) {
@@ -93,7 +97,7 @@
         (function step(t) {
           var p = Math.min((t - t0) / dur, 1);
           var v = target * (1 - Math.pow(1 - p, 3));
-          el.textContent = Math.round(v).toLocaleString('en-GB') + suffix;
+          el.textContent = Math.round(v).toLocaleString(numLocale) + suffix;
           if (p < 1) requestAnimationFrame(step);
         })(t0);
       });

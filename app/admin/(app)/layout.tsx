@@ -45,6 +45,7 @@ const NAV: { group: string; items: NavItem[] }[] = [
       { href: '/admin/c/services', label: 'Services', icon: 'services' },
       { href: '/admin/c/partners', label: 'Partners', icon: 'partners' },
       { href: '/admin/news', label: 'News', icon: 'news' },
+      { href: '/admin/bands', label: 'Shared bands', icon: 'dashboard' },
     ],
   },
   {

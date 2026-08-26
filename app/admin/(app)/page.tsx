@@ -90,7 +90,11 @@ export default async function Dashboard() {
         </div>
         <div className="adm-card__body" style={{ display: 'grid', gap: 'var(--adm-3)' }}>
           <Row label="Editing text" value="English and Arabic" ok />
-          <Row label="Images" value="Upload new ones, or choose any already here" ok />
+          <Row label="Links, images and numbers" value="Editable on every page" ok />
+          <Row label="Sections" value="Add, rearrange, delete" ok />
+          <Row label="Pages" value="Create, delete, hide from search engines" ok />
+          <Row label="Menus and footer" value="Navigation & footer" ok />
+          <Row label="News" value="Create and delete posts, with their article pages" ok />
           <Row label="Preview" value="Beside every editor, updates on save" ok />
           <Row label="Publishing" value="From this browser" ok />
           {/* Stated plainly rather than omitted. A capability list that only

@@ -62,8 +62,12 @@ function Figures({ items, style }: { items: Figure[]; style?: string }) {
         <div key={i}>
           <div className="figure__num">
             {f.prefix ? <span className="figure__pre">{f.prefix}</span> : null}
+            {/* The real number, not 0: this is the value shown with JavaScript
+                disabled (and to crawlers). main.js resets to 0 and counts up
+                when the row scrolls into view. */}
             <span data-count={f.count} data-suffix={f.suffix}>
-              0
+              {f.count}
+              {f.suffix ?? ''}
             </span>
           </div>
           <div className="figure__lab">{f.label}</div>
