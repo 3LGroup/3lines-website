@@ -7,6 +7,7 @@ import chromeEn from '../content/en/chrome.json';
 import chromeAr from '../content/ar/chrome.json';
 import newsEn from '../content/en/news-items.json';
 import newsAr from '../content/ar/news-items.json';
+import settingsJson from '../content/settings.json';
 
 const DIR = path.join(process.cwd(), 'content');
 
@@ -26,11 +27,11 @@ const DIR = path.join(process.cwd(), 'content');
  * at runtime. lib/assets.ts already solved the same Worker-has-no-filesystem
  * problem for the asset manifest, for the same reason and in the same way.
  *
- * Only the chrome, the route table and the news index are here — the three
- * things a request-time render reaches for. The 50 per-page documents stay on
- * `fs`: they are read by generateStaticParams at build time, and bundling the
- * whole corpus would add it to every Worker invocation to serve a path that is
- * never taken at runtime.
+ * Only the chrome, the route table, the news index and the site settings are
+ * here — the things a request-time render reaches for. The 50 per-page
+ * documents stay on `fs`: they are read by generateStaticParams at build time,
+ * and bundling the whole corpus would add it to every Worker invocation to
+ * serve a path that is never taken at runtime.
  */
 const BUNDLED: Record<string, unknown> = {
   'routes.json': routesJson,
@@ -38,6 +39,7 @@ const BUNDLED: Record<string, unknown> = {
   'ar/chrome.json': chromeAr,
   'en/news-items.json': newsEn,
   'ar/news-items.json': newsAr,
+  'settings.json': settingsJson,
 };
 
 /**
@@ -134,6 +136,47 @@ export interface Chrome {
     bar: { links: ChromeLink[]; note: string; badge: string; copyright: string };
   };
 }
+
+/**
+ * Site-wide values, edited under the CMS's "Site info" and exported to
+ * content/settings.json.
+ *
+ * Localized values are `{ en, ar }` records; the rest are single shared strings
+ * where null means "deliberately unset" — settings.whatsapp being null is what
+ * keeps the WhatsApp icon out of the social strip. Every consumer must treat a
+ * missing key as absent rather than crash: the file predates several of these
+ * keys and older exports may still be on disk.
+ */
+export interface Settings {
+  address: string | null;
+  commercialRegNo: string | null;
+  vatRegNo: string | null;
+  linkedIn: string | null;
+  copyrightYear: string | null;
+  email: string | null;
+  phone: string | null;
+  whatsapp: string | null;
+  website: string | null;
+  companyDescription: Partial<Record<Locale, string>>;
+  companyName: Partial<Record<Locale, string>>;
+  /** Short brand name for page titles and share cards, per locale. */
+  siteName?: Partial<Record<Locale, string>>;
+  /** Suffix after the page title in the browser tab ("%s | 3Lines"). */
+  titleBrand?: string | null;
+  /** The "LINES" half of the header lockup beside the logo mark. */
+  wordmarkName?: string | null;
+  /** The "Advanced Technologies Company" line under the wordmark. */
+  wordmarkTag?: string | null;
+  /** The green "Established 2019" pill in the footer bar, per locale. */
+  establishedBadge?: Partial<Record<Locale, string>>;
+  city?: string | null;
+  postalCode?: string | null;
+  country?: string | null;
+  /** Public path of the logo used in structured data. */
+  logoUri?: string | null;
+}
+
+export const getSettings = (): Settings => read<Settings>('settings.json');
 
 /** Every route id, locale-independent. The locale prefix is applied at render. */
 export const getRoutes = (): RouteEntry[] => read<RouteEntry[]>('routes.json');

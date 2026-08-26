@@ -15,5 +15,20 @@
   "companyName": {
     "en": "3Lines Advanced Technologies Company",
     "ar": "ثريلاينز آدفانسد تكنولجيز"
-  }
+  },
+  "siteName": {
+    "en": "3Lines Advanced Technologies",
+    "ar": "ثريلاينز آدفانسد تكنولجيز"
+  },
+  "titleBrand": "3Lines",
+  "wordmarkName": "LINES",
+  "wordmarkTag": "Advanced Technologies Company",
+  "establishedBadge": {
+    "en": "Established 2019",
+    "ar": "تأسست عام 2019"
+  },
+  "city": "Riyadh",
+  "postalCode": "13215",
+  "country": "SA",
+  "logoUri": "/assets/logos/logo.png"
 }

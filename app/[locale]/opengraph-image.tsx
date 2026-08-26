@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { LOCALES } from '@/lib/i18n';
 import { getPage } from '@/lib/content';
+import { siteName } from '@/lib/seo';
 
 /**
  * Share card.
@@ -19,7 +20,8 @@ import { getPage } from '@/lib/content';
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
-export const alt = '3Lines Advanced Technologies';
+/* The English name deliberately: the card itself is Latin-only (see below). */
+export const alt = siteName('en');
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -50,6 +52,11 @@ export default async function Image() {
      which is a broken image on every Arabic share rather than a fallback. */
   const tagline = clamp(getPage('en', '/')?.description ?? '', 160);
 
+  /* Brand lines from Site info: "3Lines Advanced Technologies" renders as a
+     bold first word over the cyan remainder — the same split the reference
+     lockup draws. Editing the site name in the CMS re-draws every share card. */
+  const [brandFirst, ...brandRest] = siteName('en').split(' ');
+
   return new ImageResponse(
     (
       <div
@@ -74,10 +81,10 @@ export default async function Image() {
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ fontSize: 82, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.02em' }}>
-            3Lines
+            {brandFirst}
           </div>
           <div style={{ fontSize: 44, fontWeight: 400, color: CYAN, marginTop: 8 }}>
-            Advanced Technologies
+            {brandRest.join(' ')}
           </div>
         </div>
 

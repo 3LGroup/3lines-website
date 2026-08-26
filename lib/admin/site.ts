@@ -110,6 +110,59 @@ export const SITE_FIELDS = [
     localized: false,
     hint: 'Empty by design — filling it in makes the WhatsApp icon appear in the contact strip.',
   },
+
+  {
+    key: 'companyName',
+    label: 'Company name',
+    localized: true,
+    group: 'Brand',
+    hint: 'The legal name — appears in the footer copyright and the structured data.',
+  },
+  {
+    key: 'siteName',
+    label: 'Site name',
+    localized: true,
+    group: 'Brand',
+    hint: 'Short brand name used in browser-tab titles and share cards.',
+  },
+  {
+    key: 'titleBrand',
+    label: 'Title suffix',
+    localized: false,
+    group: 'Brand',
+    hint: 'Appears after every page title in the browser tab, e.g. "About | 3Lines".',
+  },
+  {
+    key: 'wordmarkName',
+    label: 'Header wordmark',
+    localized: false,
+    group: 'Brand',
+    hint: 'The large word beside the logo mark in the header.',
+  },
+  {
+    key: 'wordmarkTag',
+    label: 'Header wordmark tagline',
+    localized: false,
+    group: 'Brand',
+    hint: 'The small line under the header wordmark.',
+  },
+  {
+    key: 'establishedBadge',
+    label: 'Footer badge',
+    localized: true,
+    group: 'Brand',
+    hint: 'The green pill in the footer bar, e.g. "Established 2019".',
+  },
+  { key: 'website', label: 'Website URL', localized: false, group: 'Address details' },
+  { key: 'city', label: 'City', localized: false, group: 'Address details' },
+  { key: 'postalCode', label: 'Postal code', localized: false, group: 'Address details' },
+  {
+    key: 'country',
+    label: 'Country code',
+    localized: false,
+    group: 'Address details',
+    hint: 'Two-letter country code used in the structured data, e.g. SA.',
+  },
 ] as const;
 
 export type SiteValues = Record<string, string | Record<string, string>>;
@@ -143,22 +196,27 @@ export async function saveSiteInfo(edits: SiteEdit[]): Promise<number> {
 
   for (const e of edits) {
     if (e.locale) {
+      // Upsert, not update: a key added to SITE_FIELDS after this database was
+      // seeded has no row yet, and a bare UPDATE would silently save nothing
+      // while the form said "Saved".
       await db
-        .update(schema.settingsTranslations)
-        .set({ value: e.value })
-        .where(
-          and(
-            eq(schema.settingsTranslations.key, e.key),
-            eq(schema.settingsTranslations.locale, e.locale)
-          )
-        );
+        .insert(schema.settingsTranslations)
+        .values({ key: e.key, locale: e.locale, value: e.value })
+        .onConflictDoUpdate({
+          target: [schema.settingsTranslations.key, schema.settingsTranslations.locale],
+          set: { value: e.value },
+        });
     } else {
       // Empty writes NULL, not "". `whatsapp` being null is what suppresses the
       // WhatsApp icon; an empty string would render an icon linking nowhere.
+      const value = e.value.trim() === '' ? null : e.value;
       await db
-        .update(schema.settings)
-        .set({ value: e.value.trim() === '' ? null : e.value, updatedAt: Math.floor(Date.now() / 1000) })
-        .where(eq(schema.settings.key, e.key));
+        .insert(schema.settings)
+        .values({ key: e.key, value, updatedAt: Math.floor(Date.now() / 1000) })
+        .onConflictDoUpdate({
+          target: schema.settings.key,
+          set: { value, updatedAt: Math.floor(Date.now() / 1000) },
+        });
     }
     n++;
   }

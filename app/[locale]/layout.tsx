@@ -8,7 +8,7 @@ import { organizationSchema } from '@/lib/schema';
 import { asset } from '@/lib/assets';
 import { DIR, LOCALES, isLocale, type Locale } from '@/lib/i18n';
 import { ui } from '@/lib/ui';
-import { SITE_NAME, SITE_ORIGIN, openGraph } from '@/lib/seo';
+import { SITE_ORIGIN, openGraph, siteName, titleBrand } from '@/lib/seo';
 
 /* This is the root layout. It lives under [locale] because <html lang> and
    <dir> have to come from the route, and only a segment layout receives params.
@@ -41,11 +41,11 @@ export async function generateMetadata({
   const locale: Locale = isLocale(raw) ? raw : 'en';
   return {
     metadataBase: new URL(SITE_ORIGIN),
-    title: { default: SITE_NAME, template: '%s | 3Lines' },
+    title: { default: siteName(locale), template: `%s | ${titleBrand()}` },
     /* Pages return their own `openGraph`, which replaces this one wholesale
        rather than extending it — hence the shared builder. This value is what
        routes without their own metadata (not-found) fall back to. */
-    openGraph: openGraph(locale, { title: SITE_NAME, path: `/${locale}` }),
+    openGraph: openGraph(locale, { title: siteName(locale), path: `/${locale}` }),
     /* The generated card is 1200x630, so ask for the large-image treatment
        rather than letting it be cropped to a thumbnail. */
     twitter: { card: 'summary_large_image' },

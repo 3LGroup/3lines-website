@@ -2,7 +2,8 @@ import Arrow from './Arrow';
 import LangSwitch from './LangSwitch';
 import { localePath, type Locale } from '@/lib/i18n';
 import { ui } from '@/lib/ui';
-import type { Chrome, Media } from '@/lib/content';
+import { asset } from '@/lib/assets';
+import { getSettings, type Chrome, type Media } from '@/lib/content';
 
 /* Every element mirrors the original chrome markup one-for-one — the class
    names are the contract the shipped CSS is written against, so the geometry
@@ -36,6 +37,11 @@ export function UtilityBar({ chrome, locale }: WithLocale) {
  * <img> here does not replace that mark, it stacks a second one beside it —
  * which is why the header showed the logo twice. The label is carried on
  * aria-label so the link still has an accessible name.
+ *
+ * The `::before` reads its image from a CSS variable (`--logo-mark-circle` /
+ * `--logo-lockup`, 3lines.css). Setting that variable inline from the content's
+ * own `img.src` is what makes the logo CMS-driven: without it the stylesheet's
+ * hardcoded URL wins and changing the image in the CMS changes nothing.
  */
 function Logo({
   img,
@@ -43,6 +49,7 @@ function Logo({
   className,
   style,
   wordmark,
+  cssVar,
 }: {
   img: Media;
   locale: Locale;
@@ -56,13 +63,20 @@ function Logo({
    * for the same reason.
    */
   wordmark?: boolean;
+  /** Which theme-layer variable this mark paints through. */
+  cssVar: '--logo-mark-circle' | '--logo-lockup';
 }) {
+  const s = getSettings();
+  const withImage = {
+    ...style,
+    [cssVar]: `url("${asset(img.src)}")`,
+  } as React.CSSProperties;
   return (
-    <a className={className} href={localePath(locale, '/')} aria-label={img.alt} style={style}>
+    <a className={className} href={localePath(locale, '/')} aria-label={img.alt} style={withImage}>
       {wordmark ? (
         <span className="hdr__wordmark" aria-hidden="true">
-          <span className="hdr__wordmark-name">LINES</span>
-          <span className="hdr__wordmark-tag">Advanced Technologies Company</span>
+          <span className="hdr__wordmark-name">{s.wordmarkName ?? 'LINES'}</span>
+          <span className="hdr__wordmark-tag">{s.wordmarkTag ?? 'Advanced Technologies Company'}</span>
         </span>
       ) : null}
     </a>
@@ -85,7 +99,7 @@ export function Header({ chrome, locale }: WithLocale) {
           </svg>
         </button>
 
-        <Logo img={chrome.logoImg} locale={locale} className="hdr__logo" wordmark />
+        <Logo img={chrome.logoImg} locale={locale} className="hdr__logo" wordmark cssVar="--logo-mark-circle" />
 
         <span className="hdr__spacer" />
       </div>
@@ -100,7 +114,14 @@ export function MegaMenu({ chrome, locale }: WithLocale) {
       <div className="mega__bar">
         {/* Same lockup as the header: this bar stands in for the header while
             the menu is open, so the brand must not change shape on open. */}
-        <Logo img={chrome.logoImg} locale={locale} className="hdr__logo" style={{ padding: 0 }} wordmark />
+        <Logo
+          img={chrome.logoImg}
+          locale={locale}
+          className="hdr__logo"
+          style={{ padding: 0 }}
+          wordmark
+          cssVar="--logo-mark-circle"
+        />
         <button className="mega__close" type="button">
           {ui(locale).close}{' '}
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -177,6 +198,20 @@ export function SearchLayer() {
 
 export function Footer({ chrome, locale }: WithLocale) {
   const { columns, bar } = chrome.footer;
+
+  /* The bar's address, badge and copyright come from Site info in the CMS.
+     chrome.json still carries frozen ingest-time copies of the same values; the
+     settings win so that editing "Copyright year" in the admin actually changes
+     the footer, which the frozen copies never could. The chrome values remain
+     as fallback for a settings file that predates these keys. */
+  const s = getSettings();
+  const note = s.address ?? bar.note;
+  const badge = s.establishedBadge?.[locale] ?? bar.badge;
+  const copyright =
+    s.copyrightYear && s.companyName?.[locale]
+      ? `© ${s.copyrightYear} ${s.companyName[locale]}`
+      : bar.copyright;
+
   return (
     <footer className="ftr">
       <div className="wrap">
@@ -187,7 +222,12 @@ export function Footer({ chrome, locale }: WithLocale) {
                 /* Full lockup in the footer, compact mark in the header — the
                    reference's own split, and why the header stops showing the
                    monogram twice. */
-                <Logo img={chrome.footerLogoImg} locale={locale} className="ftr__logo" />
+                <Logo
+                  img={chrome.footerLogoImg}
+                  locale={locale}
+                  className="ftr__logo"
+                  cssVar="--logo-lockup"
+                />
               ) : null}
               <h4>{col.title}</h4>
               <ul>
@@ -210,9 +250,9 @@ export function Footer({ chrome, locale }: WithLocale) {
           {/* Class names stay .a11y/.pill — they carry the green pill styling
               in style.css; only the data behind them changed. */}
           <span className="a11y">
-            {bar.note} <span className="pill">{bar.badge}</span>
+            {note} <span className="pill">{badge}</span>
           </span>
-          <span className="right">{bar.copyright}</span>
+          <span className="right">{copyright}</span>
         </div>
       </div>
     </footer>

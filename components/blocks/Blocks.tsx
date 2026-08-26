@@ -3,6 +3,7 @@ import Arrow from '../Arrow';
 import Svg from '../Svg';
 import BodyRenderer, { parseStyle } from '../bodies/Bodies';
 import { localePath, type Locale } from '@/lib/i18n';
+import { getSettings } from '@/lib/content';
 import { ui } from '@/lib/ui';
 import { assertNever, TONE_CLASS } from '@/lib/blocks';
 import type {
@@ -195,13 +196,62 @@ const SOCIAL_GLYPHS: Record<string, React.ReactElement> = {
 const socialGlyph = (network: string | undefined, label: string) =>
   SOCIAL_GLYPHS[(network ?? label).trim().toLowerCase()] ?? null;
 
+/**
+ * Resolve a social item's destination from Site info.
+ *
+ * The strip's hrefs used to be frozen into every page document at ingest — the
+ * same mailto:/tel:/maps URL duplicated across ~15 pages, none of them editable.
+ * Deriving them from settings at render makes "change the phone number once in
+ * Site info" true everywhere at once. The stored href stays as the fallback for
+ * an item whose network has no setting to derive from.
+ */
+function socialHref(
+  settings: ReturnType<typeof getSettings>,
+  network: string | undefined,
+  fallback: string
+): string {
+  switch (network) {
+    case 'email':
+      return settings.email ? `mailto:${settings.email}` : fallback;
+    case 'phone':
+      return settings.phone ? `tel:${settings.phone}` : fallback;
+    case 'whatsapp':
+      return settings.whatsapp ? `https://wa.me/${settings.whatsapp.replace(/\D/g, '')}` : fallback;
+    case 'linkedin':
+      return settings.linkedIn ?? fallback;
+    case 'maps':
+      return settings.address
+        ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(settings.address)}`
+        : fallback;
+    default:
+      return fallback;
+  }
+}
+
 function SocialStrip({ block, locale }: { block: SocialStripBlock; locale: Locale }) {
+  const settings = getSettings();
+
+  /* Filling in the WhatsApp number under Site info makes the icon appear with
+     no content change — the gating rule the importer preserves by migrating the
+     null. The item is appended beside the phone because the shipped documents
+     predate the setting and cannot carry it themselves. */
+  const items = [...block.items];
+  if (settings.whatsapp && !items.some((s) => s.network === 'whatsapp')) {
+    const at = items.findIndex((s) => s.network === 'phone');
+    items.splice(at === -1 ? items.length : at + 1, 0, {
+      network: 'whatsapp',
+      label: 'WhatsApp',
+      href: `https://wa.me/${settings.whatsapp.replace(/\D/g, '')}`,
+      icon: null,
+    });
+  }
+
   return (
     <div className="wrap">
       <div className="socialstrip">
         <span>{block.label}</span>
-        {block.items.map((s, i) => (
-          <a key={i} href={localePath(locale, s.href)} aria-label={s.label}>
+        {items.map((s, i) => (
+          <a key={i} href={localePath(locale, socialHref(settings, s.network, s.href))} aria-label={s.label}>
             {s.icon ? <Svg node={s.icon} /> : socialGlyph(s.network, s.label)}
           </a>
         ))}

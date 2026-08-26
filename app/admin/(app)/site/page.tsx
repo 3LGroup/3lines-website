@@ -19,6 +19,7 @@ export default async function SiteInfoPage() {
       ar: f.localized ? ((raw as Record<string, string>)?.ar ?? '') : undefined,
       hint: 'hint' in f ? f.hint : undefined,
       multiline: 'multiline' in f ? f.multiline : undefined,
+      group: 'group' in f ? f.group : undefined,
     };
   });
 

@@ -1,10 +1,24 @@
 import type { Metadata } from 'next';
 import type { Locale } from './blocks';
+import { getSettings } from './content';
 
 /** Canonical origin for canonicals, hreflang, the sitemap and OG urls. */
 export const SITE_ORIGIN = process.env.SITE_ORIGIN ?? 'https://www.3lines.com.sa';
 
-export const SITE_NAME = '3Lines Advanced Technologies';
+/**
+ * Short brand name, from Site info in the CMS. The literal fallback only fires
+ * on a settings file that predates the key — it is not a second source of
+ * truth, just a guard against rendering an empty <title>.
+ */
+export function siteName(locale: Locale): string {
+  const s = getSettings();
+  return s.siteName?.[locale] || s.siteName?.en || '3Lines Advanced Technologies';
+}
+
+/** The suffix in the title template ("About | 3Lines"). */
+export function titleBrand(): string {
+  return getSettings().titleBrand || '3Lines';
+}
 
 const OG_LOCALE: Record<Locale, string> = { en: 'en_US', ar: 'ar_SA' };
 
@@ -31,7 +45,7 @@ export function openGraph(
     title,
     description,
     url: `${SITE_ORIGIN}${path}`,
-    siteName: SITE_NAME,
+    siteName: siteName(locale),
     locale: OG_LOCALE[locale],
     alternateLocale: OG_LOCALE[locale === 'ar' ? 'en' : 'ar'],
     type: 'website',
@@ -42,7 +56,7 @@ export function openGraph(
         url: `/${locale}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: SITE_NAME,
+        alt: siteName(locale),
       },
     ],
   };

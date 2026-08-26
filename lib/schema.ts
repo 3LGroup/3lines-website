@@ -1,67 +1,47 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import type { Locale } from './blocks';
 import { SITE_ORIGIN } from './seo';
+import { getSettings } from './content';
 
 /**
- * JSON-LD, built from the same source records the pages render from, so the
- * structured data cannot drift from the visible content.
+ * JSON-LD, built from content/settings.json — the file the CMS exports — so a
+ * Site-info edit in the admin actually reaches the structured data. This used
+ * to read source-content/, the archived migration input, which meant every CMS
+ * edit was invisible here; that was the exact breakage the export script's
+ * comment warned about.
  *
  * Next's metadata API has no JSON-LD slot, so this is rendered as a script tag
  * by the layout.
  */
-
-const readSource = <T,>(file: string): T =>
-  JSON.parse(fs.readFileSync(path.join(process.cwd(), 'source-content', file), 'utf8')) as T;
-
-interface SiteInfo {
-  address: string;
-  commercialRegNo: string;
-  vatRegNo: string;
-  linkedIn: string;
-  companyDescription: Record<string, string>;
-}
-
-interface Constants {
-  data: {
-    name_en: string;
-    name_ar: string;
-    email: string;
-    phone: string;
-    logo_uri: string;
-  };
-}
-
 export function organizationSchema(locale: Locale) {
-  const site = readSource<SiteInfo>('siteInfo.json');
-  const { data: c } = readSource<Constants>('constants.json');
+  const s = getSettings();
+  const other: Locale = locale === 'ar' ? 'en' : 'ar';
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: locale === 'ar' ? c.name_ar : c.name_en,
-    alternateName: locale === 'ar' ? c.name_en : c.name_ar,
+    name: s.companyName?.[locale] ?? s.companyName?.en ?? '',
+    alternateName: s.companyName?.[other] ?? '',
     url: `${SITE_ORIGIN}/${locale}`,
-    logo: `${SITE_ORIGIN}/${c.logo_uri.replace(/^\//, '')}`,
-    description: site.companyDescription[locale] ?? site.companyDescription.en,
+    logo: `${SITE_ORIGIN}/${(s.logoUri ?? 'assets/logos/logo.png').replace(/^\//, '')}`,
+    description: s.companyDescription?.[locale] ?? s.companyDescription?.en ?? '',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: site.address,
-      addressLocality: 'Riyadh',
-      postalCode: '13215',
-      addressCountry: 'SA',
+      streetAddress: s.address ?? '',
+      addressLocality: s.city ?? 'Riyadh',
+      postalCode: s.postalCode ?? '13215',
+      addressCountry: s.country ?? 'SA',
     },
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      telephone: c.phone,
-      email: c.email,
+      telephone: s.phone ?? '',
+      email: s.email ?? '',
       availableLanguage: ['English', 'Arabic'],
     },
-    sameAs: [site.linkedIn].filter(Boolean),
+    sameAs: [s.linkedIn].filter(Boolean),
     identifier: [
-      { '@type': 'PropertyValue', name: 'Commercial Registration', value: site.commercialRegNo },
-      { '@type': 'PropertyValue', name: 'VAT Registration', value: site.vatRegNo },
+      { '@type': 'PropertyValue', name: 'Commercial Registration', value: s.commercialRegNo ?? '' },
+      { '@type': 'PropertyValue', name: 'VAT Registration', value: s.vatRegNo ?? '' },
     ],
   };
 }
