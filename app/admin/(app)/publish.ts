@@ -38,8 +38,14 @@ export async function publish(): Promise<PublishState> {
   /* GitHub Actions. `repository_dispatch` needs a token, an Accept header and a
      User-Agent — GitHub rejects the request outright without the last one, with
      a message that says nothing about the cause. */
-  const ghRepo = process.env.GITHUB_DISPATCH_REPO;
-  const ghToken = process.env.GITHUB_DISPATCH_TOKEN;
+  /* Trimmed, because a secret set by piping a value into `wrangler secret put`
+     carries the shell's trailing newline — and an invisible \n in the repo name
+     turns the URL into `.../3lines-website%0A/dispatches`, which GitHub answers
+     with a 404 that names nothing. The same newline in the token would read as
+     a bad credential. Both cost real time to find; trimming here means the
+     failure cannot come back through however the secret was set. */
+  const ghRepo = process.env.GITHUB_DISPATCH_REPO?.trim();
+  const ghToken = process.env.GITHUB_DISPATCH_TOKEN?.trim();
 
   if (ghRepo && ghToken) {
     try {
