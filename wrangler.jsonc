@@ -68,16 +68,13 @@
   //   npx wrangler r2 bucket create 3lines-media
   //
   // Unlike D1 there is no id to paste back — R2 bindings resolve by name.
-  // DISABLED until R2 is enabled on the account (dashboard, one click, free
-  // tier — API answers 10042 until then). Deploying with a binding to a bucket
-  // that cannot exist fails outright. Until this is restored, uploads from the
-  // HOSTED admin fail with their designed clear message; local uploads and
-  // everything else are unaffected. Re-enable by uncommenting, running
-  //   npx wrangler r2 bucket create 3lines-media
-  // and redeploying.
-  // "r2_buckets": [
-  //   { "binding": "MEDIA", "bucket_name": "3lines-media" }
-  // ]
+  // Media uploads. lib/admin/uploads.ts uses R2 when this binding is present
+  // and falls back to writing into public/assets/uploads/ on local disk when it
+  // is not — and that fallback cannot work in a deployed Worker, which has no
+  // writable filesystem. The bucket exists on the threelines.com account.
+  "r2_buckets": [
+    { "binding": "MEDIA", "bucket_name": "3lines-media" }
+  ]
 
   // ---------------------------------------------------------------------
   // Cron Triggers (M8) additionally need a custom worker entrypoint, because
