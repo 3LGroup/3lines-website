@@ -11,23 +11,58 @@ export interface PublishState {
 /**
  * Push what is in the database out to the live site.
  *
- * Two very different mechanisms behind one button, because the two environments
- * genuinely differ and pretending otherwise would break one of them:
+ * Three mechanisms behind one button, because the environments genuinely differ
+ * and pretending otherwise would break one of them:
  *
- *   Deployed — a Worker cannot write to a filesystem. Publishing POSTs a
- *   Cloudflare Deploy Hook; Workers Builds re-runs the build, which re-exports
- *   from D1 on the way through. Live in a minute or two.
+ *   Deployed, via GitHub Actions — the preferred remote path. Publishing sends a
+ *   repository_dispatch; .github/workflows/deploy.yml re-runs the build, which
+ *   re-exports from D1 on the way through, and deploys. Live in a minute or two.
  *
- *   Local — there is no build service, but there IS a filesystem, so the
- *   exporter runs directly and content/ is rewritten in place. `next dev` picks
- *   the change up on the next request.
+ *   Deployed, via a Cloudflare Deploy Hook — the original path, kept for any
+ *   account where Workers Builds works. It does NOT work on this one: the build
+ *   configuration is bound to a build token owned by a departed user, and every
+ *   build fails during initialisation regardless of how many fresh tokens are
+ *   created. GitHub is checked first for that reason.
  *
- * Detected by the presence of the hook rather than by NODE_ENV: NODE_ENV is
+ *   Local — no build service, but there IS a filesystem, so the exporter runs
+ *   directly and content/ is rewritten in place. `next dev` picks the change up
+ *   on the next request.
+ *
+ * Detected by which secret is present rather than by NODE_ENV: NODE_ENV is
  * "production" under `next start` too, and choosing the wrong branch there means
  * either shelling out inside a Worker or silently not publishing at all.
  */
 export async function publish(): Promise<PublishState> {
   if (!(await readSession())) return { error: 'Your session expired. Sign in again.' };
+
+  /* GitHub Actions. `repository_dispatch` needs a token, an Accept header and a
+     User-Agent — GitHub rejects the request outright without the last one, with
+     a message that says nothing about the cause. */
+  const ghRepo = process.env.GITHUB_DISPATCH_REPO;
+  const ghToken = process.env.GITHUB_DISPATCH_TOKEN;
+
+  if (ghRepo && ghToken) {
+    try {
+      const res = await fetch(`https://api.github.com/repos/${ghRepo}/dispatches`, {
+        method: 'POST',
+        headers: {
+          authorization: `Bearer ${ghToken}`,
+          accept: 'application/vnd.github+json',
+          'content-type': 'application/json',
+          'user-agent': '3lines-cms',
+        },
+        body: JSON.stringify({ event_type: 'cms-publish' }),
+      });
+      // 204 No Content is the success case for this endpoint.
+      if (res.status !== 204) {
+        const body = await res.text();
+        return { error: `GitHub returned ${res.status}: ${body.slice(0, 160)}` };
+      }
+      return { ok: true, detail: 'Build triggered. The site updates in a minute or two.' };
+    } catch (err) {
+      return { error: err instanceof Error ? err.message : 'Could not reach GitHub.' };
+    }
+  }
 
   const hook = process.env.CF_DEPLOY_HOOK_URL;
 
@@ -64,8 +99,8 @@ export async function publish(): Promise<PublishState> {
   if (inWorker || process.env.NEXT_RUNTIME === 'edge' || typeof process.versions?.node !== 'string') {
     return {
       error:
-        'CF_DEPLOY_HOOK_URL is not set, so there is nothing to publish to. ' +
-        'Create a Deploy Hook in the Cloudflare dashboard and set it as a secret.',
+        'Publishing is not configured on this deployment. Set GITHUB_DISPATCH_REPO and ' +
+        'GITHUB_DISPATCH_TOKEN as Worker secrets so Publish can trigger the deploy workflow.',
     };
   }
 
