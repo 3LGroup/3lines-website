@@ -1,8 +1,42 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Icon from './Icon';
 import type { MediaItem } from '@/lib/admin/media';
+
+/**
+ * The library, fetched once per page load and shared by every picker on it.
+ *
+ * Module scope rather than state: a screen can hold forty pickers (one per
+ * partner) and they must not each fetch, nor each hold their own copy. The
+ * in-flight promise is cached too, so opening several at once still results in
+ * exactly one request.
+ */
+let libraryCache: MediaItem[] | null = null;
+let libraryInFlight: Promise<MediaItem[]> | null = null;
+
+function loadLibrary(): Promise<MediaItem[]> {
+  if (libraryCache) return Promise.resolve(libraryCache);
+  libraryInFlight ??= fetch('/admin/api/media')
+    .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
+    .then((j) => {
+      const items = (j as { items: MediaItem[] }).items;
+      libraryCache = items;
+      return items;
+    })
+    .catch((e) => {
+      // Cleared so a later open retries rather than being stuck on one failure.
+      libraryInFlight = null;
+      throw e;
+    });
+  return libraryInFlight;
+}
+
+/** Called after an upload so the next open sees the new file. */
+export function invalidateLibraryCache(): void {
+  libraryCache = null;
+  libraryInFlight = null;
+}
 
 /**
  * Current image, and a library to swap it for another.
@@ -20,13 +54,11 @@ import type { MediaItem } from '@/lib/admin/media';
 export default function ImagePicker({
   label,
   current,
-  library,
   name,
   formId,
 }: {
   label: string;
   current: string;
-  library: MediaItem[];
   /** Rendered into the form so the server knows which field to write. */
   name: { path: string; shape: string };
   /**
@@ -42,6 +74,21 @@ export default function ImagePicker({
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [folder, setFolder] = useState<string>('all');
+  const [library, setLibrary] = useState<MediaItem[]>(() => libraryCache ?? []);
+  const [loadError, setLoadError] = useState<string | null>(null);
+
+  // Fetched on first open, not on render: a page can hold forty of these and
+  // most are never opened.
+  useEffect(() => {
+    if (!open || library.length) return;
+    let live = true;
+    loadLibrary()
+      .then((items) => live && setLibrary(items))
+      .catch((e) => live && setLoadError(e instanceof Error ? e.message : 'failed'));
+    return () => {
+      live = false;
+    };
+  }, [open, library.length]);
 
   const folders = useMemo(() => ['all', ...new Set(library.map((i) => i.folder))], [library]);
 
@@ -122,7 +169,11 @@ export default function ImagePicker({
               three of a hundred and thirty-one looks like a library that only
               ever had three in it. */}
           <p className="adm-hint" style={{ marginBlockEnd: 'var(--adm-3)' }}>
-            Showing {shown.length} of {library.length}. Click one to use it.
+            {loadError
+              ? `Could not load the images (${loadError}).`
+              : !library.length
+                ? 'Loading images…'
+                : `Showing ${shown.length} of ${library.length}. Click one to use it.`}
           </p>
 
           {shown.length ? (
@@ -155,9 +206,9 @@ export default function ImagePicker({
                 </button>
               ))}
             </div>
-          ) : (
+          ) : library.length ? (
             <p className="adm-hint">No images match “{query}”.</p>
-          )}
+          ) : null}
 
         </div>
       ) : null}

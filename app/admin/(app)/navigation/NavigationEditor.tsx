@@ -3,7 +3,6 @@
 import { useActionState, useEffect, useMemo, useRef, useState } from 'react';
 import Icon from '@/components/admin/Icon';
 import ImagePicker from '@/components/admin/ImagePicker';
-import type { MediaItem } from '@/lib/admin/media';
 import type { L10nText, NavChrome, NavLink } from '@/lib/admin/chrome';
 import { saveNav, setNavImage, type NavState } from './actions';
 
@@ -168,11 +167,9 @@ function LinkList({
  */
 export default function NavigationEditor({
   nav,
-  library,
   routes,
 }: {
   nav: NavChrome;
-  library: MediaItem[];
   routes: string[];
 }) {
   const [doc, setDoc] = useState<NavChrome>(nav);
@@ -292,7 +289,6 @@ export default function NavigationEditor({
             <ImagePicker
               label="Header mark"
               current={doc.logoImg.src}
-              library={library}
               name={{ path: 'logoImg', shape: 'src' }}
               formId="navimg"
             />
@@ -304,7 +300,6 @@ export default function NavigationEditor({
             <ImagePicker
               label="Footer lockup"
               current={doc.footerLogoImg.src}
-              library={library}
               name={{ path: 'footerLogoImg', shape: 'src' }}
               formId="navimg"
             />

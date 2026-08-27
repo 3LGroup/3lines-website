@@ -5,7 +5,6 @@ import Icon from '@/components/admin/Icon';
 import ImagePicker from '@/components/admin/ImagePicker';
 import PreviewPane from '@/components/admin/PreviewPane';
 import type { Collection } from '@/lib/admin/collections';
-import type { MediaItem } from '@/lib/admin/media';
 import { saveItems, structural, setImageAction, type CollectionState } from './actions';
 
 /**
@@ -18,11 +17,9 @@ import { saveItems, structural, setImageAction, type CollectionState } from './a
  */
 export default function CollectionEditor({
   collection,
-  library,
   preview,
 }: {
   collection: Collection;
-  library: MediaItem[];
   /** Which public page this collection appears on, for the preview pane. */
   preview: { locale: string; slug: string };
 }) {
@@ -236,7 +233,6 @@ export default function CollectionEditor({
                         key={img.path}
                         label={img.label}
                         current={img.value}
-                        library={library}
                         name={{ path: img.path, shape: img.shape }}
                         formId="img"
                       />

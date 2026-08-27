@@ -5,7 +5,6 @@ import Icon from '@/components/admin/Icon';
 import ImagePicker from '@/components/admin/ImagePicker';
 import PreviewPane from '@/components/admin/PreviewPane';
 import type { EditableBlock } from '@/lib/admin/content';
-import type { MediaItem } from '@/lib/admin/media';
 import { saveEdits, setPageImage, structural, type SaveState } from './actions';
 
 /**
@@ -67,7 +66,6 @@ export default function PageEditor({
   status,
   meta,
   blocks,
-  library,
   routes,
   addableBodyKinds,
 }: {
@@ -76,7 +74,6 @@ export default function PageEditor({
   status: string;
   meta: Record<string, { title: string; description: string; keywords: string }>;
   blocks: EditableBlock[];
-  library: MediaItem[];
   routes: string[];
   addableBodyKinds: { kind: string; label: string }[];
 }) {
@@ -508,7 +505,6 @@ export default function PageEditor({
                       key={img.path}
                       label={img.label}
                       current={img.value}
-                      library={library}
                       name={{ path: `${block.id};${img.path}`, shape: img.shape }}
                       formId="pimg"
                     />

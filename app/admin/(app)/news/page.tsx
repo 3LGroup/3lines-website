@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { listNewsCards } from '@/lib/admin/news';
-import { listAllMedia } from '@/lib/admin/media';
 import SimpleForm, { type SimpleField } from '../site/SimpleForm';
 import { saveNewsAction } from '../site/actions';
 import NewsManager from './NewsManager';
@@ -17,7 +16,7 @@ export const metadata: Metadata = { title: 'News' };
  * newsroom can sort but an article cannot show when it ran.
  */
 export default async function NewsPage() {
-  const [posts, library] = await Promise.all([listNewsCards(), listAllMedia()]);
+  const posts = await listNewsCards();
 
   // Keys carry no locale — SimpleForm appends `:en` / `:ar` for localized
   // fields. Putting a locale here is what produced `<id>:title:en:ar`, which the
@@ -72,7 +71,7 @@ export default async function NewsPage() {
         </p>
       </div>
 
-      <NewsManager posts={posts} library={library} />
+      <NewsManager posts={posts} />
 
       <SimpleForm fields={fields} action={saveNewsAction} title="News" />
     </div>

@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useRef, useState } from 'react';
 import Icon from './Icon';
 import { uploadImage, type UploadState } from '@/app/admin/(app)/media/actions';
+import { invalidateLibraryCache } from './ImagePicker';
 
 /** Longest edge after downscaling. Wider than any slot the site actually has. */
 const MAX_EDGE = 2000;
@@ -34,6 +35,9 @@ export default function Uploader() {
 
   useEffect(() => {
     if (state.ok) {
+      // The pickers cache the library for the page's lifetime; without this a
+      // just-uploaded image would be missing from every picker until reload.
+      invalidateLibraryCache();
       setName(null);
       setNote(null);
       if (fileRef.current) fileRef.current.value = '';

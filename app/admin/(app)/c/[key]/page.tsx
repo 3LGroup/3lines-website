@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getCollection, collectionByKey } from '@/lib/admin/collections';
-import { listAllMedia } from '@/lib/admin/media';
 import CollectionEditor from './CollectionEditor';
 
 type Params = { params: Promise<{ key: string }> };
@@ -25,7 +24,6 @@ export default async function CollectionPage({ params }: Params) {
 
       <CollectionEditor
         collection={collection}
-        library={await listAllMedia()}
         // The collection lives inside a page; the preview shows that page.
         preview={{ locale: 'en', slug: collection.slug }}
       />

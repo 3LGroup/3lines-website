@@ -3,7 +3,6 @@
 import { useActionState, useState } from 'react';
 import Icon from '@/components/admin/Icon';
 import ImagePicker from '@/components/admin/ImagePicker';
-import type { MediaItem } from '@/lib/admin/media';
 import type { NewsCard } from '@/lib/admin/news';
 import { newsStructural, setNewsImageAction, type NewsState } from './actions';
 
@@ -14,10 +13,8 @@ import { newsStructural, setNewsImageAction, type NewsState } from './actions';
  */
 export default function NewsManager({
   posts,
-  library,
 }: {
   posts: NewsCard[];
-  library: MediaItem[];
 }) {
   const [structState, structAction, structPending] = useActionState<NewsState, FormData>(
     newsStructural,
@@ -171,7 +168,6 @@ export default function NewsManager({
             <ImagePicker
               label="Card image"
               current={p.mediaSrc ?? ''}
-              library={library}
               name={{ path: p.id, shape: 'src' }}
               formId="newsimg"
             />

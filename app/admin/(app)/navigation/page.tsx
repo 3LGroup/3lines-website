@@ -1,15 +1,13 @@
 import type { Metadata } from 'next';
 import { getNavigation } from '@/lib/admin/chrome';
-import { listAllMedia } from '@/lib/admin/media';
 import { getDb, schema } from '@/lib/db/client';
 import NavigationEditor from './NavigationEditor';
 
 export const metadata: Metadata = { title: 'Navigation & footer' };
 
 export default async function NavigationPage() {
-  const [nav, library, pages] = await Promise.all([
+  const [nav, pages] = await Promise.all([
     getNavigation(),
-    listAllMedia(),
     (async () => {
       const db = await getDb();
       return db.select({ route: schema.pages.route }).from(schema.pages);
@@ -27,7 +25,7 @@ export default async function NavigationPage() {
         </p>
       </div>
 
-      <NavigationEditor nav={nav} library={library} routes={pages.map((p) => p.route)} />
+      <NavigationEditor nav={nav} routes={pages.map((p) => p.route)} />
     </div>
   );
 }

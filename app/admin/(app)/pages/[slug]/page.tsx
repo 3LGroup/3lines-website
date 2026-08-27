@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getPageForEdit } from '@/lib/admin/content';
 import { ADDABLE_BODY_KINDS } from '@/lib/admin/structure';
-import { listAllMedia } from '@/lib/admin/media';
 import { getDb, schema } from '@/lib/db/client';
 import PageEditor from './PageEditor';
 
@@ -16,9 +15,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function EditPage({ params }: Params) {
   const { slug } = await params;
-  const [page, library, routeRows] = await Promise.all([
+  const [page, routeRows] = await Promise.all([
     getPageForEdit(slug),
-    listAllMedia(),
     (async () => {
       const db = await getDb();
       return db.select({ route: schema.pages.route }).from(schema.pages);
@@ -52,7 +50,6 @@ export default async function EditPage({ params }: Params) {
         status={page.status}
         meta={page.meta}
         blocks={page.blocks}
-        library={library}
         routes={routeRows.map((r) => r.route)}
         addableBodyKinds={ADDABLE_BODY_KINDS}
       />
