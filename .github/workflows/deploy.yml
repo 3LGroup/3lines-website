@@ -47,10 +47,17 @@ jobs:
       # the REMOTE D1 — that is what carries an editor's saved changes into the
       # build. It fails the build rather than silently shipping stale content, so
       # the token below is required, not optional.
+      #
+      # A SEPARATE token from the deploy step, deliberately. Cloudflare's "Edit
+      # Cloudflare Workers" template grants no D1 access (the export failed 7403
+      # under it), and a D1 token grants no script access (10000). Rather than
+      # asking for one broad token, each step gets exactly the scope it needs —
+      # which is also the better security posture. CLOUDFLARE_D1_TOKEN may be
+      # read-only on D1; nothing here writes to the database.
       - name: Build
         run: npm run cf:build
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_D1_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy
