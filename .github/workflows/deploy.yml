@@ -34,7 +34,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
+      # The production branch, explicitly, whatever triggered this run.
+      # repository_dispatch (the Publish button) is only ever delivered against
+      # the DEFAULT branch — GitHub ignores the event for workflow files that
+      # live anywhere else — so this file has to exist on main while the site is
+      # built from location-map-and-fixes. Pinning the ref makes both entry
+      # points produce the same artifact instead of main silently deploying
+      # itself.
       - uses: actions/checkout@v4
+        with:
+          ref: location-map-and-fixes
 
       - uses: actions/setup-node@v4
         with:
