@@ -1,6 +1,6 @@
 'use client';
 
-import { useActionState, useEffect, useState } from 'react';
+import { useActionState, useEffect, useRef, useState } from 'react';
 import Icon from './Icon';
 import { publish, type PublishState } from '@/app/admin/(app)/publish';
 
@@ -45,8 +45,14 @@ export default function PublishButton() {
     if (state.ok || state.error) setArmed(false);
   }, [state]);
 
+  const form = useRef<HTMLFormElement>(null);
+
   return (
-    <form action={formAction} style={{ display: 'flex', alignItems: 'center', gap: 'var(--adm-2)' }}>
+    <form
+      ref={form}
+      action={formAction}
+      style={{ display: 'flex', alignItems: 'center', gap: 'var(--adm-2)' }}
+    >
       {state.error ? (
         <span className="adm-error" role="alert" style={{ margin: 0 }}>
           <Icon name="alert" size={13} />
@@ -62,10 +68,16 @@ export default function PublishButton() {
 
       <button
         className={`adm-btn adm-btn--sm ${armed ? 'adm-btn--danger' : 'adm-btn--outline'}`}
-        // `button` until armed, so the first click cannot submit the form even
-        // if a stray Enter lands on it.
-        type={armed ? 'submit' : 'button'}
-        onClick={armed ? undefined : () => setArmed(true)}
+        /* Always `button`, with the submit issued programmatically on the
+           second click. The previous version switched `type` to "submit" once
+           armed — but React flushes that re-render synchronously inside the
+           click handler, so the SAME click's default action then submitted the
+           just-armed button. One physical click armed and published. */
+        type="button"
+        onClick={() => {
+          if (armed) form.current?.requestSubmit();
+          else setArmed(true);
+        }}
         disabled={pending}
         aria-label={armed ? 'Confirm publish to the live site' : 'Publish'}
       >
