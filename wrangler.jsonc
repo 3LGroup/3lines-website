@@ -49,7 +49,9 @@
     {
       "binding": "DB",
       "database_name": "3lines-cms",
-      "database_id": "ecc064da-0fd5-40a4-b1e7-a66312d43d1d",
+      // On the threelines.com@gmail.com account. The previous id belonged to a
+      // different account entirely — the one behind the Aug-20 ai-25c preview.
+      "database_id": "24730e9b-e929-45f9-b2f2-37df04549eb4",
       "migrations_dir": "drizzle"
     }
   ],
@@ -66,9 +68,16 @@
   //   npx wrangler r2 bucket create 3lines-media
   //
   // Unlike D1 there is no id to paste back — R2 bindings resolve by name.
-  "r2_buckets": [
-    { "binding": "MEDIA", "bucket_name": "3lines-media" }
-  ]
+  // DISABLED until R2 is enabled on the account (dashboard, one click, free
+  // tier — API answers 10042 until then). Deploying with a binding to a bucket
+  // that cannot exist fails outright. Until this is restored, uploads from the
+  // HOSTED admin fail with their designed clear message; local uploads and
+  // everything else are unaffected. Re-enable by uncommenting, running
+  //   npx wrangler r2 bucket create 3lines-media
+  // and redeploying.
+  // "r2_buckets": [
+  //   { "binding": "MEDIA", "bucket_name": "3lines-media" }
+  // ]
 
   // ---------------------------------------------------------------------
   // Cron Triggers (M8) additionally need a custom worker entrypoint, because
