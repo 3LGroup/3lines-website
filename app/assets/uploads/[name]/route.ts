@@ -40,10 +40,15 @@ export async function GET(
   return new NextResponse(file.body as BodyInit, {
     headers: {
       'Content-Type': file.contentType,
-      // Short, because this route only ever serves the window between upload
-      // and the next build. The static asset that replaces it carries the long
-      // immutable policy from public/_headers.
-      'Cache-Control': 'public, max-age=60',
+      /* Long, because in production nothing ever replaces this response.
+         The old 60s assumed the file lands in public/ and is superseded by a
+         static asset at the next build — true on disk, false on R2, where the
+         object never enters public/ at all. That made every uploaded image on
+         the live site a Worker invocation plus an R2 GET per visitor per
+         minute, forever: exactly the cost open-next.config.ts is written to
+         avoid. Safe to cache hard because uploads are immutable — putUpload
+         suffixes a colliding name rather than overwriting. */
+      'Cache-Control': 'public, max-age=31536000, immutable',
     },
   });
 }

@@ -13,8 +13,15 @@ import { NextResponse } from 'next/server';
  * pretending a message was delivered.
  */
 
-const ENDPOINT = process.env.CONTACT_ENDPOINT;
-const TIMEOUT_MS = Number(process.env.CONTACT_TIMEOUT_MS ?? 8000);
+/* Read per request, not at module scope. Under @opennextjs/cloudflare
+   process.env is populated from the Worker env when a request arrives, so a
+   value captured at module-init can be undefined — and this route would then
+   answer 503 "unconfigured" while the endpoint was configured correctly. That
+   is the site's primary conversion path. Trimmed for the same reason the
+   publish secrets are: a piped secret carries a newline, and a newline in a
+   URL makes fetch throw. */
+const endpoint = () => process.env.CONTACT_ENDPOINT?.trim();
+const timeoutMs = () => Number(process.env.CONTACT_TIMEOUT_MS ?? 8000);
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -54,6 +61,9 @@ export async function POST(request: Request) {
 
   if (Object.keys(fields).length)
     return NextResponse.json({ ok: false, code: 'invalid', fields }, { status: 400 });
+
+  const ENDPOINT = endpoint();
+  const TIMEOUT_MS = timeoutMs();
 
   if (!ENDPOINT) {
     console.error('[contact] CONTACT_ENDPOINT is not configured — refusing to accept the message');

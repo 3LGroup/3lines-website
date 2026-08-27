@@ -15,7 +15,13 @@ const settingsOrigin = (() => {
   return raw.replace(/\/+$/, '');
 })();
 
-export const SITE_ORIGIN = process.env.SITE_ORIGIN ?? settingsOrigin ?? 'https://www.3lines.com.sa';
+/* Trimmed: new URL() tolerates a trailing newline but the template literals
+   that build canonicals, hreflang and sitemap URLs do not — a piped secret
+   would put a 
+ inside every one of them. */
+export const SITE_ORIGIN = (
+  process.env.SITE_ORIGIN ?? settingsOrigin ?? 'https://www.3lines.com.sa'
+).trim();
 
 /**
  * Short brand name, from Site info in the CMS. The literal fallback only fires

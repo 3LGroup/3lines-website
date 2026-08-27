@@ -1,4 +1,4 @@
-import { getPage, getRoutes } from '@/lib/content';
+import { getRouteTitles, getRoutes } from '@/lib/content';
 import { LOCALES, type Locale } from '@/lib/i18n';
 import { ui } from '@/lib/ui';
 import NotFoundBody from './NotFoundBody';
@@ -17,6 +17,12 @@ import NotFoundBody from './NotFoundBody';
 export default function NotFound() {
   const routes = getRoutes().slice(0, 6);
 
+  /* Titles come from the bundled map, NOT from getPage. getPage reads a
+     per-page document off the filesystem, and the 50 of those are deliberately
+     unbundled — so in the Worker this boundary silently fell back to printing
+     raw route ids as link text while localhost showed real titles. */
+  const titles = getRouteTitles();
+
   const payload = Object.fromEntries(
     LOCALES.map((locale: Locale) => [
       locale,
@@ -25,7 +31,7 @@ export default function NotFound() {
         links: routes.map((r) => ({
           href: `/${locale}${r.route === '/' ? '' : r.route}`,
           // The page's own title, not the raw route id the old page printed.
-          label: getPage(locale, r.route)?.title ?? r.route,
+          label: titles[r.route]?.[locale] ?? r.route,
         })),
       },
     ])

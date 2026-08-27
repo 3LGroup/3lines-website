@@ -790,13 +790,20 @@ export async function assertPageDeletable(
   }
 }
 
-export async function deletePage(slug: string): Promise<void> {
+export async function deletePage(
+  slug: string,
+  /* Set by a caller that has ALREADY run assertPageDeletable — deleteNewsItem
+     does, because it has to check before removing the index row. Re-running it
+     here meant a second full-corpus read and a second stringify pass of every
+     block for one deletion. */
+  opts: { alreadyChecked?: boolean } = {}
+): Promise<void> {
   const db = await getDb();
   const [page] = await db.select().from(schema.pages).where(eq(schema.pages.slug, slug)).limit(1);
   if (!page) throw new Error(`No page with slug "${slug}".`);
   if (page.route === '/') throw new Error('The homepage cannot be deleted.');
 
-  await assertPageDeletable(page.route, page.id);
+  if (!opts.alreadyChecked) await assertPageDeletable(page.route, page.id);
 
   // The page cascade removes top-level blocks, whose own cascade removes their
   // bodies and translations. The explicit delete is belt-and-braces so a

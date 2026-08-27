@@ -8,6 +8,7 @@ import chromeAr from '../content/ar/chrome.json';
 import newsEn from '../content/en/news-items.json';
 import newsAr from '../content/ar/news-items.json';
 import settingsJson from '../content/settings.json';
+import routeTitlesJson from '../content/route-titles.json';
 import uiEn from '../content/en/ui.json';
 import uiAr from '../content/ar/ui.json';
 
@@ -42,6 +43,7 @@ const BUNDLED: Record<string, unknown> = {
   'en/news-items.json': newsEn,
   'ar/news-items.json': newsAr,
   'settings.json': settingsJson,
+  'route-titles.json': routeTitlesJson,
   'en/ui.json': uiEn,
   'ar/ui.json': uiAr,
 };
@@ -185,6 +187,13 @@ export interface Settings {
 }
 
 export const getSettings = (): Settings => read<Settings>('settings.json');
+
+/**
+ * Page titles by route, per locale — bundled, so a Worker-side render can name
+ * a page without reaching for the per-page documents, which are not bundled.
+ */
+export const getRouteTitles = (): Record<string, Partial<Record<Locale, string>>> =>
+  read<Record<string, Partial<Record<Locale, string>>>>('route-titles.json');
 
 /**
  * Interface microcopy — the strings that belong to the design rather than to

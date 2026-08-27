@@ -65,7 +65,28 @@ export async function readSession(): Promise<Session | null> {
   const token = (await cookies()).get(COOKIE)?.value;
   if (!token) return null;
 
-  const payload = await verify<Session>(token, secret());
+  /* A misconfigured secret must read as "logged out", not as a crash.
+   *
+   * secret() throws, and this is called from three Server Component render
+   * paths — the admin layout, the login page and the preview layout — where an
+   * escaping exception is a 500 rather than a message. The ordering made it
+   * vicious: the throw only fires when a cookie is PRESENT, so a bad secret
+   * would leave a new visitor able to reach the login form while every editor
+   * who already held a cookie got a 500 on every admin URL, including the login
+   * page they would need in order to recover. The only escape was deleting the
+   * cookie by hand in devtools.
+   *
+   * loginAction still surfaces the real message, because that path reaches
+   * secret() through login() rather than here. */
+  let key: string;
+  try {
+    key = secret();
+  } catch (err) {
+    console.error('[session] SESSION_SECRET is unusable:', err instanceof Error ? err.message : err);
+    return null;
+  }
+
+  const payload = await verify<Session>(token, key);
   if (!payload) return null;
 
   if (typeof payload.exp !== 'number' || payload.exp <= now()) return null;

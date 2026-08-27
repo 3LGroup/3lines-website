@@ -1,0 +1,102 @@
+{
+  "/": {
+    "en": "3Lines Advanced Technologies Company",
+    "ar": "ثريلاينز آدفانسد تكنولجيز"
+  },
+  "/about": {
+    "en": "About",
+    "ar": "من نحن"
+  },
+  "/services": {
+    "en": "Services",
+    "ar": "الخدمات"
+  },
+  "/services/radar-electronics-communications-sustainment": {
+    "en": "Radar Maintenance, Electronics & Tactical Communications Sustainment",
+    "ar": "صيانة الرادارات والإلكترونيات واستدامة الاتصالات التكتيكية"
+  },
+  "/services/government-relations-and-life-support": {
+    "en": "Government Relations, Personnel Consulting & Life Support Services",
+    "ar": "العلاقات الحكومية واستشارات الكوادر وخدمات الإعاشة المتكاملة"
+  },
+  "/services/power-systems-support": {
+    "en": "Power Systems Support (Generators & UPS)",
+    "ar": "دعم أنظمة الطاقة (المولدات وأنظمة الطاقة غير المنقطعة)"
+  },
+  "/services/electronics-diagnostic-and-repair-workshops": {
+    "en": "Electronics Diagnostic & Repair Workshops",
+    "ar": "ورش تشخيص وإصلاح الإلكترونيات"
+  },
+  "/services/ground-support-equipment-sustainment": {
+    "en": "Ground Support Equipment (GSE) Sustainment",
+    "ar": "استدامة معدات الدعم الأرضي"
+  },
+  "/services/spare-parts-logistics-and-warehousing": {
+    "en": "Aviation & Land Systems Spare Parts, Logistics, and Warehousing",
+    "ar": "قطع غيار الأنظمة الجوية والبرية والخدمات اللوجستية والتخزين"
+  },
+  "/services/simulation-systems": {
+    "en": "Simulation Systems (Full Motion & Static)",
+    "ar": "أنظمة المحاكاة (كاملة الحركة والثابتة)"
+  },
+  "/services/training-and-capability-enablement": {
+    "en": "Training, Simulation & Capability Enablement",
+    "ar": "التدريب والمحاكاة وتمكين القدرات"
+  },
+  "/services/defense-systems-sustainment-mro": {
+    "en": "Defense Systems Sustainment (MRO)",
+    "ar": "استدامة الأنظمة الدفاعية (الصيانة والإصلاح والعمرة)"
+  },
+  "/services/program-management-and-localization": {
+    "en": "Program Management & Localization Enablement",
+    "ar": "إدارة البرامج وتمكين التوطين"
+  },
+  "/news": {
+    "en": "Newsroom",
+    "ar": "مستجدات"
+  },
+  "/news/expanding-spare-parts-capabilities": {
+    "en": "Expanding Our Spare Parts, Logistics and Warehousing Capabilities",
+    "ar": "توسيع قدراتنا في قطع الغيار والخدمات اللوجستية والتخزين"
+  },
+  "/news/advanced-simulator-support": {
+    "en": "Investing in Simulation and XR-Based Training",
+    "ar": "الاستثمار في المحاكاة والتدريب القائم على الواقع الممتد"
+  },
+  "/news/ground-support-equipment-services": {
+    "en": "Strengthening Ground Support Equipment Sustainment",
+    "ar": "تعزيز استدامة معدات الدعم الأرضي"
+  },
+  "/news/advancing-radar-sensor-support": {
+    "en": "Advancing Radar, C4I and Tactical Communications Sustainment",
+    "ar": "تطوير استدامة الرادار وأنظمة C4I والاتصالات التكتيكية"
+  },
+  "/partners": {
+    "en": "Partners",
+    "ar": "الشركاء"
+  },
+  "/careers": {
+    "en": "Careers",
+    "ar": "الوظائف"
+  },
+  "/location": {
+    "en": "Location",
+    "ar": "الموقع"
+  },
+  "/contact": {
+    "en": "Contact",
+    "ar": "التواصل"
+  },
+  "/privacy-policy": {
+    "en": "Privacy Policy",
+    "ar": "سياسة الخصوصية"
+  },
+  "/terms-and-conditions": {
+    "en": "Terms & Conditions",
+    "ar": "الشروط والأحكام"
+  },
+  "/cookie-policy": {
+    "en": "Cookie Policy",
+    "ar": "سياسة ملفات تعريف الارتباط (الكوكيز)"
+  }
+}

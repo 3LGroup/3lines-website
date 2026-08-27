@@ -273,6 +273,29 @@ writeFile(
   JSON.stringify(settings, null, 2) + '\n'
 );
 
+/**
+ * route -> title per locale, for the few places that need a page's NAME at
+ * request time inside the Worker.
+ *
+ * The 50 per-page documents are deliberately not bundled (lib/content.ts), so
+ * anything rendering in the Worker can only reach them through `fs`, which does
+ * not exist there. The 404 boundary did exactly that and silently fell back to
+ * printing raw route ids as link text in production while showing real titles
+ * on localhost. This map is tiny, so bundling it costs nothing.
+ */
+{
+  const titles = {};
+  for (const page of pages) {
+    const per = {};
+    for (const locale of LOCALES) {
+      const tr = trByPage.get(`${page.id}:${locale}`);
+      if (tr) per[locale] = tr.title;
+    }
+    titles[page.route] = per;
+  }
+  writeFile(path.join(CONTENT, 'route-titles.json'), JSON.stringify(titles, null, 2) + String.fromCharCode(10));
+}
+
 // routes.json is derived from the same rows, so a page added in the CMS appears
 // in the manifest that drives generateStaticParams without a second step.
 writeFile(

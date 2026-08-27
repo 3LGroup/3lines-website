@@ -70,7 +70,8 @@ export async function publish(): Promise<PublishState> {
     }
   }
 
-  const hook = process.env.CF_DEPLOY_HOOK_URL;
+  // Trimmed for the same reason as the GitHub values above.
+  const hook = process.env.CF_DEPLOY_HOOK_URL?.trim();
 
   if (hook) {
     try {

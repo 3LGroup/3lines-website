@@ -1,7 +1,6 @@
-import { and, eq, inArray } from 'drizzle-orm';
+import { eq, inArray, sql } from 'drizzle-orm';
 import { getDb, schema } from '@/lib/db/client';
 import type { Json } from '@/lib/localization';
-import { setAtPath } from './fields';
 import { validateHref } from './hrefs';
 import type { Locale } from './content';
 
@@ -137,10 +136,32 @@ export interface BandEdit {
   value: string;
 }
 
+/** A dotted field path as a SQLite JSON path: `cta.label` -> `$.cta.label`. */
+const jsonPath = (path: string) => `$.${path}`;
+
+/**
+ * Fan one value out to every copy of a band.
+ *
+ * ONE statement per edit, not one per copy. The loop version read the rows,
+ * read their translations and then issued an UPDATE per matching row — and the
+ * corpus carries 21 careers bands and 25 social strips, so simply retyping the
+ * contact-strip heading in both languages cost 2 x (2 + 25) = 54 queries and
+ * crossed D1's ~50-per-invocation ceiling. That is the same budget
+ * lib/admin/content.ts and the exporter are explicitly written around; it
+ * passes locally only because Miniflare enforces no such cap, and it would have
+ * surfaced in production as an opaque save failure.
+ *
+ * json_set does the edit inside SQLite, and the json_extract guard keeps the
+ * semantics of the old code exactly: a copy that lacks the slot is left alone
+ * rather than having the key invented on it.
+ */
 export async function saveBands(edits: BandEdit[]): Promise<number> {
   if (!edits.length) return 0;
   const db = await getDb();
   let written = 0;
+
+  // Only fetched if an href edit is present, and only once for all of them.
+  let routes: Set<string> | null = null;
 
   for (const e of edits) {
     const sep = e.key.indexOf(':');
@@ -148,49 +169,33 @@ export async function saveBands(edits: BandEdit[]): Promise<number> {
     if (!def) throw new Error(`Unknown band field "${e.key}".`);
     if (!e.value.trim()) throw new Error(`${def.label} cannot be empty.`);
 
-    const rows = await db.select().from(schema.blocks).where(eq(schema.blocks.kind, def.kind));
-    if (!rows.length) continue;
+    const p = jsonPath(def.path);
 
     if (def.localized) {
       if (!e.locale) throw new Error(`${def.label} needs a locale.`);
-      const tr = await db
-        .select()
-        .from(schema.blockTranslations)
-        .where(
-          inArray(
-            schema.blockTranslations.blockId,
-            rows.map((r) => r.id)
-          )
-        );
-      for (const t of tr) {
-        if (t.locale !== e.locale) continue;
-        if (at(t.props as Json, def.path) === undefined) continue; // copy lacks the slot
-        const next = setAtPath(t.props as Json, def.path, e.value);
-        await db
-          .update(schema.blockTranslations)
-          .set({ props: next as Record<string, unknown>, updatedAt: now() })
-          // Both PK columns via and() — a blockId-only WHERE would write this
-          // locale's tree over the other locale's row too.
-          .where(
-            and(
-              eq(schema.blockTranslations.blockId, t.blockId),
-              eq(schema.blockTranslations.locale, t.locale)
-            )
-          );
-      }
+      await db.run(sql`
+        UPDATE block_translations
+           SET props = json_set(props, ${p}, ${e.value}),
+               updated_at = ${now()}
+         WHERE locale = ${e.locale}
+           AND json_extract(props, ${p}) IS NOT NULL
+           AND block_id IN (SELECT id FROM blocks WHERE kind = ${def.kind})
+      `);
     } else {
       if (def.isHref) {
-        const pageRows = await db.select({ route: schema.pages.route }).from(schema.pages);
-        validateHref(e.value, new Set(pageRows.map((r) => r.route)), def.label);
+        if (!routes) {
+          const pageRows = await db.select({ route: schema.pages.route }).from(schema.pages);
+          routes = new Set(pageRows.map((r) => r.route));
+        }
+        validateHref(e.value, routes, def.label);
       }
-      for (const r of rows) {
-        if (at(r.props as Json, def.path) === undefined) continue;
-        const next = setAtPath(r.props as Json, def.path, e.value);
-        await db
-          .update(schema.blocks)
-          .set({ props: next as Record<string, unknown>, updatedAt: now() })
-          .where(eq(schema.blocks.id, r.id));
-      }
+      await db.run(sql`
+        UPDATE blocks
+           SET props = json_set(props, ${p}, ${e.value}),
+               updated_at = ${now()}
+         WHERE kind = ${def.kind}
+           AND json_extract(props, ${p}) IS NOT NULL
+      `);
     }
     written++;
   }

@@ -1,4 +1,4 @@
-import { and, eq } from 'drizzle-orm';
+import { and, eq, inArray } from 'drizzle-orm';
 import { getDb, schema } from '@/lib/db/client';
 import { splitProps, mergeProps, L10N, type Json } from '@/lib/localization';
 import { flatten, applyEdits, type Field } from './fields';
@@ -125,12 +125,24 @@ async function locate(route: string, kind: string) {
   if (!page) return null;
 
   const roots = await db.select().from(schema.blocks).where(eq(schema.blocks.pageId, page.id));
-  // Bodies are children of a section, so search one level down as well.
-  const all = [...roots];
-  for (const r of roots) {
-    const kids = await db.select().from(schema.blocks).where(eq(schema.blocks.parentId, r.id));
-    all.push(...kids);
-  }
+
+  /* Bodies are children of a section, so search one level down as well — in ONE
+     query, not one per section. The loop version cost 1 + N queries per locate()
+     call, and a save on a mirrored collection calls locate() twice and then
+     writes per locale: on the homepage that climbed toward D1's ~50-queries-per
+     -invocation ceiling for a single Save. Same rows, one round trip. */
+  const kids = roots.length
+    ? await db
+        .select()
+        .from(schema.blocks)
+        .where(
+          inArray(
+            schema.blocks.parentId,
+            roots.map((r) => r.id)
+          )
+        )
+    : [];
+  const all = [...roots, ...kids];
 
   const block = all.find((b) => b.kind === kind);
   if (!block) return null;

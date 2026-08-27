@@ -99,13 +99,12 @@ export async function createNewsItem({
   /* The index row. Position at the top: news lists lead with the newest.
      Deterministic ids matching the importer's scheme — see structure.ts idFor. */
   const itemId = idFor(`news:${slug}`);
-  const items = await db.select().from(schema.newsItems);
-  for (const i of items) {
-    await db
-      .update(schema.newsItems)
-      .set({ position: i.position + 1, updatedAt: now() })
-      .where(eq(schema.newsItems.id, i.id));
-  }
+  /* Shift every existing item down in ONE statement. The loop version cost a
+     query per item, so creating a post grew more expensive with each post and
+     would have crossed D1's ~50-query invocation budget at roughly 28 of them —
+     a newsroom reaches that in a year or two, and the failure would look like
+     "creating news stopped working" for no visible reason. */
+  await db.run(sql`UPDATE news_items SET position = position + 1, updated_at = ${now()}`);
   await db.insert(schema.newsItems).values({
     id: itemId,
     slug,
@@ -207,7 +206,7 @@ export async function deleteNewsItem(id: string): Promise<void> {
   if (pg) await assertPageDeletable(item.route, pg.id, { ignoreNews: true });
 
   await db.delete(schema.newsItems).where(eq(schema.newsItems.id, id));
-  if (pg) await deletePage(pg.slug);
+  if (pg) await deletePage(pg.slug, { alreadyChecked: true });
 }
 
 export async function moveNewsItem(id: string, direction: 'up' | 'down'): Promise<void> {

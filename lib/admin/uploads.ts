@@ -77,8 +77,19 @@ export async function listUploads(): Promise<UploadedItem[]> {
   const b = await bucket();
 
   if (b) {
-    const listed = await b.list({ limit: 1000 });
-    return listed.objects
+    /* Paged to exhaustion. A single list() caps at 1000 objects and reports the
+       truncation rather than erroring, so ignoring it would silently hide the
+       rest of the library — and worse, putUpload's collision check would stop
+       seeing existing names and start overwriting files. */
+    const objects: { key: string; size: number }[] = [];
+    let cursor: string | undefined;
+    do {
+      const listed = await b.list({ limit: 1000, cursor });
+      objects.push(...listed.objects);
+      cursor = listed.truncated ? listed.cursor : undefined;
+    } while (cursor);
+
+    return objects
       .map((o) => ({ path: `${UPLOAD_PREFIX}/${o.key}`, name: o.key, bytes: o.size }))
       .sort((x, y) => x.name.localeCompare(y.name));
   }
