@@ -152,7 +152,27 @@ export async function logout(): Promise<void> {
   });
 }
 
-/** Extend a session that is close to expiring. No-op otherwise. */
+/**
+ * Extend a session that is close to expiring. No-op otherwise.
+ *
+ * Best-effort, and it has to be: the admin layout is a Server Component, and
+ * Next 15 refuses cookie writes outside a Server Action or Route Handler —
+ * "Cookies can only be modified in a Server Action or Route Handler". Unhandled,
+ * that exception escapes the layout and every admin page 500s, which is exactly
+ * what happened on the deployed Worker. Worse, it only strikes once a session
+ * enters its last 24 hours, so it would have looked like the CMS breaking by
+ * itself a week after launch.
+ *
+ * Swallowing it costs nothing real: the session is still valid for up to a day,
+ * and the next Save or Publish — which IS a Server Action — refreshes it
+ * properly. A slightly shorter session is a far better failure than a dead
+ * admin.
+ */
 export async function refreshIfStale(session: Session): Promise<void> {
-  if (session.exp - now() < REFRESH_WITHIN_S) await issue(session.sub);
+  if (session.exp - now() >= REFRESH_WITHIN_S) return;
+  try {
+    await issue(session.sub);
+  } catch {
+    // Read-only render context; the write happens on the next action instead.
+  }
 }
