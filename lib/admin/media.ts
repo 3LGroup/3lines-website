@@ -215,3 +215,91 @@ export async function isAdmissibleAsset(path: string): Promise<boolean> {
 
   return (await listUploads()).some((u) => u.path === path);
 }
+
+/* --------------------------------------------------------------- deleting -- */
+
+/**
+ * Every place the database still points at an image, in editor language.
+ *
+ * The whole corpus is small — 184 blocks, one chrome document, four news rows,
+ * a handful of settings — so this pulls it and scans in JS rather than pushing
+ * substring matching into SQL, where `_` in a filename is a LIKE wildcard.
+ * Matching is on the raw path string, which catches both `src: "/assets/x"`
+ * and the CSS-wrapped `imgVar: "url('/assets/x')"`.
+ */
+export async function findAssetReferences(path: string): Promise<string[]> {
+  const { getDb, schema } = await import('@/lib/db/client');
+  const db = await getDb();
+
+  const [blocks, pages, chrome, news, settings] = await Promise.all([
+    db.select({ id: schema.blocks.id, pageId: schema.blocks.pageId, parentId: schema.blocks.parentId, kind: schema.blocks.kind, props: schema.blocks.props }).from(schema.blocks),
+    db.select({ id: schema.pages.id, route: schema.pages.route }).from(schema.pages),
+    db.select().from(schema.chromeDocs),
+    db.select({ slug: schema.newsItems.slug, mediaSrc: schema.newsItems.mediaSrc }).from(schema.newsItems),
+    db.select().from(schema.settings),
+  ]);
+
+  const routeOf = new Map(pages.map((p) => [p.id, p.route]));
+  const pageOfBlock = new Map<string, string | null>();
+  for (const b of blocks) pageOfBlock.set(b.id, b.pageId);
+  const routeForBlock = (b: (typeof blocks)[number]): string => {
+    const pageId = b.pageId ?? (b.parentId ? pageOfBlock.get(b.parentId) : null);
+    return (pageId && routeOf.get(pageId)) || '(unknown page)';
+  };
+
+  const refs: string[] = [];
+  for (const b of blocks) {
+    if (JSON.stringify(b.props).includes(path)) {
+      refs.push(`the ${b.kind} band on ${routeForBlock(b)}`);
+    }
+  }
+  for (const c of chrome) {
+    if (JSON.stringify(c.props).includes(path)) refs.push('Navigation & footer');
+  }
+  for (const n of news) {
+    if (n.mediaSrc === path) refs.push(`the news card "${n.slug}"`);
+  }
+  for (const s of settings) {
+    if (s.value === path) refs.push(`Site info (${s.key})`);
+  }
+  return refs;
+}
+
+/**
+ * Delete an image that shipped with the repository.
+ *
+ * Possible only where a filesystem exists — locally and on a self-hosted
+ * deployment. In a Worker, public/ ships as immutable Static Assets and the
+ * bundled manifest cannot be rewritten, so the delete is refused with the same
+ * honesty as SVG uploads rather than appearing to work and doing nothing.
+ *
+ * The caller has already established that nothing references the path.
+ */
+export async function deleteRepoAsset(path: string): Promise<void> {
+  const inWorker =
+    (typeof navigator !== 'undefined' && navigator.userAgent === 'Cloudflare-Workers') ||
+    'WebSocketPair' in globalThis;
+  if (inWorker) {
+    throw new Error(
+      'This image shipped with the site build and cannot be deleted from the hosted CMS — it needs a developer.'
+    );
+  }
+
+  if (!path.startsWith('/assets/') || path.includes('..') || path.includes('\\')) {
+    throw new Error('That is not a valid image path.');
+  }
+  if (!isKnownAsset(path)) {
+    throw new Error('That image is not in the library — it may already have been deleted.');
+  }
+
+  const fs = await import('node:fs/promises');
+  const { join } = await import('node:path');
+  await fs.unlink(join(process.cwd(), 'public', ...path.replace(/^\//, '').split('/')));
+
+  // The manifest entry goes with the file, or audit:manifest fails on an entry
+  // with nothing behind it. In dev the manifest import recompiles on write; a
+  // plain `next start` keeps the stale import in its module cache until
+  // restart, which affects only this admin listing, never the public site.
+  const { removeFromManifestFile } = await import('./uploads');
+  await removeFromManifestFile(path);
+}

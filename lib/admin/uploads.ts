@@ -227,11 +227,11 @@ export function isUploadPath(path: string): boolean {
  * should never have left the office stayed in the bucket and in the picker with
  * no way to take it back, and R2 bills for it either way.
  *
- * Deliberately NOT a content-safety check — it does not refuse to delete an
- * image a page still references. Doing that would mean scanning every block in
- * D1 on each delete, and it would still race a concurrent edit. The renderer
- * treats a missing image as a missing image, and a broken picture is a smaller
- * problem than an undeletable one.
+ * No content-safety check HERE — the delete action runs findAssetReferences()
+ * before calling this and refuses while anything still points at the image, so
+ * this layer stays a plain storage operation. A concurrent edit can still race
+ * the check; the renderer treats a missing image as a missing image, so the
+ * worst case is a broken picture, not a broken page.
  *
  * Returns false when the object was not there, so the caller can tell "deleted"
  * from "nothing to delete" instead of reporting success either way.
@@ -264,12 +264,15 @@ export async function deleteUpload(name: string): Promise<boolean> {
   // Local only: the manifest describes files in public/, so the entry has to go
   // with the file or audit:manifest fails on an entry with nothing behind it —
   // the mirror image of the staleness recordInManifest() exists to prevent.
-  await forgetInManifest(`${UPLOAD_PREFIX}/${name}`);
+  await removeFromManifestFile(`${UPLOAD_PREFIX}/${name}`);
   return true;
 }
 
-/** Drop a deleted local upload from lib/asset-manifest.json. */
-async function forgetInManifest(publicPath: string): Promise<void> {
+/**
+ * Drop a deleted file from lib/asset-manifest.json. Exported because repo-asset
+ * deletion (lib/admin/media.ts) has exactly the same bookkeeping to do.
+ */
+export async function removeFromManifestFile(publicPath: string): Promise<void> {
   try {
     const fs = await import('node:fs/promises');
     const { join } = await import('node:path');

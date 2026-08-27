@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { listAllMedia, mediaFolders } from '@/lib/admin/media';
 import Uploader from '@/components/admin/Uploader';
 import DeleteImage from '@/components/admin/DeleteImage';
-import { isUploadPath } from '@/lib/admin/uploads';
 
 export const metadata: Metadata = { title: 'Images' };
 
@@ -60,10 +59,10 @@ export default async function MediaPage() {
                   <figcaption className="adm-tile__name" title={m.path}>
                     {m.name}
                   </figcaption>
-                  {/* Uploads only. The images that shipped with the repo are in
-                      git and are referenced by committed content, so deleting
-                      one at runtime would break a page nobody edited. */}
-                  {isUploadPath(m.path) ? <DeleteImage name={m.name} /> : null}
+                  {/* Every image, not just uploads: the action refuses, naming
+                      the places, while anything still references the file — so
+                      offering the button cannot break a page nobody edited. */}
+                  <DeleteImage path={m.path} name={m.name} />
                 </figure>
               ))}
             </div>

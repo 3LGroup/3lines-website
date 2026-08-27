@@ -5,19 +5,19 @@ import Icon from './Icon';
 import { deleteImage, type DeleteState } from '@/app/admin/(app)/media/actions';
 
 /**
- * Remove one uploaded image.
+ * Remove one image — uploaded or shipped with the repo.
  *
- * Only rendered for files in the uploads folder. The ~130 images that shipped
- * with the repo live in git and are referenced by the committed content, so a
- * delete button on those would either fail or quietly break a page that nobody
- * edited — it is not offered rather than offered and refused.
+ * Rendered on every tile in the library. What makes that safe to offer is the
+ * server side: the delete action scans the database first and refuses, naming
+ * the places, while any page, the navigation, a news card or Site info still
+ * points at the image. The refusal message renders under this tile.
  *
  * Confirmation is a two-press toggle rather than window.confirm(). The native
  * dialog is blocked in some embedded contexts and cannot be styled, and this
  * keeps the "are you sure" attached to the tile it belongs to, so it is obvious
  * WHICH image is about to go.
  */
-export default function DeleteImage({ name }: { name: string }) {
+export default function DeleteImage({ path, name }: { path: string; name: string }) {
   const [state, action, pending] = useActionState<DeleteState, FormData>(deleteImage, {});
   const [armed, setArmed] = useState(false);
 
@@ -32,7 +32,7 @@ export default function DeleteImage({ name }: { name: string }) {
 
   return (
     <form action={action} className="adm-tile__del">
-      <input type="hidden" name="name" value={name} />
+      <input type="hidden" name="path" value={path} />
 
       {armed ? (
         <>
