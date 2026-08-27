@@ -635,10 +635,47 @@ html.dark .pagehead .crumbs a:hover{color:var(--foreground)}
    the reference does too. */
 .rotator{display:inline;position:relative}
 .rotator span{display:none}
-.rotator span.is-on{display:inline}
+.rotator span.is-on{display:inline;animation:rotword .45s var(--ease) both}
+
+/* The swap used to be a hard display flip: one word vanished and the next
+   appeared in the same frame, which reads as a glitch rather than a rotation.
+   Opacity only, deliberately — `transform` does nothing on an inline box, and
+   making it inline-block to gain one would change how the headline line-breaks.
+   This is the whole animation: no layout is touched, so the reflow the comment
+   above accepts is unchanged. */
+@keyframes rotword{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.rotator span.is-on{animation:none}}
 
 /* The hero CTA is a grid child and was stretching to the full column. */
 .hero__inner .btn{justify-self:start;width:fit-content}
+
+/* --- hero entrance ------------------------------------------
+   Every section on the site reveals as it scrolls into view; the hero, which
+   is the one band every visitor sees first, arrived flat. It now composes
+   itself in the order it should be read - headline, then the supporting
+   paragraph, then the call to action.
+
+   A CSS animation rather than the .reveal class on purpose. `.reveal` starts at
+   opacity:0 and waits for JavaScript to add `is-in`, so with scripting blocked
+   the hero copy would never appear at all. A keyframe animation needs no
+   JavaScript, and it is gated on no-preference so a reduced-motion visitor gets
+   the finished hero immediately.
+
+   `backwards`, NOT `both`, and that distinction is the whole safety argument.
+   `both` holds the LAST keyframe after the run, so anything that stops the
+   animation from completing - a tab that never composites, a rendering engine
+   that skips it - leaves the headline pinned at opacity:0 forever. Measured:
+   with `both` the hero read opacity 0 a full second after load. `backwards`
+   only applies the opening frame during the delay; the element's own resting
+   style is visible, so a hero that never animates is simply a hero that shows
+   up. The animation also ends exactly where the static layout already sat, so
+   no geometry moves and the visual baseline still matches. */
+@media (prefers-reduced-motion:no-preference){
+  .hero__inner>h1{animation:heroIn .7s var(--ease) backwards}
+  .hero__inner>p{animation:heroIn .7s var(--ease) .1s backwards}
+  .hero__inner>.btn{animation:heroIn .7s var(--ease) .2s backwards}
+}
+@keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
 /* --- "Why 3Lines" slider ------------------------------------ */
 

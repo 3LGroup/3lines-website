@@ -28,16 +28,15 @@ function Hero({ block, locale }: { block: HeroBlock; locale: Locale }) {
             <>
               {' '}
               {/* main.js cycles `is-on`; the first word is on so the sentence
-                  reads correctly with JavaScript disabled. `--rotw` reserves
-                  the widest word's width so the line never reflows. */}
-              <span
-                className="rotator"
-                style={
-                  {
-                    ['--rotw']: `${Math.max(...block.rotate.map((w) => w.length))}ch`,
-                  } as React.CSSProperties
-                }
-              >
+                  reads correctly with JavaScript disabled.
+
+                  No reserved width: this used to ship a `--rotw` custom
+                  property, and the claim attached to it — that it stops the
+                  line reflowing — was never true, because no stylesheet ever
+                  read the value. style.css records why the idea was dropped:
+                  the longest word's character count is enormous at display
+                  size and blew an ~800px hole in the headline. */}
+              <span className="rotator">
                 {block.rotate.map((w, i) => (
                   <span key={i} className={i === 0 ? 'is-on' : undefined}>
                     {w}
