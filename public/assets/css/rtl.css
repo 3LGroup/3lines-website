@@ -65,6 +65,20 @@ html[lang="ar"] {
   letter-spacing: normal !important;
 }
 
+/* The :lang() reset above is (0,1,0) and loses the !important tie-break to
+   every competing rule that is even slightly more specific — `.pagehead h1`
+   and `.ftr h4` at (0,1,1), `.reveal.is-in` at (0,2,0). audit:rtl found all
+   three still tracked on this branch, so the reset was decorative here.
+   `html[lang="ar"] body *` is (0,1,2) and clears them.
+
+   Do not "simplify" this back to one selector. The two are not redundant:
+   the :lang() rule handles an Arabic run inside an English page, which this
+   one cannot see, and this one wins the fights that one loses. */
+html[lang="ar"] body,
+html[lang="ar"] body * {
+  letter-spacing: normal !important;
+}
+
 /* Tajawal ships no 600 weight (200/300/400/500/700/800/900) and the
    stylesheet asks for 600 in a dozen places. Pin to 700 and disable
    synthesis so faux-bold is not a variable in audits. */

@@ -215,6 +215,21 @@ run('admin isolation + token drift audit', 'node', ['scripts/audit-admin.mjs'], 
   AUDIT_BASE: BASE,
 });
 
+/* -------------------------------------------------- accessibility and RTL -- */
+
+// Both audit the public routes only: ROUTES comes from content/routes.json, so
+// /admin is outside their reach by construction rather than by an exclusion list
+// that could rot. The editor is covered by audit-admin.mjs instead.
+run('accessibility audit (WCAG 2.1 AA)', 'node', ['scripts/audit-a11y.mjs'], {
+  AUDIT_BASE: BASE,
+  AUDIT_RUN_DIR: path.join(RUN_DIR, 'a11y'),
+});
+
+// Arabic tracking is the failure this catches, and it is invisible: nothing
+// errors, nothing 404s, the page measures fine, and the letterforms' joins are
+// broken. It has regressed once already, on CSS specificity.
+run('RTL and Arabic typography audit', 'node', ['scripts/audit-rtl.mjs'], { AUDIT_BASE: BASE });
+
 /* ------------------------------------------------- harness negative control -- */
 
 run('visual harness self-test (negative control)', 'node', ['scripts/audit-visual.mjs'], {
