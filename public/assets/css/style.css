@@ -72,23 +72,84 @@ ul{margin:0;padding:0;list-style:none}
 /* ============================================================
    Utility strip
    ============================================================ */
-.utility{border-bottom:1px solid var(--lilac);background:#fff;font-size:13.5px}
-.utility__inner{max-width:var(--wrap);margin-inline:auto;padding:0 var(--pad);display:flex;align-items:center;gap:26px;min-height:40px;justify-content:flex-end}
+/* The utility row is a cell inside the header now (see UtilityNav in
+   components/Chrome.tsx), not a full-width band above it — so it drops the
+   band's own background, its rule underneath, and the centred `--wrap` measure
+   that used to align it to the page grid.
+
+   The theme layer paints `.utility` as a band with `!important`, so undoing it
+   needs the extra specificity `.hdr .utility` provides. Deliberately an
+   override rather than a rename: `.utility` is the selector the theme layer is
+   written against AND the string scripts/pipeline.mjs greps for in every
+   rendered route as its complete-chrome check. */
+.utility{font-size:13.5px}
+.hdr .utility{background:transparent!important;border-bottom:0!important;min-width:0;display:flex;align-items:center}
+/* `flex:1` is load-bearing: .utility is the flex parent and .utility__inner its
+   only child, so without it the inner row is content-sized and the language
+   cluster's `margin-inline-start:auto` has no free space to push into — the
+   switch then sits tight against Contact instead of at the far end. */
+.hdr .utility__inner{flex:1;min-width:0}
+/* Nav links pick up the reference's weight and its underline-on-hover. Thales
+   sets its nav at 14px/600 against 12px/600 for the utility row — the two tiers
+   are what tell you which links are the site and which are housekeeping. Here
+   there is one tier, so it takes the nav weight.
+
+   The underline is drawn as a ::after that scales from the inline start, rather
+   than text-decoration, so it animates and so it sits clear of the descenders.
+   `transform-origin` and `inset-inline` keep the direction correct in Arabic
+   without a counterpart rule in rtl.css. */
+/* `!important` because the theme layer sets `.utility a{font-weight:500!important}`
+   — an important declaration outranks any specificity, so this has to match it
+   in kind rather than out-specify it. */
+.hdr .utility__inner > a{position:relative;font-weight:600!important;padding-block:6px}
+.hdr .utility__inner > a::after{
+  content:'';position:absolute;inset-inline:0;bottom:0;height:2px;background:var(--blue);
+  /* Grows from the centre. `transform-origin` has no logical keyword — there is
+     no `inline-start` for it — so a left-anchored underline would need an
+     rtl.css counter-rule to avoid growing the wrong way in Arabic. Centre is
+     correct in both directions by construction. */
+  transform:scaleX(0);transform-origin:center;transition:transform .22s ease;
+}
+.hdr .utility__inner > a:hover::after,
+.hdr .utility__inner > a[aria-current="page"]::after{transform:scaleX(1)}
+/* Links run from the logo, not from the right edge. Right-aligning the whole
+   group left a 725px hole between the brand and the first link — the same empty
+   header, just relocated. The reference starts its main nav immediately after
+   the logo block (x=235 against a logo block ending at 227) and pushes only the
+   language cluster to the far right, which is what `.utility__lang` does below. */
+.utility__inner{display:flex;align-items:center;gap:clamp(13px,1.6vw,26px);min-height:40px;justify-content:flex-start;padding-inline:clamp(14px,2vw,34px) var(--pad);white-space:nowrap}
 .utility a{color:var(--ink-70);font-weight:500;transition:color .2s}
 .utility a:hover{color:var(--blue)}
 .utility .ext svg{width:11px;height:11px;fill:currentColor;margin-left:5px;vertical-align:-1px}
-.utility__lang{display:flex;gap:8px;align-items:center;padding-left:22px;border-left:1px solid var(--lilac)}
+/* `margin-inline-start:auto` is what pins the language switch to the far end of
+   the header while the links stay next to the logo. Logical, not `margin-left`,
+   so the Arabic header pins it to the left without rtl.css needing a counter-rule. */
+.utility__lang{display:flex;gap:8px;align-items:center;margin-inline-start:auto;padding-left:22px;border-left:1px solid var(--lilac)}
 .utility__lang a[aria-current="true"]{color:var(--blue);font-weight:700}
 @media (max-width:900px){.utility{display:none}}
 
 /* ============================================================
-   Header — burger | centered logo | search
+   Header — burger | logo | utility nav
    ============================================================ */
 .hdr{position:sticky;top:0;z-index:150;background:#fff;border-bottom:1px solid var(--lilac)}
-.hdr__inner{display:grid;grid-template-columns:var(--hdr-xs) 1fr var(--hdr-xs);min-height:var(--hdr-xs)}
+/* Was `var(--hdr-xs) 1fr var(--hdr-xs)`: burger, a 1fr cell holding a centred
+   logo, and a spacer to balance it. At 1600px that middle cell measured 1345px
+   to carry ~220px of brand, so ~1124px of the header was empty by construction
+   while the navigation sat in a separate 41px band above.
+
+   `auto 1fr` instead: the logo takes exactly its own width, and the nav takes
+   the rest and right-aligns into it. Same arrangement the reference uses —
+   thalesgroup.com's header is a logo block on the left with its utility row and
+   main nav filling the space beside it, not a band each. */
+.hdr__inner{display:grid;grid-template-columns:var(--hdr-xs) auto 1fr var(--hdr-xs);min-height:var(--hdr-xs);align-items:stretch}
 @media (min-width:1024px){
-  .hdr__inner{grid-template-columns:var(--hdr-lg) 1fr var(--hdr-lg);min-height:var(--hdr-lg)}
+  .hdr__inner{grid-template-columns:var(--hdr-lg) auto 1fr var(--hdr-lg);min-height:var(--hdr-lg)}
 }
+/* A rule to the right of the brand, as the reference draws one: its logo is a
+   227px block closed by `border-right:1px #c3c7c9`. It is what stops the brand
+   and the navigation reading as one undifferentiated row. Inline-end rather
+   than right, so the Arabic header closes the block on its left instead. */
+.hdr__logo{border-inline-end:1px solid var(--lilac)}
 .hdr__burger,.hdr__search{
   display:grid;place-items:center;
   border-inline:1px solid var(--lilac);
@@ -179,12 +240,34 @@ html.dark .mega__close{color:var(--foreground)}
   opacity:0;visibility:hidden;transition:opacity .28s,visibility .28s;
 }
 .searchlayer.is-open{opacity:1;visibility:visible}
-.searchlayer form{width:min(760px,100%);border-bottom:3px solid var(--blue);display:flex;gap:14px;align-items:center;padding-bottom:14px}
-.searchlayer input{flex:1;border:0;font-family:inherit;font-size:clamp(22px,4vw,40px);font-weight:600;color:var(--navy);background:none}
+/* `.searchlayer form` in the shipped design; there is no <form> here because
+   there is nothing to submit to — filtering as you type is the interaction, and
+   a form posting to a results page that does not exist is how the reference
+   ended up calling alert(). Same selector shape, same geometry. */
+.searchlayer__inner{width:min(760px,100%)}
+.searchlayer__field{border-bottom:3px solid var(--blue);display:flex;gap:14px;align-items:center;padding-bottom:14px}
+.searchlayer input{flex:1;border:0;font-family:inherit;font-size:clamp(22px,4vw,40px);font-weight:600;color:var(--navy);background:none;min-width:0}
 .searchlayer input::placeholder{color:#a9a9c0}
 .searchlayer input:focus{outline:none}
-.searchlayer button svg{width:30px;height:30px;stroke:var(--blue);stroke-width:2;fill:none}
-.searchlayer .close{position:absolute;top:24px;right:24px;font-size:15px;font-weight:600;color:var(--blue)}
+/* Strips Safari/Chrome's own clear affordance on type=search, which paints a
+   grey ✕ at 40px that fights the overlay's own close control. */
+.searchlayer input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+.searchlayer__field svg{width:30px;height:30px;stroke:var(--blue);stroke-width:2;fill:none;flex:none}
+.searchlayer .close{position:absolute;top:24px;inset-inline-end:24px;font-size:15px;font-weight:600;color:var(--blue)}
+
+/* Results. The overlay is centred by `place-items:center` on the parent, so the
+   list must not push the field off-centre as it grows — hence the fixed max
+   height and its own scroll rather than a growing box. */
+.searchlayer__results{margin-top:18px;max-height:min(46vh,340px);overflow-y:auto;display:grid}
+.searchlayer__results a{
+  padding:13px 4px;border-bottom:1px solid var(--lilac);
+  font-size:17px;font-weight:600;color:var(--navy);transition:color .18s,padding-inline-start .18s;
+}
+.searchlayer__results a:hover{color:var(--blue);padding-inline-start:12px}
+.searchlayer__empty{margin-top:20px;color:var(--ink-70);font-size:16px}
+html.dark .searchlayer{background:rgba(11,15,25,.98)}
+html.dark .searchlayer input,html.dark .searchlayer__results a{color:var(--foreground)}
+html.dark .searchlayer__results a{border-bottom-color:var(--border)}
 
 /* ============================================================
    Buttons / links
@@ -575,8 +658,16 @@ html.dark .socialstrip a:hover{background:var(--foreground);color:var(--backgrou
 /* ============================================================
    Footer
    ============================================================ */
-.ftr{background:var(--navy);color:rgba(255,255,255,.82);padding:clamp(46px,6vw,78px) 0 0}
-.ftr__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(26px,4vw,60px)}
+.ftr{background:var(--navy);color:rgba(255,255,255,.82);padding:clamp(40px,4.6vw,60px) 0 0}
+/* The middle column is 2fr, not 1fr.
+   Three equal 403px columns is the reference's geometry, and it fits the
+   reference's content: its longest column holds 8 short links. Ours holds 10
+   service names of 33-68 characters, and at 403px three of them wrapped to two
+   lines -- 13 line-boxes against the reference's 8, which is the entire reason
+   this footer stood 104px taller than the site it was cloned from. Widening the
+   column that carries the long labels removes the wrapping at its source
+   instead of shrinking type or gaps to absorb it. */
+.ftr__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr) minmax(0,1fr);gap:clamp(26px,4vw,60px)}
 @media (max-width:820px){.ftr__grid{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.ftr__grid{grid-template-columns:1fr}}
 .ftr h4{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:20px;font-weight:700}
@@ -586,8 +677,10 @@ html.dark .socialstrip a:hover{background:var(--foreground);color:var(--backgrou
 .ftr__logo svg{height:30px;width:auto;margin-bottom:26px}
 .ftr__logo .tw-text{fill:#fff}
 .ftr__bar{
-  margin-top:clamp(36px,4.5vw,60px);border-top:1px solid rgba(255,255,255,.18);
-  padding:22px 0 36px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;font-size:14px;
+  /* Trimmed from 60/22/36. The bar carries one line of text on each side, so
+     the old spacing reserved room for a second line that never arrives. */
+  margin-top:clamp(28px,3.4vw,44px);border-top:1px solid rgba(255,255,255,.18);
+  padding:20px 0 28px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;font-size:14px;
 }
 .ftr__bar a:hover{color:var(--cyan)}
 .ftr__bar .right{margin-left:auto;color:rgba(255,255,255,.6)}
@@ -968,7 +1061,6 @@ html.dark .logos--marquee img[data-invert="1"]{filter:invert(1) brightness(.35)}
 /* --- misc ---------------------------------------------------- */
 .figure__pre{font-family:var(--font-alt);opacity:.85}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.hdr__spacer{flex:none;width:44px}
 
 /* No .hdr__logo img rule: the brand mark comes from the theme layer's
    ::before, and an <img> here would stack a second logo beside it. */

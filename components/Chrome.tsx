@@ -1,9 +1,10 @@
 import Arrow from './Arrow';
 import LangSwitch from './LangSwitch';
+import Search, { type SearchDoc } from './Search';
 import { localePath, type Locale } from '@/lib/i18n';
 import { ui } from '@/lib/ui';
 import { asset } from '@/lib/assets';
-import { getSettings, type Chrome, type Media } from '@/lib/content';
+import { getRouteTitles, getSettings, type Chrome, type Media } from '@/lib/content';
 
 /* Every element mirrors the original chrome markup one-for-one — the class
    names are the contract the shipped CSS is written against, so the geometry
@@ -12,7 +13,23 @@ import { getSettings, type Chrome, type Media } from '@/lib/content';
 
 type WithLocale = { chrome: Chrome; locale: Locale };
 
-export function UtilityBar({ chrome, locale }: WithLocale) {
+/**
+ * The utility links and the language switch, as the header's right-hand side.
+ *
+ * This used to be a full-width strip of its own above the header, which is what
+ * left the header row with nothing in it but a logo and 1124px of air: the nav
+ * was in one band and the brand in another, so neither filled its own line. The
+ * reference does not split them — thalesgroup.com puts the logo in a block on
+ * the left and the utility row AND the main nav to its right, sharing the same
+ * header. Folding the two bands into one row is that same idea with our smaller
+ * link set, and it removes a whole 41px band at the same time.
+ *
+ * Still `.utility`, and still `.utility__inner` inside it. Those class names are
+ * a contract in two directions: the shipped theme layer styles `.utility a`, and
+ * scripts/pipeline.mjs asserts `class="utility"` appears in every rendered route
+ * as its "complete chrome" check. Renaming would have quietly cost both.
+ */
+export function UtilityNav({ chrome, locale }: WithLocale) {
   return (
     <div className="utility">
       <div className="utility__inner">
@@ -101,10 +118,45 @@ export function Header({ chrome, locale }: WithLocale) {
 
         <Logo img={chrome.logoImg} locale={locale} className="hdr__logo" wordmark cssVar="--logo-mark-circle" />
 
-        <span className="hdr__spacer" />
+        {/* Replaces `.hdr__spacer`, a 44px element whose only job was to balance
+            the burger so the logo sat centred in a 1345px cell. Centring the
+            brand in an empty row is what the space was FOR; once the row
+            carries navigation there is nothing to balance, and the logo reads
+            better hard left — which is where the reference puts it. */}
+        <UtilityNav chrome={chrome} locale={locale} />
+
+        {/* Far end of the row, past the language control — the same slot
+            thalesgroup.com gives it (a 66px square at the right edge of the nav
+            row, behind its own rule). `searchDocs` is built from the bundled
+            route table, so this costs no filesystem read; see Search.tsx. */}
+        <Search docs={searchDocs(locale)} labels={searchLabels(locale)} />
       </div>
     </header>
   );
+}
+
+/**
+ * The search index: every route, titled in this locale.
+ *
+ * `getRouteTitles()` is one of the documents lib/content.ts bundles statically,
+ * which is what makes this safe to call from a header that also renders inside
+ * the Worker. Reading the per-page documents instead would give richer matches
+ * and fail in production only.
+ */
+function searchDocs(locale: Locale): SearchDoc[] {
+  return Object.entries(getRouteTitles())
+    .map(([route, titles]) => ({ title: titles[locale] ?? '', href: localePath(locale, route) }))
+    .filter((d) => d.title !== '');
+}
+
+function searchLabels(locale: Locale) {
+  const t = ui(locale);
+  return {
+    open: t.openSearch,
+    placeholder: t.searchPlaceholder,
+    noResults: t.searchNoResults,
+    close: t.close,
+  };
 }
 
 export function MegaMenu({ chrome, locale }: WithLocale) {
@@ -187,14 +239,10 @@ export function MegaMenu({ chrome, locale }: WithLocale) {
   );
 }
 
-/**
- * Kept as a no-op placeholder so the layout's DOM shape is unchanged.
- * The original search overlay was a clone artefact whose submit handler called
- * alert(); it is not wired to anything real, so it is not shipped.
- */
-export function SearchLayer() {
-  return null;
-}
+/* SearchLayer was a no-op placeholder here, standing in for the reference's
+   search overlay — a clone artefact whose submit handler called alert(). It is
+   gone because the overlay is real now and ships with its own trigger; see
+   components/Search.tsx. */
 
 export function Footer({ chrome, locale }: WithLocale) {
   const { columns } = chrome.footer;

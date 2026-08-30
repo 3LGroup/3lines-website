@@ -42,6 +42,13 @@ export interface UiStrings {
   notFoundBrowse: string;
   /** Accessible name of the WhatsApp item the social strip derives from Site info. */
   whatsapp: string;
+  /** aria-label on the header button that opens the search overlay. */
+  openSearch: string;
+  /** Placeholder inside the search overlay's input. */
+  searchPlaceholder: string;
+  /** Shown when a query matches no page. Takes no argument — the query is
+      already on screen in the input directly above it. */
+  searchNoResults: string;
 }
 
 const FALLBACK: Record<Locale, UiStrings> = {
@@ -59,6 +66,9 @@ const FALLBACK: Record<Locale, UiStrings> = {
     notFoundBody: 'The address may be out of date, or the page may have moved.',
     notFoundBrowse: 'Try one of these pages:',
     whatsapp: 'WhatsApp',
+    openSearch: 'Search this site',
+    searchPlaceholder: 'Search pages…',
+    searchNoResults: 'No pages match that search.',
   },
   ar: {
     openMenu: 'فتح القائمة الرئيسية',
@@ -74,6 +84,9 @@ const FALLBACK: Record<Locale, UiStrings> = {
     notFoundBody: 'قد يكون العنوان قديمًا، أو ربما تم نقل الصفحة.',
     notFoundBrowse: 'جرّب إحدى هذه الصفحات:',
     whatsapp: 'واتساب',
+    openSearch: 'ابحث في الموقع',
+    searchPlaceholder: 'ابحث في الصفحات…',
+    searchNoResults: 'لا توجد صفحات تطابق هذا البحث.',
   },
 };
 

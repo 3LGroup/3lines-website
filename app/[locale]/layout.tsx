@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { notFound } from 'next/navigation';
-import { Footer, Header, MegaMenu, SearchLayer, UtilityBar } from '@/components/Chrome';
+import { Footer, Header, MegaMenu } from '@/components/Chrome';
 import { getChrome, getSettings } from '@/lib/content';
 import { organizationSchema } from '@/lib/schema';
 import { asset } from '@/lib/assets';
@@ -98,10 +98,12 @@ export default async function LocaleLayout({
           <a href={chrome.skip.href}>{chrome.skip.label}</a>
         </div>
 
-        <UtilityBar chrome={chrome} locale={locale} />
+        {/* The utility links moved inside <Header> — they are the header's
+            right-hand side now, not a band above it. See UtilityNav. */}
         <Header chrome={chrome} locale={locale} />
         <MegaMenu chrome={chrome} locale={locale} />
-        <SearchLayer />
+        {/* The search overlay is no longer a placeholder rendered here — it is
+            real now, and lives with the button that opens it. See Search.tsx. */}
 
         <main id="main">{children}</main>
 

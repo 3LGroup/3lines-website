@@ -299,7 +299,30 @@ p,li,dd,address,figcaption,.lede,.sub,.excerpt,
 .cta[style*="--img"]::after{
   content:"";display:block!important;position:static!important;
   height:clamp(200px,24vw,360px);
-  margin:clamp(26px,3.4vw,44px) clamp(18px,3.2vw,48px) 0;
+  /* `width` is the one property this override forgot, and it showed.
+     .hero::after began life as an absolutely-positioned decorative gradient —
+     `width:46%; height:160%; right:-6%` in style.css — and repurposing it as a
+     static photo band reset position, height, margin and background but left
+     the 46% standing. So the hangar photo painted 729px wide inside a 1585px
+     row and the remaining ~760px beside it read as a hole in the page. Nothing
+     looked broken; it looked like a layout decision nobody had made.
+
+     `.careers::after` and `.cta::after` share this rule and are unaffected —
+     they were `inset:0`, which yields `width:auto` the moment position goes
+     static. Only the hero carried an explicit width.
+
+     Sized to the text column, not the viewport: matching `.wrap`'s own measure
+     (`--wrap` capped, `--pad` gutters) lines the photo's edges up with the
+     heading above it, where edge-to-edge would overhang the copy by ~50px a
+     side and read as a second, wider grid. */
+  width:min(100% - var(--pad) * 2, var(--wrap) - var(--pad) * 2);
+  /* `justify-self`, not `margin-inline:auto`. Both centre a grid item, but an
+     auto margin reports back as `0px` through getComputedStyle, so the used
+     position cannot be read — and a pseudo-element has no node to measure with
+     getBoundingClientRect either. This states the alignment outright and keeps
+     the band verifiable. */
+  justify-self:center;
+  margin:clamp(26px,3.4vw,44px) 0 0;
   background-image:var(--img)!important;
   /* All three need !important. The gradient-killer above uses the `background`
      SHORTHAND with !important, which resets size/position/repeat to their
@@ -310,6 +333,30 @@ p,li,dd,address,figcaption,.lede,.sub,.excerpt,
   background-position:center!important;
   background-repeat:no-repeat!important;
   border-radius:var(--radius);border:1px solid var(--border);
+}
+
+/* The band unveils rather than appearing.
+ *
+ * `clip-path` and `opacity` only — both composite on the GPU, so this costs no
+ * layout and no repaint. The obvious alternative, a slow Ken Burns on
+ * `background-size`, repaints the full 1331x360 band every frame for as long as
+ * the page is open; it looks expensive because it is. A single reveal reads as
+ * considered, an endless drift reads as a screensaver.
+ *
+ * `both` holds the final frame, so the band cannot flash back to clipped if the
+ * animation is interrupted. Wrapped in `no-preference` rather than being undone
+ * inside the reduce block: that way the animation is never declared at all for
+ * a reader who asked for stillness, instead of being declared and then
+ * neutralised by the global `animation-duration:.001ms` override. */
+@media (prefers-reduced-motion:no-preference){
+  .hero[style*="--img"]::after,.careers[style*="--img"]::after,
+  .cta[style*="--img"]::after{
+    animation:bandReveal .95s cubic-bezier(.22,.61,.36,1) both;
+  }
+}
+@keyframes bandReveal{
+  from{opacity:0;clip-path:inset(0 0 22% 0)}
+  to{opacity:1;clip-path:inset(0 0 0 0)}
 }
 .hero[style*="--img"],.careers[style*="--img"],.cta[style*="--img"]{
   grid-template-rows:auto auto auto;
