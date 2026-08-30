@@ -45,15 +45,33 @@ if (!fs.existsSync(MANIFEST)) {
 
   const stale = [];
   const missing = [];
+  const crlf = [];
   const seen = new Set();
 
   for (const file of walk(PUBLIC)) {
     const url = '/' + path.relative(PUBLIC, file).split(path.sep).join('/');
     seen.add(url);
-    const actual = createHash('sha1').update(fs.readFileSync(file)).digest('hex').slice(0, 8);
+    const bytes = fs.readFileSync(file);
+    const actual = createHash('sha1').update(bytes).digest('hex').slice(0, 8);
     const recorded = manifest[url];
     if (recorded === undefined) missing.push(url);
     else if (recorded !== actual) stale.push({ url, recorded, actual });
+
+    /*
+     * CRLF in a hashed text asset means this working tree disagrees with CI.
+     *
+     * .gitattributes pins `public/assets/**` to eol=lf precisely because these
+     * bytes become cache-busting URLs, but a file that predates that rule keeps
+     * its CRLF until something renormalizes it — and git then reports the file
+     * as clean, because it normalizes on comparison. tajawal.css sat like that:
+     * this machine hashed it to aa24338c while every Linux build hashed the
+     * same commit to a0f361d7. Same commit, two different asset URLs.
+     *
+     * Nothing caught it. The manifest was self-consistent locally, the site
+     * worked, and the only symptom was audit:assets failing against production
+     * while passing against a local server.
+     */
+    if (/\.(css|js|svg)$/.test(url) && bytes.includes(0x0d)) crlf.push(url);
   }
 
   // A file deleted from public/ but still listed is harmless at runtime — the
@@ -61,10 +79,15 @@ if (!fs.existsSync(MANIFEST)) {
   // regenerated, which is the thing being checked.
   const orphaned = Object.keys(manifest).filter((url) => !seen.has(url));
 
-  const problems = stale.length + missing.length + orphaned.length;
+  const problems = stale.length + missing.length + orphaned.length + crlf.length;
 
   if (problems) {
     console.error(`MANIFEST AUDIT FAILED — ${problems} problem(s):`);
+    for (const c of crlf) {
+      console.error(`  ✗ CRLF     ${c} has Windows line endings`);
+      console.error(`               .gitattributes pins these to LF; CI will hash different bytes.`);
+      console.error(`               Fix: rm the file, then \`git checkout -- <path>\`, then re-run assets:manifest`);
+    }
     for (const s of stale) {
       console.error(`  ✗ stale    ${s.url}`);
       console.error(`               manifest ${s.recorded}   file ${s.actual}`);
