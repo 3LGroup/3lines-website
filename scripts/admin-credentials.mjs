@@ -73,6 +73,37 @@ if (cmd === 'secret') {
     console.error(`Refusing: password is ${password.length} chars, minimum is 12.`);
     process.exit(1);
   }
+
+  /*
+   * Length alone does not mean entropy, and the gap is not theoretical: a
+   * generator that silently produced nothing got this far. A PowerShell 5.1 box
+   * ran `[RandomNumberGenerator]::Fill($bytes)` — a .NET Core method that does
+   * not exist there — which threw, left the buffer as 24 zero bytes, and
+   * base64'd into a 32-character password of solid "A". Thirty-two characters,
+   * comfortably past the floor above, and worth about as much as no password.
+   *
+   * So check the shape of the string, not just its size. Anything a real
+   * generator emits sails through; a degenerate buffer cannot.
+   */
+  const distinct = new Set(password).size;
+  const commonest = Math.max(...[...new Set(password)].map((c) => password.split(c).length - 1));
+
+  if (distinct < 8 || commonest > password.length / 2) {
+    console.error(
+      [
+        `Refusing: this does not look randomly generated.`,
+        `  length:     ${password.length}`,
+        `  distinct:   ${distinct} characters (need at least 8)`,
+        `  commonest:  one character repeated ${commonest}x (must be at most half)`,
+        '',
+        'If a generator produced this, it failed silently — check its output before',
+        'reusing it. On Windows PowerShell 5.1:',
+        '',
+        '  $pw = node -e "console.log(require(\'crypto\').randomBytes(24).toString(\'base64url\'))"',
+      ].join('\n')
+    );
+    process.exit(1);
+  }
   const started = Date.now();
   const hash = await hashPassword(password);
   console.log(hash);
