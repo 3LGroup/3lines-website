@@ -293,6 +293,52 @@ p,li,dd,address,figcaption,.lede,.sub,.excerpt,
   background-size:64px!important;opacity:1;
 }
 
+/* ---- Photographic grade -------------------------------------------------
+   One palette across every photograph on the site.
+ *
+ * This is the thing that separates a defence-sector site that looks considered
+ * from one that looks assembled. Anduril, Palantir and Shield AI do not use
+ * better SUBJECTS than these — a radar array under a blue sky, an RF bench, an
+ * officer in a simulator is exactly their register. What they do is grade every
+ * frame into one palette, so the page reads as a single body of work.
+ *
+ * Ungraded, this library does not cohere: 3l-radar-field is a saturated blue
+ * sky, 3l-mro-rf-test is neutral fluorescent white, hero-mro is cool grey
+ * hangar light and 3l-xr-lab is a bright white room. Individually good, and
+ * chromatically unrelated. Pulling saturation back and lifting contrast
+ * slightly is enough to relate them without draining them — a full duotone was
+ * tried and reads as a tech startup rather than a sustainment contractor.
+ *
+ * Applied to the dedicated media SLOTS only. `.tile` and `.domain` carry their
+ * own copy, and `filter` applies to an element's whole subtree, so grading them
+ * would desaturate their text along with their photograph.
+ *
+ * Colour returns on hover for anything interactive, below. That also restores
+ * an interaction the design already intended and lost: `.tile:hover svg` and
+ * `.pcard:hover .pcard__media svg` animate an `svg` this theme sets to
+ * `display:none`, so the hover motion on every photo card has been inert. */
+:root{ --photo-grade:saturate(.72) contrast(1.06); }
+
+.card__media,.hwcard__media,.prod__media,.pcard__media,.ncard__media,
+.story__media,.usecase__media,.impact__media,.frame,.platstage,
+.storypanel__media,.feature__media{
+  filter:var(--photo-grade);
+  transition:filter .5s var(--ease,cubic-bezier(.2,.8,.2,1));
+}
+/* Full colour under the cursor: the card the reader is considering is the one
+   that comes alive. Not on the hero band — nothing there is clickable, and a
+   photograph that reacts to a passing cursor reads as a bug. */
+.card:hover .card__media,.hwcard:hover .hwcard__media,.prod:hover .prod__media,
+.pcard:hover .pcard__media,.ncard:hover .ncard__media,.story:hover .story__media,
+.usecase:hover .usecase__media,.impact:hover .impact__media{
+  filter:none;
+}
+@media (prefers-reduced-motion:reduce){
+  .card__media,.hwcard__media,.prod__media,.pcard__media,.ncard__media,
+  .story__media,.usecase__media,.impact__media,.frame,.platstage,
+  .storypanel__media,.feature__media{transition:none}
+}
+
 /* Hero / band imagery sits BELOW the copy as its own panel. The system bans
    gradients, so text is never laid over a photograph. */
 .hero[style*="--img"]::after,.careers[style*="--img"]::after,
@@ -333,6 +379,9 @@ p,li,dd,address,figcaption,.lede,.sub,.excerpt,
   background-position:center!important;
   background-repeat:no-repeat!important;
   border-radius:var(--radius);border:1px solid var(--border);
+  /* Same grade as the card media above, so the hero band belongs to the same
+     body of work rather than being the one ungraded frame on the page. */
+  filter:var(--photo-grade);
 }
 
 /* The band unveils rather than appearing.
