@@ -43,10 +43,14 @@ exist and are committed. Going live is now about secrets and DNS, not code.
 
 ## 2. What was built, and how
 
-**Content pipeline.** `scripts/ingest-3lines.mjs` turns the source material into
-the 50 documents the site renders. It refuses to emit anything it cannot fully
-account for — a missing image file or a blank required title fails the run
-rather than shipping a hole. `scripts/extract-non-cms.mjs` recovers the copy
+**Content pipeline — and which half of it is live.** `scripts/ingest-3lines.mjs`
+built the original 50 documents from source material, refusing to emit anything
+it could not fully account for: a missing image file or a blank required title
+fails the run rather than shipping a hole. That was the bootstrap. **It is no
+longer the source of truth** — editors author in the CMS, and
+`scripts/cf-prebuild.mjs` exports `content/` from D1 at build time. Both write
+to the same directory, which is a trap; see §6 before running ingest.
+`scripts/extract-non-cms.mjs` recovers the copy
 that existed only inside the old site's compiled JavaScript (the hero's rotating
 words, the "Why 3Lines" slider, the About pillars and stats, the certification
 plates) in both languages.
@@ -82,7 +86,7 @@ caught. Every one of these shipped, or nearly did.
 | `audit:rtl` | **Arabic was letter-spaced on all 50 Arabic route/viewport combinations.** Arabic is cursive, so tracking breaks the letterforms' joins. The reset existed but was written at a specificity that lost — nothing errored, nothing 404'd, and the page measured fine. Fixed. |
 | `audit:a11y` | Heading order skips on every page, and the audit's own over-reporting: it applied WCAG 2.5.8's 24px minimum without the exceptions attached to it and flagged 780 conforming links. |
 | `audit:assets` | Stale cache-busting — the failure where cold-browser audits report green while returning visitors get old CSS. |
-| `audit:visual` | Geometry drift across 50 routes × 7 viewports. It is currently catching a real one: see §6. |
+| `audit:visual` | Geometry drift across 50 routes × 7 viewports. It caught the branch failing its own gate — `b4621db` changed the hero DOM and re-stamped provenance from a capture taken beforehand — and then caught the verification pipeline reverting CMS content mid-run. See §6. |
 | `audit:visual --selftest` | The harness once reported a perfect score while measuring **nothing** — a function had been passed to the browser as a string, silently dropping its argument. There is now a negative control that deliberately breaks a page and fails if the audit does not notice. |
 | `audit:content` | Content that the schema or the renderer cannot handle, in both locales, before a build is attempted. |
 | `audit:links` | Broken and orphaned internal links across both locales. |
@@ -275,6 +279,22 @@ scale in the theme layer is pinned to tag names behind `!important` rules, so
 correcting the levels silently resized cards across the site. It is a real
 improvement worth making — as its own change, with the baseline re-captured
 after it, not in the same week as a domain cutover.
+
+**Do not run `npm run ingest` on this branch.** There are two writers for
+`content/` and only one is authoritative here. `ingest-3lines.mjs` regenerates
+it from `source-content/` — the bootstrap path from before the CMS existed —
+while `cf-prebuild.mjs` exports it from D1, which is where editors actually
+author. Running ingest reverts CMS work: it strips the location page's info
+rail, directions link and map facade out of both locales and rewrites
+`chrome.json` and `news-items.json`.
+
+This was live in the verification pipeline until `ecfa760` — `npm run verify`
+was corrupting the content it was verifying, reporting the damage as geometry
+findings, and leaving the tree dirty for whoever committed next. The pipeline
+now skips ingest and fails if a run modifies `content/`, `source-content/` or
+`baseline/`. That guard does not protect you from running the script directly.
+Use it only when deliberately re-bootstrapping from source, and expect to
+discard the result rather than commit it.
 
 **`deploy/` is not the deployment path.** It holds a pm2 + nginx kit for
 self-hosting. The chosen path is Cloudflare. It is kept as the fallback and
