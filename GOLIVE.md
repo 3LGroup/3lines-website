@@ -178,8 +178,18 @@ Actions tab.
 
 To deploy without pushing, use **Actions → Deploy → Run workflow**.
 
-The local equivalent, `npm run cf:deploy`, still works and is the fallback if
-Actions is unavailable. It needs `npx wrangler login` first.
+> **Do not deploy from Windows.** `npm run cf:deploy` and `npx wrangler deploy`
+> both crash on this machine — `workerd` dies with an access violation inside
+> miniflare, which OpenNext warns about ("not fully compatible with Windows").
+> The crash is *not reliably before or after the upload*, so a run can leave a
+> partial or stale bundle live while printing a stack trace, and the exit code
+> tells you nothing. That is how a build with a stale asset hash reached
+> production and passed unnoticed.
+>
+> Worse, a Windows build is not equivalent to a CI build: line endings differ,
+> so the same commit produces different cache-busting URLs. Deploy from GitHub
+> Actions (Linux) and let that be the only thing that ships. If you must deploy
+> by hand, do it from WSL or a Linux machine, never from PowerShell.
 
 Then run every check in §7 **against the `*.workers.dev` URL**. Do not skip to
 DNS because it looks right in a browser.
@@ -330,3 +340,63 @@ whole rollback.
 
 Do not decommission the current host until the new one has served real traffic
 for long enough that you would have heard about problems.
+
+---
+
+## 9. Post-cutover verification (2026-08-30)
+
+Run against `https://3lines.com.sa` after the domain was repointed, not against
+localhost.
+
+### Public site
+
+| Gate | Result |
+|---|---|
+| Pages | `/en` `/ar` `/en/services` `/ar/about` → 200 |
+| RTL / Arabic typography | **OK** — 4,328 elements, no letter-spacing, no overflow |
+| Internal links | **OK** — 0 broken, 0 unreachable, 0 orphans (50 routes, 2,862 links) |
+| Console / hydration | **OK** — 0 errors, 0 hydration mismatches, 0 4xx |
+| Asset cache-busting | **OK** — after the line-ending fix below |
+| Admin isolation + token drift | **OK** — 10/10 |
+| Accessibility (WCAG 2.1 AA) | **PASS** — 100 pages, 6,680 interactive elements, 1,348 contrast samples, 0 failures |
+
+Accessibility warnings that remain, none of them gating: 148 heading-order skips
+(see §6 — deliberately deferred) and 6 tap-target warnings on the three Arabic
+legal pages, which exist only because those pages are one placeholder paragraph
+long and the floating theme button lands on the footer. Real legal copy removes
+them.
+
+### CMS, end to end on the live site
+
+Tested with a throwaway password that was rotated away immediately afterwards
+and confirmed dead.
+
+| Check | Result |
+|---|---|
+| Every admin route, logged out | 307 → `/admin/login`; `/admin/api/media` → 401 |
+| Wrong password | rejected, "Incorrect password", no session |
+| Empty password | rejected, no session |
+| Session cookie | `HttpOnly`, `Secure`, `SameSite=Lax`, with an expiry |
+| All 8 admin sections, logged in | 200, all render |
+| Dirty-state tracking | Save disabled → **enabled on edit** → disabled after save |
+| Save → D1 | value survives a full page reload |
+| Publish | requires a second click ("Confirm — publish live") |
+| **Publish → deploy** | fired a `repository_dispatch` run that completed successfully |
+| Cleanup | test value restored; never appeared on the live site |
+
+**The publish failure that defined this project is fixed.** On the old Worker,
+Publish fired zero network requests and the UI still read "No changes" after a
+successful save. Both behaviours are gone.
+
+### One defect found and fixed
+
+The deployed HTML advertised `tajawal.css?v=a0f361d7` while this machine hashed
+the same file to `aa24338c` — 8,472 bytes with LF, 8,616 with CRLF. `audit:assets`
+failed against production and passed against a local server, which is the least
+useful pair of results a gate can produce.
+
+`.gitattributes` already pinned `public/assets/**` to `eol=lf` and said why, but
+it was added after the files and git normalizes on comparison, so fourteen files
+kept CRLF while reporting clean. They are renormalized, and `audit:manifest` now
+fails on CRLF in any hashed `css`/`js`/`svg` — the check that would have caught
+this offline in a second instead of via two audit runs disagreeing.
