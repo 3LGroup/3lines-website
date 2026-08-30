@@ -109,7 +109,8 @@ results.push({ stage: stageNo, name: 'process safety', status: 'ok' });
  *
  * So: run it when the sibling is there (re-deriving is how we catch drift), and
  * skip it loudly when it is not. What it produces is already on disk either way.
- * The ingest stage below reads only source-content/ and is unaffected.
+ * Nothing downstream consumes it during a verification run — see the note on
+ * ingestion below — so this is drift detection, not a build input.
  */
 const SIBLING = path.resolve(import.meta.dirname, '..', '..', '3lines-website');
 if (fs.existsSync(SIBLING)) {
@@ -122,7 +123,32 @@ if (fs.existsSync(SIBLING)) {
   );
 }
 
-run('content ingestion', 'node', ['scripts/ingest-3lines.mjs']);
+/**
+ * Ingestion is NOT run here, and must not be.
+ *
+ * There are two writers for content/ and only one of them is authoritative on
+ * this branch. ingest-3lines.mjs regenerates it from source-content/ — the
+ * bootstrap path from before the CMS existed. cf-prebuild.mjs exports it from
+ * D1, which is where editors actually author, and that export is what gets
+ * committed and what ships.
+ *
+ * Running ingest inside the verification pipeline reverted CMS-authored
+ * content: it stripped the location page's info rail, directions link and map
+ * facade (df2c220) out of both locales, and rewrote chrome.json and
+ * news-items.json. The visual audit then dutifully reported the corruption as
+ * geometry findings — a verdict about a page the pipeline had just broken
+ * itself, on a tree it left dirty for whoever committed next.
+ *
+ * audit-content.mjs below validates the committed content against the schema
+ * and the renderers, so nothing is lost by not regenerating first: what gets
+ * verified is now exactly what gets deployed.
+ */
+skip(
+  'content ingestion',
+  'content/ is exported from D1 by the CMS, not generated from source-content/. ' +
+    'Running ingest here would revert CMS-authored content — see the note above. ' +
+    'Run "npm run ingest" by hand only when deliberately re-bootstrapping.'
+);
 run('content ↔ schema ↔ renderer parity (both locales)', 'node', ['scripts/audit-content.mjs']);
 
 // Needs no server and no database — it is a property of the classification in
@@ -328,6 +354,26 @@ log(`  properties compared: ${report.totalPropsCompared}`);
 log(`  structural count findings: ${report.totalCountFindings}`);
 log(`  geometry findings: ${report.totalGeometryFindings}`);
 results.push({ stage: stageNo, name: 'artifact validation', status: 'ok' });
+
+/* ------------------------------------- tree-mutation guard -- */
+
+/**
+ * A verification run must not change what it is verifying. This caught the
+ * ingest stage rewriting content/ mid-pipeline; without it the only symptom
+ * was a confusing visual diff and a dirty tree nobody connected to the run.
+ */
+stageNo++;
+log(`
+── stage ${stageNo}: tree-mutation guard ──`);
+const dirty = spawnSync('git', ['status', '--porcelain', 'content', 'source-content', 'baseline'], {
+  encoding: 'utf8',
+  shell: true,
+}).stdout.trim();
+if (dirty) {
+  die(stageNo, 'the pipeline modified tracked content while verifying it', dirty);
+}
+log('  content/, source-content/ and baseline/ are unchanged by this run');
+results.push({ stage: stageNo, name: 'tree-mutation guard', status: 'ok' });
 
 fs.writeFileSync(path.join(RUN_DIR, 'stages.json'), JSON.stringify(results, null, 2));
 
