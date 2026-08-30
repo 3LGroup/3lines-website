@@ -161,8 +161,9 @@ scope it needs.
 > nothing. The file pins `ref: location-map-and-fixes`, so the copy on `main`
 > still builds this branch rather than main itself.
 >
-> This has been done as part of the go-live prep. If you ever rename the
-> production branch, both the `push:` trigger and that `ref:` have to change.
+> **Confirmed present on `main`** and byte-identical to this branch's copy
+> (commit `9d50866`). If you ever rename the production branch, both the
+> `push:` trigger and that `ref:` have to change, in both copies.
 
 ### Step 5 — Deploy
 
