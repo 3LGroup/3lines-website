@@ -3,8 +3,6 @@ import { DIR, LOCALES, type Locale } from './blocks';
 export { LOCALES, DIR };
 export type { Locale };
 
-export const DEFAULT_LOCALE: Locale = 'en';
-
 export const isLocale = (v: string): v is Locale => (LOCALES as string[]).includes(v);
 
 /**

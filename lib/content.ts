@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type { Block, Locale, PageDoc, SvgNode } from './blocks';
+import type { Locale, PageDoc, SvgNode } from './blocks';
 
 import routesJson from '../content/routes.json';
 import chromeEn from '../content/en/chrome.json';
@@ -234,6 +234,3 @@ export function allDocs(locale: Locale): PageDoc[] {
     .filter((d): d is PageDoc => d !== null);
 }
 
-export function allBlocks(locale: Locale): { route: string; block: Block }[] {
-  return allDocs(locale).flatMap((doc) => doc.blocks.map((block) => ({ route: doc.route, block })));
-}

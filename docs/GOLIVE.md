@@ -4,7 +4,7 @@ This is the plan for putting this branch in front of the public. It covers what
 was built, how it works, what each safety net actually caught, and the parts
 only you can do.
 
-`README.md` explains the system. `docs/CMS-GUIDE.md` is the editor's manual.
+`../README.md` explains the system. `CMS-GUIDE.md` is the editor's manual.
 This file is the handover for the switch-over itself.
 
 ---

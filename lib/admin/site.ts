@@ -1,4 +1,4 @@
-import { and, asc, eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { getDb, schema } from '@/lib/db/client';
 import type { Locale } from './content';
 
@@ -6,37 +6,7 @@ const LOCALES: Locale[] = ['en', 'ar'];
 
 /* ------------------------------------------------------------------- news -- */
 
-export interface NewsPost {
-  id: string;
-  slug: string;
-  route: string;
-  date: string;
-  title: Record<Locale, string>;
-  tag: Record<Locale, string>;
-}
 
-export async function listNews(): Promise<NewsPost[]> {
-  const db = await getDb();
-  const [items, tr] = await Promise.all([
-    db.select().from(schema.newsItems).orderBy(asc(schema.newsItems.position)),
-    db.select().from(schema.newsItemTranslations),
-  ]);
-  const of = new Map(tr.map((t) => [`${t.itemId}:${t.locale}`, t]));
-
-  return items.map((i) => ({
-    id: i.id,
-    slug: i.slug,
-    route: i.route,
-    date: i.date,
-    title: Object.fromEntries(
-      LOCALES.map((l) => [l, of.get(`${i.id}:${l}`)?.title ?? ''])
-    ) as Record<Locale, string>,
-    tag: Object.fromEntries(LOCALES.map((l) => [l, of.get(`${i.id}:${l}`)?.tag ?? ''])) as Record<
-      Locale,
-      string
-    >,
-  }));
-}
 
 export interface NewsEdit {
   id: string;

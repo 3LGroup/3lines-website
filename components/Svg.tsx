@@ -1,4 +1,4 @@
-import { createElement, Fragment, type ReactNode } from 'react';
+import { createElement, type ReactNode } from 'react';
 import type { SvgNode } from '@/lib/blocks';
 
 /**
@@ -22,11 +22,3 @@ function build(node: SvgNode, key: number): ReactNode {
   );
 }
 
-/** Render a list of sibling SVG trees. */
-export function SvgList({ nodes }: { nodes: SvgNode[] }) {
-  return createElement(
-    Fragment,
-    null,
-    nodes.map((n, i) => build(n, i))
-  );
-}
