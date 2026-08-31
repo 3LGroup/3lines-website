@@ -31,6 +31,13 @@ concurrency:
 
 jobs:
   deploy:
+    # Only the repository actually wired to Cloudflare may deploy. The branch is
+    # also pushed to a mirror repo (…/3lines-website-clone) as a backup, and
+    # this same file rode along — but the mirror has none of the secrets below,
+    # so every push produced a failed run and a red-✗ email that looked like a
+    # production incident. Skipping is keyed to the repo NAME, not the owner, so
+    # the guard survives transferring this repository to an organisation.
+    if: github.event.repository.name == '3lines-website'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
