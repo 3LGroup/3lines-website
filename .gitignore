@@ -40,3 +40,6 @@ content/subscribers.json
 
 # Local dev server logs
 .server-*.log
+
+# Claude Code tool state (launch config, session-local files).
+.claude/
