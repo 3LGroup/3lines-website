@@ -112,19 +112,32 @@ ul{margin:0;padding:0;list-style:none}
 }
 .hdr .utility__inner > a:hover::after,
 .hdr .utility__inner > a[aria-current="page"]::after{transform:scaleX(1)}
-/* Links run from the logo, not from the right edge. Right-aligning the whole
-   group left a 725px hole between the brand and the first link — the same empty
-   header, just relocated. The reference starts its main nav immediately after
-   the logo block (x=235 against a logo block ending at 227) and pushes only the
-   language cluster to the far right, which is what `.utility__lang` does below. */
-.utility__inner{display:flex;align-items:center;gap:clamp(13px,1.6vw,26px);min-height:40px;justify-content:flex-start;padding-inline:clamp(14px,2vw,34px) var(--pad);white-space:nowrap}
+/* The nav sits at the trailing edge: logo left, navigation right.
+
+   A previous revision ran the links from the logo instead, on the reasoning
+   that right-aligning "left a 725px hole between the brand and the first link —
+   the same empty header, just relocated". That is true as far as it goes, and
+   it was a deliberate call against the reference site's layout. It was
+   overridden: logo-left/nav-right is the more conventional reading of a header,
+   and a gap after the brand reads as breathing room where the same gap in the
+   middle of the row reads as something missing.
+
+   `flex-end` alone cannot do this. An auto margin consumes free space before
+   `justify-content` ever gets a say, so while `.utility__lang` carried
+   `margin-inline-start:auto` the switch stayed pinned to the far end and the
+   links stayed put. The margin had to go with it — the two changes are one
+   change. */
+.utility__inner{display:flex;align-items:center;gap:clamp(13px,1.6vw,26px);min-height:40px;justify-content:flex-end;padding-inline:clamp(14px,2vw,34px) var(--pad);white-space:nowrap}
 .utility a{color:var(--ink-70);font-weight:500;transition:color .2s}
 .utility a:hover{color:var(--blue)}
 .utility .ext svg{width:11px;height:11px;fill:currentColor;margin-left:5px;vertical-align:-1px}
-/* `margin-inline-start:auto` is what pins the language switch to the far end of
-   the header while the links stay next to the logo. Logical, not `margin-left`,
-   so the Arabic header pins it to the left without rtl.css needing a counter-rule. */
-.utility__lang{display:flex;gap:8px;align-items:center;margin-inline-start:auto;padding-left:22px;border-left:1px solid var(--lilac)}
+/* No `margin-inline-start:auto` here any more: it used to pin the switch to the
+   far end while the links stayed by the logo, and it would silently defeat the
+   `justify-content:flex-end` above if reintroduced. The divider is logical
+   (`padding-inline-start`/`border-inline-start`) so it stays on the side facing
+   the links in Arabic too — the physical `padding-left`/`border-left` it
+   replaces drew the rule on the wrong side of the cluster under RTL. */
+.utility__lang{display:flex;gap:8px;align-items:center;padding-inline-start:22px;border-inline-start:1px solid var(--lilac)}
 .utility__lang a[aria-current="true"]{color:var(--blue);font-weight:700}
 @media (max-width:900px){.utility{display:none}}
 
