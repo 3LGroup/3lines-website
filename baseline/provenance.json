@@ -1,6 +1,6 @@
 {
-  "capturedAt": "2026-08-30T09:36:40.394Z",
-  "commit": "36f2b6383a8d1af8a528b4211f535f6851c34052",
+  "capturedAt": "2026-08-31T19:10:43.626Z",
+  "commit": "bb728893a55cc35c8e23770c0cce36e766f7296d",
   "source": "http://127.0.0.1:3200",
   "viewports": [
     "1920x1080",
@@ -64,6 +64,6 @@
     "/ar/cookie-policy"
   ],
   "files": 350,
-  "elements": 20258,
+  "elements": 20608,
   "note": "Committed reference for scripts/audit-visual.mjs when AUDIT_MODE=baseline. Regenerate only as a deliberate, reviewed change."
 }
