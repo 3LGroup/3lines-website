@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useRef, useState } from 'react';
 import Icon from './Icon';
 import { publish, type PublishState } from '@/app/admin/(app)/publish';
+import { guarded } from './guard';
 
 /**
  * Publish, with the outcome stated rather than implied.
@@ -14,7 +15,7 @@ import { publish, type PublishState } from '@/app/admin/(app)/publish';
  */
 export default function PublishButton() {
   const [state, formAction, pending] = useActionState<PublishState, FormData>(
-    async () => publish(),
+    guarded(async () => publish()),
     {}
   );
 

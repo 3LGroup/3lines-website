@@ -3,6 +3,7 @@
 import { useActionState } from 'react';
 import Icon from '@/components/admin/Icon';
 import { loginAction, type LoginState } from '../actions';
+import { guarded } from '@/components/admin/guard';
 
 /**
  * The only client component in the admin so far.
@@ -14,7 +15,7 @@ import { loginAction, type LoginState } from '../actions';
  * settled, so that matters more here than anywhere else in the app.
  */
 export default function LoginForm() {
-  const [state, formAction, pending] = useActionState<LoginState, FormData>(loginAction, {});
+  const [state, formAction, pending] = useActionState<LoginState, FormData>(guarded(loginAction), {});
 
   return (
     <form action={formAction}>

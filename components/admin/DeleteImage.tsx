@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useState } from 'react';
 import Icon from './Icon';
 import { deleteImage, type DeleteState } from '@/app/admin/(app)/media/actions';
+import { guarded } from './guard';
 
 /**
  * Remove one image — uploaded or shipped with the repo.
@@ -18,7 +19,7 @@ import { deleteImage, type DeleteState } from '@/app/admin/(app)/media/actions';
  * WHICH image is about to go.
  */
 export default function DeleteImage({ path, name }: { path: string; name: string }) {
-  const [state, action, pending] = useActionState<DeleteState, FormData>(deleteImage, {});
+  const [state, action, pending] = useActionState<DeleteState, FormData>(guarded(deleteImage), {});
   const [armed, setArmed] = useState(false);
 
   // Disarm once the delete has been attempted, so a failed delete does not

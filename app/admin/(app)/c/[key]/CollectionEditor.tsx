@@ -6,6 +6,7 @@ import ImagePicker from '@/components/admin/ImagePicker';
 import PreviewPane from '@/components/admin/PreviewPane';
 import type { Collection } from '@/lib/admin/collections';
 import { saveItems, structural, setImageAction, type CollectionState } from './actions';
+import { guarded } from '@/components/admin/guard';
 
 /**
  * A grid of cards; click one to edit it.
@@ -29,13 +30,13 @@ export default function CollectionEditor({
   const [open, setOpen] = useState<number | null>(null);
   const [confirmRemove, setConfirmRemove] = useState<number | null>(null);
 
-  const [saveState, saveAction, saving] = useActionState<CollectionState, FormData>(saveItems, {});
+  const [saveState, saveAction, saving] = useActionState<CollectionState, FormData>(guarded(saveItems), {});
   const [structState, structAction, working] = useActionState<CollectionState, FormData>(
-    structural,
+    guarded(structural),
     {}
   );
   const [imgState, imgAction, imgWorking] = useActionState<CollectionState, FormData>(
-    setImageAction,
+    guarded(setImageAction),
     {}
   );
 

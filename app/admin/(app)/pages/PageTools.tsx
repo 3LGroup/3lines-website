@@ -3,6 +3,7 @@
 import { useActionState, useState } from 'react';
 import Icon from '@/components/admin/Icon';
 import { createPageAction, deletePageAction, type PagesState } from './actions';
+import { guarded } from '@/components/admin/guard';
 
 /**
  * New-page form and per-page delete, kept client-side so delete can arm first.
@@ -11,7 +12,7 @@ import { createPageAction, deletePageAction, type PagesState } from './actions';
  */
 export function NewPageForm() {
   const [open, setOpen] = useState(false);
-  const [state, action, pending] = useActionState<PagesState, FormData>(createPageAction, {});
+  const [state, action, pending] = useActionState<PagesState, FormData>(guarded(createPageAction), {});
 
   return (
     <div style={{ marginBlockEnd: 'var(--adm-5)' }}>
@@ -69,7 +70,7 @@ export function NewPageForm() {
 
 export function DeletePageButton({ slug }: { slug: string }) {
   const [armed, setArmed] = useState(false);
-  const [state, action, pending] = useActionState<PagesState, FormData>(deletePageAction, {});
+  const [state, action, pending] = useActionState<PagesState, FormData>(guarded(deletePageAction), {});
 
   return (
     <form action={action} style={{ display: 'inline-flex', gap: 'var(--adm-1)', alignItems: 'center' }}>

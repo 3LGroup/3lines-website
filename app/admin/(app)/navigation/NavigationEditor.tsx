@@ -5,6 +5,7 @@ import Icon from '@/components/admin/Icon';
 import ImagePicker from '@/components/admin/ImagePicker';
 import type { L10nText, NavChrome, NavLink } from '@/lib/admin/chrome';
 import { saveNav, setNavImage, type NavState } from './actions';
+import { guarded } from '@/components/admin/guard';
 
 /* Sub-editors at MODULE scope, deliberately. Defined inside the component they
    get a fresh function identity every render, React treats the element type as
@@ -176,8 +177,8 @@ export default function NavigationEditor({
   const [baseline, setBaseline] = useState(() => JSON.stringify(nav));
   const dirty = useMemo(() => JSON.stringify(doc) !== baseline, [doc, baseline]);
 
-  const [saveState, saveAction, saving] = useActionState<NavState, FormData>(saveNav, {});
-  const [imgState, imgAction, imgWorking] = useActionState<NavState, FormData>(setNavImage, {});
+  const [saveState, saveAction, saving] = useActionState<NavState, FormData>(guarded(saveNav), {});
+  const [imgState, imgAction, imgWorking] = useActionState<NavState, FormData>(guarded(setNavImage), {});
 
   /* The baseline moves to what was SUBMITTED, not to the current doc: an edit
      typed while the save round-trip was in flight must stay marked unsaved

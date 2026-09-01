@@ -6,6 +6,7 @@ import ImagePicker from '@/components/admin/ImagePicker';
 import PreviewPane from '@/components/admin/PreviewPane';
 import type { EditableBlock } from '@/lib/admin/content';
 import { saveEdits, setPageImage, structural, type SaveState } from './actions';
+import { guarded } from '@/components/admin/guard';
 
 /**
  * The editing surface.
@@ -89,12 +90,12 @@ export default function PageEditor({
   // '' = untouched; otherwise the status the toggle now asks for.
   const [statusEdit, setStatusEdit] = useState('');
 
-  const [state, formAction, pending] = useActionState<SaveState, FormData>(saveEdits, {});
+  const [state, formAction, pending] = useActionState<SaveState, FormData>(guarded(saveEdits), {});
   const [structState, structAction, structPending] = useActionState<SaveState, FormData>(
-    structural,
+    guarded(structural),
     {}
   );
-  const [imgState, imgAction] = useActionState<SaveState, FormData>(setPageImage, {});
+  const [imgState, imgAction] = useActionState<SaveState, FormData>(guarded(setPageImage), {});
   const [open, setOpen] = useState<string | null>(blocks[0]?.id ?? null);
   const [armRemove, setArmRemove] = useState<string | null>(null);
 

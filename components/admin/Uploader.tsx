@@ -4,6 +4,7 @@ import { useActionState, useEffect, useRef, useState } from 'react';
 import Icon from './Icon';
 import { uploadImage, type UploadState } from '@/app/admin/(app)/media/actions';
 import { invalidateLibraryCache } from './ImagePicker';
+import { guarded } from './guard';
 
 /** Longest edge after downscaling. Wider than any slot the site actually has. */
 const MAX_EDGE = 2000;
@@ -25,7 +26,7 @@ const MAX_EDGE = 2000;
  * two disagree.
  */
 export default function Uploader() {
-  const [state, action, pending] = useActionState<UploadState, FormData>(uploadImage, {});
+  const [state, action, pending] = useActionState<UploadState, FormData>(guarded(uploadImage), {});
   const [busy, setBusy] = useState(false);
   const [name, setName] = useState<string | null>(null);
   const [note, setNote] = useState<string | null>(null);

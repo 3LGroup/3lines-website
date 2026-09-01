@@ -5,6 +5,7 @@ import Icon from '@/components/admin/Icon';
 import ImagePicker from '@/components/admin/ImagePicker';
 import type { NewsCard } from '@/lib/admin/news';
 import { newsStructural, setNewsImageAction, type NewsState } from './actions';
+import { guarded } from '@/components/admin/guard';
 
 /**
  * The card lifecycle — image, order, create, delete. The card's words are the
@@ -17,10 +18,10 @@ export default function NewsManager({
   posts: NewsCard[];
 }) {
   const [structState, structAction, structPending] = useActionState<NewsState, FormData>(
-    newsStructural,
+    guarded(newsStructural),
     {}
   );
-  const [imgState, imgAction] = useActionState<NewsState, FormData>(setNewsImageAction, {});
+  const [imgState, imgAction] = useActionState<NewsState, FormData>(guarded(setNewsImageAction), {});
   const [creating, setCreating] = useState(false);
   const [armed, setArmed] = useState<string | null>(null);
 

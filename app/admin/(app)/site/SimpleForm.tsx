@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useMemo, useRef, useState } from 'react';
 import Icon from '@/components/admin/Icon';
 import type { SiteState } from './actions';
+import { guarded } from '@/components/admin/guard';
 
 export interface SimpleField {
   /**
@@ -44,7 +45,7 @@ export default function SimpleForm({
   title: string;
 }) {
   const [edits, setEdits] = useState<Record<string, string>>({});
-  const [state, formAction, pending] = useActionState<SiteState, FormData>(action, {});
+  const [state, formAction, pending] = useActionState<SiteState, FormData>(guarded(action), {});
 
   const dirty = useMemo(() => Object.keys(edits).length, [edits]);
 
