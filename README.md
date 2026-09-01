@@ -116,8 +116,9 @@ See [`docs/CMS-GUIDE.md`](docs/CMS-GUIDE.md) for the editor-facing manual.
 Deliberately **not** CMS-editable: the single shared password (entropy-carried;
 PBKDF2 capped at 100k iterations by the Workers runtime — see
 `lib/admin/crypto.ts`), no undo/revisions, no SVG upload, contact-form field
-names, the ja/ko locales (seeded, disabled), and repo-asset deletion on the
-hosted CMS (`public/` ships as immutable Static Assets; both work locally).
+names, and the ja/ko locales (seeded, disabled). Every image deletes from the
+hosted CMS too: uploads instantly from R2, shipped assets as a one-commit
+removal that rides the next deploy (~2 minutes, and the tile says so).
 
 ## Publish → production
 

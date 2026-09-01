@@ -269,20 +269,25 @@ export async function findAssetReferences(path: string): Promise<string[]> {
  * Delete an image that shipped with the repository.
  *
  * Possible only where a filesystem exists — locally and on a self-hosted
- * deployment. In a Worker, public/ ships as immutable Static Assets and the
- * bundled manifest cannot be rewritten, so the delete is refused with the same
- * honesty as SVG uploads rather than appearing to work and doing nothing.
+ * deployment. In a Worker, public/ ships as immutable Static Assets — nothing
+ * running there can unlink a file — so the hosted delete goes through the
+ * repository instead: one commit removes the file AND its manifest entry, the
+ * push triggers the deploy workflow, and the image is gone from the live build
+ * a minute or two later. The two changes ride one commit deliberately: a
+ * dangling manifest entry would fail audit:manifest for the next developer.
  *
  * The caller has already established that nothing references the path.
+ *
+ * Returns how the delete happened: 'immediate' (file unlinked here) or
+ * 'deploying' (committed to the repo; live after the build it just started).
  */
-export async function deleteRepoAsset(path: string): Promise<void> {
+export async function deleteRepoAsset(path: string): Promise<'immediate' | 'deploying'> {
   const inWorker =
     (typeof navigator !== 'undefined' && navigator.userAgent === 'Cloudflare-Workers') ||
     'WebSocketPair' in globalThis;
   if (inWorker) {
-    throw new Error(
-      'This image shipped with the site build and cannot be deleted from the hosted CMS — it needs a developer.'
-    );
+    await deleteRepoAssetViaGitHub(path);
+    return 'deploying';
   }
 
   if (!path.startsWith('/assets/') || path.includes('..') || path.includes('\\')) {
@@ -302,4 +307,91 @@ export async function deleteRepoAsset(path: string): Promise<void> {
   // restart, which affects only this admin listing, never the public site.
   const { removeFromManifestFile } = await import('./uploads');
   await removeFromManifestFile(path);
+  return 'immediate';
+}
+
+/**
+ * Remove a shipped asset from the repository in ONE commit, via the git-data
+ * API: the image blob goes, lib/asset-manifest.json loses its entry, and the
+ * branch ref moves. One commit means one deploy — the Contents API needs a
+ * commit per file and would have started two builds for every delete.
+ *
+ * Uses the same credentials as Publish, deliberately: the CMS already holds a
+ * token that may write to this repository, and a second one would be a second
+ * thing to rotate. The branch is the production branch the deploy workflow
+ * pins; the two names live next to each other in .github/workflows/deploy.yml.
+ */
+const PRODUCTION_BRANCH = 'location-map-and-fixes';
+
+async function deleteRepoAssetViaGitHub(path: string): Promise<void> {
+  const repo = process.env.GITHUB_DISPATCH_REPO?.trim();
+  const token = process.env.GITHUB_DISPATCH_TOKEN?.trim();
+  if (!repo || !token) {
+    throw new Error(
+      'Removing shipped images needs the GitHub connection (GITHUB_DISPATCH_REPO / GITHUB_DISPATCH_TOKEN).'
+    );
+  }
+
+  const gh = async (method: string, url: string, body?: unknown) => {
+    const res = await fetch(`https://api.github.com${url}`, {
+      method,
+      headers: {
+        authorization: `Bearer ${token}`,
+        accept: 'application/vnd.github+json',
+        'user-agent': '3lines-cms',
+        ...(body ? { 'content-type': 'application/json' } : null),
+      },
+      body: body ? JSON.stringify(body) : undefined,
+    });
+    if (!res.ok) {
+      const text = (await res.text()).slice(0, 140);
+      throw new Error(`GitHub ${method} ${url} → ${res.status}: ${text}`);
+    }
+    return res.json() as Promise<Record<string, unknown>>;
+  };
+
+  const filePath = `public${path}`;
+
+  /* The manifest as committed — the copy bundled into this Worker can be
+     behind the branch (every hosted delete moves the branch without a fresh
+     bundle until the build lands), and the commit must edit what is actually
+     there, not what this build remembers. */
+  const manifestFile = (await gh(
+    'GET',
+    `/repos/${repo}/contents/lib/asset-manifest.json?ref=${PRODUCTION_BRANCH}`
+  )) as { content: string };
+  const manifestJson = JSON.parse(atob(manifestFile.content.replace(/\n/g, ''))) as Record<
+    string,
+    string
+  >;
+  delete manifestJson[path];
+  const newManifest = JSON.stringify(manifestJson, null, 2) + '\n';
+
+  const ref = (await gh('GET', `/repos/${repo}/git/ref/heads/${PRODUCTION_BRANCH}`)) as {
+    object: { sha: string };
+  };
+  const headSha = ref.object.sha;
+  const headCommit = (await gh('GET', `/repos/${repo}/git/commits/${headSha}`)) as {
+    tree: { sha: string };
+  };
+
+  const tree = (await gh('POST', `/repos/${repo}/git/trees`, {
+    base_tree: headCommit.tree.sha,
+    tree: [
+      // sha:null in a tree entry is the git-data API's spelling of deletion.
+      { path: filePath, mode: '100644', type: 'blob', sha: null },
+      { path: 'lib/asset-manifest.json', mode: '100644', type: 'blob', content: newManifest },
+    ],
+  })) as { sha: string };
+
+  const name = path.split('/').pop();
+  const commit = (await gh('POST', `/repos/${repo}/git/commits`, {
+    message: `Remove ${name} from the image library\n\nDeleted from the hosted CMS media screen. The reference check found\nnothing on the site still pointing at it.`,
+    tree: tree.sha,
+    parents: [headSha],
+  })) as { sha: string };
+
+  /* Fast-forward only — no force. A concurrent push wins the race and this
+     PATCH fails loudly; the editor sees the error and clicks delete again. */
+  await gh('PATCH', `/repos/${repo}/git/refs/heads/${PRODUCTION_BRANCH}`, { sha: commit.sha });
 }

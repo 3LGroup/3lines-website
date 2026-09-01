@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { listAllMedia, mediaFolders } from '@/lib/admin/media';
-import { isUploadPath } from '@/lib/admin/uploads';
 import Uploader from '@/components/admin/Uploader';
 import DeleteImage from '@/components/admin/DeleteImage';
 
@@ -36,8 +35,8 @@ export default async function MediaPage() {
           {inWorker ? (
             <>
               {' '}
-              Pictures you upload can be deleted here; the ones that shipped with the site are part
-              of the build and need a developer to remove.
+              Deleting an uploaded picture is instant; deleting one that shipped with the site
+              rebuilds it out, so it lingers here for a minute or two before disappearing.
             </>
           ) : null}
         </p>
@@ -75,13 +74,11 @@ export default async function MediaPage() {
                   <figcaption className="adm-tile__name" title={m.path}>
                     {m.name}
                   </figcaption>
-                  {/* Every image the environment can actually remove: the
-                      action also refuses, naming the places, while anything
-                      still references the file — so offering the button cannot
-                      break a page nobody edited. */}
-                  {!inWorker || isUploadPath(m.path) ? (
-                    <DeleteImage path={m.path} name={m.name} />
-                  ) : null}
+                  {/* Every image, everywhere. The action refuses, naming the
+                      places, while anything still references the file; on the
+                      hosted CMS a shipped image is removed as a commit that
+                      rides the next deploy, and its tile says so meanwhile. */}
+                  <DeleteImage path={m.path} name={m.name} />
                 </figure>
               ))}
             </div>

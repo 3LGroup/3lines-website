@@ -28,6 +28,17 @@ export default function DeleteImage({ path, name }: { path: string; name: string
     if (state.ok || state.error) setArmed(false);
   }, [state]);
 
+  /* A commit-backed delete leaves the tile in the (stale, baked) listing until
+     the rebuild lands, so the controls give way to a note saying exactly that
+     — vanishing silently would read as "still here, delete failed". */
+  if (state.ok && state.deploying) {
+    return (
+      <p className="adm-hint" role="status" style={{ maxInlineSize: '22ch' }}>
+        <Icon name="check" size={12} /> {state.detail}
+      </p>
+    );
+  }
+
   // Nothing to disarm back to: the tile is gone on the next render.
   if (state.ok) return null;
 

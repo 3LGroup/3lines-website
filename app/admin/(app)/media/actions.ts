@@ -105,6 +105,10 @@ export interface DeleteState {
   ok?: boolean;
   error?: string;
   detail?: string;
+  /** True when the delete is a repo commit riding the next deploy — the tile
+      stays visible (the baked manifest still lists it) until the build lands,
+      so the UI must say so instead of silently keeping a "deleted" image. */
+  deploying?: boolean;
 }
 
 export async function deleteImage(_prev: DeleteState, form: FormData): Promise<DeleteState> {
@@ -135,6 +139,7 @@ export async function deleteImage(_prev: DeleteState, form: FormData): Promise<D
     return { error: `Could not check where the image is used: ${e instanceof Error ? e.message : String(e)}` };
   }
 
+  let mode: 'immediate' | 'deploying' = 'immediate';
   try {
     if (isUploadPath(path)) {
       const removed = await deleteUpload(name);
@@ -144,7 +149,7 @@ export async function deleteImage(_prev: DeleteState, form: FormData): Promise<D
          still see in a stale tab. */
       if (!removed) return { error: `${name} was not found — it may already have been deleted.` };
     } else {
-      await deleteRepoAsset(path);
+      mode = await deleteRepoAsset(path);
     }
   } catch (e) {
     return { error: `Could not delete the image: ${e instanceof Error ? e.message : String(e)}` };
@@ -153,5 +158,12 @@ export async function deleteImage(_prev: DeleteState, form: FormData): Promise<D
   revalidatePath('/admin/media');
   revalidatePath('/admin/c/[key]', 'page');
 
+  if (mode === 'deploying') {
+    return {
+      ok: true,
+      deploying: true,
+      detail: `Removing ${name} — a rebuild is on its way, and the image disappears from the site and this list in a minute or two.`,
+    };
+  }
   return { ok: true, detail: `Deleted ${name}.` };
 }
