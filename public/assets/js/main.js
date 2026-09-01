@@ -166,21 +166,30 @@
            intrinsic size. */
         x.drawImage(bitmap, 0, 0, w, h);
         var d = x.getImageData(0, 0, w, h).data;
-        var sumLum = 0, opaque = 0, coloured = 0, transparent = 0, total = 0;
+        var sumLum = 0, opaque = 0, coloured = 0, dark = 0, transparent = 0, total = 0;
         for (var i = 0; i < d.length; i += 4) {
           total++;
           if (d[i + 3] < 30) { transparent++; continue; }
           var r = d[i], g = d[i + 1], b = d[i + 2];
           var mx = Math.max(r, g, b), mn = Math.min(r, g, b);
-          sumLum += (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+          var px = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+          sumLum += px;
           opaque++;
           if (mx && (mx - mn) / mx > 0.3) coloured++;
+          if (px < 0.35) dark++;
         }
         if (!opaque) return;
-        var lum = sumLum / opaque, colourFrac = coloured / opaque, transFrac = transparent / total;
-        // Genuinely transparent background, bright overall, and either very
-        // bright or carrying almost no real colour.
-        if (transFrac > 0.1 && lum > 0.6 && (lum > 0.78 || colourFrac < 0.25)) {
+        var lum = sumLum / opaque, colourFrac = coloured / opaque, transFrac = transparent / total,
+            darkFrac = dark / opaque;
+        /* Genuinely transparent background, bright overall, and either very
+           bright or carrying almost no real colour — AND essentially free of
+           dark pixels. That last clause is what separates a white-on-
+           transparent mark from a colourful emblem that merely averages
+           bright: an emblem always carries dark outlines and lettering, and a
+           white logo carries none. Without it, the Land Forces, Border Guard
+           and USASAC crests — bright, low-saturation, transparent-backed —
+           sampled as "white" and inverted into black blobs. */
+        if (transFrac > 0.1 && lum > 0.6 && darkFrac < 0.08 && (lum > 0.78 || colourFrac < 0.25)) {
           im.setAttribute('data-invert', '1');
         }
       } catch (e) { /* undecodable or tainted: leave it showing its real colour */ }
