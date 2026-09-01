@@ -143,7 +143,7 @@ Worker secrets (`npx wrangler secret put NAME`):
 |---|---|
 | `SESSION_SECRET` | signs the admin session cookie |
 | `CMS_PASSWORD_HASH` | the admin password, hashed |
-| `GITHUB_DISPATCH_REPO` | e.g. `Abdul-Rafay-ASE/3lines-website` |
+| `GITHUB_DISPATCH_REPO` | e.g. `3LGroup/3lines-website` |
 | `GITHUB_DISPATCH_TOKEN` | lets Publish trigger the workflow |
 
 GitHub repository secrets (Settings → Secrets → Actions):
