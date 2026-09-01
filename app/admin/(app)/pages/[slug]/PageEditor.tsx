@@ -282,7 +282,11 @@ export default function PageEditor({
             </span>
           ) : null}
           {state.ok && !dirtyCount && !message ? (
-            <span className="adm-badge adm-badge--ok">
+            /* role="status" like every other form's success badge — without it
+               a screen reader never hears that the save landed, and the
+               cross-screen audit (which listens the accessible way) missed
+               this one save for exactly that reason. */
+            <span className="adm-badge adm-badge--ok" role="status">
               <Icon name="check" size={12} />
               {state.written ? `Saved ${state.written} change${state.written === 1 ? '' : 's'}` : 'Saved'}
             </span>
