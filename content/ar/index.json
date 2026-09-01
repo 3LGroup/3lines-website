@@ -113,7 +113,7 @@
               "id": "advanced-technology",
               "name": "التقنيات المتقدمة",
               "tagline": "توفير حلول وخدمات التقنيات المتقدمة",
-              "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+              "imgVar": "url('/assets/photos/3l-rf-signal-bench.jpg')",
               "link": {
                 "label": "اعرف المزيد",
                 "href": "/services"
@@ -123,7 +123,7 @@
               "id": "xr",
               "name": "XR",
               "tagline": "الواقع الممتد عن طريق الواقع المعزز و الواقع الافتراضي",
-              "imgVar": "url('/assets/photos/3l-xr-lab.jpg')",
+              "imgVar": "url('/assets/photos/3l-xr-minefield-training.jpg')",
               "link": {
                 "label": "اعرف المزيد",
                 "href": "https://xr.3lines.com.sa/"
@@ -132,12 +132,9 @@
             },
             {
               "id": "optokon-middle-east",
+              "imgVar": "url('/assets/photos/3l-optokon-field-kit.jpg')",
               "name": "Optokon Middle East",
               "tagline": "حلول البنية التحتية للبصريات وتكنولوجيا المعلومات",
-              "logo": {
-                "src": "/assets/logos/optokon-middle-east-logo.png",
-                "alt": "Optokon Middle East"
-              },
               "link": {
                 "label": "اعرف المزيد",
                 "href": "https://optokon.com.sa/"
@@ -148,7 +145,7 @@
               "id": "ai3lines",
               "name": "3Lines AI",
               "tagline": "وكلاء ذكاء اصطناعي يديرون عمليات أعمالك",
-              "imgVar": "url('/assets/photos/3l-command-center.jpg')",
+              "imgVar": "url('/assets/photos/3l-ai-satellite-terminal.jpg')",
               "link": {
                 "label": "اعرف المزيد",
                 "href": "https://ai3lines.com/"
@@ -214,7 +211,7 @@
                 "label": "نظرة عامة",
                 "href": "/services/radar-electronics-communications-sustainment"
               },
-              "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+              "imgVar": "url('/assets/news/advancing-radar-sensor-support.jpg')",
               "art": null
             },
             {
@@ -224,7 +221,7 @@
                 "label": "نظرة عامة",
                 "href": "/services/government-relations-and-life-support"
               },
-              "imgVar": "url('/assets/photos/3l-hq-building.jpg')",
+              "imgVar": "url('/assets/photos/3l-partnership-handshake.jpg')",
               "art": null
             },
             {
@@ -284,7 +281,7 @@
                 "label": "نظرة عامة",
                 "href": "/services/training-and-capability-enablement"
               },
-              "imgVar": "url('/assets/photos/3l-xr-lab.jpg')",
+              "imgVar": "url('/assets/photos/3l-xr-minefield-training.jpg')",
               "art": null
             },
             {
@@ -304,7 +301,7 @@
                 "label": "نظرة عامة",
                 "href": "/services/program-management-and-localization"
               },
-              "imgVar": "url('/assets/photos/3l-command-center.jpg')",
+              "imgVar": "url('/assets/photos/3l-hq-building.jpg')",
               "art": null
             }
           ]

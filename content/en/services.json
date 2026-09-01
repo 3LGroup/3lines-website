@@ -35,7 +35,7 @@
                 "label": "Overview",
                 "href": "/services/radar-electronics-communications-sustainment"
               },
-              "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+              "imgVar": "url('/assets/news/advancing-radar-sensor-support.jpg')",
               "art": null
             },
             {
@@ -45,7 +45,7 @@
                 "label": "Overview",
                 "href": "/services/government-relations-and-life-support"
               },
-              "imgVar": "url('/assets/photos/3l-hq-building.jpg')",
+              "imgVar": "url('/assets/photos/3l-partnership-handshake.jpg')",
               "art": null
             },
             {
@@ -105,7 +105,7 @@
                 "label": "Overview",
                 "href": "/services/training-and-capability-enablement"
               },
-              "imgVar": "url('/assets/photos/3l-xr-lab.jpg')",
+              "imgVar": "url('/assets/photos/3l-xr-minefield-training.jpg')",
               "art": null
             },
             {
@@ -125,7 +125,7 @@
                 "label": "Overview",
                 "href": "/services/program-management-and-localization"
               },
-              "imgVar": "url('/assets/photos/3l-command-center.jpg')",
+              "imgVar": "url('/assets/photos/3l-hq-building.jpg')",
               "art": null
             }
           ]

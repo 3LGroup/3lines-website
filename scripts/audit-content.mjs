@@ -210,8 +210,17 @@ for (const l of LOCALES) {
   for (const s of strings(readContent(l, 'news-items.json'))) if (s.startsWith('/assets/')) mediaRefs.add(s);
 }
 let resolved = 0;
+let uploadRefs = 0;
 for (const ref of mediaRefs) {
-  if (fs.existsSync(path.join(PUBLIC, ref.replace(/^\//, '')))) resolved++;
+  /* Editor uploads live in R2 (locally, in miniflare's store) and are served
+     by app/assets/uploads/[name] at request time — they are never files under
+     public/, so "resolves on disk" is the wrong question for them. The first
+     upload an editor placed on a page (the hero's bg.webp) failed this gate
+     for exactly that reason. Counted separately so the summary still shows
+     they exist; their actual resolvability is covered by the link audit,
+     which fetches every page's images over HTTP. */
+  if (ref.startsWith('/assets/uploads/')) uploadRefs++;
+  else if (fs.existsSync(path.join(PUBLIC, ref.replace(/^\//, '')))) resolved++;
   else err(`media referenced but not on disk — ${ref}`);
 }
 
