@@ -1178,6 +1178,19 @@ samp {
   opacity: 1;
 }
 
+/* On touch screens the 28px square measures under the 44px tap guideline, and
+   there is no hover to lean on. Grow the button itself rather than padding a
+   transparent halo: an invisible outgrowth over the image invites taps that
+   look like taps on the picture. Coarse-pointer only, so the desktop grid the
+   editor already knows keeps its geometry. */
+@media (pointer: coarse) {
+  .adm-tile__delbtn {
+    inline-size: 44px;
+    block-size: 44px;
+    opacity: .8;
+  }
+}
+
 .adm-tile__delbtn:hover,
 .adm-tile__delbtn:focus-visible {
   opacity: 1;
