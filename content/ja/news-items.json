@@ -5,10 +5,10 @@
     "tag": "調達",
     "type": "ニュース",
     "date": "2026-05-12",
-    "title": "補用部品・ロジスティクス・倉庫能力の拡大",
+    "title": "補用部品、物流、倉庫保管能力を拡大",
     "media": {
       "src": "/assets/news/expanding-spare-parts-capabilities.jpg",
-      "alt": "補用部品・ロジスティクス・倉庫能力の拡大"
+      "alt": "補用部品、物流、倉庫保管能力を拡大"
     },
     "art": null
   },
@@ -18,10 +18,10 @@
     "tag": "テクノロジー",
     "type": "ニュース",
     "date": "2026-04-28",
-    "title": "シミュレーション・XR訓練への投資",
+    "title": "シミュレーションおよびXRベース訓練への投資",
     "media": {
       "src": "/assets/news/advanced-simulator-support.jpg",
-      "alt": "シミュレーション・XR訓練への投資"
+      "alt": "シミュレーションおよびXRベース訓練への投資"
     },
     "art": null
   },
@@ -31,10 +31,10 @@
     "tag": "製造",
     "type": "ニュース",
     "date": "2026-03-15",
-    "title": "地上支援器材維持整備の強化",
+    "title": "Ground Support Equipment維持整備の強化",
     "media": {
       "src": "/assets/news/ground-support-equipment-services.jpg",
-      "alt": "地上支援器材維持整備の強化"
+      "alt": "Ground Support Equipment維持整備の強化"
     },
     "art": null
   },
@@ -44,10 +44,10 @@
     "tag": "テクノロジー",
     "type": "ニュース",
     "date": "2026-02-25",
-    "title": "レーダー・C4I・戦術通信維持整備の前進",
+    "title": "レーダー、C4I、戦術通信の維持整備を高度化",
     "media": {
       "src": "/assets/news/advancing-radar-sensor-support.jpg",
-      "alt": "レーダー・C4I・戦術通信維持整備の前進"
+      "alt": "レーダー、C4I、戦術通信の維持整備を高度化"
     },
     "art": null
   }

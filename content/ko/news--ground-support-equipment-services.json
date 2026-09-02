@@ -5,14 +5,14 @@
   "source": [
     "posts.json"
   ],
-  "title": "지상지원장비 유지정비 강화",
-  "description": "항공·지상 지원 자산의 정비 및 가동률 지원 — 국내 작업장과 예비 부품 공급이 뒷받침합니다.",
+  "title": "Ground Support Equipment 유지정비 강화",
+  "description": "국내 워크숍과 예비 부품 공급을 기반으로 한 항공 및 지상 지상 지원 자산의 유지보수 및 가용성 지원.",
   "blocks": [
     {
       "type": "pageTitle",
       "crumbs": [
         {
-          "label": "홈",
+          "label": "ホーム",
           "href": "/"
         },
         {
@@ -20,10 +20,10 @@
           "href": "/news"
         },
         {
-          "label": "지상지원장비 유지정비 강화"
+          "label": "Ground Support Equipment 유지정비 강화"
         }
       ],
-      "heading": "지상지원장비 유지정비 강화"
+      "heading": "Ground Support Equipment 유지정비 강화"
     },
     {
       "type": "section",
@@ -39,7 +39,7 @@
             "imgVar": "url('/assets/news/ground-support-equipment-services.jpg')",
             "art": null
           },
-          "lede": "항공·지상 지원 자산의 정비 및 가동률 지원 — 국내 작업장과 예비 부품 공급이 뒷받침합니다."
+          "lede": "국내 워크숍과 예비 부품 공급을 기반으로 한 항공 및 지상 지상 지원 자산의 유지보수 및 가용성 지원."
         }
       ]
     },
@@ -47,7 +47,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "대화를 시작하세요",
+      "heading": "상담 시작",
       "cta": {
         "label": "문의하기",
         "href": "/contact"

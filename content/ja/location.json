@@ -7,8 +7,8 @@
     "siteInfo.json"
   ],
   "title": "所在地",
-  "description": "当社オフィスはリヤドのキング・ファイサル地区、キング・アブドラ支線道路沿いにあります。",
-  "keywords": "3lines,スリーラインズ,補用部品,航空機,シミュレーター,サウジ,防衛,地上支援器材,サプライチェーン",
+  "description": "当社オフィスはリヤドのKing Faisal地区、King Abdullah Branch Road沿いにあります。",
+  "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
   "blocks": [
     {
       "type": "pageTitle",
@@ -29,8 +29,8 @@
       "head": {
         "layout": "split",
         "kicker": "所在地",
-        "heading": "リヤドオフィス",
-        "lede": "当社オフィスはリヤドのキング・ファイサル地区、キング・アブドラ支線道路沿いにあります。"
+        "heading": "リヤドの当社オフィス",
+        "lede": "当社オフィスはリヤドのKing Faisal地区、King Abdullah Branch Road沿いにあります。"
       },
       "bodies": [
         {
@@ -41,7 +41,7 @@
           "placeName": "3 Lines Advanced Technologies Company",
           "address": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
           "ctaLabel": "地図を見る",
-          "note": "Googleマップを読み込みます",
+          "note": "Google Mapsを読み込みます",
           "details": [
             {
               "label": "所在地",
@@ -59,7 +59,7 @@
             }
           ],
           "directions": {
-            "label": "経路案内",
+            "label": "道順を取得",
             "href": "https://www.google.com/maps/dir/?api=1&destination=24.7676823,46.7608157"
           }
         }

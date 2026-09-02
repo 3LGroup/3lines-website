@@ -11,23 +11,23 @@
     "companies.json"
   ],
   "title": "3Lines Advanced Technologies Company",
-  "description": "3Lines Advanced Technologies Group은 왕국 내 군·민 서비스의 현지화를 위해 사우디 비전 2030에 맞춰 2019년에 설립되었습니다. 그룹은 조달·물류·정비·수리·제조를 아우르는 통합 공급망·기술 서비스를 제공하며, 국내외 방산·첨단기술 분야의 운용 즉응성을 지원합니다.",
-  "keywords": "3lines,쓰리라인즈,예비부품,항공기,시뮬레이터,사우디,방산,지상지원장비,공급망",
+  "description": "3Lines Advanced Technologies Group은 2019년 사우디 비전 2030에 부합하여 왕국 내 군용 및 민수 서비스를 현지화하기 위한 목적으로 설립되었습니다. 그룹은 조달, 물류, 유지보수, 수리 및 제조를 포함한 통합 공급망 및 기술 서비스를 제공하며, 국내외 방산 및 첨단기술 분야의 운용 즉응성을 지원합니다.",
+  "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
   "blocks": [
     {
       "type": "hero",
       "imgVar": "url('/assets/uploads/bg.webp')",
       "headingLines": [
-        "우리가 제공하는",
-        "글로벌하게"
+        "제공 서비스",
+        "글로벌"
       ],
       "rotate": [
-        "첨단 기술",
-        "확장현실",
+        "첨단기술",
+        "Extended Reality",
         "MRO",
         "물류"
       ],
-      "body": "3Lines Advanced Technologies Group은 왕국 내 군·민 서비스의 현지화를 위해 사우디 비전 2030에 맞춰 2019년에 설립되었습니다. 그룹은 조달·물류·정비·수리·제조를 아우르는 통합 공급망·기술 서비스를 제공하며, 국내외 방산·첨단기술 분야의 운용 즉응성을 지원합니다.",
+      "body": "3Lines Advanced Technologies Group은 2019년 사우디 비전 2030에 부합하여 왕국 내 군용 및 민수 서비스를 현지화하기 위한 목적으로 설립되었습니다. 그룹은 조달, 물류, 유지보수, 수리 및 제조를 포함한 통합 공급망 및 기술 서비스를 제공하며, 국내외 방산 및 첨단기술 분야의 운용 즉응성을 지원합니다.",
       "cta": {
         "label": "회사 소개",
         "href": "/about"
@@ -43,16 +43,16 @@
             {
               "count": 7,
               "prefix": "+",
-              "label": "2019년부터 방산·첨단기술에 기여"
+              "label": "2019년부터 방산 및 첨단기술 분야에 종사한 기간"
             },
             {
               "count": 3,
-              "label": "핵심 운영 기둥"
+              "label": "핵심 운영 축"
             },
             {
               "count": 120,
               "prefix": "+",
-              "label": "다분야 전문가 팀"
+              "label": "다학제 전문팀"
             },
             {
               "count": 30,
@@ -68,7 +68,7 @@
       "tone": "mist",
       "head": {
         "layout": "split",
-        "kicker": "주요 사업",
+        "kicker": "당사의 사업",
         "heading": "제공 방식",
         "link": {
           "label": "회사 소개",
@@ -82,15 +82,15 @@
           "items": [
             {
               "title": "공급망 관리",
-              "text": "전략 소싱부터 군·민 플랫폼 납품까지 — 조달, 보안 창고, 재고 관리, 배송의 일관된 공급망."
+              "text": "엔드투엔드 공급망 — 전략적 소싱, 조달, 안전한 보관, 재고 관리 및 군용·민수 플랫폼 납품."
             },
             {
-              "title": "정비",
-              "text": "국내 역량을 통한 레이더, 감시, C2/C3/C4I 지휘통제 시스템, 지상 지원, 방산 시스템의 유지정비."
+              "title": "유지보수",
+              "text": "국내 역량을 통한 레이더, 감시, C2/C3/C4I 지휘통제 시스템, 지상 지원 및 방산 시스템의 유지정비."
             },
             {
-              "title": "수리·제조",
-              "text": "국내 진단·수리 작업장과 함께, 첨단 시스템용 부품의 역설계 및 제조."
+              "title": "수리 및 제조",
+              "text": "현지화된 진단 및 수리 워크숍과 함께 첨단 시스템용 부품의 리버스 엔지니어링 및 제조."
             }
           ]
         }
@@ -111,8 +111,8 @@
           "items": [
             {
               "id": "advanced-technology",
-              "name": "Advanced Technology",
-              "tagline": "첨단 기술 솔루션과 서비스 제공",
+              "name": "첨단기술",
+              "tagline": "첨단기술 솔루션 및 서비스 제공",
               "imgVar": "url('/assets/photos/3l-rf-signal-bench.jpg')",
               "link": {
                 "label": "자세히 보기",
@@ -122,7 +122,7 @@
             {
               "id": "xr",
               "name": "XR",
-              "tagline": "AR/VR을 통한 확장현실",
+              "tagline": "AR/VR을 통한 Extended Reality",
               "imgVar": "url('/assets/photos/3l-xr-minefield-training.jpg')",
               "link": {
                 "label": "자세히 보기",
@@ -134,7 +134,7 @@
               "id": "optokon-middle-east",
               "imgVar": "url('/assets/photos/3l-optokon-field-kit.jpg')",
               "name": "Optokon Middle East",
-              "tagline": "광·IT 인프라 솔루션",
+              "tagline": "광 및 IT 인프라 솔루션",
               "link": {
                 "label": "자세히 보기",
                 "href": "https://optokon.com.sa/"
@@ -168,20 +168,20 @@
           "kind": "slider",
           "items": [
             {
-              "heading": "유지하기 위해 세워지고, 운용으로 신뢰받다",
-              "sub": "2019년부터 왕국 내 방산·첨단기술을 현지화."
+              "heading": "유지정비를 위해 구축하고, 운용을 위해 신뢰받다",
+              "sub": "2019년부터 왕국 내 방산 및 첨단기술 현지화."
             },
             {
-              "heading": "왕국 내에서 유지되는 레이더와 C4I",
-              "sub": "노스럽 그러먼과의 MLA에 따른 4선급 정비."
+              "heading": "레이더 및 C4I 국내 유지정비",
+              "sub": "Northrop Grumman과의 MLA에 따른 제4단계 정비."
             },
             {
-              "heading": "3대 핵심 운영 기둥",
-              "sub": "공급망 관리, 정비, 수리·제조."
+              "heading": "3대 핵심 운영 축",
+              "sub": "공급망 관리, 유지보수, 수리 및 제조."
             },
             {
               "heading": "30개 이상의 전략적 파트너",
-              "sub": "사우디아라비아, 미국, 멕시코, 폴란드, 체코에서 수행."
+              "sub": "사우디아라비아, 미국, 멕시코, 폴란드 및 체코에서 사업 수행."
             }
           ]
         }
@@ -193,8 +193,8 @@
       "id": "services",
       "head": {
         "layout": "split",
-        "kicker": "주요 사업",
-        "heading": "주요 사업",
+        "kicker": "당사의 사업",
+        "heading": "당사의 사업",
         "link": {
           "label": "서비스",
           "href": "/services"
@@ -205,8 +205,8 @@
           "kind": "cards",
           "items": [
             {
-              "title": "레이더 정비·전자장비·전술통신 유지정비",
-              "text": "국내 역량을 통한 레이더, 감시, C4I, 보안 통신 시스템의 유지정비·진단·수리.",
+              "title": "레이더 정비, 전자장비 및 전술 통신 유지정비",
+              "text": "국내 역량을 통한 레이더, 감시, C4I 및 보안 통신 시스템의 유지정비, 진단 및 수리.",
               "link": {
                 "label": "개요",
                 "href": "/services/radar-electronics-communications-sustainment"
@@ -215,8 +215,8 @@
               "art": null
             },
             {
-              "title": "정부 대관·인력 컨설팅·생활지원 서비스",
-              "text": "규제 조율, 인력 컨설팅, 통합 생활지원 서비스.",
+              "title": "정부 관계, 인력 컨설팅 및 라이프 서포트 서비스",
+              "text": "규제 조정, 인력 컨설팅 및 통합 라이프 서포트 서비스.",
               "link": {
                 "label": "개요",
                 "href": "/services/government-relations-and-life-support"
@@ -225,8 +225,8 @@
               "art": null
             },
             {
-              "title": "전원 시스템 지원(발전기·UPS)",
-              "text": "핵심 전원·백업 시스템의 설치·유지보수·수명주기 지원.",
+              "title": "전력 시스템 지원(발전기 및 UPS)",
+              "text": "핵심 전력 및 백업 시스템의 설치, 유지보수 및 수명주기 지원.",
               "link": {
                 "label": "개요",
                 "href": "/services/power-systems-support"
@@ -235,8 +235,8 @@
               "art": null
             },
             {
-              "title": "전자장비 진단·수리 작업장",
-              "text": "임무 필수 전자 시스템의 고장 분리·시험·수리·검증을 수행하는 국내 시설.",
+              "title": "전자장비 진단 및 수리 워크숍",
+              "text": "임무 핵심 전자 시스템을 위한 현지화 시설에서 고장 격리, 시험, 수리 및 검증을 제공합니다.",
               "link": {
                 "label": "개요",
                 "href": "/services/electronics-diagnostic-and-repair-workshops"
@@ -245,8 +245,8 @@
               "art": null
             },
             {
-              "title": "지상지원장비(GSE) 유지정비",
-              "text": "항공·지상 지원 자산의 정비 및 가동률 지원.",
+              "title": "Ground Support Equipment (GSE) 유지정비",
+              "text": "항공 및 지상 분야 지상 지원 자산의 유지보수 및 가용성 지원.",
               "link": {
                 "label": "개요",
                 "href": "/services/ground-support-equipment-sustainment"
@@ -255,8 +255,8 @@
               "art": null
             },
             {
-              "title": "항공·지상 시스템 예비 부품, 물류, 창고 관리",
-              "text": "군·민 플랫폼을 위한 일관된 조달·보안 창고·재고 관리·배송.",
+              "title": "항공 및 지상 시스템 예비 부품, 물류 및 창고 보관",
+              "text": "군용 및 민수 플랫폼을 위한 엔드투엔드 조달, 안전한 보관, 재고 관리 및 유통.",
               "link": {
                 "label": "개요",
                 "href": "/services/spare-parts-logistics-and-warehousing"
@@ -265,8 +265,8 @@
               "art": null
             },
             {
-              "title": "시뮬레이션 시스템(풀모션·고정식)",
-              "text": "첨단 시뮬레이션·즉응 플랫폼의 공급·운영·정비·훈련 지원.",
+              "title": "시뮬레이션 시스템(풀 모션 및 고정식)",
+              "text": "첨단 시뮬레이션 및 즉응성 플랫폼의 공급, 운영, 유지보수 및 교육 지원.",
               "link": {
                 "label": "개요",
                 "href": "/services/simulation-systems"
@@ -275,8 +275,8 @@
               "art": null
             },
             {
-              "title": "훈련·시뮬레이션·역량 강화",
-              "text": "군·민 훈련 제공, 지식 이전, 운용 역량 개발.",
+              "title": "교육, 시뮬레이션 및 역량 강화",
+              "text": "군용 및 민수 교육, 지식 이전 및 운용 역량 개발 제공.",
               "link": {
                 "label": "개요",
                 "href": "/services/training-and-capability-enablement"
@@ -286,7 +286,7 @@
             },
             {
               "title": "방산 시스템 유지정비(MRO)",
-              "text": "방산 시스템 전반의 운용 즉응성을 지원하는 종합 정비·수리·오버홀.",
+              "text": "방산 시스템 전반의 운용 즉응성을 지원하는 종합 유지보수·수리·오버홀 서비스.",
               "link": {
                 "label": "개요",
                 "href": "/services/defense-systems-sustainment-mro"
@@ -296,7 +296,7 @@
             },
             {
               "title": "프로그램 관리 및 현지화 지원",
-              "text": "사우디 비전 2030에 부합하는 일관된 프로그램 수행, 현지화, 국가 역량 개발.",
+              "text": "사우디 비전 2030에 부합하는 엔드투엔드 프로그램 수행, 현지화 및 국가 역량 개발.",
               "link": {
                 "label": "개요",
                 "href": "/services/program-management-and-localization"
@@ -332,10 +332,10 @@
       "tone": "plain",
       "head": {
         "layout": "split",
-        "kicker": "신뢰받는 실적",
+        "kicker": "신뢰받는 기업",
         "heading": "",
         "link": {
-          "label": "신뢰받는 실적",
+          "label": "신뢰받는 기업",
           "href": "/partners"
         }
       },
@@ -350,16 +350,16 @@
                 "alt": "SAMI"
               },
               "href": "https://www.sami.com.sa/",
-              "caption": "사우디아라비아 군수산업공사",
-              "type": "협정",
+              "caption": "Saudi Arabian Military Industries",
+              "type": "계약",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "에어버스",
+              "name": "AirBus",
               "media": {
                 "src": "/assets/logos/airbus-logo.svg",
-                "alt": "에어버스"
+                "alt": "AirBus"
               },
               "href": "https://www.airbus.com/en",
               "type": "고객",
@@ -396,7 +396,7 @@
               },
               "href": "https://www.aecl.com/",
               "caption": "SAMI Advanced Electronics",
-              "type": "협정",
+              "type": "계약",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
@@ -408,7 +408,7 @@
               },
               "href": "https://www.smscmc.com/",
               "caption": "Saudi Maintenance & Supply Chain Management Co",
-              "type": "협정",
+              "type": "계약",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
@@ -524,21 +524,21 @@
               "flag": "🇸🇦"
             },
             {
-              "name": "사우디 왕립 공군",
+              "name": "Royal Saudi Air Force",
               "media": {
                 "src": "/assets/logos/cust-rsaf.png",
-                "alt": "사우디 왕립 공군"
+                "alt": "Royal Saudi Air Force"
               },
-              "caption": "AN/TPS-78을 포함한 레이더 유지정비와 항공 지원.",
+              "caption": "AN/TPS-78을 포함한 레이더 유지정비 및 항공 지원.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "사우디 왕립 방공군",
+              "name": "Royal Saudi Air Defense Forces",
               "media": {
                 "src": "/assets/logos/cust-rsadf.png",
-                "alt": "사우디 왕립 방공군"
+                "alt": "Royal Saudi Air Defense Forces"
               },
               "caption": "방공 시스템 유지정비 및 기술 지원.",
               "type": "고객",
@@ -555,7 +555,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "대화를 시작하세요",
+      "heading": "상담 시작",
       "cta": {
         "label": "문의하기",
         "href": "/contact"

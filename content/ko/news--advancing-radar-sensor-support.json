@@ -5,14 +5,14 @@
   "source": [
     "posts.json"
   ],
-  "title": "레이더·C4I·전술통신 유지정비의 진전",
-  "description": "왕국 내 4선급 수준까지의 레이더 정비 — AN/TPS-78 포함 — 노스럽 그러먼과의 정비 수준 협정에 따라.",
+  "title": "레이더, C4I 및 전술 통신 유지정비 고도화",
+  "description": "Northrop Grumman과의 Maintenance Level Agreement에 따라 AN/TPS-78을 포함한 레이더를 국내에서 제4단계 수준까지 정비.",
   "blocks": [
     {
       "type": "pageTitle",
       "crumbs": [
         {
-          "label": "홈",
+          "label": "ホーム",
           "href": "/"
         },
         {
@@ -20,10 +20,10 @@
           "href": "/news"
         },
         {
-          "label": "레이더·C4I·전술통신 유지정비의 진전"
+          "label": "레이더, C4I 및 전술 통신 유지정비 고도화"
         }
       ],
-      "heading": "레이더·C4I·전술통신 유지정비의 진전"
+      "heading": "레이더, C4I 및 전술 통신 유지정비 고도화"
     },
     {
       "type": "section",
@@ -39,7 +39,7 @@
             "imgVar": "url('/assets/news/advancing-radar-sensor-support.jpg')",
             "art": null
           },
-          "lede": "왕국 내 4선급 수준까지의 레이더 정비 — AN/TPS-78 포함 — 노스럽 그러먼과의 정비 수준 협정에 따라."
+          "lede": "Northrop Grumman과의 Maintenance Level Agreement에 따라 AN/TPS-78을 포함한 레이더를 국내에서 제4단계 수준까지 정비."
         }
       ]
     },
@@ -47,7 +47,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "대화를 시작하세요",
+      "heading": "상담 시작",
       "cta": {
         "label": "문의하기",
         "href": "/contact"

@@ -6,15 +6,15 @@
     "careers.json"
   ],
   "title": "채용",
-  "description": "3Lines Advanced Technologies Company는 공급망, 정비, 수리, 제조를 아우르는 다분야 팀을 보유하고 방산·첨단",
-  "keywords": "3lines,쓰리라인즈,예비부품,항공기,시뮬레이터,사우디,방산,지상지원장비,공급망",
+  "description": "3Lines Advanced Technologies Companyは、サプライチェーン、保守、修理、製造にまたがる多分野のチームを擁し、防衛・先進技術を支援しています。|3Lines Advanced Technologies Company는 공급망, 유지보수, 수리 및 제조 전반에 걸친 다학제 팀을 운영하며 방산 및 첨단기술을 지원합니다.",
+  "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
   "placeholder": true,
   "blocks": [
     {
       "type": "pageTitle",
       "crumbs": [
         {
-          "label": "홈",
+          "label": "ホーム",
           "href": "/"
         },
         {
@@ -31,10 +31,10 @@
           "kind": "prose",
           "paragraphs": [
             {
-              "text": "3Lines Advanced Technologies Company는 공급망, 정비, 수리, 제조를 아우르는 다분야 팀을 보유하고 왕국 내 방산·첨단기술 프로그램을 지원합니다."
+              "text": "3Lines Advanced Technologies Company는 공급망, 유지보수, 수리 및 제조 전반에 걸친 다학제 팀을 운영하며, 국내 방산 및 첨단기술 프로그램을 지원합니다."
             },
             {
-              "text": "채용 공고와 지원 안내는 이곳에 게시됩니다."
+              "text": "채용 공고 및 지원 세부사항은 여기에 게시됩니다."
             }
           ]
         }

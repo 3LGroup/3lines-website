@@ -5,8 +5,8 @@
   "source": [
     "posts.json"
   ],
-  "title": "レーダー・C4I・戦術通信維持整備の前進",
-  "description": "王国内での第4線レベルまでのレーダー整備 — AN/TPS-78を含む — ノースロップ・グラマン社との整備レベル契約に基づく。",
+  "title": "レーダー、C4I、戦術通信の維持整備を高度化",
+  "description": "Northrop GrummanとのMaintenance Level Agreementに基づき、AN/TPS-78を含むレーダーを国内で第4段階レベルまで整備。",
   "blocks": [
     {
       "type": "pageTitle",
@@ -20,10 +20,10 @@
           "href": "/news"
         },
         {
-          "label": "レーダー・C4I・戦術通信維持整備の前進"
+          "label": "レーダー、C4I、戦術通信の維持整備を高度化"
         }
       ],
-      "heading": "レーダー・C4I・戦術通信維持整備の前進"
+      "heading": "レーダー、C4I、戦術通信の維持整備を高度化"
     },
     {
       "type": "section",
@@ -39,7 +39,7 @@
             "imgVar": "url('/assets/news/advancing-radar-sensor-support.jpg')",
             "art": null
           },
-          "lede": "王国内での第4線レベルまでのレーダー整備 — AN/TPS-78を含む — ノースロップ・グラマン社との整備レベル契約に基づく。"
+          "lede": "Northrop GrummanとのMaintenance Level Agreementに基づき、AN/TPS-78を含むレーダーを国内で第4段階レベルまで整備。"
         }
       ]
     },
@@ -47,7 +47,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "お問い合わせはこちら",
+      "heading": "ご相談ください",
       "cta": {
         "label": "お問い合わせ",
         "href": "/contact"

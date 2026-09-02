@@ -6,13 +6,13 @@
     "services.json"
   ],
   "title": "서비스",
-  "description": "3Lines Advanced Technologies Group은 왕국 내 군·민 서비스의 현지화를 위해 사우디 비전 2030에 맞춰 2019년에 설립되었습니다. 그룹은 조달·물류·정비·수리·제조를 아우르는 통합 공급망·기술 서비스를 제공하며, 국내외 방산·첨단기술 분야의 운용 즉응성을 지원합니다.",
+  "description": "3Lines Advanced Technologies Group은 2019년 사우디 비전 2030에 부합하여 왕국 내 군용 및 민수 서비스를 현지화하기 위한 목적으로 설립되었습니다. 그룹은 조달, 물류, 유지보수, 수리 및 제조를 포함한 통합 공급망 및 기술 서비스를 제공하며, 국내외 방산 및 첨단기술 분야의 운용 즉응성을 지원합니다.",
   "blocks": [
     {
       "type": "pageTitle",
       "crumbs": [
         {
-          "label": "홈",
+          "label": "ホーム",
           "href": "/"
         },
         {
@@ -29,8 +29,8 @@
           "kind": "cards",
           "items": [
             {
-              "title": "레이더 정비·전자장비·전술통신 유지정비",
-              "text": "국내 역량을 통한 레이더, 감시, C4I, 보안 통신 시스템의 유지정비·진단·수리.",
+              "title": "레이더 정비, 전자장비 및 전술 통신 유지정비",
+              "text": "국내 역량을 통한 레이더, 감시, C4I 및 보안 통신 시스템의 유지정비, 진단 및 수리.",
               "link": {
                 "label": "개요",
                 "href": "/services/radar-electronics-communications-sustainment"
@@ -39,8 +39,8 @@
               "art": null
             },
             {
-              "title": "정부 대관·인력 컨설팅·생활지원 서비스",
-              "text": "규제 조율, 인력 컨설팅, 통합 생활지원 서비스.",
+              "title": "정부 관계, 인력 컨설팅 및 라이프 서포트 서비스",
+              "text": "규제 조정, 인력 컨설팅 및 통합 라이프 서포트 서비스.",
               "link": {
                 "label": "개요",
                 "href": "/services/government-relations-and-life-support"
@@ -49,8 +49,8 @@
               "art": null
             },
             {
-              "title": "전원 시스템 지원(발전기·UPS)",
-              "text": "핵심 전원·백업 시스템의 설치·유지보수·수명주기 지원.",
+              "title": "전력 시스템 지원(발전기 및 UPS)",
+              "text": "핵심 전력 및 백업 시스템의 설치, 유지보수 및 수명주기 지원.",
               "link": {
                 "label": "개요",
                 "href": "/services/power-systems-support"
@@ -59,8 +59,8 @@
               "art": null
             },
             {
-              "title": "전자장비 진단·수리 작업장",
-              "text": "임무 필수 전자 시스템의 고장 분리·시험·수리·검증을 수행하는 국내 시설.",
+              "title": "전자장비 진단 및 수리 워크숍",
+              "text": "임무 핵심 전자 시스템을 위한 현지화 시설에서 고장 격리, 시험, 수리 및 검증을 제공합니다.",
               "link": {
                 "label": "개요",
                 "href": "/services/electronics-diagnostic-and-repair-workshops"
@@ -69,8 +69,8 @@
               "art": null
             },
             {
-              "title": "지상지원장비(GSE) 유지정비",
-              "text": "항공·지상 지원 자산의 정비 및 가동률 지원.",
+              "title": "Ground Support Equipment (GSE) 유지정비",
+              "text": "항공 및 지상 분야 지상 지원 자산의 유지보수 및 가용성 지원.",
               "link": {
                 "label": "개요",
                 "href": "/services/ground-support-equipment-sustainment"
@@ -79,8 +79,8 @@
               "art": null
             },
             {
-              "title": "항공·지상 시스템 예비 부품, 물류, 창고 관리",
-              "text": "군·민 플랫폼을 위한 일관된 조달·보안 창고·재고 관리·배송.",
+              "title": "항공 및 지상 시스템 예비 부품, 물류 및 창고 보관",
+              "text": "군용 및 민수 플랫폼을 위한 엔드투엔드 조달, 안전한 보관, 재고 관리 및 유통.",
               "link": {
                 "label": "개요",
                 "href": "/services/spare-parts-logistics-and-warehousing"
@@ -89,8 +89,8 @@
               "art": null
             },
             {
-              "title": "시뮬레이션 시스템(풀모션·고정식)",
-              "text": "첨단 시뮬레이션·즉응 플랫폼의 공급·운영·정비·훈련 지원.",
+              "title": "시뮬레이션 시스템(풀 모션 및 고정식)",
+              "text": "첨단 시뮬레이션 및 즉응성 플랫폼의 공급, 운영, 유지보수 및 교육 지원.",
               "link": {
                 "label": "개요",
                 "href": "/services/simulation-systems"
@@ -99,8 +99,8 @@
               "art": null
             },
             {
-              "title": "훈련·시뮬레이션·역량 강화",
-              "text": "군·민 훈련 제공, 지식 이전, 운용 역량 개발.",
+              "title": "교육, 시뮬레이션 및 역량 강화",
+              "text": "군용 및 민수 교육, 지식 이전 및 운용 역량 개발 제공.",
               "link": {
                 "label": "개요",
                 "href": "/services/training-and-capability-enablement"
@@ -110,7 +110,7 @@
             },
             {
               "title": "방산 시스템 유지정비(MRO)",
-              "text": "방산 시스템 전반의 운용 즉응성을 지원하는 종합 정비·수리·오버홀.",
+              "text": "방산 시스템 전반의 운용 즉응성을 지원하는 종합 유지보수·수리·오버홀 서비스.",
               "link": {
                 "label": "개요",
                 "href": "/services/defense-systems-sustainment-mro"
@@ -120,7 +120,7 @@
             },
             {
               "title": "프로그램 관리 및 현지화 지원",
-              "text": "사우디 비전 2030에 부합하는 일관된 프로그램 수행, 현지화, 국가 역량 개발.",
+              "text": "사우디 비전 2030에 부합하는 엔드투엔드 프로그램 수행, 현지화 및 국가 역량 개발.",
               "link": {
                 "label": "개요",
                 "href": "/services/program-management-and-localization"
@@ -136,7 +136,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "대화를 시작하세요",
+      "heading": "상담 시작",
       "cta": {
         "label": "문의하기",
         "href": "/contact"

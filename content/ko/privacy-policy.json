@@ -6,15 +6,15 @@
     "pages.json#privacy-policy"
   ],
   "title": "개인정보처리방침",
-  "description": "Privacy Policy Content",
-  "keywords": "개인정보,처리방침,개인정보처리방침,privacy",
+  "description": "개인정보처리방침 콘텐츠",
+  "keywords": "privacy,policy,privacy policy,개인정보,정책",
   "placeholder": true,
   "blocks": [
     {
       "type": "pageTitle",
       "crumbs": [
         {
-          "label": "홈",
+          "label": "ホーム",
           "href": "/"
         },
         {
@@ -31,7 +31,7 @@
           "kind": "prose",
           "paragraphs": [
             {
-              "text": "Privacy Policy Content"
+              "text": "개인정보처리방침 콘텐츠"
             }
           ]
         }

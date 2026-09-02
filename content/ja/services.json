@@ -6,7 +6,7 @@
     "services.json"
   ],
   "title": "サービス",
-  "description": "3Lines Advanced Technologies Groupは、王国内で軍民サービスを国内化するため、サウジ・ビジョン2030に沿って2019年に設立されました。グループは調達・ロジスティクス・整備・修理・製造にわたる統合サプライチェーン・技術サービスを提供し、国内外の防衛・先端技術分野の運用即応性を支えています。",
+  "description": "3Lines Advanced Technologies Groupは2019年、サウジアラビア・ビジョン2030に沿って、国内で軍用・民間サービスを国内化する目的で設立されました。グループは調達、物流、保守、修理、製造を含む統合サプライチェーン・技術サービスを提供し、国内外の防衛・先進技術分野における運用即応性を支援しています。",
   "blocks": [
     {
       "type": "pageTitle",
@@ -29,8 +29,8 @@
           "kind": "cards",
           "items": [
             {
-              "title": "レーダー整備・電子機器・戦術通信維持整備",
-              "text": "国内能力によるレーダー、監視、C4I、秘匿通信システムの維持整備・診断・修理。",
+              "title": "レーダー整備、電子機器・戦術通信の維持整備",
+              "text": "国内能力によるレーダー、監視、C4I、セキュア通信システムの維持整備、診断、修理。",
               "link": {
                 "label": "概要",
                 "href": "/services/radar-electronics-communications-sustainment"
@@ -39,8 +39,8 @@
               "art": null
             },
             {
-              "title": "政府渉外・人材コンサルティング・ライフサポートサービス",
-              "text": "規制調整、人材コンサルティング、統合ライフサポートサービス。",
+              "title": "政府関係、人材コンサルティング・ライフサポートサービス",
+              "text": "規制対応、労務コンサルティング、統合ライフサポートサービス。",
               "link": {
                 "label": "概要",
                 "href": "/services/government-relations-and-life-support"
@@ -49,8 +49,8 @@
               "art": null
             },
             {
-              "title": "電源システム支援（発電機・UPS）",
-              "text": "重要電源・バックアップシステムの設置・保守・ライフサイクル支援。",
+              "title": "電力システムサポート（発電機・UPS）",
+              "text": "重要電力・バックアップシステムの設置、保守、ライフサイクル支援。",
               "link": {
                 "label": "概要",
                 "href": "/services/power-systems-support"
@@ -59,8 +59,8 @@
               "art": null
             },
             {
-              "title": "電子機器診断・修理工場",
-              "text": "ミッションクリティカルな電子システムの障害切り分け・試験・修理・検証を行う国内施設。",
+              "title": "電子機器診断・修理ワークショップ",
+              "text": "ミッションクリティカルな電子システム向けに、国内化された施設で故障切り分け、試験、修理、検証を提供。",
               "link": {
                 "label": "概要",
                 "href": "/services/electronics-diagnostic-and-repair-workshops"
@@ -69,8 +69,8 @@
               "art": null
             },
             {
-              "title": "地上支援器材（GSE）維持整備",
-              "text": "航空・陸上の地上支援資産の整備と稼働率支援。",
+              "title": "Ground Support Equipment (GSE)の維持整備",
+              "text": "航空・陸上分野の地上支援資産に対する保守・可用性支援。",
               "link": {
                 "label": "概要",
                 "href": "/services/ground-support-equipment-sustainment"
@@ -79,8 +79,8 @@
               "art": null
             },
             {
-              "title": "航空・陸上システムの補用部品、ロジスティクス、倉庫管理",
-              "text": "軍民プラットフォーム向けの一貫した調達・保安倉庫・在庫管理・配送。",
+              "title": "航空・陸上システム補用部品、物流、倉庫保管",
+              "text": "軍用・民間プラットフォーム向けのエンドツーエンド調達、安全な保管、在庫管理、配送。",
               "link": {
                 "label": "概要",
                 "href": "/services/spare-parts-logistics-and-warehousing"
@@ -89,8 +89,8 @@
               "art": null
             },
             {
-              "title": "シミュレーションシステム（フルモーション＆固定式）",
-              "text": "先進シミュレーション・即応性プラットフォームの供給・運用・保守・訓練支援。",
+              "title": "シミュレーションシステム（フルモーション・固定式）",
+              "text": "先進シミュレーション・即応性プラットフォームの供給、運用、保守、訓練支援。",
               "link": {
                 "label": "概要",
                 "href": "/services/simulation-systems"
@@ -99,8 +99,8 @@
               "art": null
             },
             {
-              "title": "訓練・シミュレーション・能力強化",
-              "text": "軍民の訓練提供、知識移転、運用能力開発。",
+              "title": "訓練、シミュレーション・能力開発支援",
+              "text": "軍用・民間訓練、知識移転、運用能力開発を提供。",
               "link": {
                 "label": "概要",
                 "href": "/services/training-and-capability-enablement"
@@ -110,7 +110,7 @@
             },
             {
               "title": "防衛システム維持整備（MRO）",
-              "text": "防衛システム全体の運用即応性を支える総合的な整備・修理・オーバーホール。",
+              "text": "防衛システム全体の運用即応性を支える包括的な保守・修理・オーバーホールサービス。",
               "link": {
                 "label": "概要",
                 "href": "/services/defense-systems-sustainment-mro"
@@ -119,8 +119,8 @@
               "art": null
             },
             {
-              "title": "プログラムマネジメント＆ローカライゼーション支援",
-              "text": "サウジ・ビジョン2030に沿った一貫したプログラム遂行、ローカライゼーション、国家能力開発。",
+              "title": "プログラム管理・国内化支援",
+              "text": "サウジアラビア・ビジョン2030に沿ったエンドツーエンドのプログラム遂行、国内化、国家能力開発。",
               "link": {
                 "label": "概要",
                 "href": "/services/program-management-and-localization"
@@ -136,7 +136,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "お問い合わせはこちら",
+      "heading": "ご相談ください",
       "cta": {
         "label": "お問い合わせ",
         "href": "/contact"

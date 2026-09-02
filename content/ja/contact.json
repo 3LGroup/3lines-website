@@ -9,8 +9,8 @@
     "non-cms.json"
   ],
   "title": "お問い合わせ",
-  "description": "3Lines Advanced Technologies Groupは、王国内で軍民サービスを国内化するため、サウジ・ビジョン2030に沿って2019年に設立されました。グループは調達・ロジスティクス・整備・修理・製造にわたる統合サプライチェーン・技術サービスを提供し、国内外の防衛・先端技術分野の運用即応性を支えています。",
-  "keywords": "お問い合わせ,連絡,contact",
+  "description": "3Lines Advanced Technologies Groupは2019年、サウジアラビア・ビジョン2030に沿って、国内で軍用・民間サービスを国内化する目的で設立されました。グループは調達、物流、保守、修理、製造を含む統合サプライチェーン・技術サービスを提供し、国内外の防衛・先進技術分野における運用即応性を支援しています。",
+  "keywords": "contact,us,contact us,お問い合わせ,ご連絡",
   "blocks": [
     {
       "type": "pageTitle",
@@ -46,7 +46,7 @@
               "text": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215"
             },
             {
-              "title": "登記情報",
+              "title": "登記",
               "text": "",
               "meta": [
                 {
@@ -65,7 +65,7 @@
           "kind": "form",
           "action": "/api/contact",
           "honeypot": "company",
-          "submit": "送信",
+          "submit": "メッセージを送信",
           "fields": [
             {
               "name": "name",
@@ -82,14 +82,14 @@
             {
               "name": "message",
               "type": "textarea",
-              "label": "ご用件をお聞かせください",
+              "label": "どのようなご支援が必要ですか？",
               "required": true
             }
           ],
           "status": {
             "sending": "送信中…",
-            "ok": "ありがとうございます — 追ってご連絡いたします。",
-            "bad": "お名前、有効なメールアドレス、メッセージをご記入ください。",
+            "ok": "ありがとうございます。近日中にご連絡します。",
+            "bad": "お名前、有効なメールアドレス、メッセージを入力してください。",
             "err": "問題が発生しました。もう一度お試しください。"
           }
         }

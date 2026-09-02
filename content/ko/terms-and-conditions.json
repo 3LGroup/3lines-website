@@ -5,23 +5,23 @@
   "source": [
     "pages.json#terms-and-conditions"
   ],
-  "title": "이용약관",
-  "description": "Terms &amp; Conditions Content",
-  "keywords": "이용약관,약관,terms",
+  "title": "이용 약관",
+  "description": "이용 약관 콘텐츠",
+  "keywords": "terms,conditions,terms and conditions,이용 약관,조건",
   "placeholder": true,
   "blocks": [
     {
       "type": "pageTitle",
       "crumbs": [
         {
-          "label": "홈",
+          "label": "ホーム",
           "href": "/"
         },
         {
-          "label": "이용약관"
+          "label": "이용 약관"
         }
       ],
-      "heading": "이용약관"
+      "heading": "이용 약관"
     },
     {
       "type": "section",
@@ -31,7 +31,7 @@
           "kind": "prose",
           "paragraphs": [
             {
-              "text": "Terms &amp; Conditions Content"
+              "text": "이용 약관 콘텐츠"
             }
           ]
         }

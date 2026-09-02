@@ -6,8 +6,8 @@
     "careers.json"
   ],
   "title": "採用情報",
-  "description": "3Lines Advanced Technologies Companyは、サプライチェーン、整備、修理、製造にわたる多分野チームを擁し、防衛・先端",
-  "keywords": "3lines,スリーラインズ,補用部品,航空機,シミュレーター,サウジ,防衛,地上支援器材,サプライチェーン",
+  "description": "3Lines Advanced Technologies Company employs a multidisciplinary team across supply chain, maintenance, repair and manufacturing, supporting defense and advance",
+  "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
   "placeholder": true,
   "blocks": [
     {
@@ -31,10 +31,10 @@
           "kind": "prose",
           "paragraphs": [
             {
-              "text": "3Lines Advanced Technologies Companyは、サプライチェーン、整備、修理、製造にわたる多分野チームを擁し、王国内の防衛・先端技術プログラムを支えています。"
+              "text": "3Lines Advanced Technologies Companyは、サプライチェーン、保守、修理、製造にまたがる多分野のチームを擁し、国内の防衛・先進技術プログラムを支援しています。"
             },
             {
-              "text": "募集職種と応募の詳細はここに掲載されます。"
+              "text": "職務一覧と応募詳細はここに掲載します。"
             }
           ]
         }

@@ -5,8 +5,8 @@
   "source": [
     "posts.json"
   ],
-  "title": "補用部品・ロジスティクス・倉庫能力の拡大",
-  "description": "軍民プラットフォーム向けの調達・保安倉庫・在庫管理を一貫して拡大 — 米国および世界中から調達。",
+  "title": "補用部品、物流、倉庫保管能力を拡大",
+  "description": "軍用・民間プラットフォーム向けのエンドツーエンド調達、安全な保管、在庫管理を拡大 — 米国および世界各地から調達。",
   "blocks": [
     {
       "type": "pageTitle",
@@ -20,17 +20,17 @@
           "href": "/news"
         },
         {
-          "label": "補用部品・ロジスティクス・倉庫能力の拡大"
+          "label": "補用部品、物流、倉庫保管能力を拡大"
         }
       ],
-      "heading": "補用部品・ロジスティクス・倉庫能力の拡大"
+      "heading": "補用部品、物流、倉庫保管能力を拡大"
     },
     {
       "type": "section",
       "tone": "plain",
       "head": {
         "layout": "stacked",
-        "kicker": "調達 · 製造"
+        "kicker": "調達・製造"
       },
       "bodies": [
         {
@@ -39,7 +39,7 @@
             "imgVar": "url('/assets/news/expanding-spare-parts-capabilities.jpg')",
             "art": null
           },
-          "lede": "軍民プラットフォーム向けの調達・保安倉庫・在庫管理を一貫して拡大 — 米国および世界中から調達。"
+          "lede": "軍用・民間プラットフォーム向けのエンドツーエンド調達、安全な保管、在庫管理を拡大 — 米国および世界各地から調達。"
         }
       ]
     },
@@ -47,7 +47,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "お問い合わせはこちら",
+      "heading": "ご相談ください",
       "cta": {
         "label": "お問い合わせ",
         "href": "/contact"

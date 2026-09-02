@@ -6,7 +6,7 @@
     "posts.json"
   ],
   "title": "ニュースルーム",
-  "description": "3Lines Advanced Technologies Groupは、王国内で軍民サービスを国内化するため、サウジ・ビジョン2030に沿って2019年に設立されました。グループは調達・ロジスティクス・整備・修理・製造にわたる統合サプライチェーン・技術サービスを提供し、国内外の防衛・先端技術分野の運用即応性を支えています。",
+  "description": "3Lines Advanced Technologies Groupは2019年、サウジアラビア・ビジョン2030に沿って、国内で軍用・民間サービスを国内化する目的で設立されました。グループは調達、物流、保守、修理、製造を含む統合サプライチェーン・技術サービスを提供し、国内外の防衛・先進技術分野における運用即応性を支援しています。",
   "blocks": [
     {
       "type": "pageTitle",
@@ -34,7 +34,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "お問い合わせはこちら",
+      "heading": "ご相談ください",
       "cta": {
         "label": "お問い合わせ",
         "href": "/contact"

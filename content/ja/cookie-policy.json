@@ -5,9 +5,9 @@
   "source": [
     "pages.json#cookie-policy"
   ],
-  "title": "クッキーポリシー",
-  "description": "Cookie Policy Content",
-  "keywords": "クッキー,ポリシー,クッキーポリシー,cookie",
+  "title": "Cookie Policy",
+  "description": "Cookie Policyコンテンツ",
+  "keywords": "cookie,policy,cookie policy,ポリシー,クッキー",
   "placeholder": true,
   "blocks": [
     {
@@ -18,10 +18,10 @@
           "href": "/"
         },
         {
-          "label": "クッキーポリシー"
+          "label": "Cookie Policy"
         }
       ],
-      "heading": "クッキーポリシー"
+      "heading": "Cookie Policy"
     },
     {
       "type": "section",
@@ -31,7 +31,7 @@
           "kind": "prose",
           "paragraphs": [
             {
-              "text": "Cookie Policy Content"
+              "text": "Cookie Policyコンテンツ"
             }
           ]
         }

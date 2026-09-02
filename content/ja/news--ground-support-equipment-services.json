@@ -5,8 +5,8 @@
   "source": [
     "posts.json"
   ],
-  "title": "地上支援器材維持整備の強化",
-  "description": "航空・陸上の地上支援資産の整備と稼働率支援 — 国内工場と補用部品供給に支えられて。",
+  "title": "Ground Support Equipment維持整備の強化",
+  "description": "国内ワークショップと補用部品供給に支えられた、航空・陸上地上支援資産の保守・可用性支援。",
   "blocks": [
     {
       "type": "pageTitle",
@@ -20,17 +20,17 @@
           "href": "/news"
         },
         {
-          "label": "地上支援器材維持整備の強化"
+          "label": "Ground Support Equipment維持整備の強化"
         }
       ],
-      "heading": "地上支援器材維持整備の強化"
+      "heading": "Ground Support Equipment維持整備の強化"
     },
     {
       "type": "section",
       "tone": "plain",
       "head": {
         "layout": "stacked",
-        "kicker": "製造 · テクノロジー"
+        "kicker": "製造・技術"
       },
       "bodies": [
         {
@@ -39,7 +39,7 @@
             "imgVar": "url('/assets/news/ground-support-equipment-services.jpg')",
             "art": null
           },
-          "lede": "航空・陸上の地上支援資産の整備と稼働率支援 — 国内工場と補用部品供給に支えられて。"
+          "lede": "国内ワークショップと補用部品供給に支えられた、航空・陸上地上支援資産の保守・可用性支援。"
         }
       ]
     },
@@ -47,7 +47,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "お問い合わせはこちら",
+      "heading": "ご相談ください",
       "cta": {
         "label": "お問い合わせ",
         "href": "/contact"

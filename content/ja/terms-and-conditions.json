@@ -6,8 +6,8 @@
     "pages.json#terms-and-conditions"
   ],
   "title": "利用規約",
-  "description": "Terms &amp; Conditions Content",
-  "keywords": "利用規約,規約,terms",
+  "description": "利用規約コンテンツ",
+  "keywords": "terms,conditions,terms and conditions,利用規約,条件",
   "placeholder": true,
   "blocks": [
     {
@@ -31,7 +31,7 @@
           "kind": "prose",
           "paragraphs": [
             {
-              "text": "Terms &amp; Conditions Content"
+              "text": "利用規約コンテンツ"
             }
           ]
         }

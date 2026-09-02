@@ -5,8 +5,8 @@
   "source": [
     "posts.json"
   ],
-  "title": "シミュレーション・XR訓練への投資",
-  "description": "フルモーション・固定式シミュレーションプラットフォームを一貫して支援し、3Lines XRを通じて防衛・航空分野の没入型訓練へと拡張。",
+  "title": "シミュレーションおよびXRベース訓練への投資",
+  "description": "フルモーション・固定式シミュレーションプラットフォームをエンドツーエンドで支援し、3Lines XRを通じて防衛・航空分野の没入型訓練へ拡張。",
   "blocks": [
     {
       "type": "pageTitle",
@@ -20,10 +20,10 @@
           "href": "/news"
         },
         {
-          "label": "シミュレーション・XR訓練への投資"
+          "label": "シミュレーションおよびXRベース訓練への投資"
         }
       ],
-      "heading": "シミュレーション・XR訓練への投資"
+      "heading": "シミュレーションおよびXRベース訓練への投資"
     },
     {
       "type": "section",
@@ -39,7 +39,7 @@
             "imgVar": "url('/assets/news/advanced-simulator-support.jpg')",
             "art": null
           },
-          "lede": "フルモーション・固定式シミュレーションプラットフォームを一貫して支援し、3Lines XRを通じて防衛・航空分野の没入型訓練へと拡張。"
+          "lede": "フルモーション・固定式シミュレーションプラットフォームをエンドツーエンドで支援し、3Lines XRを通じて防衛・航空分野の没入型訓練へ拡張。"
         }
       ]
     },
@@ -47,7 +47,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "お問い合わせはこちら",
+      "heading": "ご相談ください",
       "cta": {
         "label": "お問い合わせ",
         "href": "/contact"

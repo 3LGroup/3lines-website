@@ -6,8 +6,8 @@
     "pages.json#privacy-policy"
   ],
   "title": "プライバシーポリシー",
-  "description": "Privacy Policy Content",
-  "keywords": "プライバシー,ポリシー,プライバシーポリシー,privacy",
+  "description": "プライバシーポリシーコンテンツ",
+  "keywords": "privacy,policy,privacy policy,プライバシー,ポリシー",
   "placeholder": true,
   "blocks": [
     {
@@ -31,7 +31,7 @@
           "kind": "prose",
           "paragraphs": [
             {
-              "text": "Privacy Policy Content"
+              "text": "プライバシーポリシーコンテンツ"
             }
           ]
         }

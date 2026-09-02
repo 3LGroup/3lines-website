@@ -5,23 +5,23 @@
   "source": [
     "pages.json#cookie-policy"
   ],
-  "title": "쿠키 정책",
-  "description": "Cookie Policy Content",
-  "keywords": "쿠키,정책,쿠키정책,cookie",
+  "title": "Cookie Policy",
+  "description": "Cookie Policy 콘텐츠",
+  "keywords": "cookie,policy,cookie policy,정책,쿠키",
   "placeholder": true,
   "blocks": [
     {
       "type": "pageTitle",
       "crumbs": [
         {
-          "label": "홈",
+          "label": "ホーム",
           "href": "/"
         },
         {
-          "label": "쿠키 정책"
+          "label": "Cookie Policy"
         }
       ],
-      "heading": "쿠키 정책"
+      "heading": "Cookie Policy"
     },
     {
       "type": "section",
@@ -31,7 +31,7 @@
           "kind": "prose",
           "paragraphs": [
             {
-              "text": "Cookie Policy Content"
+              "text": "Cookie Policy 콘텐츠"
             }
           ]
         }

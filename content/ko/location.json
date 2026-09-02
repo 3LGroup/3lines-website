@@ -6,31 +6,31 @@
     "location.json",
     "siteInfo.json"
   ],
-  "title": "오시는 길",
-  "description": "당사 사무소는 리야드 킹 파이살 지구, 킹 압둘라 지선 도로변에 있습니다.",
-  "keywords": "3lines,쓰리라인즈,예비부품,항공기,시뮬레이터,사우디,방산,지상지원장비,공급망",
+  "title": "위치",
+  "description": "당사 사무소는 리야드 King Faisal 지구의 King Abdullah Branch Road에 위치합니다.",
+  "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
   "blocks": [
     {
       "type": "pageTitle",
       "crumbs": [
         {
-          "label": "홈",
+          "label": "ホーム",
           "href": "/"
         },
         {
-          "label": "오시는 길"
+          "label": "위치"
         }
       ],
-      "heading": "오시는 길"
+      "heading": "위치"
     },
     {
       "type": "section",
       "tone": "plain",
       "head": {
         "layout": "split",
-        "kicker": "오시는 길",
-        "heading": "리야드 사무소",
-        "lede": "당사 사무소는 리야드 킹 파이살 지구, 킹 압둘라 지선 도로변에 있습니다."
+        "kicker": "위치",
+        "heading": "당사의 리야드 사무소",
+        "lede": "당사 사무소는 리야드 King Faisal 지구의 King Abdullah Branch Road에 위치합니다."
       },
       "bodies": [
         {
@@ -41,7 +41,7 @@
           "placeName": "3 Lines Advanced Technologies Company",
           "address": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
           "ctaLabel": "지도 보기",
-          "note": "Google 지도를 불러옵니다",
+          "note": "Google Maps 불러오기",
           "details": [
             {
               "label": "주소",

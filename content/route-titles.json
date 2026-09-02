@@ -8,7 +8,7 @@
   "/about": {
     "en": "About",
     "ar": "من نحن",
-    "ja": "会社概要",
+    "ja": "会社情報",
     "ko": "회사 소개"
   },
   "/services": {
@@ -20,50 +20,50 @@
   "/services/radar-electronics-communications-sustainment": {
     "en": "Radar Maintenance, Electronics & Tactical Communications Sustainment",
     "ar": "صيانة الرادارات والإلكترونيات واستدامة الاتصالات التكتيكية",
-    "ja": "レーダー整備・電子機器・戦術通信維持整備",
-    "ko": "레이더 정비·전자장비·전술통신 유지정비"
+    "ja": "レーダー整備、電子機器・戦術通信の維持整備",
+    "ko": "레이더 정비, 전자장비 및 전술 통신 유지정비"
   },
   "/services/government-relations-and-life-support": {
     "en": "Government Relations, Personnel Consulting & Life Support Services",
     "ar": "العلاقات الحكومية واستشارات الكوادر وخدمات الإعاشة المتكاملة",
-    "ja": "政府渉外・人材コンサルティング・ライフサポートサービス",
-    "ko": "정부 대관·인력 컨설팅·생활지원 서비스"
+    "ja": "政府関係、人材コンサルティング・ライフサポートサービス",
+    "ko": "정부 관계, 인력 컨설팅 및 라이프 서포트 서비스"
   },
   "/services/power-systems-support": {
     "en": "Power Systems Support (Generators & UPS)",
     "ar": "دعم أنظمة الطاقة (المولدات وأنظمة الطاقة غير المنقطعة)",
-    "ja": "電源システム支援（発電機・UPS）",
-    "ko": "전원 시스템 지원(발전기·UPS)"
+    "ja": "電力システムサポート（発電機・UPS）",
+    "ko": "전력 시스템 지원(발전기 및 UPS)"
   },
   "/services/electronics-diagnostic-and-repair-workshops": {
     "en": "Electronics Diagnostic & Repair Workshops",
     "ar": "ورش تشخيص وإصلاح الإلكترونيات",
-    "ja": "電子機器診断・修理工場",
-    "ko": "전자장비 진단·수리 작업장"
+    "ja": "電子機器診断・修理ワークショップ",
+    "ko": "전자장비 진단 및 수리 워크숍"
   },
   "/services/ground-support-equipment-sustainment": {
     "en": "Ground Support Equipment (GSE) Sustainment",
     "ar": "استدامة معدات الدعم الأرضي",
-    "ja": "地上支援器材（GSE）維持整備",
-    "ko": "지상지원장비(GSE) 유지정비"
+    "ja": "Ground Support Equipment (GSE)の維持整備",
+    "ko": "Ground Support Equipment (GSE) 유지정비"
   },
   "/services/spare-parts-logistics-and-warehousing": {
     "en": "Aviation & Land Systems Spare Parts, Logistics, and Warehousing",
     "ar": "قطع غيار الأنظمة الجوية والبرية والخدمات اللوجستية والتخزين",
-    "ja": "航空・陸上システムの補用部品、ロジスティクス、倉庫管理",
-    "ko": "항공·지상 시스템 예비 부품, 물류, 창고 관리"
+    "ja": "航空・陸上システム補用部品、物流、倉庫保管",
+    "ko": "항공 및 지상 시스템 예비 부품, 물류 및 창고 보관"
   },
   "/services/simulation-systems": {
     "en": "Simulation Systems (Full Motion & Static)",
     "ar": "أنظمة المحاكاة (كاملة الحركة والثابتة)",
-    "ja": "シミュレーションシステム（フルモーション＆固定式）",
-    "ko": "시뮬레이션 시스템(풀모션·고정식)"
+    "ja": "シミュレーションシステム（フルモーション・固定式）",
+    "ko": "시뮬레이션 시스템(풀 모션 및 고정식)"
   },
   "/services/training-and-capability-enablement": {
     "en": "Training, Simulation & Capability Enablement",
     "ar": "التدريب والمحاكاة وتمكين القدرات",
-    "ja": "訓練・シミュレーション・能力強化",
-    "ko": "훈련·시뮬레이션·역량 강화"
+    "ja": "訓練、シミュレーション・能力開発支援",
+    "ko": "교육, 시뮬레이션 및 역량 강화"
   },
   "/services/defense-systems-sustainment-mro": {
     "en": "Defense Systems Sustainment (MRO)",
@@ -74,7 +74,7 @@
   "/services/program-management-and-localization": {
     "en": "Program Management & Localization Enablement",
     "ar": "إدارة البرامج وتمكين التوطين",
-    "ja": "プログラムマネジメント＆ローカライゼーション支援",
+    "ja": "プログラム管理・国内化支援",
     "ko": "프로그램 관리 및 현지화 지원"
   },
   "/news": {
@@ -86,26 +86,26 @@
   "/news/expanding-spare-parts-capabilities": {
     "en": "Expanding Our Spare Parts, Logistics and Warehousing Capabilities",
     "ar": "توسيع قدراتنا في قطع الغيار والخدمات اللوجستية والتخزين",
-    "ja": "補用部品・ロジスティクス・倉庫能力の拡大",
-    "ko": "예비 부품·물류·창고 역량의 확장"
+    "ja": "補用部品、物流、倉庫保管能力を拡大",
+    "ko": "예비 부품, 물류 및 창고 보관 역량 확대"
   },
   "/news/advanced-simulator-support": {
     "en": "Investing in Simulation and XR-Based Training",
     "ar": "الاستثمار في المحاكاة والتدريب القائم على الواقع الممتد",
-    "ja": "シミュレーション・XR訓練への投資",
-    "ko": "시뮬레이션·XR 기반 훈련에 대한 투자"
+    "ja": "シミュレーションおよびXRベース訓練への投資",
+    "ko": "시뮬레이션 및 XR 기반 교육에 대한 투자"
   },
   "/news/ground-support-equipment-services": {
     "en": "Strengthening Ground Support Equipment Sustainment",
     "ar": "تعزيز استدامة معدات الدعم الأرضي",
-    "ja": "地上支援器材維持整備の強化",
-    "ko": "지상지원장비 유지정비 강화"
+    "ja": "Ground Support Equipment維持整備の強化",
+    "ko": "Ground Support Equipment 유지정비 강화"
   },
   "/news/advancing-radar-sensor-support": {
     "en": "Advancing Radar, C4I and Tactical Communications Sustainment",
     "ar": "تطوير استدامة الرادار وأنظمة C4I والاتصالات التكتيكية",
-    "ja": "レーダー・C4I・戦術通信維持整備の前進",
-    "ko": "레이더·C4I·전술통신 유지정비의 진전"
+    "ja": "レーダー、C4I、戦術通信の維持整備を高度化",
+    "ko": "레이더, C4I 및 전술 통신 유지정비 고도화"
   },
   "/partners": {
     "en": "Partners",
@@ -123,13 +123,13 @@
     "en": "Location",
     "ar": "الموقع",
     "ja": "所在地",
-    "ko": "오시는 길"
+    "ko": "위치"
   },
   "/contact": {
     "en": "Contact",
     "ar": "التواصل",
     "ja": "お問い合わせ",
-    "ko": "문의하기"
+    "ko": "문의"
   },
   "/privacy-policy": {
     "en": "Privacy Policy",
@@ -141,12 +141,12 @@
     "en": "Terms & Conditions",
     "ar": "الشروط والأحكام",
     "ja": "利用規約",
-    "ko": "이용약관"
+    "ko": "이용 약관"
   },
   "/cookie-policy": {
     "en": "Cookie Policy",
     "ar": "سياسة ملفات تعريف الارتباط (الكوكيز)",
-    "ja": "クッキーポリシー",
-    "ko": "쿠키 정책"
+    "ja": "Cookie Policy",
+    "ko": "Cookie Policy"
   }
 }

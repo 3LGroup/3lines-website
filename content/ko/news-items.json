@@ -5,10 +5,10 @@
     "tag": "조달",
     "type": "뉴스",
     "date": "2026-05-12",
-    "title": "예비 부품·물류·창고 역량의 확장",
+    "title": "예비 부품, 물류 및 창고 보관 역량 확대",
     "media": {
       "src": "/assets/news/expanding-spare-parts-capabilities.jpg",
-      "alt": "예비 부품·물류·창고 역량의 확장"
+      "alt": "예비 부품, 물류 및 창고 보관 역량 확대"
     },
     "art": null
   },
@@ -18,10 +18,10 @@
     "tag": "기술",
     "type": "뉴스",
     "date": "2026-04-28",
-    "title": "시뮬레이션·XR 기반 훈련에 대한 투자",
+    "title": "시뮬레이션 및 XR 기반 교육에 대한 투자",
     "media": {
       "src": "/assets/news/advanced-simulator-support.jpg",
-      "alt": "시뮬레이션·XR 기반 훈련에 대한 투자"
+      "alt": "시뮬레이션 및 XR 기반 교육에 대한 투자"
     },
     "art": null
   },
@@ -31,10 +31,10 @@
     "tag": "제조",
     "type": "뉴스",
     "date": "2026-03-15",
-    "title": "지상지원장비 유지정비 강화",
+    "title": "Ground Support Equipment 유지정비 강화",
     "media": {
       "src": "/assets/news/ground-support-equipment-services.jpg",
-      "alt": "지상지원장비 유지정비 강화"
+      "alt": "Ground Support Equipment 유지정비 강화"
     },
     "art": null
   },
@@ -44,10 +44,10 @@
     "tag": "기술",
     "type": "뉴스",
     "date": "2026-02-25",
-    "title": "레이더·C4I·전술통신 유지정비의 진전",
+    "title": "레이더, C4I 및 전술 통신 유지정비 고도화",
     "media": {
       "src": "/assets/news/advancing-radar-sensor-support.jpg",
-      "alt": "레이더·C4I·전술통신 유지정비의 진전"
+      "alt": "레이더, C4I 및 전술 통신 유지정비 고도화"
     },
     "art": null
   }

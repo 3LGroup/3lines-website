@@ -6,7 +6,7 @@
     "partners.json"
   ],
   "title": "パートナー",
-  "description": "3Lines Advanced Technologies Groupは、王国内で軍民サービスを国内化するため、サウジ・ビジョン2030に沿って2019年に設立されました。グループは調達・ロジスティクス・整備・修理・製造にわたる統合サプライチェーン・技術サービスを提供し、国内外の防衛・先端技術分野の運用即応性を支えています。",
+  "description": "3Lines Advanced Technologies Groupは2019年、サウジアラビア・ビジョン2030に沿って、国内で軍用・民間サービスを国内化する目的で設立されました。グループは調達、物流、保守、修理、製造を含む統合サプライチェーン・技術サービスを提供し、国内外の防衛・先進技術分野における運用即応性を支援しています。",
   "blocks": [
     {
       "type": "pageTitle",
@@ -35,16 +35,16 @@
                 "alt": "SAMI"
               },
               "href": "https://www.sami.com.sa/",
-              "caption": "サウジアラビア軍事産業公社",
-              "type": "協定",
+              "caption": "Saudi Arabian Military Industries",
+              "type": "契約",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "エアバス",
+              "name": "AirBus",
               "media": {
                 "src": "/assets/logos/airbus-logo.svg",
-                "alt": "エアバス"
+                "alt": "AirBus"
               },
               "href": "https://www.airbus.com/en",
               "type": "顧客",
@@ -81,7 +81,7 @@
               },
               "href": "https://www.aecl.com/",
               "caption": "SAMI Advanced Electronics",
-              "type": "協定",
+              "type": "契約",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
@@ -93,7 +93,7 @@
               },
               "href": "https://www.smscmc.com/",
               "caption": "Saudi Maintenance & Supply Chain Management Co",
-              "type": "協定",
+              "type": "契約",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
@@ -209,111 +209,111 @@
               "flag": "🇸🇦"
             },
             {
-              "name": "サウジ王立空軍",
+              "name": "Royal Saudi Air Force",
               "media": {
                 "src": "/assets/logos/cust-rsaf.png",
-                "alt": "サウジ王立空軍"
+                "alt": "Royal Saudi Air Force"
               },
-              "caption": "AN/TPS-78を含むレーダー維持整備と航空支援。",
+              "caption": "AN/TPS-78を含むレーダーの維持整備および航空支援。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "サウジ王立防空軍",
+              "name": "Royal Saudi Air Defense Forces",
               "media": {
                 "src": "/assets/logos/cust-rsadf.png",
-                "alt": "サウジ王立防空軍"
+                "alt": "Royal Saudi Air Defense Forces"
               },
-              "caption": "防空システムの維持整備と技術支援。",
+              "caption": "防空システムの維持整備および技術支援。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "国家警備省",
+              "name": "Ministry of National Guard",
               "media": {
                 "src": "/assets/logos/cust-mng.png",
-                "alt": "国家警備省"
+                "alt": "Ministry of National Guard"
               },
-              "caption": "米国政府と共同で実施するELT・AMSP・COUNSスクールのプログラム。",
+              "caption": "米国政府と実施するELT、AMSP、COUNS Schoolプログラム。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "国防省",
+              "name": "Ministry of Defense",
               "media": {
                 "src": "/assets/logos/cust-mod.png",
-                "alt": "国防省"
+                "alt": "Ministry of Defense"
               },
-              "caption": "防衛維持整備とローカライゼーションのプログラム。",
+              "caption": "防衛システムの維持整備・国内化プログラム。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "特殊治安部隊",
+              "name": "Special Security Forces",
               "media": {
                 "src": "/assets/logos/cust-ssf.png",
-                "alt": "特殊治安部隊"
+                "alt": "Special Security Forces"
               },
-              "caption": "特殊治安作戦への技術・装備支援。",
+              "caption": "特殊警備作戦向けの技術・装備支援。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "戦略ミサイル軍",
+              "name": "Strategic Missile Force",
               "media": {
                 "src": "/assets/logos/cust-smf.png",
-                "alt": "戦略ミサイル軍"
+                "alt": "Strategic Missile Force"
               },
-              "caption": "専門的な技術・維持整備支援。",
+              "caption": "専門的な技術支援・維持整備。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "サウジ王立海軍",
+              "name": "Royal Saudi Naval Forces",
               "media": {
                 "src": "/assets/logos/cust-rsnf.png",
-                "alt": "サウジ王立海軍"
+                "alt": "Royal Saudi Naval Forces"
               },
-              "caption": "SAMI Aerospace枠組契約に基づく艦載ヘリコプターの補用部品。",
+              "caption": "SAMI Aerospaceのフレームワーク契約に基づく艦載ヘリコプター用補用部品。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "サウジ王立陸軍",
+              "name": "Royal Saudi Land Forces",
               "media": {
                 "src": "/assets/logos/cust-rslf.png",
-                "alt": "サウジ王立陸軍"
+                "alt": "Royal Saudi Land Forces"
               },
-              "caption": "陸上システムの補用部品、通信、維持整備。",
+              "caption": "陸上システム用補用部品、通信、維持整備。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "サウジ国境警備隊",
+              "name": "Saudi Border Guard",
               "media": {
                 "src": "/assets/logos/cust-border-guard.png",
-                "alt": "サウジ国境警備隊"
+                "alt": "Saudi Border Guard"
               },
-              "caption": "監視・通信・装備の支援。",
+              "caption": "監視、通信、装備支援。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "SEDENA — メキシコ国防省",
+              "name": "SEDENA — Secretaría de la Defensa Nacional",
               "media": {
                 "src": "/assets/logos/cust-sedena.png",
-                "alt": "SEDENA — メキシコ国防省"
+                "alt": "SEDENA — Secretaría de la Defensa Nacional"
               },
-              "caption": "SEDENAを通じてメキシコ政府と共同で実施する防衛プロジェクト。",
+              "caption": "SEDENAを通じてメキシコ政府と実施した防衛プロジェクト。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
@@ -324,54 +324,54 @@
                 "src": "/assets/logos/partner-abi.png",
                 "alt": "ABI"
               },
-              "caption": "2024年に締結した戦略的パートナーシップ。",
+              "caption": "2024年に設立された戦略的パートナーシップ。",
               "type": "パートナー",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "ヌーラ王女大学",
+              "name": "Princess Nourah bint Abdulrahman University",
               "media": {
                 "src": "/assets/logos/org-pnu.png",
-                "alt": "ヌーラ王女大学"
+                "alt": "Princess Nourah bint Abdulrahman University"
               },
               "href": "https://www.pnu.edu.sa/",
-              "caption": "自律システムとシミュレーション技術。",
+              "caption": "自律システムおよびシミュレーション技術。",
               "type": "パートナー",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "サッタム王子大学",
+              "name": "Prince Sattam bin Abdulaziz University",
               "media": {
                 "src": "/assets/logos/org-psau.png",
-                "alt": "サッタム王子大学"
+                "alt": "Prince Sattam bin Abdulaziz University"
               },
               "href": "https://www.psau.edu.sa/",
-              "caption": "妨害・電子戦システムの研究開発と製造。",
+              "caption": "ジャミングおよび電子戦システムの研究開発・製造。",
               "type": "パートナー",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "NARS — レーダー・宇宙通信国家アカデミー",
+              "name": "NARS — National Academy for Radar and Space Communications",
               "media": {
                 "src": "/assets/logos/org-nars.png",
-                "alt": "NARS — レーダー・宇宙通信国家アカデミー"
+                "alt": "NARS — National Academy for Radar and Space Communications"
               },
-              "caption": "国家人材を育成する非営利アカデミー — 5つの中核専攻、500名超の訓練生。",
+              "caption": "国家人材を育成する非営利アカデミー — 5つの中核専門分野、500名超の研修生。",
               "type": "パートナー",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "サウジ電力会社",
+              "name": "Saudi Electricity Company",
               "media": {
                 "src": "/assets/logos/cust-saudi-electricity.png",
-                "alt": "サウジ電力会社"
+                "alt": "Saudi Electricity Company"
               },
               "href": "https://www.se.com.sa/",
-              "caption": "電源システムと重要インフラの支援。",
+              "caption": "電力システムおよび重要インフラ支援。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
@@ -383,7 +383,7 @@
                 "alt": "Mobily"
               },
               "href": "https://www.mobily.com.sa/",
-              "caption": "通信・ITインフラでの協業。",
+              "caption": "通信・ITインフラに関する協業。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
@@ -394,7 +394,7 @@
                 "src": "/assets/logos/cust-sitech.png",
                 "alt": "SITECH"
               },
-              "caption": "産業・技術サービスでの協業。",
+              "caption": "産業・技術サービスに関する協業。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
@@ -405,19 +405,19 @@
                 "src": "/assets/logos/partner-sami-alsalam.png",
                 "alt": "SAMI ALSALAM Aerospace Industries"
               },
-              "caption": "航空宇宙産業のパートナーシップ。",
+              "caption": "航空宇宙産業におけるパートナーシップ。",
               "type": "パートナー",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "技術職業訓練公社",
+              "name": "Technical and Vocational Training Corporation",
               "media": {
                 "src": "/assets/logos/partner-tvtc.png",
-                "alt": "技術職業訓練公社"
+                "alt": "Technical and Vocational Training Corporation"
               },
               "href": "https://www.tvtc.gov.sa/",
-              "caption": "国家的な技術・職業訓練のパートナーシップ。",
+              "caption": "国家技術・職業訓練パートナーシップ。",
               "type": "パートナー",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
@@ -428,7 +428,7 @@
                 "src": "/assets/logos/partner-karachi-shipyard.png",
                 "alt": "Karachi Shipyard & Engineering Works"
               },
-              "caption": "艦船エンジニアリング・造船での協業。",
+              "caption": "海洋工学・造船に関する協業。",
               "type": "パートナー",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
@@ -440,7 +440,7 @@
                 "alt": "Raytheon"
               },
               "href": "https://www.rtx.com/",
-              "caption": "防衛システムでの協業。",
+              "caption": "防衛システムに関する協業。",
               "type": "パートナー",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
@@ -451,7 +451,7 @@
                 "src": "/assets/logos/partner-usasac.png",
                 "alt": "USASAC"
               },
-              "caption": "米陸軍安全保障支援コマンドのプログラム。",
+              "caption": "U.S. Army Security Assistance Commandのプログラム。",
               "type": "パートナー",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
@@ -462,7 +462,7 @@
                 "src": "/assets/logos/partner-redstone.png",
                 "alt": "Redstone Systems"
               },
-              "caption": "防衛技術のパートナーシップ。",
+              "caption": "防衛技術パートナーシップ。",
               "type": "パートナー",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
@@ -477,7 +477,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "お問い合わせはこちら",
+      "heading": "ご相談ください",
       "cta": {
         "label": "お問い合わせ",
         "href": "/contact"

@@ -5,14 +5,14 @@
   "source": [
     "posts.json"
   ],
-  "title": "시뮬레이션·XR 기반 훈련에 대한 투자",
-  "description": "풀모션·고정식 시뮬레이션 플랫폼을 일관되게 지원하며, 3Lines XR을 통해 방산·항공 분야의 몰입형 훈련으로 확장.",
+  "title": "시뮬레이션 및 XR 기반 교육에 대한 투자",
+  "description": "풀 모션 및 고정식 시뮬레이션 플랫폼을 엔드투엔드로 지원하고, 3Lines XR을 통해 방산 및 항공 분야의 몰입형 교육으로 확장합니다.",
   "blocks": [
     {
       "type": "pageTitle",
       "crumbs": [
         {
-          "label": "홈",
+          "label": "ホーム",
           "href": "/"
         },
         {
@@ -20,10 +20,10 @@
           "href": "/news"
         },
         {
-          "label": "시뮬레이션·XR 기반 훈련에 대한 투자"
+          "label": "시뮬레이션 및 XR 기반 교육에 대한 투자"
         }
       ],
-      "heading": "시뮬레이션·XR 기반 훈련에 대한 투자"
+      "heading": "시뮬레이션 및 XR 기반 교육에 대한 투자"
     },
     {
       "type": "section",
@@ -39,7 +39,7 @@
             "imgVar": "url('/assets/news/advanced-simulator-support.jpg')",
             "art": null
           },
-          "lede": "풀모션·고정식 시뮬레이션 플랫폼을 일관되게 지원하며, 3Lines XR을 통해 방산·항공 분야의 몰입형 훈련으로 확장."
+          "lede": "풀 모션 및 고정식 시뮬레이션 플랫폼을 엔드투엔드로 지원하고, 3Lines XR을 통해 방산 및 항공 분야의 몰입형 교육으로 확장합니다."
         }
       ]
     },
@@ -47,7 +47,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "대화를 시작하세요",
+      "heading": "상담 시작",
       "cta": {
         "label": "문의하기",
         "href": "/contact"

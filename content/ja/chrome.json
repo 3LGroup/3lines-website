@@ -1,6 +1,6 @@
 {
   "skip": {
-    "label": "本文へスキップ",
+    "label": "メインコンテンツへスキップ",
     "href": "#main"
   },
   "logoImg": {
@@ -18,7 +18,7 @@
         "href": "/"
       },
       {
-        "label": "会社概要",
+        "label": "会社情報",
         "href": "/about"
       },
       {
@@ -75,7 +75,7 @@
       },
       {
         "key": "company",
-        "label": "企業情報"
+        "label": "会社"
       }
     ],
     "panels": [
@@ -84,35 +84,35 @@
         "title": "サービス",
         "links": [
           {
-            "label": "レーダー整備・電子機器・戦術通信維持整備",
+            "label": "レーダー整備、電子機器・戦術通信の維持整備",
             "href": "/services/radar-electronics-communications-sustainment"
           },
           {
-            "label": "政府渉外・人材コンサルティング・ライフサポートサービス",
+            "label": "政府関係、人材コンサルティング・ライフサポートサービス",
             "href": "/services/government-relations-and-life-support"
           },
           {
-            "label": "電源システム支援（発電機・UPS）",
+            "label": "電力システムサポート（発電機・UPS）",
             "href": "/services/power-systems-support"
           },
           {
-            "label": "電子機器診断・修理工場",
+            "label": "電子機器診断・修理ワークショップ",
             "href": "/services/electronics-diagnostic-and-repair-workshops"
           },
           {
-            "label": "地上支援器材（GSE）維持整備",
+            "label": "Ground Support Equipment (GSE)の維持整備",
             "href": "/services/ground-support-equipment-sustainment"
           },
           {
-            "label": "航空・陸上システムの補用部品、ロジスティクス、倉庫管理",
+            "label": "航空・陸上システム補用部品、物流、倉庫保管",
             "href": "/services/spare-parts-logistics-and-warehousing"
           },
           {
-            "label": "シミュレーションシステム（フルモーション＆固定式）",
+            "label": "シミュレーションシステム（フルモーション・固定式）",
             "href": "/services/simulation-systems"
           },
           {
-            "label": "訓練・シミュレーション・能力強化",
+            "label": "訓練、シミュレーション・能力開発支援",
             "href": "/services/training-and-capability-enablement"
           },
           {
@@ -120,7 +120,7 @@
             "href": "/services/defense-systems-sustainment-mro"
           },
           {
-            "label": "プログラムマネジメント＆ローカライゼーション支援",
+            "label": "プログラム管理・国内化支援",
             "href": "/services/program-management-and-localization"
           }
         ],
@@ -145,10 +145,10 @@
       },
       {
         "key": "company",
-        "title": "企業情報",
+        "title": "会社",
         "links": [
           {
-            "label": "会社概要",
+            "label": "会社情報",
             "href": "/about"
           },
           {
@@ -161,7 +161,7 @@
           }
         ],
         "cta": {
-          "label": "会社概要",
+          "label": "会社情報",
           "href": "/about"
         }
       }
@@ -174,7 +174,7 @@
         "title": "3Lines Advanced Technologies Company",
         "links": [
           {
-            "label": "会社概要",
+            "label": "会社情報",
             "href": "/about"
           },
           {
@@ -199,35 +199,35 @@
         "title": "サービス",
         "links": [
           {
-            "label": "レーダー整備・電子機器・戦術通信維持整備",
+            "label": "レーダー整備、電子機器・戦術通信の維持整備",
             "href": "/services/radar-electronics-communications-sustainment"
           },
           {
-            "label": "政府渉外・人材コンサルティング・ライフサポートサービス",
+            "label": "政府関係、人材コンサルティング・ライフサポートサービス",
             "href": "/services/government-relations-and-life-support"
           },
           {
-            "label": "電源システム支援（発電機・UPS）",
+            "label": "電力システムサポート（発電機・UPS）",
             "href": "/services/power-systems-support"
           },
           {
-            "label": "電子機器診断・修理工場",
+            "label": "電子機器診断・修理ワークショップ",
             "href": "/services/electronics-diagnostic-and-repair-workshops"
           },
           {
-            "label": "地上支援器材（GSE）維持整備",
+            "label": "Ground Support Equipment (GSE)の維持整備",
             "href": "/services/ground-support-equipment-sustainment"
           },
           {
-            "label": "航空・陸上システムの補用部品、ロジスティクス、倉庫管理",
+            "label": "航空・陸上システム補用部品、物流、倉庫保管",
             "href": "/services/spare-parts-logistics-and-warehousing"
           },
           {
-            "label": "シミュレーションシステム（フルモーション＆固定式）",
+            "label": "シミュレーションシステム（フルモーション・固定式）",
             "href": "/services/simulation-systems"
           },
           {
-            "label": "訓練・シミュレーション・能力強化",
+            "label": "訓練、シミュレーション・能力開発支援",
             "href": "/services/training-and-capability-enablement"
           },
           {
@@ -235,13 +235,13 @@
             "href": "/services/defense-systems-sustainment-mro"
           },
           {
-            "label": "プログラムマネジメント＆ローカライゼーション支援",
+            "label": "プログラム管理・国内化支援",
             "href": "/services/program-management-and-localization"
           }
         ]
       },
       {
-        "title": "法務情報",
+        "title": "法務",
         "links": [
           {
             "label": "プライバシーポリシー",
@@ -252,7 +252,7 @@
             "href": "/terms-and-conditions"
           },
           {
-            "label": "クッキーポリシー",
+            "label": "Cookie Policy",
             "href": "/cookie-policy"
           }
         ]

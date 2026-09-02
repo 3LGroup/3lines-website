@@ -6,13 +6,13 @@
     "posts.json"
   ],
   "title": "뉴스룸",
-  "description": "3Lines Advanced Technologies Group은 왕국 내 군·민 서비스의 현지화를 위해 사우디 비전 2030에 맞춰 2019년에 설립되었습니다. 그룹은 조달·물류·정비·수리·제조를 아우르는 통합 공급망·기술 서비스를 제공하며, 국내외 방산·첨단기술 분야의 운용 즉응성을 지원합니다.",
+  "description": "3Lines Advanced Technologies Group은 2019년 사우디 비전 2030에 부합하여 왕국 내 군용 및 민수 서비스를 현지화하기 위한 목적으로 설립되었습니다. 그룹은 조달, 물류, 유지보수, 수리 및 제조를 포함한 통합 공급망 및 기술 서비스를 제공하며, 국내외 방산 및 첨단기술 분야의 운용 즉응성을 지원합니다.",
   "blocks": [
     {
       "type": "pageTitle",
       "crumbs": [
         {
-          "label": "홈",
+          "label": "ホーム",
           "href": "/"
         },
         {
@@ -34,7 +34,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "대화를 시작하세요",
+      "heading": "상담 시작",
       "cta": {
         "label": "문의하기",
         "href": "/contact"

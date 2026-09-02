@@ -11,25 +11,25 @@
     "companies.json"
   ],
   "title": "3Lines Advanced Technologies Company",
-  "description": "3Lines Advanced Technologies Groupは、王国内で軍民サービスを国内化するため、サウジ・ビジョン2030に沿って2019年に設立されました。グループは調達・ロジスティクス・整備・修理・製造にわたる統合サプライチェーン・技術サービスを提供し、国内外の防衛・先端技術分野の運用即応性を支えています。",
-  "keywords": "3lines,スリーラインズ,補用部品,航空機,シミュレーター,サウジ,防衛,地上支援器材,サプライチェーン",
+  "description": "3Lines Advanced Technologies Groupは2019年、サウジアラビア・ビジョン2030に沿って、国内で軍用・民間サービスを国内化する目的で設立されました。グループは調達、物流、保守、修理、製造を含む統合サプライチェーン・技術サービスを提供し、国内外の防衛・先進技術分野における運用即応性を支援しています。",
+  "keywords": "threelines,three,lines,provision,aircraft,spare,parts,simulator,saudi,company,supplying,aircrafts,spare,parts,,ground,support,equipment,and,simulators,3lines,ثريلاينز آدفانسد تكنولجيز",
   "blocks": [
     {
       "type": "hero",
       "imgVar": "url('/assets/uploads/bg.webp')",
       "headingLines": [
-        "私たちが提供する",
+        "提供内容",
         "グローバルに"
       ],
       "rotate": [
-        "先端技術",
-        "エクステンデッド・リアリティ",
+        "先進技術",
+        "Extended Reality",
         "MRO",
-        "ロジスティクス"
+        "物流"
       ],
-      "body": "3Lines Advanced Technologies Groupは、王国内で軍民サービスを国内化するため、サウジ・ビジョン2030に沿って2019年に設立されました。グループは調達・ロジスティクス・整備・修理・製造にわたる統合サプライチェーン・技術サービスを提供し、国内外の防衛・先端技術分野の運用即応性を支えています。",
+      "body": "3Lines Advanced Technologies Groupは2019年、サウジアラビア・ビジョン2030に沿って、国内で軍用・民間サービスを国内化する目的で設立されました。グループは調達、物流、保守、修理、製造を含む統合サプライチェーン・技術サービスを提供し、国内外の防衛・先進技術分野における運用即応性を支援しています。",
       "cta": {
-        "label": "私たちについて",
+        "label": "当社について",
         "href": "/about"
       }
     },
@@ -43,16 +43,16 @@
             {
               "count": 7,
               "prefix": "+",
-              "label": "2019年から防衛・先端技術に貢献"
+              "label": "2019年から防衛・先進技術分野に携わる年数"
             },
             {
               "count": 3,
-              "label": "中核運用ピラー"
+              "label": "中核的な運用基盤"
             },
             {
               "count": 120,
               "prefix": "+",
-              "label": "多分野にわたるプロフェッショナルチーム"
+              "label": "多分野の専門チーム"
             },
             {
               "count": 30,
@@ -68,10 +68,10 @@
       "tone": "mist",
       "head": {
         "layout": "split",
-        "kicker": "事業内容",
-        "heading": "提供体制",
+        "kicker": "当社の事業",
+        "heading": "提供方法",
         "link": {
-          "label": "会社概要",
+          "label": "会社情報",
           "href": "/about"
         }
       },
@@ -81,16 +81,16 @@
           "columns": 3,
           "items": [
             {
-              "title": "サプライチェーンマネジメント",
-              "text": "戦略調達から軍民プラットフォームへの納入まで — 調達、保安倉庫、在庫管理、配送の一貫したサプライチェーン。"
+              "title": "サプライチェーン管理",
+              "text": "エンドツーエンドのサプライチェーン — 戦略調達、購買、安全な保管、在庫管理、軍用・民間プラットフォームへの納入。"
             },
             {
-              "title": "整備",
+              "title": "保守",
               "text": "国内能力によるレーダー、監視、C2/C3/C4I指揮統制システム、地上支援、防衛システムの維持整備。"
             },
             {
               "title": "修理・製造",
-              "text": "国内の診断・修理工場に加え、先進システム向け部品のリバースエンジニアリングと製造。"
+              "text": "国内化された診断・修理ワークショップに加え、先進システム向け部品のリバースエンジニアリング・製造。"
             }
           ]
         }
@@ -103,7 +103,7 @@
       "head": {
         "layout": "split",
         "kicker": "グループ",
-        "heading": "グループ企業"
+        "heading": "グループ各社"
       },
       "bodies": [
         {
@@ -111,21 +111,21 @@
           "items": [
             {
               "id": "advanced-technology",
-              "name": "Advanced Technology",
-              "tagline": "先端技術のソリューションとサービスを提供",
+              "name": "先進技術",
+              "tagline": "先進技術のソリューションとサービスを提供",
               "imgVar": "url('/assets/photos/3l-rf-signal-bench.jpg')",
               "link": {
-                "label": "詳しく見る",
+                "label": "詳細を見る",
                 "href": "/services"
               }
             },
             {
               "id": "xr",
               "name": "XR",
-              "tagline": "AR/VRによるエクステンデッド・リアリティ",
+              "tagline": "AR/VRによるExtended Reality",
               "imgVar": "url('/assets/photos/3l-xr-minefield-training.jpg')",
               "link": {
-                "label": "詳しく見る",
+                "label": "詳細を見る",
                 "href": "https://xr.3lines.com.sa/"
               },
               "external": true
@@ -136,7 +136,7 @@
               "name": "Optokon Middle East",
               "tagline": "光・ITインフラソリューション",
               "link": {
-                "label": "詳しく見る",
+                "label": "詳細を見る",
                 "href": "https://optokon.com.sa/"
               },
               "external": true
@@ -144,10 +144,10 @@
             {
               "id": "ai3lines",
               "name": "3Lines AI",
-              "tagline": "業務を動かすAIエージェント",
+              "tagline": "事業運営を担うAIエージェント",
               "imgVar": "url('/assets/photos/3l-ai-satellite-terminal.jpg')",
               "link": {
-                "label": "詳しく見る",
+                "label": "詳細を見る",
                 "href": "https://ai3lines.com/"
               },
               "external": true
@@ -168,20 +168,20 @@
           "kind": "slider",
           "items": [
             {
-              "heading": "維持するために築かれ、運用を信頼される",
-              "sub": "2019年から王国内で防衛・先端技術を国内化。"
+              "heading": "維持整備を支え、運用を支える",
+              "sub": "2019年から国内で防衛・先進技術を国内化。"
             },
             {
-              "heading": "王国内で維持されるレーダーとC4I",
-              "sub": "ノースロップ・グラマン社とのMLAに基づく第4線整備。"
+              "heading": "レーダー・C4Iを国内で維持整備",
+              "sub": "Northrop GrummanとのMLAに基づく第4段階レベル整備。"
             },
             {
-              "heading": "3つの中核運用ピラー",
-              "sub": "サプライチェーンマネジメント、整備、修理・製造。"
+              "heading": "3つの中核運用基盤",
+              "sub": "サプライチェーン管理、保守、修理・製造。"
             },
             {
-              "heading": "30社超の戦略的パートナー",
-              "sub": "サウジアラビア、米国、メキシコ、ポーランド、チェコで展開。"
+              "heading": "戦略的パートナー30社超",
+              "sub": "サウジアラビア、米国、メキシコ、ポーランド、チェコ共和国で展開。"
             }
           ]
         }
@@ -193,8 +193,8 @@
       "id": "services",
       "head": {
         "layout": "split",
-        "kicker": "事業内容",
-        "heading": "事業内容",
+        "kicker": "当社の事業",
+        "heading": "当社の事業",
         "link": {
           "label": "サービス",
           "href": "/services"
@@ -205,8 +205,8 @@
           "kind": "cards",
           "items": [
             {
-              "title": "レーダー整備・電子機器・戦術通信維持整備",
-              "text": "国内能力によるレーダー、監視、C4I、秘匿通信システムの維持整備・診断・修理。",
+              "title": "レーダー整備、電子機器・戦術通信の維持整備",
+              "text": "国内能力によるレーダー、監視、C4I、セキュア通信システムの維持整備、診断、修理。",
               "link": {
                 "label": "概要",
                 "href": "/services/radar-electronics-communications-sustainment"
@@ -215,8 +215,8 @@
               "art": null
             },
             {
-              "title": "政府渉外・人材コンサルティング・ライフサポートサービス",
-              "text": "規制調整、人材コンサルティング、統合ライフサポートサービス。",
+              "title": "政府関係、人材コンサルティング・ライフサポートサービス",
+              "text": "規制対応、労務コンサルティング、統合ライフサポートサービス。",
               "link": {
                 "label": "概要",
                 "href": "/services/government-relations-and-life-support"
@@ -225,8 +225,8 @@
               "art": null
             },
             {
-              "title": "電源システム支援（発電機・UPS）",
-              "text": "重要電源・バックアップシステムの設置・保守・ライフサイクル支援。",
+              "title": "電力システムサポート（発電機・UPS）",
+              "text": "重要電力・バックアップシステムの設置、保守、ライフサイクル支援。",
               "link": {
                 "label": "概要",
                 "href": "/services/power-systems-support"
@@ -235,8 +235,8 @@
               "art": null
             },
             {
-              "title": "電子機器診断・修理工場",
-              "text": "ミッションクリティカルな電子システムの障害切り分け・試験・修理・検証を行う国内施設。",
+              "title": "電子機器診断・修理ワークショップ",
+              "text": "ミッションクリティカルな電子システム向けに、国内化された施設で故障切り分け、試験、修理、検証を提供。",
               "link": {
                 "label": "概要",
                 "href": "/services/electronics-diagnostic-and-repair-workshops"
@@ -245,8 +245,8 @@
               "art": null
             },
             {
-              "title": "地上支援器材（GSE）維持整備",
-              "text": "航空・陸上の地上支援資産の整備と稼働率支援。",
+              "title": "Ground Support Equipment (GSE)の維持整備",
+              "text": "航空・陸上分野の地上支援資産に対する保守・可用性支援。",
               "link": {
                 "label": "概要",
                 "href": "/services/ground-support-equipment-sustainment"
@@ -255,8 +255,8 @@
               "art": null
             },
             {
-              "title": "航空・陸上システムの補用部品、ロジスティクス、倉庫管理",
-              "text": "軍民プラットフォーム向けの一貫した調達・保安倉庫・在庫管理・配送。",
+              "title": "航空・陸上システム補用部品、物流、倉庫保管",
+              "text": "軍用・民間プラットフォーム向けのエンドツーエンド調達、安全な保管、在庫管理、配送。",
               "link": {
                 "label": "概要",
                 "href": "/services/spare-parts-logistics-and-warehousing"
@@ -265,8 +265,8 @@
               "art": null
             },
             {
-              "title": "シミュレーションシステム（フルモーション＆固定式）",
-              "text": "先進シミュレーション・即応性プラットフォームの供給・運用・保守・訓練支援。",
+              "title": "シミュレーションシステム（フルモーション・固定式）",
+              "text": "先進シミュレーション・即応性プラットフォームの供給、運用、保守、訓練支援。",
               "link": {
                 "label": "概要",
                 "href": "/services/simulation-systems"
@@ -275,8 +275,8 @@
               "art": null
             },
             {
-              "title": "訓練・シミュレーション・能力強化",
-              "text": "軍民の訓練提供、知識移転、運用能力開発。",
+              "title": "訓練、シミュレーション・能力開発支援",
+              "text": "軍用・民間訓練、知識移転、運用能力開発を提供。",
               "link": {
                 "label": "概要",
                 "href": "/services/training-and-capability-enablement"
@@ -286,7 +286,7 @@
             },
             {
               "title": "防衛システム維持整備（MRO）",
-              "text": "防衛システム全体の運用即応性を支える総合的な整備・修理・オーバーホール。",
+              "text": "防衛システム全体の運用即応性を支える包括的な保守・修理・オーバーホールサービス。",
               "link": {
                 "label": "概要",
                 "href": "/services/defense-systems-sustainment-mro"
@@ -295,8 +295,8 @@
               "art": null
             },
             {
-              "title": "プログラムマネジメント＆ローカライゼーション支援",
-              "text": "サウジ・ビジョン2030に沿った一貫したプログラム遂行、ローカライゼーション、国家能力開発。",
+              "title": "プログラム管理・国内化支援",
+              "text": "サウジアラビア・ビジョン2030に沿ったエンドツーエンドのプログラム遂行、国内化、国家能力開発。",
               "link": {
                 "label": "概要",
                 "href": "/services/program-management-and-localization"
@@ -332,10 +332,10 @@
       "tone": "plain",
       "head": {
         "layout": "split",
-        "kicker": "信頼されている実績",
+        "kicker": "信頼される企業",
         "heading": "",
         "link": {
-          "label": "信頼されている実績",
+          "label": "信頼される企業",
           "href": "/partners"
         }
       },
@@ -350,16 +350,16 @@
                 "alt": "SAMI"
               },
               "href": "https://www.sami.com.sa/",
-              "caption": "サウジアラビア軍事産業公社",
-              "type": "協定",
+              "caption": "Saudi Arabian Military Industries",
+              "type": "契約",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "エアバス",
+              "name": "AirBus",
               "media": {
                 "src": "/assets/logos/airbus-logo.svg",
-                "alt": "エアバス"
+                "alt": "AirBus"
               },
               "href": "https://www.airbus.com/en",
               "type": "顧客",
@@ -396,7 +396,7 @@
               },
               "href": "https://www.aecl.com/",
               "caption": "SAMI Advanced Electronics",
-              "type": "協定",
+              "type": "契約",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
@@ -408,7 +408,7 @@
               },
               "href": "https://www.smscmc.com/",
               "caption": "Saudi Maintenance & Supply Chain Management Co",
-              "type": "協定",
+              "type": "契約",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
@@ -524,23 +524,23 @@
               "flag": "🇸🇦"
             },
             {
-              "name": "サウジ王立空軍",
+              "name": "Royal Saudi Air Force",
               "media": {
                 "src": "/assets/logos/cust-rsaf.png",
-                "alt": "サウジ王立空軍"
+                "alt": "Royal Saudi Air Force"
               },
-              "caption": "AN/TPS-78を含むレーダー維持整備と航空支援。",
+              "caption": "AN/TPS-78を含むレーダーの維持整備および航空支援。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
             },
             {
-              "name": "サウジ王立防空軍",
+              "name": "Royal Saudi Air Defense Forces",
               "media": {
                 "src": "/assets/logos/cust-rsadf.png",
-                "alt": "サウジ王立防空軍"
+                "alt": "Royal Saudi Air Defense Forces"
               },
-              "caption": "防空システムの維持整備と技術支援。",
+              "caption": "防空システムの維持整備および技術支援。",
               "type": "顧客",
               "country": "サウジアラビア",
               "flag": "🇸🇦"
@@ -555,7 +555,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "お問い合わせはこちら",
+      "heading": "ご相談ください",
       "cta": {
         "label": "お問い合わせ",
         "href": "/contact"

@@ -6,13 +6,13 @@
     "partners.json"
   ],
   "title": "파트너",
-  "description": "3Lines Advanced Technologies Group은 왕국 내 군·민 서비스의 현지화를 위해 사우디 비전 2030에 맞춰 2019년에 설립되었습니다. 그룹은 조달·물류·정비·수리·제조를 아우르는 통합 공급망·기술 서비스를 제공하며, 국내외 방산·첨단기술 분야의 운용 즉응성을 지원합니다.",
+  "description": "3Lines Advanced Technologies Group은 2019년 사우디 비전 2030에 부합하여 왕국 내 군용 및 민수 서비스를 현지화하기 위한 목적으로 설립되었습니다. 그룹은 조달, 물류, 유지보수, 수리 및 제조를 포함한 통합 공급망 및 기술 서비스를 제공하며, 국내외 방산 및 첨단기술 분야의 운용 즉응성을 지원합니다.",
   "blocks": [
     {
       "type": "pageTitle",
       "crumbs": [
         {
-          "label": "홈",
+          "label": "ホーム",
           "href": "/"
         },
         {
@@ -35,16 +35,16 @@
                 "alt": "SAMI"
               },
               "href": "https://www.sami.com.sa/",
-              "caption": "사우디아라비아 군수산업공사",
-              "type": "협정",
+              "caption": "Saudi Arabian Military Industries",
+              "type": "계약",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "에어버스",
+              "name": "AirBus",
               "media": {
                 "src": "/assets/logos/airbus-logo.svg",
-                "alt": "에어버스"
+                "alt": "AirBus"
               },
               "href": "https://www.airbus.com/en",
               "type": "고객",
@@ -81,7 +81,7 @@
               },
               "href": "https://www.aecl.com/",
               "caption": "SAMI Advanced Electronics",
-              "type": "협정",
+              "type": "계약",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
@@ -93,7 +93,7 @@
               },
               "href": "https://www.smscmc.com/",
               "caption": "Saudi Maintenance & Supply Chain Management Co",
-              "type": "협정",
+              "type": "계약",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
@@ -209,21 +209,21 @@
               "flag": "🇸🇦"
             },
             {
-              "name": "사우디 왕립 공군",
+              "name": "Royal Saudi Air Force",
               "media": {
                 "src": "/assets/logos/cust-rsaf.png",
-                "alt": "사우디 왕립 공군"
+                "alt": "Royal Saudi Air Force"
               },
-              "caption": "AN/TPS-78을 포함한 레이더 유지정비와 항공 지원.",
+              "caption": "AN/TPS-78을 포함한 레이더 유지정비 및 항공 지원.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "사우디 왕립 방공군",
+              "name": "Royal Saudi Air Defense Forces",
               "media": {
                 "src": "/assets/logos/cust-rsadf.png",
-                "alt": "사우디 왕립 방공군"
+                "alt": "Royal Saudi Air Defense Forces"
               },
               "caption": "방공 시스템 유지정비 및 기술 지원.",
               "type": "고객",
@@ -231,89 +231,89 @@
               "flag": "🇸🇦"
             },
             {
-              "name": "국가경비부",
+              "name": "Ministry of National Guard",
               "media": {
                 "src": "/assets/logos/cust-mng.png",
-                "alt": "국가경비부"
+                "alt": "Ministry of National Guard"
               },
-              "caption": "미국 정부와 공동 수행하는 ELT·AMSP·COUNS 스쿨 프로그램.",
+              "caption": "미국 정부와 함께 수행하는 ELT, AMSP 및 COUNS School 프로그램.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "국방부",
+              "name": "Ministry of Defense",
               "media": {
                 "src": "/assets/logos/cust-mod.png",
-                "alt": "국방부"
+                "alt": "Ministry of Defense"
               },
-              "caption": "방산 유지정비 및 현지화 프로그램.",
+              "caption": "방산 시스템 유지정비 및 현지화 프로그램.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "특수보안군",
+              "name": "Special Security Forces",
               "media": {
                 "src": "/assets/logos/cust-ssf.png",
-                "alt": "특수보안군"
+                "alt": "Special Security Forces"
               },
-              "caption": "특수 보안 작전을 위한 기술·장비 지원.",
+              "caption": "특수 보안 작전을 위한 기술 및 장비 지원.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "전략미사일군",
+              "name": "Strategic Missile Force",
               "media": {
                 "src": "/assets/logos/cust-smf.png",
-                "alt": "전략미사일군"
+                "alt": "Strategic Missile Force"
               },
-              "caption": "전문적인 기술·유지정비 지원.",
+              "caption": "전문 기술 및 유지정비 지원.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "사우디 왕립 해군",
+              "name": "Royal Saudi Naval Forces",
               "media": {
                 "src": "/assets/logos/cust-rsnf.png",
-                "alt": "사우디 왕립 해군"
+                "alt": "Royal Saudi Naval Forces"
               },
-              "caption": "SAMI Aerospace 프레임워크 계약에 따른 함재 헬기 예비 부품.",
+              "caption": "SAMI Aerospace 프레임워크 계약에 따른 해군 헬리콥터 예비 부품.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "사우디 왕립 육군",
+              "name": "Royal Saudi Land Forces",
               "media": {
                 "src": "/assets/logos/cust-rslf.png",
-                "alt": "사우디 왕립 육군"
+                "alt": "Royal Saudi Land Forces"
               },
-              "caption": "지상 시스템 예비 부품, 통신, 유지정비.",
+              "caption": "지상 시스템 예비 부품, 통신 및 유지정비.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "사우디 국경수비대",
+              "name": "Saudi Border Guard",
               "media": {
                 "src": "/assets/logos/cust-border-guard.png",
-                "alt": "사우디 국경수비대"
+                "alt": "Saudi Border Guard"
               },
-              "caption": "감시·통신·장비 지원.",
+              "caption": "감시, 통신 및 장비 지원.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "SEDENA — 멕시코 국방부",
+              "name": "SEDENA — Secretaría de la Defensa Nacional",
               "media": {
                 "src": "/assets/logos/cust-sedena.png",
-                "alt": "SEDENA — 멕시코 국방부"
+                "alt": "SEDENA — Secretaría de la Defensa Nacional"
               },
-              "caption": "SEDENA를 통해 멕시코 정부와 공동 수행하는 방산 프로젝트.",
+              "caption": "SEDENA를 통해 멕시코 정부와 수행한 방산 프로젝트.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
@@ -324,16 +324,16 @@
                 "src": "/assets/logos/partner-abi.png",
                 "alt": "ABI"
               },
-              "caption": "2024년 체결된 전략적 파트너십.",
+              "caption": "2024년에 구축된 전략적 파트너십.",
               "type": "파트너",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "누라 공주 대학교",
+              "name": "Princess Nourah bint Abdulrahman University",
               "media": {
                 "src": "/assets/logos/org-pnu.png",
-                "alt": "누라 공주 대학교"
+                "alt": "Princess Nourah bint Abdulrahman University"
               },
               "href": "https://www.pnu.edu.sa/",
               "caption": "자율 시스템 및 시뮬레이션 기술.",
@@ -342,36 +342,36 @@
               "flag": "🇸🇦"
             },
             {
-              "name": "사탐 왕자 대학교",
+              "name": "Prince Sattam bin Abdulaziz University",
               "media": {
                 "src": "/assets/logos/org-psau.png",
-                "alt": "사탐 왕자 대학교"
+                "alt": "Prince Sattam bin Abdulaziz University"
               },
               "href": "https://www.psau.edu.sa/",
-              "caption": "재밍·전자전 시스템 연구개발 및 제조.",
+              "caption": "재밍 및 전자전 시스템의 R&D 및 제조.",
               "type": "파트너",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "NARS — 레이더·우주통신 국가 아카데미",
+              "name": "NARS — National Academy for Radar and Space Communications",
               "media": {
                 "src": "/assets/logos/org-nars.png",
-                "alt": "NARS — 레이더·우주통신 국가 아카데미"
+                "alt": "NARS — National Academy for Radar and Space Communications"
               },
-              "caption": "국가 인재를 양성하는 비영리 아카데미 — 5개 핵심 전공, 500명 이상의 교육생.",
+              "caption": "국가 인재를 양성하는 비영리 아카데미 — 5개 핵심 전문 분야, 500명 이상의 연수생.",
               "type": "파트너",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
             },
             {
-              "name": "사우디 전력공사",
+              "name": "Saudi Electricity Company",
               "media": {
                 "src": "/assets/logos/cust-saudi-electricity.png",
-                "alt": "사우디 전력공사"
+                "alt": "Saudi Electricity Company"
               },
               "href": "https://www.se.com.sa/",
-              "caption": "전원 시스템 및 핵심 인프라 지원.",
+              "caption": "전력 시스템 및 핵심 인프라 지원.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
@@ -383,7 +383,7 @@
                 "alt": "Mobily"
               },
               "href": "https://www.mobily.com.sa/",
-              "caption": "통신·IT 인프라 협력.",
+              "caption": "통신 및 IT 인프라 협력.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
@@ -394,7 +394,7 @@
                 "src": "/assets/logos/cust-sitech.png",
                 "alt": "SITECH"
               },
-              "caption": "산업·기술 서비스 협력.",
+              "caption": "산업 및 기술 서비스 협력.",
               "type": "고객",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
@@ -411,13 +411,13 @@
               "flag": "🇸🇦"
             },
             {
-              "name": "기술직업훈련공사",
+              "name": "Technical and Vocational Training Corporation",
               "media": {
                 "src": "/assets/logos/partner-tvtc.png",
-                "alt": "기술직업훈련공사"
+                "alt": "Technical and Vocational Training Corporation"
               },
               "href": "https://www.tvtc.gov.sa/",
-              "caption": "국가 기술·직업 훈련 파트너십.",
+              "caption": "국가 기술 및 직업훈련 파트너십.",
               "type": "파트너",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
@@ -428,7 +428,7 @@
                 "src": "/assets/logos/partner-karachi-shipyard.png",
                 "alt": "Karachi Shipyard & Engineering Works"
               },
-              "caption": "함정 엔지니어링·조선 협력.",
+              "caption": "해양공학 및 조선 협력.",
               "type": "파트너",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
@@ -451,7 +451,7 @@
                 "src": "/assets/logos/partner-usasac.png",
                 "alt": "USASAC"
               },
-              "caption": "미 육군 안보지원사령부 프로그램.",
+              "caption": "U.S. Army Security Assistance Command 프로그램.",
               "type": "파트너",
               "country": "사우디아라비아",
               "flag": "🇸🇦"
@@ -477,7 +477,7 @@
       "type": "careers",
       "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
-      "heading": "대화를 시작하세요",
+      "heading": "상담 시작",
       "cta": {
         "label": "문의하기",
         "href": "/contact"
