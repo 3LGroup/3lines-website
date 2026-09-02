@@ -16,7 +16,7 @@
   "blocks": [
     {
       "type": "hero",
-      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "imgVar": "url('/assets/uploads/bg.webp')",
       "headingLines": [
         "نقدم",
         "عالمياً"
@@ -553,7 +553,7 @@
     },
     {
       "type": "careers",
-      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
       "heading": "ابدأ محادثة",
       "cta": {

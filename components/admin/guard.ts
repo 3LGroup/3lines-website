@@ -40,7 +40,7 @@ export function guarded<S extends { error?: string }, A extends unknown[]>(
         throw e;
       }
       return {
-        error: 'Could not reach the server. Your changes are still here — try again.',
+        error: 'The save did not go through — the connection dropped or the server errored. Your changes are still here; try again.',
       } as S;
     }
   };

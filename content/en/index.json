@@ -16,7 +16,7 @@
   "blocks": [
     {
       "type": "hero",
-      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "imgVar": "url('/assets/uploads/bg.webp')",
       "headingLines": [
         "We provide",
         "Globally"
@@ -111,7 +111,7 @@
           "items": [
             {
               "id": "advanced-technology",
-              "name": "Advanced Technology",
+              "name": "Advanced Technologies",
               "tagline": "Providing advanced technologies solutions and services",
               "imgVar": "url('/assets/photos/3l-rf-signal-bench.jpg')",
               "link": {
@@ -553,7 +553,7 @@
     },
     {
       "type": "careers",
-      "imgVar": "url('/assets/photos/hero-mro.jpg')",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
       "art": null,
       "heading": "Begin a conversation",
       "cta": {
