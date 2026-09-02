@@ -172,7 +172,21 @@ ul{margin:0;padding:0;list-style:none}
 html.dark .langmenu summary:hover,html.dark .langmenu[open] summary{background:var(--panel,#1a2430)}
 html.dark .langmenu__list{background:var(--panel,#141d27);border-color:var(--border,#2a3644);box-shadow:0 12px 32px rgba(0,0,0,.5)}
 html.dark .langmenu__list a:hover,html.dark .langmenu__list a[aria-current="true"]{background:rgba(255,255,255,.07)}
-@media (max-width:900px){.utility{display:none}}
+/* `.hdr .utility`, not `.utility`. This narrow-screen rule has always been here,
+   and it stopped working the moment the utility row moved inside the header:
+   that needed `.hdr .utility{display:flex}` for vertical centring, and a media
+   query contributes nothing to specificity, so (0,2,0) beat the (0,1,0) hide.
+   The nav has been rendering on every phone since.
+
+   At 390px it had nowhere to go. The links overflowed leftwards across the
+   brand — "Services" drew on top of the burger icon, "Newsroom" over the logo,
+   and "Home" and "About" were pushed off-screen entirely. The page itself never
+   scrolled sideways, so an overflow check reported clean; the collision was
+   inside the header's own row.
+
+   Matching the specificity is the whole fix. Below 900px the burger and mega
+   menu carry navigation, exactly as they did before the header rework. */
+@media (max-width:900px){.hdr .utility{display:none}}
 
 /* ============================================================
    Header — burger | logo | utility nav
