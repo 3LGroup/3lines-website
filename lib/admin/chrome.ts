@@ -143,7 +143,13 @@ function requireText(t: L10nText, where: string): void {
 
 /** Rebuild one locale's chrome.json document, in the canonical key order. */
 function unzipDoc(nav: NavChrome, locale: Locale): Doc {
-  const t = (v: L10nText) => v[locale];
+  /* An empty locale value falls back to English AT SAVE TIME. requireText
+     enforces only en+ar — the two languages the editors author directly — so a
+     newly added link whose ja/ko boxes were left blank would otherwise write
+     empty labels straight into the Japanese and Korean navigation. Falling
+     back here keeps those locales readable and mirrors the launch posture:
+     untranslated means English, never blank. */
+  const t = (v: L10nText) => (v[locale].trim() ? v[locale] : v.en);
   const link = (l: NavLink) => ({ label: t(l.label), href: l.href });
 
   return {

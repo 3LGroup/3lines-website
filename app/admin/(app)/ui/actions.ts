@@ -1,5 +1,6 @@
 'use server';
 
+import { LOCALES } from '@/lib/blocks';
 import { revalidatePath } from 'next/cache';
 import { readSession } from '@/lib/admin/session';
 import { saveUiStrings, type UiEdit } from '@/lib/admin/ui';
@@ -23,7 +24,7 @@ export async function saveUi(_prev: SiteState, form: FormData): Promise<SiteStat
   const edits: UiEdit[] = [];
   for (const [k, value] of Object.entries(parsed)) {
     const [key, locale] = k.split(':');
-    if (locale !== 'en' && locale !== 'ar') return { error: `Unknown locale "${locale}".` };
+    if (!(LOCALES as readonly string[]).includes(locale)) return { error: `Unknown locale "${locale}".` };
     edits.push({ key: key!, locale: locale as Locale, value });
   }
   if (!edits.length) return { ok: true, detail: 'No changes.' };

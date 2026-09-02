@@ -1,5 +1,6 @@
 'use server';
 
+import { LOCALES } from '@/lib/blocks';
 import { revalidatePath } from 'next/cache';
 import { readSession } from '@/lib/admin/session';
 import {
@@ -43,7 +44,7 @@ export async function saveItems(_prev: CollectionState, form: FormData): Promise
   for (const [k, edits] of Object.entries(parsed)) {
     if (!edits || !Object.keys(edits).length) continue;
     const [idx, locale] = k.split(':');
-    if (locale !== 'en' && locale !== 'ar') return { error: `Unknown locale "${locale}".` };
+    if (!(LOCALES as readonly string[]).includes(locale)) return { error: `Unknown locale "${locale}".` };
     patches.push({ index: Number(idx), locale: locale as Locale, edits });
   }
 

@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { readSession } from '@/lib/admin/session';
 import { saveBands, type BandEdit } from '@/lib/admin/bands';
 import type { Locale } from '@/lib/admin/content';
+import { LOCALES } from '@/lib/blocks';
 import type { SiteState } from '../site/actions';
 
 const guard = async () => ((await readSession()) ? null : 'Your session expired. Sign in again.');
@@ -25,7 +26,7 @@ export async function saveBandsAction(_prev: SiteState, form: FormData): Promise
     // "<kind>:<path>" with an optional trailing ":<locale>" — split from the end.
     const last = k.lastIndexOf(':');
     const maybeLocale = k.slice(last + 1);
-    if (maybeLocale === 'en' || maybeLocale === 'ar') {
+    if ((LOCALES as readonly string[]).includes(maybeLocale)) {
       edits.push({ key: k.slice(0, last), locale: maybeLocale as Locale, value });
     } else {
       edits.push({ key: k, value });

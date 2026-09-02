@@ -13,6 +13,8 @@ export default async function InterfaceTextPage() {
     label: f.label,
     value: values[f.key]?.en ?? '',
     ar: values[f.key]?.ar ?? '',
+    ja: values[f.key]?.ja ?? '',
+    ko: values[f.key]?.ko ?? '',
     hint: f.hint,
   }));
 

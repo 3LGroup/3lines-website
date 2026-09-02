@@ -1,5 +1,6 @@
 'use server';
 
+import { LOCALES } from '@/lib/blocks';
 import { revalidatePath } from 'next/cache';
 import { readSession } from '@/lib/admin/session';
 import {
@@ -55,7 +56,7 @@ export async function saveEdits(_prev: SaveState, form: FormData): Promise<SaveS
     const sep = key.lastIndexOf(':');
     const blockId = key.slice(0, sep);
     const locale = key.slice(sep + 1) as Locale;
-    if (locale !== 'en' && locale !== 'ar') return { error: `Unknown locale "${locale}".` };
+    if (!(LOCALES as readonly string[]).includes(locale)) return { error: `Unknown locale "${locale}".` };
     patches.push({ blockId, locale, edits });
   }
 
@@ -67,11 +68,11 @@ export async function saveEdits(_prev: SaveState, form: FormData): Promise<SaveS
     try {
       for (const [key, value] of Object.entries(JSON.parse(metaRaw) as Record<string, string>)) {
         const [slug, locale, field] = key.split(':');
-        if (locale !== 'en' && locale !== 'ar') return { error: `Unknown locale "${locale}".` };
+        if (!(LOCALES as readonly string[]).includes(locale)) return { error: `Unknown locale "${locale}".` };
         if (field !== 'title' && field !== 'description' && field !== 'keywords') {
           return { error: `Unknown metadata field "${field}".` };
         }
-        metaEdits.push({ slug: slug!, locale, field, value });
+        metaEdits.push({ slug: slug!, locale: locale as Locale, field, value });
       }
     } catch {
       return { error: 'The metadata payload was malformed.' };
