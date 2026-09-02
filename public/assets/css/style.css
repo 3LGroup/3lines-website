@@ -671,7 +671,7 @@ html.dark .socialstrip a:hover{background:var(--foreground);color:var(--backgrou
 /* ============================================================
    Footer
    ============================================================ */
-.ftr{background:var(--navy);color:rgba(255,255,255,.82);padding:clamp(40px,4.6vw,60px) 0 0}
+.ftr{background:var(--navy);color:rgba(255,255,255,.82);padding:clamp(24px,2.8vw,36px) 0 0}
 /* The middle column is 2fr, not 1fr.
    Three equal 403px columns is the reference's geometry, and it fits the
    reference's content: its longest column holds 8 short links. Ours holds 10
@@ -680,20 +680,20 @@ html.dark .socialstrip a:hover{background:var(--foreground);color:var(--backgrou
    this footer stood 104px taller than the site it was cloned from. Widening the
    column that carries the long labels removes the wrapping at its source
    instead of shrinking type or gaps to absorb it. */
-.ftr__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr) minmax(0,1fr);gap:clamp(26px,4vw,60px)}
+.ftr__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr) minmax(0,1fr);gap:clamp(20px,3vw,44px)}
 @media (max-width:820px){.ftr__grid{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.ftr__grid{grid-template-columns:1fr}}
-.ftr h4{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:20px;font-weight:700}
-.ftr ul{display:grid;gap:11px}
-.ftr li a{font-size:15.5px;transition:color .2s}
+.ftr h4{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px;font-weight:700}
+.ftr ul{display:grid;gap:7px}
+.ftr li a{font-size:14.5px;transition:color .2s}
 .ftr li a:hover{color:var(--cyan)}
-.ftr__logo svg{height:30px;width:auto;margin-bottom:26px}
+.ftr__logo svg{height:28px;width:auto;margin-bottom:14px}
 .ftr__logo .tw-text{fill:#fff}
 .ftr__bar{
   /* Trimmed from 60/22/36. The bar carries one line of text on each side, so
      the old spacing reserved room for a second line that never arrives. */
-  margin-top:clamp(28px,3.4vw,44px);border-top:1px solid rgba(255,255,255,.18);
-  padding:20px 0 28px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;font-size:14px;
+  margin-top:clamp(16px,2vw,26px);border-top:1px solid rgba(255,255,255,.18);
+  padding:12px 0 16px;display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;font-size:13.5px;
 }
 .ftr__bar a:hover{color:var(--cyan)}
 .ftr__bar .right{margin-left:auto;color:rgba(255,255,255,.6)}

@@ -509,11 +509,11 @@ p,li,dd,address,figcaption,.lede,.sub,.excerpt,
   background-position:center;
 }
 .ftr__logo::before{
-  width:clamp(88px,9vw,108px);height:auto;aspect-ratio:1004/1414;
+  width:clamp(64px,6.4vw,80px);height:auto;aspect-ratio:1004/1414;
   background-image:var(--logo-lockup);
   background-position:left top;
 }
-.ftr__logo{margin-bottom:18px}
+.ftr__logo{margin-bottom:10px}
 
 /* Header wordmark beside the mark, ported from the reference's own injected
    lockup (3lines-website/assets/enhance.js §18b) — same text, weights, sizes
