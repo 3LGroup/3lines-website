@@ -10,22 +10,30 @@
   "website": "https://3lines.com.sa",
   "companyDescription": {
     "en": "3Lines Advanced Technologies Group was established in 2019 in alignment with Saudi Vision 2030 to localize military and civilian services within the Kingdom. The Group delivers integrated supply chain and technical services — procurement, logistics, maintenance, repair and manufacturing — supporting operational readiness across the defense and advanced technology sectors, locally and internationally.",
-    "ar": "تأسست مجموعة 3LINES ADVANCED TECHNOLOGIES في عام 2019 تماشيًا مع رؤية السعودية 2030 بهدف توطين الخدمات العسكرية والمدنية داخل المملكة. تقدم المجموعة خدمات متكاملة في سلاسل الإمداد والخدمات الفنية — المشتريات والخدمات اللوجستية والصيانة والإصلاح والتصنيع — دعمًا للجاهزية التشغيلية في قطاعي الدفاع والتقنيات المتقدمة محليًا ودوليًا."
+    "ar": "تأسست مجموعة 3LINES ADVANCED TECHNOLOGIES في عام 2019 تماشيًا مع رؤية السعودية 2030 بهدف توطين الخدمات العسكرية والمدنية داخل المملكة. تقدم المجموعة خدمات متكاملة في سلاسل الإمداد والخدمات الفنية — المشتريات والخدمات اللوجستية والصيانة والإصلاح والتصنيع — دعمًا للجاهزية التشغيلية في قطاعي الدفاع والتقنيات المتقدمة محليًا ودوليًا.",
+    "ja": "3Lines Advanced Technologies Groupは、王国内で軍民サービスを国内化するため、サウジ・ビジョン2030に沿って2019年に設立されました。グループは調達・ロジスティクス・整備・修理・製造にわたる統合サプライチェーン・技術サービスを提供し、国内外の防衛・先端技術分野の運用即応性を支えています。",
+    "ko": "3Lines Advanced Technologies Group은 왕국 내 군·민 서비스의 현지화를 위해 사우디 비전 2030에 맞춰 2019년에 설립되었습니다. 그룹은 조달·물류·정비·수리·제조를 아우르는 통합 공급망·기술 서비스를 제공하며, 국내외 방산·첨단기술 분야의 운용 즉응성을 지원합니다."
   },
   "companyName": {
     "en": "3Lines Advanced Technologies Company",
-    "ar": "ثريلاينز آدفانسد تكنولجيز"
+    "ar": "ثريلاينز آدفانسد تكنولجيز",
+    "ja": "3Lines Advanced Technologies Company",
+    "ko": "3Lines Advanced Technologies Company"
   },
   "siteName": {
     "en": "3Lines Advanced Technologies",
-    "ar": "ثريلاينز آدفانسد تكنولجيز"
+    "ar": "ثريلاينز آدفانسد تكنولجيز",
+    "ja": "3Lines Advanced Technologies",
+    "ko": "3Lines Advanced Technologies"
   },
   "titleBrand": "3Lines",
   "wordmarkName": "LINES",
   "wordmarkTag": "Advanced Technologies Company",
   "establishedBadge": {
     "en": "Established 2019",
-    "ar": "تأسست عام 2019"
+    "ar": "تأسست عام 2019",
+    "ja": "2019年設立",
+    "ko": "2019년 설립"
   },
   "city": "Riyadh",
   "postalCode": "13215",

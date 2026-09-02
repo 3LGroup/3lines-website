@@ -1,0 +1,84 @@
+{
+  "route": "/careers",
+  "locale": "ja",
+  "slug": "careers",
+  "source": [
+    "careers.json"
+  ],
+  "title": "採用情報",
+  "description": "3Lines Advanced Technologies Companyは、サプライチェーン、整備、修理、製造にわたる多分野チームを擁し、防衛・先端",
+  "keywords": "3lines,スリーラインズ,補用部品,航空機,シミュレーター,サウジ,防衛,地上支援器材,サプライチェーン",
+  "placeholder": true,
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "ホーム",
+          "href": "/"
+        },
+        {
+          "label": "採用情報"
+        }
+      ],
+      "heading": "採用情報"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "3Lines Advanced Technologies Companyは、サプライチェーン、整備、修理、製造にわたる多分野チームを擁し、王国内の防衛・先端技術プログラムを支えています。"
+            },
+            {
+              "text": "募集職種と応募の詳細はここに掲載されます。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-mro-tech.jpg')",
+      "art": null,
+      "heading": "採用情報",
+      "cta": {
+        "label": "お問い合わせ",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "メール",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "電話",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "所在地",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

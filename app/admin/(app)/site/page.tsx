@@ -17,6 +17,8 @@ export default async function SiteInfoPage() {
       label: f.label,
       value: localized ? ((raw as Record<string, string>).en ?? '') : ((raw as string) ?? ''),
       ar: f.localized ? ((raw as Record<string, string>)?.ar ?? '') : undefined,
+      ja: f.localized ? ((raw as Record<string, string>)?.ja ?? '') : undefined,
+      ko: f.localized ? ((raw as Record<string, string>)?.ko ?? '') : undefined,
       hint: 'hint' in f ? f.hint : undefined,
       multiline: 'multiline' in f ? f.multiline : undefined,
       group: 'group' in f ? f.group : undefined,

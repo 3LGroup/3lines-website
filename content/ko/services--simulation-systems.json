@@ -1,0 +1,164 @@
+{
+  "route": "/services/simulation-systems",
+  "locale": "ko",
+  "slug": "services--simulation-systems",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "시뮬레이션 시스템(풀모션·고정식)",
+  "description": "첨단 시뮬레이션·즉응 플랫폼의 공급·운영·정비·훈련 지원.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "홈",
+          "href": "/"
+        },
+        {
+          "label": "서비스",
+          "href": "/services"
+        },
+        {
+          "label": "시뮬레이션 시스템(풀모션·고정식)"
+        }
+      ],
+      "heading": "시뮬레이션 시스템(풀모션·고정식)"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "개요"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "풀모션·고정식 시뮬레이션 지원",
+          "lede": "첨단 시뮬레이션·즉응 플랫폼 — 풀모션 및 고정식 — 의 공급·운영·정비·훈련 지원. 비행·정비 시뮬레이터를 유지하여 훈련 처리량과 운용 즉응성이 장비 가동률에 제약받지 않도록 하며, 자율 시스템과 시뮬레이션 기술을 다루는 누라 공주 대학교와의 파트너십이 이를 뒷받침합니다.",
+          "glanceTitle": "한눈에 보기",
+          "glance": [
+            "풀모션·고정식 플랫폼",
+            "공급 및 설치",
+            "운영 및 정비",
+            "훈련 지원"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-xr-simulator.jpg')",
+            "art": null
+          },
+          "heading": "제공 방식",
+          "checklist": [
+            {
+              "title": "시뮬레이터 공급",
+              "text": "시뮬레이션 및 즉응 플랫폼의 조달과 납품."
+            },
+            {
+              "title": "설치 및 통합",
+              "text": "훈련 환경으로의 시운전과 통합."
+            },
+            {
+              "title": "예방 정비",
+              "text": "시뮬레이터 가동률을 유지하는 정기 정비."
+            },
+            {
+              "title": "고장 대응",
+              "text": "시뮬레이션 서브시스템의 전문 진단과 수리."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "핵심 역량"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "시뮬레이터 공급",
+              "text": "시뮬레이션 및 즉응 플랫폼의 조달과 납품."
+            },
+            {
+              "title": "설치 및 통합",
+              "text": "훈련 환경으로의 시운전과 통합."
+            },
+            {
+              "title": "예방 정비",
+              "text": "시뮬레이터 가동률을 유지하는 정기 정비."
+            },
+            {
+              "title": "고장 대응",
+              "text": "시뮬레이션 서브시스템의 전문 진단과 수리."
+            },
+            {
+              "title": "운영 지원",
+              "text": "훈련 시설의 일상 운영 지원."
+            },
+            {
+              "title": "교관·사용자 훈련",
+              "text": "플랫폼의 가치를 최대한 끌어내는 훈련."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "대화를 시작하세요",
+      "cta": {
+        "label": "문의하기",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "이메일",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "전화",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "주소",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

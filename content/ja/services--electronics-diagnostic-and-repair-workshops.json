@@ -1,0 +1,164 @@
+{
+  "route": "/services/electronics-diagnostic-and-repair-workshops",
+  "locale": "ja",
+  "slug": "services--electronics-diagnostic-and-repair-workshops",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "電子機器診断・修理工場",
+  "description": "ミッションクリティカルな電子システムの障害切り分け・試験・修理・検証を行う国内施設。",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "ホーム",
+          "href": "/"
+        },
+        {
+          "label": "サービス",
+          "href": "/services"
+        },
+        {
+          "label": "電子機器診断・修理工場"
+        }
+      ],
+      "heading": "電子機器診断・修理工場"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "概要"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "ミッションクリティカル電子機器の国内工場",
+          "lede": "王国内の当社電子機器工場は、ミッションクリティカルなシステムの障害切り分け・試験・修理・検証を提供します。部品レベル作業に対応する設備 — RFテストベンチ、信号発生器、電力計、校正済み計測器 — により、海外へ送ることなく国内でアセンブリを復帰させ、納期を短縮し外部依存を低減します。",
+          "glanceTitle": "概況",
+          "glance": [
+            "部品レベル修理",
+            "RF・信号試験能力",
+            "校正済み計測器",
+            "国内での短納期対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-mro-bench.jpg')",
+            "art": null
+          },
+          "heading": "提供体制",
+          "checklist": [
+            {
+              "title": "障害切り分け",
+              "text": "故障したアセンブリ・部品を特定する体系的診断。"
+            },
+            {
+              "title": "部品レベル修理",
+              "text": "ユニット交換ではなく基板・部品レベルでの修理。"
+            },
+            {
+              "title": "RF・マイクロ波試験",
+              "text": "レーダー周波数帯にわたる信号生成と電力測定。"
+            },
+            {
+              "title": "機能検証",
+              "text": "復帰認定前の完全な機能試験。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "対応能力"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "障害切り分け",
+              "text": "故障したアセンブリ・部品を特定する体系的診断。"
+            },
+            {
+              "title": "部品レベル修理",
+              "text": "ユニット交換ではなく基板・部品レベルでの修理。"
+            },
+            {
+              "title": "RF・マイクロ波試験",
+              "text": "レーダー周波数帯にわたる信号生成と電力測定。"
+            },
+            {
+              "title": "機能検証",
+              "text": "復帰認定前の完全な機能試験。"
+            },
+            {
+              "title": "校正",
+              "text": "トレーサブルな基準器による調整と校正。"
+            },
+            {
+              "title": "リバースエンジニアリング",
+              "text": "経年システムを維持するための廃番部品の再現。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "お問い合わせはこちら",
+      "cta": {
+        "label": "お問い合わせ",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "メール",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "電話",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "所在地",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

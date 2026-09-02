@@ -1,0 +1,164 @@
+{
+  "route": "/services/training-and-capability-enablement",
+  "locale": "ja",
+  "slug": "services--training-and-capability-enablement",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "訓練・シミュレーション・能力強化",
+  "description": "軍民の訓練提供、知識移転、運用能力開発。",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "ホーム",
+          "href": "/"
+        },
+        {
+          "label": "サービス",
+          "href": "/services"
+        },
+        {
+          "label": "訓練・シミュレーション・能力強化"
+        }
+      ],
+      "heading": "訓練・シミュレーション・能力強化"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "概要"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "訓練の提供にとどまらない、国家能力の構築",
+          "lede": "軍民の訓練提供、知識移転、運用能力開発 — 経験豊富なトレーナーによる上級英語訓練を含みます。レーダー・宇宙通信国家アカデミーNARSと国内大学との連携を通じて、レーダー・通信システム、光ファイバー、データセンター、航法システム、電子防護の分野でサウジ人材を育成します。",
+          "glanceTitle": "概況",
+          "glance": [
+            "軍民訓練",
+            "英語訓練",
+            "NARSアカデミー · 500名超の訓練生",
+            "知識移転とローカライゼーション"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-sim-console-training.jpg')",
+            "art": null
+          },
+          "heading": "提供体制",
+          "checklist": [
+            {
+              "title": "技術訓練",
+              "text": "レーダー・通信・光ファイバー・データセンターの実践プログラム。"
+            },
+            {
+              "title": "英語訓練",
+              "text": "経験豊富なトレーナーによる上級英語教育。"
+            },
+            {
+              "title": "シミュレーション訓練",
+              "text": "シミュレーションと実習に基づく実践的訓練。"
+            },
+            {
+              "title": "知識移転",
+              "text": "王国内に持続的な能力を残すスキル移転。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "対応能力"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "技術訓練",
+              "text": "レーダー・通信・光ファイバー・データセンターの実践プログラム。"
+            },
+            {
+              "title": "英語訓練",
+              "text": "経験豊富なトレーナーによる上級英語教育。"
+            },
+            {
+              "title": "シミュレーション訓練",
+              "text": "シミュレーションと実習に基づく実践的訓練。"
+            },
+            {
+              "title": "知識移転",
+              "text": "王国内に持続的な能力を残すスキル移転。"
+            },
+            {
+              "title": "大学連携",
+              "text": "キング・サウード、ヌーラ王女、サッタム王子、カシームの各大学との共同プログラム。"
+            },
+            {
+              "title": "NARSアカデミー",
+              "text": "技術・防衛分野のスキルギャップを埋める非営利アカデミー。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "お問い合わせはこちら",
+      "cta": {
+        "label": "お問い合わせ",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "メール",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "電話",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "所在地",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

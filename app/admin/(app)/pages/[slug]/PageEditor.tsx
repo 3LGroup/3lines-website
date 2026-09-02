@@ -332,15 +332,24 @@ export default function PageEditor({
                   value={metaValue('en', f.key, meta.en?.[f.key] ?? '')}
                   onChange={(e) => setMeta('en', f.key, e.target.value, meta.en?.[f.key] ?? '')}
                 />
-                <input
-                  className="adm-input"
-                  aria-label={`${f.label} (Arabic)`}
-                  lang="ar"
-                  dir="rtl"
-                  style={{ fontFamily: "'Tajawal', var(--font-sans)" }}
-                  value={metaValue('ar', f.key, meta.ar?.[f.key] ?? '')}
-                  onChange={(e) => setMeta('ar', f.key, e.target.value, meta.ar?.[f.key] ?? '')}
-                />
+                {(
+                  [
+                    ['ar', 'Arabic', 'rtl', "'Tajawal', var(--font-sans)"],
+                    ['ja', 'Japanese', 'ltr', undefined],
+                    ['ko', 'Korean', 'ltr', undefined],
+                  ] as const
+                ).map(([code, name, dir, family]) => (
+                  <input
+                    key={code}
+                    className="adm-input"
+                    aria-label={`${f.label} (${name})`}
+                    lang={code}
+                    dir={dir}
+                    style={family ? { fontFamily: family } : undefined}
+                    value={metaValue(code, f.key, meta[code]?.[f.key] ?? '')}
+                    onChange={(e) => setMeta(code, f.key, e.target.value, meta[code]?.[f.key] ?? '')}
+                  />
+                ))}
               </div>
             ))}
 
@@ -368,6 +377,8 @@ export default function PageEditor({
         {blocks.map((block) => {
           const isOpen = open === block.id;
           const arByPath = new Map(block.fields.ar.map((f) => [f.path, f.value]));
+          const jaByPath = new Map(block.fields.ja.map((f) => [f.path, f.value]));
+          const koByPath = new Map(block.fields.ko.map((f) => [f.path, f.value]));
           const dirty =
             Object.keys(edits[`${block.id}:en`] ?? {}).length +
             Object.keys(edits[`${block.id}:ar`] ?? {}).length +
@@ -644,8 +655,14 @@ export default function PageEditor({
                   ))}
 
                   {block.fields.en.map((f) => {
-                    const ar = arByPath.get(f.path) ?? '';
-                    const same = ar === f.value && f.value !== '';
+                    const twins = [
+                      ['ar', 'Arabic', 'rtl', "'Tajawal', var(--font-sans)", arByPath.get(f.path) ?? ''],
+                      ['ja', 'Japanese', 'ltr', undefined, jaByPath.get(f.path) ?? ''],
+                      ['ko', 'Korean', 'ltr', undefined, koByPath.get(f.path) ?? ''],
+                    ] as const;
+                    const untranslated = twins
+                      .filter(([, , , , v]) => v === f.value && f.value !== '')
+                      .map(([, name]) => name);
                     const Input = f.multiline ? 'textarea' : 'input';
                     return (
                       <div className="adm-field" key={f.path}>
@@ -662,21 +679,24 @@ export default function PageEditor({
                           onChange={(e) => setField(block.id, 'en', f.path, e.target.value, f.value)}
                         />
 
-                        <Input
-                          className={f.multiline ? 'adm-textarea' : 'adm-input'}
-                          aria-label={`${f.label} (Arabic)`}
-                          lang="ar"
-                          dir="rtl"
-                          style={{ fontFamily: "'Tajawal', var(--font-sans)" }}
-                          value={valueOf(block.id, 'ar', f.path, ar)}
-                          onChange={(e) => setField(block.id, 'ar', f.path, e.target.value, ar)}
-                        />
+                        {twins.map(([code, name, dir, family, v]) => (
+                          <Input
+                            key={code}
+                            className={f.multiline ? 'adm-textarea' : 'adm-input'}
+                            aria-label={`${f.label} (${name})`}
+                            lang={code}
+                            dir={dir}
+                            style={family ? { fontFamily: family } : undefined}
+                            value={valueOf(block.id, code, f.path, v)}
+                            onChange={(e) => setField(block.id, code, f.path, e.target.value, v)}
+                          />
+                        ))}
 
-                        {same ? (
+                        {untranslated.length ? (
                           <p className="adm-hint">
                             <Icon name="alert" size={13} />
-                            Arabic is identical to English — either untranslated, or a name that is
-                            the same in both.
+                            {untranslated.join(', ')} identical to English — untranslated, or a name
+                            that is the same in both.
                           </p>
                         ) : null}
                       </div>

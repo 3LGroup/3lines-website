@@ -115,7 +115,7 @@ export interface Collection {
   items: CollectionItem[];
 }
 
-const LOCALES: Locale[] = ['en', 'ar'];
+const LOCALES: Locale[] = ['en', 'ar', 'ja', 'ko'];
 
 /** Locate the block holding a collection, with both halves parsed. */
 async function locate(route: string, kind: string) {

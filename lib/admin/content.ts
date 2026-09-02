@@ -15,7 +15,7 @@ import { itemArraysFor, sharedFields, type SharedField } from './structure';
  * rule someone has to remember.
  */
 
-const LOCALES = ['en', 'ar'] as const;
+const LOCALES = ['en', 'ar', 'ja', 'ko'] as const;
 export type Locale = (typeof LOCALES)[number];
 
 export interface PageSummary {

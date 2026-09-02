@@ -1,0 +1,164 @@
+{
+  "route": "/services/radar-electronics-communications-sustainment",
+  "locale": "ko",
+  "slug": "services--radar-electronics-communications-sustainment",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "레이더 정비·전자장비·전술통신 유지정비",
+  "description": "국내 역량을 통한 레이더, 감시, C4I, 보안 통신 시스템의 유지정비·진단·수리.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "홈",
+          "href": "/"
+        },
+        {
+          "label": "서비스",
+          "href": "/services"
+        },
+        {
+          "label": "레이더 정비·전자장비·전술통신 유지정비"
+        }
+      ],
+      "heading": "레이더 정비·전자장비·전술통신 유지정비"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "개요"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "왕국 내에서 완결되는 레이더·C4I 유지정비",
+          "lede": "3Lines는 사우디아라비아 국내에서 레이더 시스템을 4선급 수준까지 정비하며, 사우디 왕립 공군의 AN/TPS-78도 포함됩니다. 레이더 제조사인 노스럽 그러먼과 정비 수준 협정(MLA)을 보유하여 국내 유지정비를 가능하게 하고, 운용 즉응성을 높이며 첨단 기술 역량의 현지화를 실현합니다. 당사 팀은 레이더, 감시, C4I, 보안 전술통신을 진단·수리·교정·복귀까지 일관되게 수행합니다.",
+          "glanceTitle": "한눈에 보기",
+          "glance": [
+            "왕국 내 4선급 레이더 정비",
+            "노스럽 그러먼과의 MLA",
+            "FPS-117 · GM-200 · TPS-78 · TPQ-53",
+            "레이더, C4I, 보안 통신"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/news/advancing-radar-sensor-support.jpg')",
+            "art": null
+          },
+          "heading": "제공 방식",
+          "checklist": [
+            {
+              "title": "레이더 유지정비",
+              "text": "감시·방공 레이더의 정기·교정 정비."
+            },
+            {
+              "title": "고장 분리 및 수리",
+              "text": "국내 작업장에서 모듈·부품 수준까지 진단."
+            },
+            {
+              "title": "C4I 시스템 지원",
+              "text": "지휘·통제·통신·정보 시스템의 즉응 유지."
+            },
+            {
+              "title": "보안 통신",
+              "text": "전술·암호화 통신 시스템의 유지정비."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "핵심 역량"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "레이더 유지정비",
+              "text": "감시·방공 레이더의 정기·교정 정비."
+            },
+            {
+              "title": "고장 분리 및 수리",
+              "text": "국내 작업장에서 모듈·부품 수준까지 진단."
+            },
+            {
+              "title": "C4I 시스템 지원",
+              "text": "지휘·통제·통신·정보 시스템의 즉응 유지."
+            },
+            {
+              "title": "보안 통신",
+              "text": "전술·암호화 통신 시스템의 유지정비."
+            },
+            {
+              "title": "교정 및 검증",
+              "text": "복귀 전 시험·조정·검증."
+            },
+            {
+              "title": "필드 서비스 팀",
+              "text": "왕국 내 운용 현장에서의 현장 지원."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "대화를 시작하세요",
+      "cta": {
+        "label": "문의하기",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "이메일",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "전화",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "주소",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

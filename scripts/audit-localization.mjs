@@ -27,7 +27,7 @@ import { splitProps, mergeProps } from '../lib/localization.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const CONTENT = path.join(ROOT, 'content');
-const LOCALES = ['en', 'ar'];
+const LOCALES = ['en', 'ar', 'ja', 'ko'];
 
 const S = (v) => JSON.stringify(v);
 const problems = [];
@@ -95,19 +95,15 @@ for (const r of routes) {
   // Structural parity is asserted by audit-content.mjs check 7, but if it ever
   // fails, comparing halves index-by-index would report nonsense — so bail here
   // with the real reason rather than a hundred spurious diffs.
-  if (nodes.en.length !== nodes.ar.length) {
-    fail(`${r.route}: EN has ${nodes.en.length} blocks, AR has ${nodes.ar.length}`);
+  const mismatched = LOCALES.filter((l) => nodes[l].length !== nodes.en.length);
+  if (mismatched.length) {
+    fail(`${r.route}: block counts diverge — ` + LOCALES.map((l) => `${l}:${nodes[l].length}`).join(' '));
     continue;
   }
 
   for (const [i, en] of nodes.en.entries()) {
-    const ar = nodes.ar[i];
-
     // 1. lossless, per locale
-    for (const [locale, node] of [
-      ['en', en.node],
-      ['ar', ar.node],
-    ]) {
+    for (const [locale, node] of LOCALES.map((l) => [l, nodes[l][i].node])) {
       roundTripped++;
       const { shared, localized } = splitProps(node);
       const merged = mergeProps(shared, localized);
@@ -128,10 +124,7 @@ for (const r of routes) {
     // shared halves equal — while quietly storing the identity of every block
     // twice, in rows that are free to diverge. Found by building the editor and
     // seeing `type` offered as a text field.
-    for (const [locale, node] of [
-      ['en', en.node],
-      ['ar', ar.node],
-    ]) {
+    for (const [locale, node] of LOCALES.map((l) => [l, nodes[l][i].node])) {
       const { shared } = splitProps(node);
       const disc = en.node.type !== undefined ? 'type' : 'kind';
       if (shared?.[disc] !== node[disc]) {
@@ -145,7 +138,6 @@ for (const r of routes) {
     // 2. useful — the shared half carries no locale-varying copy
     compared++;
     const se = splitProps(en.node);
-    const sa = splitProps(ar.node);
     // Count a section's OWN copy only. Its bodies are walked as separate nodes,
     // and splitProps on a section returns their text too, so counting the whole
     // tree tallies every body twice — which inflated this figure from the true
@@ -154,14 +146,17 @@ for (const r of routes) {
     localizedLeaves += countLeaves(
       en.kind === 'section' && se.localized ? { ...se.localized, bodies: undefined } : se.localized
     );
-    if (S(se.shared) !== S(sa.shared)) {
-      const d = firstDiff(se.shared, sa.shared);
-      fail(
-        `${r.route} ${en.trail} (${en.kind}): locale-varying value classified as SHARED at ${d?.path}\n` +
-          `      en: ${S(d?.a)?.slice(0, 120)}\n` +
-          `      ar: ${S(d?.b)?.slice(0, 120)}\n` +
-          `      -> add that key to LOCALIZED_KEYS in lib/localization.mjs`
-      );
+    for (const other of LOCALES.filter((l) => l !== 'en')) {
+      const so = splitProps(nodes[other][i].node);
+      if (S(se.shared) !== S(so.shared)) {
+        const d = firstDiff(se.shared, so.shared);
+        fail(
+          `${r.route} ${en.trail} (${en.kind}): locale-varying value classified as SHARED at ${d?.path}\n` +
+            `      en: ${S(d?.a)?.slice(0, 120)}\n` +
+            `      ${other}: ${S(d?.b)?.slice(0, 120)}\n` +
+            `      -> add that key to LOCALIZED_KEYS in lib/localization.mjs`
+        );
+      }
     }
   }
 }

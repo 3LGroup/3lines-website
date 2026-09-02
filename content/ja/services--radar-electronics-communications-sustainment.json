@@ -1,0 +1,164 @@
+{
+  "route": "/services/radar-electronics-communications-sustainment",
+  "locale": "ja",
+  "slug": "services--radar-electronics-communications-sustainment",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "レーダー整備・電子機器・戦術通信維持整備",
+  "description": "国内能力によるレーダー、監視、C4I、秘匿通信システムの維持整備・診断・修理。",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "ホーム",
+          "href": "/"
+        },
+        {
+          "label": "サービス",
+          "href": "/services"
+        },
+        {
+          "label": "レーダー整備・電子機器・戦術通信維持整備"
+        }
+      ],
+      "heading": "レーダー整備・電子機器・戦術通信維持整備"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "概要"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "王国内で完結するレーダー・C4I維持整備",
+          "lede": "3Linesはサウジアラビア国内でレーダーシステムを第4線レベルまで整備しており、サウジ王立空軍のAN/TPS-78もその対象です。レーダー製造元であるノースロップ・グラマン社との整備レベル契約（MLA）を保有し、国内での維持整備を可能にすることで、運用即応性を高め、高度な技術力の国内定着を実現しています。当社チームはレーダー、監視、C4I、秘匿戦術通信を診断・修理・校正・復帰まで一貫して担います。",
+          "glanceTitle": "概況",
+          "glance": [
+            "王国内での第4線レーダー整備",
+            "ノースロップ・グラマン社とのMLA",
+            "FPS-117 · GM-200 · TPS-78 · TPQ-53",
+            "レーダー、C4I、秘匿通信"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/news/advancing-radar-sensor-support.jpg')",
+            "art": null
+          },
+          "heading": "提供体制",
+          "checklist": [
+            {
+              "title": "レーダー維持整備",
+              "text": "監視・防空レーダーの定期・是正整備。"
+            },
+            {
+              "title": "障害切り分けと修理",
+              "text": "国内工場でのモジュール・部品レベルの診断。"
+            },
+            {
+              "title": "C4Iシステム支援",
+              "text": "指揮・統制・通信・情報システムの即応維持。"
+            },
+            {
+              "title": "秘匿通信",
+              "text": "戦術・暗号化通信システムの維持整備。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "対応能力"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "レーダー維持整備",
+              "text": "監視・防空レーダーの定期・是正整備。"
+            },
+            {
+              "title": "障害切り分けと修理",
+              "text": "国内工場でのモジュール・部品レベルの診断。"
+            },
+            {
+              "title": "C4Iシステム支援",
+              "text": "指揮・統制・通信・情報システムの即応維持。"
+            },
+            {
+              "title": "秘匿通信",
+              "text": "戦術・暗号化通信システムの維持整備。"
+            },
+            {
+              "title": "校正と検証",
+              "text": "復帰前の試験・調整・検証。"
+            },
+            {
+              "title": "フィールドサービスチーム",
+              "text": "王国内の運用拠点でのオンサイト支援。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "お問い合わせはこちら",
+      "cta": {
+        "label": "お問い合わせ",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "メール",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "電話",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "所在地",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

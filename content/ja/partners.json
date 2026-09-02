@@ -1,0 +1,517 @@
+{
+  "route": "/partners",
+  "locale": "ja",
+  "slug": "partners",
+  "source": [
+    "partners.json"
+  ],
+  "title": "パートナー",
+  "description": "3Lines Advanced Technologies Groupは、王国内で軍民サービスを国内化するため、サウジ・ビジョン2030に沿って2019年に設立されました。グループは調達・ロジスティクス・整備・修理・製造にわたる統合サプライチェーン・技術サービスを提供し、国内外の防衛・先端技術分野の運用即応性を支えています。",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "ホーム",
+          "href": "/"
+        },
+        {
+          "label": "パートナー"
+        }
+      ],
+      "heading": "パートナー"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "logos",
+          "items": [
+            {
+              "name": "SAMI",
+              "media": {
+                "src": "/assets/logos/sami-logo.svg",
+                "alt": "SAMI"
+              },
+              "href": "https://www.sami.com.sa/",
+              "caption": "サウジアラビア軍事産業公社",
+              "type": "協定",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "エアバス",
+              "media": {
+                "src": "/assets/logos/airbus-logo.svg",
+                "alt": "エアバス"
+              },
+              "href": "https://www.airbus.com/en",
+              "type": "顧客",
+              "country": "フランス",
+              "flag": "🇫🇷"
+            },
+            {
+              "name": "BAE Systems",
+              "media": {
+                "src": "/assets/logos/bae-systems-logo.svg",
+                "alt": "BAE Systems"
+              },
+              "href": "https://www.baesystems.com/en/home",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "ARMITE Lubricants",
+              "media": {
+                "src": "/assets/logos/armite-lubricants-logo.jpg",
+                "alt": "ARMITE Lubricants"
+              },
+              "href": "https://armitelabs.com/",
+              "type": "パートナー",
+              "country": "米国",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "SAMI AEC",
+              "media": {
+                "src": "/assets/logos/sami-aec-logo.png",
+                "alt": "SAMI AEC"
+              },
+              "href": "https://www.aecl.com/",
+              "caption": "SAMI Advanced Electronics",
+              "type": "協定",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "SMSCMC",
+              "media": {
+                "src": "/assets/logos/smscmc-logo.svg",
+                "alt": "SMSCMC"
+              },
+              "href": "https://www.smscmc.com/",
+              "caption": "Saudi Maintenance & Supply Chain Management Co",
+              "type": "協定",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "MAC Aerospace Corp.",
+              "media": {
+                "src": "/assets/logos/mac-aerospace-corp-logo.png",
+                "alt": "MAC Aerospace Corp."
+              },
+              "href": "https://macaerospace.com/",
+              "type": "パートナー",
+              "country": "米国",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "Amentum",
+              "media": {
+                "src": "/assets/logos/amentum-logo.webp",
+                "alt": "Amentum"
+              },
+              "href": "https://www.amentum.com/",
+              "type": "顧客",
+              "country": "米国",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "SAMI Aerospace",
+              "media": {
+                "src": "/assets/logos/sami-aerospace-logo.svg",
+                "alt": "SAMI Aerospace"
+              },
+              "href": "https://samialsalam.com.sa",
+              "caption": "SAMI Alsalam Aerospace Industries",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "NPCO",
+              "media": {
+                "src": "/assets/logos/npco-logo.png",
+                "alt": "NPCO"
+              },
+              "href": "https://npco.sa/",
+              "caption": "National Commercial Pledges Company",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Wallan Group",
+              "media": {
+                "src": "/assets/logos/wallan-group-logo.png",
+                "alt": "Wallan Group"
+              },
+              "href": "https://www.wallan.com/",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Vinnell Arabia",
+              "media": {
+                "src": "/assets/logos/vinnell-arabia-logo.png",
+                "alt": "Vinnell Arabia"
+              },
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "ICS ARABIA",
+              "media": {
+                "src": "/assets/logos/ics-arabia-logo.png",
+                "alt": "ICS ARABIA"
+              },
+              "href": "https://icsarabia.com",
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "AACC",
+              "media": {
+                "src": "/assets/logos/aacc-logo.png",
+                "alt": "AACC"
+              },
+              "href": "https://www.aacc-ltd.com/",
+              "caption": "Aircraft Accessories & Components Co. Ltd.",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "OPTOKON Middle East",
+              "media": {
+                "src": "/assets/logos/optokon-middle-east-logo.png",
+                "alt": "OPTOKON Middle East"
+              },
+              "href": "https://www.optokon.com.sa/",
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "TAM",
+              "media": {
+                "src": "/assets/logos/tam-logo.png",
+                "alt": "TAM"
+              },
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "サウジ王立空軍",
+              "media": {
+                "src": "/assets/logos/cust-rsaf.png",
+                "alt": "サウジ王立空軍"
+              },
+              "caption": "AN/TPS-78を含むレーダー維持整備と航空支援。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "サウジ王立防空軍",
+              "media": {
+                "src": "/assets/logos/cust-rsadf.png",
+                "alt": "サウジ王立防空軍"
+              },
+              "caption": "防空システムの維持整備と技術支援。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "国家警備省",
+              "media": {
+                "src": "/assets/logos/cust-mng.png",
+                "alt": "国家警備省"
+              },
+              "caption": "米国政府と共同で実施するELT・AMSP・COUNSスクールのプログラム。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "国防省",
+              "media": {
+                "src": "/assets/logos/cust-mod.png",
+                "alt": "国防省"
+              },
+              "caption": "防衛維持整備とローカライゼーションのプログラム。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "特殊治安部隊",
+              "media": {
+                "src": "/assets/logos/cust-ssf.png",
+                "alt": "特殊治安部隊"
+              },
+              "caption": "特殊治安作戦への技術・装備支援。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "戦略ミサイル軍",
+              "media": {
+                "src": "/assets/logos/cust-smf.png",
+                "alt": "戦略ミサイル軍"
+              },
+              "caption": "専門的な技術・維持整備支援。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "サウジ王立海軍",
+              "media": {
+                "src": "/assets/logos/cust-rsnf.png",
+                "alt": "サウジ王立海軍"
+              },
+              "caption": "SAMI Aerospace枠組契約に基づく艦載ヘリコプターの補用部品。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "サウジ王立陸軍",
+              "media": {
+                "src": "/assets/logos/cust-rslf.png",
+                "alt": "サウジ王立陸軍"
+              },
+              "caption": "陸上システムの補用部品、通信、維持整備。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "サウジ国境警備隊",
+              "media": {
+                "src": "/assets/logos/cust-border-guard.png",
+                "alt": "サウジ国境警備隊"
+              },
+              "caption": "監視・通信・装備の支援。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "SEDENA — メキシコ国防省",
+              "media": {
+                "src": "/assets/logos/cust-sedena.png",
+                "alt": "SEDENA — メキシコ国防省"
+              },
+              "caption": "SEDENAを通じてメキシコ政府と共同で実施する防衛プロジェクト。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "ABI",
+              "media": {
+                "src": "/assets/logos/partner-abi.png",
+                "alt": "ABI"
+              },
+              "caption": "2024年に締結した戦略的パートナーシップ。",
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "ヌーラ王女大学",
+              "media": {
+                "src": "/assets/logos/org-pnu.png",
+                "alt": "ヌーラ王女大学"
+              },
+              "href": "https://www.pnu.edu.sa/",
+              "caption": "自律システムとシミュレーション技術。",
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "サッタム王子大学",
+              "media": {
+                "src": "/assets/logos/org-psau.png",
+                "alt": "サッタム王子大学"
+              },
+              "href": "https://www.psau.edu.sa/",
+              "caption": "妨害・電子戦システムの研究開発と製造。",
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "NARS — レーダー・宇宙通信国家アカデミー",
+              "media": {
+                "src": "/assets/logos/org-nars.png",
+                "alt": "NARS — レーダー・宇宙通信国家アカデミー"
+              },
+              "caption": "国家人材を育成する非営利アカデミー — 5つの中核専攻、500名超の訓練生。",
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "サウジ電力会社",
+              "media": {
+                "src": "/assets/logos/cust-saudi-electricity.png",
+                "alt": "サウジ電力会社"
+              },
+              "href": "https://www.se.com.sa/",
+              "caption": "電源システムと重要インフラの支援。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Mobily",
+              "media": {
+                "src": "/assets/logos/cust-mobily.png",
+                "alt": "Mobily"
+              },
+              "href": "https://www.mobily.com.sa/",
+              "caption": "通信・ITインフラでの協業。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "SITECH",
+              "media": {
+                "src": "/assets/logos/cust-sitech.png",
+                "alt": "SITECH"
+              },
+              "caption": "産業・技術サービスでの協業。",
+              "type": "顧客",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "SAMI ALSALAM Aerospace Industries",
+              "media": {
+                "src": "/assets/logos/partner-sami-alsalam.png",
+                "alt": "SAMI ALSALAM Aerospace Industries"
+              },
+              "caption": "航空宇宙産業のパートナーシップ。",
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "技術職業訓練公社",
+              "media": {
+                "src": "/assets/logos/partner-tvtc.png",
+                "alt": "技術職業訓練公社"
+              },
+              "href": "https://www.tvtc.gov.sa/",
+              "caption": "国家的な技術・職業訓練のパートナーシップ。",
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Karachi Shipyard & Engineering Works",
+              "media": {
+                "src": "/assets/logos/partner-karachi-shipyard.png",
+                "alt": "Karachi Shipyard & Engineering Works"
+              },
+              "caption": "艦船エンジニアリング・造船での協業。",
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Raytheon",
+              "media": {
+                "src": "/assets/logos/partner-raytheon.png",
+                "alt": "Raytheon"
+              },
+              "href": "https://www.rtx.com/",
+              "caption": "防衛システムでの協業。",
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "USASAC",
+              "media": {
+                "src": "/assets/logos/partner-usasac.png",
+                "alt": "USASAC"
+              },
+              "caption": "米陸軍安全保障支援コマンドのプログラム。",
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Redstone Systems",
+              "media": {
+                "src": "/assets/logos/partner-redstone.png",
+                "alt": "Redstone Systems"
+              },
+              "caption": "防衛技術のパートナーシップ。",
+              "type": "パートナー",
+              "country": "サウジアラビア",
+              "flag": "🇸🇦"
+            }
+          ],
+          "variant": "grid",
+          "total": 39
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "お問い合わせはこちら",
+      "cta": {
+        "label": "お問い合わせ",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "メール",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "電話",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "所在地",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

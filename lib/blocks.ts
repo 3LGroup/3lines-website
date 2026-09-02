@@ -433,12 +433,13 @@ export const BLOCK_TYPES: BlockType[] = [
 
 /* ------------------------------------------------------------- document -- */
 
-/** English and Arabic. The source also has ja/ko; those are out of scope. */
-export type Locale = 'en' | 'ar';
+/** The four site locales. en is the source language; ja/ko launched seeded
+    from it (translation_state 'source_fallback') and are refined in the CMS. */
+export type Locale = 'en' | 'ar' | 'ja' | 'ko';
 
-export const LOCALES: Locale[] = ['en', 'ar'];
+export const LOCALES: Locale[] = ['en', 'ar', 'ja', 'ko'];
 
-export const DIR: Record<Locale, 'ltr' | 'rtl'> = { en: 'ltr', ar: 'rtl' };
+export const DIR: Record<Locale, 'ltr' | 'rtl'> = { en: 'ltr', ar: 'rtl', ja: 'ltr', ko: 'ltr' };
 
 export interface PageDoc {
   /**

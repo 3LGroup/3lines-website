@@ -1,0 +1,87 @@
+{
+  "route": "/news/ground-support-equipment-services",
+  "locale": "ko",
+  "slug": "news--ground-support-equipment-services",
+  "source": [
+    "posts.json"
+  ],
+  "title": "지상지원장비 유지정비 강화",
+  "description": "항공·지상 지원 자산의 정비 및 가동률 지원 — 국내 작업장과 예비 부품 공급이 뒷받침합니다.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "홈",
+          "href": "/"
+        },
+        {
+          "label": "뉴스룸",
+          "href": "/news"
+        },
+        {
+          "label": "지상지원장비 유지정비 강화"
+        }
+      ],
+      "heading": "지상지원장비 유지정비 강화"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "제조 · 기술"
+      },
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/news/ground-support-equipment-services.jpg')",
+            "art": null
+          },
+          "lede": "항공·지상 지원 자산의 정비 및 가동률 지원 — 국내 작업장과 예비 부품 공급이 뒷받침합니다."
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "대화를 시작하세요",
+      "cta": {
+        "label": "문의하기",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "이메일",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "전화",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "주소",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

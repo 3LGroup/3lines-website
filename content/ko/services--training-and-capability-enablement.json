@@ -1,0 +1,164 @@
+{
+  "route": "/services/training-and-capability-enablement",
+  "locale": "ko",
+  "slug": "services--training-and-capability-enablement",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "훈련·시뮬레이션·역량 강화",
+  "description": "군·민 훈련 제공, 지식 이전, 운용 역량 개발.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "홈",
+          "href": "/"
+        },
+        {
+          "label": "서비스",
+          "href": "/services"
+        },
+        {
+          "label": "훈련·시뮬레이션·역량 강화"
+        }
+      ],
+      "heading": "훈련·시뮬레이션·역량 강화"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "개요"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "훈련 제공을 넘어, 국가 역량을 구축",
+          "lede": "군·민 훈련 제공, 지식 이전, 운용 역량 개발 — 풍부한 경험의 강사진이 제공하는 고급 영어 교육 포함. 레이더·우주통신 국가 아카데미 NARS와 국내 대학 파트너십을 통해 레이더·통신 시스템, 광섬유, 데이터센터, 항법 시스템, 전자 방호 분야에서 사우디 인재를 양성합니다.",
+          "glanceTitle": "한눈에 보기",
+          "glance": [
+            "군·민 훈련",
+            "영어 교육",
+            "NARS 아카데미 · 500명 이상 교육생",
+            "지식 이전과 현지화"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-sim-console-training.jpg')",
+            "art": null
+          },
+          "heading": "제공 방식",
+          "checklist": [
+            {
+              "title": "기술 훈련",
+              "text": "레이더·통신·광섬유·데이터센터 실무 프로그램."
+            },
+            {
+              "title": "영어 교육",
+              "text": "풍부한 경험의 강사진이 제공하는 고급 영어 교육."
+            },
+            {
+              "title": "시뮬레이션 기반 훈련",
+              "text": "시뮬레이션과 실습에 기반한 실전형 훈련."
+            },
+            {
+              "title": "지식 이전",
+              "text": "왕국 내에 지속 가능한 역량을 남기는 기술 이전."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "핵심 역량"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "기술 훈련",
+              "text": "레이더·통신·광섬유·데이터센터 실무 프로그램."
+            },
+            {
+              "title": "영어 교육",
+              "text": "풍부한 경험의 강사진이 제공하는 고급 영어 교육."
+            },
+            {
+              "title": "시뮬레이션 기반 훈련",
+              "text": "시뮬레이션과 실습에 기반한 실전형 훈련."
+            },
+            {
+              "title": "지식 이전",
+              "text": "왕국 내에 지속 가능한 역량을 남기는 기술 이전."
+            },
+            {
+              "title": "대학 파트너십",
+              "text": "킹 사우드, 누라 공주, 사탐 왕자, 카심 대학교와의 공동 프로그램."
+            },
+            {
+              "title": "NARS 아카데미",
+              "text": "기술·방산 분야의 역량 격차를 메우는 비영리 아카데미."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "대화를 시작하세요",
+      "cta": {
+        "label": "문의하기",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "이메일",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "전화",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "주소",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

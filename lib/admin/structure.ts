@@ -7,7 +7,7 @@ import { isAdmissibleAsset, wrapImgVar, type ImageShape } from './media';
 import { validateHref } from './hrefs';
 import type { Locale } from './content';
 
-const LOCALES: Locale[] = ['en', 'ar'];
+const LOCALES: Locale[] = ['en', 'ar', 'ja', 'ko'];
 const now = () => Math.floor(Date.now() / 1000);
 
 /**
@@ -424,10 +424,14 @@ const ITEM_TEMPLATES: Record<string, Record<Locale, Json>> = {
   'feature.checklist': {
     en: { title: 'New point', text: 'Describe it here.' },
     ar: { title: 'نقطة جديدة', text: 'أضف الوصف هنا.' },
+    ja: { title: '新しい項目', text: 'ここに説明を入力します。' },
+    ko: { title: '새 항목', text: '여기에 설명을 입력하세요.' },
   },
   'map.details': {
     en: { label: 'New row', value: 'Value' },
     ar: { label: 'صف جديد', value: 'القيمة' },
+    ja: { label: '新しい行', value: '値' },
+    ko: { label: '새 행', value: '값' },
   },
 };
 

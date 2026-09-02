@@ -22,7 +22,13 @@ const CONTENT = path.join(ROOT, 'content');
 const SRC = path.join(ROOT, 'source-content');
 const PUBLIC = path.join(ROOT, 'public');
 
-const LOCALES = ['en', 'ar'];
+const LOCALES = ['en', 'ar', 'ja', 'ko'];
+/* Checks 3 and 4 assert the INGEST's copy survived — a contract that binds the
+   two bootstrap locales only. ja/ko launched seeded from English and are
+   refined in the CMS; the source tree's own ja/ko text is the OLD site's and
+   is not what these pages are meant to carry. Structural checks (5-7) still
+   run across all four. */
+const SOURCE_LOCALES = ['en', 'ar'];
 const errors = [];
 const notes = [];
 const err = (m) => errors.push(m);
@@ -92,7 +98,7 @@ const pages = readSource('pages.json').data;
 
 const routeSet = new Set(routes.map((r) => r.route));
 
-for (const l of LOCALES) {
+for (const l of SOURCE_LOCALES) {
   for (const s of services) {
     const title = s.title[l] ?? s.title.en;
     if (!all[l].includes(squash(title))) err(`${l}: service title missing — "${title}"`);
@@ -121,7 +127,7 @@ function checkLeaf(locale, value, where) {
     err(`${locale}: non-CMS copy dropped — ${where} ("${value.slice(0, 60)}")`);
 }
 
-for (const l of LOCALES) {
+for (const l of SOURCE_LOCALES) {
   (nonCms.heroRotatingWords?.[l] ?? []).forEach((w, i) => checkLeaf(l, w, `heroRotatingWords[${i}]`));
   (nonCms.heroFrame?.copy?.[l] ? Object.entries(nonCms.heroFrame.copy[l]) : []).forEach(([k, v]) =>
     checkLeaf(l, v, `heroFrame.${k}`)

@@ -5,12 +5,18 @@ import type { Locale, PageDoc, SvgNode } from './blocks';
 import routesJson from '../content/routes.json';
 import chromeEn from '../content/en/chrome.json';
 import chromeAr from '../content/ar/chrome.json';
+import chromeJa from '../content/ja/chrome.json';
+import chromeKo from '../content/ko/chrome.json';
 import newsEn from '../content/en/news-items.json';
 import newsAr from '../content/ar/news-items.json';
+import newsJa from '../content/ja/news-items.json';
+import newsKo from '../content/ko/news-items.json';
 import settingsJson from '../content/settings.json';
 import routeTitlesJson from '../content/route-titles.json';
 import uiEn from '../content/en/ui.json';
 import uiAr from '../content/ar/ui.json';
+import uiJa from '../content/ja/ui.json';
+import uiKo from '../content/ko/ui.json';
 
 const DIR = path.join(process.cwd(), 'content');
 
@@ -40,12 +46,18 @@ const BUNDLED: Record<string, unknown> = {
   'routes.json': routesJson,
   'en/chrome.json': chromeEn,
   'ar/chrome.json': chromeAr,
+  'ja/chrome.json': chromeJa,
+  'ko/chrome.json': chromeKo,
   'en/news-items.json': newsEn,
   'ar/news-items.json': newsAr,
+  'ja/news-items.json': newsJa,
+  'ko/news-items.json': newsKo,
   'settings.json': settingsJson,
   'route-titles.json': routeTitlesJson,
   'en/ui.json': uiEn,
   'ar/ui.json': uiAr,
+  'ja/ui.json': uiJa,
+  'ko/ui.json': uiKo,
 };
 
 /**

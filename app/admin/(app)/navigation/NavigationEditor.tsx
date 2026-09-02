@@ -40,6 +40,20 @@ function TextPair({
         value={value.ar}
         onChange={(e) => onChange({ ...value, ar: e.target.value })}
       />
+      <input
+        className="adm-input"
+        aria-label={`${label} (Japanese)`}
+        lang="ja"
+        value={value.ja}
+        onChange={(e) => onChange({ ...value, ja: e.target.value })}
+      />
+      <input
+        className="adm-input"
+        aria-label={`${label} (Korean)`}
+        lang="ko"
+        value={value.ko}
+        onChange={(e) => onChange({ ...value, ko: e.target.value })}
+      />
     </div>
   );
 }
@@ -69,7 +83,7 @@ function LinkList({
           style={{
             display: 'grid',
             gap: 'var(--adm-2)',
-            gridTemplateColumns: '1fr 1fr minmax(140px, 0.9fr) auto',
+            gridTemplateColumns: '1fr 1fr 1fr 1fr minmax(140px, 0.9fr) auto',
             alignItems: 'center',
           }}
         >
@@ -92,6 +106,24 @@ function LinkList({
             value={l.label.ar}
             onChange={(e) =>
               onChange(links.map((x, j) => (j === i ? { ...x, label: { ...x.label, ar: e.target.value } } : x)))
+            }
+          />
+          <input
+            className="adm-input"
+            lang="ja"
+            aria-label={`Link ${i + 1} (Japanese)`}
+            value={l.label.ja}
+            onChange={(e) =>
+              onChange(links.map((x, j) => (j === i ? { ...x, label: { ...x.label, ja: e.target.value } } : x)))
+            }
+          />
+          <input
+            className="adm-input"
+            lang="ko"
+            aria-label={`Link ${i + 1} (Korean)`}
+            value={l.label.ko}
+            onChange={(e) =>
+              onChange(links.map((x, j) => (j === i ? { ...x, label: { ...x.label, ko: e.target.value } } : x)))
             }
           />
           <input
@@ -149,7 +181,7 @@ function LinkList({
         <button
           className="adm-btn adm-btn--sm adm-btn--outline"
           type="button"
-          onClick={() => onChange([...links, { label: { en: '', ar: '' }, href: '/' }])}
+          onClick={() => onChange([...links, { label: { en: '', ar: '', ja: '', ko: '' }, href: '/' }])}
         >
           + {addLabel}
         </button>
@@ -343,7 +375,7 @@ export default function NavigationEditor({
                 style={{
                   display: 'grid',
                   gap: 'var(--adm-2)',
-                  gridTemplateColumns: '1fr 1fr minmax(140px, 0.9fr)',
+                  gridTemplateColumns: '1fr 1fr 1fr 1fr minmax(140px, 0.9fr)',
                   alignItems: 'center',
                 }}
               >
@@ -363,6 +395,20 @@ export default function NavigationEditor({
                   style={{ fontFamily: "'Tajawal', var(--font-sans)" }}
                   value={tab.label.ar}
                   onChange={(e) => update((d) => (d.mega.tabs[i].label.ar = e.target.value))}
+                />
+                <input
+                  className="adm-input"
+                  lang="ja"
+                  aria-label={`Tab ${i + 1} (Japanese)`}
+                  value={tab.label.ja}
+                  onChange={(e) => update((d) => (d.mega.tabs[i].label.ja = e.target.value))}
+                />
+                <input
+                  className="adm-input"
+                  lang="ko"
+                  aria-label={`Tab ${i + 1} (Korean)`}
+                  value={tab.label.ko}
+                  onChange={(e) => update((d) => (d.mega.tabs[i].label.ko = e.target.value))}
                 />
                 {tab.href !== undefined ? (
                   <input
@@ -404,7 +450,7 @@ export default function NavigationEditor({
                 style={{
                   display: 'grid',
                   gap: 'var(--adm-2)',
-                  gridTemplateColumns: '1fr 1fr minmax(140px, 0.9fr)',
+                  gridTemplateColumns: '1fr 1fr 1fr 1fr minmax(140px, 0.9fr)',
                   alignItems: 'end',
                 }}
               >
@@ -426,6 +472,20 @@ export default function NavigationEditor({
                   style={{ fontFamily: "'Tajawal', var(--font-sans)" }}
                   value={panel.cta.label.ar}
                   onChange={(e) => update((d) => (d.mega.panels[pi].cta.label.ar = e.target.value))}
+                />
+                <input
+                  className="adm-input"
+                  lang="ja"
+                  aria-label="Panel button (Japanese)"
+                  value={panel.cta.label.ja}
+                  onChange={(e) => update((d) => (d.mega.panels[pi].cta.label.ja = e.target.value))}
+                />
+                <input
+                  className="adm-input"
+                  lang="ko"
+                  aria-label="Panel button (Korean)"
+                  value={panel.cta.label.ko}
+                  onChange={(e) => update((d) => (d.mega.panels[pi].cta.label.ko = e.target.value))}
                 />
                 <input
                   className="adm-input"

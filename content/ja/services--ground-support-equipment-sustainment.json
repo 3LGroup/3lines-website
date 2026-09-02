@@ -1,0 +1,164 @@
+{
+  "route": "/services/ground-support-equipment-sustainment",
+  "locale": "ja",
+  "slug": "services--ground-support-equipment-sustainment",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "地上支援器材（GSE）維持整備",
+  "description": "航空・陸上の地上支援資産の整備と稼働率支援。",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "ホーム",
+          "href": "/"
+        },
+        {
+          "label": "サービス",
+          "href": "/services"
+        },
+        {
+          "label": "地上支援器材（GSE）維持整備"
+        }
+      ],
+      "heading": "地上支援器材（GSE）維持整備"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "概要"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "地上支援資産を、稼働可能な状態に",
+          "lede": "航空・陸上の地上支援器材の整備と稼働率支援。GSE機材全体の定期点検・修理・再生をカバーし、フライトラインと陸上運用を止めない補用部品を備え、厳格な安全・品質基準のもとで機材を効率的かつ確実に稼働させます。",
+          "glanceTitle": "概況",
+          "glance": [
+            "航空・陸上のGSE",
+            "点検・修理・再生",
+            "稼働率主導の支援",
+            "補用部品の供給"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-mro-tech.jpg')",
+            "art": null
+          },
+          "heading": "提供体制",
+          "checklist": [
+            {
+              "title": "予防保全",
+              "text": "あらゆる地上支援器材の定期点検と整備。"
+            },
+            {
+              "title": "是正修理",
+              "text": "ラインの停止時間を最小化する迅速な修理対応。"
+            },
+            {
+              "title": "オーバーホールと再生",
+              "text": "経年した地上支援資産を完全な運用状態へ回復。"
+            },
+            {
+              "title": "補用部品供給",
+              "text": "必要な補用部品を必要な時に供給。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "対応能力"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "予防保全",
+              "text": "あらゆる地上支援器材の定期点検と整備。"
+            },
+            {
+              "title": "是正修理",
+              "text": "ラインの停止時間を最小化する迅速な修理対応。"
+            },
+            {
+              "title": "オーバーホールと再生",
+              "text": "経年した地上支援資産を完全な運用状態へ回復。"
+            },
+            {
+              "title": "補用部品供給",
+              "text": "必要な補用部品を必要な時に供給。"
+            },
+            {
+              "title": "稼働率報告",
+              "text": "即応性を推測でなく計画できる機材状況の可視化。"
+            },
+            {
+              "title": "オンサイト支援",
+              "text": "必要な時に運用拠点へ技術者を派遣。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "お問い合わせはこちら",
+      "cta": {
+        "label": "お問い合わせ",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "メール",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "電話",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "所在地",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

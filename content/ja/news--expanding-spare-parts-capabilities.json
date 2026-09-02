@@ -1,0 +1,87 @@
+{
+  "route": "/news/expanding-spare-parts-capabilities",
+  "locale": "ja",
+  "slug": "news--expanding-spare-parts-capabilities",
+  "source": [
+    "posts.json"
+  ],
+  "title": "補用部品・ロジスティクス・倉庫能力の拡大",
+  "description": "軍民プラットフォーム向けの調達・保安倉庫・在庫管理を一貫して拡大 — 米国および世界中から調達。",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "ホーム",
+          "href": "/"
+        },
+        {
+          "label": "ニュースルーム",
+          "href": "/news"
+        },
+        {
+          "label": "補用部品・ロジスティクス・倉庫能力の拡大"
+        }
+      ],
+      "heading": "補用部品・ロジスティクス・倉庫能力の拡大"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "調達 · 製造"
+      },
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/news/expanding-spare-parts-capabilities.jpg')",
+            "art": null
+          },
+          "lede": "軍民プラットフォーム向けの調達・保安倉庫・在庫管理を一貫して拡大 — 米国および世界中から調達。"
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "お問い合わせはこちら",
+      "cta": {
+        "label": "お問い合わせ",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "メール",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "電話",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "所在地",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

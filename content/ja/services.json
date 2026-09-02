@@ -1,0 +1,176 @@
+{
+  "route": "/services",
+  "locale": "ja",
+  "slug": "services",
+  "source": [
+    "services.json"
+  ],
+  "title": "サービス",
+  "description": "3Lines Advanced Technologies Groupは、王国内で軍民サービスを国内化するため、サウジ・ビジョン2030に沿って2019年に設立されました。グループは調達・ロジスティクス・整備・修理・製造にわたる統合サプライチェーン・技術サービスを提供し、国内外の防衛・先端技術分野の運用即応性を支えています。",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "ホーム",
+          "href": "/"
+        },
+        {
+          "label": "サービス"
+        }
+      ],
+      "heading": "サービス"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "cards",
+          "items": [
+            {
+              "title": "レーダー整備・電子機器・戦術通信維持整備",
+              "text": "国内能力によるレーダー、監視、C4I、秘匿通信システムの維持整備・診断・修理。",
+              "link": {
+                "label": "概要",
+                "href": "/services/radar-electronics-communications-sustainment"
+              },
+              "imgVar": "url('/assets/news/advancing-radar-sensor-support.jpg')",
+              "art": null
+            },
+            {
+              "title": "政府渉外・人材コンサルティング・ライフサポートサービス",
+              "text": "規制調整、人材コンサルティング、統合ライフサポートサービス。",
+              "link": {
+                "label": "概要",
+                "href": "/services/government-relations-and-life-support"
+              },
+              "imgVar": "url('/assets/photos/3l-partnership-handshake.jpg')",
+              "art": null
+            },
+            {
+              "title": "電源システム支援（発電機・UPS）",
+              "text": "重要電源・バックアップシステムの設置・保守・ライフサイクル支援。",
+              "link": {
+                "label": "概要",
+                "href": "/services/power-systems-support"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-rf-test.jpg')",
+              "art": null
+            },
+            {
+              "title": "電子機器診断・修理工場",
+              "text": "ミッションクリティカルな電子システムの障害切り分け・試験・修理・検証を行う国内施設。",
+              "link": {
+                "label": "概要",
+                "href": "/services/electronics-diagnostic-and-repair-workshops"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-bench.jpg')",
+              "art": null
+            },
+            {
+              "title": "地上支援器材（GSE）維持整備",
+              "text": "航空・陸上の地上支援資産の整備と稼働率支援。",
+              "link": {
+                "label": "概要",
+                "href": "/services/ground-support-equipment-sustainment"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-tech.jpg')",
+              "art": null
+            },
+            {
+              "title": "航空・陸上システムの補用部品、ロジスティクス、倉庫管理",
+              "text": "軍民プラットフォーム向けの一貫した調達・保安倉庫・在庫管理・配送。",
+              "link": {
+                "label": "概要",
+                "href": "/services/spare-parts-logistics-and-warehousing"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-lab.jpg')",
+              "art": null
+            },
+            {
+              "title": "シミュレーションシステム（フルモーション＆固定式）",
+              "text": "先進シミュレーション・即応性プラットフォームの供給・運用・保守・訓練支援。",
+              "link": {
+                "label": "概要",
+                "href": "/services/simulation-systems"
+              },
+              "imgVar": "url('/assets/photos/3l-xr-simulator.jpg')",
+              "art": null
+            },
+            {
+              "title": "訓練・シミュレーション・能力強化",
+              "text": "軍民の訓練提供、知識移転、運用能力開発。",
+              "link": {
+                "label": "概要",
+                "href": "/services/training-and-capability-enablement"
+              },
+              "imgVar": "url('/assets/photos/3l-xr-minefield-training.jpg')",
+              "art": null
+            },
+            {
+              "title": "防衛システム維持整備（MRO）",
+              "text": "防衛システム全体の運用即応性を支える総合的な整備・修理・オーバーホール。",
+              "link": {
+                "label": "概要",
+                "href": "/services/defense-systems-sustainment-mro"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-component.jpg')",
+              "art": null
+            },
+            {
+              "title": "プログラムマネジメント＆ローカライゼーション支援",
+              "text": "サウジ・ビジョン2030に沿った一貫したプログラム遂行、ローカライゼーション、国家能力開発。",
+              "link": {
+                "label": "概要",
+                "href": "/services/program-management-and-localization"
+              },
+              "imgVar": "url('/assets/photos/3l-hq-building.jpg')",
+              "art": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "お問い合わせはこちら",
+      "cta": {
+        "label": "お問い合わせ",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "メール",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "電話",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "所在地",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

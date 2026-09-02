@@ -1,0 +1,99 @@
+{
+  "route": "/location",
+  "locale": "ko",
+  "slug": "location",
+  "source": [
+    "location.json",
+    "siteInfo.json"
+  ],
+  "title": "오시는 길",
+  "description": "당사 사무소는 리야드 킹 파이살 지구, 킹 압둘라 지선 도로변에 있습니다.",
+  "keywords": "3lines,쓰리라인즈,예비부품,항공기,시뮬레이터,사우디,방산,지상지원장비,공급망",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "홈",
+          "href": "/"
+        },
+        {
+          "label": "오시는 길"
+        }
+      ],
+      "heading": "오시는 길"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "split",
+        "kicker": "오시는 길",
+        "heading": "리야드 사무소",
+        "lede": "당사 사무소는 리야드 킹 파이살 지구, 킹 압둘라 지선 도로변에 있습니다."
+      },
+      "bodies": [
+        {
+          "kind": "map",
+          "lat": 24.7676823,
+          "lng": 46.7608157,
+          "zoom": 17,
+          "placeName": "3 Lines Advanced Technologies Company",
+          "address": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215",
+          "ctaLabel": "지도 보기",
+          "note": "Google 지도를 불러옵니다",
+          "details": [
+            {
+              "label": "주소",
+              "value": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215"
+            },
+            {
+              "label": "전화",
+              "value": "+966 11 225 2433",
+              "href": "tel:+966112252433"
+            },
+            {
+              "label": "이메일",
+              "value": "info@3lines.com.sa",
+              "href": "mailto:info@3lines.com.sa"
+            }
+          ],
+          "directions": {
+            "label": "길찾기",
+            "href": "https://www.google.com/maps/dir/?api=1&destination=24.7676823,46.7608157"
+          }
+        }
+      ]
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "이메일",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "전화",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "주소",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

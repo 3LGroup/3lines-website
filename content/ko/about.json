@@ -1,0 +1,275 @@
+{
+  "route": "/about",
+  "locale": "ko",
+  "slug": "about",
+  "source": [
+    "pages.json#about",
+    "non-cms.json"
+  ],
+  "title": "회사 소개",
+  "description": "3Lines Advanced Technologies Group은 왕국 내 군·민 서비스의 현지화를 위해 사우디 비전 2030에 맞춰 2019년에 설립되었습니다. 그룹은 조달·물류·정비·수리·제조를 아우르는 통합 공급망·기술 서비스를 제공하며, 국내외 방산·첨단기술 분야의 운용 즉응성을 지원합니다.",
+  "keywords": "회사소개,3lines,첨단기술,방산,현지화,비전2030,공급망,MRO,C4I",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "홈",
+          "href": "/"
+        },
+        {
+          "label": "회사 소개"
+        }
+      ],
+      "heading": "회사 소개"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "3Lines Advanced Technologies Group은 사우디아라비아 왕국 내 군·민 서비스의 현지화를 목표로 비전 2030에 맞춰 2019년에 설립되었습니다."
+            },
+            {
+              "text": "당사는 예비 부품 공급업체에서 조달·물류·정비·수리·제조를 아우르는 공급망·기술 서비스의 통합 파트너로 발전했습니다."
+            },
+            {
+              "text": "오늘날 그룹은 합산 30년 이상의 경험을 갖춘 사우디 전문가 팀과 함께, 국내외 방산·첨단기술 분야에서 운용 즉응성 지원, 지속가능성 향상, 프로젝트 수행에 주력하고 있습니다."
+            },
+            {
+              "text": "3Lines라는 이름은 공급망 관리, 정비, 수리·제조라는 3대 핵심 기둥 위에 세워진 통합 운영 모델을 의미합니다. 이를 통해 첨단 방산 프로젝트 수행, C4I 수리 시설 운영, 즉응성과 지속가능성을 뒷받침하는 통합 군수·기술 솔루션 제공을 현지화 목표와 사우디 비전 2030에 맞춰 실현합니다."
+            },
+            {
+              "text": "우리의 비전: 사우디아라비아를 대표하는 공급망·첨단기술 기업이 되는 것 — 티어원 글로벌 파트너와 함께 방산·보안 시스템을 높은 가동률로 유지하며, 제공하는 모든 것에 현지화를 내재화합니다. 이 노력은 이미 5개국 — 사우디아라비아, 미국, 멕시코, 폴란드, 체코 — 에 걸쳐 있으며, 국제 파트너십을 이전된 지식, 국가 역량, 왕국 내에서 확장 가능한 솔루션으로 전환하고 있습니다."
+            }
+          ]
+        },
+        {
+          "kind": "figures",
+          "items": [
+            {
+              "count": 7,
+              "prefix": "+",
+              "label": "2019년부터 방산·첨단기술에 기여"
+            },
+            {
+              "count": 3,
+              "label": "핵심 운영 기둥"
+            },
+            {
+              "count": 120,
+              "prefix": "+",
+              "label": "다분야 전문가 팀"
+            },
+            {
+              "count": 30,
+              "prefix": "+",
+              "label": "국내외 전략적 파트너"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "head": {
+        "layout": "stacked",
+        "kicker": "주요 사업",
+        "heading": "제공 방식"
+      },
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-hq-building.jpg')",
+            "art": null
+          },
+          "lede": "전략 소싱부터 군·민 플랫폼 납품까지 — 조달, 보안 창고, 재고 관리, 배송의 일관된 공급망."
+        },
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "공급망 관리",
+              "text": "전략 소싱부터 군·민 플랫폼 납품까지 — 조달, 보안 창고, 재고 관리, 배송의 일관된 공급망."
+            },
+            {
+              "title": "정비",
+              "text": "국내 역량을 통한 레이더, 감시, C2/C3/C4I 지휘통제 시스템, 지상 지원, 방산 시스템의 유지정비."
+            },
+            {
+              "title": "수리·제조",
+              "text": "국내 진단·수리 작업장과 함께, 첨단 시스템용 부품의 역설계 및 제조."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "navy",
+      "head": {
+        "layout": "stacked",
+        "kicker": "우리의 비전"
+      },
+      "bodies": [
+        {
+          "kind": "prose",
+          "paragraphs": [
+            {
+              "text": "사우디아라비아를 대표하는 공급망·첨단기술 기업이 되는 것 — 티어원 글로벌 파트너와 함께 방산·보안 시스템을 높은 가동률로 유지하며, 제공하는 모든 것에 현지화를 내재화합니다."
+            },
+            {
+              "text": "이 노력은 이미 5개국 — 사우디아라비아, 미국, 멕시코, 폴란드, 체코 — 에 걸쳐 있으며, 국제 파트너십을 이전된 지식, 국가 역량, 왕국 내에서 확장 가능한 솔루션으로 전환하고 있습니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "신뢰의 파트너십",
+              "text": "투명성, 정직성, 상호 성공을 바탕으로 티어원 글로벌·로컬 파트너와 장기적 관계를 구축합니다."
+            },
+            {
+              "title": "운영 우수성",
+              "text": "규율 있는 수행, 품질 중심 프로세스, 일관된 공급망 숙련을 통해 신뢰성 높은 고가동률 솔루션을 제공합니다."
+            },
+            {
+              "title": "국가에 대한 헌신",
+              "text": "사우디 비전 2030, 현지화, 역량 개발, 그리고 방산·민간 분야의 국가 주권 강화에 헌신합니다."
+            },
+            {
+              "title": "책임과 정직",
+              "text": "최고의 윤리 기준으로 행동하며, 약속·성과·결과에 온전한 책임을 집니다."
+            },
+            {
+              "title": "혁신과 기술 활용",
+              "text": "첨단 기술, 디지털 전환, XR 솔루션을 통해 끊임없이 진화하여 미래의 방산·보안 수요에 대응합니다."
+            },
+            {
+              "title": "지식 이전과 현지화",
+              "text": "인재 개발, 기술 이전, 지속 가능한 국내 제조를 우선하여 지속적인 국가적 성과를 만듭니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "id": "certifications",
+      "head": {
+        "layout": "stacked",
+        "kicker": "인정 획득",
+        "heading": "인증 및 라이선스",
+        "lede": "항공·품질·환경·안전·사업연속성 국제 규격에 대한 독립 심사를 받았으며, 군수산업총괄청의 라이선스를 보유하고 있습니다."
+      },
+      "bodies": [
+        {
+          "kind": "certs",
+          "items": [
+            {
+              "src": "/assets/certs/cert-asa100-badge.png",
+              "alt": "유럽인정협의회의 인정을 받은 ASA-100 인증 기업"
+            },
+            {
+              "src": "/assets/certs/cert-euac-strip.png",
+              "alt": "ISO Cert International 및 EUAC 인정: ISO 56001, ISO 42001, AS9110, ASA100, AS9120B"
+            },
+            {
+              "src": "/assets/certs/cert-saac-strip.png",
+              "alt": "사우디 인정센터 통합경영시스템: ISO 9001, 45001, 14001, 50001, 22301"
+            }
+          ]
+        },
+        {
+          "kind": "defs",
+          "columns": 2,
+          "items": [
+            {
+              "title": "ISO 9001:2015 — 품질경영시스템",
+              "text": "적용 범위: 항공기·시뮬레이터·지휘통제 및 정보 시스템 공급, 예비 부품, 정비·수리·오버홀.",
+              "meta": [
+                {
+                  "label": "인증서",
+                  "value": "26EQQN67"
+                },
+                {
+                  "label": "유효기간",
+                  "value": "2029년 3월 30일"
+                },
+                {
+                  "label": "인정",
+                  "value": "EGAC / IAF"
+                }
+              ]
+            },
+            {
+              "title": "군수산업총괄청(GAMI)",
+              "text": "군사 서비스(기술 활동) 제공 설립 허가 및 군수품 거래 라이선스.",
+              "meta": [
+                {
+                  "label": "보유 규격",
+                  "value": "ISO 9001 · 45001 · 14001 · 50001 · 22301  ·  ISO 56001 · 42001 · AS9110 · AS9120B · ASA-100"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "대화를 시작하세요",
+      "cta": {
+        "label": "문의하기",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "이메일",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "전화",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "주소",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

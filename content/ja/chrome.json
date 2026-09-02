@@ -1,0 +1,262 @@
+{
+  "skip": {
+    "label": "本文へスキップ",
+    "href": "#main"
+  },
+  "logoImg": {
+    "src": "/assets/logos/3Lines_logo.png",
+    "alt": "3Lines Advanced Technologies Company"
+  },
+  "footerLogoImg": {
+    "src": "/assets/logos/logo.png",
+    "alt": "3Lines Advanced Technologies Company"
+  },
+  "utility": {
+    "links": [
+      {
+        "label": "ホーム",
+        "href": "/"
+      },
+      {
+        "label": "会社概要",
+        "href": "/about"
+      },
+      {
+        "label": "サービス",
+        "href": "/services"
+      },
+      {
+        "label": "ニュースルーム",
+        "href": "/news"
+      },
+      {
+        "label": "お問い合わせ",
+        "href": "/contact"
+      }
+    ],
+    "lang": [
+      {
+        "label": "EN",
+        "locale": "en"
+      },
+      {
+        "label": "AR",
+        "locale": "ar"
+      },
+      {
+        "label": "JA",
+        "locale": "ja"
+      },
+      {
+        "label": "KO",
+        "locale": "ko"
+      }
+    ]
+  },
+  "mega": {
+    "tabs": [
+      {
+        "key": "services",
+        "label": "サービス"
+      },
+      {
+        "key": "careers",
+        "label": "採用情報"
+      },
+      {
+        "key": "news",
+        "label": "ニュースルーム",
+        "href": "/news"
+      },
+      {
+        "key": "contact",
+        "label": "お問い合わせ",
+        "href": "/contact"
+      },
+      {
+        "key": "company",
+        "label": "企業情報"
+      }
+    ],
+    "panels": [
+      {
+        "key": "services",
+        "title": "サービス",
+        "links": [
+          {
+            "label": "レーダー整備・電子機器・戦術通信維持整備",
+            "href": "/services/radar-electronics-communications-sustainment"
+          },
+          {
+            "label": "政府渉外・人材コンサルティング・ライフサポートサービス",
+            "href": "/services/government-relations-and-life-support"
+          },
+          {
+            "label": "電源システム支援（発電機・UPS）",
+            "href": "/services/power-systems-support"
+          },
+          {
+            "label": "電子機器診断・修理工場",
+            "href": "/services/electronics-diagnostic-and-repair-workshops"
+          },
+          {
+            "label": "地上支援器材（GSE）維持整備",
+            "href": "/services/ground-support-equipment-sustainment"
+          },
+          {
+            "label": "航空・陸上システムの補用部品、ロジスティクス、倉庫管理",
+            "href": "/services/spare-parts-logistics-and-warehousing"
+          },
+          {
+            "label": "シミュレーションシステム（フルモーション＆固定式）",
+            "href": "/services/simulation-systems"
+          },
+          {
+            "label": "訓練・シミュレーション・能力強化",
+            "href": "/services/training-and-capability-enablement"
+          },
+          {
+            "label": "防衛システム維持整備（MRO）",
+            "href": "/services/defense-systems-sustainment-mro"
+          },
+          {
+            "label": "プログラムマネジメント＆ローカライゼーション支援",
+            "href": "/services/program-management-and-localization"
+          }
+        ],
+        "cta": {
+          "label": "サービス",
+          "href": "/services"
+        }
+      },
+      {
+        "key": "careers",
+        "title": "採用情報",
+        "links": [
+          {
+            "label": "採用情報",
+            "href": "/careers"
+          }
+        ],
+        "cta": {
+          "label": "採用情報",
+          "href": "/careers"
+        }
+      },
+      {
+        "key": "company",
+        "title": "企業情報",
+        "links": [
+          {
+            "label": "会社概要",
+            "href": "/about"
+          },
+          {
+            "label": "パートナー",
+            "href": "/partners"
+          },
+          {
+            "label": "所在地",
+            "href": "/location"
+          }
+        ],
+        "cta": {
+          "label": "会社概要",
+          "href": "/about"
+        }
+      }
+    ]
+  },
+  "footer": {
+    "columns": [
+      {
+        "logo": true,
+        "title": "3Lines Advanced Technologies Company",
+        "links": [
+          {
+            "label": "会社概要",
+            "href": "/about"
+          },
+          {
+            "label": "ニュースルーム",
+            "href": "/news"
+          },
+          {
+            "label": "パートナー",
+            "href": "/partners"
+          },
+          {
+            "label": "所在地",
+            "href": "/location"
+          },
+          {
+            "label": "お問い合わせ",
+            "href": "/contact"
+          }
+        ]
+      },
+      {
+        "title": "サービス",
+        "links": [
+          {
+            "label": "レーダー整備・電子機器・戦術通信維持整備",
+            "href": "/services/radar-electronics-communications-sustainment"
+          },
+          {
+            "label": "政府渉外・人材コンサルティング・ライフサポートサービス",
+            "href": "/services/government-relations-and-life-support"
+          },
+          {
+            "label": "電源システム支援（発電機・UPS）",
+            "href": "/services/power-systems-support"
+          },
+          {
+            "label": "電子機器診断・修理工場",
+            "href": "/services/electronics-diagnostic-and-repair-workshops"
+          },
+          {
+            "label": "地上支援器材（GSE）維持整備",
+            "href": "/services/ground-support-equipment-sustainment"
+          },
+          {
+            "label": "航空・陸上システムの補用部品、ロジスティクス、倉庫管理",
+            "href": "/services/spare-parts-logistics-and-warehousing"
+          },
+          {
+            "label": "シミュレーションシステム（フルモーション＆固定式）",
+            "href": "/services/simulation-systems"
+          },
+          {
+            "label": "訓練・シミュレーション・能力強化",
+            "href": "/services/training-and-capability-enablement"
+          },
+          {
+            "label": "防衛システム維持整備（MRO）",
+            "href": "/services/defense-systems-sustainment-mro"
+          },
+          {
+            "label": "プログラムマネジメント＆ローカライゼーション支援",
+            "href": "/services/program-management-and-localization"
+          }
+        ]
+      },
+      {
+        "title": "法務情報",
+        "links": [
+          {
+            "label": "プライバシーポリシー",
+            "href": "/privacy-policy"
+          },
+          {
+            "label": "利用規約",
+            "href": "/terms-and-conditions"
+          },
+          {
+            "label": "クッキーポリシー",
+            "href": "/cookie-policy"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -4,7 +4,7 @@ import type { Json } from '@/lib/localization';
 import { validateHref } from './hrefs';
 import type { Locale } from './content';
 
-const LOCALES: Locale[] = ['en', 'ar'];
+const LOCALES: Locale[] = ['en', 'ar', 'ja', 'ko'];
 const now = () => Math.floor(Date.now() / 1000);
 
 /**

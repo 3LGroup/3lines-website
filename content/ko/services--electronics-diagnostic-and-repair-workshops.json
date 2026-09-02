@@ -1,0 +1,164 @@
+{
+  "route": "/services/electronics-diagnostic-and-repair-workshops",
+  "locale": "ko",
+  "slug": "services--electronics-diagnostic-and-repair-workshops",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "전자장비 진단·수리 작업장",
+  "description": "임무 필수 전자 시스템의 고장 분리·시험·수리·검증을 수행하는 국내 시설.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "홈",
+          "href": "/"
+        },
+        {
+          "label": "서비스",
+          "href": "/services"
+        },
+        {
+          "label": "전자장비 진단·수리 작업장"
+        }
+      ],
+      "heading": "전자장비 진단·수리 작업장"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "개요"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "임무 필수 전자장비의 국내 작업장",
+          "lede": "왕국 내 당사 전자장비 작업장은 임무 필수 시스템의 고장 분리·시험·수리·검증을 제공합니다. 부품 수준 작업을 위한 설비 — RF 테스트 벤치, 신호 발생기, 전력계, 교정된 계측기 — 를 갖추어 해외로 보내지 않고 국내에서 어셈블리를 복귀시켜 납기를 단축하고 외부 의존도를 낮춥니다.",
+          "glanceTitle": "한눈에 보기",
+          "glance": [
+            "부품 수준 수리",
+            "RF·신호 시험 역량",
+            "교정된 계측기",
+            "국내 신속 처리"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-mro-bench.jpg')",
+            "art": null
+          },
+          "heading": "제공 방식",
+          "checklist": [
+            {
+              "title": "고장 분리",
+              "text": "고장난 어셈블리·부품을 특정하는 체계적 진단."
+            },
+            {
+              "title": "부품 수준 수리",
+              "text": "유닛 교체가 아닌 보드·부품 수준의 수리."
+            },
+            {
+              "title": "RF·마이크로파 시험",
+              "text": "레이더 주파수 대역 전반의 신호 생성과 전력 측정."
+            },
+            {
+              "title": "기능 검증",
+              "text": "복귀 인증 전 완전한 기능 시험."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "핵심 역량"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "고장 분리",
+              "text": "고장난 어셈블리·부품을 특정하는 체계적 진단."
+            },
+            {
+              "title": "부품 수준 수리",
+              "text": "유닛 교체가 아닌 보드·부품 수준의 수리."
+            },
+            {
+              "title": "RF·마이크로파 시험",
+              "text": "레이더 주파수 대역 전반의 신호 생성과 전력 측정."
+            },
+            {
+              "title": "기능 검증",
+              "text": "복귀 인증 전 완전한 기능 시험."
+            },
+            {
+              "title": "교정",
+              "text": "소급 가능한 기준기에 따른 조정과 교정."
+            },
+            {
+              "title": "역설계",
+              "text": "노후 시스템 유지를 위한 단종 부품의 재현."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "대화를 시작하세요",
+      "cta": {
+        "label": "문의하기",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "이메일",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "전화",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "주소",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

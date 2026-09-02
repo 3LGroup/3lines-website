@@ -19,8 +19,12 @@ export interface SimpleField {
   key: string;
   label: string;
   value: string;
-  /** Present for localized fields; absent for shared ones like a VAT number. */
+  /** Present for localized fields; absent for shared ones like a VAT number.
+      ja/ko ride the same convention — a defined value renders that locale's
+      twin input under the English one. */
   ar?: string;
+  ja?: string;
+  ko?: string;
   hint?: string;
   multiline?: boolean;
   /** Groups fields under a heading. */
@@ -153,20 +157,31 @@ export default function SimpleForm({
                     value={val(enKey, f.value)}
                     onChange={(e) => set(enKey, e.target.value, f.value)}
                   />
-                  {/* Only localized fields get an Arabic twin. A VAT number has
-                      no language, and offering one would invite two answers to a
-                      question with a single correct value. */}
-                  {f.ar !== undefined ? (
-                    <Input
-                      className={f.multiline ? 'adm-textarea' : 'adm-input'}
-                      aria-label={`${f.label} (Arabic)`}
-                      lang="ar"
-                      dir="rtl"
-                      style={{ fontFamily: "'Tajawal', var(--font-sans)" }}
-                      value={val(`${f.key}:ar`, f.ar)}
-                      onChange={(e) => set(`${f.key}:ar`, e.target.value, f.ar!)}
-                    />
-                  ) : null}
+                  {/* Only localized fields get translated twins. A VAT number
+                      has no language, and offering one would invite two answers
+                      to a question with a single correct value. */}
+                  {(
+                    [
+                      ['ar', 'Arabic', 'rtl', "'Tajawal', var(--font-sans)"],
+                      ['ja', 'Japanese', 'ltr', undefined],
+                      ['ko', 'Korean', 'ltr', undefined],
+                    ] as const
+                  ).map(([code, name, dir, family]) => {
+                    const orig = f[code];
+                    if (orig === undefined) return null;
+                    return (
+                      <Input
+                        key={code}
+                        className={f.multiline ? 'adm-textarea' : 'adm-input'}
+                        aria-label={`${f.label} (${name})`}
+                        lang={code}
+                        dir={dir}
+                        style={family ? { fontFamily: family } : undefined}
+                        value={val(`${f.key}:${code}`, orig)}
+                        onChange={(e) => set(`${f.key}:${code}`, e.target.value, orig)}
+                      />
+                    );
+                  })}
                 </div>
               );
             })}

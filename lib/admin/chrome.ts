@@ -5,7 +5,7 @@ import { isAdmissibleAsset } from './media';
 import { validateHref } from './hrefs';
 import type { Locale } from './content';
 
-const LOCALES: Locale[] = ['en', 'ar'];
+const LOCALES: Locale[] = ['en', 'ar', 'ja', 'ko'];
 const CHROME_ID = 'chrome';
 
 /* ---------------------------------------------------------------- editing -- */
@@ -22,6 +22,8 @@ const CHROME_ID = 'chrome';
 export interface L10nText {
   en: string;
   ar: string;
+  ja: string;
+  ko: string;
 }
 
 export interface NavLink {
@@ -68,61 +70,65 @@ async function readDocs(): Promise<Record<Locale, Doc>> {
   ) as Record<Locale, Doc>;
 }
 
-const zip = (en: unknown, ar: unknown): L10nText => ({
-  en: typeof en === 'string' ? en : '',
-  ar: typeof ar === 'string' ? ar : '',
-});
-
 /**
- * The two merged documents share every structural value — the importer and
- * every save assert it — so arrays align index-for-index and zipping by index
- * cannot mispair.
+ * Every merged document shares every structural value — the importer and every
+ * save assert it — so arrays align index-for-index across all four locales and
+ * picking by the same path from each document cannot mispair.
  */
-const zipLinks = (en: Doc[], ar: Doc[]): NavLink[] =>
-  (en ?? []).map((l, i) => ({ label: zip(l.label, ar?.[i]?.label), href: String(l.href ?? '') }));
-
 export async function getNavigation(): Promise<NavChrome> {
-  const { en, ar } = await readDocs();
+  const docs = await readDocs();
+  const en = docs.en;
+
+  const loc = (pick: (d: Doc) => unknown): L10nText =>
+    Object.fromEntries(
+      LOCALES.map((l) => {
+        const v = pick(docs[l] ?? ({} as Doc));
+        return [l, typeof v === 'string' ? v : ''];
+      })
+    ) as unknown as L10nText;
+
+  const zipLinks = (pick: (d: Doc) => Doc[] | undefined): NavLink[] =>
+    (pick(en) ?? []).map((l: Doc, i: number) => ({
+      label: loc((d) => pick(d)?.[i]?.label),
+      href: String(l.href ?? ''),
+    }));
 
   return {
-    skip: { label: zip(en.skip?.label, ar.skip?.label), href: String(en.skip?.href ?? '#main') },
-    logoImg: { src: String(en.logoImg?.src ?? ''), alt: zip(en.logoImg?.alt, ar.logoImg?.alt) },
+    skip: { label: loc((d) => d.skip?.label), href: String(en.skip?.href ?? '#main') },
+    logoImg: { src: String(en.logoImg?.src ?? ''), alt: loc((d) => d.logoImg?.alt) },
     footerLogoImg: {
       src: String(en.footerLogoImg?.src ?? ''),
-      alt: zip(en.footerLogoImg?.alt, ar.footerLogoImg?.alt),
+      alt: loc((d) => d.footerLogoImg?.alt),
     },
     utility: {
-      links: zipLinks(en.utility?.links, ar.utility?.links),
+      links: zipLinks((d) => d.utility?.links),
       lang: (en.utility?.lang ?? []).map((l: Doc, i: number) => ({
-        label: zip(l.label, ar.utility?.lang?.[i]?.label),
+        label: loc((d) => d.utility?.lang?.[i]?.label),
         locale: String(l.locale ?? ''),
       })),
     },
     mega: {
       tabs: (en.mega?.tabs ?? []).map((t: Doc, i: number) => ({
         key: String(t.key ?? ''),
-        label: zip(t.label, ar.mega?.tabs?.[i]?.label),
+        label: loc((d) => d.mega?.tabs?.[i]?.label),
         ...(t.href !== undefined ? { href: String(t.href) } : {}),
       })),
-      panels: (en.mega?.panels ?? []).map((p: Doc, i: number) => {
-        const arP = ar.mega?.panels?.[i] ?? {};
-        return {
-          key: String(p.key ?? ''),
-          title: zip(p.title, arP.title),
-          links: zipLinks(p.links, arP.links),
-          cta: { label: zip(p.cta?.label, arP.cta?.label), href: String(p.cta?.href ?? '') },
-        };
-      }),
+      panels: (en.mega?.panels ?? []).map((p: Doc, i: number) => ({
+        key: String(p.key ?? ''),
+        title: loc((d) => d.mega?.panels?.[i]?.title),
+        links: zipLinks((d) => d.mega?.panels?.[i]?.links),
+        cta: {
+          label: loc((d) => d.mega?.panels?.[i]?.cta?.label),
+          href: String(p.cta?.href ?? ''),
+        },
+      })),
     },
     footer: {
-      columns: (en.footer?.columns ?? []).map((c: Doc, i: number) => {
-        const arC = ar.footer?.columns?.[i] ?? {};
-        return {
-          ...(c.logo ? { logo: true } : {}),
-          title: zip(c.title, arC.title),
-          links: zipLinks(c.links, arC.links),
-        };
-      }),
+      columns: (en.footer?.columns ?? []).map((c: Doc, i: number) => ({
+        ...(c.logo ? { logo: true } : {}),
+        title: loc((d) => d.footer?.columns?.[i]?.title),
+        links: zipLinks((d) => d.footer?.columns?.[i]?.links),
+      })),
     },
   };
 }

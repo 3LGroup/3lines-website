@@ -766,3 +766,17 @@ html.dark .ftr .ftr__logo::before,html.dark .footer svg{filter:brightness(0) inv
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
 }
+
+/* --- Japanese / Korean typography --------------------------------
+   System stacks, deliberately: Hiragino/Yu Gothic and Apple SD/Malgun are
+   excellent, already installed, and cost zero bytes — where a self-hosted
+   Noto CJK would ship megabytes for an audience that overwhelmingly reads
+   this site on desktop. Revisit if analytics ever say otherwise.
+
+   The tracking reset mirrors the Arabic rule: CJK is never letter-spaced,
+   and the uppercase eyebrow style's .18em tracking mangles kana and hangul. */
+:lang(ja){font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,var(--font-sans,sans-serif);letter-spacing:normal}
+:lang(ko){font-family:"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",var(--font-sans,sans-serif);letter-spacing:normal}
+:lang(ja) *,:lang(ko) *{letter-spacing:normal!important}
+/* CJK line-height wants a touch more air than Latin at the same sizes. */
+:lang(ja) p,:lang(ko) p,:lang(ja) li,:lang(ko) li{line-height:1.85}

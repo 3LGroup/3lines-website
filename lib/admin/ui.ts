@@ -1,7 +1,7 @@
 import { getDb, schema } from '@/lib/db/client';
 import type { Locale } from './content';
 
-const LOCALES: Locale[] = ['en', 'ar'];
+const LOCALES: Locale[] = ['en', 'ar', 'ja', 'ko'];
 
 /**
  * What each ui_strings key is FOR, in editor language. The table stores bare

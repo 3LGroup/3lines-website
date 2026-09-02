@@ -1,0 +1,164 @@
+{
+  "route": "/services/program-management-and-localization",
+  "locale": "ko",
+  "slug": "services--program-management-and-localization",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "프로그램 관리 및 현지화 지원",
+  "description": "사우디 비전 2030에 부합하는 일관된 프로그램 수행, 현지화, 국가 역량 개발.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "홈",
+          "href": "/"
+        },
+        {
+          "label": "서비스",
+          "href": "/services"
+        },
+        {
+          "label": "프로그램 관리 및 현지화 지원"
+        }
+      ],
+      "heading": "프로그램 관리 및 현지화 지원"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "개요"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "프로그램 수행과 역량의 현지화",
+          "lede": "사우디 비전 2030에 부합하는 일관된 프로그램 수행, 현지화, 국가 역량 개발. 당사는 첨단 방산 프로그램을 계약부터 납품까지 운영하며, 역량·지식·제조가 왕국 내에 남도록 설계합니다. 지식 이전과 국가 인재 육성을 통해 2030년까지 군사 지출의 50% 이상 현지화에 기여합니다.",
+          "glanceTitle": "한눈에 보기",
+          "glance": [
+            "일관된 프로그램 수행",
+            "현지화 및 오프셋 이행",
+            "사우디 비전 2030에 부합",
+            "티어원 파트너십"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-command-center.jpg')",
+            "art": null
+          },
+          "heading": "제공 방식",
+          "checklist": [
+            {
+              "title": "프로그램 관리",
+              "text": "계약 체결부터 납품·유지정비까지의 수행."
+            },
+            {
+              "title": "현지화 계획",
+              "text": "역량이 왕국 내에 남도록 하는 프로그램 설계."
+            },
+            {
+              "title": "기술 이전",
+              "text": "노하우와 제조 역량을 국내 팀으로 이전."
+            },
+            {
+              "title": "공급망 통합",
+              "text": "국내 공급업체를 국제 프로그램 공급망에 연결."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "핵심 역량"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "프로그램 관리",
+              "text": "계약 체결부터 납품·유지정비까지의 수행."
+            },
+            {
+              "title": "현지화 계획",
+              "text": "역량이 왕국 내에 남도록 하는 프로그램 설계."
+            },
+            {
+              "title": "기술 이전",
+              "text": "노하우와 제조 역량을 국내 팀으로 이전."
+            },
+            {
+              "title": "공급망 통합",
+              "text": "국내 공급업체를 국제 프로그램 공급망에 연결."
+            },
+            {
+              "title": "파트너·OEM 조율",
+              "text": "티어원 파트너와 OEM 관리."
+            },
+            {
+              "title": "보고 및 거버넌스",
+              "text": "진행·리스크·컴플라이언스의 투명한 보고."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "대화를 시작하세요",
+      "cta": {
+        "label": "문의하기",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "이메일",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "전화",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "주소",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

@@ -38,7 +38,7 @@ export function titleBrand(): string {
   return getSettings().titleBrand || '3Lines';
 }
 
-const OG_LOCALE: Record<Locale, string> = { en: 'en_US', ar: 'ar_SA' };
+const OG_LOCALE: Record<Locale, string> = { en: 'en_US', ar: 'ar_SA', ja: 'ja_JP', ko: 'ko_KR' };
 
 /**
  * The Open Graph block for a page.

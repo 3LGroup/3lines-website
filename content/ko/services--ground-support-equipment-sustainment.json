@@ -1,0 +1,164 @@
+{
+  "route": "/services/ground-support-equipment-sustainment",
+  "locale": "ko",
+  "slug": "services--ground-support-equipment-sustainment",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "지상지원장비(GSE) 유지정비",
+  "description": "항공·지상 지원 자산의 정비 및 가동률 지원.",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "홈",
+          "href": "/"
+        },
+        {
+          "label": "서비스",
+          "href": "/services"
+        },
+        {
+          "label": "지상지원장비(GSE) 유지정비"
+        }
+      ],
+      "heading": "지상지원장비(GSE) 유지정비"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "개요"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "지상 지원 자산을, 가동 가능한 상태로",
+          "lede": "항공·지상 지원 장비의 정비 및 가동률 지원. GSE 전 기단의 정기 점검·수리·재생을 다루며, 비행 라인과 지상 운용을 멈추지 않게 하는 예비 부품을 갖추고, 엄격한 안전·품질 기준 아래 장비를 효율적이고 안정적으로 가동시킵니다.",
+          "glanceTitle": "한눈에 보기",
+          "glance": [
+            "항공·지상 GSE",
+            "점검·수리·재생",
+            "가동률 중심 지원",
+            "예비 부품 공급"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-mro-tech.jpg')",
+            "art": null
+          },
+          "heading": "제공 방식",
+          "checklist": [
+            {
+              "title": "예방 정비",
+              "text": "모든 유형의 지상 지원 장비에 대한 정기 점검과 정비."
+            },
+            {
+              "title": "교정 수리",
+              "text": "라인 가동 중단을 최소화하는 신속한 수리 대응."
+            },
+            {
+              "title": "오버홀 및 재생",
+              "text": "노후 지상 지원 자산을 완전한 운용 상태로 복원."
+            },
+            {
+              "title": "예비 부품 공급",
+              "text": "필요한 예비 부품을 필요한 때에 공급."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "핵심 역량"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "예방 정비",
+              "text": "모든 유형의 지상 지원 장비에 대한 정기 점검과 정비."
+            },
+            {
+              "title": "교정 수리",
+              "text": "라인 가동 중단을 최소화하는 신속한 수리 대응."
+            },
+            {
+              "title": "오버홀 및 재생",
+              "text": "노후 지상 지원 자산을 완전한 운용 상태로 복원."
+            },
+            {
+              "title": "예비 부품 공급",
+              "text": "필요한 예비 부품을 필요한 때에 공급."
+            },
+            {
+              "title": "가동률 보고",
+              "text": "즉응성을 추측이 아닌 계획으로 관리하는 장비 현황 가시화."
+            },
+            {
+              "title": "현장 지원",
+              "text": "필요한 순간 운용 현장으로 기술자를 파견."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "대화를 시작하세요",
+      "cta": {
+        "label": "문의하기",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "이메일",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "전화",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "주소",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

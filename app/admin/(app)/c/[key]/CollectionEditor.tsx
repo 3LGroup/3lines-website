@@ -176,6 +176,8 @@ export default function CollectionEditor({
           {items.map((item) => {
             const isOpen = open === item.index;
             const arByPath = new Map(item.fields.ar.map((f) => [f.path, f.value]));
+            const jaByPath = new Map(item.fields.ja.map((f) => [f.path, f.value]));
+            const koByPath = new Map(item.fields.ko.map((f) => [f.path, f.value]));
             const itemDirty =
               Object.keys(edits[`${item.index}:en`] ?? {}).length +
               Object.keys(edits[`${item.index}:ar`] ?? {}).length;
@@ -240,7 +242,11 @@ export default function CollectionEditor({
                     ))}
 
                     {item.fields.en.map((f) => {
-                      const ar = arByPath.get(f.path) ?? '';
+                      const twins = [
+                        ['ar', 'Arabic', 'rtl', "'Tajawal', var(--font-sans)", arByPath.get(f.path) ?? ''],
+                        ['ja', 'Japanese', 'ltr', undefined, jaByPath.get(f.path) ?? ''],
+                        ['ko', 'Korean', 'ltr', undefined, koByPath.get(f.path) ?? ''],
+                      ] as const;
                       const Input = f.multiline ? 'textarea' : 'input';
                       return (
                         <div className="adm-field" key={f.path}>
@@ -257,15 +263,18 @@ export default function CollectionEditor({
                               setField(item.index, 'en', f.path, e.target.value, f.value)
                             }
                           />
-                          <Input
-                            className={f.multiline ? 'adm-textarea' : 'adm-input'}
-                            aria-label={`${f.label} (Arabic)`}
-                            lang="ar"
-                            dir="rtl"
-                            style={{ fontFamily: "'Tajawal', var(--font-sans)" }}
-                            value={valueOf(item.index, 'ar', f.path, ar)}
-                            onChange={(e) => setField(item.index, 'ar', f.path, e.target.value, ar)}
-                          />
+                          {twins.map(([code, name, dir, family, v]) => (
+                            <Input
+                              key={code}
+                              className={f.multiline ? 'adm-textarea' : 'adm-input'}
+                              aria-label={`${f.label} (${name})`}
+                              lang={code}
+                              dir={dir}
+                              style={family ? { fontFamily: family } : undefined}
+                              value={valueOf(item.index, code, f.path, v)}
+                              onChange={(e) => setField(item.index, code, f.path, e.target.value, v)}
+                            />
+                          ))}
                         </div>
                       );
                     })}

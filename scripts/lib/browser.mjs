@@ -145,7 +145,7 @@ const manifest = JSON.parse(
   fs.readFileSync(path.join(import.meta.dirname, '..', '..', 'content', 'routes.json'), 'utf8')
 );
 
-export const LOCALES = ['en', 'ar'];
+export const LOCALES = ['en', 'ar', 'ja', 'ko'];
 
 export const ROUTES = LOCALES.flatMap((l) =>
   manifest.map((r) => `/${l}${r.route === '/' ? '' : r.route}`)

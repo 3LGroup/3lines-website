@@ -14,6 +14,8 @@ export default async function BandsPage() {
     label: b.label,
     value: b.localized ? ((b.value as Record<string, string>).en ?? '') : (b.value as string),
     ar: b.localized ? ((b.value as Record<string, string>).ar ?? '') : undefined,
+    ja: b.localized ? ((b.value as Record<string, string>).ja ?? '') : undefined,
+    ko: b.localized ? ((b.value as Record<string, string>).ko ?? '') : undefined,
     hint: `${b.hint ? `${b.hint} ` : ''}Appears on ${b.copies} page${b.copies === 1 ? '' : 's'} — saving updates all of them.`,
   }));
 

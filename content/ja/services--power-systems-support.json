@@ -1,0 +1,164 @@
+{
+  "route": "/services/power-systems-support",
+  "locale": "ja",
+  "slug": "services--power-systems-support",
+  "source": [
+    "services.json",
+    "service-details.json"
+  ],
+  "title": "電源システム支援（発電機・UPS）",
+  "description": "重要電源・バックアップシステムの設置・保守・ライフサイクル支援。",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "ホーム",
+          "href": "/"
+        },
+        {
+          "label": "サービス",
+          "href": "/services"
+        },
+        {
+          "label": "電源システム支援（発電機・UPS）"
+        }
+      ],
+      "heading": "電源システム支援（発電機・UPS）"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "概要"
+      },
+      "bodies": [
+        {
+          "kind": "overviewSplit",
+          "heading": "止まらない電源",
+          "lede": "発電機・UPS・重要バックアップ電源の設置・保守・ライフサイクル支援。レーダーサイト、運用センター、工場、インフラの背後で連続給電を維持します — 定期保守、正確な診断、専門的な修理、そしてそれを支える補用部品とともに。",
+          "glanceTitle": "概況",
+          "glance": [
+            "発電機とUPSシステム",
+            "設置からライフサイクル支援まで",
+            "定期・是正保守",
+            "補用部品の即応体制"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "bodies": [
+        {
+          "kind": "feature",
+          "media": {
+            "imgVar": "url('/assets/photos/3l-mro-rf-test.jpg')",
+            "art": null
+          },
+          "heading": "提供体制",
+          "checklist": [
+            {
+              "title": "設置とコミッショニング",
+              "text": "電源・バックアップシステムの仕様策定・設置・引き渡し。"
+            },
+            {
+              "title": "予防保全",
+              "text": "電源の連続性を途切れさせない定期整備。"
+            },
+            {
+              "title": "障害診断と修理",
+              "text": "停止時間を最小化する正確な診断と専門的修理。"
+            },
+            {
+              "title": "バッテリー・UPS支援",
+              "text": "バッテリー状態管理、交換、無停電電源の維持。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "stacked",
+        "kicker": "対応能力"
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "設置とコミッショニング",
+              "text": "電源・バックアップシステムの仕様策定・設置・引き渡し。"
+            },
+            {
+              "title": "予防保全",
+              "text": "電源の連続性を途切れさせない定期整備。"
+            },
+            {
+              "title": "障害診断と修理",
+              "text": "停止時間を最小化する正確な診断と専門的修理。"
+            },
+            {
+              "title": "バッテリー・UPS支援",
+              "text": "バッテリー状態管理、交換、無停電電源の維持。"
+            },
+            {
+              "title": "負荷試験",
+              "text": "必要な時に確実に動作するための負荷検証。"
+            },
+            {
+              "title": "補用部品供給",
+              "text": "システムを稼働させ続けるために必要な部品の提供。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "お問い合わせはこちら",
+      "cta": {
+        "label": "お問い合わせ",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "メール",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "電話",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "所在地",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

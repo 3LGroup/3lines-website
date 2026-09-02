@@ -6,7 +6,7 @@ import { isAdmissibleAsset } from './media';
 import { addBody, assertPageDeletable, deletePage, idFor, insertBlock } from './structure';
 import type { Locale } from './content';
 
-const LOCALES: Locale[] = ['en', 'ar'];
+const LOCALES: Locale[] = ['en', 'ar', 'ja', 'ko'];
 const now = () => Math.floor(Date.now() / 1000);
 
 /**
@@ -116,6 +116,10 @@ export async function createNewsItem({
   for (const [locale, title, tag, type] of [
     ['en', titleEn.trim(), 'News', 'News'],
     ['ar', titleAr.trim(), 'أخبار', 'خبر'],
+    // ja/ko start as copies of the English and are refined in the CMS — the
+    // same source_fallback posture the whole locale launch used.
+    ['ja', titleEn.trim(), 'ニュース', 'ニュース'],
+    ['ko', titleEn.trim(), '뉴스', '뉴스'],
   ] as const) {
     await db.insert(schema.newsItemTranslations).values({
       itemId,
@@ -144,6 +148,8 @@ export async function createNewsItem({
   for (const [locale, title] of [
     ['en', titleEn.trim()],
     ['ar', titleAr.trim()],
+    ['ja', titleEn.trim()],
+    ['ko', titleEn.trim()],
   ] as const) {
     await db.insert(schema.pageTranslations).values({
       pageId,
@@ -178,6 +184,24 @@ export async function createNewsItem({
         ],
         heading: titleAr.trim(),
       },
+      ja: {
+        type: 'pageTitle',
+        crumbs: [
+          { label: 'ホーム', href: '/' },
+          { label: 'ニュースルーム', href: '/news' },
+          { label: titleEn.trim() },
+        ],
+        heading: titleEn.trim(),
+      },
+      ko: {
+        type: 'pageTitle',
+        crumbs: [
+          { label: '홈', href: '/' },
+          { label: '뉴스룸', href: '/news' },
+          { label: titleEn.trim() },
+        ],
+        heading: titleEn.trim(),
+      },
     } as unknown as Record<Locale, Json>,
     position: 0,
   });
@@ -188,6 +212,8 @@ export async function createNewsItem({
     merged: {
       en: { type: 'section', tone: 'plain' },
       ar: { type: 'section', tone: 'plain' },
+      ja: { type: 'section', tone: 'plain' },
+      ko: { type: 'section', tone: 'plain' },
     } as unknown as Record<Locale, Json>,
     position: 1,
   });

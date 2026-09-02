@@ -1,0 +1,595 @@
+{
+  "route": "/",
+  "locale": "ko",
+  "slug": "index",
+  "source": [
+    "constants.json",
+    "siteInfo.json",
+    "services.json",
+    "posts.json",
+    "non-cms.json",
+    "companies.json"
+  ],
+  "title": "3Lines Advanced Technologies Company",
+  "description": "3Lines Advanced Technologies Group은 왕국 내 군·민 서비스의 현지화를 위해 사우디 비전 2030에 맞춰 2019년에 설립되었습니다. 그룹은 조달·물류·정비·수리·제조를 아우르는 통합 공급망·기술 서비스를 제공하며, 국내외 방산·첨단기술 분야의 운용 즉응성을 지원합니다.",
+  "keywords": "3lines,쓰리라인즈,예비부품,항공기,시뮬레이터,사우디,방산,지상지원장비,공급망",
+  "blocks": [
+    {
+      "type": "hero",
+      "imgVar": "url('/assets/uploads/bg.webp')",
+      "headingLines": [
+        "우리가 제공하는",
+        "글로벌하게"
+      ],
+      "rotate": [
+        "첨단 기술",
+        "확장현실",
+        "MRO",
+        "물류"
+      ],
+      "body": "3Lines Advanced Technologies Group은 왕국 내 군·민 서비스의 현지화를 위해 사우디 비전 2030에 맞춰 2019년에 설립되었습니다. 그룹은 조달·물류·정비·수리·제조를 아우르는 통합 공급망·기술 서비스를 제공하며, 국내외 방산·첨단기술 분야의 운용 즉응성을 지원합니다.",
+      "cta": {
+        "label": "회사 소개",
+        "href": "/about"
+      }
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "figures",
+          "items": [
+            {
+              "count": 7,
+              "prefix": "+",
+              "label": "2019년부터 방산·첨단기술에 기여"
+            },
+            {
+              "count": 3,
+              "label": "핵심 운영 기둥"
+            },
+            {
+              "count": 120,
+              "prefix": "+",
+              "label": "다분야 전문가 팀"
+            },
+            {
+              "count": 30,
+              "prefix": "+",
+              "label": "국내외 전략적 파트너"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "head": {
+        "layout": "split",
+        "kicker": "주요 사업",
+        "heading": "제공 방식",
+        "link": {
+          "label": "회사 소개",
+          "href": "/about"
+        }
+      },
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 3,
+          "items": [
+            {
+              "title": "공급망 관리",
+              "text": "전략 소싱부터 군·민 플랫폼 납품까지 — 조달, 보안 창고, 재고 관리, 배송의 일관된 공급망."
+            },
+            {
+              "title": "정비",
+              "text": "국내 역량을 통한 레이더, 감시, C2/C3/C4I 지휘통제 시스템, 지상 지원, 방산 시스템의 유지정비."
+            },
+            {
+              "title": "수리·제조",
+              "text": "국내 진단·수리 작업장과 함께, 첨단 시스템용 부품의 역설계 및 제조."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "id": "companies",
+      "head": {
+        "layout": "split",
+        "kicker": "그룹",
+        "heading": "그룹사"
+      },
+      "bodies": [
+        {
+          "kind": "companies",
+          "items": [
+            {
+              "id": "advanced-technology",
+              "name": "Advanced Technology",
+              "tagline": "첨단 기술 솔루션과 서비스 제공",
+              "imgVar": "url('/assets/photos/3l-rf-signal-bench.jpg')",
+              "link": {
+                "label": "자세히 보기",
+                "href": "/services"
+              }
+            },
+            {
+              "id": "xr",
+              "name": "XR",
+              "tagline": "AR/VR을 통한 확장현실",
+              "imgVar": "url('/assets/photos/3l-xr-minefield-training.jpg')",
+              "link": {
+                "label": "자세히 보기",
+                "href": "https://xr.3lines.com.sa/"
+              },
+              "external": true
+            },
+            {
+              "id": "optokon-middle-east",
+              "imgVar": "url('/assets/photos/3l-optokon-field-kit.jpg')",
+              "name": "Optokon Middle East",
+              "tagline": "광·IT 인프라 솔루션",
+              "link": {
+                "label": "자세히 보기",
+                "href": "https://optokon.com.sa/"
+              },
+              "external": true
+            },
+            {
+              "id": "ai3lines",
+              "name": "3Lines AI",
+              "tagline": "비즈니스 운영을 수행하는 AI 에이전트",
+              "imgVar": "url('/assets/photos/3l-ai-satellite-terminal.jpg')",
+              "link": {
+                "label": "자세히 보기",
+                "href": "https://ai3lines.com/"
+              },
+              "external": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "navy",
+      "head": {
+        "layout": "stacked",
+        "kicker": "WHY 3LINES"
+      },
+      "bodies": [
+        {
+          "kind": "slider",
+          "items": [
+            {
+              "heading": "유지하기 위해 세워지고, 운용으로 신뢰받다",
+              "sub": "2019년부터 왕국 내 방산·첨단기술을 현지화."
+            },
+            {
+              "heading": "왕국 내에서 유지되는 레이더와 C4I",
+              "sub": "노스럽 그러먼과의 MLA에 따른 4선급 정비."
+            },
+            {
+              "heading": "3대 핵심 운영 기둥",
+              "sub": "공급망 관리, 정비, 수리·제조."
+            },
+            {
+              "heading": "30개 이상의 전략적 파트너",
+              "sub": "사우디아라비아, 미국, 멕시코, 폴란드, 체코에서 수행."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "id": "services",
+      "head": {
+        "layout": "split",
+        "kicker": "주요 사업",
+        "heading": "주요 사업",
+        "link": {
+          "label": "서비스",
+          "href": "/services"
+        }
+      },
+      "bodies": [
+        {
+          "kind": "cards",
+          "items": [
+            {
+              "title": "레이더 정비·전자장비·전술통신 유지정비",
+              "text": "국내 역량을 통한 레이더, 감시, C4I, 보안 통신 시스템의 유지정비·진단·수리.",
+              "link": {
+                "label": "개요",
+                "href": "/services/radar-electronics-communications-sustainment"
+              },
+              "imgVar": "url('/assets/news/advancing-radar-sensor-support.jpg')",
+              "art": null
+            },
+            {
+              "title": "정부 대관·인력 컨설팅·생활지원 서비스",
+              "text": "규제 조율, 인력 컨설팅, 통합 생활지원 서비스.",
+              "link": {
+                "label": "개요",
+                "href": "/services/government-relations-and-life-support"
+              },
+              "imgVar": "url('/assets/photos/3l-partnership-handshake.jpg')",
+              "art": null
+            },
+            {
+              "title": "전원 시스템 지원(발전기·UPS)",
+              "text": "핵심 전원·백업 시스템의 설치·유지보수·수명주기 지원.",
+              "link": {
+                "label": "개요",
+                "href": "/services/power-systems-support"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-rf-test.jpg')",
+              "art": null
+            },
+            {
+              "title": "전자장비 진단·수리 작업장",
+              "text": "임무 필수 전자 시스템의 고장 분리·시험·수리·검증을 수행하는 국내 시설.",
+              "link": {
+                "label": "개요",
+                "href": "/services/electronics-diagnostic-and-repair-workshops"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-bench.jpg')",
+              "art": null
+            },
+            {
+              "title": "지상지원장비(GSE) 유지정비",
+              "text": "항공·지상 지원 자산의 정비 및 가동률 지원.",
+              "link": {
+                "label": "개요",
+                "href": "/services/ground-support-equipment-sustainment"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-tech.jpg')",
+              "art": null
+            },
+            {
+              "title": "항공·지상 시스템 예비 부품, 물류, 창고 관리",
+              "text": "군·민 플랫폼을 위한 일관된 조달·보안 창고·재고 관리·배송.",
+              "link": {
+                "label": "개요",
+                "href": "/services/spare-parts-logistics-and-warehousing"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-lab.jpg')",
+              "art": null
+            },
+            {
+              "title": "시뮬레이션 시스템(풀모션·고정식)",
+              "text": "첨단 시뮬레이션·즉응 플랫폼의 공급·운영·정비·훈련 지원.",
+              "link": {
+                "label": "개요",
+                "href": "/services/simulation-systems"
+              },
+              "imgVar": "url('/assets/photos/3l-xr-simulator.jpg')",
+              "art": null
+            },
+            {
+              "title": "훈련·시뮬레이션·역량 강화",
+              "text": "군·민 훈련 제공, 지식 이전, 운용 역량 개발.",
+              "link": {
+                "label": "개요",
+                "href": "/services/training-and-capability-enablement"
+              },
+              "imgVar": "url('/assets/photos/3l-xr-minefield-training.jpg')",
+              "art": null
+            },
+            {
+              "title": "방산 시스템 유지정비(MRO)",
+              "text": "방산 시스템 전반의 운용 즉응성을 지원하는 종합 정비·수리·오버홀.",
+              "link": {
+                "label": "개요",
+                "href": "/services/defense-systems-sustainment-mro"
+              },
+              "imgVar": "url('/assets/photos/3l-mro-component.jpg')",
+              "art": null
+            },
+            {
+              "title": "프로그램 관리 및 현지화 지원",
+              "text": "사우디 비전 2030에 부합하는 일관된 프로그램 수행, 현지화, 국가 역량 개발.",
+              "link": {
+                "label": "개요",
+                "href": "/services/program-management-and-localization"
+              },
+              "imgVar": "url('/assets/photos/3l-hq-building.jpg')",
+              "art": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "mist",
+      "head": {
+        "layout": "split",
+        "kicker": "뉴스룸",
+        "heading": "",
+        "link": {
+          "label": "뉴스룸",
+          "href": "/news"
+        }
+      },
+      "bodies": [
+        {
+          "kind": "newsGrid",
+          "limit": 3
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "head": {
+        "layout": "split",
+        "kicker": "신뢰받는 실적",
+        "heading": "",
+        "link": {
+          "label": "신뢰받는 실적",
+          "href": "/partners"
+        }
+      },
+      "bodies": [
+        {
+          "kind": "logos",
+          "items": [
+            {
+              "name": "SAMI",
+              "media": {
+                "src": "/assets/logos/sami-logo.svg",
+                "alt": "SAMI"
+              },
+              "href": "https://www.sami.com.sa/",
+              "caption": "사우디아라비아 군수산업공사",
+              "type": "협정",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "에어버스",
+              "media": {
+                "src": "/assets/logos/airbus-logo.svg",
+                "alt": "에어버스"
+              },
+              "href": "https://www.airbus.com/en",
+              "type": "고객",
+              "country": "프랑스",
+              "flag": "🇫🇷"
+            },
+            {
+              "name": "BAE Systems",
+              "media": {
+                "src": "/assets/logos/bae-systems-logo.svg",
+                "alt": "BAE Systems"
+              },
+              "href": "https://www.baesystems.com/en/home",
+              "type": "고객",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "ARMITE Lubricants",
+              "media": {
+                "src": "/assets/logos/armite-lubricants-logo.jpg",
+                "alt": "ARMITE Lubricants"
+              },
+              "href": "https://armitelabs.com/",
+              "type": "파트너",
+              "country": "미국",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "SAMI AEC",
+              "media": {
+                "src": "/assets/logos/sami-aec-logo.png",
+                "alt": "SAMI AEC"
+              },
+              "href": "https://www.aecl.com/",
+              "caption": "SAMI Advanced Electronics",
+              "type": "협정",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "SMSCMC",
+              "media": {
+                "src": "/assets/logos/smscmc-logo.svg",
+                "alt": "SMSCMC"
+              },
+              "href": "https://www.smscmc.com/",
+              "caption": "Saudi Maintenance & Supply Chain Management Co",
+              "type": "협정",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "MAC Aerospace Corp.",
+              "media": {
+                "src": "/assets/logos/mac-aerospace-corp-logo.png",
+                "alt": "MAC Aerospace Corp."
+              },
+              "href": "https://macaerospace.com/",
+              "type": "파트너",
+              "country": "미국",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "Amentum",
+              "media": {
+                "src": "/assets/logos/amentum-logo.webp",
+                "alt": "Amentum"
+              },
+              "href": "https://www.amentum.com/",
+              "type": "고객",
+              "country": "미국",
+              "flag": "🇺🇸"
+            },
+            {
+              "name": "SAMI Aerospace",
+              "media": {
+                "src": "/assets/logos/sami-aerospace-logo.svg",
+                "alt": "SAMI Aerospace"
+              },
+              "href": "https://samialsalam.com.sa",
+              "caption": "SAMI Alsalam Aerospace Industries",
+              "type": "고객",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "NPCO",
+              "media": {
+                "src": "/assets/logos/npco-logo.png",
+                "alt": "NPCO"
+              },
+              "href": "https://npco.sa/",
+              "caption": "National Commercial Pledges Company",
+              "type": "고객",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Wallan Group",
+              "media": {
+                "src": "/assets/logos/wallan-group-logo.png",
+                "alt": "Wallan Group"
+              },
+              "href": "https://www.wallan.com/",
+              "type": "고객",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "Vinnell Arabia",
+              "media": {
+                "src": "/assets/logos/vinnell-arabia-logo.png",
+                "alt": "Vinnell Arabia"
+              },
+              "type": "고객",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "ICS ARABIA",
+              "media": {
+                "src": "/assets/logos/ics-arabia-logo.png",
+                "alt": "ICS ARABIA"
+              },
+              "href": "https://icsarabia.com",
+              "type": "파트너",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "AACC",
+              "media": {
+                "src": "/assets/logos/aacc-logo.png",
+                "alt": "AACC"
+              },
+              "href": "https://www.aacc-ltd.com/",
+              "caption": "Aircraft Accessories & Components Co. Ltd.",
+              "type": "고객",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "OPTOKON Middle East",
+              "media": {
+                "src": "/assets/logos/optokon-middle-east-logo.png",
+                "alt": "OPTOKON Middle East"
+              },
+              "href": "https://www.optokon.com.sa/",
+              "type": "파트너",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "TAM",
+              "media": {
+                "src": "/assets/logos/tam-logo.png",
+                "alt": "TAM"
+              },
+              "type": "파트너",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "사우디 왕립 공군",
+              "media": {
+                "src": "/assets/logos/cust-rsaf.png",
+                "alt": "사우디 왕립 공군"
+              },
+              "caption": "AN/TPS-78을 포함한 레이더 유지정비와 항공 지원.",
+              "type": "고객",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            },
+            {
+              "name": "사우디 왕립 방공군",
+              "media": {
+                "src": "/assets/logos/cust-rsadf.png",
+                "alt": "사우디 왕립 방공군"
+              },
+              "caption": "방공 시스템 유지정비 및 기술 지원.",
+              "type": "고객",
+              "country": "사우디아라비아",
+              "flag": "🇸🇦"
+            }
+          ],
+          "variant": "marquee",
+          "total": 39
+        }
+      ]
+    },
+    {
+      "type": "careers",
+      "imgVar": "url('/assets/photos/3l-radar-field.jpg')",
+      "art": null,
+      "heading": "대화를 시작하세요",
+      "cta": {
+        "label": "문의하기",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "이메일",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "전화",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "주소",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

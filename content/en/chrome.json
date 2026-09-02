@@ -42,6 +42,14 @@
       {
         "label": "AR",
         "locale": "ar"
+      },
+      {
+        "label": "JA",
+        "locale": "ja"
+      },
+      {
+        "label": "KO",
+        "locale": "ko"
       }
     ]
   },

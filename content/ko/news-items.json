@@ -1,0 +1,54 @@
+[
+  {
+    "slug": "expanding-spare-parts-capabilities",
+    "route": "/news/expanding-spare-parts-capabilities",
+    "tag": "조달",
+    "type": "뉴스",
+    "date": "2026-05-12",
+    "title": "예비 부품·물류·창고 역량의 확장",
+    "media": {
+      "src": "/assets/news/expanding-spare-parts-capabilities.jpg",
+      "alt": "예비 부품·물류·창고 역량의 확장"
+    },
+    "art": null
+  },
+  {
+    "slug": "advanced-simulator-support",
+    "route": "/news/advanced-simulator-support",
+    "tag": "기술",
+    "type": "뉴스",
+    "date": "2026-04-28",
+    "title": "시뮬레이션·XR 기반 훈련에 대한 투자",
+    "media": {
+      "src": "/assets/news/advanced-simulator-support.jpg",
+      "alt": "시뮬레이션·XR 기반 훈련에 대한 투자"
+    },
+    "art": null
+  },
+  {
+    "slug": "ground-support-equipment-services",
+    "route": "/news/ground-support-equipment-services",
+    "tag": "제조",
+    "type": "뉴스",
+    "date": "2026-03-15",
+    "title": "지상지원장비 유지정비 강화",
+    "media": {
+      "src": "/assets/news/ground-support-equipment-services.jpg",
+      "alt": "지상지원장비 유지정비 강화"
+    },
+    "art": null
+  },
+  {
+    "slug": "advancing-radar-sensor-support",
+    "route": "/news/advancing-radar-sensor-support",
+    "tag": "기술",
+    "type": "뉴스",
+    "date": "2026-02-25",
+    "title": "레이더·C4I·전술통신 유지정비의 진전",
+    "media": {
+      "src": "/assets/news/advancing-radar-sensor-support.jpg",
+      "alt": "레이더·C4I·전술통신 유지정비의 진전"
+    },
+    "art": null
+  }
+]

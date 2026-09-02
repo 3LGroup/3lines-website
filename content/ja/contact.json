@@ -1,0 +1,129 @@
+{
+  "route": "/contact",
+  "locale": "ja",
+  "slug": "contact",
+  "source": [
+    "pages.json#contact",
+    "siteInfo.json",
+    "constants.json",
+    "non-cms.json"
+  ],
+  "title": "お問い合わせ",
+  "description": "3Lines Advanced Technologies Groupは、王国内で軍民サービスを国内化するため、サウジ・ビジョン2030に沿って2019年に設立されました。グループは調達・ロジスティクス・整備・修理・製造にわたる統合サプライチェーン・技術サービスを提供し、国内外の防衛・先端技術分野の運用即応性を支えています。",
+  "keywords": "お問い合わせ,連絡,contact",
+  "blocks": [
+    {
+      "type": "pageTitle",
+      "crumbs": [
+        {
+          "label": "ホーム",
+          "href": "/"
+        },
+        {
+          "label": "お問い合わせ"
+        }
+      ],
+      "heading": "お問い合わせ"
+    },
+    {
+      "type": "section",
+      "tone": "plain",
+      "bodies": [
+        {
+          "kind": "defs",
+          "columns": 2,
+          "items": [
+            {
+              "title": "メール",
+              "text": "info@3lines.com.sa"
+            },
+            {
+              "title": "電話",
+              "text": "+966112252433"
+            },
+            {
+              "title": "所在地",
+              "text": "RFFA2148 Office 203, 2nd floor Building #2148, King Abdullah Branch Road, King Faisal Dist. Riyadh. 13215"
+            },
+            {
+              "title": "登記情報",
+              "text": "",
+              "meta": [
+                {
+                  "label": "CR",
+                  "value": "1010589885"
+                },
+                {
+                  "label": "VAT",
+                  "value": "310407303200003"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "form",
+          "action": "/api/contact",
+          "honeypot": "company",
+          "submit": "送信",
+          "fields": [
+            {
+              "name": "name",
+              "type": "text",
+              "label": "お名前",
+              "required": true
+            },
+            {
+              "name": "email",
+              "type": "email",
+              "label": "メールアドレス",
+              "required": true
+            },
+            {
+              "name": "message",
+              "type": "textarea",
+              "label": "ご用件をお聞かせください",
+              "required": true
+            }
+          ],
+          "status": {
+            "sending": "送信中…",
+            "ok": "ありがとうございます — 追ってご連絡いたします。",
+            "bad": "お名前、有効なメールアドレス、メッセージをご記入ください。",
+            "err": "問題が発生しました。もう一度お試しください。"
+          }
+        }
+      ]
+    },
+    {
+      "type": "socialStrip",
+      "label": "3Lines Advanced Technologies Company",
+      "items": [
+        {
+          "network": "email",
+          "label": "メール",
+          "href": "mailto:info@3lines.com.sa",
+          "icon": null
+        },
+        {
+          "network": "phone",
+          "label": "電話",
+          "href": "tel:+966112252433",
+          "icon": null
+        },
+        {
+          "network": "linkedin",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/company/3lines",
+          "icon": null
+        },
+        {
+          "network": "maps",
+          "label": "所在地",
+          "href": "https://www.google.com/maps/search/?api=1&query=RFFA2148%20Office%20203%2C%202nd%20floor%20Building%20%232148%2C%20King%20Abdullah%20Branch%20Road%2C%20King%20Faisal%20Dist.%20Riyadh.%2013215",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}
