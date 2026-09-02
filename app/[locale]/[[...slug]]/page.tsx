@@ -60,8 +60,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     alternates: {
       canonical: `${SITE_ORIGIN}${alts[locale]}`,
       languages: {
-        en: `${SITE_ORIGIN}${alts.en}`,
-        ar: `${SITE_ORIGIN}${alts.ar}`,
+        ...Object.fromEntries(LOCALES.map((l) => [l, `${SITE_ORIGIN}${alts[l]}`])),
         'x-default': `${SITE_ORIGIN}${alts.en}`,
       },
     },

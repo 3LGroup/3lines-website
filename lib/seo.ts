@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import type { Locale } from './blocks';
+import { LOCALES, type Locale } from './blocks';
 import { getSettings } from './content';
 
 /**
@@ -65,7 +65,7 @@ export function openGraph(
     url: `${SITE_ORIGIN}${path}`,
     siteName: siteName(locale),
     locale: OG_LOCALE[locale],
-    alternateLocale: OG_LOCALE[locale === 'ar' ? 'en' : 'ar'],
+    alternateLocale: LOCALES.filter((l) => l !== locale).map((l) => OG_LOCALE[l]),
     type: 'website',
     images: [
       {
