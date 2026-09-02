@@ -137,8 +137,41 @@ ul{margin:0;padding:0;list-style:none}
    (`padding-inline-start`/`border-inline-start`) so it stays on the side facing
    the links in Arabic too — the physical `padding-left`/`border-left` it
    replaces drew the rule on the wrong side of the cluster under RTL. */
-.utility__lang{display:flex;gap:8px;align-items:center;padding-inline-start:22px;border-inline-start:1px solid var(--lilac)}
-.utility__lang a[aria-current="true"]{color:var(--blue);font-weight:700}
+/* --- language dropdown ---------------------------------------
+   A details/summary menu in the dropdown pattern component libraries
+   popularised, native because this site ships none. The panel anchors with
+   logical properties so it hangs correctly under RTL, and the list shows each
+   language under its own native name — the one rule a switcher must not
+   break. */
+.langmenu{position:relative;padding-inline-start:22px;border-inline-start:1px solid var(--lilac)}
+.langmenu summary{
+  display:flex;align-items:center;gap:7px;cursor:pointer;list-style:none;
+  font-size:13px;font-weight:600;letter-spacing:.04em;color:inherit;
+  padding:5px 8px;border-radius:7px;border:1px solid transparent;
+  transition:background .2s,border-color .2s;
+}
+.langmenu summary::-webkit-details-marker{display:none}
+.langmenu summary:hover{background:var(--mist)}
+.langmenu[open] summary{background:var(--mist);border-color:var(--lilac)}
+.langmenu__chev{transition:transform .2s var(--ease);opacity:.6}
+.langmenu[open] .langmenu__chev{transform:rotate(180deg)}
+.langmenu__list{
+  position:absolute;inset-inline-end:0;top:calc(100% + 6px);z-index:60;
+  min-width:172px;padding:6px;margin:0;
+  background:var(--paper,#fff);border:1px solid var(--lilac);border-radius:10px;
+  box-shadow:0 12px 32px rgba(0,0,92,.14);
+}
+.langmenu__list li{list-style:none}
+.langmenu__list a{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:8px 10px;border-radius:7px;font-size:13.5px;transition:background .15s;
+}
+.langmenu__list a:hover{background:var(--mist)}
+.langmenu__list a[aria-current="true"]{color:var(--blue);font-weight:700;background:var(--mist)}
+.langmenu__code{font-size:11px;letter-spacing:.08em;opacity:.55}
+html.dark .langmenu summary:hover,html.dark .langmenu[open] summary{background:var(--panel,#1a2430)}
+html.dark .langmenu__list{background:var(--panel,#141d27);border-color:var(--border,#2a3644);box-shadow:0 12px 32px rgba(0,0,0,.5)}
+html.dark .langmenu__list a:hover,html.dark .langmenu__list a[aria-current="true"]{background:rgba(255,255,255,.07)}
 @media (max-width:900px){.utility{display:none}}
 
 /* ============================================================
