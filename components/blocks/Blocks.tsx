@@ -4,6 +4,7 @@ import Svg from '../Svg';
 import BodyRenderer, { parseStyle } from '../bodies/Bodies';
 import { localePath, type Locale } from '@/lib/i18n';
 import { getSettings } from '@/lib/content';
+import { contentAssetVar } from '@/lib/assets';
 import { ui } from '@/lib/ui';
 import { assertNever, TONE_CLASS } from '@/lib/blocks';
 import type {
@@ -15,8 +16,13 @@ import type {
   SocialStripBlock,
 } from '@/lib/blocks';
 
-const imgStyle = (imgVar?: string): React.CSSProperties | undefined =>
-  imgVar ? ({ ['--img']: imgVar } as React.CSSProperties) : undefined;
+/* contentAssetVar, not the raw value: these URLs are served immutable for a
+   year, so without a content hash a replaced photograph never reaches anyone who
+   has already visited. See lib/assets.ts. */
+const imgStyle = (imgVar?: string): React.CSSProperties | undefined => {
+  const url = contentAssetVar(imgVar);
+  return url ? ({ ['--img']: url } as React.CSSProperties) : undefined;
+};
 
 function Hero({ block, locale }: { block: HeroBlock; locale: Locale }) {
   return (

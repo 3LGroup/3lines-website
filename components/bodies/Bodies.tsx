@@ -1,4 +1,5 @@
 import Arrow from '../Arrow';
+import { contentAsset, contentAssetVar } from '@/lib/assets';
 import Svg from '../Svg';
 import NewsGrid from '../NewsGrid';
 import ContactForm from '../ContactForm';
@@ -24,10 +25,13 @@ import type {
   TilesBody,
 } from '@/lib/blocks';
 
-/** `--img` is a real custom property in the source; pass it through untouched. */
+/** `--img` is a real custom property in the source. The path inside it is
+    content-hashed on the way through — see the note in lib/assets.ts on why
+    these were the only URLs on the site without that guarantee. */
 const imgStyle = (imgVar?: string, extra?: React.CSSProperties): React.CSSProperties | undefined => {
   if (!imgVar && !extra) return undefined;
-  return { ...(imgVar ? ({ ['--img']: imgVar } as React.CSSProperties) : null), ...extra };
+  const url = contentAssetVar(imgVar);
+  return { ...(url ? ({ ['--img']: url } as React.CSSProperties) : null), ...extra };
 };
 
 /** Inline styles are captured verbatim as strings; re-parse into a style object. */
@@ -324,7 +328,7 @@ function Companies({ body, locale }: { body: CompaniesBody; locale: Locale }) {
             {c.logo ? (
               <img
                 className="ccard__logo"
-                src={c.logo.src}
+                src={contentAsset(c.logo.src)}
                 alt={c.logo.alt}
                 loading="lazy"
                 decoding="async"
@@ -483,7 +487,7 @@ function Logos({ body, locale }: { body: LogosBody; locale: Locale }) {
   const cell = (l: LogosBody['items'][number], key: string, ariaHidden?: boolean) => {
     const img = (
       <img
-        src={l.media.src}
+        src={contentAsset(l.media.src)}
         alt={ariaHidden ? '' : l.media.alt}
         loading="lazy"
         decoding="async"
@@ -531,7 +535,7 @@ function Logos({ body, locale }: { body: LogosBody; locale: Locale }) {
                       A logo whose alt says something the name does not still
                       carries it. */}
                   <img
-                    src={l.media.src}
+                    src={contentAsset(l.media.src)}
                     alt={l.media.alt === l.name ? '' : l.media.alt}
                     loading="lazy"
                     decoding="async"
@@ -580,7 +584,7 @@ function Certs({ body }: { body: CertsBody }) {
     <ul className="certs reveal">
       {body.items.map((m, i) => (
         <li key={i}>
-          <img src={m.src} alt={m.alt} loading="lazy" decoding="async" />
+          <img src={contentAsset(m.src)} alt={m.alt} loading="lazy" decoding="async" />
         </li>
       ))}
     </ul>

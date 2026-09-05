@@ -24,19 +24,47 @@ export interface MediaItem {
   ext: string;
 }
 
+/**
+ * Which of two files representing the same picture the picker should offer.
+ *
+ * Fifty of the fifty-one .webp files in public/assets are byte-alternatives to a
+ * .jpg or .png sitting beside them, so an editor scrolling the library saw
+ * "3l-mro-lab.jpg" and "3l-mro-lab.webp" as two separate, visually identical
+ * choices — a third of the library was duplicates of the other two thirds.
+ *
+ * The survivor is the format the site actually references everywhere (289 jpg and
+ * 235 png references against 63 webp), so picking from this list produces content
+ * consistent with what is already live. Serving WebP instead is worth doing, but
+ * it is one deliberate migration of every reference at once, not something an
+ * editor should half-do by accident through the picker.
+ */
+function preferred(a: MediaItem, b: MediaItem): MediaItem {
+  const rank = (e: string) => (e === 'webp' || e === 'avif' ? 1 : 0);
+  return rank(a.ext) <= rank(b.ext) ? a : b;
+}
+
 export function listMedia(): MediaItem[] {
-  return Object.keys(manifest as Record<string, string>)
-    .filter((p) => IMAGE_EXT.test(p))
-    .map((path) => {
-      const parts = path.split('/');
-      return {
-        path,
-        name: parts[parts.length - 1]!,
-        folder: parts.length > 2 ? parts[parts.length - 2]! : 'assets',
-        ext: (path.match(IMAGE_EXT)?.[1] ?? '').toLowerCase(),
-      };
-    })
-    .sort((a, b) => a.folder.localeCompare(b.folder) || a.name.localeCompare(b.name));
+  const byImage = new Map<string, MediaItem>();
+
+  for (const path of Object.keys(manifest as Record<string, string>)) {
+    if (!IMAGE_EXT.test(path)) continue;
+    const parts = path.split('/');
+    const item: MediaItem = {
+      path,
+      name: parts[parts.length - 1]!,
+      folder: parts.length > 2 ? parts[parts.length - 2]! : 'assets',
+      ext: (path.match(IMAGE_EXT)?.[1] ?? '').toLowerCase(),
+    };
+    /* Keyed on the full path minus its extension, so two pictures that merely
+       share a file name in different folders stay two pictures. */
+    const key = path.replace(IMAGE_EXT, '');
+    const seen = byImage.get(key);
+    byImage.set(key, seen ? preferred(seen, item) : item);
+  }
+
+  return [...byImage.values()].sort(
+    (a, b) => a.folder.localeCompare(b.folder) || a.name.localeCompare(b.name)
+  );
 }
 
 /**

@@ -1,5 +1,6 @@
 import Arrow from './Arrow';
 import { getNews } from '@/lib/content';
+import { contentAsset } from '@/lib/assets';
 import { localePath, type Locale } from '@/lib/i18n';
 
 /**
@@ -35,7 +36,11 @@ export default function NewsGrid({ limit, locale }: { limit?: number; locale: Lo
         <a className="ncard reveal" key={n.slug} href={localePath(locale, n.route)}>
           <div
             className="ncard__media"
-            style={n.media ? ({ ['--img']: `url('${n.media.src}')` } as React.CSSProperties) : undefined}
+            style={
+              n.media
+                ? ({ ['--img']: `url('${contentAsset(n.media.src)}')` } as React.CSSProperties)
+                : undefined
+            }
           />
           <div className="ncard__body">
             {n.tag ? <span className="tag">{n.tag}</span> : null}

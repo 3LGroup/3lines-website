@@ -67,3 +67,43 @@ export function asset(publicPath: string): string {
 
   return `${publicPath}?v=${version}`;
 }
+
+/**
+ * Content images: same hashing as `asset()`, but tolerant of paths the manifest
+ * cannot know about.
+ *
+ * Every URL a page renders is served `Cache-Control: max-age=31536000, immutable`
+ * by public/_headers, which is only safe when the URL changes with the file. The
+ * stylesheets, scripts and logos got that guarantee through `asset()`; the
+ * photographs never did, because `imgVar` and `media.src` went from the CMS into
+ * the DOM untouched. Measured on the live homepage: 8 of 45 asset URLs carried a
+ * hash and 37 did not — every one of the 37 an image. Replacing a picture at the
+ * same path therefore left returning visitors on the old bytes for a year, with
+ * nothing to flush.
+ *
+ * Why not just call `asset()`: uploads live in R2, not in public/, so they are
+ * absent from the build-time manifest by construction. `asset()` treats an absent
+ * path as a bug — it logs an error and emits `?v=missing` — which is right for a
+ * stylesheet and wrong here. This returns those untouched instead. Their own
+ * route (app/assets/uploads/[name]/route.ts) owns their cache policy, and an
+ * upload replaced under the same name has the same staleness problem this fixes
+ * for everything else; solving that needs the R2 etag, not the manifest.
+ */
+export function contentAsset(publicPath: string): string {
+  const version = devVersion(publicPath) ?? versions[publicPath];
+  return version ? `${publicPath}?v=${version}` : publicPath;
+}
+
+/**
+ * The same, for a CSS `url(...)` wrapper — the shape `imgVar` arrives in.
+ * Tolerates single, double or no quotes, and leaves anything that is not a
+ * url() alone (a gradient, or a value an editor typed by hand).
+ */
+export function contentAssetVar(imgVar: string | undefined): string | undefined {
+  if (!imgVar) return imgVar;
+  const m = /^(\s*url\(\s*)(['"]?)(.*?)\2(\s*\)\s*)$/.exec(imgVar);
+  if (!m) return imgVar;
+  const [, open, quote, path, close] = m;
+  if (!path?.startsWith('/')) return imgVar;
+  return `${open}${quote}${contentAsset(path)}${quote}${close}`;
+}
