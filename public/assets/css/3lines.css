@@ -81,6 +81,13 @@ html.dark{
   --accent-foreground: oklch(0.985 0 0);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
+
+  /* The focus ring has to be re-themed here or it does not exist in dark mode:
+     style.css declares --focus as #0816A1, which against this --background
+     computes to about 1.20:1. A light stroke against a near-black halo inverts
+     the light-mode pairing and keeps the same two-band shape. */
+  --focus: #8CC8FF;
+  --focus-halo: #0b0f19;
 }
 
 /* ============================================================================
@@ -568,7 +575,7 @@ html.dark .ftr .ftr__logo::before,html.dark .footer svg{filter:brightness(0) inv
   background:var(--card)!important;color:var(--muted-foreground)!important;
   border-top:1px solid var(--border)!important;
 }
-.footer h4,.ftr h4{color:var(--foreground)!important;text-transform:uppercase!important;
+.footer h4,.ftr h4,.ftr__title{color:var(--foreground)!important;text-transform:uppercase!important;
   font-family:var(--font-mono)!important;font-size:10.5px!important;letter-spacing:.1em!important}
 .footer a,.ftr a,.footer li a,.ftr li a{color:var(--muted-foreground)!important;text-transform:none!important}
 .footer a:hover,.ftr a:hover,.footer li a:hover,.ftr li a:hover{color:var(--primary)!important}

@@ -98,6 +98,24 @@ function Tiles({ body, locale }: { body: TilesBody; locale: Locale }) {
   );
 }
 
+/* Repeated link text.
+ *
+ * Every card in a grid says "Learn more", so a screen reader's link list — and
+ * Lighthouse's descriptive-link-text check — sees four identical entries with no
+ * way to tell which is which. Appending the card's own heading in an sr-only span
+ * makes the accessible name "Learn more — XR" while the visible label stays
+ * "Learn more", which is the ordering WCAG 2.5.3 requires: the visible text has to
+ * be contained in the accessible name, so it must not be prefixed.
+ *
+ * Rendered only when the two actually differ, so a link already named after its
+ * destination is not read out twice. */
+function LinkContext({ heading }: { heading?: string }) {
+  /* One template literal, not three JSX children: separate children make React
+     emit <!-- --> separator comments between them, which is three text nodes for
+     an assistive technology to join instead of one. */
+  return heading ? <span className="sr-only">{` — ${heading}`}</span> : null;
+}
+
 function Cards({ body, locale }: { body: CardsBody; locale: Locale }) {
   return (
     <>
@@ -111,7 +129,9 @@ function Cards({ body, locale }: { body: CardsBody; locale: Locale }) {
             {c.text ? <p>{c.text}</p> : null}
             {c.link ? (
               <a className="arrowlink" href={localePath(locale, c.link.href)}>
-                {c.link.label} <Arrow />
+                {c.link.label}
+                <LinkContext heading={c.link.label === c.title ? undefined : c.title} />{' '}
+                <Arrow />
               </a>
             ) : null}
           </div>
@@ -145,7 +165,9 @@ function Feature({ body, locale }: { body: FeatureBody; locale: Locale }) {
         ) : null}
         {body.link ? (
           <a className="arrowlink" href={localePath(locale, body.link.href)}>
-            {body.link.label} <Arrow />
+            {body.link.label}
+            <LinkContext heading={body.link.label === body.heading ? undefined : body.heading} />{' '}
+            <Arrow />
           </a>
         ) : null}
         {body.checklist?.length ? (
@@ -329,11 +351,15 @@ function Companies({ body, locale }: { body: CompaniesBody; locale: Locale }) {
             {c.link ? (
               c.external ? (
                 <a className="arrowlink" href={c.link.href} target="_blank" rel="noreferrer noopener">
-                  {c.link.label} <Arrow />
+                  {c.link.label}
+                  <LinkContext heading={c.link.label === c.name ? undefined : c.name} />{' '}
+                  <Arrow />
                 </a>
               ) : (
                 <a className="arrowlink" href={localePath(locale, c.link.href)}>
-                  {c.link.label} <Arrow />
+                  {c.link.label}
+                  <LinkContext heading={c.link.label === c.name ? undefined : c.name} />{' '}
+                  <Arrow />
                 </a>
               )
             ) : null}
@@ -497,9 +523,16 @@ function Logos({ body, locale }: { body: LogosBody; locale: Locale }) {
               <>
                 {l.type ? <span className="logos__tag">{l.type}</span> : null}
                 <span className="logos__mark">
+                  {/* Empty alt when the logo's alt text is the partner's name,
+                      because <strong>{l.name}</strong> is right beside it and the
+                      two are the same string in every content file — so every
+                      partner in this grid was announced twice. The marquee above
+                      solves the same problem by aria-hiding its duplicate track.
+                      A logo whose alt says something the name does not still
+                      carries it. */}
                   <img
                     src={l.media.src}
-                    alt={l.media.alt}
+                    alt={l.media.alt === l.name ? '' : l.media.alt}
                     loading="lazy"
                     decoding="async"
                     data-invert={l.media.invert ? '1' : undefined}

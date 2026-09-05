@@ -21,6 +21,17 @@ export const UI_FIELDS: { key: string; label: string; hint?: string }[] = [
   { key: 'notFoundBrowse', label: '404 links lead-in' },
   { key: 'whatsapp', label: 'WhatsApp label', hint: 'Accessible name of the WhatsApp icon.' },
   { key: 'honeypot', label: 'Spam-trap field label', hint: 'Never shown to people; leave as is.' },
+  /* The search overlay's four strings. lib/ui.ts has carried translations for
+     these since the overlay shipped, but they were never listed here, so they
+     were the only chrome text on the site an editor could not change. */
+  { key: 'openSearch', label: 'Search button name', hint: 'Read by screen readers on the ⌕ button.' },
+  { key: 'searchPlaceholder', label: 'Search box placeholder' },
+  { key: 'searchNoResults', label: 'Search: nothing found' },
+  {
+    key: 'searchResultCount',
+    label: 'Search: result count',
+    hint: 'Read by screen readers as the list filters. Keep the {n} — it becomes the number.',
+  },
 ];
 
 export type UiValues = Record<string, Partial<Record<Locale, string>>>;

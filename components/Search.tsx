@@ -49,7 +49,14 @@ export default function Search({
   labels,
 }: {
   docs: SearchDoc[];
-  labels: { open: string; placeholder: string; noResults: string; close: string };
+  labels: {
+    open: string;
+    placeholder: string;
+    noResults: string;
+    close: string;
+    /** Template carrying `{n}`; see the note in Chrome.tsx on why it is not a function. */
+    resultCount: string;
+  };
 }) {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState('');
@@ -118,7 +125,18 @@ export default function Search({
         </svg>
       </button>
 
-      <div className={open ? 'searchlayer is-open' : 'searchlayer'} id="searchlayer">
+      {/* role/aria-modal to match .mega, which already declares them. Named by the
+          same string that labels the button that opens it, so the dialog and its
+          trigger announce consistently. `aria-modal` is a promise about focus that
+          this component does not yet keep — Tab from the input still walks into
+          the page behind — so the remaining work is a focus trap, not more ARIA. */}
+      <div
+        className={open ? 'searchlayer is-open' : 'searchlayer'}
+        id="searchlayer"
+        role="dialog"
+        aria-modal="true"
+        aria-label={labels.open}
+      >
         {/* Rendered but inert while closed — `.searchlayer` is visibility:hidden,
             which takes its subtree out of the accessibility tree and out of the
             tab order, so there is no focus trap to build around a closed panel. */}
@@ -147,9 +165,15 @@ export default function Search({
             />
           </div>
 
-          {/* aria-live so a screen reader hears the count change as the list
-              filters; the list itself is not focus-managed, it is just links. */}
-          <div className="searchlayer__results" aria-live="polite">
+          {/* aria-live sits on a status line, not on the list.
+              On the list container every keystroke re-announced every result,
+              which for a three-character query is dozens of link titles read out
+              before the fourth character lands. A count is what someone needs in
+              order to decide whether to keep typing or start tabbing. */}
+          <p className="sr-only" role="status" aria-live="polite">
+            {q.trim() ? labels.resultCount.replace('{n}', String(results.length)) : ''}
+          </p>
+          <div className="searchlayer__results">
             {q.trim() && results.length === 0 ? (
               <p className="searchlayer__empty">{labels.noResults}</p>
             ) : (

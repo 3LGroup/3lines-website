@@ -49,6 +49,10 @@ export interface UiStrings {
   /** Shown when a query matches no page. Takes no argument — the query is
       already on screen in the input directly above it. */
   searchNoResults: string;
+  /** Live count announced as the search list filters. `{n}` is replaced with the
+      number of matches. Only ever read aloud — it has no visible rendering — so
+      it needs no plural forms beyond what each language does with a bare number. */
+  searchResultCount: string;
 }
 
 const FALLBACK: Record<Locale, UiStrings> = {
@@ -69,6 +73,7 @@ const FALLBACK: Record<Locale, UiStrings> = {
     openSearch: 'Search this site',
     searchPlaceholder: 'Search pages…',
     searchNoResults: 'No pages match that search.',
+    searchResultCount: '{n} pages match.',
   },
   ar: {
     openMenu: 'فتح القائمة الرئيسية',
@@ -87,6 +92,7 @@ const FALLBACK: Record<Locale, UiStrings> = {
     openSearch: 'ابحث في الموقع',
     searchPlaceholder: 'ابحث في الصفحات…',
     searchNoResults: 'لا توجد صفحات تطابق هذا البحث.',
+    searchResultCount: 'عدد الصفحات المطابقة: {n}.',
   },
   ja: {
     openMenu: 'メインメニューを開く',
@@ -105,6 +111,7 @@ const FALLBACK: Record<Locale, UiStrings> = {
     openSearch: 'サイト内検索',
     searchPlaceholder: 'ページを検索…',
     searchNoResults: '該当するページはありません。',
+    searchResultCount: '{n} 件のページが一致しました。',
   },
   ko: {
     openMenu: '메인 메뉴 열기',
@@ -123,6 +130,7 @@ const FALLBACK: Record<Locale, UiStrings> = {
     openSearch: '사이트 검색',
     searchPlaceholder: '페이지 검색…',
     searchNoResults: '검색과 일치하는 페이지가 없습니다.',
+    searchResultCount: '{n}개의 페이지가 일치합니다.',
   },
 };
 

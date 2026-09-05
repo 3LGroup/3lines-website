@@ -82,6 +82,57 @@ export default async function LocaleLayout({
             requests and no render-blocking @import. This also removes the last
             source of audit flakiness: fonts.gstatic.com intermittently 404'd a
             .woff2 on a different route every run. */}
+        {/* Preloads come first, and they are the difference between a stable page
+            and a visibly reflowing one.
+
+            Every @font-face here is `font-display: swap`, and a font referenced
+            only from a stylesheet is discovered three hops in: HTML, then the CSS,
+            then a unicode-range match, then finally the .woff2. Until it lands the
+            browser paints a fallback and then reflows — which measured as CLS
+            0.252 on /ar against a 0.10 budget, while /en sat at 0.00. The split is
+            not a coincidence: Inter's fallback metrics happen to be close enough
+            that the Latin swap is invisible, and no system Arabic face is close to
+            Tajawal.
+
+            `crossOrigin` is required even though these are same-origin: fonts are
+            fetched in CORS mode, and a preload whose mode does not match the real
+            request is discarded and silently fetched a second time. */}
+
+        {/* DM Sans latin is the body and heading face on every locale —
+            3lines.css sets --font-sans and applies it to body with !important, so
+            this is what renders the H1, not Inter. The U+0000-00FF subset; the
+            latin-ext twin is not needed above the fold. */}
+        <link
+          rel="preload"
+          as="font"
+          type="font/woff2"
+          crossOrigin=""
+          href={asset('/assets/fonts/gf-dmsans-v17-rP2Hp2ywxg089UriCZOIHQ.woff2')}
+        />
+
+        {/* Arabic: 400 for body, 700 for every heading — rtl.css pins h1-h4 to 700
+            because Tajawal ships no 600 and the stylesheet asks for it in a dozen
+            places. 500 is used eight times and is left to be discovered normally;
+            these two are what paint above the fold. 9 KB each. */}
+        {locale === 'ar' ? (
+          <>
+            <link
+              rel="preload"
+              as="font"
+              type="font/woff2"
+              crossOrigin=""
+              href={asset('/assets/fonts/tajawal-arabic-400-normal.woff2')}
+            />
+            <link
+              rel="preload"
+              as="font"
+              type="font/woff2"
+              crossOrigin=""
+              href={asset('/assets/fonts/tajawal-arabic-700-normal.woff2')}
+            />
+          </>
+        ) : null}
+
         <link rel="stylesheet" href={asset('/assets/fonts/google-local.css')} />
         {/* Arabic face, self-hosted and unicode-range gated, so English pages
             download zero Arabic bytes and the Latin rendering is unchanged. */}
@@ -111,7 +162,14 @@ export default async function LocaleLayout({
 
         <Script src={asset('/assets/js/main.js')} strategy="afterInteractive" />
 
-        <button className="tl-theme" type="button" id="tl-theme" aria-label={t.themeToggle}>
+        {/* The description is a hidden child rather than an aria-label. As an
+            aria-label it REPLACED the visible "Dark"/"Light" text as the button's
+            accessible name, so someone driving the page by voice could read the
+            word on screen and say it and nothing would happen — WCAG 2.5.3, Label
+            in Name. As a child it is prepended instead, giving "Toggle colour
+            scheme Dark", which contains the visible label. */}
+        <button className="tl-theme" type="button" id="tl-theme">
+          <span className="sr-only">{t.themeToggle}</span>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="4" />
             <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />

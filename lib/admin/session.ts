@@ -50,7 +50,11 @@ function secret(): string {
   const s = process.env.SESSION_SECRET;
   if (!s || s.length < 32) {
     throw new Error(
-      'SESSION_SECRET is unset or shorter than 32 chars. Generate one with `npm run admin:secret`.'
+      /* Names the command that exists. This used to say `npm run admin:secret`,
+         which is not a script in package.json — the same bug that was already
+         found and fixed in login() below, and missed here. */
+      'SESSION_SECRET is unset or shorter than 32 chars. Generate one with ' +
+        '`node scripts/admin-credentials.mjs secret`.'
     );
   }
   return s;

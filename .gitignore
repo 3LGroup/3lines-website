@@ -38,6 +38,11 @@ content/subscribers.json
 # baseline/ is deliberately NOT ignored — the committed geometry snapshot is the
 # visual audit's reference, and updating it is meant to be a reviewable diff.
 
+# Sales/marketing artifacts kept beside the code for convenience. The presentation
+# alone is 102 MB; a single `git add -A` would put it in history permanently, and
+# taking it back out means rewriting every commit after it.
+deliverables/
+
 # Local dev server logs
 .server-*.log
 

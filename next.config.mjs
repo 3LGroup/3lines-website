@@ -112,9 +112,59 @@ const nextConfig = {
    * redeploying is the whole of undoing it.
    */
   async headers() {
-    if (process.env.NOINDEX !== '1') return [];
+    /* Applied by Next inside the Worker, which is the only layer that sees a
+       page response. public/_headers cannot do this job: Workers Static Assets
+       applies that file to what IT serves, so every HTML page, /admin, /preview
+       and /api bypasses it entirely. Verified in production — /admin/login came
+       back with `x-opennext: 1` and no X-Robots-Tag, even though _headers has
+       carried an /admin/* rule for months. */
+    const security = [
+      /* The site sends no untyped user content, but nosniff costs nothing and
+         removes an entire class of "browser guessed text/html" bug. */
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      /* Full URL to same-origin, origin only to third parties. Keeps the exact
+         page a visitor came from out of an external server's logs, while the
+         internal analytics picture is unchanged. */
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      /* Nothing here uses a camera, microphone or location — the map on /location
+         is an embed, not the Geolocation API — so deny all three outright. */
+      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+      /* Clickjacking. SAMEORIGIN rather than DENY because /preview renders the
+         public site in an iframe inside the CMS (components/admin/PreviewPane.tsx);
+         DENY would break the editor's preview pane. */
+      { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+    ];
+
+    /* Deliberately NOT set here: Content-Security-Policy, and
+       Strict-Transport-Security.
+
+       CSP: app/[locale]/layout.tsx injects two inline <script> blocks — the theme
+       initialiser, which must run before paint, and the JSON-LD. A policy strict
+       enough to be worth having needs a nonce on both, which means those pages
+       can no longer be statically cached as they are today. That is a real piece
+       of work, not a line in this array.
+
+       HSTS: belongs at the edge with Cloudflare's "Always Use HTTPS". Sending it
+       from here while plain http:// still answers 200 would promise a redirect
+       that does not exist. */
+
+    /* The admin and preview trees are noindexed by their own route metadata and
+       by robots.txt; this is the layer that also covers a response neither of
+       those reaches. */
+    const noindex = { key: 'X-Robots-Tag', value: 'noindex, nofollow' };
+
+    /* NOINDEX=1 takes the whole deployment out of the index — see the note below
+       on preview hosts — so it supersedes the per-path rules rather than adding
+       to them. */
+    if (process.env.NOINDEX === '1') {
+      return [{ source: '/:path*', headers: [...security, noindex] }];
+    }
+
     return [
-      { source: '/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] },
+      { source: '/:path*', headers: security },
+      { source: '/admin/:path*', headers: [noindex] },
+      { source: '/preview/:path*', headers: [noindex] },
+      { source: '/api/:path*', headers: [noindex] },
     ];
   },
 };

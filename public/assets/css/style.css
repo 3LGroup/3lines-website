@@ -5,6 +5,14 @@
 
 :root{
   --blue:        #0816A1;   /* Thales primary blue */
+
+  /* Focus ring, kept separate from --blue so the brand colour and the
+     accessibility guarantee can move independently. --focus is the visible
+     stroke; --focus-halo fills the outline-offset gap so the indicator reads as
+     two contrasting bands on any surface. Both are re-declared for dark mode in
+     3lines.css. */
+  --focus:       #0816A1;
+  --focus-halo:  #ffffff;
   --navy:        #123E5E;   /* dark bands, from the FOOTER lockup's blue taken
                                deep — assets/logos/logo.png, which samples at
                                #2271AA (hue 205).
@@ -61,7 +69,16 @@ button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
 h1,h2,h3,h4{margin:0;font-weight:600;line-height:1.05;letter-spacing:-.02em}
 p{margin:0 0 1em}
 ul{margin:0;padding:0;list-style:none}
-:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+/* Two-tone focus ring.
+   A single --blue outline is invisible where it matters most: against the dark
+   theme's background it computes to ~1.20:1 and against the --navy bands to
+   ~1.15:1, both far short of the 3:1 WCAG 2.4.11 requires. --blue is not the
+   problem to fix — it is the brand colour and is used for buttons and the skip
+   link — so the ring gets its own tokens instead.
+   The box-shadow spread exactly fills the 3px outline-offset gap, so the
+   indicator is always a dark band beside a light one and cannot vanish into
+   whatever surface it lands on. Redefined for dark mode in 3lines.css. */
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;box-shadow:0 0 0 3px var(--focus-halo)}
 
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
@@ -294,8 +311,13 @@ html.dark .mega__close{color:var(--foreground)}
 .megapanel__cta{margin-top:30px}
 
 /* ---- search overlay ---- */
+/* z-index above .hdr (150), not below it.
+   At 145 the sticky header painted on TOP of a full-screen overlay that presents
+   itself as a modal dialog, leaving the burger, the utility links and the search
+   button itself visible and clickable over it. .mega already gets this right at
+   160; this is the same class of surface and belongs in the same band. */
 .searchlayer{
-  position:fixed;inset:0;z-index:145;background:rgba(255,255,255,.98);
+  position:fixed;inset:0;z-index:165;background:rgba(255,255,255,.98);
   display:grid;place-items:center;padding:var(--pad);
   opacity:0;visibility:hidden;transition:opacity .28s,visibility .28s;
 }
@@ -307,8 +329,13 @@ html.dark .mega__close{color:var(--foreground)}
 .searchlayer__inner{width:min(760px,100%)}
 .searchlayer__field{border-bottom:3px solid var(--blue);display:flex;gap:14px;align-items:center;padding-bottom:14px}
 .searchlayer input{flex:1;border:0;font-family:inherit;font-size:clamp(22px,4vw,40px);font-weight:600;color:var(--navy);background:none;min-width:0}
-.searchlayer input::placeholder{color:#a9a9c0}
+.searchlayer input::placeholder{color:#5a5a78}
+/* The 3px underline on .searchlayer__field is permanent decoration, not a focus
+   state, so `outline:none` here left the overlay's only field with no visible
+   focus at all — Tab to Close and back and nothing changed. Thicken the field's
+   own underline instead of drawing a box, which keeps the overlay's look. */
 .searchlayer input:focus{outline:none}
+.searchlayer__field:focus-within{border-bottom-color:var(--focus);border-bottom-width:5px;padding-bottom:12px}
 /* Strips Safari/Chrome's own clear affordance on type=search, which paints a
    grey ✕ at 40px that fights the overlay's own close control. */
 .searchlayer input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
@@ -328,6 +355,10 @@ html.dark .mega__close{color:var(--foreground)}
 html.dark .searchlayer{background:rgba(11,15,25,.98)}
 html.dark .searchlayer input,html.dark .searchlayer__results a{color:var(--foreground)}
 html.dark .searchlayer__results a{border-bottom-color:var(--border)}
+/* Was missed when the rest of the overlay was themed: --ink-70 is rgba(28,28,28,.7),
+   which on the .98-opaque near-black panel above is effectively invisible. */
+html.dark .searchlayer__empty{color:var(--muted-foreground)}
+html.dark .searchlayer input::placeholder{color:var(--muted-foreground)}
 
 /* ============================================================
    Buttons / links
@@ -730,7 +761,7 @@ html.dark .socialstrip a:hover{background:var(--foreground);color:var(--backgrou
 .ftr__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr) minmax(0,1fr);gap:clamp(20px,3vw,44px)}
 @media (max-width:820px){.ftr__grid{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.ftr__grid{grid-template-columns:1fr}}
-.ftr h4{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px;font-weight:700}
+.ftr h4,.ftr__title{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px;font-weight:700}
 .ftr ul{display:grid;gap:7px}
 .ftr li a{font-size:14.5px;transition:color .2s}
 .ftr li a:hover{color:var(--cyan)}
@@ -1109,7 +1140,7 @@ html.dark .logos--marquee img[data-invert="1"]{filter:invert(1) brightness(.35)}
 .field input,.field textarea{font:inherit;font-size:16.5px;padding:13px 16px;
                              background:var(--paper);color:var(--ink);border:1px solid var(--lilac)}
 .field textarea{min-height:9rem;resize:vertical}
-.field input:focus-visible,.field textarea:focus-visible{outline:2px solid var(--blue);outline-offset:1px}
+.field input:focus-visible,.field textarea:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
 /* Visually hidden without display:none — a focusable element hidden that way
    is a screen-reader trap. */
 .field--hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}

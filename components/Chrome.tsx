@@ -155,6 +155,11 @@ function searchLabels(locale: Locale) {
     open: t.openSearch,
     placeholder: t.searchPlaceholder,
     noResults: t.searchNoResults,
+    /* The raw template, not a formatter. <Search> is a client component and a
+       function cannot cross that boundary — Next fails the prerender outright
+       with "Functions cannot be passed directly to Client Components". The
+       substitution happens on the other side. */
+    resultCount: t.searchResultCount,
     close: t.close,
   };
 }
@@ -275,7 +280,12 @@ export function Footer({ chrome, locale }: WithLocale) {
                   cssVar="--logo-lockup"
                 />
               ) : null}
-              <h4>{col.title}</h4>
+              {/* h2, not h4. These are the footer's own top-level sections, and
+                  the tag was two levels below whatever preceded it — on the legal
+                  pages the deepest heading before this is the page h1, so the
+                  document went h1 straight to h4. The class carries the styling
+                  so the level and the look are no longer the same decision. */}
+              <h2 className="ftr__title">{col.title}</h2>
               <ul>
                 {col.links.map((l, j) => (
                   <li key={j}>

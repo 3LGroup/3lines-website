@@ -70,6 +70,20 @@ jobs:
       # asking for one broad token, each step gets exactly the scope it needs —
       # which is also the better security posture. CLOUDFLARE_D1_TOKEN may be
       # read-only on D1; nothing here writes to the database.
+      # A gate, because the CMS's Publish button reaches this workflow directly:
+      # an editor pressing it ships to production with no human between. These
+      # three audits need no browser and no database, so they cost about twenty
+      # seconds and catch the failures that matter here — a content document that
+      # no longer parses, a block that lost a locale, an asset referenced but not
+      # in the manifest. audit:links is deliberately absent: it needs a running
+      # server, which is a different shape of job.
+      - name: Check
+        run: |
+          npm run typecheck
+          npm run audit:content
+          npm run audit:localization
+          npm run audit:manifest
+
       - name: Build
         run: npm run cf:build
         env:
