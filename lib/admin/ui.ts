@@ -24,6 +24,9 @@ export const UI_FIELDS: { key: string; label: string; hint?: string }[] = [
   /* The search overlay's four strings. lib/ui.ts has carried translations for
      these since the overlay shipped, but they were never listed here, so they
      were the only chrome text on the site an editor could not change. */
+  { key: 'pauseMotion', label: 'Logo strip: pause button' },
+  { key: 'resumeMotion', label: 'Logo strip: resume button' },
+  { key: 'changeLanguage', label: 'Language menu name', hint: 'Read by screen readers on the globe.' },
   { key: 'openSearch', label: 'Search button name', hint: 'Read by screen readers on the ⌕ button.' },
   { key: 'searchPlaceholder', label: 'Search box placeholder' },
   { key: 'searchNoResults', label: 'Search: nothing found' },

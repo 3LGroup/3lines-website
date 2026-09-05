@@ -4,9 +4,9 @@ import staticAssetsIncrementalCache from '@opennextjs/cloudflare/overrides/incre
 /**
  * Cache strategy: read-only, backed by Workers Static Assets.
  *
- * This site is prerendered in full — 25 routes x 2 locales, `generateStaticParams`
- * with `dynamicParams = false`. The adapter's own guidance for that shape is to
- * use the static-assets cache: it is the fastest option available and needs no
+ * This site is prerendered in full — 25 routes x 4 locales (en, ar, ja, ko), so
+ * 100 pages, via `generateStaticParams`. The adapter's own guidance for that
+ * shape is to use the static-assets cache: it is the fastest option and needs no
  * Queue, no Tag Cache and no R2 cache bucket.
  *
  * The tradeoff is deliberate and worth stating plainly, because it decides how

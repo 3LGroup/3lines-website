@@ -16,7 +16,7 @@
  *
  * Reads happen in four bulk queries rather than per page: D1 caps a Worker
  * invocation at 50 queries on the free plan, and a per-page loop would exceed
- * that at 25 pages x 2 locales before it did anything useful.
+ * that at 25 pages x 4 locales before it did anything useful.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -79,15 +79,15 @@ const localeRows = query('SELECT code FROM locales WHERE is_enabled = 1 ORDER BY
 const LOCALES = localeRows.map((r) => r.code);
 
 const pages = query(
-  'SELECT id, route, slug, status, source_refs, position FROM pages ORDER BY position'
+  'SELECT id, route, slug, status, source_refs, position, updated_at FROM pages ORDER BY position'
 );
 const pageTr = query(
-  'SELECT page_id, locale, title, description, keywords FROM page_translations'
+  'SELECT page_id, locale, title, description, keywords, updated_at FROM page_translations'
 );
 const blocks = query(
-  'SELECT id, page_id, parent_id, kind, position, props FROM blocks ORDER BY position'
+  'SELECT id, page_id, parent_id, kind, position, props, updated_at FROM blocks ORDER BY position'
 );
-const blockTr = query('SELECT block_id, locale, props FROM block_translations');
+const blockTr = query('SELECT block_id, locale, props, updated_at FROM block_translations');
 
 /* ---------------------------------------------------------------- assemble -- */
 
@@ -277,7 +277,7 @@ writeFile(
  * route -> title per locale, for the few places that need a page's NAME at
  * request time inside the Worker.
  *
- * The 50 per-page documents are deliberately not bundled (lib/content.ts), so
+ * The 100 per-page documents are deliberately not bundled (lib/content.ts), so
  * anything rendering in the Worker can only reach them through `fs`, which does
  * not exist there. The 404 boundary did exactly that and silently fell back to
  * printing raw route ids as link text in production while showing real titles
@@ -296,12 +296,55 @@ writeFile(
   writeFile(path.join(CONTENT, 'route-titles.json'), JSON.stringify(titles, null, 2) + String.fromCharCode(10));
 }
 
+/* When each page last actually changed.
+ *
+ * app/sitemap.ts used `new Date()`, so all 100 URLs claimed to have been modified
+ * at build time — and a build happens on every Publish, so the whole sitemap's
+ * lastmod moved together whenever anyone edited anything. A crawler reasonably
+ * discounts that, at the expense of the pages that really did change.
+ *
+ * A page's own row is not enough: editing a paragraph writes to blocks or
+ * block_translations and leaves pages.updated_at alone. So this takes the newest
+ * timestamp across the page, its translations, its blocks and their translations
+ * — the same rows the exported document is assembled from.
+ */
+const newestByPage = (() => {
+  const group = (rows, keyOf) => {
+    const out = new Map();
+    for (const r of rows) {
+      const k = keyOf(r);
+      if (!out.has(k)) out.set(k, []);
+      out.get(k).push(r);
+    }
+    return out;
+  };
+  const trByP = group(pageTr, (t) => t.page_id);
+  const blByP = group(blocks, (b) => b.page_id);
+  const btrByB = group(blockTr, (t) => t.block_id);
+
+  return (page) => {
+    let newest = Number(page.updated_at) || 0;
+    for (const t of trByP.get(page.id) ?? []) newest = Math.max(newest, Number(t.updated_at) || 0);
+    for (const b of blByP.get(page.id) ?? []) {
+      newest = Math.max(newest, Number(b.updated_at) || 0);
+      for (const t of btrByB.get(b.id) ?? []) newest = Math.max(newest, Number(t.updated_at) || 0);
+    }
+    /* Seconds in D1, milliseconds in JS. Zero means the row predates the column;
+       the field is then omitted so sitemap.ts can fall back rather than publish a
+       1970 date no crawler will believe. */
+    return newest ? new Date(newest * 1000).toISOString() : undefined;
+  };
+})();
+
 // routes.json is derived from the same rows, so a page added in the CMS appears
 // in the manifest that drives generateStaticParams without a second step.
 writeFile(
   path.join(CONTENT, 'routes.json'),
   JSON.stringify(
-    pages.map((p) => ({ route: p.route, slug: p.slug })),
+    pages.map((p) => {
+      const updated = newestByPage(p);
+      return updated ? { route: p.route, slug: p.slug, updated } : { route: p.route, slug: p.slug };
+    }),
     null,
     2
   ) + '\n'

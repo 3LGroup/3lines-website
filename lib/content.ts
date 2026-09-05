@@ -37,8 +37,8 @@ const DIR = path.join(process.cwd(), 'content');
  * problem for the asset manifest, for the same reason and in the same way.
  *
  * Only the chrome, the route table, the news index and the site settings are
- * here — the things a request-time render reaches for. The 50 per-page
- * documents stay on `fs`: they are read by generateStaticParams at build time,
+ * here — the things a request-time render reaches for. The 100 per-page
+ * documents (25 routes x 4 locales) stay on `fs`: they are read by generateStaticParams at build time,
  * and bundling the whole corpus would add it to every Worker invocation to
  * serve a path that is never taken at runtime.
  */
@@ -96,6 +96,15 @@ export interface RouteEntry {
   /** Locale-less route id, e.g. "/services/simulation-systems". */
   route: string;
   slug: string;
+  /**
+   * ISO timestamp of the newest edit to this page in D1 — the page row, its
+   * translations, its blocks and their translations, whichever moved last.
+   * Written by scripts/export-content.mjs, read by app/sitemap.ts.
+   *
+   * Optional because a row that predates the column has nothing to report, and
+   * a missing lastmod is better than a wrong one.
+   */
+  updated?: string;
 }
 
 export interface Media {

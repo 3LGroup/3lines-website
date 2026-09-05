@@ -53,6 +53,15 @@ export interface UiStrings {
       number of matches. Only ever read aloud — it has no visible rendering — so
       it needs no plural forms beyond what each language does with a bare number. */
   searchResultCount: string;
+  /** Accessible name of the language menu — the one control a reader who cannot
+      read the current language most needs to find, so it cannot stay English. */
+  changeLanguage: string;
+  /** Pause control on the scrolling partner strip. WCAG 2.2.2 requires a way to
+      stop motion that runs longer than five seconds; hover is not one, because
+      touch has no hover. */
+  pauseMotion: string;
+  /** The same control once it has been used. */
+  resumeMotion: string;
 }
 
 const FALLBACK: Record<Locale, UiStrings> = {
@@ -74,6 +83,9 @@ const FALLBACK: Record<Locale, UiStrings> = {
     searchPlaceholder: 'Search pages…',
     searchNoResults: 'No pages match that search.',
     searchResultCount: '{n} pages match.',
+    changeLanguage: 'Change language',
+    pauseMotion: 'Pause the logo strip',
+    resumeMotion: 'Resume the logo strip',
   },
   ar: {
     openMenu: 'فتح القائمة الرئيسية',
@@ -93,6 +105,9 @@ const FALLBACK: Record<Locale, UiStrings> = {
     searchPlaceholder: 'ابحث في الصفحات…',
     searchNoResults: 'لا توجد صفحات تطابق هذا البحث.',
     searchResultCount: 'عدد الصفحات المطابقة: {n}.',
+    changeLanguage: 'تغيير اللغة',
+    pauseMotion: 'إيقاف شريط الشعارات',
+    resumeMotion: 'استئناف شريط الشعارات',
   },
   ja: {
     openMenu: 'メインメニューを開く',
@@ -112,6 +127,9 @@ const FALLBACK: Record<Locale, UiStrings> = {
     searchPlaceholder: 'ページを検索…',
     searchNoResults: '該当するページはありません。',
     searchResultCount: '{n} 件のページが一致しました。',
+    changeLanguage: '言語を変更',
+    pauseMotion: 'ロゴの流れを一時停止',
+    resumeMotion: 'ロゴの流れを再開',
   },
   ko: {
     openMenu: '메인 메뉴 열기',
@@ -131,6 +149,9 @@ const FALLBACK: Record<Locale, UiStrings> = {
     searchPlaceholder: '페이지 검색…',
     searchNoResults: '검색과 일치하는 페이지가 없습니다.',
     searchResultCount: '{n}개의 페이지가 일치합니다.',
+    changeLanguage: '언어 변경',
+    pauseMotion: '로고 흐름 일시정지',
+    resumeMotion: '로고 흐름 재생',
   },
 };
 

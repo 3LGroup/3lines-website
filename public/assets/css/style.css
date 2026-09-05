@@ -778,12 +778,20 @@ html.dark .socialstrip a:hover{background:var(--foreground);color:var(--backgrou
 .a11y{display:inline-flex;align-items:center;gap:8px}
 .a11y .pill{background:var(--green);color:#fff;border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:700}
 
-/* reveal */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
-.reveal.is-in{opacity:1;transform:none}
+/* reveal
+   Gated on html.js, which the pre-paint inline script in the locale layout sets.
+   Without that gate the starting state is opacity:0 and the only thing that ever
+   clears it is main.js — loaded afterInteractive — so a visitor with JavaScript
+   blocked got a page whose body was blank: .reveal is on 72 elements of the
+   homepage alone. The gate is set before first paint, so there is no flash of
+   visible-then-hidden for everyone else.
+   Reduced motion already had an escape hatch below; this is the same idea for
+   the no-JS case. */
+html.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+html.js .reveal.is-in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
-  .reveal{opacity:1;transform:none}
+  html.js .reveal{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
 
@@ -1059,7 +1067,7 @@ html.dark .logos--marquee .logos__track > div:hover{background:#fff}
    a white-drawn mark black on its own white tile. */
 html.dark .logos--marquee img[data-invert="1"]{filter:invert(1) brightness(.35)}
 
-.logos--marquee{display:block;border:0;background:none;overflow:hidden;
+.logos--marquee{position:relative;display:block;border:0;background:none;overflow:hidden;
   /* edge fades, as the reference strip has */
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
@@ -1074,6 +1082,19 @@ html.dark .logos--marquee img[data-invert="1"]{filter:invert(1) brightness(.35)}
   animation:logos-scroll 46s linear infinite}
 .logos--marquee:hover .logos__track,
 .logos--marquee:focus-within .logos__track{animation-play-state:paused}
+/* The explicit control. Hidden unless scripting is available (see html.js in the
+   locale layout) because main.js is what makes it do anything. `is-paused` is
+   set by that script and has to outrank the :hover rule above, which is why it
+   carries !important — hovering a paused strip must not restart it. */
+.logos--marquee .logos__pause{display:none}
+html.js .logos--marquee .logos__pause{
+  display:inline-flex;align-items:center;gap:6px;position:absolute;top:8px;inset-inline-end:8px;z-index:2;
+  font-size:12px;font-weight:700;letter-spacing:.04em;padding:5px 11px;border-radius:999px;
+  background:var(--paper);color:var(--ink);border:1px solid var(--lilac);cursor:pointer
+}
+html.js .logos--marquee .logos__pause:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.logos--marquee.is-paused .logos__track{animation-play-state:paused!important}
+html.dark .logos--marquee .logos__pause{background:var(--card);color:var(--foreground);border-color:var(--border)}
 /* ~8 marks visible across a desktop container, matching the reference strip. */
 .logos--marquee .logos__track > div{background:none;aspect-ratio:auto;padding:0;
   flex:0 0 auto;width:clamp(104px,9.6vw,148px);height:clamp(58px,6.2vw,78px)}

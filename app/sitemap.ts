@@ -16,7 +16,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const alts = altPaths(r.route);
     return LOCALES.filter((locale) => !getPage(locale, r.route)?.placeholder).map((locale) => ({
       url: `${SITE_ORIGIN}${alts[locale]}`,
-      lastModified: new Date(),
+      /* The page's real last edit, from D1 via content/routes.json.
+         This used to be `new Date()`, which meant every URL claimed to have
+         changed at build time — and a build runs on every Publish, so all 100
+         lastmods moved together whenever anyone touched anything. A crawler
+         discounts a sitemap that behaves like that, which costs exactly the
+         pages that did change. Omitted rather than faked when the export has
+         no timestamp to give. */
+      lastModified: r.updated ? new Date(r.updated) : undefined,
       changeFrequency: 'monthly' as const,
       priority: r.route === '/' ? 1 : 0.7,
       alternates: {

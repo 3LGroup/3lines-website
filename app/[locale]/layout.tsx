@@ -78,6 +78,16 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={DIR[locale]} suppressHydrationWarning>
       <head>
+        {/* Scripting-available flag, set before any body content is parsed.
+            style.css gates the .reveal scroll animation's `opacity:0` on
+            `html.js`, so a visitor with JavaScript blocked sees the page instead
+            of a blank one — .reveal is on 72 elements of the homepage alone and
+            the class that clears it is added by main.js, which is loaded
+            afterInteractive and never runs for them.
+            It has to be here rather than folded into themeInit, which sits at the
+            end of <body>: by then the browser may already have painted, and the
+            content would flash in and then vanish. */}
+        <script dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add('js')` }} />
         {/* All Latin faces are self-hosted, so there are no third-party font
             requests and no render-blocking @import. This also removes the last
             source of audit flakiness: fonts.gstatic.com intermittently 404'd a

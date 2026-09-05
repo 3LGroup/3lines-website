@@ -34,6 +34,23 @@ const imgStyle = (imgVar?: string, extra?: React.CSSProperties): React.CSSProper
   return { ...(url ? ({ ['--img']: url } as React.CSSProperties) : null), ...extra };
 };
 
+/**
+ * Heading level for a body's own headings.
+ *
+ * Every body renderer emits <h3>, but a section only emits its <h2> when it has
+ * a heading to put in it — so on a section without one the document went h1
+ * straight to h3. The project's own a11y audit reports that on 20 of the 25
+ * routes, in all four locales.
+ *
+ * `aria-level` rather than a different tag, because the CSS that sizes these
+ * targets the element: `.tile__body h3`, `.pcard h3`, `.ccard h3`, `.ncard h3`.
+ * Swapping to <h2> would fix the outline and resize half the site. This changes
+ * what assistive technology computes and nothing else — the rendered pixels are
+ * identical.
+ */
+export type HeadingLevel = 2 | 3;
+const atLevel = (level: HeadingLevel) => (level === 2 ? { 'aria-level': 2 } : {});
+
 /** Inline styles are captured verbatim as strings; re-parse into a style object. */
 function parseStyle(style?: string): React.CSSProperties | undefined {
   if (!style) return undefined;
@@ -83,7 +100,7 @@ function Figures({ items, style }: { items: Figure[]; style?: string }) {
 
 /* ------------------------------------------------------------- renderers -- */
 
-function Tiles({ body, locale }: { body: TilesBody; locale: Locale }) {
+function Tiles({ body, locale, level }: { body: TilesBody; locale: Locale; level: HeadingLevel }) {
   return (
     <div className="tiles3">
       {body.items.map((t, i) => (
@@ -91,7 +108,7 @@ function Tiles({ body, locale }: { body: TilesBody; locale: Locale }) {
           {/* direct child: `.tile > svg` in the source CSS depends on it */}
           <Svg node={t.art} />
           <div className="tile__body">
-            <h3>{t.title}</h3>
+            <h3 {...atLevel(level)}>{t.title}</h3>
             <span className="go">
               {ui(locale).discover} <Arrow />
             </span>
@@ -120,7 +137,7 @@ function LinkContext({ heading }: { heading?: string }) {
   return heading ? <span className="sr-only">{` — ${heading}`}</span> : null;
 }
 
-function Cards({ body, locale }: { body: CardsBody; locale: Locale }) {
+function Cards({ body, locale, level }: { body: CardsBody; locale: Locale; level: HeadingLevel }) {
   return (
     <>
       <div className="cards3">
@@ -129,7 +146,7 @@ function Cards({ body, locale }: { body: CardsBody; locale: Locale }) {
             <div className="pcard__media" style={imgStyle(c.imgVar)}>
               <Svg node={c.art} />
             </div>
-            <h3>{c.title}</h3>
+            <h3 {...atLevel(level)}>{c.title}</h3>
             {c.text ? <p>{c.text}</p> : null}
             {c.link ? (
               <a className="arrowlink" href={localePath(locale, c.link.href)}>
@@ -150,7 +167,7 @@ function Cards({ body, locale }: { body: CardsBody; locale: Locale }) {
   );
 }
 
-function Feature({ body, locale }: { body: FeatureBody; locale: Locale }) {
+function Feature({ body, locale, level }: { body: FeatureBody; locale: Locale; level: HeadingLevel }) {
   return (
     <div className="feature">
       <div className="feature__media reveal" style={imgStyle(body.media.imgVar)}>
@@ -158,7 +175,7 @@ function Feature({ body, locale }: { body: FeatureBody; locale: Locale }) {
       </div>
       <div className="reveal">
         {body.heading ? (
-          <h3 className="h3" style={parseStyle(body.headingStyle)}>
+          <h3 className="h3" style={parseStyle(body.headingStyle)} {...atLevel(level)}>
             {body.heading}
           </h3>
         ) : null}
@@ -214,12 +231,12 @@ function Prose({ body }: { body: ProseBody }) {
  * `is-on` class. The first slide carries it so the block is meaningful with
  * JavaScript disabled and in the audit's settled state.
  */
-function Slider({ body }: { body: SliderBody }) {
+function Slider({ body, level }: { body: SliderBody; level: HeadingLevel }) {
   return (
     <div className="heroslides" data-slider>
       {body.items.map((s, i) => (
         <div className={i === 0 ? 'heroslide is-on' : 'heroslide'} key={i} data-slide={i}>
-          <h3>{s.heading}</h3>
+          <h3 {...atLevel(level)}>{s.heading}</h3>
           <p>{s.sub}</p>
         </div>
       ))}
@@ -255,12 +272,12 @@ function Slider({ body }: { body: SliderBody }) {
 }
 
 /** Title + body cards with no media plate. */
-function Defs({ body }: { body: DefsBody }) {
+function Defs({ body, level }: { body: DefsBody; level: HeadingLevel }) {
   return (
     <div className="defs" data-cols={body.columns}>
       {body.items.map((d, i) => (
         <div className="defcard reveal" key={i}>
-          <h3>{d.title}</h3>
+          <h3 {...atLevel(level)}>{d.title}</h3>
           {d.text ? <p>{d.text}</p> : null}
           {d.meta?.length ? (
             <div className="defcard__meta">
@@ -288,11 +305,15 @@ function SpecList({ body }: { body: SpecListBody }) {
 }
 
 /** Wide prose column beside a narrow "at a glance" card — one band, not two. */
-function OverviewSplit({ body }: { body: OverviewSplitBody }) {
+function OverviewSplit({ body, level }: { body: OverviewSplitBody; level: HeadingLevel }) {
   return (
     <div className="ovsplit reveal">
       <div className="ovsplit__main">
-        {body.heading ? <h3 className="h3">{body.heading}</h3> : null}
+        {body.heading ? (
+          <h3 className="h3" {...atLevel(level)}>
+            {body.heading}
+          </h3>
+        ) : null}
         {body.lede ? <p className="lede">{body.lede}</p> : null}
       </div>
       <aside className="ovsplit__aside">
@@ -314,7 +335,7 @@ function OverviewSplit({ body }: { body: OverviewSplitBody }) {
  * authored: which of the three media treatments a card gets follows from
  * whether it has a brand mark, a photograph, or neither.
  */
-function Companies({ body, locale }: { body: CompaniesBody; locale: Locale }) {
+function Companies({ body, locale, level }: { body: CompaniesBody; locale: Locale; level: HeadingLevel }) {
   return (
     <div className="companies">
       {body.items.map((c, i) => (
@@ -347,7 +368,7 @@ function Companies({ body, locale }: { body: CompaniesBody; locale: Locale }) {
             ) : null}
           </div>
           <div className="ccard__body">
-            <h3>
+            <h3 {...atLevel(level)}>
               {c.name}
               {c.status ? <span className="sr-only"> — {c.status}</span> : null}
             </h3>
@@ -511,6 +532,30 @@ function Logos({ body, locale }: { body: LogosBody; locale: Locale }) {
     <>
       {marquee ? (
         <div className="logos logos--marquee">
+          {/* A real pause control, because the strip animates indefinitely and
+              WCAG 2.2.2 asks for a way to stop motion that runs past five
+              seconds. Pausing on :hover and :focus-within was already here and
+              is worth keeping, but neither exists on a touch screen, which is
+              most of this page's traffic.
+
+              main.js does the toggling and rewrites the label; both strings are
+              rendered here so they stay translated and CMS-editable.
+
+              CSS hides it unless html.js is set, the same flag the reveal
+              animation uses. Without JavaScript the button could not do
+              anything, and offering a dead control is worse than offering none —
+              the strip does keep moving for that visitor, which is a gap, but a
+              far smaller one than today's, where nobody on a touch screen has
+              any way to stop it at all. */}
+          <button
+            type="button"
+            className="logos__pause"
+            data-pause={ui(locale).pauseMotion}
+            data-resume={ui(locale).resumeMotion}
+            aria-pressed="false"
+          >
+            <span className="logos__pause-label">{ui(locale).pauseMotion}</span>
+          </button>
           {/* The list is rendered twice so the -50% scroll loops seamlessly. The
               duplicate is aria-hidden so screen readers hear each partner once. */}
           <div className="logos__track">
@@ -595,34 +640,43 @@ function Certs({ body }: { body: CertsBody }) {
  * Exhaustive body renderer. Adding a kind to `SectionBody` without a case here
  * makes `assertNever` fail to typecheck, so nothing can fall through to text.
  */
-export default function BodyRenderer({ body, locale }: { body: SectionBody; locale: Locale }) {
+export default function BodyRenderer({
+  body,
+  locale,
+  level,
+}: {
+  body: SectionBody;
+  locale: Locale;
+  /** 3 when the enclosing section rendered its own <h2>, 2 when it did not. */
+  level: HeadingLevel;
+}) {
   switch (body.kind) {
     case 'tiles':
-      return <Tiles body={body} locale={locale} />;
+      return <Tiles body={body} locale={locale} level={level} />;
     case 'cards':
-      return <Cards body={body} locale={locale} />;
+      return <Cards body={body} locale={locale} level={level} />;
     case 'feature':
-      return <Feature body={body} locale={locale} />;
+      return <Feature body={body} locale={locale} level={level} />;
     case 'figures':
       return <FiguresBodyView body={body} />;
     case 'prose':
       return <Prose body={body} />;
     case 'newsGrid':
-      return <NewsGrid limit={body.limit} locale={locale} />;
+      return <NewsGrid limit={body.limit} locale={locale} level={level} />;
     case 'slider':
-      return <Slider body={body} />;
+      return <Slider body={body} level={level} />;
     case 'defs':
-      return <Defs body={body} />;
+      return <Defs body={body} level={level} />;
     case 'specList':
       return <SpecList body={body} />;
     case 'overviewSplit':
-      return <OverviewSplit body={body} />;
+      return <OverviewSplit body={body} level={level} />;
     case 'logos':
       return <Logos body={body} locale={locale} />;
     case 'certs':
       return <Certs body={body} />;
     case 'companies':
-      return <Companies body={body} locale={locale} />;
+      return <Companies body={body} locale={locale} level={level} />;
     case 'map':
       return <MapEmbed body={body} />;
     case 'form':

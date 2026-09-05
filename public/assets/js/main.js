@@ -23,13 +23,60 @@
   if (megaClose) megaClose.addEventListener('click', function () { setMega(false); });
   if (mega) mega.addEventListener('click', function (e) { if (e.target.closest('.megapanel__links a, .megapanel__cta a')) setMega(false); });
 
-  /* The clone's search overlay never ships (SearchLayer renders null), so the
-     bindings that drove it — and its English-only alert() — are gone with it. */
+  /* The search overlay is a real, working component now (components/Search.tsx,
+     mounted from Chrome.tsx) and owns its own open/close and Escape handling.
+     What it did NOT own is a focus trap, which is added below alongside the mega
+     menu's. The clone's original bindings — and its English-only alert() — stay
+     gone; there is no results page to submit to. */
 
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
     if (mega && mega.classList.contains('is-open')) setMega(false);
   });
+
+  /* Focus trap.
+     The mega menu declares role="dialog" aria-modal="true", which is a promise
+     that focus stays inside it — but nothing kept it there, so the Tab after the
+     last panel link landed on the page behind, which a screen reader has been
+     told is not there. Below 900px this menu is the site's only navigation, so
+     that was not a corner case.
+     Written against the live DOM on each keypress rather than a list captured on
+     open, because only one panel is visible at a time and switching tabs changes
+     which links exist. */
+  var FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  function trapFocus(container, e) {
+    if (e.key !== 'Tab') return;
+    /* `offsetParent !== null` is the usual shorthand for "is this rendered", and
+       it is wrong here: it stays non-null inside a visibility:hidden subtree,
+       which is exactly how .mega and its closed panels are hidden. Measured on
+       this page — a link in a hidden panel reports an offsetParent and
+       visibility:hidden. Using it would have trapped focus onto invisible links.
+       getClientRects() covers display:none and detachment; the visibility check
+       covers the rest. */
+    var items = Array.prototype.filter.call(
+      container.querySelectorAll(FOCUSABLE),
+      function (el) {
+        if (el === document.activeElement) return true;
+        if (!el.getClientRects().length) return false;
+        return getComputedStyle(el).visibility !== 'hidden';
+      }
+    );
+    if (!items.length) return;
+    var first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+  if (mega) {
+    mega.addEventListener('keydown', function (e) {
+      if (mega.classList.contains('is-open')) trapFocus(mega, e);
+    });
+  }
+  var searchlayer = document.getElementById('searchlayer');
+  if (searchlayer) {
+    searchlayer.addEventListener('keydown', function (e) {
+      if (searchlayer.classList.contains('is-open')) trapFocus(searchlayer, e);
+    });
+  }
 
   /* ---------- mega menu tabs ---------- */
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.megatab'));
@@ -82,7 +129,10 @@
   /* Grouping follows the page language rather than a hardcoded en-GB, so the
      Arabic page is not the only place on the site with English digit grouping.
      Latin digits either way — the site renders Latin numerals in both trees. */
-  var numLocale = (document.documentElement.lang || 'en') === 'ar' ? 'ar-SA-u-nu-latn' : 'en-GB';
+  /* Four locales, not two: the old `=== 'ar' ? … : 'en-GB'` grouped Japanese and
+     Korean figures the English way. Latin digits are forced for Arabic only. */
+  var NUM_LOCALE = { en: 'en-GB', ar: 'ar-SA-u-nu-latn', ja: 'ja-JP', ko: 'ko-KR' };
+  var numLocale = NUM_LOCALE[document.documentElement.lang] || 'en-GB';
   var figs = document.querySelectorAll('[data-count]');
   figs.forEach(function (el) {
     el.textContent = parseFloat(el.getAttribute('data-count')).toLocaleString(numLocale) +
@@ -261,6 +311,22 @@
 
     show(0);
     play();
+  });
+
+  /* ---------- logo marquee: explicit pause ---------- */
+  /* WCAG 2.2.2: motion that runs longer than five seconds needs a way to stop
+     it. The strip already paused on :hover and :focus-within, neither of which
+     exists on a touch screen. The button is server-rendered with both labels in
+     the page language, so this only has to swap them. */
+  document.querySelectorAll('.logos--marquee .logos__pause').forEach(function (btn) {
+    var strip = btn.closest('.logos--marquee');
+    var label = btn.querySelector('.logos__pause-label');
+    btn.addEventListener('click', function () {
+      var paused = strip.classList.toggle('is-paused');
+      btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      var text = paused ? btn.getAttribute('data-resume') : btn.getAttribute('data-pause');
+      if (label) label.textContent = text;
+    });
   });
 
   /* ---------- reveal ---------- */

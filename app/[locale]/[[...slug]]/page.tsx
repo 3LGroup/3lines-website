@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import BlockRenderer from '@/components/blocks/Blocks';
 import { getPage, getRoutes } from '@/lib/content';
+import { pageSchema } from '@/lib/schema';
 import { LOCALES, altPaths, isLocale, type Locale } from '@/lib/i18n';
 import { SITE_ORIGIN, openGraph } from '@/lib/seo';
 
@@ -49,7 +50,16 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: doc.title,
     description: doc.description,
-    keywords: doc.keywords,
+    /* `keywords` is deliberately not emitted.
+       Google has ignored the meta keywords tag for well over a decade and Bing
+       treats it as a spam signal, so the best case was neutral. The actual case
+       was worse: the value is byte-identical across all four locales — the
+       Japanese and Korean pages carried Arabic tokens and an English keyword
+       list — and contains an empty term from a doubled comma ("parts,,ground").
+
+       The field is still stored and still editable in the CMS; it simply has no
+       consumer. Retiring it there is a separate change, in D1 and the admin form,
+       not here. */
     /* The three legal pages still carry placeholder source copy ("Privacy
        Policy Content"). The ingest already marks them; honouring that mark here
        means the worst case is a page nobody can find via search, rather than
@@ -77,11 +87,25 @@ export default async function Page({ params }: Params) {
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
 
-  const doc = getPage(locale, routeOf(slug));
+  const route = routeOf(slug);
+  const doc = getPage(locale, route);
   if (!doc) notFound();
+
+  /* Page-level JSON-LD: breadcrumbs everywhere below the top level, plus Service
+     on the ten service pages and NewsArticle on the four news items. The
+     Organization block stays in the layout — it describes the site, not the
+     page. Returns null when a route has nothing to add, so the flat pages do not
+     carry an empty graph. */
+  const schema = pageSchema(locale, route, doc);
 
   return (
     <>
+      {schema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ) : null}
       {doc.blocks.map((block, i) => (
         <BlockRenderer block={block} locale={locale} key={i} />
       ))}

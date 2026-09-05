@@ -88,6 +88,12 @@ function Section({ block, locale }: { block: SectionBlock; locale: Locale }) {
   const head = block.head;
   const split = head?.layout === 'split';
 
+  /* The bodies' own headings sit one level below this section's <h2> — but that
+     <h2> is only rendered when there is a heading to put in it, and without one
+     the document jumped from the page <h1> straight to <h3>. Telling the bodies
+     which case they are in lets them say so. See atLevel in Bodies.tsx. */
+  const level = head?.heading ? 3 : 2;
+
   return (
     <section className={TONE_CLASS[block.tone]} id={block.id}>
       <div className="wrap">
@@ -134,7 +140,7 @@ function Section({ block, locale }: { block: SectionBlock; locale: Locale }) {
             children, which cannot happen through the editor's guards but must
             degrade to an empty band rather than a crashed page if it ever does. */}
         {(block.bodies ?? []).map((body, i) => (
-          <BodyRenderer body={body} locale={locale} key={i} />
+          <BodyRenderer body={body} locale={locale} level={level} key={i} />
         ))}
       </div>
     </section>

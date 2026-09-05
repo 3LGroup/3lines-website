@@ -34,7 +34,17 @@ const NATIVE: Record<string, string> = {
   ko: '한국어',
 };
 
-export default function LangSwitch({ links, locale }: { links: LangLink[]; locale: Locale }) {
+export default function LangSwitch({
+  links,
+  locale,
+  label,
+}: {
+  links: LangLink[];
+  locale: Locale;
+  /** Accessible name, passed in rather than read here: ui() is a server-side
+      lookup and this is a client component. */
+  label: string;
+}) {
   const pathname = usePathname() || `/${locale}`;
   const root = useRef<HTMLDetailsElement>(null);
 
@@ -69,7 +79,9 @@ export default function LangSwitch({ links, locale }: { links: LangLink[]; local
 
   return (
     <details className="langmenu" ref={root}>
-      <summary aria-label="Change language">
+      {/* Was hardcoded English on all four locales — the one control a reader
+          who cannot read the current language most needs to recognise. */}
+      <summary aria-label={label}>
         {/* Globe: Tabler Icons (MIT), inlined. */}
         <svg
           aria-hidden="true"

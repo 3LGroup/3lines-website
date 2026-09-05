@@ -40,7 +40,7 @@ export function UtilityNav({ chrome, locale }: WithLocale) {
         ))}
         {/* Keeps you on the current page across the language switch — see
             LangSwitch for why that needs a client component. */}
-        <LangSwitch links={chrome.utility.lang} locale={locale} />
+        <LangSwitch links={chrome.utility.lang} locale={locale} label={ui(locale).changeLanguage} />
       </div>
     </div>
   );
@@ -198,7 +198,17 @@ export function MegaMenu({ chrome, locale }: WithLocale) {
             arrow-key cycling stays over the real tabs only. */}
         <ul className="megatabs" role="tablist">
           {chrome.mega.tabs.map((t) => (
-            <li key={t.key}>
+            /* role="presentation" strips the implicit `listitem`, which a
+               `tablist` may not own — without it every tab is an invalid child
+               and the whole tablist relationship is discarded. The <li> stays
+               because .megatabs li carries the layout.
+
+               Still not resolved: a `tablist` may not own a `link` either, and
+               one of these items is a destination rather than a tab. Fixing that
+               properly means rendering it outside the <ul>, which is a layout
+               change; it is a smaller problem than the missing panel wiring
+               below, so it is left standing rather than half-done. */
+            <li role="presentation" key={t.key}>
               {t.href ? (
                 <a className="megalink" href={localePath(locale, t.href)}>
                   {t.label} <Arrow />
@@ -207,6 +217,11 @@ export function MegaMenu({ chrome, locale }: WithLocale) {
                 <button
                   className="megatab"
                   role="tab"
+                  id={`megatab-${t.key}`}
+                  /* The tab/panel relationship existed only in data-target and
+                     data-panel, which main.js reads and assistive technology
+                     cannot. These two attributes are what make it real. */
+                  aria-controls={`megapanel-${t.key}`}
                   data-target={t.key}
                   /* The first TAB, not the first item — a link carries no
                      selected state, so indexing the whole list would leave no
@@ -222,7 +237,17 @@ export function MegaMenu({ chrome, locale }: WithLocale) {
 
         <div>
           {chrome.mega.panels.map((p, i) => (
-            <div className={i === 0 ? 'megapanel is-on' : 'megapanel'} data-panel={p.key} key={p.key}>
+            <div
+              className={i === 0 ? 'megapanel is-on' : 'megapanel'}
+              /* tabIndex 0 because a tabpanel whose content is not itself
+                 focusable has to be reachable from its tab. */
+              role="tabpanel"
+              id={`megapanel-${p.key}`}
+              aria-labelledby={`megatab-${p.key}`}
+              tabIndex={0}
+              data-panel={p.key}
+              key={p.key}
+            >
               <h3>{p.title}</h3>
               <div className="megapanel__links">
                 {p.links.map((l, j) => (

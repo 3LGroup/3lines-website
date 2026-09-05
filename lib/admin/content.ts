@@ -108,7 +108,7 @@ export async function listPages(): Promise<PageSummary[]> {
   const db = await getDb();
 
   // Four bulk reads, not one per page: D1 caps a Worker invocation at 50 queries
-  // on the free plan and 25 pages x 2 locales would blow through that.
+  // on the free plan and 25 pages x 4 locales would blow through that twice over.
   const [pages, translations, blocks, blockTr] = await Promise.all([
     db.select().from(schema.pages).orderBy(asc(schema.pages.position)),
     db.select().from(schema.pageTranslations),
