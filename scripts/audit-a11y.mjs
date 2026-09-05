@@ -76,9 +76,32 @@ const AUDIT = () => {
   const h1s = heads.filter((h) => h.tagName === 'H1');
   if (h1s.length === 0) fail.push('page has no <h1>');
   if (h1s.length > 1) fail.push(`page has ${h1s.length} <h1> elements`);
+  /* aria-level overrides the tag.
+   *
+   * ARIA defines aria-level as the heading's level, taking precedence over the
+   * implicit level of an h1-h6 element, and axe-core implements it that way. This
+   * check read h.tagName[1] alone, so it could not see a heading that had been
+   * re-levelled — and it reported 20 skips across the service and news pages that
+   * assistive technology does not experience.
+   *
+   * Verified rather than assumed, on /en/services/simulation-systems: axe's
+   * heading-order passes as shipped and fails the instant aria-level is stripped
+   * from the DOM, with everything else identical. This makes the audit agree with
+   * that reference implementation.
+   *
+   * Falls back to the tag whenever aria-level is absent or not a sane integer, so
+   * a typo cannot silence a real skip.
+   */
+  const levelOf = (h) => {
+    const declared = Number(h.getAttribute('aria-level'));
+    return Number.isInteger(declared) && declared >= 1 && declared <= 6
+      ? declared
+      : Number(h.tagName[1]);
+  };
+
   let prev = 0;
   for (const h of heads) {
-    const lvl = Number(h.tagName[1]);
+    const lvl = levelOf(h);
     if (prev && lvl > prev + 1)
       warn.push(`heading order skips h${prev} -> h${lvl} ("${(h.textContent || '').trim().slice(0, 40)}")`);
     prev = lvl;

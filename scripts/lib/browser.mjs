@@ -97,6 +97,11 @@ async function loadLazyImages(page) {
 }
 
 export async function settle(page) {
+  /* Text geometry is meaningless until the real faces are in. Nothing here waited
+     for them, so a page measured while DM Sans was still loading reported
+     fallback-font wrapping. Cheap now that the fonts are same-origin. */
+  await page.evaluate(() => document.fonts.ready);
+
   await page.addStyleTag({
     content: `*,*::before,*::after{animation:none!important;transition:none!important}
               .reveal{opacity:1!important;transform:none!important}`,
@@ -107,6 +112,28 @@ export async function settle(page) {
   const pin = () =>
     page.evaluate(() => {
       document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-in'));
+
+      /* Pin the hero rotator to its first word.
+       *
+       * Same class of bug as the count-up below, and it went unnoticed for the
+       * same reason: main.js swaps `.is-on` between the rotator's words every
+       * 2600ms, and only the `.is-on` word is display:inline. The words have very
+       * different lengths, so which one happens to be showing decides whether the
+       * hero h1 wraps to a second line — 58.31px vs 116.63px at 1280 wide — and
+       * that shifts the y of everything below it on the homepage.
+       *
+       * Measured, on one page with nothing changing: "MRO" gives 58.31 and
+       * "Extended Reality", "Logistics" and "Advanced Technologies" each give
+       * 116.63. So every run of this audit was a coin flip on the whole homepage,
+       * and a clean diff and a ~40px cascade were equally likely results.
+       *
+       * The first word is the deterministic choice: it is what the server renders
+       * and what a visitor sees before any script runs.
+       */
+      document.querySelectorAll('.rotator').forEach((rot) => {
+        const words = rot.querySelectorAll('span');
+        words.forEach((w, i) => w.classList.toggle('is-on', i === 0));
+      });
       document.querySelectorAll('[data-count]').forEach((el) => {
         const target = parseFloat(el.getAttribute('data-count'));
         el.textContent =

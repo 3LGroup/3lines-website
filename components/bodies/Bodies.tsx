@@ -129,7 +129,16 @@ function Tiles({ body, locale, level }: { body: TilesBody; locale: Locale; level
  * be contained in the accessible name, so it must not be prefixed.
  *
  * Rendered only when the two actually differ, so a link already named after its
- * destination is not read out twice. */
+ * destination is not read out twice.
+ *
+ * It must be the LAST child, after the arrow. `.arrowlink` is display:flex with
+ * gap:11px, and although this span is position:absolute and therefore not a flex
+ * item, placing it between the label and the arrow splits one anonymous flex item
+ * into two — three items, two gaps, and the link renders 11px wider. The visual
+ * audit caught exactly that: `.arrowlink w 100.59 -> 111.59` on 28 route/viewport
+ * pairs. As the last child the item count is unchanged and the geometry is
+ * identical. The accessible name is unaffected: the arrow is aria-hidden, so it
+ * still computes as "Learn more — XR". */
 function LinkContext({ heading }: { heading?: string }) {
   /* One template literal, not three JSX children: separate children make React
      emit <!-- --> separator comments between them, which is three text nodes for
@@ -150,9 +159,8 @@ function Cards({ body, locale, level }: { body: CardsBody; locale: Locale; level
             {c.text ? <p>{c.text}</p> : null}
             {c.link ? (
               <a className="arrowlink" href={localePath(locale, c.link.href)}>
-                {c.link.label}
-                <LinkContext heading={c.link.label === c.title ? undefined : c.title} />{' '}
-                <Arrow />
+                {c.link.label} <Arrow />
+                <LinkContext heading={c.link.label === c.title ? undefined : c.title} />
               </a>
             ) : null}
           </div>
@@ -186,9 +194,8 @@ function Feature({ body, locale, level }: { body: FeatureBody; locale: Locale; l
         ) : null}
         {body.link ? (
           <a className="arrowlink" href={localePath(locale, body.link.href)}>
-            {body.link.label}
-            <LinkContext heading={body.link.label === body.heading ? undefined : body.heading} />{' '}
-            <Arrow />
+            {body.link.label} <Arrow />
+            <LinkContext heading={body.link.label === body.heading ? undefined : body.heading} />
           </a>
         ) : null}
         {body.checklist?.length ? (
@@ -376,15 +383,13 @@ function Companies({ body, locale, level }: { body: CompaniesBody; locale: Local
             {c.link ? (
               c.external ? (
                 <a className="arrowlink" href={c.link.href} target="_blank" rel="noreferrer noopener">
-                  {c.link.label}
-                  <LinkContext heading={c.link.label === c.name ? undefined : c.name} />{' '}
-                  <Arrow />
+                  {c.link.label} <Arrow />
+                  <LinkContext heading={c.link.label === c.name ? undefined : c.name} />
                 </a>
               ) : (
                 <a className="arrowlink" href={localePath(locale, c.link.href)}>
-                  {c.link.label}
-                  <LinkContext heading={c.link.label === c.name ? undefined : c.name} />{' '}
-                  <Arrow />
+                  {c.link.label} <Arrow />
+                  <LinkContext heading={c.link.label === c.name ? undefined : c.name} />
                 </a>
               )
             ) : null}
