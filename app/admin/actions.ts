@@ -1,5 +1,6 @@
 'use server';
 
+import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { login, logout, readSession } from '@/lib/admin/session';
 
@@ -23,20 +24,72 @@ const WINDOW_MS = 15 * 60 * 1000;
 const MAX_ATTEMPTS = 8;
 
 /**
- * Per-instance, in-memory, and therefore only a speed bump.
+ * Per-caller, in-memory, and therefore only a speed bump.
  *
  * On Workers each isolate has its own copy and they are recycled freely, so an
  * attacker with patience or luck gets more than MAX_ATTEMPTS. Stating that
  * plainly rather than implying real rate limiting: the actual defences are a
  * 600k-iteration PBKDF2 verify, which caps throughput at roughly seven guesses a
  * second per isolate, and a password this code refuses to generate below 12
- * characters. Durable per-IP limiting arrives with D1 in M2; Cloudflare's own
- * Rate Limiting Rules can cover it at the edge before then.
+ * characters. Durable limiting arrives with D1 in M2; Cloudflare's own Rate
+ * Limiting Rules can cover it at the edge before then.
+ *
+ * The bucket is keyed on the caller, not on a constant. It used to be
+ * `throttled('login')` — one counter for the whole deployment — which made this
+ * worse than no throttle at all: eight bad guesses from anyone on the internet
+ * locked every editor out of the CMS for fifteen minutes. That is a denial of
+ * service any stranger could trigger, and it protected nothing, since an
+ * attacker is not slowed by a counter they can exhaust on purpose.
  */
 const attempts = new Map<string, { n: number; first: number }>();
 
+/** Beyond this many tracked callers, sweep the expired ones before adding more. */
+const MAX_TRACKED = 512;
+
+/**
+ * Who is asking.
+ *
+ * `CF-Connecting-IP` is set by Cloudflare itself and overwritten on every
+ * request, so a client cannot forge it, and a Worker is only reachable through
+ * Cloudflare — there is no path that arrives without it in production.
+ *
+ * The fallbacks matter more than they look. `x-forwarded-for` is client-supplied
+ * and trivially spoofed, so it is used only for its first hop and only when the
+ * Cloudflare header is absent, which in practice means local development.
+ * Everything left over shares the 'unknown' bucket — deliberately, because the
+ * alternative is either no throttle at all for header-less requests, or a return
+ * to one global counter. A shared bucket for a case that should never occur in
+ * production is the least bad of the three.
+ */
+async function callerKey(): Promise<string> {
+  const h = await headers();
+  const cf = h.get('cf-connecting-ip')?.trim();
+  if (cf) return cf;
+  const fwd = h.get('x-forwarded-for')?.split(',')[0]?.trim();
+  return fwd || 'unknown';
+}
+
 function throttled(key: string): boolean {
   const now = Date.now();
+
+  /* One entry per caller would otherwise grow without bound in a long-lived
+     isolate. Sweeping only past a threshold keeps the common path — a handful of
+     editors — free of the walk.
+     The sweep alone is not a bound: inside a 15-minute window nothing has
+     expired, so a spray of distinct addresses grows the map anyway (measured:
+     600 IPs produced 602 entries). Evicting oldest-first afterwards is what
+     actually caps it. The security cost is nil — an attacker who can spray more
+     than MAX_TRACKED addresses is not being stopped by an in-process counter in
+     the first place, which is what the edge rate limit is for. */
+  if (attempts.size >= MAX_TRACKED) {
+    for (const [k, v] of attempts) if (now - v.first > WINDOW_MS) attempts.delete(k);
+    // Map iterates in insertion order, so this drops the least recent first.
+    for (const k of attempts.keys()) {
+      if (attempts.size <= MAX_TRACKED) break;
+      if (k !== key) attempts.delete(k);
+    }
+  }
+
   const rec = attempts.get(key);
   if (!rec || now - rec.first > WINDOW_MS) {
     attempts.set(key, { n: 1, first: now });
@@ -50,7 +103,8 @@ export async function loginAction(_prev: LoginState, form: FormData): Promise<Lo
   const password = String(form.get('password') ?? '');
   if (!password) return { error: 'Enter your password.' };
 
-  if (throttled('login')) {
+  const key = await callerKey();
+  if (throttled(key)) {
     return { error: 'Too many attempts. Wait a few minutes and try again.' };
   }
 
@@ -66,7 +120,7 @@ export async function loginAction(_prev: LoginState, form: FormData): Promise<Lo
 
   if (!ok) return { error: 'Incorrect password.' };
 
-  attempts.delete('login');
+  attempts.delete(key);
   redirect('/admin');
 }
 
