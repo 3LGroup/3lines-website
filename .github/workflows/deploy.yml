@@ -89,6 +89,25 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_D1_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Canonical host, pinned here rather than left to the CMS.
+          #
+          # Both hostnames used to serve the site, and the CMS's "Website URL"
+          # said `https://3lines.com.sa`, so every canonical, hreflang, og:url and
+          # sitemap entry named the apex. A Cloudflare redirect rule now sends the
+          # apex to www permanently, which left all of those pointing at a URL
+          # that 301s — the site telling crawlers the real address is somewhere
+          # that immediately sends them back.
+          #
+          # lib/seo.ts resolves SITE_ORIGIN before the CMS setting, by design, and
+          # it has to be set HERE rather than as a Worker variable: the pages are
+          # prerendered, so canonicals are baked in during this build and nothing
+          # read at request time can affect them.
+          #
+          # The cost is that Site info -> Website URL in the CMS no longer has any
+          # effect on the rendered site. If that field should be authoritative
+          # again, delete this line and change it there instead — the two are
+          # alternatives, not partners.
+          SITE_ORIGIN: https://www.3lines.com.sa
 
       - name: Deploy
         run: npx opennextjs-cloudflare deploy
