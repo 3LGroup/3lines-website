@@ -239,7 +239,29 @@ p,li,dd,address,figcaption,.lede,.sub,.excerpt,
 .heroslides{margin-top:clamp(18px,2.4vw,30px)!important}
 .hero .hero__row,.hero__copy .btn,.heroslide .lnk{margin-top:18px!important}
 .plat__name{font-size:clamp(20px,2.4vw,30px)!important}
-.stat__n,.fig__n,.figure__num,.counter__n{font-size:clamp(24px,2.8vw,36px)!important}
+/* Key figures.
+   This rule used to read clamp(24px,2.8vw,36px), which SHRANK them: style.css
+   sizes .figure__num at clamp(32px,4.4vw,54px), so the re-skin was cutting the
+   four numbers a visitor is meant to be convinced by down by a third, to roughly
+   the optical weight of body copy. They are the credibility argument for a
+   defence contractor — years operating, companies, specialists, partners — and
+   they were the quietest thing on the page.
+   The minimum stays 36px so nothing changes on a phone, where the figures stack
+   and already fill the column; the growth is all in the space wide screens were
+   wasting. The 11px uppercase mono label is untouched — the ratio against it is
+   the point. */
+.stat__n,.fig__n,.figure__num,.counter__n{font-size:clamp(36px,5vw,64px)!important}
+/* More air under a bigger numeral, or the label crowds its baseline. */
+.stat__lab,.fig__l,.figure__lab{margin-top:clamp(8px,1vw,14px)!important}
+/* Restore the cyan style.css:529 asks for on dark bands.
+   The `color:var(--primary)!important` further down this file was beating it,
+   which is invisible while the figures sit on a white section — 4.83:1, fine —
+   and becomes a real problem the moment one is moved onto navy: --primary on
+   --navy measures 2.32:1, below even the 3:1 floor for large text, where cyan
+   gives 8.31:1. Latent rather than live, and worth closing before anyone takes
+   up the suggestion to put these numbers on a dark band. */
+.section--navy .figure__num,.section--blue .figure__num,
+.section--navy .fig__n,.section--blue .fig__n{color:var(--cyan)!important}
 
 /* ticker rows keep the page gutter instead of bleeding off the edge */
 .ticker__track{padding-inline:var(--pad,32px);gap:0}
