@@ -14,6 +14,13 @@
 #   repository_dispatch — the CMS's Publish button (event type "cms-publish")
 #   workflow_dispatch   — a manual run from the Actions tab
 #   push                — any commit to the production branch
+#
+# This branch is the repository's DEFAULT branch. That matters: GitHub delivers
+# repository_dispatch only to the default branch, so Publish reaches this file
+# directly. It did not always — `main` used to be default and held the previous
+# website, with a copy of this workflow whose only job was to catch the dispatch
+# and check out this branch instead. That indirection is gone; the old site is
+# preserved on `legacy-static-site`.
 name: Deploy
 
 on:
@@ -41,16 +48,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      # The production branch, explicitly, whatever triggered this run.
-      # repository_dispatch (the Publish button) is only ever delivered against
-      # the DEFAULT branch — GitHub ignores the event for workflow files that
-      # live anywhere else — so this file has to exist on main while the site is
-      # built from location-map-and-fixes. Pinning the ref makes both entry
-      # points produce the same artifact instead of main silently deploying
-      # itself.
+      # No `ref:` — check out whatever triggered the run.
+      #
+      # This used to pin the branch by name, because repository_dispatch is only
+      # delivered to the default branch and that was `main`, which held a
+      # different site: without the pin, a Publish would have built and deployed
+      # the old static site over the live one. Now that this branch IS the
+      # default, every entry point already resolves here — dispatch to the
+      # default, push to the pushed ref, workflow_dispatch to the chosen branch —
+      # and dropping the pin means a future branch rename does not silently keep
+      # deploying a name that no longer exists.
       - uses: actions/checkout@v4
-        with:
-          ref: location-map-and-fixes
 
       - uses: actions/setup-node@v4
         with:
