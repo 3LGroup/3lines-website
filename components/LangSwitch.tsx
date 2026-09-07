@@ -79,9 +79,17 @@ export default function LangSwitch({
 
   return (
     <details className="langmenu" ref={root}>
-      {/* Was hardcoded English on all four locales — the one control a reader
-          who cannot read the current language most needs to recognise. */}
-      <summary aria-label={label}>
+      {/* The description is a hidden child, not an aria-label.
+          As an aria-label it REPLACED the visible text — the summary shows the
+          current locale code, "EN" or "AR" — so the accessible name was
+          "Change language" while the screen said "AR", and someone driving the
+          page by voice could read the code aloud and nothing would happen. That
+          is WCAG 2.5.3, and it only shows at desktop widths: style.css hides
+          .hdr .utility below 900px, so no mobile audit can see it.
+          As a child it is prepended instead, giving "Change language AR", which
+          contains the visible label. Same fix as the theme toggle. */}
+      <summary>
+        <span className="sr-only">{label}</span>
         {/* Globe: Tabler Icons (MIT), inlined. */}
         <svg
           aria-hidden="true"

@@ -75,9 +75,8 @@ function Logo({
   /**
    * Sets the "LINES / Advanced Technologies Company" lockup beside the mark, as
    * the reference header does (assets/enhance.js §18b). The mark alone is only
-   * half the reference's branding. aria-hidden because the link already carries
-   * its accessible name on aria-label, and the reference keeps it decorative
-   * for the same reason.
+   * half the reference's branding. NOT aria-hidden: this text is what names the
+   * link, so the accessible name and the visible label are the same string.
    */
   wordmark?: boolean;
   /** Which theme-layer variable this mark paints through. */
@@ -88,10 +87,33 @@ function Logo({
     ...style,
     [cssVar]: `url("${asset(img.src)}")`,
   } as React.CSSProperties;
+
+  /* Where a wordmark renders, the visible text names the link — no aria-label.
+     The wordmark puts "LINES" and "Advanced Technologies Company" on screen, in
+     Latin, in every locale, while aria-label carried only the localized alt. So
+     on Arabic the screen read "LINES Advanced Technologies Company" and the
+     accessible name was "ثريلاينز آدفانسد تكنولجيز" — nothing in common, which
+     is WCAG 2.5.3 and leaves the link unaddressable by voice.
+     Appending the alt to the label was tried first and still failed: the two
+     wordmark spans stack, so the visible text axe compares against carries a
+     newline that no single-line label can contain. Dropping aria-label and
+     un-hiding the wordmark makes the accessible name and the visible label the
+     same string by construction, which is the only version of this that cannot
+     drift.
+     The cost is that the localized alt no longer reaches screen readers here.
+     That is the right trade: the wordmark on screen is Latin in every locale, so
+     naming the link after something nobody can see was the anomaly.
+     The footer mark renders no wordmark and no visible text, so it still needs
+     the alt as its only accessible name. */
   return (
-    <a className={className} href={localePath(locale, '/')} aria-label={img.alt} style={withImage}>
+    <a
+      className={className}
+      href={localePath(locale, '/')}
+      aria-label={wordmark ? undefined : img.alt}
+      style={withImage}
+    >
       {wordmark ? (
-        <span className="hdr__wordmark" aria-hidden="true">
+        <span className="hdr__wordmark">
           <span className="hdr__wordmark-name">{s.wordmarkName ?? 'LINES'}</span>
           <span className="hdr__wordmark-tag">{s.wordmarkTag ?? 'Advanced Technologies Company'}</span>
         </span>
