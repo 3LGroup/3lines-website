@@ -107,3 +107,18 @@ export function contentAssetVar(imgVar: string | undefined): string | undefined 
   if (!path?.startsWith('/')) return imgVar;
   return `${open}${quote}${contentAsset(path)}${quote}${close}`;
 }
+
+/**
+ * The resolved, content-hashed href inside a CSS `url(...)` wrapper — or
+ * undefined if there is nothing fetchable in it.
+ *
+ * Same parsing as contentAssetVar, but returning the bare path, because a
+ * preload needs an href rather than a CSS value.
+ */
+export function contentAssetHref(imgVar: string | undefined): string | undefined {
+  if (!imgVar) return undefined;
+  const m = /^\s*url\(\s*(['"]?)(.*?)\1\s*\)\s*$/.exec(imgVar);
+  const path = m?.[2];
+  if (!path?.startsWith('/')) return undefined;
+  return contentAsset(path);
+}

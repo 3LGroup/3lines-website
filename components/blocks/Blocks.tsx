@@ -4,7 +4,8 @@ import Svg from '../Svg';
 import BodyRenderer, { parseStyle } from '../bodies/Bodies';
 import { localePath, type Locale } from '@/lib/i18n';
 import { getSettings } from '@/lib/content';
-import { contentAssetVar } from '@/lib/assets';
+import ReactDOM from 'react-dom';
+import { contentAssetHref, contentAssetVar } from '@/lib/assets';
 import { ui } from '@/lib/ui';
 import { assertNever, TONE_CLASS } from '@/lib/blocks';
 import type {
@@ -25,6 +26,19 @@ const imgStyle = (imgVar?: string): React.CSSProperties | undefined => {
 };
 
 function Hero({ block, locale }: { block: HeroBlock; locale: Locale }) {
+  /* Preload the hero background — it is the LCP candidate on every homepage and
+     was the single latest-discoverable resource on the page: a CSS background
+     behind an attribute selector, so the browser had to fetch the HTML, then
+     3lines.css, then match `.hero[style*="--img"]`, before it even learned the
+     image existed.
+     Derived from the block's own imgVar rather than hardcoded, so it follows the
+     CMS. Point the hero at a different photograph and the preload moves with it;
+     hardcoding would have left the page preloading an image it no longer shows
+     while still discovering the real one three hops in.
+     ReactDOM.preload hoists this into <head> from a Server Component. */
+  const heroImg = contentAssetHref(block.imgVar);
+  if (heroImg) ReactDOM.preload(heroImg, { as: 'image', fetchPriority: 'high' });
+
   return (
     <section className="hero" style={imgStyle(block.imgVar)}>
       <div className="wrap hero__inner">
