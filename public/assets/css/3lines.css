@@ -225,9 +225,23 @@ p,li,dd,address,figcaption,.lede,.sub,.excerpt,
   width:100%!important;
 }
 
-/* restraint: the originals shout at 90–124px. The system is calm. */
+/* Restraint, but not timidity.
+   The original clone shouts at 90-124px and this rule cut it to 54, which is
+   right in intent and slightly overshot in degree: 54px is the size this same
+   system gives a section h2 (clamp(24px,3.2vw,40px) tops out at 40, and .h2
+   renders 40), so at a wide viewport the page opener carried barely more weight
+   than the headings beneath it, and the hero measured 767px without the
+   headline dominating any of it.
+   Raised to 68 — still a long way short of the 90 the base stylesheet asks for,
+   and the calm line-height and 22ch measure are untouched, which is where most
+   of the restraint actually lives. Reverting is this one value.
+   Nothing else in the hero was changed: it already carries a CTA above the fold
+   ("Who we are", at 337px), the rotating word already renders in the same
+   near-black as the rest of the headline, and the photograph stays a band below
+   the copy because this system forbids text over a photograph and forbids the
+   gradient scrim that would make it legible. */
 .hero h1,.hero__title,.hero__copy h1,.phead h1,.pagehead h1{
-  font-size:clamp(30px,4.4vw,54px)!important;line-height:1.08!important;
+  font-size:clamp(30px,4.9vw,68px)!important;line-height:1.08!important;
   max-width:22ch!important;margin-bottom:14px!important;
 }
 .band h2,.careers h2,.cta h2,.h2,.mission p{
